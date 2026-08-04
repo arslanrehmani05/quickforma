@@ -1,19 +1,13 @@
 import React, { useState } from 'react';
-import { Sliders, Copy, Check } from 'lucide-react';
+import { Sliders } from 'lucide-react';
+import { CopyButton } from '../common/CopyButton';
 
 export const CssGlassmorphismGenerator: React.FC = () => {
   const [blur, setBlur] = useState(12);
   const [opacity, setOpacity] = useState(60);
   const [borderOpacity, setBorderOpacity] = useState(20);
-  const [copied, setCopied] = useState(false);
 
   const cssCode = `background: rgba(255, 255, 255, ${opacity / 100});\nbackdrop-filter: blur(${blur}px);\n-webkit-backdrop-filter: blur(${blur}px);\nborder: 1px solid rgba(0, 0, 0, ${borderOpacity / 100});\nborder-radius: 1rem;`;
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText(cssCode);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
 
   return (
     <div className="max-w-4xl mx-auto space-y-8">
@@ -91,14 +85,11 @@ export const CssGlassmorphismGenerator: React.FC = () => {
 
             {/* Generated CSS */}
             <div className="relative">
-              <div className="flex justify-between items-center bg-slate-900 px-4 py-2 rounded-t-xl text-xs text-slate-300">
+              <div className="flex justify-between items-center bg-slate-100 px-4 py-2 rounded-t-xl border-t border-x border-slate-200 text-xs text-slate-700 font-bold">
                 <span>Generated CSS</span>
-                <button onClick={handleCopy} className="hover:text-white flex items-center gap-1">
-                  {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-                  <span>{copied ? 'Copied' : 'Copy CSS'}</span>
-                </button>
+                <CopyButton textToCopy={cssCode} label="Copy CSS" variant="secondary" />
               </div>
-              <pre className="p-4 bg-slate-950 text-indigo-300 font-mono text-xs rounded-b-xl overflow-x-auto">
+              <pre className="p-4 bg-slate-50 text-indigo-900 font-mono text-xs rounded-b-xl border border-slate-200 overflow-x-auto">
                 {cssCode}
               </pre>
             </div>

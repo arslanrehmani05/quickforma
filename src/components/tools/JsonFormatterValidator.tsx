@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Code, Copy, Check, AlertCircle } from 'lucide-react';
+import { Code, AlertCircle } from 'lucide-react';
+import { CopyButton } from '../common/CopyButton';
 
 export const JsonFormatterValidator: React.FC = () => {
   const [jsonInput, setJsonInput] = useState('{"name":"QuickForma","type":"utility","version":1.0,"features":["client-side","zero-api"]}');
   const [formattedJson, setFormattedJson] = useState('');
   const [error, setError] = useState<string | null>(null);
-  const [copied, setCopied] = useState(false);
 
   const handleFormat = () => {
     try {
@@ -26,12 +26,6 @@ export const JsonFormatterValidator: React.FC = () => {
     } catch (err: any) {
       setError(err.message || 'Invalid JSON syntax');
     }
-  };
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText(formattedJson || jsonInput);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
@@ -83,14 +77,11 @@ export const JsonFormatterValidator: React.FC = () => {
 
           {formattedJson && (
             <div className="relative">
-              <div className="flex justify-between items-center bg-slate-900 px-4 py-2 rounded-t-xl text-xs text-slate-300">
+              <div className="flex justify-between items-center bg-slate-100 px-4 py-2 rounded-t-xl border-t border-x border-slate-200 text-xs text-slate-700 font-bold">
                 <span>Formatted Output</span>
-                <button onClick={handleCopy} className="hover:text-white flex items-center gap-1">
-                  {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-                  <span>{copied ? 'Copied' : 'Copy'}</span>
-                </button>
+                <CopyButton textToCopy={formattedJson} variant="secondary" />
               </div>
-              <pre className="p-4 bg-slate-950 text-emerald-400 font-mono text-xs rounded-b-xl overflow-x-auto max-h-96">
+              <pre className="p-4 bg-slate-50 text-indigo-900 font-mono text-xs rounded-b-xl border border-slate-200 overflow-x-auto max-h-96">
                 {formattedJson}
               </pre>
             </div>

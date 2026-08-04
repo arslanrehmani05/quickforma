@@ -71,12 +71,12 @@ export const PasswordGenerator: React.FC = () => {
         </div>
 
         <div className="space-y-6">
-          <div className="p-6 rounded-2xl bg-slate-900 text-white flex flex-col sm:flex-row items-center justify-between gap-4 shadow-md">
+          <div className="p-6 rounded-2xl bg-indigo-600 text-white flex flex-col sm:flex-row items-center justify-between gap-4 shadow-md">
             <span className="font-mono text-xl sm:text-2xl font-bold tracking-wider break-all text-center sm:text-left">
               {password || 'Select options below'}
             </span>
             <div className="flex items-center gap-2 shrink-0">
-              <CopyButton textToCopy={password} label="Copy Password" />
+              <CopyButton textToCopy={password} label="Copy Password" variant="secondary" />
               <ResetButton onReset={generatePassword} label="Regenerate" />
             </div>
           </div>

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Palette, Copy, Check } from 'lucide-react';
+import { Palette } from 'lucide-react';
+import { CopyButton } from '../common/CopyButton';
 
 export const ColorPickerConverter: React.FC = () => {
   const [hex, setHex] = useState('#4f46e5');
-  const [copied, setCopied] = useState(false);
 
   const hexToRgb = (hexStr: string) => {
     const clean = hexStr.replace('#', '');
@@ -12,12 +12,6 @@ export const ColorPickerConverter: React.FC = () => {
     const g = parseInt(clean.substring(2, 4), 16);
     const b = parseInt(clean.substring(4, 6), 16);
     return `rgb(${r}, ${g}, ${b})`;
-  };
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText(hex);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
@@ -55,19 +49,13 @@ export const ColorPickerConverter: React.FC = () => {
             </div>
           </div>
 
-          <div className="p-6 rounded-2xl bg-slate-900 text-white space-y-4 shadow-md">
-            <div className="h-20 rounded-xl shadow-inner border border-white/20" style={{ backgroundColor: hex }} />
-            <div className="space-y-2 text-xs font-mono text-slate-300">
-              <div className="flex justify-between"><span>HEX:</span><span className="text-white font-bold">{hex}</span></div>
-              <div className="flex justify-between"><span>RGB:</span><span className="text-white font-bold">{hexToRgb(hex)}</span></div>
+          <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-4 shadow-xs">
+            <div className="h-20 rounded-xl shadow-inner border border-slate-300" style={{ backgroundColor: hex }} />
+            <div className="space-y-2 text-xs font-mono text-slate-700">
+              <div className="flex justify-between"><span>HEX:</span><span className="text-slate-900 font-bold">{hex}</span></div>
+              <div className="flex justify-between"><span>RGB:</span><span className="text-slate-900 font-bold">{hexToRgb(hex)}</span></div>
             </div>
-            <button
-              onClick={handleCopy}
-              className="w-full py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold flex items-center justify-center gap-1.5 transition-all shadow-sm"
-            >
-              {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
-              <span>{copied ? 'Copied HEX!' : 'Copy HEX Code'}</span>
-            </button>
+            <CopyButton textToCopy={hex} label="Copy HEX Code" className="w-full" />
           </div>
         </div>
       </div>

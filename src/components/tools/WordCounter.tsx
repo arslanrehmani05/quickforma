@@ -32,20 +32,20 @@ export const WordCounter: React.FC = () => {
 
         <div className="space-y-6">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            <div className="p-4 rounded-2xl bg-slate-900 text-white shadow-xs">
-              <span className="text-[10px] uppercase font-bold text-slate-400 block">Words</span>
+            <div className="p-4 rounded-2xl bg-indigo-600 text-white shadow-xs">
+              <span className="text-[10px] uppercase font-bold text-indigo-200 block">Words</span>
               <span className="text-2xl sm:text-3xl font-extrabold">{wordCount.toLocaleString()}</span>
             </div>
-            <div className="p-4 rounded-2xl bg-slate-900 text-white shadow-xs">
-              <span className="text-[10px] uppercase font-bold text-slate-400 block">Characters</span>
+            <div className="p-4 rounded-2xl bg-indigo-600 text-white shadow-xs">
+              <span className="text-[10px] uppercase font-bold text-indigo-200 block">Characters</span>
               <span className="text-2xl sm:text-3xl font-extrabold">{charCount.toLocaleString()}</span>
             </div>
-            <div className="p-4 rounded-2xl bg-indigo-600 text-white shadow-xs">
-              <span className="text-[10px] uppercase font-bold text-indigo-200 block">Sentences</span>
+            <div className="p-4 rounded-2xl bg-indigo-50 border border-indigo-100 text-indigo-900 shadow-xs">
+              <span className="text-[10px] uppercase font-bold text-indigo-600 block">Sentences</span>
               <span className="text-2xl sm:text-3xl font-extrabold">{sentenceCount.toLocaleString()}</span>
             </div>
-            <div className="p-4 rounded-2xl bg-indigo-600 text-white shadow-xs">
-              <span className="text-[10px] uppercase font-bold text-indigo-200 block">Reading Time</span>
+            <div className="p-4 rounded-2xl bg-indigo-50 border border-indigo-100 text-indigo-900 shadow-xs">
+              <span className="text-[10px] uppercase font-bold text-indigo-600 block">Reading Time</span>
               <span className="text-2xl sm:text-3xl font-extrabold">~{readingTimeMinutes} m</span>
             </div>
           </div>

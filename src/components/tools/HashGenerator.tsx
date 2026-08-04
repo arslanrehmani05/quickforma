@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import { Shield } from 'lucide-react';
+import { CopyButton } from '../common/CopyButton';
 
 export const HashGenerator: React.FC = () => {
   const [text, setText] = useState('QuickForma 2026');
   const [hashes, setHashes] = useState<{ sha256: string; sha512: string }>({ sha256: '', sha512: '' });
 
   const generateHashes = async () => {
-    if (!text) return;
+    if (!text) {
+      setHashes({ sha256: '', sha512: '' });
+      return;
+    }
     const encoder = new TextEncoder();
     const data = encoder.encode(text);
 
@@ -49,14 +53,20 @@ export const HashGenerator: React.FC = () => {
           </div>
 
           <div className="space-y-3 pt-4">
-            <div className="p-4 rounded-xl bg-slate-900 text-white space-y-1">
-              <span className="text-xs font-bold text-indigo-400 uppercase tracking-wider block">SHA-256 Hash</span>
-              <p className="font-mono text-xs text-slate-200 break-all">{hashes.sha256 || '...'}</p>
+            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex items-start justify-between gap-4">
+              <div className="space-y-1 flex-1">
+                <span className="text-xs font-bold text-indigo-600 uppercase tracking-wider block">SHA-256 Hash</span>
+                <p className="font-mono text-xs text-slate-900 break-all">{hashes.sha256 || '...'}</p>
+              </div>
+              {hashes.sha256 && <CopyButton textToCopy={hashes.sha256} variant="secondary" />}
             </div>
 
-            <div className="p-4 rounded-xl bg-slate-900 text-white space-y-1">
-              <span className="text-xs font-bold text-emerald-400 uppercase tracking-wider block">SHA-512 Hash</span>
-              <p className="font-mono text-xs text-slate-200 break-all">{hashes.sha512 || '...'}</p>
+            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex items-start justify-between gap-4">
+              <div className="space-y-1 flex-1">
+                <span className="text-xs font-bold text-emerald-600 uppercase tracking-wider block">SHA-512 Hash</span>
+                <p className="font-mono text-xs text-slate-900 break-all">{hashes.sha512 || '...'}</p>
+              </div>
+              {hashes.sha512 && <CopyButton textToCopy={hashes.sha512} variant="secondary" />}
             </div>
           </div>
         </div>

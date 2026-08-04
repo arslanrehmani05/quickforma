@@ -62,6 +62,18 @@ import { RandomNamePicker } from './components/tools/RandomNamePicker';
 import { SlugGenerator } from './components/tools/SlugGenerator';
 import { PomodoroTimer } from './components/tools/PomodoroTimer';
 
+// 10 New Strategic Tools
+import { UuidGenerator } from './components/tools/UuidGenerator';
+import { JwtDecoder } from './components/tools/JwtDecoder';
+import { ShopifyFeeCalculator } from './components/tools/ShopifyFeeCalculator';
+import { StripeFeeCalculator } from './components/tools/StripeFeeCalculator';
+import { EoqCalculator } from './components/tools/EoqCalculator';
+import { ReorderPointCalculator } from './components/tools/ReorderPointCalculator';
+import { OeeCalculator } from './components/tools/OeeCalculator';
+import { PtoCalculator } from './components/tools/PtoCalculator';
+import { UtmBuilder } from './components/tools/UtmBuilder';
+import { BmiCalculator } from './components/tools/BmiCalculator';
+
 import { Search, X, ChevronRight, ArrowLeft } from 'lucide-react';
 
 const LEGAL_PAGES = ['privacy', 'terms', 'about', 'contact'];
@@ -196,6 +208,18 @@ export function App() {
       case 'random-name-picker': return <RandomNamePicker />;
       case 'slug-generator': return <SlugGenerator />;
       case 'pomodoro-timer': return <PomodoroTimer />;
+
+      // 10 New Strategic Tools
+      case 'uuid-generator': return <UuidGenerator />;
+      case 'jwt-decoder': return <JwtDecoder />;
+      case 'shopify-fee-calculator': return <ShopifyFeeCalculator />;
+      case 'stripe-fee-calculator': return <StripeFeeCalculator />;
+      case 'eoq-calculator': return <EoqCalculator />;
+      case 'reorder-point-calculator': return <ReorderPointCalculator />;
+      case 'oee-calculator': return <OeeCalculator />;
+      case 'pto-calculator': return <PtoCalculator />;
+      case 'utm-builder': return <UtmBuilder />;
+      case 'bmi-calculator': return <BmiCalculator />;
 
       default:
         return <HomePage tools={TOOLS_CATALOG} onSelectTool={handleSelectView} />;

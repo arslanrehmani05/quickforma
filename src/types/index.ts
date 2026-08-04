@@ -4,7 +4,13 @@ export type ToolCategory =
   | 'converters'
   | 'developer'
   | 'content'
-  | 'productivity';
+  | 'productivity'
+  | 'ecommerce'
+  | 'operations'
+  | 'hr'
+  | 'marketing'
+  | 'healthcare'
+  | 'real-estate';
 
 export interface FAQItem {
   question: string;

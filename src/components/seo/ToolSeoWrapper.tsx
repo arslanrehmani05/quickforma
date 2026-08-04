@@ -140,49 +140,34 @@ export const ToolSeoWrapper: React.FC<ToolSeoWrapperProps> = ({
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
       )}
 
-      {/* 2. At a Glance ⭐ (NEW) */}
+      {/* 2. At a Glance Summary */}
       {activeSeoData.atAGlance && <AtAGlance data={activeSeoData.atAGlance} />}
 
       {/* 3. Quick Overview */}
       {activeSeoData.overview && <ToolOverview data={activeSeoData.overview} />}
 
-      {/* 4. Key Features ⭐ (NEW) */}
+      {/* 4. Key Features */}
       {activeSeoData.keyFeatures && <KeyFeatures data={activeSeoData.keyFeatures} />}
 
-      {/* 5. How to Use */}
+      {/* 5. How to Use (Step-by-Step) */}
       {activeSeoData.howToUse && <HowToUse data={activeSeoData.howToUse} />}
 
-      {/* 6. Worked Example */}
+      {/* 6. Worked Example (Mandatory: Inputs -> Process -> Result -> Interpretation) */}
       {activeSeoData.workedExample && <WorkedExample data={activeSeoData.workedExample} />}
 
-      {/* 7. How It Works ⭐ (Renamed from Formula) */}
+      {/* 7. How It Works / Formula (Conditional: Formula, Logic, Assumptions) */}
       {activeSeoData.howItWorks && <HowItWorks data={activeSeoData.howItWorks} />}
 
-      {/* 8. Best Practices */}
-      {activeSeoData.bestPractices && <BestPractices data={activeSeoData.bestPractices} />}
-
-      {/* 9. Common Mistakes */}
-      {activeSeoData.commonMistakes && <CommonMistakes data={activeSeoData.commonMistakes} />}
-
-      {/* 10. Industry Use Cases */}
-      {activeSeoData.industryUseCases && <IndustryUseCases data={activeSeoData.industryUseCases} />}
-
-      {/* 11. FAQ */}
+      {/* 8. Frequently Asked Questions (FAQ Accordion + Schema.org JSON-LD) */}
       {activeSeoData.faqs && <FAQSection data={activeSeoData.faqs} toolName={toolName} />}
 
-      {/* 12. Related Questions (AEO AI Answers) */}
-      {activeSeoData.relatedQuestions && <RelatedQuestions data={activeSeoData.relatedQuestions} />}
-
-      {/* 13. Related Tools */}
+      {/* 9. Related Tools (Internal Linking Grid across Pillar) */}
       <RelatedTools toolIds={activeSeoData.relatedToolIds} currentCategory={category} currentToolId={toolId} />
 
-      {/* 14. Related Guides (Hidden if empty) */}
+      {/* 10. Related Guides (Sanity CMS - Conditionally Hidden If Empty) */}
       {activeSeoData.relatedGuides && activeSeoData.relatedGuides.guides && activeSeoData.relatedGuides.guides.length > 0 && (
         <RelatedGuides guides={activeSeoData.relatedGuides.guides} />
       )}
-
-      {/* 15. Continue Your Workflow ⭐ (NEW - Task-Oriented Next Steps) */}
-      {activeSeoData.workflowProgression && <WorkflowProgression data={activeSeoData.workflowProgression} />}
     </article>
   );
 };

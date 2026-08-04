@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { CopyButton } from '../common/CopyButton';
 import { ResetButton } from '../common/ResetButton';
 import { CreditCard, DollarSign } from 'lucide-react';
+import { ToolSeoWrapper } from '../seo/ToolSeoWrapper';
+import { STRIPE_FEE_SEO } from '../../data/sampleToolSeoData';
 
 export const StripeFeeCalculator: React.FC = () => {
   const [amount, setAmount] = useState<number>(100);
@@ -89,6 +91,14 @@ export const StripeFeeCalculator: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Authority Tool Page Template v1.0 Content Hub */}
+      <ToolSeoWrapper
+        seoData={STRIPE_FEE_SEO}
+        toolName="Stripe Fee Calculator"
+        category="ecommerce"
+        toolId="stripe-fee-calculator"
+      />
     </div>
   );
 };

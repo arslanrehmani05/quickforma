@@ -588,3 +588,136 @@ export const QR_CODE_GENERATOR_SEO: ToolSeoData = {
     ]
   }
 };
+
+export const SHOPIFY_FEE_SEO: ToolSeoData = {
+  atAGlance: {
+    heading: "At a Glance",
+    categoryLabel: "Ecommerce & Fees",
+    bestFor: "Shopify Store Owners & Ecommerce Sellers",
+    privacy: "100% Client-Side RAM",
+    timeRequired: "Under 10 Seconds",
+    cost: "Free Forever",
+    lastUpdated: "August 2026"
+  },
+  overview: {
+    heading: "Quick Overview",
+    whatItDoes: "Calculates total monthly Shopify subscription costs, credit card processing rates, third-party gateway surcharges, and net payout profit.",
+    whoShouldUseIt: "Shopify store owners, dropshippers, ecommerce brand founders, and financial analysts evaluating store margins.",
+    whenToUseIt: "Use before selecting or upgrading your Shopify plan, setting product pricing, or evaluating merchant payment gateways.",
+    whyItIsUseful: "Credit card processing rates vary significantly between Shopify Basic (2.9%), Shopify ($105/mo, 2.6%), and Advanced ($399/mo, 2.4%). This tool calculates the exact volume tipping point where upgrading plans saves money."
+  },
+  keyFeatures: {
+    heading: "Key Features",
+    features: [
+      { title: "Plan Tipping Point Calculator", description: "Shows exact monthly volume where upgrading to a higher tier saves money." },
+      { title: "3rd-Party Gateway Fee Surcharges", description: "Includes 0.5%–2.0% penalties for non-Shopify payment processors." },
+      { title: "Net Seller Margin Payout", description: "Provides exact take-home revenue after all processing costs." }
+    ]
+  },
+  howToUse: {
+    heading: "How to Use",
+    steps: [
+      { stepNumber: 1, title: "Enter Monthly Sales", description: "Input total projected or actual monthly dollar sales revenue." },
+      { stepNumber: 2, title: "Enter Order Volume", description: "Specify total monthly order transactions count." },
+      { stepNumber: 3, title: "Select Plan & Gateway", description: "Choose Basic, Shopify, or Advanced and toggle Shopify Payments." }
+    ]
+  },
+  workedExample: {
+    heading: "Worked Example",
+    title: "Scenario: E-Commerce Store Generating $15,000 / Month",
+    scenarioDescription: "A store generates $15,000 monthly sales across 300 orders.",
+    sampleInputs: [
+      { label: "Monthly Revenue", value: "$15,000" },
+      { label: "Order Count", value: "300 Orders" },
+      { label: "Plan Tier", value: "Shopify ($105/mo)" }
+    ],
+    stepsExplanation: [
+      "Shopify Plan Fee = $105.00 / month",
+      "Credit Card Fees (2.6% + $0.30/order) = ($15,000 × 0.026) + (300 × $0.30) = $390 + $90 = $480.00",
+      "Total Monthly Fees = $105.00 + $480.00 = $585.00",
+      "Net Payout Revenue = $15,000 - $585 = $14,415.00 (3.90% total fee burden)"
+    ],
+    finalOutput: { label: "Net Monthly Take-Home", value: "$14,415.00" },
+    summary: "At $15k/mo volume, the Shopify ($105/mo) plan saves $60/month compared to Basic."
+  },
+  faqs: {
+    heading: "Frequently Asked Questions",
+    faqs: [
+      { question: "When should I upgrade from Basic to Shopify plan?", answer: "Upgrade when monthly sales exceed ~$11,000. Lower credit card rates (2.6% vs 2.9%) offset the $66 monthly plan difference." }
+    ]
+  },
+  relatedToolIds: ['stripe-fee-calculator', 'discount-calculator', 'roi-calculator'],
+  workflowProgression: {
+    heading: "Continue Your Workflow",
+    introText: "After optimizing your Shopify fees, streamline your store operations:",
+    steps: [
+      { toolId: "stripe-fee-calculator", toolName: "Stripe Fee Calculator", description: "Compare direct Stripe API transaction rates.", actionPrompt: "Compare Stripe" },
+      { toolId: "discount-calculator", toolName: "Discount Calculator", description: "Calculate promotional sale price margins.", actionPrompt: "Calculate Margin" }
+    ]
+  }
+};
+
+export const STRIPE_FEE_SEO: ToolSeoData = {
+  atAGlance: {
+    heading: "At a Glance",
+    categoryLabel: "Ecommerce & Fees",
+    bestFor: "SaaS Founders, Freelancers & Online Merchants",
+    privacy: "100% Client-Side RAM",
+    timeRequired: "Instant",
+    cost: "Free",
+    lastUpdated: "August 2026"
+  },
+  overview: {
+    heading: "Quick Overview",
+    whatItDoes: "Calculates standard 2.9% + $0.30 Stripe payment processing fees and determines exact invoice amounts required for target net payouts.",
+    whoShouldUseIt: "SaaS businesses, freelancers, agency owners, ecommerce merchants, and digital product creators using Stripe.",
+    whenToUseIt: "Use when invoicing clients, setting subscription tier prices, or calculating international credit card surcharges.",
+    whyItIsUseful: "To receive an exact target amount (e.g. $1,000 net), you cannot simply add 2.9% + $0.30. You must calculate (Target + FixedFee) / (1 - Rate) = $1,032.23. This calculator solves the exact gross-up equation instantly."
+  },
+  keyFeatures: {
+    heading: "Key Features",
+    features: [
+      { title: "Exact Gross-Up Invoicing Formula", description: "Calculates exact customer charge needed to net your target payout." },
+      { title: "International Card Surcharge (+1.0%)", description: "Toggles international credit card processing surcharges." }
+    ]
+  },
+  howToUse: {
+    heading: "How to Use",
+    steps: [
+      { stepNumber: 1, title: "Enter Target Net Amount", description: "Input the exact dollar amount you want to receive after fees." },
+      { stepNumber: 2, title: "Toggle Card Region", description: "Check if the card is international (+1.0% fee)." }
+    ]
+  },
+  workedExample: {
+    heading: "Worked Example",
+    title: "Scenario: Invoicing a Client for $1,000 Net Freelance Retainer",
+    scenarioDescription: "A contractor wants to receive exactly $1,000 net into their bank account via Stripe.",
+    sampleInputs: [
+      { label: "Target Net Payout", value: "$1,000.00" },
+      { label: "Stripe Standard Rate", value: "2.9% + $0.30" }
+    ],
+    stepsExplanation: [
+      "Gross Charge Equation = ($1,000 + $0.30) ÷ (1 - 0.029)",
+      "Gross Invoice Amount = $1,000.30 ÷ 0.971 = $1,030.18",
+      "Stripe Processing Fee = ($1,030.18 × 0.029) + $0.30 = $30.18",
+      "Net Payout = $1,030.18 - $30.18 = $1,000.00"
+    ],
+    finalOutput: { label: "Amount to Invoice Customer", value: "$1,030.18" },
+    summary: "Invoice the client $1,030.18 so that after Stripe deducts $30.18, you receive exactly $1,000.00."
+  },
+  faqs: {
+    heading: "Frequently Asked Questions",
+    faqs: [
+      { question: "What is Stripe's standard fee structure?", answer: "Stripe charges 2.9% + $0.30 per successful card charge for US domestic transactions, plus 1.0% for international cards." }
+    ]
+  },
+  relatedToolIds: ['invoice-generator', 'shopify-fee-calculator', 'freelance-hourly-rate-calculator'],
+  workflowProgression: {
+    heading: "Continue Your Workflow",
+    introText: "After calculating Stripe fees, generate client billing documentation:",
+    steps: [
+      { toolId: "invoice-generator", toolName: "PDF Invoice Generator", description: "Create professional invoices with custom Stripe payment links.", actionPrompt: "Create Invoice" }
+    ]
+  }
+};
+

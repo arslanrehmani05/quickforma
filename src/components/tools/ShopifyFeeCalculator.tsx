@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { CopyButton } from '../common/CopyButton';
 import { ResetButton } from '../common/ResetButton';
 import { ShoppingBag, DollarSign } from 'lucide-react';
+import { ToolSeoWrapper } from '../seo/ToolSeoWrapper';
+import { SHOPIFY_FEE_SEO } from '../../data/sampleToolSeoData';
 
 export const ShopifyFeeCalculator: React.FC = () => {
   const [revenue, setRevenue] = useState<number>(5000);
@@ -122,6 +124,14 @@ export const ShopifyFeeCalculator: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Authority Tool Page Template v1.0 Content Hub */}
+      <ToolSeoWrapper
+        seoData={SHOPIFY_FEE_SEO}
+        toolName="Shopify Fee & Margin Calculator"
+        category="ecommerce"
+        toolId="shopify-fee-calculator"
+      />
     </div>
   );
 };

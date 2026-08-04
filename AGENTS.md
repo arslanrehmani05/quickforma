@@ -1,24 +1,72 @@
-# AGENTS.md — QuickForma Technical Architecture & Development Guidelines
+# AGENTS.md — QuickForma Technical Architecture & Authority Tool Page Standards
 
 Welcome! This repository powers **QuickForma** (`quickforma.com`), a standalone network of free, 100% client-side business utilities, financial calculators, developer tools, and document generators.
 
 ---
 
-## ⚡ Zero-API Cost Philosophy (Non-Negotiable Core Principle)
+## ⚡ Non-Negotiable Principles
 
-1. **Zero Third-Party AI / LLM API Dependencies**: Every tool must execute 100% locally inside the user's web browser using client-side JavaScript/React logic.
-2. **Zero Server Overhead**: The entire platform compiles into static HTML/JS/CSS assets deployed on Vercel's global CDN ($0 server maintenance).
-3. **Strict Data Privacy**: User inputs, PDF invoice data, QR codes, and text counters are processed in-browser. Nothing is transmitted to external servers.
+1. **Zero-API Cost Architecture**: Every tool must execute 100% locally inside the user's web browser using client-side JavaScript/React logic. No external LLM or AI API calls.
+2. **Authority Tool Page Template v1.0 Standard**: EVERY tool page MUST render the **15-Section Authority Template** beneath the interactive widget via `<ToolSeoWrapper>`.
+3. **Automatic Content Synchronization Rule**: **CRITICAL** — Whenever an agent adds, edits, or enhances any tool feature, the agent MUST automatically update the corresponding pSEO content, worked examples, FAQs, and Schema.org data in `src/data/sampleToolSeoData.ts` to keep the UI widget and on-page content 100% synchronized!
 
 ---
 
-## 🛠️ Tech Stack & Directory Structure
+## 📐 QuickForma Authority Tool Page Template v1.0
 
-- **Framework**: React 18 + TypeScript + Vite
-- **Styling**: Tailwind CSS + Pure Monochrome Light Mode Design System (`src/index.css`)
-- **Icons**: `lucide-react`
-- **Analytics**: Google Analytics 4 (`G-YF1E8G3EDE`) + Microsoft Clarity (`xx23wojkqo`)
-- **Sitemap**: `public/sitemap.xml` (Auto-indexed by Google Search Console & Bing Webmaster)
+Every tool page follows this exact 15-section layout:
+
+```
+────────────────────────────────────────────────────────────
+1. Hero & Interactive Tool Widget (ALWAYS FIRST)
+   - Breadcrumbs, H1 Title, Subtitle, Interactive Tool Component, Primary CTA / Reset / Copy
+────────────────────────────────────────────────────────────
+2. At a Glance Summary Box
+   - Category, Best For, Privacy (100% Client-side), Time Required, Cost ($0), Last Updated
+────────────────────────────────────────────────────────────
+3. Quick Overview
+   - What it does, Who should use it, When to use it, Why it matters (2–3 concise paragraphs)
+────────────────────────────────────────────────────────────
+4. Key Features
+   - Instant results, Privacy-first, Mobile friendly, No registration, Free, Professional export
+────────────────────────────────────────────────────────────
+5. How to Use (Step-by-Step)
+   - Visual numbered instructions (Step 1, Step 2, Step 3, Step 4)
+────────────────────────────────────────────────────────────
+6. Worked Example (Inputs → Process → Result → Interpretation)
+   - Real-world scenario with concrete inputs and outputs
+────────────────────────────────────────────────────────────
+7. How It Works (Technical Logic / Formula)
+   - Mathematical formula, conversion logic, or algorithm explanation
+────────────────────────────────────────────────────────────
+8. Best Practices
+   - Professional recommendations and industry standards
+────────────────────────────────────────────────────────────
+9. Common Mistakes & Pitfalls
+   - Mistakes, why they happen, and how to avoid them (EEAT signal)
+────────────────────────────────────────────────────────────
+10. Industry Use Cases
+    - Audience-specific cards (Freelancers, Agencies, Small Businesses, Devs, Health, Legal)
+────────────────────────────────────────────────────────────
+11. Related Questions (AI-First Answer Engine Content)
+    - 50–120 word targeted answers for Google AI Overviews, ChatGPT, Gemini, Perplexity
+────────────────────────────────────────────────────────────
+12. Frequently Asked Questions (FAQ Accordion + JSON-LD Schema)
+    - 8–12 comprehensive FAQs with embedded Schema.org JSON-LD for rich Google snippets
+────────────────────────────────────────────────────────────
+13. Continue Your Workflow (Next Business Task)
+    - Sequential workflow progression (e.g. Freelance Rate → Invoice → Contract → Tax)
+────────────────────────────────────────────────────────────
+14. Related Tools (Internal Linking Grid)
+    - Contextual links to 6–8 related QuickForma tools
+────────────────────────────────────────────────────────────
+15. Interpret Your Results (Optional / Conditional for Calculators)
+    - Explains what the output means, benchmarks, and actionable next steps
+```
+
+---
+
+## 🛠️ Codebase Structure
 
 ```
 /src
@@ -26,29 +74,19 @@ Welcome! This repository powers **QuickForma** (`quickforma.com`), a standalone 
     /common      -> Shared UI (CopyButton, ResetButton, Callouts)
     /layout      -> Header Navbar, Footer, ToolCard
     /legal       -> PrivacyPolicy, TermsOfService, AboutUs, ContactUs
-    /seo         -> ToolSeoWrapper, Overview, HowItWorks, FAQSection, etc.
-    /tools       -> 42 Flagship Client-Side Tool Components
-  /data          -> toolsCatalog.ts (42 tools metadata), sampleToolSeoData.ts
+    /seo         -> ToolSeoWrapper, Overview, HowItWorks, FAQSection, WorkedExample, etc.
+    /tools       -> Standalone Tool Components (1 Tool = 1 Component File)
+  /data          -> toolsCatalog.ts (Metadata), sampleToolSeoData.ts (pSEO Content Hubs)
   /pages         -> HomePage.tsx (Categorized Grid, Search Modal, SEO Hero)
   /types         -> index.ts, seo.ts
 ```
 
 ---
 
-## 🚀 The 42 Live Flagship Tools
+## 📋 How to Add or Update a Tool (Agent Protocol)
 
-1. **Financial Calculators (14)**: Tip & Bill Splitter, Freelancer Hourly Rate, Break-Even Point, Payroll Tax Estimator, Mortgage Calculator, Compound Interest, Loan Payoff, ROI Calculator, Discount Calculator, Sales Tax, Markup & Margin, CPM Ad Cost, Customer LTV, Salary/Hourly Converter.
-2. **Business & Legal Document Generators (9)**: Instant Invoice Generator, NDA Template, Freelance Contract, Bill of Sale, Bill of Lading, Promissory Note, Receipt Generator, Rent Receipt, Meeting Minutes, Cover Letter Formatter.
-3. **Utilities & Developer Tools (14)**: QR Code Generator, Password Generator, Unit Converter, JSON Formatter & Validator, Base64 Encoder/Decoder, URL Encoder/Decoder, Hash Generator, Color Picker/Converter, Image Resizer, Glassmorphism CSS Generator, Barcode Generator, PDF Page Counter, Timezone Converter.
-4. **Text & Content Tools (5)**: Word & Character Counter, Lorem Ipsum Generator, Case Converter, Slug Generator, Business Name Generator, Slogan Generator.
-5. **Productivity & Daily Utilities (5)**: Age Calculator & Birthday Fact, Pomodoro Timer, Date Difference, Aspect Ratio Calculator, Random Name Picker, Text Diff Checker.
-
----
-
-## 📋 How to Add a New Tool (Step-by-Step)
-
-When adding a new tool to QuickForma:
-1. **Component**: Create `src/components/tools/YourToolName.tsx` using 100% client-side calculation logic and pure monochrome Tailwind styling.
-2. **Metadata**: Add the tool definition to `TOOLS_CATALOG` in `src/data/toolsCatalog.ts`.
-3. **SEO Wrapper**: Wrap tool with `<ToolSeoWrapper>` in `App.tsx` for rich Schema.org structured data and FAQ accordion.
-4. **Sitemap**: Add entry to `public/sitemap.xml`.
+1. **Create Tool File**: Build `src/components/tools/YourToolName.tsx` with pure monochrome Tailwind styling.
+2. **SEO Content Hub**: Create the matching `YOUR_TOOL_SEO` object in `src/data/sampleToolSeoData.ts` with all 15 sections filled out.
+3. **Render `<ToolSeoWrapper>`**: At the bottom of `YourToolName.tsx`, render `<ToolSeoWrapper seoData={YOUR_TOOL_SEO} ... />`.
+4. **Catalog & Routing**: Register metadata in `src/data/toolsCatalog.ts`, add routing switch in `src/App.tsx`, and add entry to `public/sitemap.xml`.
+5. **Feature Update Protocol**: If you ever modify a tool's inputs, logic, or exports, **you MUST update `sampleToolSeoData.ts` in the same commit!**

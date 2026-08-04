@@ -2,8 +2,11 @@ import re
 import sys
 import os
 
-catalog_file = "/Users/arslanrehmani/Desktop/quickforma/src/data/toolsCatalog.ts"
-app_file = "/Users/arslanrehmani/Desktop/quickforma/src/App.tsx"
+script_dir = os.path.dirname(os.path.abspath(__file__))
+project_root = os.path.dirname(script_dir)
+
+catalog_file = os.path.join(project_root, "src", "data", "toolsCatalog.ts")
+app_file = os.path.join(project_root, "src", "App.tsx")
 
 # 1. Read catalog tool IDs
 with open(catalog_file, "r") as f:

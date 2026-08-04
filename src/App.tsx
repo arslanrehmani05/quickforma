@@ -87,6 +87,7 @@ export function App() {
   const [activeView, setActiveView] = useState<string>(() => getRouteFromPathname(window.location.pathname));
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
   const [searchFilter, setSearchFilter] = useState<string>('');
+  const [selectedIndex, setSelectedIndex] = useState<number>(0);
 
   // Handle HTML5 History API (popstate) & initial path normalization
   useEffect(() => {
@@ -121,18 +122,6 @@ export function App() {
       }
     }
   }, [activeView]);
-
-  // Keyboard shortcut Cmd+K / Ctrl+K
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-        e.preventDefault();
-        setIsSearchOpen(prev => !prev);
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
 
   const activeTool = TOOLS_CATALOG.find(t => t.id === activeView);
 
@@ -219,6 +208,40 @@ export function App() {
     t.keywords.some(k => k.toLowerCase().includes(searchFilter.toLowerCase()))
   );
 
+  // Keyboard shortcut Cmd+K / Ctrl+K & Modal Keyboard Nav (Arrow keys, Enter, Escape)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        setIsSearchOpen(prev => !prev);
+        setSelectedIndex(0);
+      } else if (isSearchOpen) {
+        if (e.key === 'Escape') {
+          e.preventDefault();
+          setIsSearchOpen(false);
+        } else if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          setSelectedIndex(prev => (prev < filteredModalTools.length - 1 ? prev + 1 : 0));
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          setSelectedIndex(prev => (prev > 0 ? prev - 1 : filteredModalTools.length - 1));
+        } else if (e.key === 'Enter' && filteredModalTools[selectedIndex]) {
+          e.preventDefault();
+          handleSelectView(filteredModalTools[selectedIndex].id);
+          setIsSearchOpen(false);
+          setSearchFilter('');
+        }
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isSearchOpen, selectedIndex, filteredModalTools]);
+
+  // Reset selected index when search filter changes
+  useEffect(() => {
+    setSelectedIndex(0);
+  }, [searchFilter]);
+
   return (
     <div className="min-h-screen flex flex-col justify-between bg-slate-50 text-slate-900 font-sans selection:bg-indigo-600 selection:text-white antialiased">
       <div>
@@ -234,7 +257,7 @@ export function App() {
             <div className="flex items-center gap-2 text-xs text-slate-500 mb-6 no-print">
               <button
                 onClick={() => handleSelectView('home')}
-                className="hover:text-slate-900 flex items-center gap-1 font-semibold transition-colors"
+                className="hover:text-slate-900 flex items-center gap-1 font-semibold transition-colors focus-visible:ring-2 focus-visible:ring-indigo-600 rounded"
               >
                 <ArrowLeft className="w-3.5 h-3.5" /> All Tools
               </button>
@@ -251,10 +274,16 @@ export function App() {
 
       {/* Cmd+K Quick Search Modal */}
       {isSearchOpen && (
-        <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-start justify-center pt-20 px-4">
-          <div className="bg-white border border-slate-200 w-full max-w-xl rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+        <div
+          className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-start justify-center pt-20 px-4"
+          onClick={() => setIsSearchOpen(false)}
+        >
+          <div
+            className="bg-white border border-slate-200 w-full max-w-xl rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="p-4 border-b border-slate-200 flex items-center gap-3">
-              <Search className="w-4 h-4 text-indigo-600" />
+              <Search className="w-4 h-4 text-indigo-600 shrink-0" />
               <input
                 type="text"
                 autoFocus
@@ -263,32 +292,53 @@ export function App() {
                 onChange={(e) => setSearchFilter(e.target.value)}
                 className="w-full bg-transparent text-sm text-slate-900 outline-none placeholder-slate-400 font-medium font-sans"
               />
+              <span className="text-[10px] font-mono text-slate-400 bg-slate-100 px-1.5 py-0.5 rounded border border-slate-200">ESC</span>
               <button
                 onClick={() => setIsSearchOpen(false)}
-                className="p-1 text-slate-400 hover:text-slate-700 rounded-lg"
+                className="p-1 text-slate-400 hover:text-slate-700 rounded-lg focus-visible:ring-2 focus-visible:ring-indigo-600"
+                aria-label="Close Search"
               >
                 <X className="w-4 h-4" />
               </button>
             </div>
 
             <div className="max-h-80 overflow-y-auto p-2 divide-y divide-slate-100">
-              {filteredModalTools.map(t => (
-                <div
-                  key={t.id}
-                  onClick={() => {
-                    handleSelectView(t.id);
-                    setIsSearchOpen(false);
-                    setSearchFilter('');
-                  }}
-                  className="p-3 hover:bg-slate-50 rounded-xl cursor-pointer flex items-center justify-between group transition-colors"
-                >
-                  <div>
-                    <h4 className="text-sm font-bold text-slate-900 group-hover:text-indigo-600">{t.name}</h4>
-                    <p className="text-xs text-slate-500 line-clamp-1">{t.description}</p>
-                  </div>
-                  <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-indigo-600 group-hover:translate-x-1 transition-all" />
+              {filteredModalTools.length > 0 ? (
+                filteredModalTools.map((t, idx) => {
+                  const isSelected = idx === selectedIndex;
+                  return (
+                    <div
+                      key={t.id}
+                      onClick={() => {
+                        handleSelectView(t.id);
+                        setIsSearchOpen(false);
+                        setSearchFilter('');
+                      }}
+                      className={`p-3 rounded-xl cursor-pointer flex items-center justify-between group transition-colors ${
+                        isSelected ? 'bg-indigo-50/80 border border-indigo-100' : 'hover:bg-slate-50'
+                      }`}
+                    >
+                      <div className="flex-1 pr-4">
+                        <div className="flex items-center gap-2">
+                          <h4 className={`text-sm font-bold ${isSelected ? 'text-indigo-600' : 'text-slate-900 group-hover:text-indigo-600'}`}>
+                            {t.name}
+                          </h4>
+                          <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 border border-slate-200">
+                            {t.category}
+                          </span>
+                        </div>
+                        <p className="text-xs text-slate-500 line-clamp-1 mt-0.5">{t.description}</p>
+                      </div>
+                      <ChevronRight className={`w-4 h-4 transition-all ${isSelected ? 'text-indigo-600 translate-x-1' : 'text-slate-400 group-hover:text-indigo-600 group-hover:translate-x-1'}`} />
+                    </div>
+                  );
+                })
+              ) : (
+                <div className="p-8 text-center text-slate-500 space-y-1">
+                  <p className="text-sm font-semibold">No tools found matching "{searchFilter}"</p>
+                  <p className="text-xs text-slate-400">Try searching for "invoice", "qr", "tax", "calculator", or "converter"</p>
                 </div>
-              ))}
+              )}
             </div>
           </div>
         </div>

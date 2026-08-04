@@ -105,4 +105,10 @@
   <url><loc>https://quickforma.com/?tool=pto-calculator</loc><lastmod>2026-08-04</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://quickforma.com/?tool=utm-builder</loc><lastmod>2026-08-04</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://quickforma.com/?tool=bmi-calculator</loc><lastmod>2026-08-04</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+
+  <!-- Pillar Batch 2 Tools -->
+  <url><loc>https://quickforma.com/?tool=paypal-fee-calculator</loc><lastmod>2026-08-04</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://quickforma.com/?tool=etsy-fee-calculator</loc><lastmod>2026-08-04</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://quickforma.com/?tool=volumetric-weight-calculator</loc><lastmod>2026-08-04</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://quickforma.com/?tool=depreciation-calculator</loc><lastmod>2026-08-04</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
 </urlset>

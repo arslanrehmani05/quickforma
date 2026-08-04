@@ -75,6 +75,12 @@ import { PtoCalculator } from './components/tools/PtoCalculator';
 import { UtmBuilder } from './components/tools/UtmBuilder';
 import { BmiCalculator } from './components/tools/BmiCalculator';
 
+// 4 New Strategic Pillar Tools
+import { PaypalFeeCalculator } from './components/tools/PaypalFeeCalculator';
+import { EtsyFeeCalculator } from './components/tools/EtsyFeeCalculator';
+import { VolumetricWeightCalculator } from './components/tools/VolumetricWeightCalculator';
+import { DepreciationCalculator } from './components/tools/DepreciationCalculator';
+
 import { Search, X, ChevronRight, ArrowLeft } from 'lucide-react';
 
 const LEGAL_PAGES = ['privacy', 'terms', 'about', 'contact'];
@@ -221,6 +227,12 @@ export function App() {
       case 'pto-calculator': return <PtoCalculator />;
       case 'utm-builder': return <UtmBuilder />;
       case 'bmi-calculator': return <BmiCalculator />;
+
+      // 4 New Strategic Pillar Tools
+      case 'paypal-fee-calculator': return <PaypalFeeCalculator />;
+      case 'etsy-fee-calculator': return <EtsyFeeCalculator />;
+      case 'volumetric-weight-calculator': return <VolumetricWeightCalculator />;
+      case 'depreciation-calculator': return <DepreciationCalculator />;
 
       default:
         return <HomePage tools={TOOLS_CATALOG} onSelectTool={handleSelectView} />;

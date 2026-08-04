@@ -17,4 +17,6 @@
 - **Icons**: `lucide-react`
 - **Execution Mode**: 100% Client-side, $0 server infrastructure cost.
 - **Strict File Isolation**: Every tool/calculator MUST have its own standalone component file in `src/components/tools/` (e.g. `TipCalculator.tsx`, `AgeCalculator.tsx`). NEVER consolidate or bundle multiple tools into a single file.
+- **Catalog Target**: 50 tools across 6 categories (Financial, Legal/Business, Converters, Developers, Content, Productivity). See `STRATEGY.md` for full roadmap.
+
 

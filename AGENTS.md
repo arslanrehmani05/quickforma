@@ -71,8 +71,13 @@ When tasked with adding a new client-side tool:
 
 ---
 
-## 📈 SEO & Performance Guidelines
+## 📈 SEO & Quality Guidelines (Anti-Vibecode Protocol)
 
+- **1 Tool = 1 Isolated File**: Every single tool must be built inside its own dedicated component file in `src/components/tools/ToolName.tsx`.
+- **Zero Input Glitches**: All tool widgets must handle empty inputs cleanly without displaying `NaN`, `undefined`, or unformatted text.
 - **Mobile First**: All tool widgets must be fully responsive across 320px screens up to 4K displays.
 - **Accessibility & Contrast**: High contrast text on dark backgrounds (`#0a0d14` background, `slate-100` body text, `indigo-400` primary accents).
-- **Print Optimization**: For document generators (e.g. Invoice), include `.no-print` classes on UI controls so `window.print()` outputs clean documents.
+- **Print Optimization**: For document generators (e.g., Invoice, Receipt, NDA), include `.no-print` classes on UI controls so `window.print()` outputs clean documents.
+- **Restrained Ad Placements**: Place ad units beneath the main functional tool widget so users get immediate value above the fold.
+- **Full Catalog Roadmap**: Refer to `STRATEGY.md` for the complete 50-tool roadmap across 6 categories (Financial, Legal/Business, Converters, Developers, Content, Productivity).
+

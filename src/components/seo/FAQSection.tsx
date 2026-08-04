@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { HelpCircle, ChevronDown } from 'lucide-react';
-import { FAQItem } from '../../types/seo';
+import { FAQSectionData } from '../../types/seo';
 
 interface FAQSectionProps {
-  faqs?: FAQItem[];
+  data?: FAQSectionData;
   toolName?: string;
 }
 
-export const FAQSection: React.FC<FAQSectionProps> = ({ faqs, toolName }) => {
-  if (!faqs || faqs.length === 0) return null;
+export const FAQSection: React.FC<FAQSectionProps> = ({ data, toolName }) => {
+  if (!data || !data.faqs || data.faqs.length === 0) return null;
 
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
@@ -20,7 +20,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ faqs, toolName }) => {
   const schemaData = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: faqs.map((faq) => ({
+    mainEntity: data.faqs.map((faq) => ({
       '@type': 'Question',
       name: faq.question,
       acceptedAnswer: {
@@ -41,12 +41,12 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ faqs, toolName }) => {
       <div className="flex items-center gap-2 border-b border-slate-200 pb-3">
         <HelpCircle className="w-5 h-5 text-indigo-600" />
         <h2 className="text-xl sm:text-2xl font-bold text-slate-900">
-          Frequently Asked Questions {toolName ? `About ${toolName}` : ''}
+          {data.heading || `Frequently Asked Questions ${toolName ? `About ${toolName}` : ''}`}
         </h2>
       </div>
 
       <div className="space-y-3">
-        {faqs.map((faq, idx) => {
+        {data.faqs.map((faq, idx) => {
           const isOpen = openIndex === idx;
           return (
             <div key={idx} className="rounded-2xl bg-white border border-slate-200 shadow-xs overflow-hidden transition-all">

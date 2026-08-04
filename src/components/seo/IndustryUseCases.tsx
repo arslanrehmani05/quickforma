@@ -1,23 +1,23 @@
 import React from 'react';
 import { Briefcase, Building2 } from 'lucide-react';
-import { IndustryUseCaseItem } from '../../types/seo';
+import { IndustryUseCasesData } from '../../types/seo';
 
 interface IndustryUseCasesProps {
-  useCases?: IndustryUseCaseItem[];
+  data?: IndustryUseCasesData;
 }
 
-export const IndustryUseCases: React.FC<IndustryUseCasesProps> = ({ useCases }) => {
-  if (!useCases || useCases.length === 0) return null;
+export const IndustryUseCases: React.FC<IndustryUseCasesProps> = ({ data }) => {
+  if (!data || !data.useCases || data.useCases.length === 0) return null;
 
   return (
     <section className="space-y-6">
       <div className="flex items-center gap-2 border-b border-slate-200 pb-3">
         <Briefcase className="w-5 h-5 text-indigo-600" />
-        <h2 className="text-xl sm:text-2xl font-bold text-slate-900">Industry Use Cases & Applications</h2>
+        <h2 className="text-xl sm:text-2xl font-bold text-slate-900">{data.heading || 'Industry Use Cases & Applications'}</h2>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {useCases.map((item, idx) => (
+        {data.useCases.map((item, idx) => (
           <div key={idx} className="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-2 flex flex-col justify-between">
             <div>
               <div className="flex items-center gap-2 text-indigo-600 font-bold text-xs uppercase tracking-wider mb-2">

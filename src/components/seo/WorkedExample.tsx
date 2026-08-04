@@ -13,7 +13,7 @@ export const WorkedExample: React.FC<WorkedExampleProps> = ({ data }) => {
     <section className="space-y-6">
       <div className="flex items-center gap-2 border-b border-slate-200 pb-3">
         <Calculator className="w-5 h-5 text-indigo-600" />
-        <h2 className="text-xl sm:text-2xl font-bold text-slate-900">Worked Real-World Example</h2>
+        <h2 className="text-xl sm:text-2xl font-bold text-slate-900">{data.heading || 'Worked Real-World Example'}</h2>
       </div>
 
       <div className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-sm space-y-6">

@@ -1,23 +1,23 @@
 import React from 'react';
 import { AlertTriangle, XCircle, Check } from 'lucide-react';
-import { CommonMistakeItem } from '../../types/seo';
+import { CommonMistakesData } from '../../types/seo';
 
 interface CommonMistakesProps {
-  mistakes?: CommonMistakeItem[];
+  data?: CommonMistakesData;
 }
 
-export const CommonMistakes: React.FC<CommonMistakesProps> = ({ mistakes }) => {
-  if (!mistakes || mistakes.length === 0) return null;
+export const CommonMistakes: React.FC<CommonMistakesProps> = ({ data }) => {
+  if (!data || !data.mistakes || data.mistakes.length === 0) return null;
 
   return (
     <section className="space-y-6">
       <div className="flex items-center gap-2 border-b border-slate-200 pb-3">
         <AlertTriangle className="w-5 h-5 text-amber-500" />
-        <h2 className="text-xl sm:text-2xl font-bold text-slate-900">Common Mistakes to Avoid</h2>
+        <h2 className="text-xl sm:text-2xl font-bold text-slate-900">{data.heading || 'Common Mistakes to Avoid'}</h2>
       </div>
 
       <div className="space-y-4">
-        {mistakes.map((item, idx) => (
+        {data.mistakes.map((item, idx) => (
           <div key={idx} className="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-3">
             <div className="flex items-center gap-2 text-rose-600 font-bold text-sm">
               <XCircle className="w-4 h-4 shrink-0" />

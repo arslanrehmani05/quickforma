@@ -1,16 +1,19 @@
 import React from 'react';
 import { ToolSeoData } from '../../types/seo';
+import { AtAGlance } from './AtAGlance';
 import { ToolOverview } from './ToolOverview';
+import { KeyFeatures } from './KeyFeatures';
 import { HowToUse } from './HowToUse';
 import { WorkedExample } from './WorkedExample';
-import { FormulaSection } from './FormulaSection';
+import { HowItWorks } from './HowItWorks';
 import { BestPractices } from './BestPractices';
 import { CommonMistakes } from './CommonMistakes';
 import { IndustryUseCases } from './IndustryUseCases';
-import { RelatedQuestions } from './RelatedQuestions';
 import { FAQSection } from './FAQSection';
+import { RelatedQuestions } from './RelatedQuestions';
 import { RelatedTools } from './RelatedTools';
 import { RelatedGuides } from './RelatedGuides';
+import { WorkflowProgression } from './WorkflowProgression';
 
 interface ToolSeoWrapperProps {
   seoData?: ToolSeoData;
@@ -27,40 +30,115 @@ export const ToolSeoWrapper: React.FC<ToolSeoWrapperProps> = ({
 }) => {
   if (!seoData) return null;
 
+  const currentUrl = `https://quickforma.com/tools/${toolId || ''}`;
+
+  // 1. WebApplication Schema
+  const webAppSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: toolName || 'QuickForma Web Utility',
+    url: currentUrl,
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'All',
+    browserRequirements: 'Requires JavaScript',
+    offers: {
+      '@type': 'Offer',
+      price: '0.00',
+      priceCurrency: 'USD',
+    },
+  };
+
+  // 2. BreadcrumbList Schema
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://quickforma.com',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: category || 'Tools',
+        item: `https://quickforma.com#${category || 'all'}`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: toolName || 'Utility Tool',
+        item: currentUrl,
+      },
+    ],
+  };
+
+  // 3. HowTo Schema (if HowToUse steps exist)
+  const howToSchema = seoData.howToUse?.steps ? {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: `How to Use ${toolName || 'QuickForma Tool'}`,
+    step: seoData.howToUse.steps.map((s) => ({
+      '@type': 'HowToStep',
+      position: s.stepNumber,
+      name: s.title,
+      text: s.description,
+    })),
+  } : null;
+
   return (
     <article className="mt-16 pt-12 border-t border-slate-200 space-y-16 max-w-5xl mx-auto">
-      {/* Section 1 — Quick Overview */}
+      {/* Dynamic Schema Injections */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      {howToSchema && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
+      )}
+
+      {/* 2. At a Glance ⭐ (NEW) */}
+      <AtAGlance data={seoData.atAGlance} />
+
+      {/* 3. Quick Overview */}
       <ToolOverview data={seoData.overview} />
 
-      {/* Section 2 — How to Use */}
-      <HowToUse steps={seoData.howToUse} />
+      {/* 4. Key Features ⭐ (NEW) */}
+      <KeyFeatures data={seoData.keyFeatures} />
 
-      {/* Section 3 — Worked Example */}
+      {/* 5. How to Use */}
+      <HowToUse data={seoData.howToUse} />
+
+      {/* 6. Worked Example */}
       <WorkedExample data={seoData.workedExample} />
 
-      {/* Section 4 — Formula / How It Works */}
-      <FormulaSection data={seoData.formula} />
+      {/* 7. How It Works ⭐ (Renamed from Formula) */}
+      <HowItWorks data={seoData.howItWorks} />
 
-      {/* Section 5 — Best Practices */}
-      <BestPractices practices={seoData.bestPractices} />
+      {/* 8. Best Practices */}
+      <BestPractices data={seoData.bestPractices} />
 
-      {/* Section 6 — Common Mistakes */}
-      <CommonMistakes mistakes={seoData.commonMistakes} />
+      {/* 9. Common Mistakes */}
+      <CommonMistakes data={seoData.commonMistakes} />
 
-      {/* Section 7 — Industry Use Cases */}
-      <IndustryUseCases useCases={seoData.industryUseCases} />
+      {/* 10. Industry Use Cases */}
+      <IndustryUseCases data={seoData.industryUseCases} />
 
-      {/* Section 8 — Related Questions (AEO AI Answers) */}
-      <RelatedQuestions questions={seoData.relatedQuestions} />
+      {/* 11. FAQ */}
+      <FAQSection data={seoData.faqs} toolName={toolName} />
 
-      {/* Section 9 — FAQ (Accordions + JSON-LD Schema) */}
-      <FAQSection faqs={seoData.faqs} toolName={toolName} />
+      {/* 12. Related Questions (AEO AI Answers) */}
+      <RelatedQuestions data={seoData.relatedQuestions} />
 
-      {/* Section 10 — Related Tools */}
+      {/* 13. Related Tools */}
       <RelatedTools toolIds={seoData.relatedToolIds} currentCategory={category} currentToolId={toolId} />
 
-      {/* Section 11 — Related Guides (Future CMS Placeholder) */}
-      <RelatedGuides guides={seoData.relatedGuides} />
+      {/* 14. Related Guides (Hidden if empty) */}
+      {seoData.relatedGuides && seoData.relatedGuides.guides && seoData.relatedGuides.guides.length > 0 && (
+        <RelatedGuides guides={seoData.relatedGuides.guides} />
+      )}
+
+      {/* 15. Continue Your Workflow ⭐ (NEW - Task-Oriented Next Steps) */}
+      <WorkflowProgression data={seoData.workflowProgression} />
     </article>
   );
 };

@@ -1,6 +1,35 @@
-import { ToolMetadata } from './index';
+export interface BaseSectionProps {
+  heading?: string;
+  subheading?: string;
+}
 
-export interface ToolOverviewData {
+export interface AtAGlanceItem {
+  label: string;
+  value: string;
+  iconName?: string;
+}
+
+export interface AtAGlanceData extends BaseSectionProps {
+  categoryLabel?: string;
+  bestFor?: string;
+  privacy?: string;
+  timeRequired?: string;
+  cost?: string;
+  lastUpdated?: string;
+  customItems?: AtAGlanceItem[];
+}
+
+export interface KeyFeatureItem {
+  title: string;
+  description?: string;
+  iconName?: string;
+}
+
+export interface KeyFeaturesData extends BaseSectionProps {
+  features: KeyFeatureItem[];
+}
+
+export interface ToolOverviewData extends BaseSectionProps {
   whatItDoes: string;
   whoShouldUseIt: string;
   whenToUseIt: string;
@@ -13,7 +42,11 @@ export interface HowToUseStep {
   description: string;
 }
 
-export interface WorkedExampleData {
+export interface HowToUseData extends BaseSectionProps {
+  steps: HowToUseStep[];
+}
+
+export interface WorkedExampleData extends BaseSectionProps {
   title: string;
   scenarioDescription: string;
   sampleInputs: { label: string; value: string }[];
@@ -22,11 +55,11 @@ export interface WorkedExampleData {
   summary: string;
 }
 
-export interface FormulaData {
-  title?: string;
-  type: 'math' | 'logic' | 'conversion' | 'technical';
+export interface HowItWorksData extends BaseSectionProps {
+  type: 'math' | 'logic' | 'conversion' | 'technical' | 'algorithm';
   explanation: string;
   formulaText?: string;
+  codeSnippet?: string;
   variables?: { symbol: string; description: string }[];
 }
 
@@ -35,10 +68,18 @@ export interface BestPracticeItem {
   description: string;
 }
 
+export interface BestPracticesData extends BaseSectionProps {
+  practices: BestPracticeItem[];
+}
+
 export interface CommonMistakeItem {
   mistake: string;
   whyItHappens: string;
   howToAvoid: string;
+}
+
+export interface CommonMistakesData extends BaseSectionProps {
+  mistakes: CommonMistakeItem[];
 }
 
 export interface IndustryUseCaseItem {
@@ -47,14 +88,26 @@ export interface IndustryUseCaseItem {
   benefit: string;
 }
 
+export interface IndustryUseCasesData extends BaseSectionProps {
+  useCases: IndustryUseCaseItem[];
+}
+
 export interface RelatedQuestionItem {
   question: string;
   answer: string;
 }
 
+export interface RelatedQuestionsData extends BaseSectionProps {
+  questions: RelatedQuestionItem[];
+}
+
 export interface FAQItem {
   question: string;
   answer: string;
+}
+
+export interface FAQSectionData extends BaseSectionProps {
+  faqs: FAQItem[];
 }
 
 export interface RelatedGuideItem {
@@ -66,16 +119,36 @@ export interface RelatedGuideItem {
   category: string;
 }
 
+export interface RelatedGuidesData extends BaseSectionProps {
+  guides: RelatedGuideItem[];
+}
+
+export interface WorkflowStepItem {
+  toolId: string;
+  toolName: string;
+  description: string;
+  categoryLabel?: string;
+  actionPrompt?: string;
+}
+
+export interface WorkflowProgressionData extends BaseSectionProps {
+  introText?: string;
+  steps: WorkflowStepItem[];
+}
+
 export interface ToolSeoData {
+  atAGlance?: AtAGlanceData;
   overview?: ToolOverviewData;
-  howToUse?: HowToUseStep[];
+  keyFeatures?: KeyFeaturesData;
+  howToUse?: HowToUseData;
   workedExample?: WorkedExampleData;
-  formula?: FormulaData;
-  bestPractices?: BestPracticeItem[];
-  commonMistakes?: CommonMistakeItem[];
-  industryUseCases?: IndustryUseCaseItem[];
-  relatedQuestions?: RelatedQuestionItem[];
-  faqs?: FAQItem[];
+  howItWorks?: HowItWorksData;
+  bestPractices?: BestPracticesData;
+  commonMistakes?: CommonMistakesData;
+  industryUseCases?: IndustryUseCasesData;
+  faqs?: FAQSectionData;
+  relatedQuestions?: RelatedQuestionsData;
   relatedToolIds?: string[];
-  relatedGuides?: RelatedGuideItem[];
+  relatedGuides?: RelatedGuidesData;
+  workflowProgression?: WorkflowProgressionData;
 }

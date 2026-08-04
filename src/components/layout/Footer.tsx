@@ -1,6 +1,5 @@
 import React from 'react';
-import { Zap, Shield, Lock, Heart } from 'lucide-react';
-import { TOOLS_CATALOG } from '../../data/toolsCatalog';
+import { Zap, Shield, Lock } from 'lucide-react';
 
 interface FooterProps {
   onSelectView: (view: string) => void;
@@ -67,7 +66,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectView }) => {
         <hr className="border-slate-800/80" />
 
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-400 text-[11px]">
-          <p>© {new Date().getFullYear()} QuickForma (`quickforma.com`). All 50 utility tools process 100% in your local browser memory.</p>
+          <p>© {new Date().getFullYear()} QuickForma (`quickforma.com`). All utility tools process 100% in your local browser memory.</p>
           <div className="flex items-center gap-4 text-slate-400">
             <span className="flex items-center gap-1.5">
               <Lock className="w-3.5 h-3.5 text-emerald-400" /> Guaranteed Privacy

@@ -85,13 +85,14 @@ All tools and pages **MUST** strictly adhere to QuickForma's locked color palett
 
 ---
 
-## 🔗 URL Hash Routing & Interlinking Standards
+## 🔗 Clean SEO Path Routing & Interlinking Standards
 
-1. **Mandatory Hash Synchronization**:
-   - Every tool view and legal compliance page **MUST** sync with `window.location.hash` (e.g., `/#/invoice-generator`, `/#/freelance-hourly-rate-calculator`, `/#/privacy`).
-2. **Direct Linking**:
-   - Direct visits to `quickforma.com/#/tool-id` MUST immediately load that specific tool component without landing on the homepage first.
-3. **SEO Interlinking**:
-   - Navigating between tools must update the browser history stack (`window.history.pushState` or `location.hash`) so visitors can bookmark, share, and interlink directly.
+1. **Clean HTML5 History API URLs**:
+   - Every tool view and legal compliance page **MUST** use clean, indexable URL paths (e.g., `quickforma.com/tools/invoice-generator`, `quickforma.com/tools/freelance-hourly-rate-calculator`, `quickforma.com/privacy`).
+   - Never use fragment identifier hash routing (`/#/tool`) for tool pages.
+2. **Direct SEO Indexing**:
+   - Direct visits to `quickforma.com/tools/tool-id` immediately load that specific tool component with unique document titles and meta descriptions.
+3. **Internal Interlinking**:
+   - Navigating between tools updates the HTML5 history stack (`window.history.pushState`) for seamless bookmarking, social sharing, and search engine crawling.
 
 

@@ -17,8 +17,8 @@
 - **Icons**: `lucide-react`
 - **Execution Mode**: 100% Client-side, $0 server infrastructure cost.
 - **Strict File Isolation**: Every tool/calculator MUST have its own standalone component file in `src/components/tools/` (e.g. `TipCalculator.tsx`, `AgeCalculator.tsx`). NEVER consolidate or bundle multiple tools into a single file.
-- **URL Hash Routing**: Every view must sync with `window.location.hash` (`/#/tool-id`) for direct interlinking, bookmarking, and SEO indexing.
-- **Catalog Target**: 50 tools across 6 categories (Financial, Legal/Business, Converters, Developers, Content, Productivity). See `STRATEGY.md` for full roadmap.
+- **Clean SEO Path Routing**: Uses HTML5 History API (`/tools/tool-name`, `/privacy`, `/about`) for clean, indexable URLs without hash fragment symbols (`/#/`).
+- **Catalog Infrastructure**: Modular, scalable catalog across 6 core categories. See `STRATEGY.md` for roadmap.
 
 
 

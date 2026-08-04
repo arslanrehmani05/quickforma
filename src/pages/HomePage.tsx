@@ -28,7 +28,7 @@ export const HomePage: React.FC<HomePageProps> = ({ tools, onSelectTool }) => {
       <section className="text-center space-y-4 max-w-4xl mx-auto px-4 pt-2">
         <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold">
           <Zap className="w-3.5 h-3.5 fill-current" />
-          <span>50 Standalone Utility Tools • 100% Client-Side Engine</span>
+          <span>Standalone Utility Tools • 100% Client-Side Engine</span>
         </div>
 
         <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-100 tracking-tight leading-tight">
@@ -78,7 +78,7 @@ export const HomePage: React.FC<HomePageProps> = ({ tools, onSelectTool }) => {
             <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
             <input
               type="text"
-              placeholder="Search 50 tools (e.g. invoice, qr)..."
+              placeholder="Search tools (e.g. invoice, QR)..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full bg-slate-900/80 border border-slate-800 rounded-xl pl-9 pr-4 py-2 text-xs text-slate-100 placeholder-slate-500 outline-none focus:border-indigo-500 transition-all font-mono"
@@ -118,7 +118,7 @@ export const HomePage: React.FC<HomePageProps> = ({ tools, onSelectTool }) => {
           <div className="space-y-1.5">
             <h3 className="font-semibold text-slate-200 text-sm">Sub-50ms Zero Latency</h3>
             <p className="leading-relaxed">
-              Without roundtrip server calls or database queues, all 50 utility tools output instantly as you type.
+              Without roundtrip server calls or database queues, utility tools output instantly as you type.
             </p>
           </div>
 

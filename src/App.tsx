@@ -64,24 +64,63 @@ import { PomodoroTimer } from './components/tools/PomodoroTimer';
 
 import { Search, X, ChevronRight, ArrowLeft } from 'lucide-react';
 
+const LEGAL_PAGES = ['privacy', 'terms', 'about', 'contact'];
+
+const getRouteFromPathname = (pathname: string): string => {
+  const cleanPath = pathname.replace(/\/$/, '').trim();
+  if (!cleanPath || cleanPath === '/') return 'home';
+
+  if (cleanPath.startsWith('/tools/')) {
+    return cleanPath.replace('/tools/', '');
+  }
+
+  const slug = cleanPath.replace(/^\//, '');
+  if (LEGAL_PAGES.includes(slug)) return slug;
+
+  const foundTool = TOOLS_CATALOG.find(t => t.id === slug);
+  if (foundTool) return foundTool.id;
+
+  return 'home';
+};
+
 export function App() {
-  const [activeView, setActiveView] = useState<string>(() => {
-    const route = window.location.hash.replace(/^#\/?/, '');
-    return route || 'home';
-  });
+  const [activeView, setActiveView] = useState<string>(() => getRouteFromPathname(window.location.pathname));
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
   const [searchFilter, setSearchFilter] = useState<string>('');
 
-  // Sync state with URL hash & handle browser Back/Forward
+  // Handle HTML5 History API (popstate) & initial path normalization
   useEffect(() => {
-    const handleHashChange = () => {
-      const route = window.location.hash.replace(/^#\/?/, '');
-      setActiveView(route || 'home');
+    const handlePopState = () => {
+      const route = getRouteFromPathname(window.location.pathname);
+      setActiveView(route);
     };
 
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    const initialRoute = getRouteFromPathname(window.location.pathname);
+    if (initialRoute !== 'home') {
+      const targetPath = LEGAL_PAGES.includes(initialRoute) ? `/${initialRoute}` : `/tools/${initialRoute}`;
+      window.history.replaceState({ view: initialRoute }, '', targetPath);
+    }
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
   }, []);
+
+  // Update document title & meta tags per tool view
+  useEffect(() => {
+    if (activeView === 'home') {
+      document.title = 'QuickForma | Free Client-Side Utility Tools & Business Calculators';
+    } else if (LEGAL_PAGES.includes(activeView)) {
+      const pageTitle = activeView.charAt(0).toUpperCase() + activeView.slice(1);
+      document.title = `${pageTitle} | QuickForma`;
+    } else {
+      const tool = TOOLS_CATALOG.find(t => t.id === activeView);
+      if (tool) {
+        document.title = tool.metaTitle;
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) metaDesc.setAttribute('content', tool.metaDescription);
+      }
+    }
+  }, [activeView]);
 
   // Keyboard shortcut Cmd+K / Ctrl+K
   useEffect(() => {
@@ -99,10 +138,12 @@ export function App() {
 
   const handleSelectView = (view: string) => {
     setActiveView(view);
-    if (view === 'home') {
-      window.history.pushState(null, '', window.location.pathname);
-    } else {
-      window.location.hash = `/${view}`;
+    let targetPath = '/';
+    if (view !== 'home') {
+      targetPath = LEGAL_PAGES.includes(view) ? `/${view}` : `/tools/${view}`;
+    }
+    if (window.location.pathname !== targetPath) {
+      window.history.pushState({ view }, '', targetPath);
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -217,7 +258,7 @@ export function App() {
               <input
                 type="text"
                 autoFocus
-                placeholder="Search 50 tools (e.g. invoice, QR, password)..."
+                placeholder="Search tools (e.g. invoice, QR, password)..."
                 value={searchFilter}
                 onChange={(e) => setSearchFilter(e.target.value)}
                 className="w-full bg-transparent text-sm text-slate-100 outline-none placeholder-slate-500 font-medium font-mono"

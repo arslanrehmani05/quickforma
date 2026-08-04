@@ -34,9 +34,6 @@ export const Navbar: React.FC<NavbarProps> = ({
             <span className="text-base font-extrabold text-slate-100 tracking-tight">
               QuickForma
             </span>
-            <span className="hidden sm:inline-block ml-2 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 rounded-full">
-              50 Tools
-            </span>
           </div>
         </button>
 
@@ -47,7 +44,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             className="flex items-center gap-3 bg-slate-900/80 hover:bg-slate-800 border border-slate-800 px-3.5 py-1.5 rounded-xl text-xs text-slate-400 hover:text-slate-100 transition-all"
           >
             <Search className="w-3.5 h-3.5 text-slate-400" />
-            <span className="hidden sm:inline">Search 50 tools...</span>
+            <span className="hidden sm:inline">Search tools...</span>
             <kbd className="hidden sm:inline px-1.5 py-0.5 bg-slate-950 border border-slate-800 text-[10px] font-mono text-slate-400 rounded">
               ⌘K
             </kbd>
@@ -102,7 +99,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             onClick={() => handleNav('home')}
             className="w-full text-left px-3 py-2 rounded-lg text-slate-200 hover:bg-slate-900"
           >
-            All 50 Tools
+            All Utility Tools
           </button>
           <button
             onClick={() => handleNav('privacy')}

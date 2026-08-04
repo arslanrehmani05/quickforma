@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "python3 scripts/verify_tool_templates.py && tsc && vite build",
+    "verify": "python3 scripts/verify_tool_templates.py",
     "preview": "vite preview"
   },
   "dependencies": {

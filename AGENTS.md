@@ -71,18 +71,25 @@ When tasked with adding a new client-side tool:
 
 ---
 
-## 🎨 Universal Locked Design System & Color Palette
+## 🎨 Universal Locked Design System & Immutability Rules
 
-QuickForma uses a single, universal **Light Enterprise Utility Palette** designed for maximum trust, legibility, and AdSense RPM conversion. No dark mode toggles or ad-hoc colors:
+QuickForma uses a strictly **LOCKED Universal Light Enterprise Utility Palette** and typography system designed for high trust, optimal readability, and maximum AdSense revenue. **NO OTHER COLORS, DARK MODES, TOGGLES, OR ALTERNATIVE FONTS ARE EVER PERMITTED IN THIS REPOSITORY.**
 
-- **App Background**: Light Slate/Zinc `#f8fafc` (`bg-slate-50`)
+### 1. Typography & Font Family (IMMUTABLE)
+- **Primary Typography**: `Plus Jakarta Sans` (`font-sans`)
+- Google Font Spec: Loaded in `index.html` (Weights: 400, 500, 600, 700, 800)
+- CSS Standard: Enforced globally via `src/index.css` (`* { font-family: 'Plus Jakarta Sans', sans-serif; }`).
+- Code snippets / output displays: System `font-mono` permitted strictly for raw code, hashes, or JSON strings.
+
+### 2. Color Palette Tokens (IMMUTABLE)
+- **App Canvas Background**: Light Slate `#f8fafc` (`bg-slate-50`)
 - **Card & Tool Containers**: Pure White `#ffffff` (`bg-white`) with clean borders `#e2e8f0` (`border-slate-200`) & subtle shadow (`shadow-sm`)
 - **Primary Action Accent**: Royal Indigo `#4f46e5` (`bg-indigo-600` / `hover:bg-indigo-700` / `text-indigo-600`)
-- **Primary Headings & Titles**: Slate 900 `#0f172a` (`text-slate-900` / `font-bold`)
-- **Secondary & Body Text**: Slate 600 `#475569` (`text-slate-600`)
+- **Primary Headings & Titles**: Deep Slate 900 `#0f172a` (`text-slate-900` / `font-bold`)
+- **Secondary & Subtitle Text**: Medium Slate 600 `#475569` (`text-slate-600`)
 - **Form Inputs & Textareas**: Pure White `#ffffff` (`bg-white`) with `border-slate-300`, `text-slate-900`, `focus:border-indigo-600 focus:ring-2 focus:ring-indigo-600/20`
-- **Result Highlight Boxes**: Deep Slate `#0f172a` (`bg-slate-900 text-white`) or Light Indigo `#eef2ff` (`bg-indigo-50 border-indigo-100 text-indigo-900`)
-- **Positive Trust Badges**: Emerald 600 `#059669` (`text-emerald-700 bg-emerald-50 border-emerald-200`)
+- **Result Highlight Cards**: Deep Slate `#0f172a` (`bg-slate-900 text-white`) or Light Indigo `#eef2ff` (`bg-indigo-50 border-indigo-100 text-indigo-900`)
+- **Trust / Success Badges**: Emerald 600 `#059669` (`text-emerald-700 bg-emerald-50 border-emerald-200`)
 - **Warning Badges**: Amber 600 `#d97706` (`text-amber-700 bg-amber-50 border-amber-200`)
 
 ---

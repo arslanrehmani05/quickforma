@@ -108,12 +108,6 @@ export const VolumetricWeightCalculator: React.FC = () => {
           </div>
         </div>
       </div>
-
-      <ToolSeoWrapper
-        toolName="Volumetric Weight Freight Calculator"
-        category="operations"
-        toolId="volumetric-weight-calculator"
-      />
     </div>
   );
 };

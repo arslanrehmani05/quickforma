@@ -721,3 +721,14 @@ export const STRIPE_FEE_SEO: ToolSeoData = {
   }
 };
 
+export const TOOL_SEO_DATA_MAP: Record<string, ToolSeoData> = {
+  'freelance-hourly-rate-calculator': FREELANCE_HOURLY_RATE_SEO,
+  'invoice-generator': INVOICE_GENERATOR_SEO,
+  'password-generator': PASSWORD_GENERATOR_SEO,
+  'word-counter': WORD_COUNTER_SEO,
+  'roi-calculator': ROI_CALCULATOR_SEO,
+  'qr-code-generator': QR_CODE_GENERATOR_SEO,
+  'shopify-fee-calculator': SHOPIFY_FEE_SEO,
+  'stripe-fee-calculator': STRIPE_FEE_SEO,
+};
+

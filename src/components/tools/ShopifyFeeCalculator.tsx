@@ -124,14 +124,6 @@ export const ShopifyFeeCalculator: React.FC = () => {
           </div>
         </div>
       </div>
-
-      {/* Authority Tool Page Template v1.0 Content Hub */}
-      <ToolSeoWrapper
-        seoData={SHOPIFY_FEE_SEO}
-        toolName="Shopify Fee & Margin Calculator"
-        category="ecommerce"
-        toolId="shopify-fee-calculator"
-      />
     </div>
   );
 };

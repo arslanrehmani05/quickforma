@@ -91,14 +91,6 @@ export const StripeFeeCalculator: React.FC = () => {
           </div>
         </div>
       </div>
-
-      {/* Authority Tool Page Template v1.0 Content Hub */}
-      <ToolSeoWrapper
-        seoData={STRIPE_FEE_SEO}
-        toolName="Stripe Fee Calculator"
-        category="ecommerce"
-        toolId="stripe-fee-calculator"
-      />
     </div>
   );
 };

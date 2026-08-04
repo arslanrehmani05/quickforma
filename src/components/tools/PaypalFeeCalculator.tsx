@@ -99,12 +99,6 @@ export const PaypalFeeCalculator: React.FC = () => {
           </div>
         </div>
       </div>
-
-      <ToolSeoWrapper
-        toolName="PayPal Merchant Fee Calculator"
-        category="ecommerce"
-        toolId="paypal-fee-calculator"
-      />
     </div>
   );
 };

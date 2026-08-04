@@ -102,12 +102,6 @@ export const EtsyFeeCalculator: React.FC = () => {
           </div>
         </div>
       </div>
-
-      <ToolSeoWrapper
-        toolName="Etsy Fee & Profit Calculator"
-        category="ecommerce"
-        toolId="etsy-fee-calculator"
-      />
     </div>
   );
 };

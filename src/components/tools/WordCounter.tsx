@@ -62,14 +62,6 @@ export const WordCounter: React.FC = () => {
           />
         </div>
       </div>
-
-      {/* 2. STRUCTURED ON-PAGE SEO INTENT CONTENT HUB (ALWAYS BENEATH THE TOOL) */}
-      <ToolSeoWrapper
-        seoData={WORD_COUNTER_SEO}
-        toolName="Word Counter"
-        category="utilities"
-        toolId="word-counter"
-      />
     </div>
   );
 };

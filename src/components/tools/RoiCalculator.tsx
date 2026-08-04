@@ -60,14 +60,6 @@ export const RoiCalculator: React.FC = () => {
           </div>
         </div>
       </div>
-
-      {/* 2. STRUCTURED ON-PAGE SEO INTENT CONTENT HUB (ALWAYS BENEATH THE TOOL) */}
-      <ToolSeoWrapper
-        seoData={ROI_CALCULATOR_SEO}
-        toolName="ROI Calculator"
-        category="finance"
-        toolId="roi-calculator"
-      />
     </div>
   );
 };

@@ -122,12 +122,6 @@ export const DepreciationCalculator: React.FC = () => {
           </div>
         </div>
       </div>
-
-      <ToolSeoWrapper
-        toolName="Asset Depreciation Calculator"
-        category="finance"
-        toolId="depreciation-calculator"
-      />
     </div>
   );
 };

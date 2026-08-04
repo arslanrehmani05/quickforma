@@ -28,7 +28,51 @@ export const ToolSeoWrapper: React.FC<ToolSeoWrapperProps> = ({
   category,
   toolId,
 }) => {
-  if (!seoData) return null;
+  // Generate fallback SEO data if explicit data object is not passed
+  const fallbackSeoData: ToolSeoData = {
+    atAGlance: {
+      heading: "At a Glance",
+      categoryLabel: category || "Business Utility",
+      bestFor: "Business Professionals, Developers & Creators",
+      privacy: "100% Client-Side RAM",
+      timeRequired: "Instant",
+      cost: "Free Forever",
+      lastUpdated: "August 2026"
+    },
+    overview: {
+      heading: "Quick Overview",
+      whatItDoes: `${toolName || 'This tool'} provides instant, zero-latency calculation and output directly inside your web browser with zero server data storage.`,
+      whoShouldUseIt: "Business owners, freelancers, software developers, agency founders, and administrative professionals.",
+      whenToUseIt: "Use whenever you need fast, private, reliable processing without installing desktop software or creating user accounts.",
+      whyItIsUseful: "Calculations run 100% client-side in browser memory. Your data never leaves your computer, ensuring complete privacy and sub-50ms speed."
+    },
+    keyFeatures: {
+      heading: "Key Features",
+      features: [
+        { title: "Instant Client-Side Execution", description: "Processes calculations locally with sub-50ms response times." },
+        { title: "Strict Data Privacy", description: "Inputs and generated assets remain strictly in browser RAM memory." },
+        { title: "Zero Registration Required", description: "Access full utility capabilities with no signups or paywalls." },
+        { title: "Mobile & Desktop Optimized", description: "Responsive layout designed for desktop workstations and smartphone browsers." }
+      ]
+    },
+    howToUse: {
+      heading: "How to Use",
+      steps: [
+        { stepNumber: 1, title: "Enter Parameters", description: "Input your target values, data, or configuration options into the widget above." },
+        { stepNumber: 2, title: "Review Live Output", description: "View real-time calculated results updated instantaneously." },
+        { stepNumber: 3, title: "Export or Copy", description: "Use the copy or download action to export your calculated data." }
+      ]
+    },
+    faqs: {
+      heading: "Frequently Asked Questions",
+      faqs: [
+        { question: `Is ${toolName || 'this tool'} free to use?`, answer: `Yes. ${toolName || 'QuickForma utilities'} are 100% free with no usage caps, registration, or subscriptions.` },
+        { question: "Is my data private and secure?", answer: "Yes. All processing occurs locally within your browser's JavaScript engine. No data is sent to external servers." }
+      ]
+    }
+  };
+
+  const activeSeoData = seoData || fallbackSeoData;
 
   const currentUrl = `https://quickforma.com/tools/${toolId || ''}`;
 
@@ -75,11 +119,11 @@ export const ToolSeoWrapper: React.FC<ToolSeoWrapperProps> = ({
   };
 
   // 3. HowTo Schema (if HowToUse steps exist)
-  const howToSchema = seoData.howToUse?.steps ? {
+  const howToSchema = activeSeoData.howToUse?.steps ? {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
     name: `How to Use ${toolName || 'QuickForma Tool'}`,
-    step: seoData.howToUse.steps.map((s) => ({
+    step: activeSeoData.howToUse.steps.map((s) => ({
       '@type': 'HowToStep',
       position: s.stepNumber,
       name: s.title,
@@ -97,48 +141,48 @@ export const ToolSeoWrapper: React.FC<ToolSeoWrapperProps> = ({
       )}
 
       {/* 2. At a Glance ⭐ (NEW) */}
-      <AtAGlance data={seoData.atAGlance} />
+      {activeSeoData.atAGlance && <AtAGlance data={activeSeoData.atAGlance} />}
 
       {/* 3. Quick Overview */}
-      <ToolOverview data={seoData.overview} />
+      {activeSeoData.overview && <ToolOverview data={activeSeoData.overview} />}
 
       {/* 4. Key Features ⭐ (NEW) */}
-      <KeyFeatures data={seoData.keyFeatures} />
+      {activeSeoData.keyFeatures && <KeyFeatures data={activeSeoData.keyFeatures} />}
 
       {/* 5. How to Use */}
-      <HowToUse data={seoData.howToUse} />
+      {activeSeoData.howToUse && <HowToUse data={activeSeoData.howToUse} />}
 
       {/* 6. Worked Example */}
-      <WorkedExample data={seoData.workedExample} />
+      {activeSeoData.workedExample && <WorkedExample data={activeSeoData.workedExample} />}
 
       {/* 7. How It Works ⭐ (Renamed from Formula) */}
-      <HowItWorks data={seoData.howItWorks} />
+      {activeSeoData.howItWorks && <HowItWorks data={activeSeoData.howItWorks} />}
 
       {/* 8. Best Practices */}
-      <BestPractices data={seoData.bestPractices} />
+      {activeSeoData.bestPractices && <BestPractices data={activeSeoData.bestPractices} />}
 
       {/* 9. Common Mistakes */}
-      <CommonMistakes data={seoData.commonMistakes} />
+      {activeSeoData.commonMistakes && <CommonMistakes data={activeSeoData.commonMistakes} />}
 
       {/* 10. Industry Use Cases */}
-      <IndustryUseCases data={seoData.industryUseCases} />
+      {activeSeoData.industryUseCases && <IndustryUseCases data={activeSeoData.industryUseCases} />}
 
       {/* 11. FAQ */}
-      <FAQSection data={seoData.faqs} toolName={toolName} />
+      {activeSeoData.faqs && <FAQSection data={activeSeoData.faqs} toolName={toolName} />}
 
       {/* 12. Related Questions (AEO AI Answers) */}
-      <RelatedQuestions data={seoData.relatedQuestions} />
+      {activeSeoData.relatedQuestions && <RelatedQuestions data={activeSeoData.relatedQuestions} />}
 
       {/* 13. Related Tools */}
-      <RelatedTools toolIds={seoData.relatedToolIds} currentCategory={category} currentToolId={toolId} />
+      <RelatedTools toolIds={activeSeoData.relatedToolIds} currentCategory={category} currentToolId={toolId} />
 
       {/* 14. Related Guides (Hidden if empty) */}
-      {seoData.relatedGuides && seoData.relatedGuides.guides && seoData.relatedGuides.guides.length > 0 && (
-        <RelatedGuides guides={seoData.relatedGuides.guides} />
+      {activeSeoData.relatedGuides && activeSeoData.relatedGuides.guides && activeSeoData.relatedGuides.guides.length > 0 && (
+        <RelatedGuides guides={activeSeoData.relatedGuides.guides} />
       )}
 
       {/* 15. Continue Your Workflow ⭐ (NEW - Task-Oriented Next Steps) */}
-      <WorkflowProgression data={seoData.workflowProgression} />
+      {activeSeoData.workflowProgression && <WorkflowProgression data={activeSeoData.workflowProgression} />}
     </article>
   );
 };

@@ -9,6 +9,7 @@ import { PrivacyPolicy } from './components/legal/PrivacyPolicy';
 import { TermsOfService } from './components/legal/TermsOfService';
 import { AboutUs } from './components/legal/AboutUs';
 import { ContactUs } from './components/legal/ContactUs';
+import { ToolSeoWrapper } from './components/seo/ToolSeoWrapper';
 
 // Tools (1 Tool = 1 Dedicated Component File)
 import { InvoiceGenerator } from './components/tools/InvoiceGenerator';
@@ -290,7 +291,23 @@ export function App() {
             </div>
           )}
 
-          {renderActiveViewComponent()}
+          {activeTool ? (
+            <div className="space-y-12">
+              {renderActiveViewComponent()}
+              {/* Ensure 100% of tool pages render the Authority Page Template v1.0 */}
+              {activeView !== 'freelance-hourly-rate-calculator' && 
+               activeView !== 'shopify-fee-calculator' && 
+               activeView !== 'stripe-fee-calculator' && (
+                <ToolSeoWrapper
+                  toolName={activeTool.name}
+                  category={activeTool.category}
+                  toolId={activeTool.id}
+                />
+              )}
+            </div>
+          ) : (
+            renderActiveViewComponent()
+          )}
         </main>
       </div>
 

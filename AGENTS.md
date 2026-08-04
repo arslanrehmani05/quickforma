@@ -20,6 +20,11 @@ Welcome AI Assistants (Gemini, Claude, Cursor, Copilot, ChatGPT). This document 
    - Dedicated SEO pages per tool targeting specific high-intent search terms.
    - AdSense / Premium Ad Network placements positioned non-intrusively below the functional tool widget.
 
+4. **Strict Modular Architecture (1 Tool = 1 Dedicated File)**:
+   - **MANDATORY RULE FOR ALL AI ASSISTANTS / LLMS**: Every single tool or calculator MUST have its own dedicated, isolated file inside `src/components/tools/` (e.g., `TipCalculator.tsx`, `AgeCalculator.tsx`, `InvoiceGenerator.tsx`).
+   - **NEVER** combine multiple tools, calculators, or utility widgets into a shared or single file.
+   - Each tool component must remain completely self-contained, modular, and cleanly decoupled to support dedicated SEO landing pages, independent state management, and maintenance safety.
+
 ---
 
 ## 🛠️ Project Structure

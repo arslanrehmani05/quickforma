@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { QrCode, Download, Copy, Check } from 'lucide-react';
+import { ToolSeoWrapper } from '../seo/ToolSeoWrapper';
+import { QR_CODE_GENERATOR_SEO } from '../../data/sampleToolSeoData';
 
 export const QRCodeGenerator: React.FC = () => {
   const [text, setText] = useState('https://quickforma.com');
@@ -80,6 +82,7 @@ export const QRCodeGenerator: React.FC = () => {
 
   return (
     <div className="max-w-4xl mx-auto space-y-8">
+      {/* 1. INTERACTIVE TOOL WIDGET (ALWAYS FIRST) */}
       <div className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-sm">
         <div className="flex items-center gap-3 mb-6">
           <div className="p-3 rounded-2xl bg-indigo-50 border border-indigo-100 text-indigo-600">
@@ -131,6 +134,14 @@ export const QRCodeGenerator: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* 2. STRUCTURED ON-PAGE SEO INTENT CONTENT HUB (ALWAYS BENEATH THE TOOL) */}
+      <ToolSeoWrapper
+        seoData={QR_CODE_GENERATOR_SEO}
+        toolName="QR Code Generator"
+        category="utilities"
+        toolId="qr-code-generator"
+      />
     </div>
   );
 };

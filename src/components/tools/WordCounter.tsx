@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Type } from 'lucide-react';
 import { CopyButton } from '../common/CopyButton';
 import { ResetButton } from '../common/ResetButton';
+import { ToolSeoWrapper } from '../seo/ToolSeoWrapper';
+import { WORD_COUNTER_SEO } from '../../data/sampleToolSeoData';
 
 export const WordCounter: React.FC = () => {
   const [text, setText] = useState('Type or paste your document content here to analyze total words, characters, sentences, and estimated reading time.');
@@ -13,6 +15,7 @@ export const WordCounter: React.FC = () => {
 
   return (
     <div className="max-w-4xl mx-auto space-y-8">
+      {/* 1. INTERACTIVE TOOL WIDGET (ALWAYS FIRST) */}
       <div className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-sm">
         <div className="flex items-center justify-between gap-3 mb-6">
           <div className="flex items-center gap-3">
@@ -59,6 +62,14 @@ export const WordCounter: React.FC = () => {
           />
         </div>
       </div>
+
+      {/* 2. STRUCTURED ON-PAGE SEO INTENT CONTENT HUB (ALWAYS BENEATH THE TOOL) */}
+      <ToolSeoWrapper
+        seoData={WORD_COUNTER_SEO}
+        toolName="Word Counter"
+        category="utilities"
+        toolId="word-counter"
+      />
     </div>
   );
 };

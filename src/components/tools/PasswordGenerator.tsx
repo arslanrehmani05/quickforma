@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Lock } from 'lucide-react';
 import { CopyButton } from '../common/CopyButton';
 import { ResetButton } from '../common/ResetButton';
+import { ToolSeoWrapper } from '../seo/ToolSeoWrapper';
+import { PASSWORD_GENERATOR_SEO } from '../../data/sampleToolSeoData';
 
 export const PasswordGenerator: React.FC = () => {
   const [password, setPassword] = useState('');
@@ -59,6 +61,7 @@ export const PasswordGenerator: React.FC = () => {
 
   return (
     <div className="max-w-4xl mx-auto space-y-8">
+      {/* 1. INTERACTIVE TOOL WIDGET (ALWAYS FIRST) */}
       <div className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-sm">
         <div className="flex items-center gap-3 mb-6">
           <div className="p-3 rounded-2xl bg-indigo-50 border border-indigo-100 text-indigo-600">
@@ -119,6 +122,14 @@ export const PasswordGenerator: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* 2. STRUCTURED ON-PAGE SEO INTENT CONTENT HUB (ALWAYS BENEATH THE TOOL) */}
+      <ToolSeoWrapper
+        seoData={PASSWORD_GENERATOR_SEO}
+        toolName="Password Generator"
+        category="developer"
+        toolId="password-generator"
+      />
     </div>
   );
 };

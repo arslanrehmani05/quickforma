@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Plus, Trash2, Printer, Building2, FileText } from 'lucide-react';
 import { InvoiceData, InvoiceItem } from '../../types';
+import { ToolSeoWrapper } from '../seo/ToolSeoWrapper';
+import { INVOICE_GENERATOR_SEO } from '../../data/sampleToolSeoData';
 
 export const InvoiceGenerator: React.FC = () => {
   const [data, setData] = useState<InvoiceData>({
@@ -59,7 +61,7 @@ export const InvoiceGenerator: React.FC = () => {
 
   return (
     <div className="space-y-8">
-      {/* Action Header */}
+      {/* 1. INTERACTIVE TOOL WIDGET (ALWAYS FIRST) */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 bg-white p-5 rounded-2xl border border-slate-200 shadow-xs no-print">
         <div>
           <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
@@ -207,7 +209,7 @@ export const InvoiceGenerator: React.FC = () => {
             </div>
 
             <div className="space-y-3">
-              {data.items.map((item, index) => (
+              {data.items.map((item) => (
                 <div key={item.id} className="flex gap-2 items-center bg-slate-50 p-3 rounded-2xl border border-slate-200">
                   <input
                     type="text"
@@ -358,6 +360,16 @@ export const InvoiceGenerator: React.FC = () => {
             )}
           </div>
         </div>
+      </div>
+
+      {/* 2. STRUCTURED ON-PAGE SEO INTENT CONTENT HUB (ALWAYS BENEATH THE TOOL) */}
+      <div className="no-print">
+        <ToolSeoWrapper
+          seoData={INVOICE_GENERATOR_SEO}
+          toolName="Invoice Generator"
+          category="finance"
+          toolId="invoice-generator"
+        />
       </div>
     </div>
   );

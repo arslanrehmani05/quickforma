@@ -134,3 +134,243 @@ export const FREELANCE_HOURLY_RATE_SEO: ToolSeoData = {
   ],
   relatedToolIds: ['invoice-generator', 'roi-calculator', 'break-even-calculator', 'markup-margin-calculator']
 };
+
+export const INVOICE_GENERATOR_SEO: ToolSeoData = {
+  overview: {
+    whatItDoes: "Generates professional, itemized PDF invoices instantly in your browser with automatic tax calculations, payment terms, and custom currency formatting.",
+    whoShouldUseIt: "Freelancers, independent contractors, small business owners, agency operators, and service providers who need clean, legal invoices without paying monthly SaaS subscriptions.",
+    whenToUseIt: "Use this tool whenever completing client milestones, finalizing project deliverables, or issuing recurring monthly billing statements.",
+    whyItIsUseful: "Creating invoices manually in word processors risks arithmetic errors, missing tax fields, or unprofessional layout shifts. QuickForma formats PDF invoices with print-ready precision."
+  },
+  howToUse: [
+    { stepNumber: 1, title: "Enter Business & Client Details", description: "Fill in sender name, address, tax ID, and client contact details." },
+    { stepNumber: 2, title: "Add Line Items", description: "List project items, quantity, hourly rate or unit price." },
+    { stepNumber: 3, title: "Apply Tax & Payment Terms", description: "Set sales tax percentages, discount rates, and net 30 payment due dates." },
+    { stepNumber: 4, title: "Print or Download PDF", description: "Click Print / Export PDF to download an instant vector-rendered PDF document." }
+  ],
+  workedExample: {
+    title: "Scenario: Monthly Billing for Web Development Project",
+    scenarioDescription: "A developer bills a corporate client for 40 hours of frontend development at $120/hr plus a $200 server setup fee, with Net 30 payment terms and 5% sales tax.",
+    sampleInputs: [
+      { label: "Line Item 1", value: "40 hrs × $120/hr = $4,800" },
+      { label: "Line Item 2", value: "1 Setup Fee = $200" },
+      { label: "Subtotal", value: "$5,000" },
+      { label: "Tax (5%)", value: "$250" }
+    ],
+    stepsExplanation: [
+      "Subtotal = (40 × $120) + $200 = $5,000.00",
+      "Sales Tax = $5,000 × 0.05 = $250.00",
+      "Total Due = $5,000 + $250 = $5,250.00"
+    ],
+    finalOutput: { label: "Total Amount Due", value: "$5,250.00" },
+    summary: "The generated PDF displays clean line items, subtotal breakdown, tax line, Net 30 payment terms, and payment instructions."
+  },
+  bestPractices: [
+    { title: "Use Unique Invoice Numbers", description: "Maintain a sequential numbering scheme (e.g. INV-2026-001) for seamless bookkeeping." },
+    { title: "Specify Due Dates", description: "Always include explicit payment due dates rather than vague 'due upon receipt' notes." },
+    { title: "Include Payment Instructions", description: "Provide direct bank account, ACH routing, or wire payment instructions at the bottom of the PDF." }
+  ],
+  commonMistakes: [
+    { mistake: "Missing Invoice Date & Net Terms", whyItHappens: "Forgetting to set a payment due date causes client accounting departments to delay payments indefinitely.", howToAvoid: "Select a standard Net 15 or Net 30 payment term option on every invoice." },
+    { mistake: "Omission of Tax ID Number", whyItHappens: "Omitting business tax registration numbers invalidates invoices for corporate accounting audits.", howToAvoid: "Include your EIN or VAT ID in the Sender Info section." }
+  ],
+  industryUseCases: [
+    { industry: "Freelance Developers", description: "Bill clients for milestone deliverables and monthly retainers.", benefit: "Instant PDF generation with zero client data saved to servers." },
+    { industry: "Consultants & Marketing Agencies", description: "Issue structured monthly retainer invoices with itemized advisory hours.", benefit: "Professional executive formatting builds client trust." }
+  ],
+  relatedQuestions: [
+    { question: "What elements are legally required on a business invoice?", answer: "A legal business invoice must include the word 'Invoice', a unique invoice identification number, sender and recipient business names and addresses, invoice issue date and payment due date, itemized description of goods/services provided, subtotal, tax amount (if applicable), and total amount due." },
+    { question: "What is the difference between Net 15, Net 30, and Net 60 payment terms?", answer: "Net 15, Net 30, or Net 60 indicates the number of calendar days a client has to pay the invoice total after the invoice issue date. Net 30 is the global commercial standard for business-to-business transactions." }
+  ],
+  faqs: [
+    { question: "Is my invoice data stored on QuickForma servers?", answer: "No. QuickForma processes 100% of invoice calculations and PDF rendering locally inside your browser's RAM memory. Your invoices are never uploaded, stored, or viewed by any external server." },
+    { question: "Can I print or save the invoice directly to PDF?", answer: "Yes. Click the 'Print / Download PDF' button to open your browser's native print engine, where you can select 'Save as PDF' or send directly to a physical printer." }
+  ],
+  relatedToolIds: ['payment-receipt', 'freelance-contract', 'nda-generator', 'freelance-hourly-rate']
+};
+
+export const PASSWORD_GENERATOR_SEO: ToolSeoData = {
+  overview: {
+    whatItDoes: "Generates high-entropy, cryptographically secure random passwords using the browser's native Web Crypto API.",
+    whoShouldUseIt: "Developers, IT administrators, cybersecurity professionals, and everyday web users looking for uncrackable credentials.",
+    whenToUseIt: "Use whenever creating new online accounts, updating database passwords, generating API secret keys, or securing server SSH access.",
+    whyItIsUseful: "Human-created passwords rely on predictable patterns (names, dates, simple letter substitutions) that dictionary attack tools crack in seconds. Web Crypto API entropy generates true randomness."
+  },
+  howToUse: [
+    { stepNumber: 1, title: "Select Password Length", description: "Adjust the length slider (16+ characters recommended for maximum security)." },
+    { stepNumber: 2, title: "Toggle Character Sets", description: "Include uppercase letters, lowercase letters, numbers, and special symbols." },
+    { stepNumber: 3, title: "Check Entropy Strength", description: "Verify entropy bits (65+ bits for strong, 90+ bits for enterprise grade)." },
+    { stepNumber: 4, title: "One-Click Copy", description: "Click Copy Password to transfer the credential to your clipboard." }
+  ],
+  workedExample: {
+    title: "Scenario: Generating a 20-Character Database Secret Key",
+    scenarioDescription: "A developer requires a 20-character secret key containing uppercase, lowercase, numbers, and special symbols for a database environment variable.",
+    sampleInputs: [
+      { label: "Password Length", value: "20 Characters" },
+      { label: "Character Sets", value: "A-Z, a-z, 0-9, !@#$%" },
+      { label: "Calculated Entropy", value: "131 Bits (Enterprise Grade)" }
+    ],
+    stepsExplanation: [
+      "Character Pool Size = 26 (upper) + 26 (lower) + 10 (digits) + 32 (symbols) = 94 possible characters",
+      "Entropy = 20 characters × log2(94) = 20 × 6.55 = 131 bits of randomness",
+      "Time to crack via brute force at 1 trillion guesses/sec = Over 10^20 years"
+    ],
+    finalOutput: { label: "Generated Password", value: "k#9Xp$mL2@vR7!wQ5#zT" },
+    summary: "The output provides 131 bits of mathematical entropy, rendering brute-force attacks computationally impossible."
+  },
+  formula: {
+    title: "Password Entropy Calculation Logic",
+    type: "math",
+    explanation: "Password security is measured in bits of entropy, calculated using information theory based on pool size and password length.",
+    formulaText: "Entropy (bits) = Length * log2(Character Pool Size)",
+    variables: [
+      { symbol: "Length", description: "Total number of characters in the password" },
+      { symbol: "Character Pool Size", description: "Sum of available character types (e.g. 26 upper + 26 lower + 10 digits + 32 symbols = 94)" }
+    ]
+  },
+  bestPractices: [
+    { title: "Use Minimum 16 Characters", description: "Modern GPU brute-force clusters can crack 8-character passwords in minutes regardless of symbols." },
+    { title: "Store in Password Manager", description: "Never write passwords in unencrypted text files; use an encrypted password manager like Bitwarden or 1Password." }
+  ],
+  commonMistakes: [
+    { mistake: "Using Dictionary Words", whyItHappens: "Humans substitute 'a' with '@' or 's' with '$', which automated rule-based cracking dictionaries bypass instantly.", howToAvoid: "Generate true random strings via Web Crypto API." }
+  ],
+  relatedQuestions: [
+    { question: "How does the Web Crypto API generate random passwords?", answer: "The Web Crypto API uses the browser's crypto.getRandomValues() method, which hooks directly into hardware-level entropy sources provided by the operating system (such as thermal noise and interrupt timing) to produce cryptographically secure pseudo-random numbers." }
+  ],
+  faqs: [
+    { question: "Are generated passwords sent over the network to QuickForma?", answer: "No. Passwords are generated 100% locally inside your browser's RAM using client-side JavaScript. Zero data is transmitted over the Internet." }
+  ],
+  relatedToolIds: ['hash-generator', 'base64-encoder-decoder', 'url-encoder-decoder']
+};
+
+export const WORD_COUNTER_SEO: ToolSeoData = {
+  overview: {
+    whatItDoes: "Analyzes text length in real time, calculating total word counts, character counts (with and without spaces), sentence counts, and estimated reading time.",
+    whoShouldUseIt: "Writers, students, journalists, SEO content creators, copywriters, and social media managers.",
+    whenToUseIt: "Use when drafting essays, Twitter/X posts, meta descriptions, blog articles, or academic submissions with strict length constraints.",
+    whyItIsUseful: "Pasting text into heavy desktop word processors is slow. QuickForma provides sub-50ms character and word metrics instantly as you type."
+  },
+  howToUse: [
+    { stepNumber: 1, title: "Type or Paste Text", description: "Input your content into the clean text area." },
+    { stepNumber: 2, title: "Instant Metric Update", description: "Watch words, characters, sentences, and reading times update in real time." },
+    { stepNumber: 3, title: "One-Click Copy or Clear", description: "Copy your text or clear the editor for your next document." }
+  ],
+  workedExample: {
+    title: "Scenario: Writing an SEO Article & Meta Description",
+    scenarioDescription: "A content marketer verifies that a blog paragraph hits 250 words and the meta description stays under 160 characters.",
+    sampleInputs: [
+      { label: "Text Length", value: "248 Words" },
+      { label: "Character Count", value: "1,520 Characters" },
+      { label: "Sentence Count", value: "14 Sentences" }
+    ],
+    stepsExplanation: [
+      "Word Count = 248 words (Ideal for long-form section headers)",
+      "Estimated Reading Time = 248 / 200 wpm = ~1 minute",
+      "Character Count = 1,520 characters"
+    ],
+    finalOutput: { label: "Estimated Reading Time", value: "~1 minute" },
+    summary: "Instant real-time metrics ensure optimal length formatting without manual counting."
+  },
+  bestPractices: [
+    { title: "Target Ideal Reading Speeds", description: "Average adult reading speed is 200–250 words per minute. Use reading time estimates to structure article lengths." }
+  ],
+  relatedQuestions: [
+    { question: "How many words is a 5-minute read?", answer: "At the average reading speed of 200 words per minute (wpm), a 5-minute read is approximately 1,000 words long." }
+  ],
+  faqs: [
+    { question: "Is there a maximum text limit?", answer: "No. QuickForma's client-side text engine can process documents containing over 100,000 words instantly in browser memory." }
+  ],
+  relatedToolIds: ['lorem-ipsum-generator', 'case-converter', 'seo-slug-generator']
+};
+
+export const ROI_CALCULATOR_SEO: ToolSeoData = {
+  overview: {
+    whatItDoes: "Calculates Net Return on Investment (ROI) percentage, net profit, and annualized rate of return for marketing campaigns, real estate, software investments, and business projects.",
+    whoShouldUseIt: "Business owners, marketing executives, real estate investors, startup founders, and financial analysts.",
+    whenToUseIt: "Use when evaluating prospective business investments, auditing ad campaign profitability, or presenting financial growth reports.",
+    whyItIsUseful: "Focusing solely on top-line revenue without accounting for initial capital investment leads to misleading financial metrics. ROI reveals true capital efficiency."
+  },
+  howToUse: [
+    { stepNumber: 1, title: "Enter Amount Invested", description: "Input initial capital outlay or total campaign cost." },
+    { stepNumber: 2, title: "Enter Amount Returned", description: "Input total gross revenue generated from the investment." },
+    { stepNumber: 3, title: "Review Net Profit & ROI %", description: "Instantly view net profit dollar amount and percentage return." }
+  ],
+  workedExample: {
+    title: "Scenario: E-Commerce Google Ads Campaign Audit",
+    scenarioDescription: "A business spends $10,000 on Google Search Ads over 3 months, generating $28,000 in direct e-commerce sales.",
+    sampleInputs: [
+      { label: "Initial Investment", value: "$10,000" },
+      { label: "Gross Revenue Returned", value: "$28,000" }
+    ],
+    stepsExplanation: [
+      "Net Profit = $28,000 Gross Return - $10,000 Cost = $18,000 Net Profit",
+      "ROI Percentage = ($18,000 Net Profit / $10,000 Cost) × 100 = 180% ROI"
+    ],
+    finalOutput: { label: "Net Return on Investment", value: "180.00% ROI" },
+    summary: "The ad campaign generated $1.80 in net profit for every $1.00 spent on advertising."
+  },
+  formula: {
+    title: "Return on Investment (ROI) Formula",
+    type: "math",
+    explanation: "ROI is calculated by dividing net financial gain by total initial cost.",
+    formulaText: "ROI (%) = [(Gross Return - Initial Cost) / Initial Cost] * 100",
+    variables: [
+      { symbol: "Gross Return", description: "Total revenue or final value derived from investment" },
+      { symbol: "Initial Cost", description: "Total initial capital invested or total expense incurred" }
+    ]
+  },
+  bestPractices: [
+    { title: "Include All Indirect Costs", description: "Factor in labor, software maintenance, and opportunity cost when calculating initial investment." }
+  ],
+  commonMistakes: [
+    { mistake: "Confusing ROI with Profit Margin", whyItHappens: "Profit margin measures profit as a percentage of total revenue; ROI measures profit as a percentage of cost.", howToAvoid: "Use ROI to evaluate capital efficiency and Profit Margin to evaluate pricing power." }
+  ],
+  relatedQuestions: [
+    { question: "What is considered a good business ROI percentage?", answer: "A good ROI varies by asset class. In general commercial business investments, an annual ROI of 15% to 30% is considered strong, while high-growth digital marketing campaigns often target 100% to 300% ROI." }
+  ],
+  faqs: [
+    { question: "How does ROI differ from Annualized ROI?", answer: "Standard ROI measures total percentage gain regardless of time period. Annualized ROI calculates the compounding yearly rate of return, allowing accurate comparison between short-term 3-month projects and multi-year investments." }
+  ],
+  relatedToolIds: ['break-even-calculator', 'markup-margin-calculator', 'cpm-calculator']
+};
+
+export const QR_CODE_GENERATOR_SEO: ToolSeoData = {
+  overview: {
+    whatItDoes: "Generates high-resolution Quick Response (QR) codes for website URLs, contact info, Wi-Fi networks, and plain text with instant PNG/SVG vector download.",
+    whoShouldUseIt: "Marketers, restaurant owners, event organizers, business card designers, and retail managers.",
+    whenToUseIt: "Use when creating physical marketing materials, restaurant digital menus, conference badges, or product packaging.",
+    whyItIsUseful: "Many online QR generators charge monthly subscriptions or redirect links through third-party servers. QuickForma QR codes are 100% static, free forever, and never expire."
+  },
+  howToUse: [
+    { stepNumber: 1, title: "Enter Content or URL", description: "Type destination website address, phone number, or text message." },
+    { stepNumber: 2, title: "Preview Code", description: "View the live crisp vector QR code preview." },
+    { stepNumber: 3, title: "Download Image", description: "Click Download PNG to save your print-ready QR code." }
+  ],
+  workedExample: {
+    title: "Scenario: Restaurant Digital Contactless Menu QR Code",
+    scenarioDescription: "A restaurant owner generates a static QR code linking to `https://example.com/menu.pdf` to print on table tents.",
+    sampleInputs: [
+      { label: "Destination URL", value: "https://example.com/menu.pdf" },
+      { label: "Error Correction Level", value: "Medium (15% recovery)" }
+    ],
+    stepsExplanation: [
+      "Encodes destination URL into binary QR matrix",
+      "Adds Reed-Solomon error correction data to allow scanning even if partially damaged",
+      "Renders crisp scalable Canvas barcode graphic"
+    ],
+    finalOutput: { label: "Code Status", value: "Static & Permanent (No Expiration)" },
+    summary: "The generated QR code links directly to the menu URL without third-party redirects."
+  },
+  bestPractices: [
+    { title: "Test Scan Before Printing", description: "Always scan printed QR code proofs with iOS and Android cameras before executing mass print runs." },
+    { title: "Maintain Contrast Ratio", description: "Ensure high contrast between dark foreground modules and light background canvas." }
+  ],
+  relatedQuestions: [
+    { question: "Do static QR codes created on QuickForma expire?", answer: "No. QuickForma generates static QR codes that encode the destination data directly into the graphic matrix. Because there are no intermediate server redirects, static QR codes never expire and work indefinitely." }
+  ],
+  faqs: [
+    { question: "Is there a limit on how many QR codes I can download?", answer: "No. You can generate and download unlimited high-resolution PNG QR codes with zero limits." }
+  ],
+  relatedToolIds: ['barcode-generator', 'url-encoder-decoder', 'color-picker-converter']
+};

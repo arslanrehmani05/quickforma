@@ -71,13 +71,27 @@ When tasked with adding a new client-side tool:
 
 ---
 
-## 📈 SEO & Quality Guidelines (Anti-Vibecode Protocol)
+## 🎨 Locked Design System & Color Tokens
 
-- **1 Tool = 1 Isolated File**: Every single tool must be built inside its own dedicated component file in `src/components/tools/ToolName.tsx`.
-- **Zero Input Glitches**: All tool widgets must handle empty inputs cleanly without displaying `NaN`, `undefined`, or unformatted text.
-- **Mobile First**: All tool widgets must be fully responsive across 320px screens up to 4K displays.
-- **Accessibility & Contrast**: High contrast text on dark backgrounds (`#0a0d14` background, `slate-100` body text, `indigo-400` primary accents).
-- **Print Optimization**: For document generators (e.g., Invoice, Receipt, NDA), include `.no-print` classes on UI controls so `window.print()` outputs clean documents.
-- **Restrained Ad Placements**: Place ad units beneath the main functional tool widget so users get immediate value above the fold.
-- **Full Catalog Roadmap**: Refer to `STRATEGY.md` for the complete 50-tool roadmap across 6 categories (Financial, Legal/Business, Converters, Developers, Content, Productivity).
+All tools and pages **MUST** strictly adhere to QuickForma's locked color palette:
+- **Background**: Dark Slate `#0a0d14` (`bg-[#0a0d14]`)
+- **Card & Widget Containers**: `bg-slate-900/60` with `border-slate-800` & `backdrop-blur-xl`
+- **Primary Accent**: Indigo `#6366f1` / `indigo-600` (Buttons, focus rings, primary highlights)
+- **Primary Text / Headings**: Slate 100 `#f1f5f9` (`text-slate-100`)
+- **Secondary / Subtitle Text**: Slate 400 `#94a3b8` (`text-slate-400`)
+- **Monochrome Inputs**: Slate 950 `#020617` (`bg-slate-950`) with `border-slate-800`
+- **Positive Accents**: Emerald 400 `#34d399` (`text-emerald-400` / `bg-emerald-500/10`)
+- **Warning Accents**: Amber 400 `#fbbf24` (`text-amber-400`)
+
+---
+
+## 🔗 URL Hash Routing & Interlinking Standards
+
+1. **Mandatory Hash Synchronization**:
+   - Every tool view and legal compliance page **MUST** sync with `window.location.hash` (e.g., `/#/invoice-generator`, `/#/freelance-hourly-rate-calculator`, `/#/privacy`).
+2. **Direct Linking**:
+   - Direct visits to `quickforma.com/#/tool-id` MUST immediately load that specific tool component without landing on the homepage first.
+3. **SEO Interlinking**:
+   - Navigating between tools must update the browser history stack (`window.history.pushState` or `location.hash`) so visitors can bookmark, share, and interlink directly.
+
 

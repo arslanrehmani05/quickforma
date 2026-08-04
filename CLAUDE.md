@@ -13,10 +13,12 @@
 ## Technical Stack
 - **Framework**: React 18 + TypeScript + Vite
 - **Brand**: QuickForma (`quickforma.com`)
-- **Styling**: Tailwind CSS + Pure Monochrome Light Mode Design System (`src/index.css`)
+- **Styling**: Dark Slate `#0a0d14` background, `bg-slate-900/60` glassmorphism containers, `indigo-600` accents, `slate-100` headings.
 - **Icons**: `lucide-react`
 - **Execution Mode**: 100% Client-side, $0 server infrastructure cost.
 - **Strict File Isolation**: Every tool/calculator MUST have its own standalone component file in `src/components/tools/` (e.g. `TipCalculator.tsx`, `AgeCalculator.tsx`). NEVER consolidate or bundle multiple tools into a single file.
+- **URL Hash Routing**: Every view must sync with `window.location.hash` (`/#/tool-id`) for direct interlinking, bookmarking, and SEO indexing.
 - **Catalog Target**: 50 tools across 6 categories (Financial, Legal/Business, Converters, Developers, Content, Productivity). See `STRATEGY.md` for full roadmap.
+
 
 

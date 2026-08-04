@@ -65,9 +65,23 @@ import { PomodoroTimer } from './components/tools/PomodoroTimer';
 import { Search, X, ChevronRight, ArrowLeft } from 'lucide-react';
 
 export function App() {
-  const [activeView, setActiveView] = useState<string>('home');
+  const [activeView, setActiveView] = useState<string>(() => {
+    const route = window.location.hash.replace(/^#\/?/, '');
+    return route || 'home';
+  });
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
   const [searchFilter, setSearchFilter] = useState<string>('');
+
+  // Sync state with URL hash & handle browser Back/Forward
+  useEffect(() => {
+    const handleHashChange = () => {
+      const route = window.location.hash.replace(/^#\/?/, '');
+      setActiveView(route || 'home');
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
 
   // Keyboard shortcut Cmd+K / Ctrl+K
   useEffect(() => {
@@ -85,6 +99,11 @@ export function App() {
 
   const handleSelectView = (view: string) => {
     setActiveView(view);
+    if (view === 'home') {
+      window.history.pushState(null, '', window.location.pathname);
+    } else {
+      window.location.hash = `/${view}`;
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 

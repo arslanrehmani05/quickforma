@@ -36,41 +36,41 @@ export const PomodoroTimer: React.FC = () => {
 
   return (
     <div className="max-w-4xl mx-auto space-y-8">
-      <div className="p-6 sm:p-8 rounded-3xl bg-slate-900/60 border border-slate-800 backdrop-blur-xl shadow-2xl">
+      <div className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-sm">
         <div className="flex items-center gap-3 mb-6">
-          <div className="p-3 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400">
+          <div className="p-3 rounded-2xl bg-indigo-50 border border-indigo-100 text-indigo-600">
             <Clock className="w-6 h-6" />
           </div>
           <div>
-            <h2 className="text-xl sm:text-2xl font-bold text-slate-100">Pomodoro Focus Timer</h2>
-            <p className="text-slate-400 text-sm">Minimalist 25/5 minute interval productivity countdown timer.</p>
+            <h2 className="text-xl sm:text-2xl font-bold text-slate-900">Pomodoro Focus Timer</h2>
+            <p className="text-slate-600 text-sm">Minimalist 25/5 minute interval productivity countdown timer.</p>
           </div>
         </div>
 
-        <div className="p-8 sm:p-12 rounded-2xl bg-slate-950/80 border border-slate-800/80 text-center space-y-6">
-          <div className="inline-flex gap-2 p-1 rounded-xl bg-slate-900 border border-slate-800 text-xs">
+        <div className="p-8 sm:p-12 rounded-2xl bg-slate-50 border border-slate-200 text-center space-y-6">
+          <div className="inline-flex gap-2 p-1 rounded-xl bg-white border border-slate-200 text-xs shadow-xs">
             <button
               onClick={() => { setMode('work'); setSecondsLeft(25 * 60); setIsActive(false); }}
-              className={`px-4 py-1.5 rounded-lg font-semibold ${mode === 'work' ? 'bg-indigo-600 text-white' : 'text-slate-400'}`}
+              className={`px-4 py-1.5 rounded-lg font-bold ${mode === 'work' ? 'bg-indigo-600 text-white' : 'text-slate-600'}`}
             >
               25 Min Focus
             </button>
             <button
               onClick={() => { setMode('break'); setSecondsLeft(5 * 60); setIsActive(false); }}
-              className={`px-4 py-1.5 rounded-lg font-semibold ${mode === 'break' ? 'bg-emerald-600 text-white' : 'text-slate-400'}`}
+              className={`px-4 py-1.5 rounded-lg font-bold ${mode === 'break' ? 'bg-emerald-600 text-white' : 'text-slate-600'}`}
             >
               5 Min Break
             </button>
           </div>
 
-          <div className="text-6xl sm:text-7xl font-extrabold text-indigo-400 font-mono tracking-tight">
+          <div className="text-6xl sm:text-7xl font-extrabold text-slate-900 font-mono tracking-tight">
             {formattedTime}
           </div>
 
           <div className="flex justify-center gap-4">
             <button
               onClick={toggleTimer}
-              className="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm flex items-center gap-2 shadow-lg shadow-indigo-600/20 transition-all"
+              className="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm flex items-center gap-2 shadow-sm transition-all"
             >
               {isActive ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
               <span>{isActive ? 'Pause' : 'Start Focus'}</span>
@@ -78,7 +78,7 @@ export const PomodoroTimer: React.FC = () => {
 
             <button
               onClick={resetTimer}
-              className="p-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 transition-all"
+              className="p-3 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-700 transition-all"
               title="Reset Timer"
             >
               <RotateCcw className="w-4 h-4" />

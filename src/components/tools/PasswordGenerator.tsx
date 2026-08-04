@@ -1,170 +1,102 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { KeyRound, Copy, Check, RefreshCw } from 'lucide-react';
 
 export const PasswordGenerator: React.FC = () => {
-  const [password, setPassword] = useState('');
-  const [length, setLength] = useState(18);
-  const [useUpper, setUseUpper] = useState(true);
-  const [useLower, setUseLower] = useState(true);
-  const [useNumbers, setUseNumbers] = useState(true);
+  const [length, setLength] = useState(16);
   const [useSymbols, setUseSymbols] = useState(true);
+  const [useNumbers, setUseNumbers] = useState(true);
+  const [useUppercase, setUseUppercase] = useState(true);
+  const [password, setPassword] = useState('');
   const [copied, setCopied] = useState(false);
 
-  useEffect(() => {
-    generatePassword();
-  }, [length, useUpper, useLower, useNumbers, useSymbols]);
-
   const generatePassword = () => {
-    const upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     const lower = 'abcdefghijklmnopqrstuvwxyz';
-    const numbers = '0123456789';
-    const symbols = '!@#$%^&*()_+-=[]{}|;:,.<>?';
+    const upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const num = '0123456789';
+    const sym = '!@#$%^&*()_+-=[]{}|;:,.<>?';
 
-    let chars = '';
-    if (useUpper) chars += upper;
-    if (useLower) chars += lower;
-    if (useNumbers) chars += numbers;
-    if (useSymbols) chars += symbols;
+    let chars = lower;
+    if (useUppercase) chars += upper;
+    if (useNumbers) chars += num;
+    if (useSymbols) chars += sym;
 
-    if (!chars) {
-      setPassword('');
-      return;
-    }
-
-    const randomBuffer = new Uint32Array(length);
-    window.crypto.getRandomValues(randomBuffer);
-
-    let result = '';
+    let res = '';
+    const array = new Uint32Array(length);
+    window.crypto.getRandomValues(array);
     for (let i = 0; i < length; i++) {
-      result += chars[randomBuffer[i] % chars.length];
+      res += chars[array[i] % chars.length];
     }
-    setPassword(result);
+    setPassword(res);
   };
 
-  const getEntropy = () => {
-    let pool = 0;
-    if (useUpper) pool += 26;
-    if (useLower) pool += 26;
-    if (useNumbers) pool += 10;
-    if (useSymbols) pool += 32;
-    if (pool === 0) return 0;
-    return Math.round(length * Math.log2(pool));
-  };
-
-  const entropy = getEntropy();
-
-  const getStrengthLabel = () => {
-    if (entropy < 40) return { label: 'Weak', bar: 'w-1/4 bg-zinc-400' };
-    if (entropy < 65) return { label: 'Moderate', bar: 'w-2/4 bg-zinc-600' };
-    if (entropy < 90) return { label: 'Strong', bar: 'w-3/4 bg-zinc-900 dark:bg-zinc-200' };
-    return { label: 'High Entropy', bar: 'w-full bg-black dark:bg-white' };
-  };
-
-  const strength = getStrengthLabel();
+  React.useEffect(() => {
+    generatePassword();
+  }, [length, useSymbols, useNumbers, useUppercase]);
 
   const handleCopy = () => {
-    if (!password) return;
     navigator.clipboard.writeText(password);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
 
   return (
-    <div className="space-y-8 max-w-2xl mx-auto">
-      {/* Header */}
-      <div className="bg-zinc-100 dark:bg-zinc-900 p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <div>
-          <h2 className="text-xl font-bold text-zinc-900 dark:text-white flex items-center gap-2">
-            <KeyRound className="w-5 h-5" />
-            Secure Password Generator
-          </h2>
-          <p className="text-xs text-zinc-500 dark:text-zinc-400">100% Client-side cryptographic entropy (window.crypto API).</p>
-        </div>
-      </div>
-
-      {/* Main Password Output Card */}
-      <div className="bg-white dark:bg-zinc-900 p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800 space-y-6 shadow-sm">
-        <div className="flex items-center gap-3 bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 p-4 rounded-2xl">
-          <input
-            type="text"
-            readOnly
-            value={password}
-            placeholder="Select options to generate password"
-            className="w-full bg-transparent text-lg sm:text-xl font-mono text-zinc-900 dark:text-white font-bold outline-none tracking-wider select-all"
-          />
-          <button
-            onClick={generatePassword}
-            className="p-2.5 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 hover:text-black dark:hover:text-white rounded-xl transition-all"
-            title="Regenerate"
-          >
-            <RefreshCw className="w-5 h-5" />
-          </button>
-          <button
-            onClick={handleCopy}
-            disabled={!password}
-            className="flex items-center gap-2 px-5 py-2.5 bg-black text-white dark:bg-white dark:text-black font-bold rounded-xl shadow-sm transition-all text-sm disabled:opacity-50 hover:opacity-90"
-          >
-            {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
-            {copied ? 'Copied' : 'Copy'}
-          </button>
-        </div>
-
-        {/* Strength meter */}
-        <div className="space-y-2">
-          <div className="flex justify-between items-center text-xs">
-            <span className="text-zinc-500 font-medium">Entropy Strength:</span>
-            <span className="font-bold text-zinc-900 dark:text-white">{strength.label} ({entropy} bits)</span>
+    <div className="max-w-4xl mx-auto space-y-8">
+      <div className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-sm">
+        <div className="flex items-center gap-3 mb-6">
+          <div className="p-3 rounded-2xl bg-indigo-50 border border-indigo-100 text-indigo-600">
+            <KeyRound className="w-6 h-6" />
           </div>
-          <div className="w-full h-2 bg-zinc-100 dark:bg-zinc-800 rounded-full overflow-hidden border border-zinc-200 dark:border-zinc-700">
-            <div className={`h-full transition-all duration-300 ${strength.bar}`} />
+          <div>
+            <h2 className="text-xl sm:text-2xl font-bold text-slate-900">Secure Password Generator</h2>
+            <p className="text-slate-600 text-sm">Generate cryptographic high-entropy passwords with custom length & rules.</p>
           </div>
         </div>
 
-        {/* Controls */}
-        <div className="space-y-5 pt-4 border-t border-zinc-200 dark:border-zinc-800">
-          {/* Length Slider */}
-          <div className="space-y-2">
-            <div className="flex justify-between items-center text-xs">
-              <label className="font-bold text-zinc-900 dark:text-white">Password Length</label>
-              <span className="px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white font-mono font-bold rounded-lg border border-zinc-200 dark:border-zinc-700">
-                {length} Characters
-              </span>
-            </div>
-            <input
-              type="range"
-              min="6"
-              max="64"
-              value={length}
-              onChange={(e) => setLength(parseInt(e.target.value))}
-              className="w-full h-2 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-black dark:accent-white"
-            />
-          </div>
-
-          {/* Character Toggles */}
-          <div className="grid grid-cols-2 gap-3">
-            {[
-              { label: 'Uppercase (A-Z)', state: useUpper, setter: setUseUpper },
-              { label: 'Lowercase (a-z)', state: useLower, setter: setUseLower },
-              { label: 'Numbers (0-9)', state: useNumbers, setter: setUseNumbers },
-              { label: 'Symbols (!@#$%)', state: useSymbols, setter: setUseSymbols },
-            ].map((opt, idx) => (
-              <button
-                key={idx}
-                onClick={() => opt.setter(!opt.state)}
-                className={`flex items-center justify-between p-3.5 rounded-xl border text-xs font-bold transition-all ${
-                  opt.state
-                    ? 'bg-black text-white dark:bg-white dark:text-black border-black dark:border-white'
-                    : 'bg-zinc-50 dark:bg-zinc-800 border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white'
-                }`}
-              >
-                <span>{opt.label}</span>
-                <div className={`w-4 h-4 rounded border flex items-center justify-center ${
-                  opt.state ? 'bg-white text-black dark:bg-black dark:text-white border-transparent' : 'border-zinc-400'
-                }`}>
-                  {opt.state && <Check className="w-3 h-3 stroke-[3]" />}
-                </div>
+        <div className="space-y-6">
+          {/* Password Output Box */}
+          <div className="p-5 rounded-2xl bg-indigo-50 border border-indigo-100 flex items-center justify-between font-mono text-base sm:text-lg text-indigo-950 font-bold break-all shadow-xs">
+            <span>{password || '...'}</span>
+            <div className="flex items-center gap-2 shrink-0 ml-2">
+              <button onClick={generatePassword} className="p-2 hover:bg-indigo-100 rounded-xl text-indigo-600" title="Regenerate">
+                <RefreshCw className="w-4 h-4" />
               </button>
-            ))}
+              <button onClick={handleCopy} className="px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold flex items-center gap-1">
+                {copied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
+                <span>{copied ? 'Copied' : 'Copy'}</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Controls */}
+          <div className="space-y-4 pt-2">
+            <div>
+              <label className="flex justify-between text-xs font-semibold text-slate-700 uppercase mb-2">
+                <span>Password Length ({length} Characters)</span>
+              </label>
+              <input
+                type="range"
+                min="8"
+                max="64"
+                value={length}
+                onChange={(e) => setLength(Number(e.target.value))}
+                className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600"
+              />
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <label className="flex items-center gap-2 text-xs font-semibold text-slate-700 cursor-pointer bg-slate-50 p-3 rounded-xl border border-slate-200">
+                <input type="checkbox" checked={useUppercase} onChange={(e) => setUseUppercase(e.target.checked)} className="rounded text-indigo-600 focus:ring-indigo-500" />
+                <span>Uppercase (A-Z)</span>
+              </label>
+              <label className="flex items-center gap-2 text-xs font-semibold text-slate-700 cursor-pointer bg-slate-50 p-3 rounded-xl border border-slate-200">
+                <input type="checkbox" checked={useNumbers} onChange={(e) => setUseNumbers(e.target.checked)} className="rounded text-indigo-600 focus:ring-indigo-500" />
+                <span>Numbers (0-9)</span>
+              </label>
+              <label className="flex items-center gap-2 text-xs font-semibold text-slate-700 cursor-pointer bg-slate-50 p-3 rounded-xl border border-slate-200">
+                <input type="checkbox" checked={useSymbols} onChange={(e) => setUseSymbols(e.target.checked)} className="rounded text-indigo-600 focus:ring-indigo-500" />
+                <span>Symbols (!@#$)</span>
+              </label>
+            </div>
           </div>
         </div>
       </div>

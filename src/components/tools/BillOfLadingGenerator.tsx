@@ -2,105 +2,68 @@ import React, { useState } from 'react';
 import { FileText, Printer } from 'lucide-react';
 
 export const BillOfLadingGenerator: React.FC = () => {
-  const [shipperName, setShipperName] = useState('Global Logistics Hub');
-  const [consigneeName, setConsigneeName] = useState('Metro Retail Wholesalers');
-  const [bolNumber, setBolNumber] = useState('BOL-2026-8891');
-  const [carrierName, setCarrierName] = useState('Swift Freight Transports');
-  const [itemDescription, setItemDescription] = useState('4 Pallets of Consumer Electronic Accessories (Weight: 1,450 lbs)');
+  const [shipper, setShipper] = useState('Dunder Mifflin Paper Co.');
+  const [consignee, setConsignee] = useState('Vance Refrigeration');
+  const [carrier, setCarrier] = useState('FedEx Freight');
+  const [cargoDetails, setCargoDetails] = useState('2 Pallets Premium 24lb Copy Paper (Total 1,200 lbs)');
 
   return (
     <div className="max-w-4xl mx-auto space-y-8">
-      <div className="p-6 sm:p-8 rounded-3xl bg-slate-900/60 border border-slate-800 backdrop-blur-xl shadow-2xl no-print">
+      <div className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-sm no-print">
         <div className="flex items-center gap-3 mb-6">
-          <div className="p-3 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400">
+          <div className="p-3 rounded-2xl bg-indigo-50 border border-indigo-100 text-indigo-600">
             <FileText className="w-6 h-6" />
           </div>
           <div>
-            <h2 className="text-xl sm:text-2xl font-bold text-slate-100">Bill of Lading (BOL) Generator</h2>
-            <p className="text-slate-400 text-sm">Generate standard shipping itemization Bill of Lading forms.</p>
+            <h2 className="text-xl sm:text-2xl font-bold text-slate-900">Bill of Lading (BOL) Shipping Manifest Generator</h2>
+            <p className="text-slate-600 text-sm">Generate freight bill of lading documents for logistics and shipments.</p>
           </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
           <div>
-            <label className="block text-slate-300 text-xs font-semibold uppercase tracking-wider mb-2">Shipper / Origin Company</label>
-            <input
-              type="text"
-              value={shipperName}
-              onChange={(e) => setShipperName(e.target.value)}
-              className="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-slate-100 text-sm focus:outline-none focus:border-indigo-500"
-            />
+            <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Shipper (From)</label>
+            <input type="text" value={shipper} onChange={(e) => setShipper(e.target.value)} className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-indigo-600 shadow-xs" />
           </div>
           <div>
-            <label className="block text-slate-300 text-xs font-semibold uppercase tracking-wider mb-2">Consignee / Destination Company</label>
-            <input
-              type="text"
-              value={consigneeName}
-              onChange={(e) => setConsigneeName(e.target.value)}
-              className="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-slate-100 text-sm focus:outline-none focus:border-indigo-500"
-            />
+            <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Consignee (To)</label>
+            <input type="text" value={consignee} onChange={(e) => setConsignee(e.target.value)} className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-indigo-600 shadow-xs" />
           </div>
           <div>
-            <label className="block text-slate-300 text-xs font-semibold uppercase tracking-wider mb-2">BOL Number</label>
-            <input
-              type="text"
-              value={bolNumber}
-              onChange={(e) => setBolNumber(e.target.value)}
-              className="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-slate-100 font-mono text-sm focus:outline-none focus:border-indigo-500"
-            />
+            <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Carrier Name</label>
+            <input type="text" value={carrier} onChange={(e) => setCarrier(e.target.value)} className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-indigo-600 shadow-xs" />
           </div>
           <div>
-            <label className="block text-slate-300 text-xs font-semibold uppercase tracking-wider mb-2">Carrier Name</label>
-            <input
-              type="text"
-              value={carrierName}
-              onChange={(e) => setCarrierName(e.target.value)}
-              className="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-slate-100 text-sm focus:outline-none focus:border-indigo-500"
-            />
-          </div>
-          <div className="sm:col-span-2">
-            <label className="block text-slate-300 text-xs font-semibold uppercase tracking-wider mb-2">Freight / Cargo Description</label>
-            <textarea
-              rows={2}
-              value={itemDescription}
-              onChange={(e) => setItemDescription(e.target.value)}
-              className="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-slate-100 text-sm focus:outline-none focus:border-indigo-500 resize-none"
-            />
+            <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Cargo / Goods Description</label>
+            <input type="text" value={cargoDetails} onChange={(e) => setCargoDetails(e.target.value)} className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-indigo-600 shadow-xs" />
           </div>
         </div>
 
-        <button
-          onClick={() => window.print()}
-          className="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20 transition-all"
-        >
+        <button onClick={() => window.print()} className="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-sm transition-all">
           <Printer className="w-4 h-4" />
-          <span>Print / Save Bill of Lading</span>
+          <span>Print / Save Bill of Lading PDF</span>
         </button>
       </div>
 
-      <div className="p-8 sm:p-12 rounded-2xl bg-white text-slate-900 shadow-xl border border-slate-200 font-sans leading-relaxed text-sm max-w-3xl mx-auto space-y-6">
-        <div className="flex justify-between items-start border-b pb-4">
+      <div className="p-8 sm:p-12 rounded-2xl bg-white text-slate-900 shadow-md border border-slate-200 font-sans leading-relaxed text-sm max-w-3xl mx-auto space-y-6">
+        <div className="border-b border-slate-200 pb-4 flex justify-between items-center">
           <div>
-            <h1 className="text-xl font-bold text-slate-900">UNIFORM BILL OF LADING</h1>
-            <p className="text-xs text-slate-500">Freight Manifest Document</p>
+            <h1 className="text-xl font-extrabold text-slate-900 uppercase tracking-tight">STRAIGHT BILL OF LADING</h1>
+            <p className="text-xs text-slate-500">Non-Negotiable Freight Manifest</p>
           </div>
-          <p className="font-mono text-sm font-bold text-slate-800">{bolNumber}</p>
+          <span className="text-xs font-mono font-bold text-slate-400">BOL-881923</span>
         </div>
-
-        <div className="grid grid-cols-2 gap-4 text-xs p-4 bg-slate-50 border rounded-xl">
-          <div>
-            <span className="font-bold text-slate-500 uppercase">Shipper:</span>
-            <p className="font-semibold text-slate-800">{shipperName}</p>
-          </div>
-          <div>
-            <span className="font-bold text-slate-500 uppercase">Consignee:</span>
-            <p className="font-semibold text-slate-800">{consigneeName}</p>
-          </div>
+        <div className="grid grid-cols-2 gap-4 text-xs">
+          <div><p className="font-bold text-slate-500 uppercase">Shipper:</p><p className="font-semibold text-slate-900">{shipper}</p></div>
+          <div><p className="font-bold text-slate-500 uppercase">Consignee:</p><p className="font-semibold text-slate-900">{consignee}</p></div>
         </div>
-
-        <div>
-          <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Freight Description</h3>
-          <p className="p-3 bg-slate-50 border rounded font-mono text-xs text-slate-800">{itemDescription}</p>
+        <div className="pt-2 text-xs">
+          <p className="font-bold text-slate-500 uppercase">Carrier:</p>
+          <p className="font-semibold text-slate-900">{carrier}</p>
+        </div>
+        <div className="pt-2 text-xs">
+          <p className="font-bold text-slate-500 uppercase">Cargo Description:</p>
+          <p className="font-semibold text-slate-900">{cargoDetails}</p>
         </div>
       </div>
     </div>

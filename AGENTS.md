@@ -71,17 +71,19 @@ When tasked with adding a new client-side tool:
 
 ---
 
-## 🎨 Locked Design System & Color Tokens
+## 🎨 Universal Locked Design System & Color Palette
 
-All tools and pages **MUST** strictly adhere to QuickForma's locked color palette:
-- **Background**: Dark Slate `#0a0d14` (`bg-[#0a0d14]`)
-- **Card & Widget Containers**: `bg-slate-900/60` with `border-slate-800` & `backdrop-blur-xl`
-- **Primary Accent**: Indigo `#6366f1` / `indigo-600` (Buttons, focus rings, primary highlights)
-- **Primary Text / Headings**: Slate 100 `#f1f5f9` (`text-slate-100`)
-- **Secondary / Subtitle Text**: Slate 400 `#94a3b8` (`text-slate-400`)
-- **Monochrome Inputs**: Slate 950 `#020617` (`bg-slate-950`) with `border-slate-800`
-- **Positive Accents**: Emerald 400 `#34d399` (`text-emerald-400` / `bg-emerald-500/10`)
-- **Warning Accents**: Amber 400 `#fbbf24` (`text-amber-400`)
+QuickForma uses a single, universal **Light Enterprise Utility Palette** designed for maximum trust, legibility, and AdSense RPM conversion. No dark mode toggles or ad-hoc colors:
+
+- **App Background**: Light Slate/Zinc `#f8fafc` (`bg-slate-50`)
+- **Card & Tool Containers**: Pure White `#ffffff` (`bg-white`) with clean borders `#e2e8f0` (`border-slate-200`) & subtle shadow (`shadow-sm`)
+- **Primary Action Accent**: Royal Indigo `#4f46e5` (`bg-indigo-600` / `hover:bg-indigo-700` / `text-indigo-600`)
+- **Primary Headings & Titles**: Slate 900 `#0f172a` (`text-slate-900` / `font-bold`)
+- **Secondary & Body Text**: Slate 600 `#475569` (`text-slate-600`)
+- **Form Inputs & Textareas**: Pure White `#ffffff` (`bg-white`) with `border-slate-300`, `text-slate-900`, `focus:border-indigo-600 focus:ring-2 focus:ring-indigo-600/20`
+- **Result Highlight Boxes**: Deep Slate `#0f172a` (`bg-slate-900 text-white`) or Light Indigo `#eef2ff` (`bg-indigo-50 border-indigo-100 text-indigo-900`)
+- **Positive Trust Badges**: Emerald 600 `#059669` (`text-emerald-700 bg-emerald-50 border-emerald-200`)
+- **Warning Badges**: Amber 600 `#d97706` (`text-amber-700 bg-amber-50 border-amber-200`)
 
 ---
 

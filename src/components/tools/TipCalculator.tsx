@@ -1,147 +1,90 @@
 import React, { useState } from 'react';
-import { Calculator, Users, DollarSign, Percent } from 'lucide-react';
+import { Calculator } from 'lucide-react';
 
 export const TipCalculator: React.FC = () => {
-  const [bill, setBill] = useState<number>(85.00);
+  const [billAmount, setBillAmount] = useState<number>(120);
   const [tipPercent, setTipPercent] = useState<number>(18);
-  const [customTip, setCustomTip] = useState<string>('');
-  const [people, setPeople] = useState<number>(3);
-  const [roundUp, setRoundUp] = useState<boolean>(false);
+  const [peopleCount, setPeopleCount] = useState<number>(3);
 
-  const activeTip = customTip !== '' ? (parseFloat(customTip) || 0) : tipPercent;
-
-  const rawTipAmount = (bill * activeTip) / 100;
-  const rawTotalAmount = bill + rawTipAmount;
-
-  const totalAmount = roundUp ? Math.ceil(rawTotalAmount) : rawTotalAmount;
-  const tipAmount = totalAmount - bill;
-  const perPersonTotal = totalAmount / (people || 1);
-  const perPersonTip = tipAmount / (people || 1);
+  const safePeople = Math.max(1, peopleCount || 1);
+  const tipAmount = ((billAmount || 0) * (tipPercent || 0)) / 100;
+  const totalAmount = (billAmount || 0) + tipAmount;
+  const perPersonTotal = totalAmount / safePeople;
+  const perPersonTip = tipAmount / safePeople;
 
   return (
-    <div className="space-y-8 max-w-4xl mx-auto">
-      {/* Header */}
-      <div className="bg-zinc-100 dark:bg-zinc-900 p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <div>
-          <h2 className="text-xl font-bold text-zinc-900 dark:text-white flex items-center gap-2">
-            <Calculator className="w-5 h-5" />
-            Tip & Bill Splitter Calculator
-          </h2>
-          <p className="text-xs text-zinc-500 dark:text-zinc-400">Instantly split restaurant bills and calculate tip per person.</p>
+    <div className="max-w-4xl mx-auto space-y-8">
+      <div className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-sm">
+        <div className="flex items-center gap-3 mb-6">
+          <div className="p-3 rounded-2xl bg-indigo-50 border border-indigo-100 text-indigo-600">
+            <Calculator className="w-6 h-6" />
+          </div>
+          <div>
+            <h2 className="text-xl sm:text-2xl font-bold text-slate-900">Tip Calculator & Bill Splitter</h2>
+            <p className="text-slate-600 text-sm">Calculate tip amounts and split restaurant bills per person instantly.</p>
+          </div>
         </div>
-      </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-        {/* Input Form */}
-        <div className="md:col-span-7 space-y-6">
-          <div className="bg-white dark:bg-zinc-900 p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800 space-y-5 shadow-sm">
-            {/* Bill Amount Input */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="space-y-4">
             <div>
-              <label className="block text-xs font-bold text-zinc-900 dark:text-white uppercase tracking-wider mb-2">
-                Bill Subtotal
-              </label>
-              <div className="relative">
-                <DollarSign className="w-5 h-5 text-zinc-400 absolute left-3 top-1/2 -translate-y-1/2" />
-                <input
-                  type="number"
-                  min="0"
-                  step="0.01"
-                  value={bill || ''}
-                  onChange={(e) => setBill(parseFloat(e.target.value) || 0)}
-                  className="w-full bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-xl pl-10 pr-4 py-3 text-lg font-bold text-zinc-900 dark:text-white outline-none focus:ring-2 focus:ring-black dark:focus:ring-white"
-                />
-              </div>
+              <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Total Bill Amount ($)</label>
+              <input
+                type="number"
+                min="0"
+                value={billAmount}
+                onChange={(e) => setBillAmount(Number(e.target.value))}
+                className="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-600/20 shadow-xs"
+              />
             </div>
 
-            {/* Tip Percentage Buttons */}
             <div>
-              <label className="block text-xs font-bold text-zinc-900 dark:text-white uppercase tracking-wider mb-2">
-                Select Tip Percentage
-              </label>
-              <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
-                {[10, 15, 18, 20, 25].map(pct => (
+              <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Tip Percentage ({tipPercent}%)</label>
+              <div className="grid grid-cols-4 gap-2 mb-2">
+                {[10, 15, 18, 20].map((pct) => (
                   <button
                     key={pct}
-                    onClick={() => {
-                      setTipPercent(pct);
-                      setCustomTip('');
-                    }}
-                    className={`py-2.5 rounded-xl border text-sm font-bold transition-all ${
-                      activeTip === pct && customTip === ''
-                        ? 'bg-black text-white dark:bg-white dark:text-black border-black dark:border-white shadow-sm'
-                        : 'bg-zinc-50 dark:bg-zinc-800 border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 hover:text-black dark:hover:text-white'
-                    }`}
+                    onClick={() => setTipPercent(pct)}
+                    className={`py-2 rounded-xl text-xs font-bold transition-all ${tipPercent === pct ? 'bg-indigo-600 text-white shadow-xs' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'}`}
                   >
                     {pct}%
                   </button>
                 ))}
               </div>
-
-              {/* Custom Tip */}
-              <div className="mt-3">
-                <div className="relative">
-                  <Percent className="w-4 h-4 text-zinc-400 absolute right-3 top-1/2 -translate-y-1/2" />
-                  <input
-                    type="number"
-                    min="0"
-                    placeholder="Custom %"
-                    value={customTip}
-                    onChange={(e) => setCustomTip(e.target.value)}
-                    className="w-full bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-xl px-4 py-2 text-sm text-zinc-900 dark:text-white outline-none font-medium"
-                  />
-                </div>
-              </div>
             </div>
 
-            {/* Number of People */}
             <div>
-              <div className="flex justify-between items-center mb-2">
-                <label className="text-xs font-bold text-zinc-900 dark:text-white uppercase tracking-wider flex items-center gap-1.5">
-                  <Users className="w-4 h-4" /> Split Between
-                </label>
-                <span className="px-2.5 py-0.5 bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white font-mono font-bold rounded-lg text-xs border border-zinc-200 dark:border-zinc-700">
-                  {people} {people === 1 ? 'Person' : 'People'}
-                </span>
-              </div>
+              <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Split Between (People)</label>
               <input
-                type="range"
+                type="number"
                 min="1"
-                max="30"
-                value={people}
-                onChange={(e) => setPeople(parseInt(e.target.value) || 1)}
-                className="w-full h-2 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-black dark:accent-white"
+                max="50"
+                value={peopleCount}
+                onChange={(e) => setPeopleCount(Number(e.target.value))}
+                className="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-600/20 shadow-xs"
               />
             </div>
           </div>
-        </div>
 
-        {/* Results Card */}
-        <div className="md:col-span-5 flex flex-col justify-between bg-white dark:bg-zinc-900 p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800 shadow-sm">
-          <div className="space-y-6">
-            <h3 className="text-xs font-bold text-zinc-900 dark:text-white uppercase tracking-wider">Calculation Breakdown</h3>
-
+          <div className="p-6 rounded-2xl bg-indigo-600 text-white flex flex-col justify-between shadow-md">
             <div className="space-y-4">
-              <div className="flex justify-between items-baseline p-3 bg-zinc-50 dark:bg-zinc-800 rounded-xl border border-zinc-200 dark:border-zinc-700">
-                <div>
-                  <span className="block text-xs font-medium text-zinc-500 dark:text-zinc-400">Total Tip</span>
-                  <span className="text-xs text-zinc-400">({activeTip}% of ${bill.toFixed(2)})</span>
-                </div>
-                <span className="text-xl font-bold text-zinc-900 dark:text-white">${tipAmount.toFixed(2)}</span>
+              <div>
+                <span className="text-xs font-bold uppercase tracking-wider text-indigo-200 block mb-1">Total Per Person</span>
+                <span className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">${perPersonTotal.toFixed(2)}</span>
               </div>
-
-              <div className="flex justify-between items-baseline p-3 bg-zinc-50 dark:bg-zinc-800 rounded-xl border border-zinc-200 dark:border-zinc-700">
-                <div>
-                  <span className="block text-xs font-medium text-zinc-500 dark:text-zinc-400">Total Bill + Tip</span>
+              <div className="pt-4 border-t border-indigo-500/80 space-y-2 text-xs text-indigo-100">
+                <div className="flex justify-between">
+                  <span>Tip Per Person:</span>
+                  <span className="font-bold text-white">${perPersonTip.toFixed(2)}</span>
                 </div>
-                <span className="text-xl font-bold text-zinc-900 dark:text-white">${totalAmount.toFixed(2)}</span>
-              </div>
-
-              <hr className="border-zinc-200 dark:border-zinc-800" />
-
-              <div className="p-4 bg-black text-white dark:bg-white dark:text-black rounded-2xl text-center space-y-1 shadow-sm">
-                <span className="text-xs font-bold uppercase tracking-wider block opacity-80">Total Per Person</span>
-                <span className="text-3xl font-extrabold">${perPersonTotal.toFixed(2)}</span>
-                <span className="text-[11px] block mt-1 opacity-70">(${perPersonTip.toFixed(2)} tip per person)</span>
+                <div className="flex justify-between">
+                  <span>Total Tip Amount:</span>
+                  <span className="font-bold text-white">${tipAmount.toFixed(2)}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Grand Total Bill:</span>
+                  <span className="font-bold text-white">${totalAmount.toFixed(2)}</span>
+                </div>
               </div>
             </div>
           </div>

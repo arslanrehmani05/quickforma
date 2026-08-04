@@ -1,84 +1,67 @@
 import React, { useState } from 'react';
-import { Scale } from 'lucide-react';
+import { DollarSign } from 'lucide-react';
 
 export const SalaryHourlyConverter: React.FC = () => {
-  const [annualSalary, setAnnualSalary] = useState<number>(75000);
-  const [hoursPerWeek, setHoursPerWeek] = useState<number>(40);
-  const [weeksPerYear, setWeeksPerYear] = useState<number>(52);
+  const [amount, setAmount] = useState<number>(75000);
+  const [mode, setMode] = useState<'salaryToHourly' | 'hourlyToSalary'>('salaryToHourly');
 
-  const totalAnnualHours = Math.max(1, (hoursPerWeek || 1) * (weeksPerYear || 1));
-  const hourlyRate = (annualSalary || 0) / totalAnnualHours;
-  const weeklyPay = hourlyRate * (hoursPerWeek || 1);
-  const monthlyPay = (annualSalary || 0) / 12;
+  const hourly = mode === 'salaryToHourly' ? (amount || 0) / (52 * 40) : (amount || 0);
+  const annual = mode === 'salaryToHourly' ? (amount || 0) : (amount || 0) * (52 * 40);
 
   return (
     <div className="max-w-4xl mx-auto space-y-8">
-      <div className="p-6 sm:p-8 rounded-3xl bg-slate-900/60 border border-slate-800 backdrop-blur-xl shadow-2xl">
+      <div className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-sm">
         <div className="flex items-center gap-3 mb-6">
-          <div className="p-3 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400">
-            <Scale className="w-6 h-6" />
+          <div className="p-3 rounded-2xl bg-indigo-50 border border-indigo-100 text-indigo-600">
+            <DollarSign className="w-6 h-6" />
           </div>
           <div>
-            <h2 className="text-xl sm:text-2xl font-bold text-slate-100">Salary to Hourly Converter</h2>
-            <p className="text-slate-400 text-sm">Convert annual salary into equivalent hourly, daily, weekly, and monthly rates.</p>
+            <h2 className="text-xl sm:text-2xl font-bold text-slate-900">Salary to Hourly Converter</h2>
+            <p className="text-slate-600 text-sm">Convert annual salary to hourly rate (based on 2,080 hours/year).</p>
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="space-y-4">
+            <div className="flex gap-2">
+              <button
+                onClick={() => setMode('salaryToHourly')}
+                className={`flex-1 py-2 rounded-xl text-xs font-bold ${mode === 'salaryToHourly' ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-700'}`}
+              >
+                Annual to Hourly
+              </button>
+              <button
+                onClick={() => setMode('hourlyToSalary')}
+                className={`flex-1 py-2 rounded-xl text-xs font-bold ${mode === 'hourlyToSalary' ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-700'}`}
+              >
+                Hourly to Annual
+              </button>
+            </div>
             <div>
-              <label className="block text-slate-300 text-xs font-semibold uppercase tracking-wider mb-2">Annual Salary ($)</label>
+              <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">
+                {mode === 'salaryToHourly' ? 'Annual Salary ($)' : 'Hourly Rate ($)'}
+              </label>
               <input
                 type="number"
                 min="0"
-                value={annualSalary}
-                onChange={(e) => setAnnualSalary(Number(e.target.value))}
-                className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-slate-100 font-mono text-sm focus:outline-none focus:border-indigo-500"
+                value={amount}
+                onChange={(e) => setAmount(Number(e.target.value))}
+                className="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-indigo-600 shadow-xs"
               />
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="block text-slate-300 text-xs font-semibold uppercase tracking-wider mb-2">Hours / Week</label>
-                <input
-                  type="number"
-                  min="1"
-                  max="168"
-                  value={hoursPerWeek}
-                  onChange={(e) => setHoursPerWeek(Number(e.target.value))}
-                  className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-slate-100 font-mono text-sm focus:outline-none focus:border-indigo-500"
-                />
-              </div>
-              <div>
-                <label className="block text-slate-300 text-xs font-semibold uppercase tracking-wider mb-2">Weeks / Year</label>
-                <input
-                  type="number"
-                  min="1"
-                  max="52"
-                  value={weeksPerYear}
-                  onChange={(e) => setWeeksPerYear(Number(e.target.value))}
-                  className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-slate-100 font-mono text-sm focus:outline-none focus:border-indigo-500"
-                />
-              </div>
             </div>
           </div>
 
-          <div className="p-6 rounded-2xl bg-slate-950/80 border border-slate-800/80 flex flex-col justify-between">
+          <div className="p-6 rounded-2xl bg-indigo-600 text-white flex flex-col justify-between shadow-md">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Equivalent Hourly Rate</span>
-              <div className="my-3 text-4xl sm:text-5xl font-extrabold text-indigo-400 font-mono">
-                ${hourlyRate.toFixed(2)} <span className="text-sm font-medium text-slate-400">/ hr</span>
+              <span className="text-xs font-bold uppercase tracking-wider text-indigo-200">
+                {mode === 'salaryToHourly' ? 'Equivalent Hourly Rate' : 'Equivalent Annual Salary'}
+              </span>
+              <div className="my-4 text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
+                ${mode === 'salaryToHourly' ? hourly.toFixed(2) : annual.toLocaleString()}
               </div>
             </div>
-
-            <div className="pt-4 border-t border-slate-800/80 space-y-2 text-xs text-slate-400">
-              <div className="flex justify-between">
-                <span>Weekly Pay:</span>
-                <span className="font-mono text-slate-200">${weeklyPay.toFixed(2)}</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Monthly Pay:</span>
-                <span className="font-mono text-slate-200">${monthlyPay.toFixed(2)}</span>
-              </div>
+            <div className="pt-4 border-t border-indigo-500/80 text-xs text-indigo-100">
+              <span>Based on 40 billable hours / week x 52 weeks</span>
             </div>
           </div>
         </div>

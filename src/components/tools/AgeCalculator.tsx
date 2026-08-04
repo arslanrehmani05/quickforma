@@ -2,154 +2,73 @@ import React, { useState } from 'react';
 import { Cake } from 'lucide-react';
 
 export const AgeCalculator: React.FC = () => {
-  const [dob, setDob] = useState('1998-05-15');
-  const [targetDate, setTargetDate] = useState(new Date().toISOString().split('T')[0]);
+  const [birthDate, setBirthDate] = useState('1998-05-15');
 
-  const birth = new Date(dob);
-  const target = new Date(targetDate);
+  const calculateAge = () => {
+    if (!birthDate) return { years: 0, months: 0, days: 0, dayOfWeek: '' };
+    const birth = new Date(birthDate);
+    const today = new Date();
 
-  const isValid = !isNaN(birth.getTime()) && !isNaN(target.getTime()) && target >= birth;
-
-  const calculateAgeDetails = () => {
-    if (!isValid) return null;
-
-    let years = target.getFullYear() - birth.getFullYear();
-    let months = target.getMonth() - birth.getMonth();
-    let days = target.getDate() - birth.getDate();
+    let years = today.getFullYear() - birth.getFullYear();
+    let months = today.getMonth() - birth.getMonth();
+    let days = today.getDate() - birth.getDate();
 
     if (days < 0) {
-      months -= 1;
-      const prevMonth = new Date(target.getFullYear(), target.getMonth(), 0);
-      days += prevMonth.getDate();
+      months--;
+      days += new Date(today.getFullYear(), today.getMonth(), 0).getDate();
     }
-
     if (months < 0) {
-      years -= 1;
+      years--;
       months += 12;
     }
 
-    const totalDiffMs = target.getTime() - birth.getTime();
-    const totalDays = Math.floor(totalDiffMs / (1000 * 60 * 60 * 24));
-    const totalWeeks = Math.floor(totalDays / 7);
-    const totalMonths = years * 12 + months;
-    const totalHours = totalDays * 24;
+    const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const dayOfWeek = daysOfWeek[birth.getDay()];
 
-    const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    const dayOfWeekBorn = dayNames[birth.getDay()];
-
-    const nextBdayYear = target.getMonth() > birth.getMonth() || (target.getMonth() === birth.getMonth() && target.getDate() > birth.getDate())
-      ? target.getFullYear() + 1
-      : target.getFullYear();
-
-    const nextBday = new Date(nextBdayYear, birth.getMonth(), birth.getDate());
-    const daysToNextBday = Math.ceil((nextBday.getTime() - target.getTime()) / (1000 * 60 * 60 * 24));
-
-    return {
-      years,
-      months,
-      days,
-      totalMonths,
-      totalWeeks,
-      totalDays,
-      totalHours,
-      dayOfWeekBorn,
-      daysToNextBday
-    };
+    return { years, months, days, dayOfWeek };
   };
 
-  const details = calculateAgeDetails();
+  const age = calculateAge();
 
   return (
-    <div className="space-y-8 max-w-3xl mx-auto">
-      {/* Header */}
-      <div className="bg-zinc-100 dark:bg-zinc-900 p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <div>
-          <h2 className="text-xl font-bold text-zinc-900 dark:text-white flex items-center gap-2">
-            <Cake className="w-5 h-5" />
-            Age & Date Difference Calculator
-          </h2>
-          <p className="text-xs text-zinc-500 dark:text-zinc-400">Calculate exact age, day born, and birthday countdowns.</p>
-        </div>
-      </div>
-
-      <div className="bg-white dark:bg-zinc-900 p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800 space-y-6 shadow-sm">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label className="block text-xs font-bold text-zinc-900 dark:text-white uppercase tracking-wider mb-2">
-              Date of Birth
-            </label>
-            <input
-              type="date"
-              value={dob}
-              onChange={(e) => setDob(e.target.value)}
-              className="w-full bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-xl px-4 py-3 text-sm text-zinc-900 dark:text-white outline-none font-medium"
-            />
+    <div className="max-w-4xl mx-auto space-y-8">
+      <div className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-sm">
+        <div className="flex items-center gap-3 mb-6">
+          <div className="p-3 rounded-2xl bg-indigo-50 border border-indigo-100 text-indigo-600">
+            <Cake className="w-6 h-6" />
           </div>
-
           <div>
-            <label className="block text-xs font-bold text-zinc-900 dark:text-white uppercase tracking-wider mb-2">
-              Age At Date
-            </label>
-            <input
-              type="date"
-              value={targetDate}
-              onChange={(e) => setTargetDate(e.target.value)}
-              className="w-full bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-xl px-4 py-3 text-sm text-zinc-900 dark:text-white outline-none font-medium"
-            />
+            <h2 className="text-xl sm:text-2xl font-bold text-slate-900">Age & Birthday Calculator</h2>
+            <p className="text-slate-600 text-sm">Calculate exact age in years, months, days, and day born.</p>
           </div>
         </div>
 
-        {details && (
-          <div className="space-y-6 pt-4 border-t border-zinc-200 dark:border-zinc-800">
-            {/* Primary Age Display */}
-            <div className="grid grid-cols-3 gap-3 text-center">
-              <div className="bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 p-4 rounded-2xl">
-                <span className="text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-white">{details.years}</span>
-                <span className="text-xs text-zinc-500 dark:text-zinc-400 font-semibold block mt-1">Years</span>
-              </div>
-              <div className="bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 p-4 rounded-2xl">
-                <span className="text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-white">{details.months}</span>
-                <span className="text-xs text-zinc-500 dark:text-zinc-400 font-semibold block mt-1">Months</span>
-              </div>
-              <div className="bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 p-4 rounded-2xl">
-                <span className="text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-white">{details.days}</span>
-                <span className="text-xs text-zinc-500 dark:text-zinc-400 font-semibold block mt-1">Days</span>
-              </div>
-            </div>
-
-            {/* Total Equivalents */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center text-xs">
-              <div className="bg-zinc-50 dark:bg-zinc-800 p-3 rounded-xl border border-zinc-200 dark:border-zinc-700">
-                <span className="text-zinc-500 dark:text-zinc-400 block mb-1">Total Months</span>
-                <span className="font-bold text-zinc-900 dark:text-white text-base">{details.totalMonths.toLocaleString()}</span>
-              </div>
-              <div className="bg-zinc-50 dark:bg-zinc-800 p-3 rounded-xl border border-zinc-200 dark:border-zinc-700">
-                <span className="text-zinc-500 dark:text-zinc-400 block mb-1">Total Weeks</span>
-                <span className="font-bold text-zinc-900 dark:text-white text-base">{details.totalWeeks.toLocaleString()}</span>
-              </div>
-              <div className="bg-zinc-50 dark:bg-zinc-800 p-3 rounded-xl border border-zinc-200 dark:border-zinc-700">
-                <span className="text-zinc-500 dark:text-zinc-400 block mb-1">Total Days</span>
-                <span className="font-bold text-zinc-900 dark:text-white text-base">{details.totalDays.toLocaleString()}</span>
-              </div>
-              <div className="bg-zinc-50 dark:bg-zinc-800 p-3 rounded-xl border border-zinc-200 dark:border-zinc-700">
-                <span className="text-zinc-500 dark:text-zinc-400 block mb-1">Total Hours</span>
-                <span className="font-bold text-zinc-900 dark:text-white text-base">{details.totalHours.toLocaleString()}</span>
-              </div>
-            </div>
-
-            {/* Birthday Fun Facts */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-              <div className="flex items-center justify-between p-3.5 bg-zinc-50 dark:bg-zinc-800 rounded-xl border border-zinc-200 dark:border-zinc-700">
-                <span className="text-zinc-500 dark:text-zinc-400">Day of Week Born:</span>
-                <span className="font-bold text-zinc-900 dark:text-white">{details.dayOfWeekBorn}</span>
-              </div>
-              <div className="flex items-center justify-between p-3.5 bg-zinc-50 dark:bg-zinc-800 rounded-xl border border-zinc-200 dark:border-zinc-700">
-                <span className="text-zinc-500 dark:text-zinc-400">Next Birthday In:</span>
-                <span className="font-bold text-zinc-900 dark:text-white">{details.daysToNextBday} Days</span>
-              </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div className="space-y-4">
+            <div>
+              <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Select Date of Birth</label>
+              <input
+                type="date"
+                value={birthDate}
+                onChange={(e) => setBirthDate(e.target.value)}
+                className="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-600/20 shadow-xs"
+              />
             </div>
           </div>
-        )}
+
+          <div className="p-6 rounded-2xl bg-indigo-600 text-white space-y-4 shadow-md">
+            <div>
+              <span className="text-xs font-bold uppercase tracking-wider text-indigo-200 block mb-1">Your Exact Age</span>
+              <div className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                {age.years} <span className="text-lg text-indigo-200 font-normal">Yrs</span> {age.months} <span className="text-lg text-indigo-200 font-normal">Mos</span> {age.days} <span className="text-lg text-indigo-200 font-normal">Days</span>
+              </div>
+            </div>
+            <div className="pt-3 border-t border-indigo-500/80 text-xs text-indigo-100 flex justify-between">
+              <span>Day Born:</span>
+              <span className="font-bold text-white">{age.dayOfWeek || '...'}</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

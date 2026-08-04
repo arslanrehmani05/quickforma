@@ -220,7 +220,7 @@ export function App() {
   );
 
   return (
-    <div className="min-h-screen flex flex-col justify-between bg-[#0a0d14] text-slate-100 font-sans selection:bg-indigo-500 selection:text-white antialiased">
+    <div className="min-h-screen flex flex-col justify-between bg-slate-50 text-slate-900 font-sans selection:bg-indigo-600 selection:text-white antialiased">
       <div>
         <Navbar
           activeView={activeView}
@@ -231,15 +231,15 @@ export function App() {
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           {/* Breadcrumb Navigation for Tool Pages */}
           {activeView !== 'home' && (
-            <div className="flex items-center gap-2 text-xs text-slate-400 mb-6 no-print">
+            <div className="flex items-center gap-2 text-xs text-slate-500 mb-6 no-print">
               <button
                 onClick={() => handleSelectView('home')}
-                className="hover:text-slate-100 flex items-center gap-1 font-semibold transition-colors"
+                className="hover:text-slate-900 flex items-center gap-1 font-semibold transition-colors"
               >
                 <ArrowLeft className="w-3.5 h-3.5" /> All Tools
               </button>
-              <ChevronRight className="w-3.5 h-3.5 text-slate-600" />
-              <span className="text-indigo-400 font-bold">{activeTool?.name || activeView}</span>
+              <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
+              <span className="text-indigo-600 font-bold">{activeTool?.name || activeView}</span>
             </div>
           )}
 
@@ -251,27 +251,27 @@ export function App() {
 
       {/* Cmd+K Quick Search Modal */}
       {isSearchOpen && (
-        <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-start justify-center pt-20 px-4">
-          <div className="bg-slate-900 border border-slate-800 w-full max-w-xl rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
-            <div className="p-4 border-b border-slate-800 flex items-center gap-3">
-              <Search className="w-4 h-4 text-indigo-400" />
+        <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-start justify-center pt-20 px-4">
+          <div className="bg-white border border-slate-200 w-full max-w-xl rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+            <div className="p-4 border-b border-slate-200 flex items-center gap-3">
+              <Search className="w-4 h-4 text-indigo-600" />
               <input
                 type="text"
                 autoFocus
                 placeholder="Search tools (e.g. invoice, QR, password)..."
                 value={searchFilter}
                 onChange={(e) => setSearchFilter(e.target.value)}
-                className="w-full bg-transparent text-sm text-slate-100 outline-none placeholder-slate-500 font-medium font-mono"
+                className="w-full bg-transparent text-sm text-slate-900 outline-none placeholder-slate-400 font-medium font-sans"
               />
               <button
                 onClick={() => setIsSearchOpen(false)}
-                className="p-1 text-slate-400 hover:text-slate-100 rounded-lg"
+                className="p-1 text-slate-400 hover:text-slate-700 rounded-lg"
               >
                 <X className="w-4 h-4" />
               </button>
             </div>
 
-            <div className="max-h-80 overflow-y-auto p-2 divide-y divide-slate-800/50">
+            <div className="max-h-80 overflow-y-auto p-2 divide-y divide-slate-100">
               {filteredModalTools.map(t => (
                 <div
                   key={t.id}
@@ -280,13 +280,13 @@ export function App() {
                     setIsSearchOpen(false);
                     setSearchFilter('');
                   }}
-                  className="p-3 hover:bg-slate-800/60 rounded-xl cursor-pointer flex items-center justify-between group transition-colors"
+                  className="p-3 hover:bg-slate-50 rounded-xl cursor-pointer flex items-center justify-between group transition-colors"
                 >
                   <div>
-                    <h4 className="text-sm font-bold text-slate-100 group-hover:text-indigo-400">{t.name}</h4>
-                    <p className="text-xs text-slate-400 line-clamp-1">{t.description}</p>
+                    <h4 className="text-sm font-bold text-slate-900 group-hover:text-indigo-600">{t.name}</h4>
+                    <p className="text-xs text-slate-500 line-clamp-1">{t.description}</p>
                   </div>
-                  <ChevronRight className="w-4 h-4 text-slate-500 group-hover:text-indigo-400 group-hover:translate-x-1 transition-all" />
+                  <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-indigo-600 group-hover:translate-x-1 transition-all" />
                 </div>
               ))}
             </div>

@@ -1,15 +1,29 @@
-export type ToolCategory = 'business' | 'finance' | 'text' | 'utilities';
+export type ToolCategory = 
+  | 'finance'
+  | 'business'
+  | 'converters'
+  | 'developer'
+  | 'content'
+  | 'productivity';
+
+export interface FAQItem {
+  question: string;
+  answer: string;
+}
 
 export interface ToolMetadata {
   id: string;
   name: string;
   category: ToolCategory;
+  categoryLabel: string;
   description: string;
   iconName: string;
   popular?: boolean;
   badge?: string;
+  keywords: string[];
   metaTitle: string;
   metaDescription: string;
+  faqs?: FAQItem[];
 }
 
 export interface InvoiceItem {
@@ -37,3 +51,5 @@ export interface InvoiceData {
   terms: string;
   logoUrl?: string;
 }
+
+export type ActiveView = 'home' | 'privacy' | 'terms' | 'about' | 'contact' | string;

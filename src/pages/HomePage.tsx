@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { ToolMetadata } from '../types';
+import { CATEGORIES } from '../data/toolsCatalog';
 import { ToolCard } from '../components/layout/ToolCard';
-import { Cpu, Search, CheckCircle2, Lock, Zap } from 'lucide-react';
+import { Zap, Search, Shield, Lock, Cpu, Sparkles } from 'lucide-react';
 
 interface HomePageProps {
   tools: ToolMetadata[];
@@ -14,77 +15,73 @@ export const HomePage: React.FC<HomePageProps> = ({ tools, onSelectTool }) => {
 
   const filteredTools = tools.filter(tool => {
     const matchesCategory = selectedCategory === 'all' || tool.category === selectedCategory;
-    const matchesSearch = tool.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          tool.description.toLowerCase().includes(searchQuery.toLowerCase());
+    const q = searchQuery.toLowerCase();
+    const matchesSearch = tool.name.toLowerCase().includes(q) ||
+                          tool.description.toLowerCase().includes(q) ||
+                          tool.keywords.some(k => k.toLowerCase().includes(q));
     return matchesCategory && matchesSearch;
   });
 
   return (
     <div className="space-y-12 py-4">
       {/* Hero Section */}
-      <section className="text-center space-y-4 max-w-3xl mx-auto px-4 pt-2">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-900 text-xs font-semibold">
+      <section className="text-center space-y-4 max-w-4xl mx-auto px-4 pt-2">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold">
           <Zap className="w-3.5 h-3.5 fill-current" />
-          <span>Zero Server API Costs • Pure Client-Side Engine</span>
+          <span>50 Standalone Utility Tools • 100% Client-Side Engine</span>
         </div>
 
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-zinc-900 tracking-tight leading-tight">
-          High-Performance Business Utilities & Calculators
+        <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-100 tracking-tight leading-tight">
+          Instant Online Utilities & Business Tools
         </h1>
 
-        <p className="text-zinc-600 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
-          Instant online tools for invoices, QR codes, finance, and developer utilities. Every calculation runs locally in your browser with zero data storage.
+        <p className="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+          Zero sign-ups, zero email paywalls, and zero server uploads. Every invoice, QR code, calculator, and conversion executes locally in your browser memory.
         </p>
 
         {/* Trust Badges */}
-        <div className="flex flex-wrap items-center justify-center gap-2.5 text-xs text-zinc-700 pt-1 font-medium">
-          <div className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-lg border border-zinc-200 shadow-sm">
-            <CheckCircle2 className="w-3.5 h-3.5" /> Instant PDF & PNG Export
+        <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-slate-300 pt-2 font-medium">
+          <div className="flex items-center gap-1.5 bg-slate-900/80 px-3.5 py-1.5 rounded-xl border border-slate-800 backdrop-blur-xl">
+            <Shield className="w-3.5 h-3.5 text-emerald-400" /> 100% Local Privacy
           </div>
-          <div className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-lg border border-zinc-200 shadow-sm">
-            <Lock className="w-3.5 h-3.5" /> No Registration Required
+          <div className="flex items-center gap-1.5 bg-slate-900/80 px-3.5 py-1.5 rounded-xl border border-slate-800 backdrop-blur-xl">
+            <Lock className="w-3.5 h-3.5 text-indigo-400" /> No Account Needed
           </div>
-          <div className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-lg border border-zinc-200 shadow-sm">
-            <Cpu className="w-3.5 h-3.5" /> Sub-50ms Execution
+          <div className="flex items-center gap-1.5 bg-slate-900/80 px-3.5 py-1.5 rounded-xl border border-slate-800 backdrop-blur-xl">
+            <Cpu className="w-3.5 h-3.5 text-amber-400" /> Sub-50ms Calculation
           </div>
         </div>
       </section>
 
-      {/* Tools Section & Filters */}
+      {/* Category Tabs & Search Bar */}
       <section className="space-y-6">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-zinc-200 pb-4">
-          {/* Category tabs */}
-          <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-2 sm:pb-0">
-            {[
-              { id: 'all', label: 'All Tools' },
-              { id: 'business', label: 'Business & Legal' },
-              { id: 'finance', label: 'Finance' },
-              { id: 'text', label: 'Text & Writing' },
-              { id: 'utilities', label: 'Utilities & Dev' },
-            ].map(cat => (
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-slate-800/80 pb-4">
+          {/* Category Tabs */}
+          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-2 md:pb-0">
+            {CATEGORIES.map(cat => (
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
-                className={`px-3.5 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition-all ${
+                className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
                   selectedCategory === cat.id
-                    ? 'bg-black text-white shadow-sm'
-                    : 'bg-white text-zinc-600 hover:text-black border border-zinc-200'
+                    ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20'
+                    : 'bg-slate-900/80 text-slate-400 hover:text-slate-100 border border-slate-800'
                 }`}
               >
-                {cat.label}
+                {cat.name}
               </button>
             ))}
           </div>
 
-          {/* Search input */}
-          <div className="relative w-full sm:w-64">
-            <Search className="w-4 h-4 text-zinc-400 absolute left-3 top-1/2 -translate-y-1/2" />
+          {/* Search Box */}
+          <div className="relative w-full md:w-72 shrink-0">
+            <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
             <input
               type="text"
-              placeholder="Search tools..."
+              placeholder="Search 50 tools (e.g. invoice, qr)..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-white border border-zinc-200 rounded-lg pl-9 pr-3 py-1.5 text-xs text-zinc-900 placeholder-zinc-400 outline-none focus:ring-2 focus:ring-black"
+              className="w-full bg-slate-900/80 border border-slate-800 rounded-xl pl-9 pr-4 py-2 text-xs text-slate-100 placeholder-slate-500 outline-none focus:border-indigo-500 transition-all font-mono"
             />
           </div>
         </div>
@@ -95,32 +92,40 @@ export const HomePage: React.FC<HomePageProps> = ({ tools, onSelectTool }) => {
             <ToolCard key={tool.id} tool={tool} onSelect={onSelectTool} />
           ))}
         </div>
+
+        {filteredTools.length === 0 && (
+          <div className="text-center py-16 bg-slate-900/40 rounded-3xl border border-slate-800">
+            <Sparkles className="w-8 h-8 text-slate-500 mx-auto mb-3" />
+            <h3 className="text-slate-200 font-bold text-base mb-1">No Tools Found</h3>
+            <p className="text-slate-400 text-xs">Try searching for generic terms like "calculator", "convert", or "invoice".</p>
+          </div>
+        )}
       </section>
 
       {/* SEO / Trust Section */}
-      <section className="bg-white p-6 sm:p-8 rounded-2xl border border-zinc-200 space-y-4 text-zinc-600 text-sm shadow-sm">
-        <h2 className="text-lg font-bold text-zinc-900">
-          Why Professionals Use QuickForma Client-Side Utilities
+      <section className="bg-slate-900/50 p-6 sm:p-8 rounded-3xl border border-slate-800/80 space-y-4 text-slate-400 text-sm backdrop-blur-xl">
+        <h2 className="text-lg sm:text-xl font-bold text-slate-100">
+          Why Professionals & Business Owners Use QuickForma Utilities
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs text-zinc-500">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs text-slate-400">
           <div className="space-y-1.5">
-            <h3 className="font-semibold text-zinc-900 text-sm">Strict Data Privacy</h3>
+            <h3 className="font-semibold text-slate-200 text-sm">Uncompromising Browser Privacy</h3>
             <p className="leading-relaxed">
-              Most web converters upload your documents or inputs to third-party servers. QuickForma processes 100% of calculations directly inside your web browser.
+              Standard converter sites upload files to cloud servers. QuickForma processes 100% of PDFs, QR images, and calculations locally inside your browser memory.
             </p>
           </div>
 
           <div className="space-y-1.5">
-            <h3 className="font-semibold text-zinc-900 text-sm">Zero Latency Performance</h3>
+            <h3 className="font-semibold text-slate-200 text-sm">Sub-50ms Zero Latency</h3>
             <p className="leading-relaxed">
-              Without server roundtrips, PDF renders, QR codes, and unit conversions process in less than 50 milliseconds.
+              Without roundtrip server calls or database queues, all 50 utility tools output instantly as you type.
             </p>
           </div>
 
           <div className="space-y-1.5">
-            <h3 className="font-semibold text-zinc-900 text-sm">Zero Friction Guarantee</h3>
+            <h3 className="font-semibold text-slate-200 text-sm">Zero Paywalls & Forced Signups</h3>
             <p className="leading-relaxed">
-              No email paywalls, forced signups, or subscription prompts. Fast, reliable utilities designed for immediate execution.
+              No account creation or credit cards required. Clean, professional utility widgets built for immediate productivity.
             </p>
           </div>
         </div>

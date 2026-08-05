@@ -1,5 +1,5 @@
-import React from 'react';
-import { ToolSeoData } from '../../types/seo';
+import React, { useEffect, useState } from 'react';
+import { ToolSeoData, RelatedGuideItem } from '../../types/seo';
 import { AtAGlance } from './AtAGlance';
 import { ToolOverview } from './ToolOverview';
 import { KeyFeatures } from './KeyFeatures';
@@ -15,6 +15,7 @@ import { RelatedQuestions } from './RelatedQuestions';
 import { RelatedTools } from './RelatedTools';
 import { RelatedGuides } from './RelatedGuides';
 import { WorkflowProgression } from './WorkflowProgression';
+import { getRelatedGuides } from '../../lib/sanity';
 
 interface ToolSeoWrapperProps {
   seoData?: ToolSeoData;
@@ -31,6 +32,20 @@ export const ToolSeoWrapper: React.FC<ToolSeoWrapperProps> = ({
 }) => {
   const name = toolName || "QuickForma Business Utility";
   const cat = category || "business";
+
+  const [sanityGuides, setSanityGuides] = useState<RelatedGuideItem[]>([]);
+
+  useEffect(() => {
+    let isMounted = true;
+    getRelatedGuides(category, toolId).then((guides) => {
+      if (isMounted && guides && guides.length > 0) {
+        setSanityGuides(guides);
+      }
+    });
+    return () => {
+      isMounted = false;
+    };
+  }, [category, toolId]);
 
   // Generate complete 10-section 1,200+ word authority fallback SEO data
   const fallbackSeoData: ToolSeoData = {
@@ -214,10 +229,12 @@ export const ToolSeoWrapper: React.FC<ToolSeoWrapperProps> = ({
       {/* 10. Related Tools (Internal Linking Grid across Pillar) */}
       <RelatedTools toolIds={activeSeoData.relatedToolIds} currentCategory={category} currentToolId={toolId} />
 
-      {/* 11. Related Guides (Sanity CMS - Conditionally Hidden If Empty) */}
-      {activeSeoData.relatedGuides && activeSeoData.relatedGuides.guides && activeSeoData.relatedGuides.guides.length > 0 && (
+      {/* 11. Related Guides (Sanity CMS - Dynamic Sanity GROQ Integration) */}
+      {sanityGuides && sanityGuides.length > 0 ? (
+        <RelatedGuides guides={sanityGuides} />
+      ) : activeSeoData.relatedGuides && activeSeoData.relatedGuides.guides && activeSeoData.relatedGuides.guides.length > 0 ? (
         <RelatedGuides guides={activeSeoData.relatedGuides.guides} />
-      )}
+      ) : null}
     </article>
   );
 };

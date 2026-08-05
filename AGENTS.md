@@ -1,4 +1,4 @@
-# AGENTS.md — QuickForma Technical Architecture & Frozen Page Standards
+# AGENTS.md — QuickForma Technical Architecture & Content Ownership Rules
 
 Welcome! This repository powers **QuickForma** (`quickforma.com`), a standalone network of free, 100% client-side business utilities, financial calculators, developer tools, and document generators.
 
@@ -27,6 +27,18 @@ Every tool page follows this exact 10-section sequence:
 
 ---
 
+## ✍️ CONTENT OWNERSHIP & AUTOMATIC SYNC RULES
+
+1. **On-Page pSEO Content (AGENT OWNED)**:
+   - The AI agent owns 100% of the On-Page pSEO content in `src/data/sampleToolSeoData.ts` rendered via `<ToolSeoWrapper>`.
+   - **AUTOMATIC SYNC RULE**: Whenever a tool widget's inputs, calculation logic, or features are refined or modified, the agent MUST automatically update the corresponding worked examples, formulas, step-by-step instructions, and FAQs in `sampleToolSeoData.ts` in the exact same turn!
+
+2. **Sanity CMS Editorial Guides (USER OWNED)**:
+   - The User independently writes long-form editorial guides in Sanity CMS using SEMrush research.
+   - The On-Page pSEO system operates completely independently of the Sanity CMS strategy.
+
+---
+
 ## 🎯 Core Brand Directive: 100% Pure Business Target
 
 QuickForma targets **businesses, business owners, freelancers, e-commerce operators, developers, and professional business problems exclusively**.
@@ -48,4 +60,4 @@ QuickForma targets **businesses, business owners, freelancers, e-commerce operat
 ## ⚡ Non-Negotiable Core Principles
 
 1. **Zero-API Cost Architecture**: Every tool must execute 100% locally inside the user's web browser using client-side JavaScript/React logic. No external LLM or AI API calls.
-2. **Automatic Content Synchronization Rule**: **CRITICAL** — Whenever an agent adds, edits, or enhances any tool feature, the agent MUST automatically update the corresponding pSEO content, worked examples, FAQs, and Schema.org data in `src/data/sampleToolSeoData.ts` to keep the UI widget and on-page content 100% synchronized!
+2. **Automated Verification Pipeline**: `npm run build` runs `python3 scripts/verify_tool_templates.py` to audit 100% template compliance before Vite bundling.

@@ -6,6 +6,7 @@ import { KeyFeatures } from './KeyFeatures';
 import { HowToUse } from './HowToUse';
 import { WorkedExample } from './WorkedExample';
 import { HowItWorks } from './HowItWorks';
+import { InterpretResults } from './InterpretResults';
 import { BestPractices } from './BestPractices';
 import { CommonMistakes } from './CommonMistakes';
 import { IndustryUseCases } from './IndustryUseCases';
@@ -158,13 +159,16 @@ export const ToolSeoWrapper: React.FC<ToolSeoWrapperProps> = ({
       {/* 7. How It Works / Formula (Conditional: Formula, Logic, Assumptions) */}
       {activeSeoData.howItWorks && <HowItWorks data={activeSeoData.howItWorks} />}
 
-      {/* 8. Frequently Asked Questions (FAQ Accordion + Schema.org JSON-LD) */}
+      {/* 8. Interpret Your Results (Evaluating Outputs & Actionable Benchmarks) */}
+      {activeSeoData.interpretResults && <InterpretResults data={activeSeoData.interpretResults} />}
+
+      {/* 9. Frequently Asked Questions (FAQ Accordion + Schema.org JSON-LD) */}
       {activeSeoData.faqs && <FAQSection data={activeSeoData.faqs} toolName={toolName} />}
 
-      {/* 9. Related Tools (Internal Linking Grid across Pillar) */}
+      {/* 10. Related Tools (Internal Linking Grid across Pillar) */}
       <RelatedTools toolIds={activeSeoData.relatedToolIds} currentCategory={category} currentToolId={toolId} />
 
-      {/* 10. Related Guides (Sanity CMS - Conditionally Hidden If Empty) */}
+      {/* 11. Related Guides (Sanity CMS - Conditionally Hidden If Empty) */}
       {activeSeoData.relatedGuides && activeSeoData.relatedGuides.guides && activeSeoData.relatedGuides.guides.length > 0 && (
         <RelatedGuides guides={activeSeoData.relatedGuides.guides} />
       )}

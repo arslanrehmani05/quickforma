@@ -6,12 +6,14 @@ import { RelatedGuideItem } from '../types/seo';
 export const projectId = import.meta.env.VITE_SANITY_PROJECT_ID || '60xo4tvv';
 export const dataset = import.meta.env.VITE_SANITY_DATASET || 'production';
 export const apiVersion = import.meta.env.VITE_SANITY_API_VERSION || '2026-01-01';
+export const token = import.meta.env.VITE_SANITY_TOKEN || '';
 
 export const sanityClient = createClient({
   projectId,
   dataset,
   apiVersion,
-  useCdn: true, // Use CDN edge cache for ultra-fast response times
+  token: token || undefined,
+  useCdn: token ? false : true, // Disable CDN when using authenticated token
 });
 
 const builder = imageUrlBuilder(sanityClient);

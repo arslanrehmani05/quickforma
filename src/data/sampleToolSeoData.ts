@@ -71,6 +71,12 @@ export const FREELANCE_HOURLY_RATE_SEO: ToolSeoData = {
       { symbol: "Admin Overhead %", description: "Percentage of weekly hours spent on unbillable sales, proposals, and admin work" }
     ]
   },
+  interpretResults: {
+    heading: "Interpret Your Rate Results",
+    typicalRanges: "Entry-level freelancers typically bill $35–$65/hr. Mid-level specialists bill $75–$140/hr. Senior consultants, agency leads, and niche software engineers bill $150–$300+/hr.",
+    goodVsBadOutput: "If your calculated minimum hourly rate feels higher than expected, it is because W-2 employees overlook company-paid payroll taxes, health insurance, and 401(k) benefits.",
+    nextStepsGuidance: "Use this calculated baseline rate as your absolute minimum floor. When pitching clients fixed-price packages, multiply your estimated project hours by this rate and add a 15% scope buffer."
+  },
   bestPractices: {
     heading: "Professional Pricing Recommendations",
     practices: [
@@ -181,6 +187,12 @@ export const INVOICE_GENERATOR_SEO: ToolSeoData = {
     explanation: "QuickForma formats invoice line items dynamically using React state, computes subtotal and tax totals, and leverages native CSS @media print vector rendering to output print-ready PDF files.",
     formulaText: "Grand Total = (Subtotal - Discount Amount) + Tax Amount"
   },
+  interpretResults: {
+    heading: "Interpret Your Invoice Output",
+    typicalRanges: "Commercial billing standard dictates Net 15 or Net 30 payment terms for corporate clients, and immediate payment for retail or consumer clients.",
+    goodVsBadOutput: "A high-converting invoice clearly displays sender details, recipient contact, unique invoice identifier, itemized subtotal, tax line, Net due date, and payment instructions.",
+    nextStepsGuidance: "Once generated, export the crisp vector PDF and send it to your client via email along with direct payment link details or ACH bank instructions."
+  },
   bestPractices: {
     heading: "Invoice Best Practices",
     practices: [
@@ -282,10 +294,16 @@ export const PASSWORD_GENERATOR_SEO: ToolSeoData = {
     summary: "The output provides 131 bits of mathematical entropy, rendering brute-force attacks computationally impossible."
   },
   howItWorks: {
-    heading: "How It Works (Web Crypto Entropy)",
+    heading: "How It Works (Cryptographic Randomness)",
     type: "algorithm",
-    explanation: "Password security is measured in bits of entropy, calculated using information theory based on pool size and password length.",
-    formulaText: "Entropy (bits) = Length * log2(Character Pool Size)"
+    explanation: "Generates passwords using window.crypto.getRandomValues(), drawing from operating system hardware entropy rather than pseudo-random Math.random() seeds.",
+    formulaText: "Entropy (bits) = L × log2(R) [L = length, R = character pool size]"
+  },
+  interpretResults: {
+    heading: "Interpret Your Password Strength",
+    typicalRanges: "Standard web passwords should be at least 16 characters (64+ bits entropy). Critical infrastructure, root API keys, and financial logins require 24+ characters (128+ bits entropy).",
+    goodVsBadOutput: "A high-security password includes uppercase, lowercase, numbers, and special symbols without dictionary words or repeating sequences.",
+    nextStepsGuidance: "Store generated credentials immediately inside an encrypted password manager (e.g. Bitwarden, 1Password) rather than plain text notes."
   },
   bestPractices: {
     heading: "Password Security Best Practices",
@@ -378,7 +396,13 @@ export const WORD_COUNTER_SEO: ToolSeoData = {
   howItWorks: {
     heading: "How It Works (Regex Text Metrics)",
     type: "logic",
-    explanation: "QuickForma analyzes string length using JavaScript regex whitespace splits (/\s+/) for words and sentence boundary punctuation splits (/[\.!?]+/) for sentences."
+    explanation: "QuickForma analyzes string length using JavaScript regex whitespace splits (/\\s+/) for words and sentence boundary punctuation splits (/[\\.!?]+/) for sentences."
+  },
+  interpretResults: {
+    heading: "Interpret Your Text Metrics",
+    typicalRanges: "Blog articles typically range from 1,200 to 2,500 words (~6-12 min read). Executive summaries range from 300 to 500 words (~2 min read). Social copy performs best under 150 words.",
+    goodVsBadOutput: "High-readability content maintains average sentence lengths between 14 and 18 words and paragraph lengths under 4 sentences.",
+    nextStepsGuidance: "Review paragraph scannability and copy your formatted text directly into your CMS or document editor."
   },
   bestPractices: {
     heading: "Content Writing Best Practices",
@@ -467,6 +491,12 @@ export const ROI_CALCULATOR_SEO: ToolSeoData = {
       { symbol: "Gross Return", description: "Total revenue or final value derived from investment" },
       { symbol: "Initial Cost", description: "Total initial capital invested or total expense incurred" }
     ]
+  },
+  interpretResults: {
+    heading: "Interpret Your ROI Results",
+    typicalRanges: "Traditional business capital investments aim for 15% to 25% annual ROI. High-converting digital marketing campaigns often achieve 100% to 300% ROI.",
+    goodVsBadOutput: "A positive ROI (>0%) indicates profitable capital utilization. A negative ROI (<0%) indicates an unrecovered loss.",
+    nextStepsGuidance: "Compare your ROI percentage against alternative capital opportunities to ensure your business resources are deployed in high-yield activities."
   },
   bestPractices: {
     heading: "Financial Analysis Best Practices",
@@ -558,6 +588,12 @@ export const QR_CODE_GENERATOR_SEO: ToolSeoData = {
     type: "technical",
     explanation: "QuickForma maps input text into a 2D binary matrix using HTML5 Canvas rendering, drawing high-contrast finder patterns and error correction modules."
   },
+  interpretResults: {
+    heading: "Interpret Your QR Code Output",
+    typicalRanges: "Physical QR codes on table tents or business cards should be printed at least 1 inch × 1 inch (2.5 cm × 2.5 cm) for reliable smartphone scanning.",
+    goodVsBadOutput: "A high-quality QR code maintains dark modules on a white background with a surrounding 4-module 'quiet zone' margin.",
+    nextStepsGuidance: "Test scan the output image on both iOS and Android camera apps before sending graphics to your commercial print supplier."
+  },
   bestPractices: {
     heading: "QR Code Printing Best Practices",
     practices: [
@@ -640,6 +676,22 @@ export const SHOPIFY_FEE_SEO: ToolSeoData = {
     finalOutput: { label: "Net Monthly Take-Home", value: "$14,415.00" },
     summary: "At $15k/mo volume, the Shopify ($105/mo) plan saves $60/month compared to Basic."
   },
+  howItWorks: {
+    heading: "How It Works (Shopify Fee Breakdown)",
+    type: "math",
+    explanation: "Shopify total seller costs equal fixed monthly plan fees plus variable credit card processing percentage rates and fixed order fees.",
+    formulaText: "Total Monthly Fee = Plan Base Price + (Monthly Volume × Card Rate %) + (Order Count × Per-Order Fee)",
+    variables: [
+      { symbol: "Plan Base Price", description: "Basic ($39), Shopify ($105), or Advanced ($399)" },
+      { symbol: "Card Rate %", description: "Basic (2.9%), Shopify (2.6%), Advanced (2.4%)" }
+    ]
+  },
+  interpretResults: {
+    heading: "Interpret Your Shopify Plan Results",
+    typicalRanges: "Store fees typically represent 3.5% to 5.5% of total gross sales revenue depending on average order value (AOV).",
+    goodVsBadOutput: "An effective fee burden under 4.0% indicates optimal plan selection for your monthly order volume.",
+    nextStepsGuidance: "When monthly sales cross ~$11,000, upgrade from Basic to Shopify plan to save on processing fees."
+  },
   faqs: {
     heading: "Frequently Asked Questions",
     faqs: [
@@ -705,6 +757,22 @@ export const STRIPE_FEE_SEO: ToolSeoData = {
     finalOutput: { label: "Amount to Invoice Customer", value: "$1,030.18" },
     summary: "Invoice the client $1,030.18 so that after Stripe deducts $30.18, you receive exactly $1,000.00."
   },
+  howItWorks: {
+    heading: "How It Works (Stripe Fee Equation)",
+    type: "math",
+    explanation: "Standard Stripe card charges deduct 2.9% + $0.30 from gross invoice totals. To receive an exact net amount, you must solve the gross-up formula.",
+    formulaText: "Gross Invoice = (Target Net Amount + $0.30) / (1 - 0.029)",
+    variables: [
+      { symbol: "Target Net Amount", description: "Desired net payout into merchant bank account" },
+      { symbol: "0.029", description: "Standard US domestic credit card fee percentage (2.9%)" }
+    ]
+  },
+  interpretResults: {
+    heading: "Interpret Your Stripe Fee Results",
+    typicalRanges: "Domestic credit card processing costs average 2.9% + $0.30 per sale. International cards add a 1.0% cross-border fee.",
+    goodVsBadOutput: "Gross-up invoicing ensures 100% of your targeted project fees are received without absorbing processing loss.",
+    nextStepsGuidance: "Include the calculated gross invoice total directly on your PDF invoice generated via QuickForma."
+  },
   faqs: {
     heading: "Frequently Asked Questions",
     faqs: [
@@ -721,6 +789,296 @@ export const STRIPE_FEE_SEO: ToolSeoData = {
   }
 };
 
+export const PAYPAL_FEE_SEO: ToolSeoData = {
+  atAGlance: {
+    heading: "At a Glance",
+    categoryLabel: "Ecommerce & Fees",
+    bestFor: "Merchants, Freelancers & Online Sellers",
+    privacy: "100% Client-Side RAM",
+    timeRequired: "Instant",
+    cost: "Free",
+    lastUpdated: "August 2026"
+  },
+  overview: {
+    heading: "Quick Overview",
+    whatItDoes: "Calculates PayPal domestic (3.49% + $0.49) and international (4.99% + $0.49) seller transaction fees and target invoice gross-up pricing.",
+    whoShouldUseIt: "E-commerce sellers, freelancers, consultants, and international business operators receiving payments via PayPal.",
+    whenToUseIt: "Use when invoicing clients or pricing products to ensure your net payout covers target earnings after transaction deductions.",
+    whyItIsUseful: "PayPal's invoicing rates (3.49% + $0.49) differ from standard checkout rates. Calculating net take-home manually leads to unrecovered transaction losses."
+  },
+  keyFeatures: {
+    heading: "Key Features",
+    features: [
+      { title: "Domestic vs International Surcharge", description: "Switches instantly between 3.49% domestic and 4.99% international rates." },
+      { title: "Net Payout & Gross Invoice Equations", description: "Calculates both take-home profit and required customer charge." }
+    ]
+  },
+  howToUse: {
+    heading: "How to Use",
+    steps: [
+      { stepNumber: 1, title: "Enter Payment Amount", description: "Input target dollar amount to receive or invoice." },
+      { stepNumber: 2, title: "Select Region", description: "Choose US Domestic (3.49%) or International (4.99%)." }
+    ]
+  },
+  workedExample: {
+    heading: "Worked Real-World Example",
+    title: "Scenario: Invoicing an Overseas Client via PayPal",
+    scenarioDescription: "A consultant invoices an international client for $500.00 net retainer.",
+    sampleInputs: [
+      { label: "Target Net Amount", value: "$500.00" },
+      { label: "International PayPal Rate", value: "4.99% + $0.49" }
+    ],
+    stepsExplanation: [
+      "Gross Invoice = ($500.00 + $0.49) ÷ (1 - 0.0499) = $500.49 ÷ 0.9501 = $526.78",
+      "PayPal Fee = ($526.78 × 0.0499) + $0.49 = $26.78",
+      "Net Payout = $526.78 - $26.78 = $500.00"
+    ],
+    finalOutput: { label: "Required Invoice Total", value: "$526.78" },
+    summary: "Invoice the international client $526.78 to receive exactly $500.00 net after PayPal deducts $26.78 in fees."
+  },
+  howItWorks: {
+    heading: "How It Works (PayPal Fee Math)",
+    type: "math",
+    explanation: "PayPal merchant fees subtract a percentage plus fixed $0.49 per transaction.",
+    formulaText: "Net Payout = Gross Amount - [(Gross Amount × Rate %) + $0.49]",
+    variables: [
+      { symbol: "Gross Amount", description: "Total payment received from buyer" },
+      { symbol: "Rate %", description: "3.49% (US Domestic) or 4.99% (International)" }
+    ]
+  },
+  interpretResults: {
+    heading: "Interpret Your PayPal Fee Results",
+    typicalRanges: "PayPal seller transaction fee burden averages 3.5% to 5.2% of order totals.",
+    goodVsBadOutput: "Gross-up invoicing ensures 100% of your targeted consultancy or product revenue is retained.",
+    nextStepsGuidance: "Include the calculated gross invoice total directly on your PDF invoice generated via QuickForma."
+  },
+  faqs: {
+    heading: "Frequently Asked Questions",
+    faqs: [
+      { question: "What is PayPal's standard US seller fee?", answer: "PayPal's standard US domestic merchant invoicing rate is 3.49% + $0.49 per transaction." }
+    ]
+  },
+  relatedToolIds: ['stripe-fee-calculator', 'invoice-generator', 'shopify-fee-calculator']
+};
+
+export const ETSY_FEE_SEO: ToolSeoData = {
+  atAGlance: {
+    heading: "At a Glance",
+    categoryLabel: "Ecommerce & Fees",
+    bestFor: "Etsy Shop Owners & Handmade Crafters",
+    privacy: "100% Client-Side RAM",
+    timeRequired: "Instant",
+    cost: "Free",
+    lastUpdated: "August 2026"
+  },
+  overview: {
+    heading: "Quick Overview",
+    whatItDoes: "Calculates total Etsy shop fees including $0.20 listing fees, 6.5% transaction fees, 3.0% + $0.25 payment processing, and optional 15% offsite ad surcharges.",
+    whoShouldUseIt: "Etsy artisans, handmade product creators, vintage sellers, and digital download shop managers.",
+    whenToUseIt: "Use when pricing new handmade items, auditing shop profit margins, or evaluating Offsite Ads ROI.",
+    whyItIsUseful: "Etsy charges multiple overlapping fees across listing, sale price, shipping, and payment processing. This calculator reveals your true net profit margin per item."
+  },
+  keyFeatures: {
+    heading: "Key Features",
+    features: [
+      { title: "Itemized Etsy Fee Breakdown", description: "Separates listing, transaction, payment, and offsite ad costs." },
+      { title: "Net Profit & Margin %", description: "Displays exact net take-home dollar profit and profit margin percentage." }
+    ]
+  },
+  howToUse: {
+    heading: "How to Use",
+    steps: [
+      { stepNumber: 1, title: "Enter Item Price & Shipping", description: "Input listing price and shipping charged to buyer." },
+      { stepNumber: 2, title: "Enter Item COGS", description: "Input material and labor cost of goods sold." }
+    ]
+  },
+  workedExample: {
+    heading: "Worked Real-World Example",
+    title: "Scenario: Selling a $45 Handmade Leather Journal on Etsy",
+    scenarioDescription: "An artisan sells a journal for $45.00 + $5.00 shipping with $12.00 material costs.",
+    sampleInputs: [
+      { label: "Listing Price", value: "$45.00" },
+      { label: "Shipping Charged", value: "$5.00" },
+      { label: "Material Cost (COGS)", value: "$12.00" }
+    ],
+    stepsExplanation: [
+      "Gross Sale Volume = $45 + $5 = $50.00",
+      "Etsy Fees = $0.20 Listing + $3.25 Txn (6.5%) + $1.75 Payment (3% + $0.25) = $5.20 Total Fees",
+      "Net Profit = $50.00 - $5.20 Fees - $12.00 COGS = $32.80",
+      "Profit Margin = ($32.80 / $50.00) × 100 = 65.6%"
+    ],
+    finalOutput: { label: "Net Seller Profit", value: "$32.80 (65.6% Margin)" },
+    summary: "The seller earns $32.80 net profit after Etsy deducts $5.20 in cumulative fees."
+  },
+  howItWorks: {
+    heading: "How It Works (Etsy Fee Structure)",
+    type: "math",
+    explanation: "Total Etsy seller fee equals $0.20 flat listing fee + 6.5% transaction fee on total price + 3% + $0.25 payment processing fee.",
+    formulaText: "Net Profit = (Price + Shipping) - ($0.20 + 0.065 × Revenue + 0.03 × Revenue + $0.25) - Item COGS"
+  },
+  interpretResults: {
+    heading: "Interpret Your Etsy Margin Results",
+    typicalRanges: "Successful Etsy shops target net profit margins between 40% and 65% after covering material costs and platform fees.",
+    goodVsBadOutput: "A net margin under 25% signals that listing prices should be increased or material suppliers renegotiated.",
+    nextStepsGuidance: "Adjust your listing price upward if Offsite Ads (+15% fee) erode profit margins below acceptable limits."
+  },
+  faqs: {
+    heading: "Frequently Asked Questions",
+    faqs: [
+      { question: "What total percentage does Etsy take from a sale?", answer: "Etsy takes approximately 9.5% to 10.5% + $0.45 per transaction for US sellers without Offsite Ads, or up to 25.5% if attributed to Offsite Ads." }
+    ]
+  },
+  relatedToolIds: ['shopify-fee-calculator', 'paypal-fee-calculator', 'markup-margin-calculator']
+};
+
+export const VOLUMETRIC_WEIGHT_SEO: ToolSeoData = {
+  atAGlance: {
+    heading: "At a Glance",
+    categoryLabel: "Operations & Supply Chain",
+    bestFor: "Logistics Managers, Freight Forwarders & E-commerce Shippers",
+    privacy: "100% Client-Side RAM",
+    timeRequired: "Instant",
+    cost: "Free",
+    lastUpdated: "August 2026"
+  },
+  overview: {
+    heading: "Quick Overview",
+    whatItDoes: "Calculates dimensional (DIM) volumetric weight and determines carrier billable freight weight for air, ocean, and ground shipping.",
+    whoShouldUseIt: "Logistics coordinators, e-commerce warehouse managers, freight forwarders, and international exporters.",
+    whenToUseIt: "Use when packaging goods for shipment, calculating freight shipping quotes, or auditing courier invoices.",
+    whyItIsUseful: "Carriers charge based on whichever is greater: actual scale weight or dimensional volumetric weight. Bulky light packages incur unexpected freight surcharges if DIM weight is ignored."
+  },
+  keyFeatures: {
+    heading: "Key Features",
+    features: [
+      { title: "IATA Air & Express Courier Divisors", description: "Supports 5000 cm³/kg (Air), 4000 cm³/kg (Express), and 6000 cm³/kg (Ground) DIM factors." },
+      { title: "Billable Weight Trigger Indicator", description: "Highlights whether carrier will charge based on physical weight or volume." }
+    ]
+  },
+  howToUse: {
+    heading: "How to Use",
+    steps: [
+      { stepNumber: 1, title: "Enter Package Dimensions", description: "Input length, width, and height in centimeters (cm)." },
+      { stepNumber: 2, title: "Enter Physical Scale Weight", description: "Input actual package weight in kilograms (kg)." },
+      { stepNumber: 3, title: "Select Carrier Divisor", description: "Choose IATA 5000, Express 4000, or Ground 6000." }
+    ]
+  },
+  workedExample: {
+    heading: "Worked Real-World Example",
+    title: "Scenario: Air Freight Shipment of Lightweight Pillow Products",
+    scenarioDescription: "An exporter ships a box measuring 50 cm × 40 cm × 30 cm weighing 6 kg physically via air freight (5,000 divisor).",
+    sampleInputs: [
+      { label: "Dimensions", value: "50 × 40 × 30 cm (60,000 cm³)" },
+      { label: "Actual Scale Weight", value: "6.00 kg" },
+      { label: "IATA Air Freight Divisor", value: "5,000 cm³/kg" }
+    ],
+    stepsExplanation: [
+      "Cubic Volume = 50 × 40 × 30 = 60,000 cm³",
+      "Volumetric Weight = 60,000 ÷ 5,000 = 12.00 kg",
+      "Carrier Billable Weight = Max(6.00 kg actual, 12.00 kg volumetric) = 12.00 kg"
+    ],
+    finalOutput: { label: "Carrier Billable Weight", value: "12.00 kg (Volumetric)" },
+    summary: "The carrier will bill for 12.00 kg because the package's volumetric DIM weight exceeds its physical 6.00 kg scale weight."
+  },
+  howItWorks: {
+    heading: "How It Works (IATA DIM Weight Formula)",
+    type: "math",
+    explanation: "Volumetric weight represents package volume divided by an industry standard dimensional factor (DIM divisor).",
+    formulaText: "Volumetric Weight (kg) = (Length × Width × Height in cm) / DIM Divisor",
+    variables: [
+      { symbol: "DIM Divisor", description: "5,000 for IATA Air Freight, 4,000 for Express, 6,000 for Ground" }
+    ]
+  },
+  interpretResults: {
+    heading: "Interpret Your Freight Results",
+    typicalRanges: "If volumetric weight exceeds actual weight by >50%, packaging is oversized and incurring penalty freight costs.",
+    goodVsBadOutput: "Dense, compact packaging where physical weight matches volumetric weight maximizes shipping cost efficiency.",
+    nextStepsGuidance: "Reduce carton box dimensions or optimize void fill packaging to lower dimensional weight before booking freight."
+  },
+  faqs: {
+    heading: "Frequently Asked Questions",
+    faqs: [
+      { question: "Why do shipping carriers charge for volumetric weight?", answer: "Cargo planes and delivery trucks have limited spatial capacity. Light, bulky boxes consume space that could hold heavier cargo, so carriers bill based on cubic volume." }
+    ]
+  },
+  relatedToolIds: ['reorder-point-calculator', 'eoq-calculator', 'oee-calculator']
+};
+
+export const DEPRECIATION_SEO: ToolSeoData = {
+  atAGlance: {
+    heading: "At a Glance",
+    categoryLabel: "Financial Calculator",
+    bestFor: "Accountants, Bookkeepers & Business Owners",
+    privacy: "100% Client-Side RAM",
+    timeRequired: "Instant",
+    cost: "Free",
+    lastUpdated: "August 2026"
+  },
+  overview: {
+    heading: "Quick Overview",
+    whatItDoes: "Calculates annual straight-line asset depreciation, monthly tax write-off deductions, and generates complete yearly asset book value schedules.",
+    whoShouldUseIt: "Business owners, CPAs, corporate accountants, bookkeepers, and tax preparation professionals.",
+    whenToUseIt: "Use when acquiring machinery, vehicles, computer hardware, or office furniture to establish annual tax deduction schedules.",
+    whyItIsUseful: "Spreading capital asset expenditure across useful asset life complies with GAAP accounting matching principles and ensures tax deduction accuracy."
+  },
+  keyFeatures: {
+    heading: "Key Features",
+    features: [
+      { title: "Annual & Monthly Depreciation Expense", description: "Computes exact tax deduction amounts per year and per month." },
+      { title: "Yearly Schedule Table", description: "Displays accumulated depreciation and ending book value for every year of asset life." }
+    ]
+  },
+  howToUse: {
+    heading: "How to Use",
+    steps: [
+      { stepNumber: 1, title: "Enter Asset Cost", description: "Input original purchase price including delivery and installation." },
+      { stepNumber: 2, title: "Enter Salvage Value", description: "Input expected residual value at end of useful life." },
+      { stepNumber: 3, title: "Enter Useful Life", description: "Input estimated asset operational lifespan in years." }
+    ]
+  },
+  workedExample: {
+    heading: "Worked Real-World Example",
+    title: "Scenario: Depreciation of $10,000 Commercial CNC Laser Machine",
+    scenarioDescription: "A manufacturing shop purchases equipment for $10,000 with a 5-year useful life and $1,000 salvage value.",
+    sampleInputs: [
+      { label: "Asset Cost", value: "$10,000.00" },
+      { label: "Salvage Value", value: "$1,000.00" },
+      { label: "Useful Life", value: "5 Years" }
+    ],
+    stepsExplanation: [
+      "Depreciable Base = $10,000 Cost - $1,000 Salvage = $9,000.00",
+      "Annual Depreciation = $9,000 ÷ 5 Years = $1,800.00 / year",
+      "Monthly Write-off = $1,800 ÷ 12 Months = $150.00 / month",
+      "Ending Book Value at Year 5 = $1,000.00 Salvage Value"
+    ],
+    finalOutput: { label: "Annual Depreciation Expense", value: "$1,800.00 / year" },
+    summary: "The business deducts $1,800 per year for 5 years, bringing the asset's ending accounting book value to $1,000."
+  },
+  howItWorks: {
+    heading: "How It Works (Straight-Line Formula)",
+    type: "math",
+    explanation: "Straight-line depreciation distributes asset expense evenly across each year of its useful life.",
+    formulaText: "Annual Depreciation = (Cost - Salvage Value) / Useful Life (Years)",
+    variables: [
+      { symbol: "Cost", description: "Original purchase price + capital acquisition costs" },
+      { symbol: "Salvage Value", description: "Estimated residual scrap value at retirement" }
+    ]
+  },
+  interpretResults: {
+    heading: "Interpret Your Depreciation Results",
+    typicalRanges: "IRS MACRS guidelines dictate 5-year useful life for vehicles/computers and 7-year life for office furniture/machinery.",
+    goodVsBadOutput: "Straight-line depreciation provides predictable, equal tax deductions across all operating years.",
+    nextStepsGuidance: "Record annual depreciation expense entries into your company general ledger for corporate tax filing."
+  },
+  faqs: {
+    heading: "Frequently Asked Questions",
+    faqs: [
+      { question: "What is straight-line asset depreciation?", answer: "Straight-line depreciation is the simplest GAAP accounting method where an asset's cost minus salvage value is deducted in equal annual amounts across its useful life." }
+    ]
+  },
+  relatedToolIds: ['break-even-calculator', 'roi-calculator', 'invoice-generator']
+};
+
 export const TOOL_SEO_DATA_MAP: Record<string, ToolSeoData> = {
   'freelance-hourly-rate-calculator': FREELANCE_HOURLY_RATE_SEO,
   'invoice-generator': INVOICE_GENERATOR_SEO,
@@ -730,5 +1088,9 @@ export const TOOL_SEO_DATA_MAP: Record<string, ToolSeoData> = {
   'qr-code-generator': QR_CODE_GENERATOR_SEO,
   'shopify-fee-calculator': SHOPIFY_FEE_SEO,
   'stripe-fee-calculator': STRIPE_FEE_SEO,
+  'paypal-fee-calculator': PAYPAL_FEE_SEO,
+  'etsy-fee-calculator': ETSY_FEE_SEO,
+  'volumetric-weight-calculator': VOLUMETRIC_WEIGHT_SEO,
+  'depreciation-calculator': DEPRECIATION_SEO,
 };
 

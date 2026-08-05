@@ -103,9 +103,13 @@ export const FREELANCE_HOURLY_RATE_SEO: ToolSeoData = {
   faqs: {
     heading: "Frequently Asked Questions",
     faqs: [
-      { question: "Why can't I just divide my past employee salary by 2,000 hours?", answer: "As an employee, your company paid for health insurance, paid time off, 401(k) matching, hardware, software licenses, and half of your FICA payroll taxes. As a self-employed freelancer, you must cover 100% of these expenses yourself while billing significantly fewer hours per year due to business administration." },
+      { question: "Why can't I just divide my past W-2 employee salary by 2,000 hours?", answer: "As an employee, your company paid for health insurance, paid time off, 401(k) matching, hardware, software licenses, and half of your FICA payroll taxes. As a self-employed freelancer, you must cover 100% of these expenses yourself while billing significantly fewer hours per year due to business administration." },
       { question: "Should I quote hourly rates or fixed project fees to clients?", answer: "Use your calculated hourly rate as your baseline internal financial metric. For client proposals, fixed-fee pricing or weekly retainers are generally preferable because they reward efficiency, but fixed quotes should always be based on your minimum hourly rate multiplied by estimated hours plus a 15% scope buffer." },
-      { question: "How often should I raise my freelance hourly rates?", answer: "It is recommended to review and adjust your rates every 12 months. Most experienced freelancers increase rates by 10% to 20% annually for new clients while giving existing retainer clients 30 to 60 days advance notice before rate adjustments take effect." }
+      { question: "How often should I raise my freelance hourly rates?", answer: "It is recommended to review and adjust your rates every 12 months. Most experienced freelancers increase rates by 10% to 20% annually for new clients while giving existing retainer clients 30 to 60 days advance notice before rate adjustments take effect." },
+      { question: "What percentage of freelance time is actually billable?", answer: "On average, full-time freelancers log 60% to 75% of their working time on billable client work (approx. 24–30 hours per 40-hour work week). The remaining 25% to 40% is spent on non-billable business administration, invoicing, marketing, proposals, and client communication." },
+      { question: "How do I account for self-employment tax when setting hourly rates?", answer: "In the United States, self-employment tax is 15.3% (12.4% Social Security + 2.9% Medicare). Set aside 25% to 30% of your gross client revenue into a separate high-yield tax account to cover quarterly federal and state estimated tax payments." },
+      { question: "What is a good billable hours target for a solo freelancer?", answer: "A realistic target for a full-time freelancer is 1,200 to 1,400 billable hours per year (25 to 30 billable hours per week for 48 weeks). Expecting 2,000 billable hours per year leads to extreme underpricing and burnout." },
+      { question: "How do I charge clients for project scope creep?", answer: "Establish a clear Master Services Agreement (MSA) or Statement of Work (SOW) specifying exact deliverables. If a client requests extra features, quote additional milestone fees calculated using your target hourly rate." }
     ]
   },
   relatedQuestions: {
@@ -219,7 +223,12 @@ export const INVOICE_GENERATOR_SEO: ToolSeoData = {
     heading: "Frequently Asked Questions",
     faqs: [
       { question: "Is my invoice data stored on QuickForma servers?", answer: "No. QuickForma processes 100% of invoice calculations and PDF rendering locally inside your browser's RAM memory. Your invoices are never uploaded, stored, or viewed by any external server." },
-      { question: "Can I print or save the invoice directly to PDF?", answer: "Yes. Click the 'Print / Download PDF' button to open your browser's native print engine, where you can select 'Save as PDF' or send directly to a physical printer." }
+      { question: "Can I print or save the invoice directly to PDF?", answer: "Yes. Click the 'Print / Download PDF' button to open your browser's native print engine, where you can select 'Save as PDF' or send directly to a physical printer." },
+      { question: "What elements are legally required on a business invoice?", answer: "A legal business invoice must include the word 'Invoice', a unique invoice identification number, sender and recipient business names and addresses, invoice issue date and payment due date, itemized description of goods/services provided, subtotal, tax amount (if applicable), and total amount due." },
+      { question: "What is the difference between Net 15, Net 30, and Net 60 payment terms?", answer: "Net 15, Net 30, or Net 60 indicates the number of calendar days a client has to pay the invoice total after the invoice issue date. Net 30 is the global commercial standard for business-to-business transactions." },
+      { question: "How do I charge a late payment fee on unpaid invoices?", answer: "State your late fee terms explicitly at the bottom of every invoice (e.g., '1.5% monthly late fee applied to balances past 30 days'). Ensure your signed contract or agreement specifies these late penalty terms." },
+      { question: "Should I include my tax ID or EIN on invoices?", answer: "Yes. Corporate client accounting departments require your Employer Identification Number (EIN), Social Security Number (for sole proprietors), or VAT registration number to issue end-of-year 1099-NEC tax forms." },
+      { question: "Can I issue invoices in foreign currencies like EUR or GBP?", answer: "Yes. QuickForma supports USD ($), EUR (€), GBP (£), CAD ($), AUD ($), INR (₹), and JPY (¥) formatting for international billing." }
     ]
   },
   relatedQuestions: {
@@ -855,7 +864,13 @@ export const PAYPAL_FEE_SEO: ToolSeoData = {
   faqs: {
     heading: "Frequently Asked Questions",
     faqs: [
-      { question: "What is PayPal's standard US seller fee?", answer: "PayPal's standard US domestic merchant invoicing rate is 3.49% + $0.49 per transaction." }
+      { question: "What is PayPal's standard US seller fee?", answer: "PayPal's standard US domestic merchant invoicing rate is 3.49% + $0.49 per transaction." },
+      { question: "Does PayPal charge a fee for receiving payments from credit cards?", answer: "Yes. When a customer pays a PayPal invoice using a credit or debit card, the seller is charged 2.99% + $0.49 per transaction." },
+      { question: "How much does PayPal charge for international merchant transactions?", answer: "International commercial payments incur a 4.99% + $0.49 fee (which includes a 1.50% international cross-border fee)." },
+      { question: "Can I charge a surcharge to pass PayPal fees onto my client?", answer: "In the United States and Canada, PayPal terms and credit card network rules generally prohibit adding a separate line-item surcharge for PayPal processing. Instead, build transaction costs directly into your base pricing." },
+      { question: "How do I calculate the exact amount to invoice so I net a specific dollar figure?", answer: "To net an exact target amount (T), use the gross-up equation: Invoiced Amount = (T + $0.49) ÷ (1 - 0.0349). For example, to net $100.00, invoice $104.12." },
+      { question: "Are PayPal fees tax-deductible for business owners?", answer: "Yes. Payment processing fees, merchant fees, and transaction surcharges deducted by PayPal are ordinary and necessary business operating expenses deductible on Schedule C." },
+      { question: "What happens to PayPal fees if I issue a full refund to a buyer?", answer: "PayPal does not return payment processing fees when you issue a refund to a buyer. The original 3.49% + $0.49 fee remains retained by PayPal." }
     ]
   },
   relatedToolIds: ['stripe-fee-calculator', 'invoice-generator', 'shopify-fee-calculator']
@@ -925,7 +940,13 @@ export const ETSY_FEE_SEO: ToolSeoData = {
   faqs: {
     heading: "Frequently Asked Questions",
     faqs: [
-      { question: "What total percentage does Etsy take from a sale?", answer: "Etsy takes approximately 9.5% to 10.5% + $0.45 per transaction for US sellers without Offsite Ads, or up to 25.5% if attributed to Offsite Ads." }
+      { question: "What total percentage does Etsy take from a sale?", answer: "Etsy takes approximately 9.5% to 10.5% + $0.45 per transaction for US sellers without Offsite Ads (6.5% transaction fee + 3% + $0.25 payment processing + $0.20 listing fee)." },
+      { question: "How does the $0.20 Etsy listing fee work?", answer: "Etsy charges $0.20 USD per item listed. Each listing remains active for 4 months or until sold. If an item sells, auto-renewal charges another $0.20 for the next stock quantity." },
+      { question: "Are Etsy Offsite Ads mandatory for sellers?", answer: "Offsite Ads are optional (15% fee) for shops earning under $10,000 USD in 365 days. Once a shop crosses $10,000 USD in lifetime revenue, participation becomes mandatory at a reduced 12% fee rate." },
+      { question: "Is there a maximum cap on Etsy Offsite Ad fees?", answer: "Yes. Etsy caps Offsite Ad fees at $100 USD per order, regardless of how large the total order dollar amount is." },
+      { question: "Does Etsy charge transaction fees on shipping costs charged to buyers?", answer: "Yes. Etsy applies its 6.5% transaction fee to the total order amount, which includes both the item listing price and any shipping fee charged to the buyer." },
+      { question: "How often does Etsy deposit funds into seller bank accounts?", answer: "Etsy sellers can configure payout schedules for daily, weekly, bi-weekly, or monthly deposits, subject to local banking clearance rules." },
+      { question: "How can Etsy sellers maintain a 50%+ net profit margin?", answer: "To maintain strong profit margins, price handmade goods at 3x to 4x material cost, optimize shipping dimensions, and account for platform fees during initial product pricing." }
     ]
   },
   relatedToolIds: ['shopify-fee-calculator', 'paypal-fee-calculator', 'markup-margin-calculator']
@@ -998,7 +1019,13 @@ export const VOLUMETRIC_WEIGHT_SEO: ToolSeoData = {
   faqs: {
     heading: "Frequently Asked Questions",
     faqs: [
-      { question: "Why do shipping carriers charge for volumetric weight?", answer: "Cargo planes and delivery trucks have limited spatial capacity. Light, bulky boxes consume space that could hold heavier cargo, so carriers bill based on cubic volume." }
+      { question: "Why do shipping carriers charge for volumetric weight?", answer: "Cargo planes and delivery trucks have limited spatial capacity. Light, bulky boxes consume space that could hold heavier cargo, so carriers bill based on cubic volume." },
+      { question: "What is the standard IATA volumetric weight formula for air freight?", answer: "The IATA air freight formula is: Volumetric Weight (kg) = (Length × Width × Height in cm) ÷ 5,000 (or 6,000 depending on airline standard)." },
+      { question: "What is the difference between actual scale weight and billable weight?", answer: "Actual scale weight is the physical weight of the box on a scale. Billable weight is whichever number is higher: actual scale weight or calculated dimensional volumetric weight." },
+      { question: "Why do FedEx and UPS use 139 or 166 dimensional divisors for inches?", answer: "For shipments measured in inches and pounds, US domestic carriers divide cubic inches by 139 (for daily rate accounts) or 166 (for retail accounts) to convert cubic volume into dimensional weight pounds." },
+      { question: "How can e-commerce businesses reduce dimensional weight surcharges?", answer: "Minimize box sizes, eliminate excess void fill packaging, utilize poly mailers for soft goods, or custom-size shipping boxes to match exact product dimensions." },
+      { question: "Do ocean freight carriers use volumetric weight?", answer: "Ocean Less-than-Container Load (LCL) freight is billed per Revenue Ton (CBM), calculated at 1 CBM = 1,000 kg (1 cubic meter per metric ton)." },
+      { question: "How do freight forwarders round billable weight?", answer: "Freight forwarders and express couriers round final chargeable weight up to the nearest 0.5 kg or 1.0 kg increment." }
     ]
   },
   relatedToolIds: ['reorder-point-calculator', 'eoq-calculator', 'oee-calculator']
@@ -1073,7 +1100,13 @@ export const DEPRECIATION_SEO: ToolSeoData = {
   faqs: {
     heading: "Frequently Asked Questions",
     faqs: [
-      { question: "What is straight-line asset depreciation?", answer: "Straight-line depreciation is the simplest GAAP accounting method where an asset's cost minus salvage value is deducted in equal annual amounts across its useful life." }
+      { question: "What is straight-line asset depreciation?", answer: "Straight-line depreciation is the simplest GAAP accounting method where an asset's cost minus salvage value is deducted in equal annual amounts across its useful life." },
+      { question: "How do you calculate straight-line depreciation?", answer: "Straight-line depreciation formula: Annual Depreciation Expense = (Original Purchase Price - Salvage Value) ÷ Useful Life (Years)." },
+      { question: "What is salvage value in accounting?", answer: "Salvage value (or residual scrap value) is the estimated dollar amount an business expects to sell an asset for at the end of its useful operational lifespan." },
+      { question: "How does IRS MACRS depreciation differ from straight-line depreciation?", answer: "IRS MACRS (Modified Accelerated Cost Recovery System) uses accelerated depreciation percentages allowing higher tax write-offs in early asset years, whereas straight-line divides deductions equally." },
+      { question: "Can an asset's book value drop below its salvage value?", answer: "No. Under standard accounting rules, depreciation stops once an asset's accumulated book value reaches its predefined salvage value." },
+      { question: "What asset types use 5-year vs 7-year useful life schedules?", answer: "IRS guidelines mandate a 5-year recovery period for computers, office equipment, and vehicles, and a 7-year period for office furniture, machinery, and equipment." },
+      { question: "Is land depreciable for business tax write-offs?", answer: "No. Land has an indefinite useful lifespan under tax law and GAAP accounting, so land cannot be depreciated." }
     ]
   },
   relatedToolIds: ['break-even-calculator', 'roi-calculator', 'invoice-generator']

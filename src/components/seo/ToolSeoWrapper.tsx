@@ -111,7 +111,10 @@ export const ToolSeoWrapper: React.FC<ToolSeoWrapperProps> = ({
         { question: `Is ${name} free for commercial business use?`, answer: `Yes. ${name} and all QuickForma utilities are 100% free for personal, commercial, and enterprise use with no usage caps, subscriptions, or hidden charges.` },
         { question: `Is my financial or company data stored on QuickForma servers?`, answer: "No. QuickForma operates on a strict zero-server architecture. All processing occurs locally within your browser's JavaScript engine, ensuring your data never leaves your device." },
         { question: `How accurate are the calculations provided by ${name}?`, answer: `All formulas and algorithms in ${name} are built to conform with standard financial, accounting, and technical specifications, providing 100% mathematical precision.` },
-        { question: "Can I use this tool on mobile devices?", answer: "Yes. QuickForma is fully responsive and optimized for seamless operation across smartphones, tablets, laptops, and desktop computers." }
+        { question: "Can I use this tool on mobile devices?", answer: "Yes. QuickForma is fully responsive and optimized for seamless operation across smartphones, tablets, laptops, and desktop computers." },
+        { question: `Does ${name} require installing desktop software or browser extensions?`, answer: `No. ${name} runs entirely inside standard web browsers (Chrome, Safari, Firefox, Edge) using modern WebAssembly and JavaScript ES6 APIs with zero installations.` },
+        { question: `Can I export results from ${name} for client reporting?`, answer: `Yes. You can copy calculated data directly to your clipboard or use browser print functions to generate clean PDF documentation for client proposals and audit trails.` },
+        { question: "How often are the underlying business rules and rates updated?", answer: "QuickForma updates calculation parameters, tax brackets, and platform fee structures regularly to maintain strict compliance with current commercial standards." }
       ]
     }
   };

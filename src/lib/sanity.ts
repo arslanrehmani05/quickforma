@@ -3,7 +3,7 @@ import imageUrlBuilder from '@sanity/image-url';
 import { RelatedGuideItem } from '../types/seo';
 
 // Extract Sanity configurations from environment variables or provide defaults
-export const projectId = import.meta.env.VITE_SANITY_PROJECT_ID || 'quickforma';
+export const projectId = import.meta.env.VITE_SANITY_PROJECT_ID || '60xo4tvv';
 export const dataset = import.meta.env.VITE_SANITY_DATASET || 'production';
 export const apiVersion = import.meta.env.VITE_SANITY_API_VERSION || '2026-01-01';
 

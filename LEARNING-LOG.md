@@ -48,4 +48,21 @@
 **Remember This:** Vector SVG favicons stay sharp on any display resolution without needing multiple bitmap sizes.
 **Full explanation:** Updated `public/favicon.svg` with the official QuickForma rounded indigo square and white lightning bolt vector paths. Updated `Navbar.tsx` brand header to render the official logo mark, and saved high-resolution PNG and JPG assets into `public/branding/` using exact filenames (`Logo PNG.png`, `Logo JPG.jpg`, `Favicon PNG.png`, `Favicon JPG.jpg`).
 
+## 2026-08-06 — QuickForma — Fixed GSC & Bing Sitemap Domain Mismatch (301 Redirect vs Canonical Subdomain)
+**Tags:** #TechnicalSEO #Sitemap #GoogleSearchConsole #BingWebmaster #CanonicalDomain #Subdomains
+**Importance:** ★★★★★
+**Frequency:** Daily
+**Syntax Introduced:** `const DOMAIN = 'https://www.quickforma.com'`
+**Concept Introduced:** Canonical Domain Alignment, 301 Redirect Handling in Search Engine Sitemap Fetchers
+**Prerequisites:** HTTP Status Codes (301 Moved Permanently), Domain Name System (DNS), Subdomains (`www` vs non-`www`)
+**Decision:** Updated `scripts/generate-sitemap.js`, `public/robots.txt`, and `ToolSeoWrapper.tsx` to use `https://www.quickforma.com` as the explicit primary domain.
+**Reason:** Vercel serves the primary live site on `https://www.quickforma.com` and 301-redirects non-`www`. When Search Console or Bing fetched non-`www` sitemaps or URLs inside non-`www` sitemaps, GSC failed on the 301 redirect ("Couldn't fetch") and Bing discarded URLs due to subdomain mismatch (0 discovered).
+**Alternative:** Forcing non-`www` apex domain across Vercel DNS.
+**Tradeoff:** Standardizes all URLs strictly to `www.quickforma.com`.
+**General principle:** Ensure all sitemap URLs match the exact primary canonical domain without triggering 301 redirects during crawler fetches.
+**CS50/roadmap.sh link:** CS50 Web Development — DNS, HTTP Redirections (301/302), & Web Crawler Indexing Rules.
+**Remember This:** Sitemaps must use the exact final canonical domain (matching www/non-www) to prevent crawler redirect failures.
+**Full explanation:** Diagnosed the root cause of GSC "Couldn't fetch" and Bing "0 URLs discovered" by inspecting live HTTP headers via python urllib. Discovered Vercel 301-redirects `quickforma.com` to `www.quickforma.com`. Updated `generate-sitemap.js`, `public/robots.txt`, and `ToolSeoWrapper.tsx` canonical tags to use `https://www.quickforma.com`. Regenerated all 74 sitemap URLs and pushed commit `2d37cbc` to main.
+
+
 

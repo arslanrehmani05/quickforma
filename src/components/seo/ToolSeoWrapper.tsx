@@ -30,7 +30,7 @@ export const ToolSeoWrapper: React.FC<ToolSeoWrapperProps> = ({
   category,
   toolId,
 }) => {
-  const currentUrl = `https://quickforma.com/tools/${toolId || ''}`;
+  const currentUrl = `https://www.quickforma.com/tools/${toolId || ''}`;
   const name = toolName || "QuickForma Business Utility";
   const cat = category || "business";
 
@@ -176,13 +176,13 @@ export const ToolSeoWrapper: React.FC<ToolSeoWrapperProps> = ({
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://quickforma.com',
+        item: 'https://www.quickforma.com',
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: category || 'Tools',
-        item: `https://quickforma.com#${category || 'all'}`,
+        item: `https://www.quickforma.com#${category || 'all'}`,
       },
       {
         '@type': 'ListItem',

@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap Location
-Sitemap: https://quickforma.com/sitemap.xml
+Sitemap: https://www.quickforma.com/sitemap.xml

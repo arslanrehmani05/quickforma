@@ -25,16 +25,17 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Brand Logo */}
         <button
           onClick={() => handleNav('home')}
-          className="flex items-center gap-3 text-left group"
+          className="flex items-center gap-3 text-left group transition-transform active:scale-95"
+          aria-label="QuickForma Homepage"
         >
-          <div className="w-8 h-8 rounded-xl bg-indigo-600 flex items-center justify-center text-white font-bold shadow-md shadow-indigo-600/20 group-hover:bg-indigo-700 transition-all">
-            <Zap className="w-4 h-4 fill-current" />
+          <div className="w-9 h-9 rounded-xl bg-indigo-600 flex items-center justify-center text-white font-bold shadow-md shadow-indigo-600/25 group-hover:bg-indigo-700 transition-all">
+            <svg viewBox="0 0 512 512" className="w-5 h-5 fill-current">
+              <path d="M 288 80 L 144 288 L 256 288 L 224 432 L 368 224 L 256 224 Z" />
+            </svg>
           </div>
-          <div>
-            <span className="text-base font-extrabold text-slate-900 tracking-tight">
-              QuickForma
-            </span>
-          </div>
+          <span className="text-xl font-extrabold text-slate-900 tracking-tight font-sans">
+            QuickForma
+          </span>
         </button>
 
         {/* Desktop Navigation & Search */}

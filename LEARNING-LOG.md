@@ -32,3 +32,20 @@
 **Remember This:** Canonical tags tell search engines which URL is the single official authority when duplicate paths exist.
 **Full explanation:** Implemented a `useEffect` hook inside `ToolSeoWrapper.tsx` that inspects `document.head` for an existing `link[rel="canonical"]` tag or creates one dynamically if missing. On every tool render, the hook updates the `href` attribute to point strictly to `https://quickforma.com/tools/${toolId}`, protecting Search Console indexing against query parameter duplicates.
 
+## 2026-08-06 — QuickForma — Implemented Scalable SVG Favicon & Brand Asset Suite
+**Tags:** #SVG #Favicon #WebAssets #Branding #HTML5 #VectorGraphics
+**Importance:** ★★★★☆
+**Frequency:** Weekly
+**Syntax Introduced:** `<link rel="icon" type="image/svg+xml" href="/favicon.svg" />`
+**Concept Introduced:** Scalable Vector Favicons, Multi-Format Brand Asset Packaging
+**Prerequisites:** HTML `<head>` tags, SVG Vector Standard
+**Decision:** Updated `public/favicon.svg` with the vector app icon and packaged named PNG/JPG files (`Logo PNG.png`, `Logo JPG.jpg`, `Favicon PNG.png`, `Favicon JPG.jpg`) into `public/branding/`.
+**Reason:** Modern browsers render SVG favicons crisply on Retina/High-DPI screens without pixelation, and structured asset naming simplifies press/brand distribution.
+**Alternative:** Legacy 16x16 `.ico` bitmap file.
+**Tradeoff:** Requires modern browser SVG favicon support (supported by 98%+ of modern browsers).
+**General principle:** Prefer vector SVG formats for brand identity assets to guarantee infinite scalability across displays.
+**CS50/roadmap.sh link:** CS50 Web Development — Scalable Vector Graphics (SVG) & HTML5 Head Assets.
+**Remember This:** Vector SVG favicons stay sharp on any display resolution without needing multiple bitmap sizes.
+**Full explanation:** Updated `public/favicon.svg` with the official QuickForma rounded indigo square and white lightning bolt vector paths. Updated `Navbar.tsx` brand header to render the official logo mark, and saved high-resolution PNG and JPG assets into `public/branding/` using exact filenames (`Logo PNG.png`, `Logo JPG.jpg`, `Favicon PNG.png`, `Favicon JPG.jpg`).
+
+

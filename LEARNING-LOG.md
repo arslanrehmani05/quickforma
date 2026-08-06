@@ -80,6 +80,23 @@
 **Remember This:** XML namespaces are strict identifiers; missing a single letter invalidates schema validation in search engines.
 **Full explanation:** Identified "Incorrect namespace" warning in Google Search Console on `<urlset>`. Found `generate-sitemap.js` declared `http://www.sitemap.org/schemas/sitemap/0.9` instead of `http://www.sitemaps.org/schemas/sitemap/0.9`. Corrected the namespace string, regenerated `public/sitemap.xml`, and pushed commit `2c2d20a` to GitHub.
 
+## 2026-08-06 — QuickForma — Fixed Vercel SPA Rewrite Interference on Sitemap XML
+**Tags:** #Vercel #SPARouting #SinglePageApp #Regex #Content-Type #Headers #TechnicalSEO
+**Importance:** ★★★★★
+**Frequency:** Daily
+**Syntax Introduced:** `"source": "/((?!sitemap\\.xml|robots\\.txt|favicon\\.svg|assets/|branding/).*)"`
+**Concept Introduced:** Negative Lookahead Regex for SPA Route Rewrites, HTTP Header Overrides
+**Prerequisites:** Regular Expressions (Negative Lookahead `(?!...)`), Single Page App Routing, Web Server Rewrites
+**Decision:** Updated `vercel.json` to use a negative lookahead regex excluding static files (`sitemap.xml`, `robots.txt`, `favicon.svg`) from SPA `index.html` rewrites and set explicit `Content-Type: application/xml` headers.
+**Reason:** Vercel's catch-all `/(.*)` rewrite was intercepting requests to `sitemap.xml` and returning HTML (`index.html`), causing Google Search Console to report "Sitemap is HTML — Tag: html".
+**Alternative:** Serving sitemap dynamically via a serverless API function.
+**Tradeoff:** Requires explicit maintenance of excluded static asset folder prefixes in `vercel.json`.
+**General principle:** Configure SPA catch-all rewrite rules with negative lookaheads so static file requests are served directly by the CDN rather than routed to index.html.
+**CS50/roadmap.sh link:** CS50 Web Development — Web Server Configuration, URL Rewriting, & MIME Content-Types.
+**Remember This:** SPA catch-all rewrites must exclude static metadata files, otherwise search engine crawlers receive HTML index pages instead of XML.
+**Full explanation:** Diagnosed why GSC reported "Sitemap is HTML". Inspected `vercel.json` and found `{"source": "/(.*)", "destination": "/index.html"}` was rewriting `/sitemap.xml` to `/index.html`. Updated `vercel.json` with a negative lookahead regex excluding static metadata files and added explicit `application/xml` headers. Pushed commit `56305f2` to GitHub.
+
+
 
 
 

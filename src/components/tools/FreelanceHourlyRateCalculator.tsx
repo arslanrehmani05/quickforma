@@ -147,14 +147,6 @@ export const FreelanceHourlyRateCalculator: React.FC = () => {
           </div>
         </div>
       </div>
-
-      {/* 2. STRUCTURED ON-PAGE SEO INTENT CONTENT HUB (ALWAYS BENEATH THE TOOL) */}
-      <ToolSeoWrapper
-        seoData={FREELANCE_HOURLY_RATE_SEO}
-        toolName="Freelance Hourly Rate Calculator"
-        category="finance"
-        toolId="freelance-hourly-rate"
-      />
     </div>
   );
 };

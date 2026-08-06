@@ -122,14 +122,6 @@ export const PasswordGenerator: React.FC = () => {
           </div>
         </div>
       </div>
-
-      {/* 2. STRUCTURED ON-PAGE SEO INTENT CONTENT HUB (ALWAYS BENEATH THE TOOL) */}
-      <ToolSeoWrapper
-        seoData={PASSWORD_GENERATOR_SEO}
-        toolName="Password Generator"
-        category="developer"
-        toolId="password-generator"
-      />
     </div>
   );
 };

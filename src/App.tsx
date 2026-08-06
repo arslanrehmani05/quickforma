@@ -9,6 +9,8 @@ import { PrivacyPolicy } from './components/legal/PrivacyPolicy';
 import { TermsOfService } from './components/legal/TermsOfService';
 import { AboutUs } from './components/legal/AboutUs';
 import { ContactUs } from './components/legal/ContactUs';
+import { ToolSeoWrapper } from './components/seo/ToolSeoWrapper';
+import { TOOL_SEO_DATA_MAP } from './data/sampleToolSeoData';
 
 // Tools (1 Tool = 1 Dedicated Component File)
 import { InvoiceGenerator } from './components/tools/InvoiceGenerator';
@@ -61,6 +63,24 @@ import { SloganGenerator } from './components/tools/SloganGenerator';
 import { RandomNamePicker } from './components/tools/RandomNamePicker';
 import { SlugGenerator } from './components/tools/SlugGenerator';
 import { PomodoroTimer } from './components/tools/PomodoroTimer';
+
+// 10 New Strategic Tools
+import { UuidGenerator } from './components/tools/UuidGenerator';
+import { JwtDecoder } from './components/tools/JwtDecoder';
+import { ShopifyFeeCalculator } from './components/tools/ShopifyFeeCalculator';
+import { StripeFeeCalculator } from './components/tools/StripeFeeCalculator';
+import { EoqCalculator } from './components/tools/EoqCalculator';
+import { ReorderPointCalculator } from './components/tools/ReorderPointCalculator';
+import { OeeCalculator } from './components/tools/OeeCalculator';
+import { PtoCalculator } from './components/tools/PtoCalculator';
+import { UtmBuilder } from './components/tools/UtmBuilder';
+import { BmiCalculator } from './components/tools/BmiCalculator';
+
+// 4 New Strategic Pillar Tools
+import { PaypalFeeCalculator } from './components/tools/PaypalFeeCalculator';
+import { EtsyFeeCalculator } from './components/tools/EtsyFeeCalculator';
+import { VolumetricWeightCalculator } from './components/tools/VolumetricWeightCalculator';
+import { DepreciationCalculator } from './components/tools/DepreciationCalculator';
 
 import { Search, X, ChevronRight, ArrowLeft } from 'lucide-react';
 
@@ -197,6 +217,24 @@ export function App() {
       case 'slug-generator': return <SlugGenerator />;
       case 'pomodoro-timer': return <PomodoroTimer />;
 
+      // 10 New Strategic Tools
+      case 'uuid-generator': return <UuidGenerator />;
+      case 'jwt-decoder': return <JwtDecoder />;
+      case 'shopify-fee-calculator': return <ShopifyFeeCalculator />;
+      case 'stripe-fee-calculator': return <StripeFeeCalculator />;
+      case 'eoq-calculator': return <EoqCalculator />;
+      case 'reorder-point-calculator': return <ReorderPointCalculator />;
+      case 'oee-calculator': return <OeeCalculator />;
+      case 'pto-calculator': return <PtoCalculator />;
+      case 'utm-builder': return <UtmBuilder />;
+      case 'bmi-calculator': return <BmiCalculator />;
+
+      // 4 New Strategic Pillar Tools
+      case 'paypal-fee-calculator': return <PaypalFeeCalculator />;
+      case 'etsy-fee-calculator': return <EtsyFeeCalculator />;
+      case 'volumetric-weight-calculator': return <VolumetricWeightCalculator />;
+      case 'depreciation-calculator': return <DepreciationCalculator />;
+
       default:
         return <HomePage tools={TOOLS_CATALOG} onSelectTool={handleSelectView} />;
     }
@@ -266,7 +304,20 @@ export function App() {
             </div>
           )}
 
-          {renderActiveViewComponent()}
+          {activeTool ? (
+            <div className="space-y-12">
+              {renderActiveViewComponent()}
+              {/* Ensure 100% of tool pages render the Authority Page Template v2.0 */}
+              <ToolSeoWrapper
+                seoData={TOOL_SEO_DATA_MAP[activeView]}
+                toolName={activeTool.name}
+                category={activeTool.category}
+                toolId={activeTool.id}
+              />
+            </div>
+          ) : (
+            renderActiveViewComponent()
+          )}
         </main>
       </div>
 

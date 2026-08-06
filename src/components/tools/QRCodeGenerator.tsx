@@ -134,14 +134,6 @@ export const QRCodeGenerator: React.FC = () => {
           </div>
         </div>
       </div>
-
-      {/* 2. STRUCTURED ON-PAGE SEO INTENT CONTENT HUB (ALWAYS BENEATH THE TOOL) */}
-      <ToolSeoWrapper
-        seoData={QR_CODE_GENERATOR_SEO}
-        toolName="QR Code Generator"
-        category="utilities"
-        toolId="qr-code-generator"
-      />
     </div>
   );
 };

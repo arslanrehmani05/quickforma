@@ -136,6 +136,12 @@ export interface WorkflowProgressionData extends BaseSectionProps {
   steps: WorkflowStepItem[];
 }
 
+export interface InterpretResultsData extends BaseSectionProps {
+  typicalRanges?: string;
+  goodVsBadOutput?: string;
+  nextStepsGuidance?: string;
+}
+
 export interface ToolSeoData {
   atAGlance?: AtAGlanceData;
   overview?: ToolOverviewData;
@@ -143,6 +149,7 @@ export interface ToolSeoData {
   howToUse?: HowToUseData;
   workedExample?: WorkedExampleData;
   howItWorks?: HowItWorksData;
+  interpretResults?: InterpretResultsData;
   bestPractices?: BestPracticesData;
   commonMistakes?: CommonMistakesData;
   industryUseCases?: IndustryUseCasesData;

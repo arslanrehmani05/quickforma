@@ -361,16 +361,6 @@ export const InvoiceGenerator: React.FC = () => {
           </div>
         </div>
       </div>
-
-      {/* 2. STRUCTURED ON-PAGE SEO INTENT CONTENT HUB (ALWAYS BENEATH THE TOOL) */}
-      <div className="no-print">
-        <ToolSeoWrapper
-          seoData={INVOICE_GENERATOR_SEO}
-          toolName="Invoice Generator"
-          category="finance"
-          toolId="invoice-generator"
-        />
-      </div>
     </div>
   );
 };

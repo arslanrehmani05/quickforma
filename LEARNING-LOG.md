@@ -64,5 +64,22 @@
 **Remember This:** Sitemaps must use the exact final canonical domain (matching www/non-www) to prevent crawler redirect failures.
 **Full explanation:** Diagnosed the root cause of GSC "Couldn't fetch" and Bing "0 URLs discovered" by inspecting live HTTP headers via python urllib. Discovered Vercel 301-redirects `quickforma.com` to `www.quickforma.com`. Updated `generate-sitemap.js`, `public/robots.txt`, and `ToolSeoWrapper.tsx` canonical tags to use `https://www.quickforma.com`. Regenerated all 74 sitemap URLs and pushed commit `2d37cbc` to main.
 
+## 2026-08-06 — QuickForma — Fixed XML Sitemap Namespace Error (sitemap.org vs sitemaps.org)
+**Tags:** #XML #Sitemap #W3C #GoogleSearchConsole #Namespace #TechnicalSEO
+**Importance:** ★★★★★
+**Frequency:** Rare
+**Syntax Introduced:** `xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"`
+**Concept Introduced:** XML Namespaces (`xmlns`), W3C Sitemap Protocol Validation
+**Prerequisites:** XML Syntax, Web Namespaces
+**Decision:** Updated `scripts/generate-sitemap.js` to declare `xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"` (plural `sitemaps.org`).
+**Reason:** GSC read all 74 URLs but flagged an "Incorrect namespace" error because the namespace URL was missing the `s` in `sitemaps.org`.
+**Alternative:** None (W3C standard mandates exact URL match).
+**Tradeoff:** Strict compliance required by Google XML parsers.
+**General principle:** XML namespace URLs must match the official W3C schema specification character-for-character.
+**CS50/roadmap.sh link:** CS50 Web Development — XML Schemas, Namespaces, & Validation Standards.
+**Remember This:** XML namespaces are strict identifiers; missing a single letter invalidates schema validation in search engines.
+**Full explanation:** Identified "Incorrect namespace" warning in Google Search Console on `<urlset>`. Found `generate-sitemap.js` declared `http://www.sitemap.org/schemas/sitemap/0.9` instead of `http://www.sitemaps.org/schemas/sitemap/0.9`. Corrected the namespace string, regenerated `public/sitemap.xml`, and pushed commit `2c2d20a` to GitHub.
+
+
 
 

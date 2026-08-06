@@ -1,0 +1,6 @@
+# Allow all search engine crawlers and AI bots (Googlebot, Bingbot, PerplexityBot, GPTBot)
+User-agent: *
+Allow: /
+
+# Sitemap Location
+Sitemap: https://quickforma.com/sitemap.xml

@@ -24,42 +24,56 @@ $$\text{Required Monthly Pageviews} = \frac{\$300}{\$15} \times 1,000 = \mathbf{
 
 ---
 
+## 🏆 CEO Master Execution Roadmap & Priorities (Revised)
+
+Core Philosophy: **Quality & Authority Over Mass URL Generation**. Build 64 exceptional, high-utility tool pages + topical blog authority before scaling programmatic pages.
+
+```text
+Phase 0 Strategy Loop:
+Launch  -->  Index  -->  Observe (GSC Data)  -->  Learn  -->  Expand
+```
+
+### 📊 60-Day Strategic Priority Matrix
+
+| Priority | Stage & Task | Focus / Deliverable | Status |
+| :---: | :--- | :--- | :---: |
+| **1** | **Phase 1 — Technical SEO** | Dynamic `sitemap.xml`, `robots.txt`, Submit GSC & Bing, Request Indexing | 🟢 NOW |
+| **2** | **Phase 2 — Finish Existing Tool Pages** | Complete 11-section high-quality content across all 64 tools (Zero thin pages) | ⏳ UPCOMING |
+| **3** | **Phase 3 — Sanity CMS Integration** | Connect Sanity CMS & publish first 30–50 high-authority blog articles | ⏳ UPCOMING |
+| **4** | **Phase 4 — Tool Functionality Enhancements** | Upgrade tool capabilities monthly (drives backlinks, engagement, sharing) | ⏳ UPCOMING |
+| **5** | **Phase 5 — Search Console Observation & Learning** | Analyze GSC impressions, real search terms, CTRs, and indexing speeds | ⏳ UPCOMING |
+| **6** | **Phase 6 — Data-Backed Programmatic SEO (pSEO)** | Expand ONLY into sub-niches backed by real GSC search data & Unique Intent Rules | ⏳ UPCOMING |
+
+---
+
+### 🛡️ Strict pSEO Unique Intent Rule
+**Rule**: Every pSEO page MUST satisfy **Unique Intent**, not just a unique keyword. If a proposed pSEO page is just the same tool with 1 word changed, **DO NOT BUILD IT**.
+
+Every pSEO niche variation (e.g., `/invoice-generator/freelance-designer` vs `/invoice-generator/construction`) MUST have:
+1. Different FAQs & edge-case guidance
+2. Different invoice template defaults & line-item examples
+3. Different tax, legal, or regional compliance notes
+4. Different terminology & workflow explanations
+5. Different related articles and internal links
+
+---
+
 ## 🚀 The 90-Day Velocity Sprint Execution Plan
 
 ```
-[Days 1-14]  --> Catalog Expansion (7 to 25 Tools) + Vercel Deployment + Compliance Pages
-[Days 15-30] --> SEMrush Low-KD Mining + pSEO Pages + AdSense Application (Day 25)
-[Days 31-60] --> AdSense Approval + Reddit / Link Magnets + Initial Traffic Surge
-[Days 61-90] --> Scale to 50 Tools + High-CTR Ad Placement Tuning = $300/mo Unlocked
+[Phase 1] --> Technical SEO (sitemap.xml, robots.txt, Search Console Indexing Request)
+[Phase 2] --> Complete 11-Section Content across all 64 Existing Tools
+[Phase 3] --> Sanity CMS Integration + 30–50 High-Authority Blog Clusters
+[Phase 4] --> Search Console Data Analysis (GSC impressions, CTR tuning, keyword discovery)
+[Phase 5] --> Data-Backed pSEO Expansion (Unique Intent Verified Only)
 ```
 
-### Phase 1: Days 1 – 14 | Vercel Deployment & Top 10 Priority Build
-1. **Deploy to Vercel**: Connect custom `.com` domain (`quickforma.com`) with free SSL.
-2. **Execute Top 10 Fast-Traffic Priority Build Order**:
-   - Priority 1: `PasswordGenerator.tsx` *(Trivial build, huge evergreen volume)*
-   - Priority 2: `WordCounter.tsx` *(Trivial build, huge evergreen volume)*
-   - Priority 3: `AgeCalculator.tsx` *(Trivial build, huge volume)*
-   - Priority 4: `TipCalculator.tsx` *(Trivial build, high volume)*
-   - Priority 5: `QRCodeGenerator.tsx` *(Trivial build, huge volume)*
-   - Priority 6: `UnitConverter.tsx` *(Moderate build, high volume)*
-   - Priority 7: `InvoiceGenerator.tsx` *(Moderate build, high commercial intent)*
-   - Priority 8: `DateDifferenceCalculator.tsx` *(Trivial build, steady volume)*
-   - Priority 9: `DiscountCalculator.tsx` *(Trivial build, decent volume)*
-   - Priority 10: `CaseConverter.tsx` *(Trivial build, decent volume)*
-3. **Publish Legal Compliance Pages**:
-   - `Privacy Policy` (detailing zero cookie collection / local browser processing)
-   - `Terms of Service`
-   - `About Us` (explaining free utility mission)
-   - `Contact Us` (working contact form or email)
-4. **Google Search Console**: Submit `sitemap.xml` on Day 3.
+### Phase 1: Technical SEO (Immediate Priority)
+1. **Dynamic `sitemap.xml`**: Auto-generated XML feed indexing all tool routes and static pages.
+2. **`robots.txt`**: Optimized crawler directive file referencing sitemap location.
+3. **Google Search Console & Bing Webmaster**: Submit sitemap and request indexing of home & flagship tools.
+4. **Validate Structured Data**: Verify zero errors in JSON-LD schemas via Google Rich Results Test.
 
-### Phase 2: Days 15 – 30 | Catalog Expansion & AdSense Submission
-1. **SEMrush Keyword Mining & Catalog Expansion (10 → 30 Tools)**.
-2. **Programmatic SEO (pSEO) Landing Pages**:
-   - Create niche variations:
-     - `/tools/invoice-generator/freelance-designer`
-     - `/tools/invoice-generator/consultant`
-     - `/tools/invoice-generator/construction`
 3. **AdSense Application (Day 25 – 28)**:
    - Apply once 25+ tools, legal pages, and initial GSC impressions are confirmed.
 

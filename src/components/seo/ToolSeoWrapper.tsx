@@ -28,9 +28,22 @@ export const ToolSeoWrapper: React.FC<ToolSeoWrapperProps> = ({
   category,
   toolId,
 }) => {
-  if (!seoData) return null;
-
   const currentUrl = `https://quickforma.com/tools/${toolId || ''}`;
+
+  // Dynamically update document head canonical tag to protect against duplicate indexing
+  React.useEffect(() => {
+    if (!toolId) return;
+
+    let canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    if (!canonicalLink) {
+      canonicalLink = document.createElement('link');
+      canonicalLink.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonicalLink);
+    }
+    canonicalLink.setAttribute('href', currentUrl);
+  }, [toolId, currentUrl]);
+
+  if (!seoData) return null;
 
   // 1. WebApplication Schema
   const webAppSchema = {

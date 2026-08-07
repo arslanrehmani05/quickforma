@@ -192,6 +192,22 @@
 **Remember This:** A unified Content Hub view allows writers to draft, review, and publish all content streams from a single command dashboard.
 **Full explanation:** Updated `sanity.config.ts` to add `🚀 Content Hub (Command Center)` at the top of Sanity Studio's Desk Structure. Added unified GROQ streams for *All Published & Draft Content*, *Drafts & Pending Review*, *Published Live Content*, and *Featured & Editor's Picks*. Grouped all technical SEO, social, and governance fields into collapsed accordions across `article`, `playbook`, `collection`, and `glossary` schemas. Verified clean `npm run build` and pushed commit `4573608` to GitHub.
 
+## 2026-08-07 — QuickForma — CMS Architecture Freeze & Dynamic Infrastructure Refactor
+**Tags:** #CMSPerfection #DynamicReadingTime #SystemTimestamps #ContentHealthAudit #ZeroTechnicalDebt
+**Importance:** ★★★★★
+**Frequency:** Rare
+**Syntax Introduced:** `isEvergreen == true && !defined(lastReviewedAt)`, `Math.ceil(words / 200)`
+**Concept Introduced:** Automated Dynamic Infrastructure, Stale Field Elimination, Content Quality Audit Streams
+**Prerequisites:** Sanity Desk Structure Customization, Portable Text Word Count Parsers
+**Decision:** Eliminated manual `readingTime`, `updatedAt`, `difficulty`, `estimatedCompletionTime`, and `businessImpact` fields from schemas. Replaced with dynamic frontend word-count calculations and Sanity's system `_updatedAt` timestamp. Added `➕ Create New Content` choice and `📊 Content Health & Audit Dashboard` streams in `sanity.config.ts`.
+**Reason:** Prevents stale data in CMS, eliminates unnecessary manual input for editors, and provides automated quality assurance audits for missing media, unverified evergreen content, and missing author profiles.
+**Alternative:** Manually editing reading time and last updated dates on every post.
+**Tradeoff:** Dynamic reading time requires a lightweight word-count calculation on page mount; eliminates human data-entry friction.
+**General principle:** Never store data in a database that can be computed dynamically on demand.
+**CS50/roadmap.sh link:** CS50 Web Development — Derived Data vs Database Normalization & CMS Quality Dashboards.
+**Remember This:** System fields (`_updatedAt`) and dynamic derived calculations (reading time) guarantee zero-stale data in your publishing system.
+**Full explanation:** Removed `readingTime`, `updatedAt`, `difficulty`, `estimatedCompletionTime`, and `businessImpact` from `article.ts` and `playbook.ts`. Added dynamic reading time calculation (`Math.ceil(words / 200)`) and system `_updatedAt` display in `ArticlePage.tsx` and `PlaybookPage.tsx`. Added `➕ Create New Content` choice and `📊 Content Health & Audit Dashboard` streams to `sanity.config.ts`. Verified clean `npm run build` and pushed commit `f51acd2` to GitHub.
+
 
 
 

@@ -128,6 +128,22 @@
 **Remember This:** Explicitly structured CMS schemas prevent disruptive code refactors when scaling content publishing.
 **Full explanation:** Extended `categorySchema` with `featuredImage` and `displayOrder`, `tagSchema` with `description` and `displayOrder`, `articleSchema` with `difficulty` and `estimatedCompletionTime`, `playbookSchema` with `businessImpact` dropdown. Built `collectionSchema` and `glossarySchema` in `src/sanity/schemas/`. Reordered Studio sidebar (`Articles`, `Collections`, `Business Playbooks`, `Glossary`, `Categories`, `Authors`, `Tags`, `SEO Defaults`, `Site Settings`). Verified clean production build (`npm run build`) and pushed commit `619edda` to GitHub.
 
+## 2026-08-07 — QuickForma — Resolved Sanity Studio Portable Text Schema Validation Error
+**Tags:** #SanityCMS #PortableText #SchemaValidation #SanityStudio
+**Importance:** ★★★★☆
+**Frequency:** Rare
+**Syntax Introduced:** Schema Portable Text `of` array type declarations
+**Concept Introduced:** Portable Text Field Customization, Schema Type Registration
+**Prerequisites:** Headless CMS Schema Validation, Portable Text Block Types
+**Decision:** Removed `{ type: 'code' }` from `article.ts` and `playbook.ts` Portable Text body definitions.
+**Reason:** The core `sanity` package requires `@sanity/code-input` plugin to resolve `type: 'code'`, which introduced React 19 compiler runtime peer dependency conflicts with React 18. Removing the unneeded `code` block type resolved the schema validation error cleanly without extra dependencies.
+**Alternative:** Installing `@sanity/code-input` and forcing React 19 overrides.
+**Tradeoff:** Portable Text body uses standard rich text blocks and embedded images instead of code syntax blocks.
+**General principle:** Eliminate unconfigured or non-essential block types from CMS schema arrays to prevent runtime schema validation errors and package bloat.
+**CS50/roadmap.sh link:** CS50 Web Development — Schema Validation & Rich Text Content Modeling.
+**Remember This:** Portable Text schema block types must be backed by a registered schema type or plugin to avoid Studio validation errors.
+**Full explanation:** Diagnosed "Unknown type: code" error on `/studio` load in `article` and `playbook` schemas. Found `body` field declared `{ type: 'code' }` without an installed or configured code plugin. Removed `{ type: 'code' }` from `article.ts` and `playbook.ts`, uninstalled unused `@sanity/code-input`, verified clean `npm run build`, and pushed commit `adad1f6` to GitHub.
+
 
 
 

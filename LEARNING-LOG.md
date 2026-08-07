@@ -96,6 +96,22 @@
 **Remember This:** SPA catch-all rewrites must exclude static metadata files, otherwise search engine crawlers receive HTML index pages instead of XML.
 **Full explanation:** Diagnosed why GSC reported "Sitemap is HTML". Inspected `vercel.json` and found `{"source": "/(.*)", "destination": "/index.html"}` was rewriting `/sitemap.xml` to `/index.html`. Updated `vercel.json` with a negative lookahead regex excluding static metadata files and added explicit `application/xml` headers. Pushed commit `56305f2` to GitHub.
 
+## 2026-08-07 — QuickForma — Implemented Embedded Sanity Studio CMS Architecture & 7 Core Content Schemas
+**Tags:** #SanityCMS #SanityStudio #React #Vite #SinglePageApp #PortableText #Schemas #CMS
+**Importance:** ★★★★★
+**Frequency:** Rare
+**Syntax Introduced:** `defineConfig`, `structureTool`, `defineType`, `defineField`, `<Studio config={...} />`
+**Concept Introduced:** Embedded CMS Architecture, Schema Modeling, Single-Page App Admin Mount, Portable Text
+**Prerequisites:** React Components, Object Modeling, SPA Client-Side Routing
+**Decision:** Mounted Sanity Studio directly inside the existing Vite React SPA at `/studio` using `sanity/structure` and custom document schema definitions.
+**Reason:** Provides a 100% self-hosted, scalable visual editorial dashboard on `quickforma.com/studio` and `localhost:5173/studio` without requiring a separate server or external CMS deployment cost.
+**Alternative:** Standalone hosted studio via `sanity deploy` or external third-party headless CMS.
+**Tradeoff:** Increases production bundle size slightly for `/studio` routes (mitigated by SPA route separation).
+**General principle:** Embed administrative CMS tooling directly within client-side application routes to unify deployment pipelines and project configuration.
+**CS50/roadmap.sh link:** CS50 Web Development — Headless Content Management Systems, Relational Data Modeling, & SPA Routing.
+**Remember This:** Embedded CMS studios allow full content editing capabilities inside your app without extra server infrastructure.
+**Full explanation:** Created `sanity.config.ts`, `sanity.cli.ts`, and 7 core document schemas (`article`, `playbook`, `category`, `tag`, `author`, `siteSettings`, `seoDefaults`) inside `src/sanity/schemas/`. Created `src/pages/StudioPage.tsx` importing Sanity's `<Studio />` component and mounted it conditionally in `App.tsx` when `window.location.pathname.startsWith('/studio')`. Added `styled-components` peer dependency and verified clean Vite bundling (`npm run build`). Pushed commit `0261496` to GitHub.
+
 
 
 

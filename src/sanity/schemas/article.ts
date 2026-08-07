@@ -98,11 +98,20 @@ export const articleSchema = defineType({
 
     // SEO Fieldset (Collapsible & Collapsed by Default)
     defineField({
+      name: 'overrideSeo',
+      title: '✏️ Override SEO Meta Tags',
+      type: 'boolean',
+      fieldset: 'seoGroup',
+      initialValue: false,
+      description: 'By default, QuickForma automatically generates SEO tags from your Article Title and Excerpt. Check this box only if you need custom SEO overrides.',
+    }),
+    defineField({
       name: 'seoTitle',
       title: 'SEO Title (Meta Title)',
       type: 'string',
       fieldset: 'seoGroup',
-      description: 'Defaults to article title if blank. Ideal length: 50-60 characters.',
+      hidden: ({ document }) => !document?.overrideSeo,
+      description: 'Ideal length: 50-60 characters. Search engines truncate beyond 60.',
     }),
     defineField({
       name: 'metaDescription',
@@ -110,19 +119,22 @@ export const articleSchema = defineType({
       type: 'text',
       rows: 2,
       fieldset: 'seoGroup',
-      description: 'Ideal length: 140-155 characters.',
+      hidden: ({ document }) => !document?.overrideSeo,
+      description: 'Ideal length: 140-155 characters. Snippet preview on Google results.',
     }),
     defineField({
       name: 'canonicalUrl',
       title: 'Canonical URL Override',
       type: 'url',
       fieldset: 'seoGroup',
+      hidden: ({ document }) => !document?.overrideSeo,
     }),
     defineField({
       name: 'primaryKeyword',
       title: 'Primary Target Keyword',
       type: 'string',
       fieldset: 'seoGroup',
+      hidden: ({ document }) => !document?.overrideSeo,
     }),
     defineField({
       name: 'secondaryKeywords',
@@ -130,12 +142,14 @@ export const articleSchema = defineType({
       type: 'array',
       of: [{ type: 'string' }],
       fieldset: 'seoGroup',
+      hidden: ({ document }) => !document?.overrideSeo,
     }),
     defineField({
       name: 'searchIntent',
       title: 'Search Intent Classification',
       type: 'string',
       fieldset: 'seoGroup',
+      hidden: ({ document }) => !document?.overrideSeo,
       options: {
         list: [
           { title: 'Transactional', value: 'transactional' },
@@ -149,12 +163,21 @@ export const articleSchema = defineType({
 
     // Social Sharing Fieldset (Collapsible & Collapsed by Default)
     defineField({
+      name: 'overrideSocial',
+      title: '🎨 Override Social Share Previews (OpenGraph / Twitter)',
+      type: 'boolean',
+      fieldset: 'socialGroup',
+      initialValue: false,
+      description: 'By default, social cards automatically inherit your SEO values and cover image. Check this box only if you need custom social overrides.',
+    }),
+    defineField({
       name: 'socialTitle',
       title: 'Social Title',
       type: 'string',
       fieldset: 'socialGroup',
+      hidden: ({ document }) => !document?.overrideSocial,
       validation: (Rule) => Rule.max(60),
-      description: 'Optional title used only when this page is shared. If left blank, QuickForma automatically uses the SEO values.',
+      description: 'Max 60 characters for optimal rendering on LinkedIn, Facebook, and X.',
     }),
     defineField({
       name: 'socialDescription',
@@ -162,14 +185,16 @@ export const articleSchema = defineType({
       type: 'text',
       rows: 2,
       fieldset: 'socialGroup',
+      hidden: ({ document }) => !document?.overrideSocial,
       validation: (Rule) => Rule.max(160),
-      description: 'Optional description used only for social sharing. If left blank, QuickForma automatically uses the SEO values.',
+      description: 'Max 160 characters for social card previews.',
     }),
     defineField({
       name: 'socialImage',
       title: 'Social Share Image',
       type: 'image',
       fieldset: 'socialGroup',
+      hidden: ({ document }) => !document?.overrideSocial,
       options: { hotspot: true },
       fields: [
         defineField({
@@ -179,7 +204,7 @@ export const articleSchema = defineType({
           description: 'Describe the social image for accessibility.',
         }),
       ],
-      description: 'Optional image used for Open Graph and social sharing. If left blank, QuickForma automatically uses the SEO values.',
+      description: 'Custom Open Graph banner image.',
     }),
 
     // Advanced Editorial & Governance Controls (Collapsible & Collapsed by Default)

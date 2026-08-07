@@ -204,13 +204,7 @@ export const articleSchema = defineType({
       type: 'datetime',
       fieldset: 'editorialGroup',
       initialValue: () => new Date().toISOString(),
-    }),
-    defineField({
-      name: 'updatedAt',
-      title: 'Last Updated Date',
-      type: 'datetime',
-      fieldset: 'editorialGroup',
-      initialValue: () => new Date().toISOString(),
+      description: 'Defaults to current date/time. Override only for imported or scheduled posts.',
     }),
     defineField({
       name: 'featured',
@@ -264,34 +258,6 @@ export const articleSchema = defineType({
         ],
       },
       initialValue: 'draft',
-    }),
-    defineField({
-      name: 'difficulty',
-      title: 'Difficulty Level',
-      type: 'string',
-      fieldset: 'editorialGroup',
-      options: {
-        list: [
-          { title: 'Beginner', value: 'Beginner' },
-          { title: 'Intermediate', value: 'Intermediate' },
-          { title: 'Advanced', value: 'Advanced' },
-        ],
-      },
-      initialValue: 'Intermediate',
-    }),
-    defineField({
-      name: 'estimatedCompletionTime',
-      title: 'Estimated Completion / Implementation Time',
-      type: 'string',
-      fieldset: 'editorialGroup',
-      description: 'Estimates how long it takes to complete the tutorial or implement the process.',
-    }),
-    defineField({
-      name: 'readingTime',
-      title: 'Estimated Reading Time',
-      type: 'string',
-      fieldset: 'editorialGroup',
-      description: 'e.g. 5 min read, 12 min read',
     }),
     defineField({
       name: 'enableToc',

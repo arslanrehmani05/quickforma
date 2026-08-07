@@ -142,12 +142,24 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({ slug, onBack }) => {
               <span>Published {new Date(article.publishedAt).toLocaleDateString()}</span>
             </div>
           )}
-          {article.readingTime && (
+          {article._updatedAt && (
             <div className="flex items-center gap-1.5">
-              <Clock className="w-4 h-4 text-slate-400" />
-              <span>{article.readingTime} min read</span>
+              <Calendar className="w-4 h-4 text-slate-400" />
+              <span>Updated {new Date(article._updatedAt).toLocaleDateString()}</span>
             </div>
           )}
+          <div className="flex items-center gap-1.5">
+            <Clock className="w-4 h-4 text-slate-400" />
+            <span>
+              {(() => {
+                if (!article.body || !Array.isArray(article.body)) return '4 min read';
+                const text = article.body.map((b: any) => (b.children ? b.children.map((c: any) => c.text).join(' ') : '')).join(' ');
+                const words = text.trim().split(/\s+/).filter(Boolean).length;
+                const minutes = Math.max(1, Math.ceil(words / 200));
+                return `${minutes} min read`;
+              })()}
+            </span>
+          </div>
           {article.lastReviewedAt && (
             <div className="flex items-center gap-1.5 text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-100">
               <CheckCircle2 className="w-3.5 h-3.5" />

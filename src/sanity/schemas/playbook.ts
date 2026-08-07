@@ -202,13 +202,7 @@ export const playbookSchema = defineType({
       type: 'datetime',
       fieldset: 'editorialGroup',
       initialValue: () => new Date().toISOString(),
-    }),
-    defineField({
-      name: 'updatedAt',
-      title: 'Last Updated Date',
-      type: 'datetime',
-      fieldset: 'editorialGroup',
-      initialValue: () => new Date().toISOString(),
+      description: 'Defaults to current date/time. Override only for imported or scheduled posts.',
     }),
     defineField({
       name: 'featured',
@@ -264,32 +258,10 @@ export const playbookSchema = defineType({
       initialValue: 'draft',
     }),
     defineField({
-      name: 'businessImpact',
-      title: 'Business Impact Outcome',
-      type: 'string',
-      fieldset: 'editorialGroup',
-      options: {
-        list: [
-          { title: 'Revenue Growth', value: 'Revenue Growth' },
-          { title: 'Cost Reduction', value: 'Cost Reduction' },
-          { title: 'Time Savings', value: 'Time Savings' },
-          { title: 'Risk Mitigation', value: 'Risk Mitigation' },
-          { title: 'Compliance & Legal Protection', value: 'Compliance & Legal Protection' },
-        ],
-      },
-    }),
-
-    // Additional
-    defineField({
-      name: 'readTime',
-      title: 'Estimated Reading Time',
-      type: 'string',
-      placeholder: 'e.g. 15 min read',
-    }),
-    defineField({
-      name: 'enableTableOfContents',
+      name: 'enableToc',
       title: 'Enable Table of Contents',
       type: 'boolean',
+      fieldset: 'editorialGroup',
       initialValue: true,
     }),
   ],

@@ -147,12 +147,24 @@ export const PlaybookPage: React.FC<PlaybookPageProps> = ({ slug, onBack }) => {
               <span>Published {new Date(playbook.publishedAt).toLocaleDateString()}</span>
             </div>
           )}
-          {playbook.readingTime && (
+          {playbook._updatedAt && (
             <div className="flex items-center gap-1.5">
-              <Clock className="w-4 h-4 text-slate-400" />
-              <span>{playbook.readingTime} min read</span>
+              <Calendar className="w-4 h-4 text-slate-400" />
+              <span>Updated {new Date(playbook._updatedAt).toLocaleDateString()}</span>
             </div>
           )}
+          <div className="flex items-center gap-1.5">
+            <Clock className="w-4 h-4 text-slate-400" />
+            <span>
+              {(() => {
+                if (!playbook.body || !Array.isArray(playbook.body)) return '5 min read';
+                const text = playbook.body.map((b: any) => (b.children ? b.children.map((c: any) => c.text).join(' ') : '')).join(' ');
+                const words = text.trim().split(/\s+/).filter(Boolean).length;
+                const minutes = Math.max(1, Math.ceil(words / 200));
+                return `${minutes} min read`;
+              })()}
+            </span>
+          </div>
           {playbook.lastReviewedAt && (
             <div className="flex items-center gap-1.5 text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-100">
               <CheckCircle2 className="w-3.5 h-3.5" />

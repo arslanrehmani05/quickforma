@@ -29,6 +29,20 @@ export default defineConfig({
                   .title('Content Hub Overview')
                   .items([
                     S.listItem()
+                      .title('➕ Create New Content (Choose Type)')
+                      .id('createNewContent')
+                      .child(
+                        S.list()
+                          .title('Select Content Type to Create')
+                          .items([
+                            S.documentTypeListItem('article').title('📰 Write New Article'),
+                            S.documentTypeListItem('playbook').title('📘 Create Business Playbook'),
+                            S.documentTypeListItem('collection').title('📦 Assemble Toolkit Collection'),
+                            S.documentTypeListItem('glossary').title('📖 Define Glossary Term'),
+                          ])
+                      ),
+                    S.divider(),
+                    S.listItem()
                       .title('📝 All Published & Draft Content (Unified List)')
                       .id('allContent')
                       .child(
@@ -63,6 +77,40 @@ export default defineConfig({
                           .title('Featured & Editor\'s Choice')
                           .filter('_type in ["article", "playbook", "collection", "glossary"] && (featured == true || editorsPick == true)')
                           .defaultOrdering([{ field: '_updatedAt', direction: 'desc' }])
+                      ),
+                    S.divider(),
+                    S.listItem()
+                      .title('📊 Content Health & Audit Dashboard')
+                      .id('healthAudit')
+                      .child(
+                        S.list()
+                          .title('Health & Quality Audits')
+                          .items([
+                            S.listItem()
+                              .title('⚠️ Evergreen Posts Needing Audit (No Review Date)')
+                              .id('needingAudit')
+                              .child(
+                                S.documentList()
+                                  .title('Unverified Evergreen Content')
+                                  .filter('_type in ["article", "playbook"] && isEvergreen == true && !defined(lastReviewedAt)')
+                              ),
+                            S.listItem()
+                              .title('🖼️ Content Missing Alt Text or Featured Image')
+                              .id('missingMedia')
+                              .child(
+                                S.documentList()
+                                  .title('Missing Media / Alt Text')
+                                  .filter('_type in ["article", "playbook"] && (!defined(featuredImage) || !defined(featuredImage.alt))')
+                              ),
+                            S.listItem()
+                              .title('👤 Posts Missing Author Reference')
+                              .id('missingAuthor')
+                              .child(
+                                S.documentList()
+                                  .title('Missing Author Profile')
+                                  .filter('_type in ["article", "playbook"] && !defined(author)')
+                              ),
+                          ])
                       ),
                   ])
               ),

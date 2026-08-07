@@ -189,6 +189,33 @@ export const playbookSchema = defineType({
       initialValue: false,
     }),
     defineField({
+      name: 'editorsPick',
+      title: "Editor's Pick",
+      type: 'boolean',
+      initialValue: false,
+      description: 'Highlights top-tier editorial picks across landing pages.',
+    }),
+    defineField({
+      name: 'isEvergreen',
+      title: 'Evergreen Content',
+      type: 'boolean',
+      initialValue: true,
+      description: 'Designates foundational, long-term non-decaying content.',
+    }),
+    defineField({
+      name: 'lastReviewedAt',
+      title: 'Last Reviewed Date',
+      type: 'datetime',
+      description: 'Timestamp when content facts and formulas were last audited.',
+    }),
+    defineField({
+      name: 'reviewedBy',
+      title: 'Reviewed By (Author)',
+      type: 'reference',
+      to: [{ type: 'author' }],
+      description: 'Expert author who conducted the technical/financial review.',
+    }),
+    defineField({
       name: 'draftStatus',
       title: 'Editorial Draft Status',
       type: 'string',

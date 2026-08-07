@@ -74,3 +74,78 @@ export async function getRelatedGuides(category?: string, toolId?: string): Prom
     return [];
   }
 }
+
+export async function getArticleBySlug(slug: string) {
+  try {
+    const query = `*[_type == "article" && slug.current == $slug][0]{
+      ...,
+      "categoryName": category->name,
+      "categorySlug": category->slug.current,
+      "authorName": author->name,
+      "authorRole": author->role,
+      "authorImage": author->avatar,
+      "reviewerName": reviewedBy->name
+    }`;
+    return await sanityClient.fetch(query, { slug });
+  } catch (err) {
+    console.warn('Failed to fetch article by slug:', err);
+    return null;
+  }
+}
+
+export async function getPlaybookBySlug(slug: string) {
+  try {
+    const query = `*[_type == "playbook" && slug.current == $slug][0]{
+      ...,
+      "categoryName": category->name,
+      "categorySlug": category->slug.current,
+      "authorName": author->name,
+      "authorRole": author->role,
+      "reviewerName": reviewedBy->name
+    }`;
+    return await sanityClient.fetch(query, { slug });
+  } catch (err) {
+    console.warn('Failed to fetch playbook by slug:', err);
+    return null;
+  }
+}
+
+export async function getCollectionBySlug(slug: string) {
+  try {
+    const query = `*[_type == "collection" && slug.current == $slug][0]{
+      ...,
+      "categoryName": category->name,
+      "categorySlug": category->slug.current,
+      "reviewerName": reviewedBy->name
+    }`;
+    return await sanityClient.fetch(query, { slug });
+  } catch (err) {
+    console.warn('Failed to fetch collection by slug:', err);
+    return null;
+  }
+}
+
+export async function getGlossaryTermBySlug(slug: string) {
+  try {
+    const query = `*[_type == "glossary" && slug.current == $slug][0]{
+      ...,
+      "categoryName": category->name,
+      "categorySlug": category->slug.current,
+      "reviewerName": reviewedBy->name
+    }`;
+    return await sanityClient.fetch(query, { slug });
+  } catch (err) {
+    console.warn('Failed to fetch glossary term by slug:', err);
+    return null;
+  }
+}
+
+export async function getCategoryBySlug(slug: string) {
+  try {
+    const query = `*[_type == "category" && slug.current == $slug][0]`;
+    return await sanityClient.fetch(query, { slug });
+  } catch (err) {
+    console.warn('Failed to fetch category by slug:', err);
+    return null;
+  }
+}

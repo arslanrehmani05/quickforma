@@ -11,11 +11,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@portabletext/react": "^3.1.0",
     "@sanity/client": "^7.26.2",
     "@sanity/image-url": "^2.1.1",
+    "@sanity/vision": "^3.50.0",
     "lucide-react": "^0.344.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "sanity": "^3.50.0",
+    "styled-components": "^6.5.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.55",

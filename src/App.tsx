@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { StudioPage } from './pages/StudioPage';
 import { TOOLS_CATALOG } from './data/toolsCatalog';
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
@@ -280,9 +281,13 @@ export function App() {
     setSelectedIndex(0);
   }, [searchFilter]);
 
+  if (typeof window !== 'undefined' && window.location.pathname.startsWith('/studio')) {
+    return <StudioPage />;
+  }
+
   return (
-    <div className="min-h-screen flex flex-col justify-between bg-slate-50 text-slate-900 font-sans selection:bg-indigo-600 selection:text-white antialiased">
-      <div>
+    <>
+      <div className="min-h-screen flex flex-col justify-between bg-slate-50 text-slate-900 font-sans selection:bg-indigo-600 selection:text-white antialiased">
         <Navbar
           activeView={activeView}
           onSelectView={handleSelectView}
@@ -394,7 +399,7 @@ export function App() {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 }
 

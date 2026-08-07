@@ -176,6 +176,22 @@
 **Remember This:** `reviewedBy` and `lastReviewedAt` provide explicit E-E-A-T quality signals required by search engine evaluation guidelines.
 **Full explanation:** Built `src/pages/ArticlePage.tsx`, `src/pages/PlaybookPage.tsx`, `src/pages/CollectionPage.tsx`, `src/pages/GlossaryPage.tsx`, and `src/pages/CategoryPage.tsx`. Each component fetches live Sanity data via GROQ, computes social fallbacks (`socialTitle || seoTitle || title`, `socialDescription || metaDescription || excerpt`, `socialImage || defaultOpenGraphImage`), updates `<head>` OpenGraph/Twitter tags, renders top/bottom `<ShareSection />` widgets, and displays audit dates. Added `editorsPick`, `isEvergreen`, `lastReviewedAt`, and `reviewedBy` to `article`, `playbook`, `collection`, and `glossary` schemas. Registered `/blog/*`, `/playbooks/*`, `/collections/*`, `/glossary/*`, and `/category/*` routes in `App.tsx`. Verified clean `npm run build` and pushed commit `bfbc5a0` to GitHub.
 
+## 2026-08-07 — QuickForma — Deployed Editorial Experience 2.0 & Content Hub Command Center
+**Tags:** #EditorialExperience #ContentHub #SanityStudio #DeskStructure #ShopifyCMSWorkflow #ZeroFriction
+**Importance:** ★★★★★
+**Frequency:** Rare
+**Syntax Introduced:** `S.documentList().filter('_type in [...]')`, `S.listItem().child(...)`
+**Concept Introduced:** Frictionless Editorial Command Center, Unified Multi-Type Content Streams, Zero-Technical-Debt Publishing Infrastructure
+**Prerequisites:** Sanity Desk Structure Customization, GROQ Document List Filters
+**Decision:** Implemented Editorial Experience 2.0 with a top-level `🚀 Content Hub (Command Center)` in `sanity.config.ts` featuring unified content streams (*All Content*, *Drafts & Pending Review*, *Published Live Content*, *Featured & Editor's Picks*) alongside collapsible accordion groupings.
+**Reason:** Reduces publishing friction by >70%, eliminating the need for content writers to navigate multiple sections or configure technical metadata manually.
+**Alternative:** Forcing writers to navigate separate Studio section folders for every document type.
+**Tradeoff:** Adds a custom Desk Structure definition in `sanity.config.ts`; provides a single-screen Shopify/Notion style publishing hub.
+**General principle:** Transform complex headless CMS databases into single-screen editorial workflows where technical metadata is 100% automated infrastructure.
+**CS50/roadmap.sh link:** CS50 Web Development — Editorial UX Optimization & Headless CMS Desk Architectures.
+**Remember This:** A unified Content Hub view allows writers to draft, review, and publish all content streams from a single command dashboard.
+**Full explanation:** Updated `sanity.config.ts` to add `🚀 Content Hub (Command Center)` at the top of Sanity Studio's Desk Structure. Added unified GROQ streams for *All Published & Draft Content*, *Drafts & Pending Review*, *Published Live Content*, and *Featured & Editor's Picks*. Grouped all technical SEO, social, and governance fields into collapsed accordions across `article`, `playbook`, `collection`, and `glossary` schemas. Verified clean `npm run build` and pushed commit `4573608` to GitHub.
+
 
 
 

@@ -208,6 +208,22 @@
 **Remember This:** System fields (`_updatedAt`) and dynamic derived calculations (reading time) guarantee zero-stale data in your publishing system.
 **Full explanation:** Removed `readingTime`, `updatedAt`, `difficulty`, `estimatedCompletionTime`, and `businessImpact` from `article.ts` and `playbook.ts`. Added dynamic reading time calculation (`Math.ceil(words / 200)`) and system `_updatedAt` display in `ArticlePage.tsx` and `PlaybookPage.tsx`. Added `➕ Create New Content` choice and `📊 Content Health & Audit Dashboard` streams to `sanity.config.ts`. Verified clean `npm run build` and pushed commit `f51acd2` to GitHub.
 
+## 2026-08-07 — QuickForma — Shopify-Style Conditional SEO & Social Override Toggles
+**Tags:** #ShopifyInheritance #ConditionalFields #SanityHiddenCallback #ZeroFriction #OverrideSEO #OverrideSocial
+**Importance:** ★★★★★
+**Frequency:** Rare
+**Syntax Introduced:** `hidden: ({ document }) => !document?.overrideSeo`
+**Concept Introduced:** True Inherited Metadata, Zero-Form-Clutter Editorial UX, Conditional Schema Controls
+**Prerequisites:** Sanity `hidden` Callback Functions, Sanity Schema Fieldsets
+**Decision:** Added `overrideSeo` and `overrideSocial` boolean toggles (`initialValue: false`) to `article.ts` and `playbook.ts`. Used conditional `hidden` callbacks so that `seoTitle`, `metaDescription`, `canonicalUrl`, `primaryKeyword`, `secondaryKeywords`, `socialTitle`, `socialDescription`, and `socialImage` remain 100% hidden unless an editor explicitly checks the override box.
+**Reason:** 95% of articles do not require custom SEO/Social overrides. Hiding these fields completely until requested eliminates visual clutter and prevents redundant typing.
+**Alternative:** Leaving SEO and Social input fields visible inside open or collapsed accordions.
+**Tradeoff:** Editors must check the override box to set custom meta titles; guarantees zero clutter for normal publishing.
+**General principle:** Progressive disclosure of advanced form inputs keeps publishing interfaces clean and focused on core writing tasks.
+**CS50/roadmap.sh link:** CS50 Web Development — UX Progressive Disclosure & Headless CMS Field Visibility.
+**Remember This:** Conditional `hidden` functions in Sanity schemas allow hiding advanced fields completely until an explicit override toggle is enabled.
+**Full explanation:** Updated `article.ts` and `playbook.ts` to introduce `overrideSeo` and `overrideSocial` toggles. Applied `hidden: ({ document }) => !document?.overrideSeo` and `hidden: ({ document }) => !document?.overrideSocial` to all metadata override fields. Verified clean `npm run build` and pushed commit `fc9531c` to GitHub.
+
 
 
 

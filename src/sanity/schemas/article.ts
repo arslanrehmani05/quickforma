@@ -52,10 +52,6 @@ export const articleSchema = defineType({
             defineField({ name: 'caption', title: 'Caption', type: 'string' }),
           ],
         },
-        {
-          type: 'code',
-          title: 'Code Block',
-        },
       ],
     }),
     defineField({

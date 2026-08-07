@@ -52,10 +52,6 @@ export const playbookSchema = defineType({
             defineField({ name: 'caption', title: 'Caption', type: 'string' }),
           ],
         },
-        {
-          type: 'code',
-          title: 'Code / Math Formula Block',
-        },
       ],
     }),
     defineField({

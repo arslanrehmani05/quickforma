@@ -4,6 +4,23 @@ export const articleSchema = defineType({
   name: 'article',
   title: 'Article',
   type: 'document',
+  fieldsets: [
+    {
+      name: 'seoGroup',
+      title: '🔍 SEO Metadata (Optional - Auto-falls back to Title & Excerpt)',
+      options: { collapsible: true, collapsed: true },
+    },
+    {
+      name: 'socialGroup',
+      title: '🌐 Social Sharing Previews (Optional - Auto-falls back to SEO)',
+      options: { collapsible: true, collapsed: true },
+    },
+    {
+      name: 'editorialGroup',
+      title: '⚙️ Advanced Editorial & Governance Controls (Optional)',
+      options: { collapsible: true, collapsed: true },
+    },
+  ],
   fields: [
     defineField({
       name: 'title',
@@ -79,11 +96,12 @@ export const articleSchema = defineType({
       to: [{ type: 'author' }],
     }),
 
-    // SEO Fieldset
+    // SEO Fieldset (Collapsible & Collapsed by Default)
     defineField({
       name: 'seoTitle',
       title: 'SEO Title (Meta Title)',
       type: 'string',
+      fieldset: 'seoGroup',
       description: 'Defaults to article title if blank. Ideal length: 50-60 characters.',
     }),
     defineField({
@@ -91,28 +109,33 @@ export const articleSchema = defineType({
       title: 'Meta Description',
       type: 'text',
       rows: 2,
+      fieldset: 'seoGroup',
       description: 'Ideal length: 140-155 characters.',
     }),
     defineField({
       name: 'canonicalUrl',
       title: 'Canonical URL Override',
       type: 'url',
+      fieldset: 'seoGroup',
     }),
     defineField({
       name: 'primaryKeyword',
       title: 'Primary Target Keyword',
       type: 'string',
+      fieldset: 'seoGroup',
     }),
     defineField({
       name: 'secondaryKeywords',
       title: 'Secondary LSI Keywords',
       type: 'array',
       of: [{ type: 'string' }],
+      fieldset: 'seoGroup',
     }),
     defineField({
       name: 'searchIntent',
       title: 'Search Intent Classification',
       type: 'string',
+      fieldset: 'seoGroup',
       options: {
         list: [
           { title: 'Transactional', value: 'transactional' },
@@ -124,11 +147,12 @@ export const articleSchema = defineType({
       },
     }),
 
-    // Social Sharing Fieldset
+    // Social Sharing Fieldset (Collapsible & Collapsed by Default)
     defineField({
       name: 'socialTitle',
       title: 'Social Title',
       type: 'string',
+      fieldset: 'socialGroup',
       validation: (Rule) => Rule.max(60),
       description: 'Optional title used only when this page is shared. If left blank, QuickForma automatically uses the SEO values.',
     }),
@@ -137,6 +161,7 @@ export const articleSchema = defineType({
       title: 'Social Description',
       type: 'text',
       rows: 2,
+      fieldset: 'socialGroup',
       validation: (Rule) => Rule.max(160),
       description: 'Optional description used only for social sharing. If left blank, QuickForma automatically uses the SEO values.',
     }),
@@ -144,6 +169,7 @@ export const articleSchema = defineType({
       name: 'socialImage',
       title: 'Social Share Image',
       type: 'image',
+      fieldset: 'socialGroup',
       options: { hotspot: true },
       fields: [
         defineField({
@@ -156,12 +182,13 @@ export const articleSchema = defineType({
       description: 'Optional image used for Open Graph and social sharing. If left blank, QuickForma automatically uses the SEO values.',
     }),
 
-    // Relationships
+    // Advanced Editorial & Governance Controls (Collapsible & Collapsed by Default)
     defineField({
       name: 'relatedToolIds',
       title: 'Related QuickForma Tool IDs',
       type: 'array',
       of: [{ type: 'string' }],
+      fieldset: 'editorialGroup',
       description: 'Tool IDs matching catalog (e.g. freelance-hourly-rate-calculator, invoice-generator, paypal-fee-calculator)',
     }),
     defineField({
@@ -169,31 +196,34 @@ export const articleSchema = defineType({
       title: 'Related Articles',
       type: 'array',
       of: [{ type: 'reference', to: [{ type: 'article' }, { type: 'playbook' }] }],
+      fieldset: 'editorialGroup',
     }),
-
-    // Publishing
     defineField({
       name: 'publishedAt',
       title: 'Published Date',
       type: 'datetime',
+      fieldset: 'editorialGroup',
       initialValue: () => new Date().toISOString(),
     }),
     defineField({
       name: 'updatedAt',
       title: 'Last Updated Date',
       type: 'datetime',
+      fieldset: 'editorialGroup',
       initialValue: () => new Date().toISOString(),
     }),
     defineField({
       name: 'featured',
       title: 'Featured Article Toggle',
       type: 'boolean',
+      fieldset: 'editorialGroup',
       initialValue: false,
     }),
     defineField({
       name: 'editorsPick',
       title: "Editor's Pick",
       type: 'boolean',
+      fieldset: 'editorialGroup',
       initialValue: false,
       description: 'Highlights top-tier editorial picks across landing pages.',
     }),
@@ -201,6 +231,7 @@ export const articleSchema = defineType({
       name: 'isEvergreen',
       title: 'Evergreen Content',
       type: 'boolean',
+      fieldset: 'editorialGroup',
       initialValue: true,
       description: 'Designates foundational, long-term non-decaying content.',
     }),
@@ -208,6 +239,7 @@ export const articleSchema = defineType({
       name: 'lastReviewedAt',
       title: 'Last Reviewed Date',
       type: 'datetime',
+      fieldset: 'editorialGroup',
       description: 'Timestamp when content facts and formulas were last audited.',
     }),
     defineField({
@@ -215,12 +247,14 @@ export const articleSchema = defineType({
       title: 'Reviewed By (Author)',
       type: 'reference',
       to: [{ type: 'author' }],
+      fieldset: 'editorialGroup',
       description: 'Expert author who conducted the technical/financial review.',
     }),
     defineField({
       name: 'draftStatus',
       title: 'Editorial Draft Status',
       type: 'string',
+      fieldset: 'editorialGroup',
       options: {
         list: [
           { title: 'Draft', value: 'draft' },
@@ -231,38 +265,39 @@ export const articleSchema = defineType({
       },
       initialValue: 'draft',
     }),
-
-    // Additional
     defineField({
       name: 'difficulty',
       title: 'Difficulty Level',
       type: 'string',
+      fieldset: 'editorialGroup',
       options: {
         list: [
-          { title: 'Beginner', value: 'beginner' },
-          { title: 'Intermediate', value: 'intermediate' },
-          { title: 'Advanced', value: 'advanced' },
+          { title: 'Beginner', value: 'Beginner' },
+          { title: 'Intermediate', value: 'Intermediate' },
+          { title: 'Advanced', value: 'Advanced' },
         ],
       },
-      initialValue: 'intermediate',
+      initialValue: 'Intermediate',
     }),
     defineField({
       name: 'estimatedCompletionTime',
-      title: 'Estimated Completion Time',
+      title: 'Estimated Completion / Implementation Time',
       type: 'string',
-      placeholder: 'e.g. 15 minutes, 1 hour',
+      fieldset: 'editorialGroup',
       description: 'Estimates how long it takes to complete the tutorial or implement the process.',
     }),
     defineField({
-      name: 'readTime',
+      name: 'readingTime',
       title: 'Estimated Reading Time',
       type: 'string',
-      placeholder: 'e.g. 7 min read',
+      fieldset: 'editorialGroup',
+      description: 'e.g. 5 min read, 12 min read',
     }),
     defineField({
-      name: 'enableTableOfContents',
+      name: 'enableToc',
       title: 'Enable Table of Contents',
       type: 'boolean',
+      fieldset: 'editorialGroup',
       initialValue: true,
     }),
   ],

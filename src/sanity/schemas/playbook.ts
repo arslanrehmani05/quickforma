@@ -4,6 +4,23 @@ export const playbookSchema = defineType({
   name: 'playbook',
   title: 'Business Playbook',
   type: 'document',
+  fieldsets: [
+    {
+      name: 'seoGroup',
+      title: '🔍 SEO Metadata (Optional - Auto-falls back to Title & Excerpt)',
+      options: { collapsible: true, collapsed: true },
+    },
+    {
+      name: 'socialGroup',
+      title: '🌐 Social Sharing Previews (Optional - Auto-falls back to SEO)',
+      options: { collapsible: true, collapsed: true },
+    },
+    {
+      name: 'editorialGroup',
+      title: '⚙️ Advanced Editorial & Governance Controls (Optional)',
+      options: { collapsible: true, collapsed: true },
+    },
+  ],
   fields: [
     defineField({
       name: 'title',
@@ -79,38 +96,44 @@ export const playbookSchema = defineType({
       to: [{ type: 'author' }],
     }),
 
-    // SEO Fieldset
+    // SEO Fieldset (Collapsible & Collapsed by Default)
     defineField({
       name: 'seoTitle',
       title: 'SEO Title (Meta Title)',
       type: 'string',
+      fieldset: 'seoGroup',
     }),
     defineField({
       name: 'metaDescription',
       title: 'Meta Description',
       type: 'text',
       rows: 2,
+      fieldset: 'seoGroup',
     }),
     defineField({
       name: 'canonicalUrl',
       title: 'Canonical URL Override',
       type: 'url',
+      fieldset: 'seoGroup',
     }),
     defineField({
       name: 'primaryKeyword',
       title: 'Primary Target Keyword',
       type: 'string',
+      fieldset: 'seoGroup',
     }),
     defineField({
       name: 'secondaryKeywords',
       title: 'Secondary LSI Keywords',
       type: 'array',
       of: [{ type: 'string' }],
+      fieldset: 'seoGroup',
     }),
     defineField({
       name: 'searchIntent',
       title: 'Search Intent Classification',
       type: 'string',
+      fieldset: 'seoGroup',
       options: {
         list: [
           { title: 'Transactional', value: 'transactional' },
@@ -122,11 +145,12 @@ export const playbookSchema = defineType({
       },
     }),
 
-    // Social Sharing Fieldset
+    // Social Sharing Fieldset (Collapsible & Collapsed by Default)
     defineField({
       name: 'socialTitle',
       title: 'Social Title',
       type: 'string',
+      fieldset: 'socialGroup',
       validation: (Rule) => Rule.max(60),
       description: 'Optional title used only when this page is shared. If left blank, QuickForma automatically uses the SEO values.',
     }),
@@ -135,6 +159,7 @@ export const playbookSchema = defineType({
       title: 'Social Description',
       type: 'text',
       rows: 2,
+      fieldset: 'socialGroup',
       validation: (Rule) => Rule.max(160),
       description: 'Optional description used only for social sharing. If left blank, QuickForma automatically uses the SEO values.',
     }),
@@ -142,6 +167,7 @@ export const playbookSchema = defineType({
       name: 'socialImage',
       title: 'Social Share Image',
       type: 'image',
+      fieldset: 'socialGroup',
       options: { hotspot: true },
       fields: [
         defineField({
@@ -154,12 +180,13 @@ export const playbookSchema = defineType({
       description: 'Optional image used for Open Graph and social sharing. If left blank, QuickForma automatically uses the SEO values.',
     }),
 
-    // Relationships
+    // Advanced Editorial & Governance Controls (Collapsible & Collapsed by Default)
     defineField({
       name: 'relatedToolIds',
       title: 'Related QuickForma Tool IDs',
       type: 'array',
       of: [{ type: 'string' }],
+      fieldset: 'editorialGroup',
       description: 'Tool IDs matching catalog (e.g. freelance-hourly-rate-calculator, invoice-generator, paypal-fee-calculator)',
     }),
     defineField({
@@ -167,31 +194,34 @@ export const playbookSchema = defineType({
       title: 'Related Articles & Playbooks',
       type: 'array',
       of: [{ type: 'reference', to: [{ type: 'article' }, { type: 'playbook' }] }],
+      fieldset: 'editorialGroup',
     }),
-
-    // Publishing
     defineField({
       name: 'publishedAt',
       title: 'Published Date',
       type: 'datetime',
+      fieldset: 'editorialGroup',
       initialValue: () => new Date().toISOString(),
     }),
     defineField({
       name: 'updatedAt',
       title: 'Last Updated Date',
       type: 'datetime',
+      fieldset: 'editorialGroup',
       initialValue: () => new Date().toISOString(),
     }),
     defineField({
       name: 'featured',
       title: 'Featured Playbook Toggle',
       type: 'boolean',
+      fieldset: 'editorialGroup',
       initialValue: false,
     }),
     defineField({
       name: 'editorsPick',
       title: "Editor's Pick",
       type: 'boolean',
+      fieldset: 'editorialGroup',
       initialValue: false,
       description: 'Highlights top-tier editorial picks across landing pages.',
     }),
@@ -199,6 +229,7 @@ export const playbookSchema = defineType({
       name: 'isEvergreen',
       title: 'Evergreen Content',
       type: 'boolean',
+      fieldset: 'editorialGroup',
       initialValue: true,
       description: 'Designates foundational, long-term non-decaying content.',
     }),
@@ -206,6 +237,7 @@ export const playbookSchema = defineType({
       name: 'lastReviewedAt',
       title: 'Last Reviewed Date',
       type: 'datetime',
+      fieldset: 'editorialGroup',
       description: 'Timestamp when content facts and formulas were last audited.',
     }),
     defineField({
@@ -213,12 +245,14 @@ export const playbookSchema = defineType({
       title: 'Reviewed By (Author)',
       type: 'reference',
       to: [{ type: 'author' }],
+      fieldset: 'editorialGroup',
       description: 'Expert author who conducted the technical/financial review.',
     }),
     defineField({
       name: 'draftStatus',
       title: 'Editorial Draft Status',
       type: 'string',
+      fieldset: 'editorialGroup',
       options: {
         list: [
           { title: 'Draft', value: 'draft' },
@@ -229,20 +263,18 @@ export const playbookSchema = defineType({
       },
       initialValue: 'draft',
     }),
-
-    // Strategic Business Outcome
     defineField({
       name: 'businessImpact',
       title: 'Business Impact Outcome',
       type: 'string',
+      fieldset: 'editorialGroup',
       options: {
         list: [
           { title: 'Revenue Growth', value: 'Revenue Growth' },
           { title: 'Cost Reduction', value: 'Cost Reduction' },
-          { title: 'Productivity', value: 'Productivity' },
-          { title: 'Operational Efficiency', value: 'Operational Efficiency' },
-          { title: 'Compliance', value: 'Compliance' },
-          { title: 'Decision Making', value: 'Decision Making' },
+          { title: 'Time Savings', value: 'Time Savings' },
+          { title: 'Risk Mitigation', value: 'Risk Mitigation' },
+          { title: 'Compliance & Legal Protection', value: 'Compliance & Legal Protection' },
         ],
       },
     }),

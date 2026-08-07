@@ -144,6 +144,22 @@
 **Remember This:** Portable Text schema block types must be backed by a registered schema type or plugin to avoid Studio validation errors.
 **Full explanation:** Diagnosed "Unknown type: code" error on `/studio` load in `article` and `playbook` schemas. Found `body` field declared `{ type: 'code' }` without an installed or configured code plugin. Removed `{ type: 'code' }` from `article.ts` and `playbook.ts`, uninstalled unused `@sanity/code-input`, verified clean `npm run build`, and pushed commit `adad1f6` to GitHub.
 
+## 2026-08-07 — QuickForma — Implemented Social Sharing Schemas, Metadata Fallbacks, & Universal ShareSection Component
+**Tags:** #SocialSharing #OpenGraph #TwitterCards #React #WebShareAPI #SanityCMS #SEO
+**Importance:** ★★★★☆
+**Frequency:** Weekly
+**Syntax Introduced:** `navigator.share()`, `navigator.clipboard.writeText()`, `fieldset: 'socialSharing'`
+**Concept Introduced:** Social Sharing Previews, Dynamic OpenGraph/Twitter Tag Injection, Fallback Metadata Pipeline, Native Web Share API
+**Prerequisites:** React State & Hooks, DOM Head Meta Injection, Web Clipboard API
+**Decision:** Added optional `socialTitle`, `socialDescription`, `socialImage` fields to `article`, `playbook`, `collection`, and `glossary` schemas with automatic SEO fallbacks, enforced required alt text on all featured images, and created a universal `<ShareSection />` component.
+**Reason:** Allows custom social media preview cards without altering existing search engine SEO metadata or core database structures.
+**Alternative:** Forcing OpenGraph titles to match SEO meta titles identically or adding heavy third-party share plugins.
+**Tradeoff:** Adds optional social fields to CMS schemas; provides complete editorial control over social media channels.
+**General principle:** Decouple search engine metadata from social media sharing previews to allow customized engagement triggers across different distribution platforms.
+**CS50/roadmap.sh link:** CS50 Web Development — Open Graph Protocol, Twitter Card Standards, & Browser APIs.
+**Remember This:** Web Share API provides native mobile sharing while clipboard fallback handles desktop browser link sharing.
+**Full explanation:** Extended `article.ts`, `playbook.ts`, `collection.ts`, and `glossary.ts` with `socialTitle`, `socialDescription`, and `socialImage` fields. Enforced required alt text validation across all featured image fields (`article`, `playbook`, `collection`, `glossary`, `category`). Built `src/components/social/ShareSection.tsx` supporting native Web Share API, 2-second "Link copied!" feedback, LinkedIn, Facebook, WhatsApp, Reddit, X (Twitter), and Email links. Placed `<ShareSection />` on Homepage hero, `ToolSeoWrapper.tsx` (top & bottom), and dynamic social meta tag injection (`og:title`, `og:description`, `og:image`, `twitter:card`). Verified clean `npm run build` and pushed commit `ba66366` to GitHub.
+
 
 
 

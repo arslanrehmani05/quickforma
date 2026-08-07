@@ -38,6 +38,16 @@ export const categorySchema = defineType({
       title: 'Featured Category Image',
       type: 'image',
       options: { hotspot: true },
+      fields: [
+        defineField({
+          name: 'alt',
+          title: 'Alt Text',
+          type: 'string',
+          validation: (Rule) => Rule.required(),
+          description: 'This field is required for accessibility and image SEO. Describe the image for accessibility and search engines. This should accurately explain what the image contains.',
+        }),
+        defineField({ name: 'caption', title: 'Caption', type: 'string' }),
+      ],
     }),
     defineField({
       name: 'displayOrder',

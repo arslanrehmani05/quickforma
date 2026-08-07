@@ -34,7 +34,13 @@ export const playbookSchema = defineType({
       type: 'image',
       options: { hotspot: true },
       fields: [
-        defineField({ name: 'alt', title: 'Alt Text', type: 'string' }),
+        defineField({
+          name: 'alt',
+          title: 'Alt Text',
+          type: 'string',
+          validation: (Rule) => Rule.required(),
+          description: 'This field is required for accessibility and image SEO. Describe the image for accessibility and search engines. This should accurately explain what the image contains.',
+        }),
         defineField({ name: 'caption', title: 'Caption', type: 'string' }),
       ],
     }),
@@ -114,6 +120,38 @@ export const playbookSchema = defineType({
           { title: 'Reassurance', value: 'reassurance' },
         ],
       },
+    }),
+
+    // Social Sharing Fieldset
+    defineField({
+      name: 'socialTitle',
+      title: 'Social Title',
+      type: 'string',
+      validation: (Rule) => Rule.max(60),
+      description: 'Optional title used only when this page is shared. If left blank, QuickForma automatically uses the SEO values.',
+    }),
+    defineField({
+      name: 'socialDescription',
+      title: 'Social Description',
+      type: 'text',
+      rows: 2,
+      validation: (Rule) => Rule.max(160),
+      description: 'Optional description used only for social sharing. If left blank, QuickForma automatically uses the SEO values.',
+    }),
+    defineField({
+      name: 'socialImage',
+      title: 'Social Share Image',
+      type: 'image',
+      options: { hotspot: true },
+      fields: [
+        defineField({
+          name: 'alt',
+          title: 'Alt Text',
+          type: 'string',
+          description: 'Describe the social image for accessibility.',
+        }),
+      ],
+      description: 'Optional image used for Open Graph and social sharing. If left blank, QuickForma automatically uses the SEO values.',
     }),
 
     // Relationships

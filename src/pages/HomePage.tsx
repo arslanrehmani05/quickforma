@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ToolMetadata } from '../types';
 import { CATEGORIES } from '../data/toolsCatalog';
 import { ToolCard } from '../components/layout/ToolCard';
+import { ShareSection } from '../components/social/ShareSection';
 import { Zap, Search, Shield, Lock, Cpu, Sparkles } from 'lucide-react';
 
 interface HomePageProps {
@@ -51,6 +52,8 @@ export const HomePage: React.FC<HomePageProps> = ({ tools, onSelectTool }) => {
             <Cpu className="w-3.5 h-3.5 text-amber-600" /> Sub-50ms Calculation
           </div>
         </div>
+
+        <ShareSection align="center" className="pt-2 max-w-xl mx-auto border-t-0" />
       </section>
 
       {/* Category Tabs & Search Bar */}

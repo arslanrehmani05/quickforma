@@ -16,6 +16,7 @@ import { RelatedTools } from './RelatedTools';
 import { RelatedGuides } from './RelatedGuides';
 import { WorkflowProgression } from './WorkflowProgression';
 import { getRelatedGuides } from '../../lib/sanity';
+import { ShareSection } from '../social/ShareSection';
 
 interface ToolSeoWrapperProps {
   seoData?: ToolSeoData;
@@ -39,28 +40,53 @@ export const ToolSeoWrapper: React.FC<ToolSeoWrapperProps> = ({
   // 1. Fetch dynamic guides from Sanity CMS
   useEffect(() => {
     let isMounted = true;
-    getRelatedGuides(category, toolId).then((guides) => {
-      if (isMounted && guides && guides.length > 0) {
-        setSanityGuides(guides);
-      }
-    });
+    if (category || toolId) {
+      getRelatedGuides(category, toolId).then((guides) => {
+        if (isMounted) setSanityGuides(guides);
+      });
+    }
     return () => {
       isMounted = false;
     };
   }, [category, toolId]);
 
-  // 2. Dynamically update document head canonical tag to protect against duplicate indexing
+  // 2. Dynamic Canonical & OpenGraph / Twitter Social Tag Shield Injection
   useEffect(() => {
-    if (!toolId) return;
+    if (typeof document !== 'undefined') {
+      let canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+      if (!canonicalLink) {
+        canonicalLink = document.createElement('link');
+        canonicalLink.setAttribute('rel', 'canonical');
+        document.head.appendChild(canonicalLink);
+      }
+      canonicalLink.setAttribute('href', currentUrl);
 
-    let canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-    if (!canonicalLink) {
-      canonicalLink = document.createElement('link');
-      canonicalLink.setAttribute('rel', 'canonical');
-      document.head.appendChild(canonicalLink);
+      const updateMetaTag = (attrName: string, attrVal: string, contentVal: string) => {
+        let meta = document.querySelector<HTMLMetaElement>(`meta[${attrName}="${attrVal}"]`);
+        if (!meta) {
+          meta = document.createElement('meta');
+          meta.setAttribute(attrName, attrVal);
+          document.head.appendChild(meta);
+        }
+        meta.setAttribute('content', contentVal);
+      };
+
+      const shareTitle = `${name} — QuickForma Free Business Utility`;
+      const shareDesc = `100% free online ${name} tool. Fast, zero sign-up, sub-50ms execution, and 100% client-side privacy.`;
+      const shareImg = 'https://www.quickforma.com/branding/Logo%20PNG.png';
+
+      updateMetaTag('property', 'og:title', shareTitle);
+      updateMetaTag('property', 'og:description', shareDesc);
+      updateMetaTag('property', 'og:url', currentUrl);
+      updateMetaTag('property', 'og:type', 'website');
+      updateMetaTag('property', 'og:image', shareImg);
+
+      updateMetaTag('name', 'twitter:card', 'summary_large_image');
+      updateMetaTag('name', 'twitter:title', shareTitle);
+      updateMetaTag('name', 'twitter:description', shareDesc);
+      updateMetaTag('name', 'twitter:image', shareImg);
     }
-    canonicalLink.setAttribute('href', currentUrl);
-  }, [toolId, currentUrl]);
+  }, [currentUrl, name]);
 
   // Generate complete 10-section 1,200+ word authority fallback SEO data
   const fallbackSeoData: ToolSeoData = {
@@ -215,6 +241,14 @@ export const ToolSeoWrapper: React.FC<ToolSeoWrapperProps> = ({
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
       )}
 
+      {/* Social Sharing Component (Top below calculator output) */}
+      <ShareSection
+        title={`${name} — QuickForma Free Utility`}
+        description={`Free ${name} online business utility on QuickForma.`}
+        url={currentUrl}
+        className="my-4"
+      />
+
       {/* 2. At a Glance Summary */}
       {activeSeoData.atAGlance && <AtAGlance data={activeSeoData.atAGlance} />}
 
@@ -241,6 +275,15 @@ export const ToolSeoWrapper: React.FC<ToolSeoWrapperProps> = ({
 
       {/* 10. Related Tools (Internal Linking Grid across Pillar) */}
       <RelatedTools toolIds={activeSeoData.relatedToolIds} currentCategory={category} currentToolId={toolId} />
+
+      {/* Social Sharing Component (Bottom after tool content) */}
+      <ShareSection
+        title={`${name} — QuickForma Free Utility`}
+        description={`Free ${name} online business utility on QuickForma.`}
+        url={currentUrl}
+        align="center"
+        className="pt-8 border-t border-slate-200"
+      />
 
       {/* 11. Related Guides (Sanity CMS - Dynamic Sanity GROQ Integration) */}
       {sanityGuides && sanityGuides.length > 0 ? (

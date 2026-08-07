@@ -33,6 +33,19 @@ export const categorySchema = defineType({
       type: 'text',
       rows: 2,
     }),
+    defineField({
+      name: 'featuredImage',
+      title: 'Featured Category Image',
+      type: 'image',
+      options: { hotspot: true },
+    }),
+    defineField({
+      name: 'displayOrder',
+      title: 'Display Order',
+      type: 'number',
+      initialValue: 0,
+      description: 'Used for manual sorting of categories throughout the website.',
+    }),
   ],
   preview: {
     select: {

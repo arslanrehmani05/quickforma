@@ -173,6 +173,26 @@ export const articleSchema = defineType({
 
     // Additional
     defineField({
+      name: 'difficulty',
+      title: 'Difficulty Level',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Beginner', value: 'beginner' },
+          { title: 'Intermediate', value: 'intermediate' },
+          { title: 'Advanced', value: 'advanced' },
+        ],
+      },
+      initialValue: 'intermediate',
+    }),
+    defineField({
+      name: 'estimatedCompletionTime',
+      title: 'Estimated Completion Time',
+      type: 'string',
+      placeholder: 'e.g. 15 minutes, 1 hour',
+      description: 'Estimates how long it takes to complete the tutorial or implement the process.',
+    }),
+    defineField({
       name: 'readTime',
       title: 'Estimated Reading Time',
       type: 'string',

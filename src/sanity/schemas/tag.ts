@@ -21,6 +21,20 @@ export const tagSchema = defineType({
       },
       validation: (Rule) => Rule.required(),
     }),
+    defineField({
+      name: 'description',
+      title: 'Description',
+      type: 'text',
+      rows: 2,
+      description: 'Short explanation of the tag for tag landing pages.',
+    }),
+    defineField({
+      name: 'displayOrder',
+      title: 'Display Order',
+      type: 'number',
+      initialValue: 0,
+      description: 'Used for manual sorting of tags.',
+    }),
   ],
   preview: {
     select: {

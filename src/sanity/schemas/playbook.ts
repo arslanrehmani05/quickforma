@@ -169,6 +169,23 @@ export const playbookSchema = defineType({
       initialValue: 'draft',
     }),
 
+    // Strategic Business Outcome
+    defineField({
+      name: 'businessImpact',
+      title: 'Business Impact Outcome',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Revenue Growth', value: 'Revenue Growth' },
+          { title: 'Cost Reduction', value: 'Cost Reduction' },
+          { title: 'Productivity', value: 'Productivity' },
+          { title: 'Operational Efficiency', value: 'Operational Efficiency' },
+          { title: 'Compliance', value: 'Compliance' },
+          { title: 'Decision Making', value: 'Decision Making' },
+        ],
+      },
+    }),
+
     // Additional
     defineField({
       name: 'readTime',

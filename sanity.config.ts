@@ -21,7 +21,9 @@ export default defineConfig({
           .title('Content CMS')
           .items([
             S.documentTypeListItem('article').title('Articles'),
+            S.documentTypeListItem('collection').title('Collections'),
             S.documentTypeListItem('playbook').title('Business Playbooks'),
+            S.documentTypeListItem('glossary').title('Glossary'),
             S.documentTypeListItem('category').title('Categories'),
             S.documentTypeListItem('author').title('Authors'),
             S.documentTypeListItem('tag').title('Tags'),

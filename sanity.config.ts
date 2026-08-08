@@ -20,44 +20,38 @@ export default defineConfig({
         S.list()
           .title('QuickForma CMS Command Center')
           .items([
-            // 🚀 Top-Level Content Hub Dashboard
+            // 📝 Top-Level Publishing Cockpit (Shopify-Style UX)
             S.listItem()
-              .title('🚀 Content Hub (Command Center)')
-              .id('contentHub')
+              .title('📝 Publish')
+              .id('publishWorkspace')
               .child(
                 S.list()
-                  .title('Content Hub Overview')
+                  .title('Publishing Cockpit')
                   .items([
                     S.listItem()
-                      .title('➕ Create New Content (Choose Type)')
-                      .id('createNewContent')
-                      .child(
-                        S.list()
-                          .title('Select Content Type to Create')
-                          .items([
-                            S.documentTypeListItem('article').title('📰 Write New Article'),
-                            S.documentTypeListItem('playbook').title('📘 Create Business Playbook'),
-                            S.documentTypeListItem('collection').title('📦 Assemble Toolkit Collection'),
-                            S.documentTypeListItem('glossary').title('📖 Define Glossary Term'),
-                          ])
-                      ),
+                      .title('➕ Write New Article')
+                      .id('createArticle')
+                      .child(S.documentTypeList('article').title('Articles')),
+                    S.listItem()
+                      .title('📘 Create Business Playbook')
+                      .id('createPlaybook')
+                      .child(S.documentTypeList('playbook').title('Business Playbooks')),
+                    S.listItem()
+                      .title('📦 Assemble Toolkit Collection')
+                      .id('createCollection')
+                      .child(S.documentTypeList('collection').title('Toolkit Collections')),
+                    S.listItem()
+                      .title('📖 Define Glossary Term')
+                      .id('createGlossary')
+                      .child(S.documentTypeList('glossary').title('Glossary Terms')),
                     S.divider(),
                     S.listItem()
-                      .title('📝 All Published & Draft Content (Unified List)')
-                      .id('allContent')
-                      .child(
-                        S.documentList()
-                          .title('All Content Documents')
-                          .filter('_type in ["article", "playbook", "collection", "glossary"]')
-                          .defaultOrdering([{ field: '_updatedAt', direction: 'desc' }])
-                      ),
-                    S.listItem()
-                      .title('🟡 Drafts & Pending Review')
+                      .title('🟡 Drafts & Writing')
                       .id('draftsContent')
                       .child(
                         S.documentList()
-                          .title('Drafts & In-Review Content')
-                          .filter('_type in ["article", "playbook", "collection", "glossary"] && (_id in path("drafts.**") || draftStatus in ["draft", "review"])')
+                          .title('Drafts & Writing Documents')
+                          .filter('_type in ["article", "playbook", "collection", "glossary"] && (_id in path("drafts.**") || draftStatus in ["draft", "review", "writing"])')
                           .defaultOrdering([{ field: '_updatedAt', direction: 'desc' }])
                       ),
                     S.listItem()
@@ -65,7 +59,7 @@ export default defineConfig({
                       .id('publishedContent')
                       .child(
                         S.documentList()
-                          .title('Published Content')
+                          .title('Published Live Content')
                           .filter('_type in ["article", "playbook", "collection", "glossary"] && !(_id in path("drafts.**"))')
                           .defaultOrdering([{ field: '_updatedAt', direction: 'desc' }])
                       ),
@@ -80,11 +74,11 @@ export default defineConfig({
                       ),
                     S.divider(),
                     S.listItem()
-                      .title('📊 Content Health & Audit Dashboard')
+                      .title('📊 Publishing Readiness & Audit Dashboard')
                       .id('healthAudit')
                       .child(
                         S.list()
-                          .title('Health & Quality Audits')
+                          .title('Publishing Readiness Audits')
                           .items([
                             S.listItem()
                               .title('⚠️ Evergreen Posts Needing Audit (No Review Date)')
@@ -111,6 +105,15 @@ export default defineConfig({
                                   .filter('_type in ["article", "playbook"] && !defined(author)')
                               ),
                           ])
+                      ),
+                    S.listItem()
+                      .title('📝 All Published & Draft Content (Unified List)')
+                      .id('allContent')
+                      .child(
+                        S.documentList()
+                          .title('All Content Documents')
+                          .filter('_type in ["article", "playbook", "collection", "glossary"]')
+                          .defaultOrdering([{ field: '_updatedAt', direction: 'desc' }])
                       ),
                   ])
               ),

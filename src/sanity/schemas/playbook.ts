@@ -43,13 +43,67 @@ export const playbookSchema = defineType({
       },
       validation: (Rule) => Rule.required(),
     }),
+
+    // SEO Strategy & Keyword Intelligence Panel
+    defineField({
+      name: 'primaryKeyword',
+      title: '🎯 Primary Target Keyword (SEO Strategy)',
+      type: 'string',
+      description: 'The main target search term from SEMrush (e.g. "profit margin calculator"). The system checks whether this primary intent is already owned.',
+      validation: (Rule) =>
+        Rule.custom(async (value, context) => {
+          if (!value || value.trim().length === 0) return true;
+          const client = context.getClient({ apiVersion: '2024-01-01' });
+          const docId = context.document?._id ? context.document._id.replace('drafts.', '') : '';
+          const existingOwner = await client.fetch(
+            `*[_type in ["article", "playbook", "collection", "glossary"] && primaryKeyword == $kw && _id != $docId && _id != $draftDocId][0]{ title, slug, _type }`,
+            { kw: value.trim(), docId, draftDocId: `drafts.${docId}` }
+          );
+          if (existingOwner) {
+            const ownerSlug = existingOwner.slug?.current || '';
+            return `⛔ PRIMARY KEYWORD ALREADY USED: "${value}" is already targeted as primary keyword by "${existingOwner.title}" (${existingOwner._type}) at /blog/${ownerSlug}! Select a different primary keyword or transfer intent ownership.`;
+          }
+          return true;
+        }),
+    }),
+    defineField({
+      name: 'primarySearchIntentRef',
+      title: '🧠 Primary Search Intent (1 Playbook = 1 Intent Owner)',
+      type: 'reference',
+      to: [{ type: 'searchIntentItem' }],
+      description: 'Select or link the Primary Search Intent this playbook owns. Strict 1:1 intent ownership prevents search cannibalization.',
+      validation: (Rule) =>
+        Rule.custom(async (value, context) => {
+          if (!value?._ref) return true;
+          const client = context.getClient({ apiVersion: '2024-01-01' });
+          const docId = context.document?._id ? context.document._id.replace('drafts.', '') : '';
+          const existingOwner = await client.fetch(
+            `*[_type in ["article", "playbook", "collection", "glossary"] && primarySearchIntentRef._ref == $intentId && _id != $docId && _id != $draftDocId][0]{ title, slug, _type }`,
+            { intentId: value._ref, docId, draftDocId: `drafts.${docId}` }
+          );
+          if (existingOwner) {
+            const ownerSlug = existingOwner.slug?.current || '';
+            return `⛔ CANNIBALIZATION BLOCKED: Search Intent is already owned by "${existingOwner.title}" (${existingOwner._type}) at /blog/${ownerSlug}! Select another Search Intent or transfer ownership in Intent Vault.`;
+          }
+          return true;
+        }),
+    }),
+    defineField({
+      name: 'secondaryKeywordRefs',
+      title: '💎 Secondary Supporting Keywords',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'keywordItem' }] }],
+      description: 'Select supporting keyword variations targeted in subheadings or sections. (Secondary keywords can coexist across multiple posts).',
+    }),
     defineField({
       name: 'contentBriefRef',
       title: '📝 Content Brief',
       type: 'reference',
       to: [{ type: 'contentBrief' }],
-      description: 'Select the Content Brief that guided this playbook.',
+      description: 'Select or link the Content Brief for this playbook.',
     }),
+
+    // Publishing Essentials
     defineField({
       name: 'excerpt',
       title: 'Executive Summary / Excerpt',
@@ -68,7 +122,7 @@ export const playbookSchema = defineType({
           title: 'Alt Text',
           type: 'string',
           validation: (Rule) => Rule.required(),
-          description: 'This field is required for accessibility and image SEO. Describe the image for accessibility and search engines. This should accurately explain what the image contains.',
+          description: 'Required for accessibility and image SEO. Describe the image accurately.',
         }),
         defineField({ name: 'caption', title: 'Caption', type: 'string' }),
       ],
@@ -96,46 +150,30 @@ export const playbookSchema = defineType({
       to: [{ type: 'category' }],
     }),
     defineField({
-      name: 'tags',
-      title: 'Tags',
-      type: 'array',
-      of: [{ type: 'reference', to: [{ type: 'tag' }] }],
-    }),
-    defineField({
       name: 'author',
       title: 'Author',
       type: 'reference',
       to: [{ type: 'author' }],
-    }),
-
-    // Growth OS Integrations
-    defineField({
-      name: 'primarySearchIntentRef',
-      title: '🧠 Primary Search Intent (1 Playbook = 1 Intent Owner)',
-      type: 'reference',
-      to: [{ type: 'searchIntentItem' }],
-      description: 'Select the Primary Search Intent this playbook owns. Intent ownership is strictly enforced to prevent search cannibalization.',
-      validation: (Rule) =>
-        Rule.custom(async (value, context) => {
-          if (!value?._ref) return true;
+      initialValue: async (params, context) => {
+        try {
           const client = context.getClient({ apiVersion: '2024-01-01' });
-          const docId = context.document?._id ? context.document._id.replace('drafts.', '') : '';
-          const existingOwner = await client.fetch(
-            `*[_type in ["article", "playbook", "collection", "glossary"] && primarySearchIntentRef._ref == $intentId && _id != $docId && _id != $draftDocId][0]{ title, slug, _type }`,
-            { intentId: value._ref, docId, draftDocId: `drafts.${docId}` }
+          const defaultAuthorId = await client.fetch(
+            `*[_type == "author" && (name match "QuickForma Editorial" || name match "Arslan Rehmani")][0]._id`
           );
-          if (existingOwner) {
-            return `⛔ CANNIBALIZATION BLOCKED: Search Intent is already owned by "${existingOwner.title}" (${existingOwner._type})! Transfer ownership in the Intent Vault or select another Search Intent.`;
+          if (defaultAuthorId) {
+            return { _type: 'reference', _ref: defaultAuthorId };
           }
-          return true;
-        }),
+        } catch {
+          // fallback if client not ready
+        }
+        return { _type: 'reference', _ref: '' };
+      },
     }),
     defineField({
-      name: 'secondaryKeywordRefs',
-      title: '💎 Secondary Supporting Keywords',
+      name: 'tags',
+      title: 'Tags',
       type: 'array',
-      of: [{ type: 'reference', to: [{ type: 'keywordItem' }] }],
-      description: 'Select supporting keyword variations targeted in subheadings or sections.',
+      of: [{ type: 'reference', to: [{ type: 'tag' }] }],
     }),
     defineField({
       name: 'lifecycleStatus',

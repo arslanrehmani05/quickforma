@@ -224,6 +224,22 @@
 **Remember This:** Conditional `hidden` functions in Sanity schemas allow hiding advanced fields completely until an explicit override toggle is enabled.
 **Full explanation:** Updated `article.ts` and `playbook.ts` to introduce `overrideSeo` and `overrideSocial` toggles. Applied `hidden: ({ document }) => !document?.overrideSeo` and `hidden: ({ document }) => !document?.overrideSocial` to all metadata override fields. Verified clean `npm run build` and pushed commit `fc9531c` to GitHub.
 
+## 2026-08-08 — QuickForma — Deployed Growth OS v2.0 with Search Intent Ownership
+**Tags:** #GrowthOS #SearchIntentOwnership #AntiCannibalization #TopicClusters #AEO #KeywordVault #SanityStudio
+**Importance:** ★★★★★
+**Frequency:** Rare
+**Syntax Introduced:** `Rule.custom(async (value, context) => ...)` with intent reference checks, 10-stage lifecycle fields
+**Concept Introduced:** Search Intent Ownership, AEO Question Answer Blocks, Growth OS Architecture
+**Prerequisites:** Sanity Async Validation Rules, Sanity Document List Custom Filters
+**Decision:** Built QuickForma Growth OS v2.0 inside Sanity Studio. Created `searchIntentItem` (Search Intent Ownership), `keywordItem` (Keyword Vault & Opportunity Score 0-100), `topicCluster` (Topic Clusters), `questionItem` (AEO Direct Answer Blocks 40-60 words), `researchSprint` (SEMrush session logs), and `competitorIntel` (Strategic Competitor Intel). Enforced strict publish-time Search Intent Cannibalization blocking via `Rule.custom()`.
+**Reason:** Prevents intent-level search cannibalization, structures AEO answers for AI search engines (Perplexity, ChatGPT Search, AI Overviews), and scales to 10,000+ keywords at $0 cost on Sanity Free Tier.
+**Alternative:** Target keywords individually without intent ownership, risking Google intent cannibalization across keyword variations.
+**Tradeoff:** Requires linking a Primary Search Intent reference when creating content; guarantees zero intent cannibalization.
+**General principle:** Google ranks Search Intent, not raw text keywords. Enforcing 1:1 Intent Ownership at the database level guarantees architectural immunity to cannibalization.
+**CS50/roadmap.sh link:** CS50 Web Development — Intent-Based Data Modeling & Headless ERP Systems.
+**Remember This:** Enforcing Search Intent Ownership (`1 Article = 1 Search Intent`) prevents multiple articles from competing for identical user intents.
+**Full explanation:** Created `searchIntentItem.ts`, `keywordItem.ts`, `topicCluster.ts`, `questionItem.ts`, `researchSprint.ts`, and `competitorIntel.ts`. Added `primarySearchIntentRef`, `secondaryKeywordRefs`, and `lifecycleStatus` to `article.ts` and `playbook.ts`. Added `🚀 QuickForma Growth OS (SEO & Intent Intelligence)` section to `sanity.config.ts`. Verified clean `npm run build` and pushed commit `a50e5f6` to GitHub.
+
 
 
 

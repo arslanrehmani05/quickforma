@@ -159,7 +159,22 @@ export const playbookSchema = defineType({
       title: '🎯 Primary Target Keyword',
       type: 'string',
       fieldset: 'growthOsGroup',
-      description: 'The main target search term from SEMrush.',
+      description: 'The main target search term from SEMrush. Automatically checked against published articles.',
+      validation: (Rule) =>
+        Rule.custom(async (value, context) => {
+          if (!value || value.trim().length === 0) return true;
+          const client = context.getClient({ apiVersion: '2024-01-01' });
+          const docId = context.document?._id ? context.document._id.replace('drafts.', '') : '';
+          const existingOwner = await client.fetch(
+            `*[_type in ["article", "playbook", "collection", "glossary"] && primaryKeyword == $kw && _id != $docId && _id != $draftDocId][0]{ title, slug, _type }`,
+            { kw: value.trim(), docId, draftDocId: `drafts.${docId}` }
+          );
+          if (existingOwner) {
+            const ownerSlug = existingOwner.slug?.current || '';
+            return `⚠️ Primary keyword already targeted: "${value}" is already assigned to "${existingOwner.title}" (${existingOwner._type}) at /blog/${ownerSlug}`;
+          }
+          return true;
+        }).warning(),
     }),
     defineField({
       name: 'primarySearchIntentRef',

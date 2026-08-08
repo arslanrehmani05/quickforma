@@ -255,3 +255,19 @@
 **CS50/roadmap.sh link:** CS50 Web Development — Headless CMS Orchestration, Information Architecture, & Progressive Disclosure.
 **Remember This:** The publishing UI is the steering wheel; the Growth OS is the engine. Never delete engine capabilities to make the steering wheel simpler.
 **Full explanation:** Created QuickForma Publishing OS 3.0 refactor in `sanity.config.ts`, `article.ts`, and `playbook.ts`. Renamed `Content Hub` to `📝 Publish` and streamlined document creation lists (`Write New Article`, `Drafts & Writing`, `Published Live Content`, `Publishing Readiness & Audit`). Updated `article.ts` and `playbook.ts` to prioritize primary publishing fields and auto-assign *QuickForma Editorial* author default. Added strict Primary Keyword & Primary Search Intent cannibalization conflict warnings. Updated `HOW-TO-USE-SANITY.md` to version 3.0. Verified 100% template audit pass and clean production build with `npm run build`.
+
+## 2026-08-09 — QuickForma — Deployed Publishing OS 4.0 (Non-Blocking Shopify Cockpit with Invisible Growth OS Engine)
+**Tags:** #PublishingOS4 #ShopifyUX #GrowthOS #NonBlockingValidation #InlineWarnings #SanityStudio #InformationArchitecture
+**Importance:** ★★★★★
+**Frequency:** Rare
+**Syntax Introduced:** `Rule.custom(async (value, context) => ...).warning()`, direct top-level Sanity Desk items
+**Concept Introduced:** Cockpit vs Engine Architecture, Non-Blocking Real-Time Cannibalization Warnings, Zero-Friction Solo Publisher Publishing
+**Prerequisites:** Sanity Desk Customization, Async Validation Rules, Sanity Schema Fieldsets
+**Decision:** Executed Master Prompt 4.0 refactor. Redesigned Sanity Studio top-level navigation to expose direct `Articles`, `Business Playbooks`, `Collections`, `Glossary Terms`, `Categories`, `Authors`, and `Tags` menu items. Converted primary keyword cannibalization checks into non-blocking `.warning()` notifications (`⚠️ Primary keyword already targeted by "Title" at /blog/slug`), eliminating blocking errors while editing. Auto-defaulted `Author` reference to *Arslan Rehmani*. Preserved 100% of underlying Growth OS collections, site settings, SEO defaults, sitemap scripts, canonical tags, and frontend rendering.
+**Reason:** Gives solo publishers a frictionless, Shopify-style blog editing experience while running Growth OS intent and cannibalization tracking invisibly in the background.
+**Alternative:** Forcing manual multi-step database entries (Sprint → Vault → Intent → Cluster → Brief → Article) before publishing.
+**Tradeoff:** Non-blocking warnings allow editors to override keyword conflict warnings at their own discretion.
+**General principle:** Build a simple, intuitive operator cockpit on top of a sophisticated intelligence engine—keep human friction at zero while running machine intelligence automatically.
+**CS50/roadmap.sh link:** CS50 Web Development — Operator UX Optimization, Non-Blocking Form Validations, & Information Architecture.
+**Remember This:** The article editor is the cockpit; Growth OS is the engine. Automate background intelligence and keep human writing friction at zero.
+**Full explanation:** Created backup branch `backup/pre-publishing-os-4-refactor`. Reorganized `article.ts` and `playbook.ts` to implement 2-card Shopify-style layout (`searchEngineListing` and `organization` open by default, `growthOsGroup` collapsed at bottom). Added non-blocking `.warning()` cannibalization validation. Updated `HOW-TO-USE-SANITY.md` to version 4.0. Verified clean `npm run build` compilation and pushed to GitHub.

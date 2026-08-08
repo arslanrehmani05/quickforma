@@ -18,105 +18,20 @@ export default defineConfig({
     structureTool({
       structure: (S) =>
         S.list()
-          .title('QuickForma CMS Command Center')
+          .title('QuickForma Publishing CMS')
           .items([
-            // 📝 Top-Level Publishing Cockpit (Shopify-Style UX)
-            S.listItem()
-              .title('📝 Publish')
-              .id('publishWorkspace')
-              .child(
-                S.list()
-                  .title('Publishing Cockpit')
-                  .items([
-                    S.listItem()
-                      .title('➕ Write New Article')
-                      .id('createArticle')
-                      .child(S.documentTypeList('article').title('Articles')),
-                    S.listItem()
-                      .title('📘 Create Business Playbook')
-                      .id('createPlaybook')
-                      .child(S.documentTypeList('playbook').title('Business Playbooks')),
-                    S.listItem()
-                      .title('📦 Assemble Toolkit Collection')
-                      .id('createCollection')
-                      .child(S.documentTypeList('collection').title('Toolkit Collections')),
-                    S.listItem()
-                      .title('📖 Define Glossary Term')
-                      .id('createGlossary')
-                      .child(S.documentTypeList('glossary').title('Glossary Terms')),
-                    S.divider(),
-                    S.listItem()
-                      .title('🟡 Drafts & Writing')
-                      .id('draftsContent')
-                      .child(
-                        S.documentList()
-                          .title('Drafts & Writing Documents')
-                          .filter('_type in ["article", "playbook", "collection", "glossary"] && (_id in path("drafts.**") || draftStatus in ["draft", "review", "writing"])')
-                          .defaultOrdering([{ field: '_updatedAt', direction: 'desc' }])
-                      ),
-                    S.listItem()
-                      .title('🟢 Published Live Content')
-                      .id('publishedContent')
-                      .child(
-                        S.documentList()
-                          .title('Published Live Content')
-                          .filter('_type in ["article", "playbook", "collection", "glossary"] && !(_id in path("drafts.**"))')
-                          .defaultOrdering([{ field: '_updatedAt', direction: 'desc' }])
-                      ),
-                    S.listItem()
-                      .title('⭐ Featured & Editor\'s Picks')
-                      .id('featuredContent')
-                      .child(
-                        S.documentList()
-                          .title('Featured & Editor\'s Choice')
-                          .filter('_type in ["article", "playbook", "collection", "glossary"] && (featured == true || editorsPick == true)')
-                          .defaultOrdering([{ field: '_updatedAt', direction: 'desc' }])
-                      ),
-                    S.divider(),
-                    S.listItem()
-                      .title('📊 Publishing Readiness & Audit Dashboard')
-                      .id('healthAudit')
-                      .child(
-                        S.list()
-                          .title('Publishing Readiness Audits')
-                          .items([
-                            S.listItem()
-                              .title('⚠️ Evergreen Posts Needing Audit (No Review Date)')
-                              .id('needingAudit')
-                              .child(
-                                S.documentList()
-                                  .title('Unverified Evergreen Content')
-                                  .filter('_type in ["article", "playbook"] && isEvergreen == true && !defined(lastReviewedAt)')
-                              ),
-                            S.listItem()
-                              .title('🖼️ Content Missing Alt Text or Featured Image')
-                              .id('missingMedia')
-                              .child(
-                                S.documentList()
-                                  .title('Missing Media / Alt Text')
-                                  .filter('_type in ["article", "playbook"] && (!defined(featuredImage) || !defined(featuredImage.alt))')
-                              ),
-                            S.listItem()
-                              .title('👤 Posts Missing Author Reference')
-                              .id('missingAuthor')
-                              .child(
-                                S.documentList()
-                                  .title('Missing Author Profile')
-                                  .filter('_type in ["article", "playbook"] && !defined(author)')
-                              ),
-                          ])
-                      ),
-                    S.listItem()
-                      .title('📝 All Published & Draft Content (Unified List)')
-                      .id('allContent')
-                      .child(
-                        S.documentList()
-                          .title('All Content Documents')
-                          .filter('_type in ["article", "playbook", "collection", "glossary"]')
-                          .defaultOrdering([{ field: '_updatedAt', direction: 'desc' }])
-                      ),
-                  ])
-              ),
+            // Core Content Types (Shopify-Style Direct Access)
+            S.documentTypeListItem('article').title('📰 Articles'),
+            S.documentTypeListItem('playbook').title('📘 Business Playbooks'),
+            S.documentTypeListItem('collection').title('📦 Collections'),
+            S.documentTypeListItem('glossary').title('📖 Glossary Terms'),
+            S.divider(),
+            // Taxonomy & Authors
+            S.documentTypeListItem('category').title('📁 Categories'),
+            S.documentTypeListItem('author').title('👤 Authors'),
+            S.documentTypeListItem('tag').title('🏷️ Tags'),
+            S.divider(),
+            // 🚀 Growth OS (Strategic Strategist Workspace)
             S.listItem()
               .title('🚀 QuickForma Growth OS (SEO & Intent Intelligence)')
               .id('growthOS')
@@ -201,17 +116,6 @@ export default defineConfig({
                       ),
                   ])
               ),
-            S.divider(),
-            // Core Content Types
-            S.documentTypeListItem('article').title('📰 Articles'),
-            S.documentTypeListItem('playbook').title('📘 Business Playbooks'),
-            S.documentTypeListItem('collection').title('📦 Collections'),
-            S.documentTypeListItem('glossary').title('📖 Glossary Terms'),
-            S.divider(),
-            // Taxonomy & Authors
-            S.documentTypeListItem('category').title('📁 Categories'),
-            S.documentTypeListItem('author').title('👤 Authors'),
-            S.documentTypeListItem('tag').title('🏷️ Tags'),
             S.divider(),
             // Settings Singletons
             S.listItem()

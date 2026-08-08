@@ -228,13 +228,6 @@ export const playbookSchema = defineType({
       hidden: ({ document }) => !document?.overrideSeo,
     }),
     defineField({
-      name: 'primaryKeyword',
-      title: 'Primary Target Keyword',
-      type: 'string',
-      fieldset: 'seoGroup',
-      hidden: ({ document }) => !document?.overrideSeo,
-    }),
-    defineField({
       name: 'secondaryKeywords',
       title: 'Secondary LSI Keywords',
       type: 'array',

@@ -130,12 +130,29 @@ export default defineConfig({
                           .filter('_type == "researchSprint"')
                       ),
                     S.listItem()
+                      .title('📝 Content Briefs (Pre-Writing Roadmap)')
+                      .id('contentBriefsList')
+                      .child(
+                        S.documentList()
+                          .title('Content Briefs')
+                          .filter('_type == "contentBrief"')
+                      ),
+                    S.listItem()
                       .title('🎯 Topic Clusters (Content Roadmap & Progress)')
                       .id('topicClustersList')
                       .child(
                         S.documentList()
                           .title('Topic Clusters')
                           .filter('_type == "topicCluster"')
+                      ),
+                    S.listItem()
+                      .title('👑 Topic Authority & Content Gap Dashboard')
+                      .id('topicAuthority')
+                      .child(
+                        S.documentList()
+                          .title('Topic Authority & Cluster Coverage')
+                          .filter('_type == "topicCluster"')
+                          .defaultOrdering([{ field: 'roadmapStatus', direction: 'desc' }])
                       ),
                     S.listItem()
                       .title('🧠 Search Intent Vault (Primary Intent Owners)')

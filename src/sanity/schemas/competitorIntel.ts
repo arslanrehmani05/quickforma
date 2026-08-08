@@ -7,33 +7,29 @@ export const competitorIntelSchema = defineType({
   fields: [
     defineField({
       name: 'competitorName',
-      title: 'Competitor / Brand Name',
+      title: 'Competitor Page / Brand Name',
       type: 'string',
       validation: (Rule) => Rule.required(),
-      placeholder: 'e.g. FreshBooks Blog, Wave Accounting Guides',
+      placeholder: 'e.g. FreshBooks Invoice Guide, Wave Accounting Blog',
     }),
     defineField({
       name: 'domain',
-      title: 'Website Domain',
+      title: 'Competitor Page URL',
       type: 'url',
     }),
     defineField({
-      name: 'observations',
-      title: 'Strategic Observations',
+      name: 'notes',
+      title: 'Strategic Notes & Observations',
       type: 'text',
       rows: 3,
+      description: 'Key insights into their content strategy, gaps, and weaknesses.',
     }),
     defineField({
-      name: 'strengths',
-      title: 'Competitor Strengths',
+      name: 'whyItRanks',
+      title: 'Why Does It Rank?',
       type: 'text',
       rows: 2,
-    }),
-    defineField({
-      name: 'weaknesses',
-      title: 'Competitor Weaknesses & Gaps',
-      type: 'text',
-      rows: 2,
+      description: 'Key ranking factors (e.g. High domain authority, early mover advantage, custom interactive tool).',
     }),
     defineField({
       name: 'canWeBeatThem',
@@ -41,9 +37,9 @@ export const competitorIntelSchema = defineType({
       type: 'string',
       options: {
         list: [
-          { title: 'Yes - Clear Angle / Superior Tool', value: 'yes' },
-          { title: 'Maybe - Requires High Authority', value: 'maybe' },
-          { title: 'No - High Brand Moat', value: 'no' },
+          { title: 'Yes - Clear Superior Tool / Better Content', value: 'yes' },
+          { title: 'Maybe - Requires Domain Authority Growth', value: 'maybe' },
+          { title: 'No - Heavy Brand Moat', value: 'no' },
         ],
       },
       initialValue: 'yes',

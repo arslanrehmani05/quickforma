@@ -13,6 +13,7 @@ import { topicClusterSchema } from './topicCluster';
 import { questionItemSchema } from './questionItem';
 import { researchSprintSchema } from './researchSprint';
 import { competitorIntelSchema } from './competitorIntel';
+import { contentBriefSchema } from './contentBrief';
 
 export const schemaTypes = [
   articleSchema,
@@ -30,4 +31,5 @@ export const schemaTypes = [
   questionItemSchema,
   researchSprintSchema,
   competitorIntelSchema,
+  contentBriefSchema,
 ];

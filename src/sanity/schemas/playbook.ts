@@ -16,6 +16,11 @@ export const playbookSchema = defineType({
       options: { collapsible: true, collapsed: true },
     },
     {
+      name: 'gscGroup',
+      title: '📈 Google Search Console (GSC) Performance Metrics (Auto-Synced)',
+      options: { collapsible: true, collapsed: true },
+    },
+    {
       name: 'editorialGroup',
       title: '⚙️ Advanced Editorial & Governance Controls (Optional)',
       options: { collapsible: true, collapsed: true },
@@ -37,6 +42,13 @@ export const playbookSchema = defineType({
         maxLength: 96,
       },
       validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'contentBriefRef',
+      title: '📝 Content Brief',
+      type: 'reference',
+      to: [{ type: 'contentBrief' }],
+      description: 'Select the Content Brief that guided this playbook.',
     }),
     defineField({
       name: 'excerpt',
@@ -250,6 +262,63 @@ export const playbookSchema = defineType({
           description: 'Describe the social image for accessibility.',
         }),
       ],
+    }),
+
+    // GSC Performance Metrics Fieldset (Collapsible & Collapsed by Default)
+    defineField({
+      name: 'gscClicks',
+      title: 'Search Clicks (Last 28 Days)',
+      type: 'number',
+      fieldset: 'gscGroup',
+      initialValue: 0,
+      readOnly: true,
+    }),
+    defineField({
+      name: 'gscImpressions',
+      title: 'Search Impressions (Last 28 Days)',
+      type: 'number',
+      fieldset: 'gscGroup',
+      initialValue: 0,
+      readOnly: true,
+    }),
+    defineField({
+      name: 'gscCtr',
+      title: 'Click-Through Rate % (CTR)',
+      type: 'number',
+      fieldset: 'gscGroup',
+      initialValue: 0,
+      readOnly: true,
+    }),
+    defineField({
+      name: 'gscAvgPosition',
+      title: 'Average Google Position',
+      type: 'number',
+      fieldset: 'gscGroup',
+      initialValue: 0,
+      readOnly: true,
+    }),
+    defineField({
+      name: 'gscLastUpdated',
+      title: 'GSC Metrics Last Synced',
+      type: 'datetime',
+      fieldset: 'gscGroup',
+      readOnly: true,
+    }),
+    defineField({
+      name: 'gscPerformanceState',
+      title: 'Search Performance Classification',
+      type: 'string',
+      fieldset: 'gscGroup',
+      options: {
+        list: [
+          { title: 'Unindexed / New', value: 'unindexed' },
+          { title: 'Striking Distance (Page 2 / Pos 11-20)', value: 'striking_distance' },
+          { title: 'Page 1 Ranking (Pos 4-10)', value: 'page1' },
+          { title: 'Top 3 Pillar Rank', value: 'top3' },
+          { title: 'Content Needs Refresh (Position Loss)', value: 'needs_refresh' },
+        ],
+      },
+      initialValue: 'unindexed',
     }),
 
     // Advanced Editorial & Governance Controls (Collapsible & Collapsed by Default)

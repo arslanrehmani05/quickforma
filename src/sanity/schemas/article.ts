@@ -16,6 +16,11 @@ export const articleSchema = defineType({
       options: { collapsible: true, collapsed: true },
     },
     {
+      name: 'gscGroup',
+      title: '📈 Google Search Console (GSC) Performance Metrics (Auto-Synced)',
+      options: { collapsible: true, collapsed: true },
+    },
+    {
       name: 'editorialGroup',
       title: '⚙️ Advanced Editorial & Governance Controls (Optional)',
       options: { collapsible: true, collapsed: true },
@@ -37,6 +42,13 @@ export const articleSchema = defineType({
         maxLength: 96,
       },
       validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'contentBriefRef',
+      title: '📝 Content Brief',
+      type: 'reference',
+      to: [{ type: 'contentBrief' }],
+      description: 'Select the Content Brief that guided this article.',
     }),
     defineField({
       name: 'excerpt',
@@ -257,21 +269,79 @@ export const articleSchema = defineType({
       description: 'Custom Open Graph banner image.',
     }),
 
+    // GSC Performance Metrics Fieldset (Collapsible & Collapsed by Default)
+    defineField({
+      name: 'gscClicks',
+      title: 'Search Clicks (Last 28 Days)',
+      type: 'number',
+      fieldset: 'gscGroup',
+      initialValue: 0,
+      readOnly: true,
+    }),
+    defineField({
+      name: 'gscImpressions',
+      title: 'Search Impressions (Last 28 Days)',
+      type: 'number',
+      fieldset: 'gscGroup',
+      initialValue: 0,
+      readOnly: true,
+    }),
+    defineField({
+      name: 'gscCtr',
+      title: 'Click-Through Rate % (CTR)',
+      type: 'number',
+      fieldset: 'gscGroup',
+      initialValue: 0,
+      readOnly: true,
+    }),
+    defineField({
+      name: 'gscAvgPosition',
+      title: 'Average Google Position',
+      type: 'number',
+      fieldset: 'gscGroup',
+      initialValue: 0,
+      readOnly: true,
+    }),
+    defineField({
+      name: 'gscLastUpdated',
+      title: 'GSC Metrics Last Synced',
+      type: 'datetime',
+      fieldset: 'gscGroup',
+      readOnly: true,
+    }),
+    defineField({
+      name: 'gscPerformanceState',
+      title: 'Search Performance Classification',
+      type: 'string',
+      fieldset: 'gscGroup',
+      options: {
+        list: [
+          { title: 'Unindexed / New', value: 'unindexed' },
+          { title: 'Striking Distance (Page 2 / Pos 11-20)', value: 'striking_distance' },
+          { title: 'Page 1 Ranking (Pos 4-10)', value: 'page1' },
+          { title: 'Top 3 Pillar Rank', value: 'top3' },
+          { title: 'Content Needs Refresh (Position Loss)', value: 'needs_refresh' },
+        ],
+      },
+      initialValue: 'unindexed',
+    }),
+
     // Advanced Editorial & Governance Controls (Collapsible & Collapsed by Default)
     defineField({
       name: 'relatedToolIds',
-      title: 'Related QuickForma Tool IDs',
+      title: 'Related QuickForma Tool Catalog IDs (Internal Link Engine)',
       type: 'array',
       of: [{ type: 'string' }],
       fieldset: 'editorialGroup',
-      description: 'Tool IDs matching catalog (e.g. freelance-hourly-rate-calculator, invoice-generator, paypal-fee-calculator)',
+      description: 'Link relevant tools belonging to the same topic cluster (e.g. freelance-hourly-rate-calculator, invoice-generator, paypal-fee-calculator)',
     }),
     defineField({
       name: 'relatedArticles',
-      title: 'Related Articles',
+      title: 'Related Articles & Playbooks (Internal Link Engine)',
       type: 'array',
       of: [{ type: 'reference', to: [{ type: 'article' }, { type: 'playbook' }] }],
       fieldset: 'editorialGroup',
+      description: 'Link only articles that genuinely help the reader continue learning. Prefer quality over quantity.',
     }),
     defineField({
       name: 'publishedAt',

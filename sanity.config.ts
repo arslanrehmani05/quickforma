@@ -114,6 +114,73 @@ export default defineConfig({
                       ),
                   ])
               ),
+            S.listItem()
+              .title('🚀 QuickForma Growth OS (SEO & Intent Intelligence)')
+              .id('growthOS')
+              .child(
+                S.list()
+                  .title('Growth OS Intelligence Modules')
+                  .items([
+                    S.listItem()
+                      .title('➕ Start Research Sprint')
+                      .id('startResearch')
+                      .child(
+                        S.documentList()
+                          .title('Research Sprints Log')
+                          .filter('_type == "researchSprint"')
+                      ),
+                    S.listItem()
+                      .title('🎯 Topic Clusters (Content Roadmap & Progress)')
+                      .id('topicClustersList')
+                      .child(
+                        S.documentList()
+                          .title('Topic Clusters')
+                          .filter('_type == "topicCluster"')
+                      ),
+                    S.listItem()
+                      .title('🧠 Search Intent Vault (Primary Intent Owners)')
+                      .id('searchIntentsList')
+                      .child(
+                        S.documentList()
+                          .title('Search Intent Registry')
+                          .filter('_type == "searchIntentItem"')
+                      ),
+                    S.listItem()
+                      .title('💎 Keyword Vault & Opportunity Scores (0-100)')
+                      .id('keywordVault')
+                      .child(
+                        S.documentList()
+                          .title('Keyword Vault')
+                          .filter('_type == "keywordItem"')
+                          .defaultOrdering([{ field: 'opportunityScore', direction: 'desc' }])
+                      ),
+                    S.listItem()
+                      .title('❓ AEO Question Library (AI Search Targets)')
+                      .id('aeoQuestions')
+                      .child(
+                        S.documentList()
+                          .title('AEO Direct Answer Questions')
+                          .filter('_type == "questionItem"')
+                      ),
+                    S.listItem()
+                      .title('⚔️ Strategic Competitor Intelligence')
+                      .id('competitorIntelList')
+                      .child(
+                        S.documentList()
+                          .title('Competitor Intelligence')
+                          .filter('_type == "competitorIntel"')
+                      ),
+                    S.divider(),
+                    S.listItem()
+                      .title('⚠️ Intent Cannibalization Monitor')
+                      .id('cannibalizationMonitor')
+                      .child(
+                        S.documentList()
+                          .title('Overlapping or Unassigned Intents')
+                          .filter('_type == "searchIntentItem" && !defined(primaryOwner)')
+                      ),
+                  ])
+              ),
             S.divider(),
             // Core Content Types
             S.documentTypeListItem('article').title('📰 Articles'),

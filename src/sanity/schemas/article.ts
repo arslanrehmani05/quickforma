@@ -96,6 +96,56 @@ export const articleSchema = defineType({
       to: [{ type: 'author' }],
     }),
 
+    // Growth OS Integrations
+    defineField({
+      name: 'primarySearchIntentRef',
+      title: '🧠 Primary Search Intent (1 Article = 1 Intent Owner)',
+      type: 'reference',
+      to: [{ type: 'searchIntentItem' }],
+      description: 'Select the Primary Search Intent this article owns. Intent ownership is strictly enforced to prevent search cannibalization.',
+      validation: (Rule) =>
+        Rule.custom(async (value, context) => {
+          if (!value?._ref) return true;
+          const client = context.getClient({ apiVersion: '2024-01-01' });
+          const docId = context.document?._id ? context.document._id.replace('drafts.', '') : '';
+          const existingOwner = await client.fetch(
+            `*[_type in ["article", "playbook", "collection", "glossary"] && primarySearchIntentRef._ref == $intentId && _id != $docId && _id != $draftDocId][0]{ title, slug, _type }`,
+            { intentId: value._ref, docId, draftDocId: `drafts.${docId}` }
+          );
+          if (existingOwner) {
+            return `⛔ CANNIBALIZATION BLOCKED: Search Intent is already owned by "${existingOwner.title}" (${existingOwner._type})! Transfer ownership in the Intent Vault or select another Search Intent.`;
+          }
+          return true;
+        }),
+    }),
+    defineField({
+      name: 'secondaryKeywordRefs',
+      title: '💎 Secondary Supporting Keywords',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'keywordItem' }] }],
+      description: 'Select supporting keyword variations targeted in subheadings or sections.',
+    }),
+    defineField({
+      name: 'lifecycleStatus',
+      title: '🚥 Content Lifecycle Status (10 Stages)',
+      type: 'string',
+      options: {
+        list: [
+          { title: '💡 1. Idea', value: 'idea' },
+          { title: '📌 2. Planned', value: 'planned' },
+          { title: '🔬 3. Research', value: 'research' },
+          { title: '📝 4. Brief', value: 'brief' },
+          { title: '✍️ 5. Writing', value: 'writing' },
+          { title: '🔍 6. Editing', value: 'editing' },
+          { title: '⚙️ 7. SEO Review', value: 'seo' },
+          { title: '🟢 8. Published', value: 'published' },
+          { title: '📈 9. Ranking', value: 'ranking' },
+          { title: '🔄 10. Refreshing Needed', value: 'refreshing' },
+        ],
+      },
+      initialValue: 'writing',
+    }),
+
     // SEO Fieldset (Collapsible & Collapsed by Default)
     defineField({
       name: 'overrideSeo',

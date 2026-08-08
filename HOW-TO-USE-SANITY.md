@@ -1,7 +1,7 @@
 # 📖 QuickForma Publishing Guide & Editorial Standards
-**Version 1.0** — *Last Updated: August 2026*
+**Version 1.1** — *Last Updated: August 2026*
 
-Welcome to **QuickForma Editorial 2.0**! This guide explains **how to use every feature in Sanity Studio** (`https://www.quickforma.com/studio`), our internal editorial standards, what each field does, and how to publish high-ranking articles, playbooks, toolkits, and glossary terms.
+Welcome to **QuickForma Editorial 2.0**! This guide explains **how to use every feature in Sanity Studio** (`https://www.quickforma.com/studio`), our internal editorial standards, what each field does, and how to publish high-ranking articles, playbooks, toolkits, and glossary terms using our **Growth OS v2.0**.
 
 ---
 
@@ -9,7 +9,7 @@ Welcome to **QuickForma Editorial 2.0**! This guide explains **how to use every 
 
 1. Open your browser and go to: **`https://www.quickforma.com/studio`**
 2. Log in with your Sanity credentials.
-3. On the left sidebar, you will see the **QuickForma CMS Command Center**:
+3. On the left sidebar, you will see the **QuickForma CMS Command Center** & **Growth OS**:
 
 ```text
 🚀 Content Hub (Command Center)
@@ -19,18 +19,24 @@ Welcome to **QuickForma Editorial 2.0**! This guide explains **how to use every 
    ├── 🟢 Published Live Content
    ├── ⭐ Featured & Editor's Picks
    └── 📊 Content Health & Audit Dashboard
-       ├── ⚠️ Evergreen Posts Needing Audit
-       ├── 🖼️ Content Missing Alt Text or Featured Image
-       └── 👤 Posts Missing Author Profile
+🚀 QuickForma Growth OS (SEO & Intent Intelligence)
+   ├── ➕ Start Research Sprint
+   ├── 📝 Content Briefs (Pre-Writing Roadmap)
+   ├── 👑 Topic Authority & Content Gap Dashboard
+   ├── 🎯 Topic Clusters (Content Roadmap & Progress)
+   ├── 🧠 Search Intent Vault (Primary Intent Owners)
+   ├── 💎 Keyword Vault & Opportunity Scores (0-100)
+   ├── ❓ AEO Question Library (AI Search Targets)
+   ├── ⚔️ Strategic Competitor Intelligence
+   └── ⚠️ Intent Cannibalization Monitor
 ```
 
-### What Each Sidebar Item Does:
-* **`➕ Create New Content`**: A single click lets you choose whether you want to write an **Article**, create a **Business Playbook**, assemble a **Toolkit Collection**, or define a **Glossary Term**.
-* **`📝 All Published & Draft Content`**: Displays a single, unified list of every document across all content types sorted by most recently updated.
-* **`🟡 Drafts & Pending Review`**: Filters out published posts, leaving only work-in-progress drafts.
-* **`🟢 Published Live Content`**: Displays all active posts currently live on `quickforma.com`.
-* **`⭐ Featured & Editor's Picks`**: Filters items highlighted on your homepage or landing page banners.
-* **`📊 Content Health & Audit Dashboard`**: Automated quality assurance filters that catch missing images, unverified facts, or missing author profiles before search engines crawl your site. *This dashboard should become your primary QA homepage before publishing new content.*
+### What Each Sidebar Section Does:
+* **`📝 Content Briefs`**: The pre-writing starting point! Create a structured brief detailing the Search Intent, target audience, competitor URLs, and H2/H3 outline before writing.
+* **`👑 Topic Authority & Content Gap Dashboard`**: View all Topic Clusters sorted by coverage completion status to identify what articles, glossary terms, or calculator tools to build next.
+* **`🧠 Search Intent Vault`**: Manages 1:1 Search Intent Ownership to prevent intent-level cannibalization.
+* **`💎 Keyword Vault`**: SEMrush keyword repository sorted by calculated **Opportunity Score (0-100)**.
+* **`❓ AEO Question Library`**: Real user questions paired with **40-60 word Direct Answer Blocks** for AI Overviews, Perplexity, and ChatGPT Search.
 
 ---
 

@@ -3,18 +3,40 @@
 @tailwind utilities;
 
 @layer base {
-  /* Sanity Studio Full-Width Top Bar Workspace:
-   - List view takes 100% full width under top navbar.
-   - When editing a document, list pane hides completely and document editor takes 100% full width.
+  /* Sanity Studio Single-Canvas Full-Width Layout:
+     - Removes 320px/600px max-width limits on Sanity Studio list pane & wrapper.
+     - Single active view fills 100% of the screen under top navbar.
+     - When editing a document, list pane & wrapper vanish 100%.
   */
-  [data-pane-index="0"] {
-    flex: 1 1 100% !important;
+  [data-testid="structure-tool"],
+  [data-testid="pane-layout"],
+  [data-ui="PaneLayout"] {
     width: 100% !important;
     max-width: 100% !important;
   }
 
+  [data-testid="pane-layout"] > div,
+  [data-ui="PaneLayout"] > div {
+    flex: 1 1 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  [data-pane-index="0"],
+  [data-pane-key="pane-0"],
+  [data-testid="pane-0"] {
+    flex: 1 1 100% !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* When Document Editor (pane 1) is active: HIDE List pane (pane 0) & its parent wrapper 100% */
   body:has([data-pane-index="1"]) [data-pane-index="0"],
-  [data-pane-index="0"]:has(~ [data-pane-index="1"]) {
+  body:has([data-pane-key="pane-1"]) [data-pane-key="pane-0"],
+  body:has([data-testid="pane-1"]) [data-testid="pane-0"],
+  [data-pane-index="0"]:has(~ [data-pane-index="1"]),
+  [data-testid="pane-layout"] > div:has([data-pane-index="0"]):has(~ div:has([data-pane-index="1"])) {
     display: none !important;
     width: 0 !important;
     min-width: 0 !important;
@@ -22,9 +44,12 @@
     flex: 0 0 0 !important;
   }
 
-  [data-pane-index="1"] {
+  [data-pane-index="1"],
+  [data-pane-key="pane-1"],
+  [data-testid="pane-1"] {
     flex: 1 1 100% !important;
     width: 100% !important;
+    min-width: 100% !important;
     max-width: 100% !important;
   }
 

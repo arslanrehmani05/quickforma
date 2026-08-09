@@ -56,17 +56,20 @@
   }
 }
 
-/* Sanity Studio Full-Width Document Editor (Keeps Side Panel Intact) */
-div[data-ui="Pane"][data-pane-index="0"] {
-  flex: 0 0 240px !important;
-  min-width: 220px !important;
-  max-width: 260px !important;
+/* Sanity Studio Layout Optimization:
+   When creating/editing a document (Pane index 2 is present):
+   1. Shrink main left side panel (Pane index 0)
+   2. Hide middle document list (Pane index 1) completely
+   3. Expand document editor (Pane index 2) to full page width
+*/
+div[data-ui="Pane"][data-pane-index="0"]:has(~ div[data-ui="Pane"][data-pane-index="2"]) {
+  flex: 0 0 160px !important;
+  min-width: 140px !important;
+  max-width: 180px !important;
 }
 
-div[data-ui="Pane"][data-pane-index="1"] {
-  flex: 0 0 240px !important;
-  min-width: 200px !important;
-  max-width: 260px !important;
+div[data-ui="Pane"][data-pane-index="1"]:has(~ div[data-ui="Pane"][data-pane-index="2"]) {
+  display: none !important;
 }
 
 div[data-ui="Pane"][data-pane-index="2"] {
@@ -74,4 +77,5 @@ div[data-ui="Pane"][data-pane-index="2"] {
   min-width: 0 !important;
   width: 100% !important;
 }
+
 

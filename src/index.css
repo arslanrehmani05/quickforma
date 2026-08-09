@@ -57,25 +57,40 @@
 }
 
 /* Sanity Studio Layout Optimization:
-   When creating/editing a document (Pane index 2 is present):
-   1. Shrink main left side panel (Pane index 0)
-   2. Hide middle document list (Pane index 1) completely
+   When creating/editing a document (Pane index 2 is present in desk tool):
+   1. Shrink main left side panel (Pane index 0) to 160px
+   2. Hide middle document list (Pane index 1) 100% completely
    3. Expand document editor (Pane index 2) to full page width
 */
-div[data-ui="Pane"][data-pane-index="0"]:has(~ div[data-ui="Pane"][data-pane-index="2"]) {
+[data-testid="desk-tool"]:has([data-pane-index="2"]) [data-pane-index="0"],
+[data-ui="Pane"][data-pane-index="0"]:has(~ [data-pane-index="2"]) {
   flex: 0 0 160px !important;
   min-width: 140px !important;
   max-width: 180px !important;
+  width: 160px !important;
 }
 
-div[data-ui="Pane"][data-pane-index="1"]:has(~ div[data-ui="Pane"][data-pane-index="2"]) {
+[data-testid="desk-tool"]:has([data-pane-index="2"]) [data-pane-index="1"],
+[data-ui="Pane"][data-pane-index="1"]:has(~ [data-pane-index="2"]) {
   display: none !important;
+  width: 0 !important;
+  min-width: 0 !important;
+  max-width: 0 !important;
+  flex: 0 0 0 !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
 }
 
-div[data-ui="Pane"][data-pane-index="2"] {
+[data-pane-index="2"] {
   flex: 1 1 100% !important;
   min-width: 0 !important;
   width: 100% !important;
+  max-width: 100% !important;
 }
+
 
 

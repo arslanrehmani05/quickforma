@@ -56,57 +56,6 @@
   }
 }
 
-/* Sanity Studio Layout Optimization (v3 Structure Tool):
-   When creating/editing a document (3rd pane is present in DOM):
-   1. Shrink main left side panel (1st pane) to 160px
-   2. Hide middle document list (2nd pane) 100% completely
-   3. Expand document editor (3rd pane) to full page width
-*/
-body:has([data-pane-index="2"]),
-body:has([data-pane-key="pane-2"]),
-body:has([data-testid="pane-2"]),
-body:has([data-ui="Pane"]:nth-child(3)),
-body:has([data-testid="pane"]:nth-child(3)) {
-  [data-pane-index="0"],
-  [data-pane-key="pane-0"],
-  [data-testid="pane-0"],
-  [data-ui="Pane"]:nth-child(1),
-  [data-testid="pane"]:nth-child(1) {
-    flex: 0 0 160px !important;
-    min-width: 140px !important;
-    max-width: 180px !important;
-    width: 160px !important;
-  }
-
-  [data-pane-index="1"],
-  [data-pane-key="pane-1"],
-  [data-testid="pane-1"],
-  [data-ui="Pane"]:nth-child(2),
-  [data-testid="pane"]:nth-child(2) {
-    display: none !important;
-    width: 0 !important;
-    min-width: 0 !important;
-    max-width: 0 !important;
-    flex: 0 0 0 !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-    overflow: hidden !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    border: none !important;
-  }
-
-  [data-pane-index="2"],
-  [data-pane-key="pane-2"],
-  [data-testid="pane-2"],
-  [data-ui="Pane"]:nth-child(3),
-  [data-testid="pane"]:nth-child(3) {
-    flex: 1 1 100% !important;
-    min-width: 0 !important;
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-}
 
 
 

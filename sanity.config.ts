@@ -30,7 +30,13 @@ function SaveDraftButton(props: any) {
     }
   };
 
-  if (props.schemaType?.name !== 'article') {
+  const isArticleDoc =
+    props.type === 'article' ||
+    props.value?._type === 'article' ||
+    props.schemaType?.name === 'article' ||
+    (props.path && props.path.length === 0);
+
+  if (!isArticleDoc) {
     return props.renderDefault(props);
   }
 
@@ -41,8 +47,8 @@ function SaveDraftButton(props: any) {
         style: {
           position: 'fixed',
           bottom: '12px',
-          right: '125px',
-          zIndex: 9999,
+          right: '165px',
+          zIndex: 99999,
           display: 'flex',
           alignItems: 'center',
         }

@@ -1,6 +1,5 @@
 import { defineConfig } from 'sanity';
 import { structureTool } from 'sanity/structure';
-import { visionTool } from '@sanity/vision';
 import { schemaTypes } from './src/sanity/schemas';
 
 export const projectId = import.meta.env.VITE_SANITY_PROJECT_ID || '60xo4tvv';
@@ -42,10 +41,10 @@ export default defineConfig({
               .child(S.document().schemaType('siteSettings').documentId('siteSettings')),
           ]),
     }),
-    visionTool(),
   ],
 
   schema: {
     types: schemaTypes,
   },
 });
+

@@ -46,8 +46,8 @@ function SaveDraftButton(props: any) {
       React.createElement('div', {
         style: {
           position: 'fixed',
-          bottom: '12px',
-          right: '165px',
+          bottom: '10px',
+          right: '160px',
           zIndex: 99999,
           display: 'flex',
           alignItems: 'center',
@@ -57,29 +57,45 @@ function SaveDraftButton(props: any) {
           type: 'button',
           onClick: handleSaveDraft,
           style: {
-            background: '#23283b',
-            color: '#e2e8f0',
-            border: '1px solid #3b4261',
-            borderRadius: '4px',
-            padding: '7px 14px',
+            background: '#485273',
+            color: '#e4e9f7',
+            border: 'none',
+            borderRadius: '3px',
+            padding: '4px 10px',
+            height: '27px',
             fontSize: '13px',
-            fontWeight: 600,
+            fontWeight: 500,
+            fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
             cursor: 'pointer',
             display: 'inline-flex',
             alignItems: 'center',
             gap: '6px',
-            boxShadow: '0 2px 6px rgba(0,0,0,0.3)',
-            transition: 'all 0.15s ease',
+            boxShadow: 'none',
+            transition: 'background 0.15s ease',
           },
           onMouseEnter: (e: any) => {
-            e.currentTarget.style.background = '#2d344d';
-            e.currentTarget.style.borderColor = '#4f5885';
+            e.currentTarget.style.background = '#58648c';
           },
           onMouseLeave: (e: any) => {
-            e.currentTarget.style.background = '#23283b';
-            e.currentTarget.style.borderColor = '#3b4261';
+            e.currentTarget.style.background = '#485273';
           }
-        }, '💾 Save as draft')
+        },
+          React.createElement('svg', {
+            width: 14,
+            height: 14,
+            viewBox: '0 0 24 24',
+            fill: 'none',
+            stroke: 'currentColor',
+            strokeWidth: 2,
+            strokeLinecap: 'round',
+            strokeLinejoin: 'round'
+          },
+            React.createElement('path', { d: 'M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z' }),
+            React.createElement('polyline', { points: '17 21 17 13 7 13 7 21' }),
+            React.createElement('polyline', { points: '7 3 7 8 15 8' })
+          ),
+          'Save as draft'
+        )
       )
     )
   );

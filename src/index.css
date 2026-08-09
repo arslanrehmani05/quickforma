@@ -53,20 +53,10 @@
     max-width: 100% !important;
   }
 
-  /* Hide Sanity promotional conference banner card */
-  div:has(a[href*="sanity.io"]),
-  div:has(a[href*="everything"]),
-  a[href*="sanity.io"],
-  a[href*="everything"],
-  [data-ui="Card"]:has(a[href*="sanity.io"]) {
+  /* Hide ONLY Sanity promotional dev conference link */
+  a[href*="sanity.io/everything"],
+  div:has(> a[href*="sanity.io/everything"]) {
     display: none !important;
-    visibility: hidden !important;
-    height: 0 !important;
-    max-height: 0 !important;
-    overflow: hidden !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    border: none !important;
   }
 
   * {

@@ -53,5 +53,9 @@ export default defineConfig({
   releases: {
     enabled: false,
   },
+
+  tasks: {
+    enabled: false,
+  },
 });
 

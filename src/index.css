@@ -118,15 +118,22 @@
   }
 }
 
-/* Hide Sanity Studio Perspective/Drafts/Releases Menu Selector */
+/* Hide Sanity Studio Perspective/Drafts/Releases Menu Selector & Tasks */
 [data-testid*="perspective"],
 [data-testid*="release"],
+[data-testid*="task"],
+[data-testid*="tasks"],
 button[aria-label*="perspective"],
 button[aria-label*="Perspective"],
 button[aria-label*="release"],
 button[aria-label*="Release"],
+button[aria-label*="task"],
+button[aria-label*="Task"],
+button[aria-label*="tasks"],
+button[aria-label*="Tasks"],
 div:has(> button[data-testid*="perspective"]),
-div:has(> button[data-testid*="release"]) {
+div:has(> button[data-testid*="release"]),
+div:has(> button[data-testid*="task"]) {
   display: none !important;
 }
 

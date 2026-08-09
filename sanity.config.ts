@@ -22,20 +22,28 @@ export default defineConfig({
             // Core Content Types (Shopify-Style Direct Access)
             S.documentTypeListItem('article').title('📰 Articles'),
             S.divider(),
-            // Taxonomy & Authors
-            S.documentTypeListItem('category').title('📁 Categories'),
-            S.documentTypeListItem('author').title('👤 Authors'),
-            S.documentTypeListItem('tag').title('🏷️ Tags'),
-            S.divider(),
-            // Settings Singletons
+            // Consolidated Site & SEO Settings Suite
             S.listItem()
-              .title('🔍 SEO Defaults')
-              .id('seoDefaults')
-              .child(S.document().schemaType('seoDefaults').documentId('seoDefaults')),
-            S.listItem()
-              .title('⚙️ Site Settings')
-              .id('siteSettings')
-              .child(S.document().schemaType('siteSettings').documentId('siteSettings')),
+              .title('⚙️ Site & SEO Settings')
+              .id('siteAndSeoSettings')
+              .child(
+                S.list()
+                  .title('Site & SEO Settings')
+                  .items([
+                    S.documentTypeListItem('category').title('📁 Categories'),
+                    S.documentTypeListItem('author').title('👤 Authors'),
+                    S.documentTypeListItem('tag').title('🏷️ Tags'),
+                    S.divider(),
+                    S.listItem()
+                      .title('🔍 SEO Defaults')
+                      .id('seoDefaults')
+                      .child(S.document().schemaType('seoDefaults').documentId('seoDefaults')),
+                    S.listItem()
+                      .title('⚙️ Site Settings')
+                      .id('siteSettings')
+                      .child(S.document().schemaType('siteSettings').documentId('siteSettings')),
+                  ])
+              ),
           ]),
     }),
   ],

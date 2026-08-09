@@ -53,7 +53,7 @@ export const searchIntentItemSchema = defineType({
       name: 'primaryOwner',
       title: 'Primary Owner Document (1 Article = 1 Intent)',
       type: 'reference',
-      to: [{ type: 'article' }, { type: 'playbook' }, { type: 'collection' }, { type: 'glossary' }],
+      to: [{ type: 'article' }],
       description: 'Strict 1:1 Intent Ownership. Only ONE live article can own this search intent.',
     }),
     defineField({

@@ -71,7 +71,7 @@ export const contentBriefSchema = defineType({
       name: 'requiredInternalLinks',
       title: 'Required Internal Links',
       type: 'array',
-      of: [{ type: 'reference', to: [{ type: 'article' }, { type: 'playbook' }, { type: 'collection' }, { type: 'glossary' }] }],
+      of: [{ type: 'reference', to: [{ type: 'article' }] }],
     }),
     defineField({
       name: 'primaryToolId',

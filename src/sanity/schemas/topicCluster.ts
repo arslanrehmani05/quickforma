@@ -32,14 +32,14 @@ export const topicClusterSchema = defineType({
       name: 'pillarArticle',
       title: 'Pillar Page (Main Comprehensive Guide)',
       type: 'reference',
-      to: [{ type: 'article' }, { type: 'playbook' }],
+      to: [{ type: 'article' }],
       description: 'The core foundational pillar post for this topic cluster.',
     }),
     defineField({
       name: 'supportingArticles',
-      title: 'Supporting Articles & Playbooks',
+      title: 'Supporting Articles',
       type: 'array',
-      of: [{ type: 'reference', to: [{ type: 'article' }, { type: 'playbook' }] }],
+      of: [{ type: 'reference', to: [{ type: 'article' }] }],
       description: 'Sub-topic articles interlinked back to the pillar page.',
     }),
     defineField({
@@ -48,18 +48,6 @@ export const topicClusterSchema = defineType({
       type: 'array',
       of: [{ type: 'string' }],
       description: 'List of tool catalog IDs (e.g. invoice-generator, paypal-fee-calculator)',
-    }),
-    defineField({
-      name: 'relatedGlossary',
-      title: 'Related Glossary Terms',
-      type: 'array',
-      of: [{ type: 'reference', to: [{ type: 'glossary' }] }],
-    }),
-    defineField({
-      name: 'relatedCollections',
-      title: 'Related Toolkit Collections',
-      type: 'array',
-      of: [{ type: 'reference', to: [{ type: 'collection' }] }],
     }),
     defineField({
       name: 'roadmapStatus',

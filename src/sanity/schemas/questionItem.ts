@@ -33,10 +33,10 @@ export const questionItemSchema = defineType({
     }),
     defineField({
       name: 'coveredDocument',
-      title: 'Covered In Document',
+      title: 'Covered In Article',
       type: 'reference',
-      to: [{ type: 'article' }, { type: 'playbook' }, { type: 'glossary' }, { type: 'collection' }],
-      description: 'The live article, playbook, or glossary term that answers this question.',
+      to: [{ type: 'article' }],
+      description: 'The live article that answers this question.',
     }),
   ],
   preview: {

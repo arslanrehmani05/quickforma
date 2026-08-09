@@ -118,11 +118,15 @@
   }
 }
 
-/* Hide Sanity Studio Perspective/Drafts Menu Selector */
-[data-testid="perspective-menu-button"],
-[data-testid="perspective-select"],
+/* Hide Sanity Studio Perspective/Drafts/Releases Menu Selector */
+[data-testid*="perspective"],
+[data-testid*="release"],
 button[aria-label*="perspective"],
-button[aria-label*="Perspective"] {
+button[aria-label*="Perspective"],
+button[aria-label*="release"],
+button[aria-label*="Release"],
+div:has(> button[data-testid*="perspective"]),
+div:has(> button[data-testid*="release"]) {
   display: none !important;
 }
 

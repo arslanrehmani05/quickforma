@@ -15,24 +15,34 @@ export default defineConfig({
 
   plugins: [
     structureTool({
-      structure: (S) =>
-        S.list()
-          .title('QuickForma CMS')
-          .items([
-            S.documentTypeListItem('article').title('📰 Articles'),
-            S.documentTypeListItem('category').title('📁 Categories'),
-            S.documentTypeListItem('author').title('👤 Authors'),
-            S.documentTypeListItem('tag').title('🏷️ Tags'),
-            S.divider(),
-            S.listItem()
-              .title('🔍 SEO Defaults')
-              .id('seoDefaults')
-              .child(S.document().schemaType('seoDefaults').documentId('seoDefaults')),
-            S.listItem()
-              .title('⚙️ Site Settings')
-              .id('siteSettings')
-              .child(S.document().schemaType('siteSettings').documentId('siteSettings')),
-          ]),
+      name: 'articles',
+      title: '📰 Articles',
+      structure: (S) => S.documentTypeList('article').title('Articles'),
+    }),
+    structureTool({
+      name: 'categories',
+      title: '📁 Categories',
+      structure: (S) => S.documentTypeList('category').title('Categories'),
+    }),
+    structureTool({
+      name: 'authors',
+      title: '👤 Authors',
+      structure: (S) => S.documentTypeList('author').title('Authors'),
+    }),
+    structureTool({
+      name: 'tags',
+      title: '🏷️ Tags',
+      structure: (S) => S.documentTypeList('tag').title('Tags'),
+    }),
+    structureTool({
+      name: 'seoDefaults',
+      title: '🔍 SEO Defaults',
+      structure: (S) => S.document().schemaType('seoDefaults').documentId('seoDefaults'),
+    }),
+    structureTool({
+      name: 'siteSettings',
+      title: '⚙️ Site Settings',
+      structure: (S) => S.document().schemaType('siteSettings').documentId('siteSettings'),
     }),
   ],
 

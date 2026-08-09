@@ -64,6 +64,11 @@ export default defineConfig({
   document: {
     actions: (prev, context) => {
       if (context.schemaType === 'article') {
+        const publishAction = prev.find((a) => a.action === 'publish' || a.name === 'PublishAction');
+        const restActions = prev.filter((a) => a.action !== 'publish' && a.name !== 'PublishAction');
+        if (publishAction) {
+          return [publishAction, SaveDraftAction, ...restActions];
+        }
         return [SaveDraftAction, ...prev];
       }
       return prev;

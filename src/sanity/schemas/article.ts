@@ -16,11 +16,6 @@ export const articleSchema = defineType({
       title: '🏷️ Organization & Media',
       options: { collapsible: false },
     },
-    {
-      name: 'growthOsGroup',
-      title: '🧠 Growth OS & Intelligence (Optional)',
-      options: { collapsible: true, collapsed: true },
-    },
   ],
   fields: [
     // Main Content (Shopify Left Column)
@@ -151,65 +146,6 @@ export const articleSchema = defineType({
       type: 'datetime',
       fieldset: 'organization',
       initialValue: () => new Date().toISOString(),
-    }),
-
-    // Optional Growth OS Layer (Collapsed accordion at bottom)
-    defineField({
-      name: 'primaryKeyword',
-      title: '🎯 Primary Target Keyword',
-      type: 'string',
-      fieldset: 'growthOsGroup',
-      description: 'The main target search term from SEMrush. Automatically checked against published articles.',
-      validation: (Rule) =>
-        Rule.custom(async (value, context) => {
-          if (!value || value.trim().length === 0) return true;
-          const client = context.getClient({ apiVersion: '2024-01-01' });
-          const docId = context.document?._id ? context.document._id.replace('drafts.', '') : '';
-          const existingOwner = await client.fetch(
-            `*[_type == "article" && primaryKeyword == $kw && _id != $docId && _id != $draftDocId][0]{ title, slug, _type }`,
-            { kw: value.trim(), docId, draftDocId: `drafts.${docId}` }
-          );
-          if (existingOwner) {
-            const ownerSlug = existingOwner.slug?.current || '';
-            return `⚠️ Primary keyword already targeted: "${value}" is already assigned to "${existingOwner.title}" at /blog/${ownerSlug}`;
-          }
-          return true;
-        }).warning(),
-    }),
-    defineField({
-      name: 'primarySearchIntentRef',
-      title: '🧠 Primary Search Intent',
-      type: 'reference',
-      to: [{ type: 'searchIntentItem' }],
-      fieldset: 'growthOsGroup',
-    }),
-    defineField({
-      name: 'secondaryKeywordRefs',
-      title: '💎 Secondary Keywords',
-      type: 'array',
-      of: [{ type: 'reference', to: [{ type: 'keywordItem' }] }],
-      fieldset: 'growthOsGroup',
-    }),
-    defineField({
-      name: 'contentBriefRef',
-      title: '📝 Content Brief',
-      type: 'reference',
-      to: [{ type: 'contentBrief' }],
-      fieldset: 'growthOsGroup',
-    }),
-    defineField({
-      name: 'relatedToolIds',
-      title: 'Related QuickForma Tool Catalog IDs',
-      type: 'array',
-      of: [{ type: 'string' }],
-      fieldset: 'growthOsGroup',
-    }),
-    defineField({
-      name: 'relatedArticles',
-      title: 'Related Articles',
-      type: 'array',
-      of: [{ type: 'reference', to: [{ type: 'article' }] }],
-      fieldset: 'growthOsGroup',
     }),
   ],
   preview: {

@@ -5,21 +5,6 @@ import { schemaTypes } from './src/sanity/schemas';
 export const projectId = import.meta.env.VITE_SANITY_PROJECT_ID || '60xo4tvv';
 export const dataset = import.meta.env.VITE_SANITY_DATASET || 'production';
 
-function SaveDraftAction(props: any) {
-  const { patch } = useDocumentOperation(props.id, props.type);
-
-  return {
-    label: 'Save as draft',
-    shortcut: 'ctrl+s',
-    onHandle: () => {
-      patch.execute([{ set: { _updatedAt: new Date().toISOString() } }]);
-      if (props.onComplete) {
-        props.onComplete();
-      }
-    },
-  };
-}
-
 export default defineConfig({
   name: 'default',
   title: 'QuickForma Publishing CMS',
@@ -60,20 +45,6 @@ export default defineConfig({
       structure: (S) => S.document().schemaType('siteSettings').documentId('siteSettings'),
     }),
   ],
-
-  document: {
-    actions: (prev, context) => {
-      if (context.schemaType === 'article') {
-        const publishAction = prev.find((a) => a.action === 'publish' || a.name === 'PublishAction');
-        const restActions = prev.filter((a) => a.action !== 'publish' && a.name !== 'PublishAction');
-        if (publishAction) {
-          return [publishAction, SaveDraftAction, ...restActions];
-        }
-        return [SaveDraftAction, ...prev];
-      }
-      return prev;
-    },
-  },
 
   schema: {
     types: schemaTypes,

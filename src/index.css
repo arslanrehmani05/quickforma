@@ -137,14 +137,7 @@ div:has(> button[data-testid*="task"]) {
   display: none !important;
 }
 
-/* Document Actions Footer: Render Save as draft to the left of Publish */
-[data-testid="document-pane-footer"] [data-ui="Inline"],
-[data-testid="pane-footer"] [data-ui="Inline"],
-footer [data-ui="Inline"]:has(button) {
-  display: flex !important;
-  flex-direction: row-reverse !important;
-  gap: 8px !important;
-}
+
 
 
 

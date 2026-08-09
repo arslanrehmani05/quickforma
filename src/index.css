@@ -3,6 +3,31 @@
 @tailwind utilities;
 
 @layer base {
+  /* Sanity Studio Full-Width Top Bar Workspace:
+   - List view takes 100% full width under top navbar.
+   - When editing a document, list pane hides completely and document editor takes 100% full width.
+  */
+  [data-pane-index="0"] {
+    flex: 1 1 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  body:has([data-pane-index="1"]) [data-pane-index="0"],
+  [data-pane-index="0"]:has(~ [data-pane-index="1"]) {
+    display: none !important;
+    width: 0 !important;
+    min-width: 0 !important;
+    max-width: 0 !important;
+    flex: 0 0 0 !important;
+  }
+
+  [data-pane-index="1"] {
+    flex: 1 1 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
   * {
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }

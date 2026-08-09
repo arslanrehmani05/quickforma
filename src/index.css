@@ -69,6 +69,30 @@
   display: none !important;
 }
 
+/* Shopify 2-Column Document Form Layout (Strictly scoped to document-panel form) */
+@media (min-width: 1024px) {
+  [data-testid="document-panel"] form {
+    display: grid !important;
+    grid-template-columns: 1fr 340px !important;
+    grid-gap: 24px !important;
+    align-items: start !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+  }
+
+  [data-testid="document-panel"] [data-testid="field-title"],
+  [data-testid="document-panel"] [data-testid="field-body"],
+  [data-testid="document-panel"] [data-testid="field-excerpt"],
+  [data-testid="document-panel"] [data-testid="fieldset-searchEngineListing"] {
+    grid-column: 1 / 2 !important;
+  }
+
+  [data-testid="document-panel"] [data-testid="fieldset-organization"] {
+    grid-column: 2 / 3 !important;
+  }
+}
+
+
 
 
 

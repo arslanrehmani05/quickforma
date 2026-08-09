@@ -62,6 +62,14 @@
   }
 }
 
+/* Suppress Sanity Studio Unknown Fields Warning Card */
+[data-testid*="unknown-fields"],
+[data-ui="Card"][tone="caution"]:has(button),
+[data-ui="Card"][tone="warning"]:has(button) {
+  display: none !important;
+}
+
+
 
 
 

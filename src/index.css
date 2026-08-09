@@ -69,15 +69,41 @@
   display: none !important;
 }
 
-/* Shopify 2-Column Document Form Layout (Strictly scoped to document-panel form) */
+/* Shopify-Style Compact 240px Left List Drawer */
+[data-pane-index="0"],
+[data-pane-key="pane-0"],
+[data-testid="pane-0"] {
+  flex: 0 0 240px !important;
+  width: 240px !important;
+  min-width: 240px !important;
+  max-width: 240px !important;
+}
+
+/* Document Panel Container: Fill all remaining screen width */
+[data-pane-index="1"],
+[data-pane-key="pane-1"],
+[data-testid="pane-1"] {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  width: 100% !important;
+}
+
+[data-testid="document-panel"] > div,
+[data-ui="DocumentPanel"] > div {
+  max-width: 100% !important;
+  width: 100% !important;
+  padding: 24px 32px !important;
+}
+
+/* Shopify 2-Column Document Form Grid (70% Left Main Content / 30% Right Sidebar) */
 @media (min-width: 1024px) {
   [data-testid="document-panel"] form {
     display: grid !important;
     grid-template-columns: 1fr 340px !important;
-    grid-gap: 24px !important;
+    grid-gap: 28px !important;
     align-items: start !important;
-    max-width: 1200px !important;
-    margin: 0 auto !important;
+    max-width: 100% !important;
+    margin: 0 !important;
   }
 
   [data-testid="document-panel"] [data-testid="field-title"],

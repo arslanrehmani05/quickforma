@@ -118,6 +118,14 @@
   }
 }
 
+/* Hide Sanity Studio Perspective/Drafts Menu Selector */
+[data-testid="perspective-menu-button"],
+[data-testid="perspective-select"],
+button[aria-label*="perspective"],
+button[aria-label*="Perspective"] {
+  display: none !important;
+}
+
 
 
 

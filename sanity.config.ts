@@ -21,9 +21,6 @@ export default defineConfig({
           .items([
             // Core Content Types (Shopify-Style Direct Access)
             S.documentTypeListItem('article').title('📰 Articles'),
-            S.documentTypeListItem('playbook').title('📘 Business Playbooks'),
-            S.documentTypeListItem('collection').title('📦 Collections'),
-            S.documentTypeListItem('glossary').title('📖 Glossary Terms'),
             S.divider(),
             // Taxonomy & Authors
             S.documentTypeListItem('category').title('📁 Categories'),

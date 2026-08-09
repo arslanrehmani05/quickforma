@@ -166,12 +166,12 @@ export const articleSchema = defineType({
           const client = context.getClient({ apiVersion: '2024-01-01' });
           const docId = context.document?._id ? context.document._id.replace('drafts.', '') : '';
           const existingOwner = await client.fetch(
-            `*[_type in ["article", "playbook", "collection", "glossary"] && primaryKeyword == $kw && _id != $docId && _id != $draftDocId][0]{ title, slug, _type }`,
+            `*[_type == "article" && primaryKeyword == $kw && _id != $docId && _id != $draftDocId][0]{ title, slug, _type }`,
             { kw: value.trim(), docId, draftDocId: `drafts.${docId}` }
           );
           if (existingOwner) {
             const ownerSlug = existingOwner.slug?.current || '';
-            return `⚠️ Primary keyword already targeted: "${value}" is already assigned to "${existingOwner.title}" (${existingOwner._type}) at /blog/${ownerSlug}`;
+            return `⚠️ Primary keyword already targeted: "${value}" is already assigned to "${existingOwner.title}" at /blog/${ownerSlug}`;
           }
           return true;
         }).warning(),
@@ -206,9 +206,9 @@ export const articleSchema = defineType({
     }),
     defineField({
       name: 'relatedArticles',
-      title: 'Related Articles & Playbooks',
+      title: 'Related Articles',
       type: 'array',
-      of: [{ type: 'reference', to: [{ type: 'article' }, { type: 'playbook' }] }],
+      of: [{ type: 'reference', to: [{ type: 'article' }] }],
       fieldset: 'growthOsGroup',
     }),
   ],

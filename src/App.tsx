@@ -85,9 +85,6 @@ import { DepreciationCalculator } from './components/tools/DepreciationCalculato
 
 // Sanity CMS Page Components
 import { ArticlePage } from './pages/ArticlePage';
-import { PlaybookPage } from './pages/PlaybookPage';
-import { CollectionPage } from './pages/CollectionPage';
-import { GlossaryPage } from './pages/GlossaryPage';
 import { CategoryPage } from './pages/CategoryPage';
 
 import { Search, X, ChevronRight, ArrowLeft } from 'lucide-react';
@@ -103,15 +100,6 @@ const getRouteFromPathname = (pathname: string): string => {
   }
   if (cleanPath.startsWith('/blog/')) {
     return `blog:${cleanPath.replace('/blog/', '')}`;
-  }
-  if (cleanPath.startsWith('/playbooks/')) {
-    return `playbook:${cleanPath.replace('/playbooks/', '')}`;
-  }
-  if (cleanPath.startsWith('/collections/')) {
-    return `collection:${cleanPath.replace('/collections/', '')}`;
-  }
-  if (cleanPath.startsWith('/glossary/')) {
-    return `glossary:${cleanPath.replace('/glossary/', '')}`;
   }
   if (cleanPath.startsWith('/category/')) {
     return `category:${cleanPath.replace('/category/', '')}`;
@@ -262,18 +250,6 @@ export function App() {
         if (activeView.startsWith('blog:')) {
           const articleSlug = activeView.replace('blog:', '');
           return <ArticlePage slug={articleSlug} onBack={() => handleSelectView('home')} />;
-        }
-        if (activeView.startsWith('playbook:')) {
-          const playbookSlug = activeView.replace('playbook:', '');
-          return <PlaybookPage slug={playbookSlug} onBack={() => handleSelectView('home')} />;
-        }
-        if (activeView.startsWith('collection:')) {
-          const collectionSlug = activeView.replace('collection:', '');
-          return <CollectionPage slug={collectionSlug} onBack={() => handleSelectView('home')} />;
-        }
-        if (activeView.startsWith('glossary:')) {
-          const glossarySlug = activeView.replace('glossary:', '');
-          return <GlossaryPage slug={glossarySlug} onBack={() => handleSelectView('home')} />;
         }
         if (activeView.startsWith('category:')) {
           const categorySlug = activeView.replace('category:', '');

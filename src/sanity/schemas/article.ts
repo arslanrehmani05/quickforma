@@ -1,59 +1,61 @@
 import React from 'react';
-import { defineField, defineType, set, unset, useClient, useFormValue } from 'sanity';
+import { defineField, defineType, useClient, useFormValue } from 'sanity';
+import { TextInput } from '@sanity/ui';
 
 function AutoBlogCategoryInput(props: any) {
   const categoryRef = useFormValue(['category']) as { _ref?: string } | undefined;
   const client = useClient({ apiVersion: '2024-01-01' });
+  const [categoryName, setCategoryName] = React.useState<string>('');
 
   React.useEffect(() => {
     let isMounted = true;
     if (categoryRef?._ref) {
       client
         .fetch(`*[_id == $id][0].title`, { id: categoryRef._ref })
-        .then((catTitle) => {
-          if (isMounted && catTitle && props.value !== catTitle) {
-            props.onChange(set(catTitle));
-          }
+        .then((res) => {
+          if (isMounted && res) setCategoryName(res);
         })
         .catch(() => {});
-    } else if (!categoryRef?._ref && props.value) {
-      props.onChange(unset());
+    } else {
+      if (isMounted) setCategoryName('');
     }
     return () => {
       isMounted = false;
     };
-  }, [categoryRef?._ref, props.value, props.onChange, client]);
+  }, [categoryRef?._ref, client]);
 
-  return props.renderDefault(props);
+  return (
+    React.createElement(TextInput, {
+      value: categoryName || props.value || '',
+      readOnly: true,
+      placeholder: 'Select a Category in Organization above...',
+    })
+  );
 }
 
 function AutoArticleTitleInput(props: any) {
-  const mainTitle = useFormValue(['title']) as string | undefined;
+  const mainTitle = (useFormValue(['title']) as string) || '';
 
-  React.useEffect(() => {
-    if (mainTitle && props.value !== mainTitle) {
-      props.onChange(set(mainTitle));
-    } else if (!mainTitle && props.value) {
-      props.onChange(unset());
-    }
-  }, [mainTitle, props.value, props.onChange]);
-
-  return props.renderDefault(props);
+  return (
+    React.createElement(TextInput, {
+      value: mainTitle || props.value || '',
+      readOnly: true,
+      placeholder: 'Type a Title above to auto-populate...',
+    })
+  );
 }
 
 function AutoUrlInput(props: any) {
   const slug = useFormValue(['slug']) as { current?: string } | undefined;
   const derivedUrl = slug?.current ? `https://www.quickforma.com/blog/${slug.current}` : '';
 
-  React.useEffect(() => {
-    if (derivedUrl && props.value !== derivedUrl) {
-      props.onChange(set(derivedUrl));
-    } else if (!derivedUrl && props.value) {
-      props.onChange(unset());
-    }
-  }, [derivedUrl, props.value, props.onChange]);
-
-  return props.renderDefault(props);
+  return (
+    React.createElement(TextInput, {
+      value: derivedUrl || props.value || '',
+      readOnly: true,
+      placeholder: 'Generate a URL handle (slug) above...',
+    })
+  );
 }
 
 export const articleSchema = defineType({

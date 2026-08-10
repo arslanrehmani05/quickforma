@@ -1,4 +1,60 @@
-import { defineField, defineType } from 'sanity';
+import React from 'react';
+import { defineField, defineType, set, unset, useClient, useFormValue } from 'sanity';
+
+function AutoBlogCategoryInput(props: any) {
+  const categoryRef = useFormValue(['category']) as { _ref?: string } | undefined;
+  const client = useClient({ apiVersion: '2024-01-01' });
+
+  React.useEffect(() => {
+    let isMounted = true;
+    if (categoryRef?._ref) {
+      client
+        .fetch(`*[_id == $id][0].title`, { id: categoryRef._ref })
+        .then((catTitle) => {
+          if (isMounted && catTitle && props.value !== catTitle) {
+            props.onChange(set(catTitle));
+          }
+        })
+        .catch(() => {});
+    } else if (!categoryRef?._ref && props.value) {
+      props.onChange(unset());
+    }
+    return () => {
+      isMounted = false;
+    };
+  }, [categoryRef?._ref, props.value, props.onChange, client]);
+
+  return props.renderDefault(props);
+}
+
+function AutoArticleTitleInput(props: any) {
+  const mainTitle = useFormValue(['title']) as string | undefined;
+
+  React.useEffect(() => {
+    if (mainTitle && props.value !== mainTitle) {
+      props.onChange(set(mainTitle));
+    } else if (!mainTitle && props.value) {
+      props.onChange(unset());
+    }
+  }, [mainTitle, props.value, props.onChange]);
+
+  return props.renderDefault(props);
+}
+
+function AutoUrlInput(props: any) {
+  const slug = useFormValue(['slug']) as { current?: string } | undefined;
+  const derivedUrl = slug?.current ? `https://www.quickforma.com/blog/${slug.current}` : '';
+
+  React.useEffect(() => {
+    if (derivedUrl && props.value !== derivedUrl) {
+      props.onChange(set(derivedUrl));
+    } else if (!derivedUrl && props.value) {
+      props.onChange(unset());
+    }
+  }, [derivedUrl, props.value, props.onChange]);
+
+  return props.renderDefault(props);
+}
 
 export const articleSchema = defineType({
   name: 'article',
@@ -170,6 +226,9 @@ export const articleSchema = defineType({
       type: 'string',
       fieldset: 'seoSuite',
       readOnly: true,
+      components: {
+        input: AutoBlogCategoryInput,
+      },
       description: '⚡ Auto-updated from the Category selected in Organization & Media above.',
     }),
     defineField({
@@ -178,6 +237,9 @@ export const articleSchema = defineType({
       type: 'string',
       fieldset: 'seoSuite',
       readOnly: true,
+      components: {
+        input: AutoArticleTitleInput,
+      },
       description: '⚡ Auto-updated from the main Title field above.',
     }),
     defineField({
@@ -185,6 +247,10 @@ export const articleSchema = defineType({
       title: 'URL',
       type: 'string',
       fieldset: 'seoSuite',
+      readOnly: true,
+      components: {
+        input: AutoUrlInput,
+      },
       placeholder: 'https://www.quickforma.com/blog/...',
       description: '⚡ Auto-derived full canonical URL segment (e.g. /blog/your-slug).',
     }),

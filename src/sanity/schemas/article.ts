@@ -389,18 +389,14 @@ export const articleSchema = defineType({
       title: 'Secondary Related Tools',
       type: 'array',
       fieldset: 'seoSuite',
-      description: 'Additional secondary tools related to this article for tool-page recommendations.',
-      of: [
-        {
-          type: 'string',
-          options: {
-            list: TOOLS_CATALOG.map((t) => ({
-              title: `${t.name} (${t.id})`,
-              value: t.id,
-            })),
-          },
-        },
-      ],
+      description: 'Select all secondary tools related to this article for tool-page recommendations.',
+      of: [{ type: 'string' }],
+      options: {
+        list: TOOLS_CATALOG.map((t) => ({
+          title: `${t.name} (${t.id})`,
+          value: t.id,
+        })),
+      },
     }),
     defineField({
       name: 'contentAngle',

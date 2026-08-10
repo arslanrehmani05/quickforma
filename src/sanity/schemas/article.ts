@@ -183,9 +183,10 @@ export const articleSchema = defineType({
     defineField({
       name: 'url',
       title: 'URL',
-      type: 'url',
+      type: 'string',
       fieldset: 'seoSuite',
-      description: '⚡ Auto-derived target web path on quickforma.com.',
+      placeholder: 'https://www.quickforma.com/blog/...',
+      description: '⚡ Auto-derived full canonical URL segment (e.g. /blog/your-slug).',
     }),
     defineField({
       name: 'status',
@@ -195,18 +196,14 @@ export const articleSchema = defineType({
       readOnly: true,
       options: {
         list: [
-          { title: 'Idea / Backlog', value: 'Idea / Backlog' },
-          { title: 'Keyword Researched', value: 'Keyword Researched' },
-          { title: 'Outline Ready', value: 'Outline Ready' },
-          { title: 'Writing In Progress', value: 'Writing In Progress' },
-          { title: 'Editing & Review', value: 'Editing & Review' },
+          { title: 'Draft', value: 'Draft' },
           { title: 'Scheduled', value: 'Scheduled' },
           { title: 'Published', value: 'Published' },
-          { title: 'Needs Refresh', value: 'Needs Refresh' },
+          { title: 'Archived', value: 'Archived' },
         ],
       },
-      initialValue: 'Published',
-      description: '⚡ System-managed publication state.',
+      initialValue: 'Draft',
+      description: '⚡ System-managed publication state (Draft until published).',
     }),
     defineField({
       name: 'articleType',
@@ -216,17 +213,12 @@ export const articleSchema = defineType({
       options: {
         list: [
           { title: 'Article', value: 'Article' },
-          { title: 'Tool Utility Guide', value: 'Tool Utility Guide' },
-          { title: 'How-To Tutorial', value: 'How-To Tutorial' },
-          { title: 'Comparison / Versus', value: 'Comparison / Versus' },
-          { title: 'Listicle / Top Tools', value: 'Listicle / Top Tools' },
-          { title: 'Glossary / Definition', value: 'Glossary / Definition' },
-          { title: 'Pillar / Cornerstone', value: 'Pillar / Cornerstone' },
-          { title: 'Case Study', value: 'Case Study' },
+          { title: 'Guide', value: 'Guide' },
+          { title: 'Comparison', value: 'Comparison' },
         ],
       },
       initialValue: 'Article',
-      description: '⚡ System default (Article) or strategic format override.',
+      description: '⚡ System default (Article) or format override.',
     }),
     defineField({
       name: 'primaryKeyword',
@@ -234,6 +226,24 @@ export const articleSchema = defineType({
       type: 'string',
       fieldset: 'seoSuite',
       description: 'Main target search phrase for ranking.',
+      validation: (Rule) =>
+        Rule.custom(async (value, context) => {
+          if (!value) return true;
+          try {
+            const client = context.getClient({ apiVersion: '2024-01-01' });
+            const docId = context.document?._id?.replace(/^drafts\./, '') || '';
+            const existingDoc = await client.fetch(
+              `*[_type == "article" && lower(primaryKeyword) == lower($keyword) && !(_id match $id)][0]{_id, title}`,
+              { keyword: value.trim(), id: `${docId}*` }
+            );
+            if (existingDoc) {
+              return `⚠️ Cannibalization Warning: Primary keyword "${value}" is already claimed by article "${existingDoc.title}".`;
+            }
+          } catch {
+            // Client fetch fallback
+          }
+          return true;
+        }),
     }),
     defineField({
       name: 'primarySearchIntent',

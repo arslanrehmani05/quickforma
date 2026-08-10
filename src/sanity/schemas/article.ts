@@ -1,6 +1,7 @@
 import React from 'react';
 import { defineField, defineType, useClient, useFormValue } from 'sanity';
 import { TextInput } from '@sanity/ui';
+import { TOOLS_CATALOG } from '../../data/toolsCatalog';
 
 function AutoBlogCategoryInput(props: any) {
   const categoryRef = useFormValue(['category']) as { _ref?: string } | undefined;
@@ -376,6 +377,12 @@ export const articleSchema = defineType({
       type: 'string',
       fieldset: 'seoSuite',
       description: 'QuickForma tool embedded or linked in this article.',
+      options: {
+        list: TOOLS_CATALOG.map((t) => ({
+          title: `${t.name} (${t.id})`,
+          value: t.id,
+        })),
+      },
     }),
     defineField({
       name: 'contentAngle',

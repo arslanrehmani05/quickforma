@@ -85,6 +85,7 @@ import { DepreciationCalculator } from './components/tools/DepreciationCalculato
 
 // Sanity CMS Page Components
 import { ArticlePage } from './pages/ArticlePage';
+import { PlaybookPage } from './pages/PlaybookPage';
 import { CategoryPage } from './pages/CategoryPage';
 
 import { Search, X, ChevronRight, ArrowLeft } from 'lucide-react';
@@ -101,6 +102,9 @@ const getRouteFromPathname = (pathname: string): string => {
   if (cleanPath.startsWith('/blog/')) {
     return `blog:${cleanPath.replace('/blog/', '')}`;
   }
+  if (cleanPath.startsWith('/playbooks/')) {
+    return `playbook:${cleanPath.replace('/playbooks/', '')}`;
+  }
   if (cleanPath.startsWith('/category/')) {
     return `category:${cleanPath.replace('/category/', '')}`;
   }
@@ -112,6 +116,15 @@ const getRouteFromPathname = (pathname: string): string => {
   if (foundTool) return foundTool.id;
 
   return 'home';
+};
+
+const getPathnameFromView = (view: string): string => {
+  if (!view || view === 'home') return '/';
+  if (LEGAL_PAGES.includes(view)) return `/${view}`;
+  if (view.startsWith('blog:')) return `/blog/${view.replace('blog:', '')}`;
+  if (view.startsWith('playbook:')) return `/playbooks/${view.replace('playbook:', '')}`;
+  if (view.startsWith('category:')) return `/category/${view.replace('category:', '')}`;
+  return `/tools/${view}`;
 };
 
 export function App() {
@@ -129,8 +142,10 @@ export function App() {
 
     const initialRoute = getRouteFromPathname(window.location.pathname);
     if (initialRoute !== 'home') {
-      const targetPath = LEGAL_PAGES.includes(initialRoute) ? `/${initialRoute}` : `/tools/${initialRoute}`;
-      window.history.replaceState({ view: initialRoute }, '', targetPath);
+      const targetPath = getPathnameFromView(initialRoute);
+      if (window.location.pathname !== targetPath) {
+        window.history.replaceState({ view: initialRoute }, '', targetPath);
+      }
     }
 
     window.addEventListener('popstate', handlePopState);
@@ -158,10 +173,7 @@ export function App() {
 
   const handleSelectView = (view: string) => {
     setActiveView(view);
-    let targetPath = '/';
-    if (view !== 'home') {
-      targetPath = LEGAL_PAGES.includes(view) ? `/${view}` : `/tools/${view}`;
-    }
+    const targetPath = getPathnameFromView(view);
     if (window.location.pathname !== targetPath) {
       window.history.pushState({ view }, '', targetPath);
     }
@@ -250,6 +262,10 @@ export function App() {
         if (activeView.startsWith('blog:')) {
           const articleSlug = activeView.replace('blog:', '');
           return <ArticlePage slug={articleSlug} onBack={() => handleSelectView('home')} />;
+        }
+        if (activeView.startsWith('playbook:')) {
+          const playbookSlug = activeView.replace('playbook:', '');
+          return <PlaybookPage slug={playbookSlug} onBack={() => handleSelectView('home')} />;
         }
         if (activeView.startsWith('category:')) {
           const categorySlug = activeView.replace('category:', '');

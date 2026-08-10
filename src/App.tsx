@@ -87,6 +87,7 @@ import { DepreciationCalculator } from './components/tools/DepreciationCalculato
 import { ArticlePage } from './pages/ArticlePage';
 import { PlaybookPage } from './pages/PlaybookPage';
 import { CategoryPage } from './pages/CategoryPage';
+import { BlogHubPage } from './pages/BlogHubPage';
 
 import { Search, X, ChevronRight, ArrowLeft } from 'lucide-react';
 
@@ -96,6 +97,9 @@ const getRouteFromPathname = (pathname: string): string => {
   const cleanPath = pathname.replace(/\/$/, '').trim();
   if (!cleanPath || cleanPath === '/') return 'home';
 
+  if (cleanPath === '/blog') {
+    return 'blog:index';
+  }
   if (cleanPath.startsWith('/tools/')) {
     return cleanPath.replace('/tools/', '');
   }
@@ -121,6 +125,7 @@ const getRouteFromPathname = (pathname: string): string => {
 const getPathnameFromView = (view: string): string => {
   if (!view || view === 'home') return '/';
   if (LEGAL_PAGES.includes(view)) return `/${view}`;
+  if (view === 'blog:index' || view === 'blog') return '/blog';
   if (view.startsWith('blog:')) return `/blog/${view.replace('blog:', '')}`;
   if (view.startsWith('playbook:')) return `/playbooks/${view.replace('playbook:', '')}`;
   if (view.startsWith('category:')) return `/category/${view.replace('category:', '')}`;
@@ -259,9 +264,12 @@ export function App() {
       case 'depreciation-calculator': return <DepreciationCalculator />;
 
       default: {
+        if (activeView === 'blog:index' || activeView === 'blog') {
+          return <BlogHubPage onSelectView={handleSelectView} />;
+        }
         if (activeView.startsWith('blog:')) {
           const articleSlug = activeView.replace('blog:', '');
-          return <ArticlePage slug={articleSlug} onBack={() => handleSelectView('home')} />;
+          return <ArticlePage slug={articleSlug} onBack={() => handleSelectView('blog:index')} />;
         }
         if (activeView.startsWith('playbook:')) {
           const playbookSlug = activeView.replace('playbook:', '');

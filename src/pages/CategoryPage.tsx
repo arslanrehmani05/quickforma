@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { getCategoryBySlug, urlFor } from '../lib/sanity';
+import { getCategoryBySlug, getCategoryArticles, urlFor } from '../lib/sanity';
 import { ShareSection } from '../components/social/ShareSection';
-import { Folder, ArrowLeft } from 'lucide-react';
+import { Folder, ArrowLeft, BookOpen, Clock, Calendar, ExternalLink } from 'lucide-react';
 
 interface CategoryPageProps {
   slug: string;
@@ -10,14 +10,16 @@ interface CategoryPageProps {
 
 export const CategoryPage: React.FC<CategoryPageProps> = ({ slug, onBack }) => {
   const [category, setCategory] = useState<any>(null);
+  const [articles, setArticles] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     let isMounted = true;
     setLoading(true);
-    getCategoryBySlug(slug).then((data) => {
+    Promise.all([getCategoryBySlug(slug), getCategoryArticles(slug)]).then(([catData, artData]) => {
       if (isMounted) {
-        setCategory(data);
+        setCategory(catData);
+        setArticles(artData || []);
         setLoading(false);
       }
     });
@@ -72,9 +74,9 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({ slug, onBack }) => {
 
   if (loading) {
     return (
-      <div className="max-w-4xl mx-auto py-16 px-4 text-center">
+      <div className="max-w-5xl mx-auto py-16 px-4 text-center">
         <div className="inline-block w-8 h-8 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin"></div>
-        <p className="mt-4 text-slate-500 text-sm">Loading category landing page...</p>
+        <p className="mt-4 text-slate-500 text-sm">Loading category guides...</p>
       </div>
     );
   }
@@ -101,7 +103,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({ slug, onBack }) => {
   const shareDesc = category.seoDescription || category.description;
 
   return (
-    <div className="max-w-4xl mx-auto py-8 px-4 space-y-8">
+    <div className="max-w-5xl mx-auto py-8 px-4 space-y-10 font-sans">
       {onBack && (
         <button
           onClick={onBack}
@@ -112,7 +114,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({ slug, onBack }) => {
       )}
 
       {/* Category Header */}
-      <header className="space-y-4">
+      <header className="space-y-4 border-b border-slate-200 pb-8">
         <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs font-semibold">
           <Folder className="w-3.5 h-3.5" />
           <span>Category Pillar</span>
@@ -122,7 +124,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({ slug, onBack }) => {
           {category.name}
         </h1>
 
-        {category.description && <p className="text-lg text-slate-600 leading-relaxed">{category.description}</p>}
+        {category.description && <p className="text-lg text-slate-600 leading-relaxed max-w-3xl">{category.description}</p>}
       </header>
 
       {/* Category Featured Banner */}
@@ -135,6 +137,65 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({ slug, onBack }) => {
           />
         </figure>
       )}
+
+      {/* Category Articles Grid */}
+      <section className="space-y-6">
+        <div className="flex items-center justify-between">
+          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 flex items-center gap-2">
+            <BookOpen className="w-5 h-5 text-indigo-600" />
+            <span>Published Guides & Playbooks ({articles.length})</span>
+          </h2>
+        </div>
+
+        {articles.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {articles.map((art) => {
+              const artUrl = art._type === 'playbook' ? `/playbooks/${art.slug}` : `/blog/${art.slug}`;
+              return (
+                <a
+                  key={art._id}
+                  href={artUrl}
+                  className="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs hover:shadow-md hover:border-indigo-200 transition-all flex flex-col justify-between group"
+                >
+                  <div className="space-y-3">
+                    {art.featuredImage && (
+                      <div className="rounded-xl overflow-hidden aspect-video bg-slate-100 mb-2">
+                        <img
+                          src={urlFor(art.featuredImage).width(600).height(340).url()}
+                          alt={art.featuredImage.alt || art.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                    )}
+                    <div className="flex items-center justify-between text-xs text-slate-400">
+                      <span className="font-semibold text-indigo-600 uppercase text-[10px] tracking-wider">{category.name}</span>
+                      {art.publishedAt && (
+                        <span className="flex items-center gap-1 font-mono text-[10px]">
+                          <Calendar className="w-3 h-3" />
+                          {new Date(art.publishedAt).toLocaleDateString()}
+                        </span>
+                      )}
+                    </div>
+                    <h3 className="text-slate-900 font-bold text-base line-clamp-2 group-hover:text-indigo-600 transition-colors">
+                      {art.title}
+                    </h3>
+                    {art.excerpt && <p className="text-slate-600 text-xs leading-relaxed line-clamp-3">{art.excerpt}</p>}
+                  </div>
+                  <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-indigo-600">
+                    <span>Read Article</span>
+                    <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="p-8 rounded-2xl bg-white border border-slate-200 text-center space-y-2">
+            <p className="text-sm font-semibold text-slate-700">No published guides in this category yet</p>
+            <p className="text-xs text-slate-500">Check back soon for new guides and playbooks in {category.name}.</p>
+          </div>
+        )}
+      </section>
 
       {/* Bottom Social Share Section */}
       <ShareSection

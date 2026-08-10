@@ -199,3 +199,65 @@ export async function getCategoryBySlug(slug: string) {
     return null;
   }
 }
+
+export async function getCategoryArticles(categorySlug: string) {
+  try {
+    const query = `*[_type in ["article", "playbook"] && (category->slug.current == $categorySlug || category == $categorySlug) && defined(slug.current)] | order(coalesce(publishedAt, _updatedAt, _createdAt) desc){
+      _id,
+      _type,
+      title,
+      "slug": slug.current,
+      excerpt,
+      publishedAt,
+      _updatedAt,
+      featuredImage,
+      "categoryName": category->name,
+      "categorySlug": category->slug.current
+    }`;
+    return await sanityClient.fetch(query, { categorySlug });
+  } catch (err) {
+    console.warn('Failed to fetch category articles:', err);
+    return [];
+  }
+}
+
+export async function getBlogHubData() {
+  try {
+    const query = `{
+      "latestOverall": *[_type in ["article", "playbook"] && defined(slug.current)] | order(coalesce(publishedAt, _updatedAt, _createdAt) desc)[0..2]{
+        _id,
+        _type,
+        title,
+        "slug": slug.current,
+        excerpt,
+        publishedAt,
+        _updatedAt,
+        featuredImage,
+        "categoryName": category->name,
+        "categorySlug": category->slug.current
+      },
+      "categories": *[_type == "category"] | order(displayOrder asc, name asc){
+        _id,
+        name,
+        "slug": slug.current,
+        description,
+        "latestArticle": *[_type in ["article", "playbook"] && (category._ref == ^._id || category->slug.current == ^.slug.current || category == ^.slug.current) && defined(slug.current)] | order(coalesce(publishedAt, _updatedAt, _createdAt) desc)[0]{
+          _id,
+          _type,
+          title,
+          "slug": slug.current,
+          excerpt,
+          publishedAt,
+          _updatedAt,
+          featuredImage,
+          "categoryName": category->name,
+          "categorySlug": category->slug.current
+        }
+      }
+    }`;
+    return await sanityClient.fetch(query);
+  } catch (err) {
+    console.warn('Failed to fetch blog hub data:', err);
+    return { latestOverall: [], categories: [] };
+  }
+}

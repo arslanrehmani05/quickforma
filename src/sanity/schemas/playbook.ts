@@ -203,14 +203,18 @@ export const playbookSchema = defineType({
       title: 'Secondary Related Tools',
       type: 'array',
       fieldset: 'growthOsGroup',
-      description: 'Select all secondary tools related to this playbook for tool-page recommendations.',
-      of: [{ type: 'string' }],
-      options: {
-        list: TOOLS_CATALOG.map((t) => ({
-          title: `${t.name} (${t.id})`,
-          value: t.id,
-        })),
-      },
+      description: 'Click "Add item" to select secondary tools related to this playbook for tool-page recommendations.',
+      of: [
+        {
+          type: 'string',
+          options: {
+            list: TOOLS_CATALOG.map((t) => ({
+              title: `${t.name} (${t.id})`,
+              value: t.id,
+            })),
+          },
+        },
+      ],
     }),
     defineField({
       name: 'relatedArticles',

@@ -261,38 +261,6 @@ export const articleSchema = defineType({
       description: '⚡ Auto-derived full canonical URL segment (e.g. /blog/your-slug).',
     }),
     defineField({
-      name: 'status',
-      title: 'Status',
-      type: 'string',
-      fieldset: 'seoSuite',
-      readOnly: true,
-      options: {
-        list: [
-          { title: 'Draft', value: 'Draft' },
-          { title: 'Scheduled', value: 'Scheduled' },
-          { title: 'Published', value: 'Published' },
-          { title: 'Archived', value: 'Archived' },
-        ],
-      },
-      initialValue: 'Draft',
-      description: '⚡ System-managed publication state (Draft until published).',
-    }),
-    defineField({
-      name: 'articleType',
-      title: 'Article Type',
-      type: 'string',
-      fieldset: 'seoSuite',
-      options: {
-        list: [
-          { title: 'Article', value: 'Article' },
-          { title: 'Guide', value: 'Guide' },
-          { title: 'Comparison', value: 'Comparison' },
-        ],
-      },
-      initialValue: 'Article',
-      description: '⚡ System default (Article) or format override.',
-    }),
-    defineField({
       name: 'primaryKeyword',
       title: 'Primary Keyword',
       type: 'string',
@@ -328,21 +296,6 @@ export const articleSchema = defineType({
           { title: 'Commercial', value: 'Commercial' },
           { title: 'Transactional', value: 'Transactional' },
           { title: 'Navigational', value: 'Navigational' },
-        ],
-      },
-    }),
-    defineField({
-      name: 'intentType',
-      title: 'Intent Type',
-      type: 'string',
-      fieldset: 'seoSuite',
-      options: {
-        list: [
-          { title: 'Tool Discovery & Utility', value: 'Tool Discovery & Utility' },
-          { title: 'Problem-Solving / How-To', value: 'Problem-Solving / How-To' },
-          { title: 'Product Comparison', value: 'Product Comparison' },
-          { title: 'Definition & Educational', value: 'Definition & Educational' },
-          { title: 'Template / Download', value: 'Template / Download' },
         ],
       },
     }),
@@ -389,21 +342,18 @@ export const articleSchema = defineType({
       title: 'Secondary Related Tools',
       type: 'array',
       fieldset: 'seoSuite',
-      description: 'Select all secondary tools related to this article for tool-page recommendations.',
-      of: [{ type: 'string' }],
-      options: {
-        list: TOOLS_CATALOG.map((t) => ({
-          title: `${t.name} (${t.id})`,
-          value: t.id,
-        })),
-      },
-    }),
-    defineField({
-      name: 'contentAngle',
-      title: 'Content Angle',
-      type: 'string',
-      fieldset: 'seoSuite',
-      description: 'Unique hook or value proposition for searchers.',
+      description: 'Click "Add item" to select secondary tools related to this article for tool-page recommendations.',
+      of: [
+        {
+          type: 'string',
+          options: {
+            list: TOOLS_CATALOG.map((t) => ({
+              title: `${t.name} (${t.id})`,
+              value: t.id,
+            })),
+          },
+        },
+      ],
     }),
   ],
   preview: {

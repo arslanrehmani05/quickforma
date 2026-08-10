@@ -227,8 +227,29 @@ export const playbookSchema = defineType({
   preview: {
     select: {
       title: 'title',
-      subtitle: 'excerpt',
+      primaryKeyword: 'primaryKeyword',
+      secondaryKeywords: 'secondaryKeywords',
+      targetTool: 'targetTool',
+      relatedToolIds: 'relatedToolIds',
       media: 'featuredImage',
+    },
+    prepare({ title, primaryKeyword, secondaryKeywords, targetTool, relatedToolIds, media }) {
+      const parts: string[] = [];
+      if (primaryKeyword) parts.push(`🔑 ${primaryKeyword}`);
+      if (secondaryKeywords) {
+        const secText = Array.isArray(secondaryKeywords) ? secondaryKeywords.join(', ') : secondaryKeywords;
+        parts.push(`LSI: ${secText}`);
+      }
+      if (targetTool) parts.push(`🛠️ Primary: ${targetTool}`);
+      if (relatedToolIds && relatedToolIds.length > 0) {
+        parts.push(`🛠️ Sec: ${relatedToolIds.join(', ')}`);
+      }
+
+      return {
+        title: title || 'Untitled Playbook',
+        subtitle: parts.length > 0 ? parts.join(' | ') : 'No SEO/Tool details attached',
+        media,
+      };
     },
   },
 });

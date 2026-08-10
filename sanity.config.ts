@@ -17,6 +17,19 @@ export default defineConfig({
 
   plugins: [
     structureTool({
+      name: 'home',
+      title: '🏠 Home',
+      structure: (S) =>
+        S.documentTypeList('category')
+          .title('Published Content by Category')
+          .child((categoryId) =>
+            S.documentList()
+              .title('Articles in Category')
+              .filter('_type in ["article", "playbook"] && (category._ref == $categoryId || category->slug.current == $categoryId)')
+              .params({ categoryId })
+          ),
+    }),
+    structureTool({
       name: 'articles',
       title: '📰 Articles',
       structure: (S) => S.documentTypeList('article').title('Articles'),

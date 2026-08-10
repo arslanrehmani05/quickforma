@@ -59,7 +59,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectView }) => {
               <li><button onClick={() => onSelectView('terms')} className="hover:text-indigo-600 transition-colors">Terms of Service</button></li>
               <li><button onClick={() => onSelectView('about')} className="hover:text-indigo-600 transition-colors">About Us</button></li>
               <li><button onClick={() => onSelectView('contact')} className="hover:text-indigo-600 transition-colors">Contact Support</button></li>
-              <li><button onClick={() => onSelectView('blog:index')} className="hover:text-indigo-600 font-semibold transition-colors">QuickForma Journal</button></li>
+              <li><button onClick={() => onSelectView('blog:index')} className="hover:text-indigo-600 font-semibold transition-colors">The QuickForma Ledger</button></li>
             </ul>
           </div>
         </div>

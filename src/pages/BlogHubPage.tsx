@@ -31,7 +31,7 @@ export const BlogHubPage: React.FC<BlogHubPageProps> = ({ onSelectView }) => {
   // SEO & Social Tags Injection
   useEffect(() => {
     if (typeof document !== 'undefined') {
-      const shareTitle = 'QuickForma Journal — Evergreen Business Guides & Operational Manuals';
+      const shareTitle = 'The QuickForma Ledger — Business Guides, Financial Formulas & Playbooks';
       const shareDesc = 'Explore practical financial formulas, business playbooks, e-commerce workflows, and developer guides on QuickForma.';
       const pageUrl = 'https://www.quickforma.com/blog';
 
@@ -69,7 +69,7 @@ export const BlogHubPage: React.FC<BlogHubPageProps> = ({ onSelectView }) => {
     return (
       <div className="max-w-6xl mx-auto py-16 px-4 text-center">
         <div className="inline-block w-8 h-8 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin"></div>
-        <p className="mt-4 text-slate-500 text-sm">Loading QuickForma Journal...</p>
+        <p className="mt-4 text-slate-500 text-sm">Loading The QuickForma Ledger...</p>
       </div>
     );
   }
@@ -95,7 +95,7 @@ export const BlogHubPage: React.FC<BlogHubPageProps> = ({ onSelectView }) => {
         </div>
 
         <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
-          QuickForma Journal
+          The QuickForma Ledger
         </h1>
 
         <p className="text-lg text-slate-600 leading-relaxed max-w-3xl">
@@ -289,7 +289,7 @@ export const BlogHubPage: React.FC<BlogHubPageProps> = ({ onSelectView }) => {
 
       {/* Bottom Share Section */}
       <ShareSection
-        title="QuickForma Journal"
+        title="The QuickForma Ledger"
         description="Explore free business calculators, financial guides, and playbooks on QuickForma."
         url="https://www.quickforma.com/blog"
         align="center"

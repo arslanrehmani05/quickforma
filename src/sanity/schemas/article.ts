@@ -154,50 +154,45 @@ export const articleSchema = defineType({
       initialValue: () => new Date().toISOString(),
     }),
 
-    // SEO Suite (Positioned Beneath Published Date)
+    // SEO Suite (Positioned Beneath Published Date - Auto-synced from Publishing Wizard)
     defineField({
       name: 'contentId',
       title: 'Content ID',
       type: 'string',
       fieldset: 'seoSuite',
-      description: 'Unique identifier for tracking this asset across workflows (e.g., QKF-ART-001).',
+      readOnly: true,
+      initialValue: () => `ART-${Math.floor(100000 + Math.random() * 900000)}`,
+      description: '⚡ Auto-generated system identifier. Permanent unique key for tracking.',
     }),
     defineField({
       name: 'blogCategory',
       title: 'Blog Category',
       type: 'string',
       fieldset: 'seoSuite',
-      options: {
-        list: [
-          { title: 'Calculators & Tools', value: 'Calculators & Tools' },
-          { title: 'Small Business', value: 'Small Business' },
-          { title: 'Legal & Compliance', value: 'Legal & Compliance' },
-          { title: 'Finance & Tax', value: 'Finance & Tax' },
-          { title: 'SEO & Marketing', value: 'SEO & Marketing' },
-          { title: 'Engineering & Tech', value: 'Engineering & Tech' },
-          { title: 'Productivity & Workflows', value: 'Productivity & Workflows' },
-        ],
-      },
+      readOnly: true,
+      description: '⚡ Auto-updated from the Category selected in Organization & Media above.',
     }),
     defineField({
       name: 'articleTitle',
       title: 'Article Title',
       type: 'string',
       fieldset: 'seoSuite',
-      description: 'Exact working title registered in SEO tracking sheet.',
+      readOnly: true,
+      description: '⚡ Auto-updated from the main Title field above.',
     }),
     defineField({
       name: 'url',
       title: 'URL',
       type: 'url',
       fieldset: 'seoSuite',
-      description: 'Full canonical target URL on quickforma.com.',
+      description: '⚡ Auto-derived target web path on quickforma.com.',
     }),
     defineField({
       name: 'status',
       title: 'Status',
       type: 'string',
       fieldset: 'seoSuite',
+      readOnly: true,
       options: {
         list: [
           { title: 'Idea / Backlog', value: 'Idea / Backlog' },
@@ -211,6 +206,7 @@ export const articleSchema = defineType({
         ],
       },
       initialValue: 'Published',
+      description: '⚡ System-managed publication state.',
     }),
     defineField({
       name: 'articleType',
@@ -219,6 +215,7 @@ export const articleSchema = defineType({
       fieldset: 'seoSuite',
       options: {
         list: [
+          { title: 'Article', value: 'Article' },
           { title: 'Tool Utility Guide', value: 'Tool Utility Guide' },
           { title: 'How-To Tutorial', value: 'How-To Tutorial' },
           { title: 'Comparison / Versus', value: 'Comparison / Versus' },
@@ -228,6 +225,8 @@ export const articleSchema = defineType({
           { title: 'Case Study', value: 'Case Study' },
         ],
       },
+      initialValue: 'Article',
+      description: '⚡ System default (Article) or strategic format override.',
     }),
     defineField({
       name: 'primaryKeyword',

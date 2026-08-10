@@ -1,4 +1,5 @@
 import { defineField, defineType } from 'sanity';
+import { TOOLS_CATALOG } from '../../data/toolsCatalog';
 
 export const playbookSchema = defineType({
   name: 'playbook',
@@ -199,10 +200,21 @@ export const playbookSchema = defineType({
     }),
     defineField({
       name: 'relatedToolIds',
-      title: 'Related QuickForma Tool Catalog IDs',
+      title: 'Secondary Related Tools',
       type: 'array',
-      of: [{ type: 'string' }],
       fieldset: 'growthOsGroup',
+      description: 'Additional secondary tools related to this playbook for tool-page recommendations.',
+      of: [
+        {
+          type: 'string',
+          options: {
+            list: TOOLS_CATALOG.map((t) => ({
+              title: `${t.name} (${t.id})`,
+              value: t.id,
+            })),
+          },
+        },
+      ],
     }),
     defineField({
       name: 'relatedArticles',

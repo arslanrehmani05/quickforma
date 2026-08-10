@@ -373,16 +373,34 @@ export const articleSchema = defineType({
     }),
     defineField({
       name: 'targetTool',
-      title: 'Target Tool',
+      title: 'Target Tool (Primary)',
       type: 'string',
       fieldset: 'seoSuite',
-      description: 'QuickForma tool embedded or linked in this article.',
+      description: 'Primary QuickForma tool embedded or linked in this article.',
       options: {
         list: TOOLS_CATALOG.map((t) => ({
           title: `${t.name} (${t.id})`,
           value: t.id,
         })),
       },
+    }),
+    defineField({
+      name: 'relatedToolIds',
+      title: 'Secondary Related Tools',
+      type: 'array',
+      fieldset: 'seoSuite',
+      description: 'Additional secondary tools related to this article for tool-page recommendations.',
+      of: [
+        {
+          type: 'string',
+          options: {
+            list: TOOLS_CATALOG.map((t) => ({
+              title: `${t.name} (${t.id})`,
+              value: t.id,
+            })),
+          },
+        },
+      ],
     }),
     defineField({
       name: 'contentAngle',

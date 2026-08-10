@@ -10,10 +10,13 @@ function AutoBlogCategoryInput(props: any) {
   React.useEffect(() => {
     let isMounted = true;
     if (categoryRef?._ref) {
+      const rawId = categoryRef._ref.replace(/^drafts\./, '');
       client
-        .fetch(`*[_id == $id][0].title`, { id: categoryRef._ref })
+        .fetch(`*[_id in [$id, "drafts." + $id]][0]{ name, title }`, { id: rawId })
         .then((res) => {
-          if (isMounted && res) setCategoryName(res);
+          if (isMounted && res) {
+            setCategoryName(res.name || res.title || '');
+          }
         })
         .catch(() => {});
     } else {

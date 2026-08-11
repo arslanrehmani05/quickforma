@@ -88,6 +88,7 @@ import { ArticlePage } from './pages/ArticlePage';
 import { PlaybookPage } from './pages/PlaybookPage';
 import { CategoryPage } from './pages/CategoryPage';
 import { BlogHubPage } from './pages/BlogHubPage';
+import { BlogPostPage } from './pages/BlogPostPage';
 
 import { Search, X, ChevronRight, ArrowLeft } from 'lucide-react';
 
@@ -161,6 +162,8 @@ export function App() {
   useEffect(() => {
     if (activeView === 'home') {
       document.title = 'QuickForma | Free Client-Side Utility Tools & Business Calculators';
+    } else if (activeView.startsWith('blog:')) {
+      // Document title and meta handled inside BlogPostPage / ArticlePage components
     } else if (LEGAL_PAGES.includes(activeView)) {
       const pageTitle = activeView.charAt(0).toUpperCase() + activeView.slice(1);
       document.title = `${pageTitle} | QuickForma`;
@@ -269,7 +272,7 @@ export function App() {
         }
         if (activeView.startsWith('blog:')) {
           const articleSlug = activeView.replace('blog:', '');
-          return <ArticlePage slug={articleSlug} onBack={() => handleSelectView('blog:index')} />;
+          return <BlogPostPage slug={articleSlug} onSelectView={handleSelectView} />;
         }
         if (activeView.startsWith('playbook:')) {
           const playbookSlug = activeView.replace('playbook:', '');
@@ -348,7 +351,9 @@ export function App() {
                 <ArrowLeft className="w-3.5 h-3.5" /> All Tools
               </button>
               <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
-              <span className="text-indigo-600 font-bold">{activeTool?.name || activeView}</span>
+              <span className="text-indigo-600 font-bold">
+                {activeView.startsWith('blog:') ? 'Guide' : (activeTool?.name || activeView)}
+              </span>
             </div>
           )}
 
@@ -361,11 +366,13 @@ export function App() {
                 toolName={activeTool.name}
                 category={activeTool.category}
                 toolId={activeTool.id}
+                onSelectView={handleSelectView}
               />
             </div>
           ) : (
             renderActiveViewComponent()
           )}
+
         </main>
       </div>
 

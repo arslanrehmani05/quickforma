@@ -127,7 +127,7 @@ export async function getRelatedGuides(category?: string, toolId?: string): Prom
 
 export async function getArticleBySlug(slug: string) {
   try {
-    const query = `*[_type == "article" && slug.current == $slug][0]{
+    const query = `*[_type in ["article", "post"] && slug.current == $slug][0]{
       ...,
       "categoryName": category->name,
       "categorySlug": category->slug.current,
@@ -259,5 +259,47 @@ export async function getBlogHubData() {
   } catch (err) {
     console.warn('Failed to fetch blog hub data:', err);
     return { latestOverall: [], categories: [] };
+  }
+}
+
+/**
+ * Fetch a single published Sanity blog post by slug with full body & related tool IDs.
+ */
+export async function getBlogPostBySlug(slug: string): Promise<SanityGuidePost | null> {
+  try {
+    const query = `*[_type in ["post", "article"] && slug.current == $slug][0]{
+      _id,
+      title,
+      "slug": slug.current,
+      excerpt,
+      readTime,
+      category,
+      publishedAt,
+      mainImage,
+      featuredImage,
+      body,
+      content,
+      relatedToolIds
+    }`;
+
+    const post = await sanityClient.fetch(query, { slug });
+    if (!post) return null;
+
+    // Normalize field names (mainImage vs featuredImage, body vs content)
+    return {
+      _id: post._id,
+      title: post.title,
+      slug: { current: post.slug },
+      excerpt: post.excerpt || post.metaDescription,
+      readTime: post.readTime || '5 min read',
+      category: typeof post.category === 'string' ? post.category : post.categoryName || 'Guide',
+      publishedAt: post.publishedAt,
+      mainImage: post.mainImage || post.featuredImage,
+      body: post.body || post.content,
+      relatedToolIds: post.relatedToolIds,
+    };
+  } catch (error) {
+    console.warn('Error fetching Sanity blog post by slug:', error);
+    return null;
   }
 }

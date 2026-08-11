@@ -23,6 +23,7 @@ interface ToolSeoWrapperProps {
   toolName?: string;
   category?: string;
   toolId?: string;
+  onSelectView?: (view: string) => void;
 }
 
 export const ToolSeoWrapper: React.FC<ToolSeoWrapperProps> = ({
@@ -30,6 +31,7 @@ export const ToolSeoWrapper: React.FC<ToolSeoWrapperProps> = ({
   toolName,
   category,
   toolId,
+  onSelectView,
 }) => {
   const currentUrl = `https://www.quickforma.com/tools/${toolId || ''}`;
   const name = toolName || "QuickForma Business Utility";
@@ -287,9 +289,9 @@ export const ToolSeoWrapper: React.FC<ToolSeoWrapperProps> = ({
 
       {/* 11. Related Guides (Sanity CMS - Dynamic Sanity GROQ Integration) */}
       {sanityGuides && sanityGuides.length > 0 ? (
-        <RelatedGuides guides={sanityGuides} />
+        <RelatedGuides guides={sanityGuides} onSelectView={onSelectView} />
       ) : activeSeoData.relatedGuides && activeSeoData.relatedGuides.guides && activeSeoData.relatedGuides.guides.length > 0 ? (
-        <RelatedGuides guides={activeSeoData.relatedGuides.guides} />
+        <RelatedGuides guides={activeSeoData.relatedGuides.guides} onSelectView={onSelectView} />
       ) : null}
     </article>
   );

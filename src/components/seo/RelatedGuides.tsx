@@ -4,9 +4,10 @@ import { RelatedGuideItem } from '../../types/seo';
 
 interface RelatedGuidesProps {
   guides?: RelatedGuideItem[];
+  onSelectView?: (view: string) => void;
 }
 
-export const RelatedGuides: React.FC<RelatedGuidesProps> = ({ guides }) => {
+export const RelatedGuides: React.FC<RelatedGuidesProps> = ({ guides, onSelectView }) => {
   if (!guides || guides.length === 0) return null;
 
   return (
@@ -21,6 +22,13 @@ export const RelatedGuides: React.FC<RelatedGuidesProps> = ({ guides }) => {
           <a
             key={guide.id}
             href={guide.url}
+            onClick={(e) => {
+              if (onSelectView && guide.url.startsWith('/blog/')) {
+                e.preventDefault();
+                const slug = guide.url.replace('/blog/', '');
+                onSelectView(`blog:${slug}`);
+              }
+            }}
             className="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs hover:shadow-md hover:border-indigo-200 transition-all flex flex-col justify-between group"
           >
             <div>
@@ -43,3 +51,4 @@ export const RelatedGuides: React.FC<RelatedGuidesProps> = ({ guides }) => {
     </section>
   );
 };
+

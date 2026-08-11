@@ -94,7 +94,23 @@
 **General principle:** Configure SPA catch-all rewrite rules with negative lookaheads so static file requests are served directly by the CDN rather than routed to index.html.
 **CS50/roadmap.sh link:** CS50 Web Development — Web Server Configuration, URL Rewriting, & MIME Content-Types.
 **Remember This:** SPA catch-all rewrites must exclude static metadata files, otherwise search engine crawlers receive HTML index pages instead of XML.
-**Full explanation:** Diagnosed why GSC reported "Sitemap is HTML". Inspected `vercel.json` and found `{"source": "/(.*)", "destination": "/index.html"}` was rewriting `/sitemap.xml` to `/index.html`. Updated `vercel.json` with a negative lookahead regex excluding static metadata files and added explicit `application/xml` headers. Pushed commit `56305f2` to GitHub.
+
+## 2026-08-11 — QuickForma — Implemented Sanity Portable Text AST Renderer & Dynamic Blog Page Routing
+**Tags:** #SanityCMS #PortableText #HeadlessCMS #ASTRendering #React #SPARouting #Typography #Interlinking
+**Importance:** ★★★★★
+**Frequency:** Weekly
+**Syntax Introduced:** `block._type`, `block.markDefs`, `block.children`, `markDefsMap.get(markKey)`, `Array.isArray(content)`
+**Concept Introduced:** Abstract Syntax Tree (AST) Block Content Rendering, Portable Text Schema Resolution, Inline Mark Decorators & Link Annotations
+**Prerequisites:** JSON Data Structures, React Component Composition, HTML5 Semantic Elements
+**Decision:** Built a zero-dependency native PortableText block renderer in React (`src/components/blog/PortableTextRenderer.tsx`), added `getBlogPostBySlug` in `sanity.ts`, built `BlogPostPage.tsx`, and hooked up `/blog/:slug` SPA routing in `App.tsx`.
+**Reason:** Headless CMSs like Sanity send rich text as structured JSON block trees. Without an AST renderer, paragraph breaks, headings (`h1`-`h4`), bold (`strong`), italics (`em`), lists, and hyperlinks (`markDefs`) fail to parse, collapsing the article into a single unformatted block of plain text.
+**Alternative:** Using `@portabletext/react` library or `dangerouslySetInnerHTML`.
+**Tradeoff:** A native custom renderer gives full control over Tailwind styling and SPA interlink routing without adding third-party package overhead.
+**General principle:** Abstract syntax trees represent structured documents; traversing nodes and mapping keys to semantic elements preserves document hierarchy and formatting with zero security vulnerabilities.
+**CS50/roadmap.sh link:** CS50 Web Development — HTML Document Object Model (DOM), Semantic Web Elements, & Client-Side Tree Traversals.
+**Remember This:** Headless CMS rich text requires AST block parsing to convert structural JSON into semantic HTML tags with styles, marks, and hyperlinks intact.
+**Full explanation:** Resolved Sanity blog post formatting issues by creating `PortableTextRenderer.tsx` to parse Sanity AST blocks (`_type === 'block'`). The renderer inspects `style` (`h1`-`h4`, `blockquote`, `normal`), resolves list groups (`bullet`, `number`), formats inline marks (`strong`, `em`, `underline`, `code`, `strikethrough`), and maps `markDefs` link keys to interactive `<a>` tags with SPA routing. Added `getBlogPostBySlug` in `src/lib/sanity.ts`, built `BlogPostPage.tsx` to display full articles with featured images and related tool widgets, and updated `App.tsx` routing to support `/blog/:slug`. Verified clean production build with `npm run build`.
+
 
 ## 2026-08-07 — QuickForma — Implemented Embedded Sanity Studio CMS Architecture & 7 Core Content Schemas
 **Tags:** #SanityCMS #SanityStudio #React #Vite #SinglePageApp #PortableText #Schemas #CMS

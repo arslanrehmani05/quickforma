@@ -60,14 +60,14 @@ async function generateSitemap() {
   const catalogPath = path.join(__dirname, '../src/data/toolsCatalog.ts');
   const catalogContent = fs.readFileSync(catalogPath, 'utf-8');
 
-  // Extract all tool IDs via regex pattern: id: 'tool-id'
-  const idRegex = /id:\s*['"]([a-z0-9-]+)['"]/g;
+  // Extract all tool IDs via regex pattern: id: 'tool-id' or "id": "tool-id"
+  const idRegex = /["']?id["']?:\s*['"]([a-z0-9-]+)['"]/g;
   const toolIds = new Set();
   let match;
 
   while ((match = idRegex.exec(catalogContent)) !== null) {
-    // Exclude category IDs like 'all', 'finance', 'business', 'converters', 'developer', 'content', 'productivity'
-    const categoryIds = ['all', 'finance', 'business', 'converters', 'developer', 'content', 'productivity'];
+    // Exclude category IDs like 'all', 'finance', 'business', 'ecommerce', etc.
+    const categoryIds = ['all', 'finance', 'business', 'ecommerce', 'operations', 'hr', 'marketing', 'healthcare', 'converters', 'developer', 'content', 'productivity'];
     if (!categoryIds.includes(match[1])) {
       toolIds.add(match[1]);
     }

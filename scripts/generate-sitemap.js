@@ -11,6 +11,7 @@ const TODAY = new Date().toISOString().split('T')[0];
 // Static site routes
 const STATIC_ROUTES = [
   { path: '', priority: '1.0', changefreq: 'daily' },
+  { path: '/students', priority: '0.9', changefreq: 'daily' },
   { path: '/privacy', priority: '0.3', changefreq: 'monthly' },
   { path: '/terms', priority: '0.3', changefreq: 'monthly' },
   { path: '/about', priority: '0.4', changefreq: 'monthly' },

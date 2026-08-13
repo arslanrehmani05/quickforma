@@ -4,6 +4,7 @@ import { TOOLS_CATALOG } from './data/toolsCatalog';
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
 import { HomePage } from './pages/HomePage';
+import { StudentsPage } from './pages/StudentsPage';
 
 // Legal Pages
 import { PrivacyPolicy } from './components/legal/PrivacyPolicy';
@@ -95,6 +96,9 @@ const getRouteFromPathname = (pathname: string): string => {
   if (cleanPath === '/blog') {
     return 'blog:index';
   }
+  if (cleanPath === '/students') {
+    return 'students';
+  }
   if (cleanPath.startsWith('/tools/')) {
     return cleanPath.replace('/tools/', '');
   }
@@ -119,6 +123,7 @@ const getRouteFromPathname = (pathname: string): string => {
 
 const getPathnameFromView = (view: string): string => {
   if (!view || view === 'home') return '/';
+  if (view === 'students') return '/students';
   if (LEGAL_PAGES.includes(view)) return `/${view}`;
   if (view === 'blog:index' || view === 'blog') return '/blog';
   if (view.startsWith('blog:')) return `/blog/${view.replace('blog:', '')}`;
@@ -156,6 +161,12 @@ export function App() {
   useEffect(() => {
     if (activeView === 'home') {
       document.title = 'QuickForma | Free Client-Side Utility Tools & Business Calculators';
+    } else if (activeView === 'students') {
+      document.title = 'Free Student Tools & Academic Calculators | QuickForma';
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) {
+        metaDesc.setAttribute('content', 'Free tools for students to calculate grades, solve math and science problems, analyze statistics, plan study time, and handle everyday academic work.');
+      }
     } else if (activeView.startsWith('blog:')) {
       // Document title and meta handled inside BlogPostPage / ArticlePage components
     } else if (LEGAL_PAGES.includes(activeView)) {
@@ -184,7 +195,8 @@ export function App() {
 
   const renderActiveViewComponent = () => {
     switch (activeView) {
-      // Legal Compliance Pages
+      // Hub & Legal Pages
+      case 'students': return <StudentsPage tools={TOOLS_CATALOG} onSelectTool={handleSelectView} />;
       case 'privacy': return <PrivacyPolicy />;
       case 'terms': return <TermsOfService />;
       case 'about': return <AboutUs />;

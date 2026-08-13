@@ -61,6 +61,14 @@ export const Navbar: React.FC<NavbarProps> = ({
               All Tools
             </button>
             <button
+              onClick={() => handleNav('students')}
+              className={`px-3 py-1.5 rounded-lg transition-colors font-semibold ${
+                activeView === 'students' ? 'bg-indigo-600 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+              }`}
+            >
+              Students
+            </button>
+            <button
               onClick={() => handleNav('blog:index')}
               className={`px-3 py-1.5 rounded-lg transition-colors font-semibold ${
                 activeView === 'blog:index' || activeView.startsWith('blog:') ? 'bg-indigo-600 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
@@ -109,6 +117,12 @@ export const Navbar: React.FC<NavbarProps> = ({
             className="w-full text-left px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100"
           >
             All Utility Tools
+          </button>
+          <button
+            onClick={() => handleNav('students')}
+            className="w-full text-left px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100"
+          >
+            Students Hub
           </button>
           <button
             onClick={() => handleNav('blog:index')}

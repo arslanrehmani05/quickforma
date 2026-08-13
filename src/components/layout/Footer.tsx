@@ -51,10 +51,11 @@ export const Footer: React.FC<FooterProps> = ({ onSelectView }) => {
             </ul>
           </div>
 
-          {/* Legal Compliance Pages */}
+          {/* Company & Ecosystem Pages */}
           <div>
-            <h4 className="font-bold text-slate-900 uppercase text-[11px] tracking-wider mb-3">Company & Legal</h4>
+            <h4 className="font-bold text-slate-900 uppercase text-[11px] tracking-wider mb-3">Ecosystem & Legal</h4>
             <ul className="space-y-2 text-slate-500">
+              <li><button onClick={() => onSelectView('students')} className="hover:text-indigo-600 font-semibold text-indigo-600 transition-colors">Students Hub</button></li>
               <li><button onClick={() => onSelectView('privacy')} className="hover:text-indigo-600 transition-colors">Privacy Policy</button></li>
               <li><button onClick={() => onSelectView('terms')} className="hover:text-indigo-600 transition-colors">Terms of Service</button></li>
               <li><button onClick={() => onSelectView('about')} className="hover:text-indigo-600 transition-colors">About Us</button></li>

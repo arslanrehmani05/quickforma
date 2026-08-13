@@ -384,6 +384,23 @@
 **Remember This:** Functional taxonomy defines what a tool does; audience hubs define who the tool serves.
 **Full explanation:** Created `STUDENTS_STRATEGY.md` in repository root. Documented the 77-section master plan establishing the `/students` hub, 4 student sub-pillars (Grades & GPA, Math & Stats, Chemistry & Physics, Academic Work & Productivity), competitive differentiation standards, GPA engine architecture, and content linking system.
 
+## 2026-08-13 — QuickForma — Implemented QuickForma Students Hub (/students) v1 Architecture
+**Tags:** #StudentsHub #Routing #React #AudienceHub #Sitemap #UX
+**Importance:** ★★★★★
+**Frequency:** Rare
+**Syntax Introduced:** Path matching in `getRouteFromPathname`, React component state view switching
+**Concept Introduced:** Organic Audience Hub Architecture, Curated Seed Tooling, Zero-Overengineering Hub Landing Page
+**Prerequisites:** React, TypeScript, HTML5 History API, Sitemap Automation
+**Decision:** Implemented `/students` v1 landing page (`StudentsPage.tsx`) seeded with 6 curated tools across 2 active sections (`Academic Work & Utilities`: `word-counter`, `pdf-page-counter`, `text-diff-checker`, `unit-converter`; `Study & Productivity`: `pomodoro-timer`, `date-difference-calculator`).
+**Reason:** Establishes the Students Hub architecture cleanly without empty placeholder categories, developer tool padding, or artificial roadmap sections.
+**Alternative:** Adding 20+ general developer/converter tools or creating empty/fake categories.
+**Tradeoff:** Keeps initial page lean, allowing future grade, math, stats, and science tools to grow the page organically as they are built.
+**General principle:** Audience hubs should only surface curated tools with direct utility for the target persona; empty placeholder categories or forced tool padding degrade product quality.
+**CS50/roadmap.sh link:** CS50 Web Development — Single Page App Routing & Page Layout Architecture.
+**Remember This:** Build audience hubs organically—surface only genuinely relevant seed tools and let new categories appear naturally as purpose-built tools are added.
+**Full explanation:** Created `src/pages/StudentsPage.tsx`, updated `src/App.tsx` routing/metadata, added desktop and mobile navigation links in `src/components/layout/Navbar.tsx` and `src/components/layout/Footer.tsx`, and updated `scripts/generate-sitemap.js`. Verified `npm run build` generated 64 total sitemap URLs with 0 errors.
+
+
 
 
 

@@ -143,14 +143,14 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({ slug, onBack }) => {
         <div className="flex items-center justify-between">
           <h2 className="text-xl sm:text-2xl font-bold text-slate-900 flex items-center gap-2">
             <BookOpen className="w-5 h-5 text-indigo-600" />
-            <span>Published Guides & Playbooks ({articles.length})</span>
+            <span>Published Guides ({articles.length})</span>
           </h2>
         </div>
 
         {articles.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {articles.map((art) => {
-              const artUrl = art._type === 'playbook' ? `/playbooks/${art.slug}` : `/ledger/${art.slug}`;
+              const artUrl = `/ledger/${art.slug}`;
               return (
                 <a
                   key={art._id}

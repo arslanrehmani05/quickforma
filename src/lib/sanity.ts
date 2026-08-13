@@ -64,7 +64,7 @@ export async function getRelatedGuides(category?: string, toolId?: string): Prom
 
     // 1. Tier-1 Direct Matches: targetTool == cleanToolId || targetTool == toolUrlPath || cleanToolId in relatedToolIds
     if (cleanToolId) {
-      const directQuery = `*[_type in ["article", "playbook", "post"] && (defined(slug.current)) && (targetTool == $cleanToolId || targetTool == $toolUrlPath || $cleanToolId in relatedToolIds)] | order(coalesce(publishedAt, _updatedAt, _createdAt) desc)[0..3]{
+      const directQuery = `*[_type == "article" && defined(slug.current) && (targetTool == $cleanToolId || targetTool == $toolUrlPath || $cleanToolId in relatedToolIds)] | order(coalesce(publishedAt, _updatedAt, _createdAt) desc)[0..3]{
         _id,
         _type,
         title,
@@ -85,7 +85,7 @@ export async function getRelatedGuides(category?: string, toolId?: string): Prom
       const directIds = Array.isArray(directMatches) ? directMatches.map((m: any) => m._id) : [];
       const targetCategories = CATEGORY_MAP[category] || [category];
 
-      const categoryQuery = `*[_type in ["article", "playbook", "post"] && (defined(slug.current)) && !(_id in $directIds) && (category->slug.current in $targetCategories || lower(category->name) in $targetCategories || category in $targetCategories)] | order(coalesce(publishedAt, _updatedAt, _createdAt) desc)[0..$limit]{
+      const categoryQuery = `*[_type == "article" && defined(slug.current) && !(_id in $directIds) && (category->slug.current in $targetCategories || lower(category->name) in $targetCategories || category in $targetCategories)] | order(coalesce(publishedAt, _updatedAt, _createdAt) desc)[0..$limit]{
         _id,
         _type,
         title,
@@ -116,7 +116,7 @@ export async function getRelatedGuides(category?: string, toolId?: string): Prom
       title: post.title,
       description: post.description || 'Detailed strategic guide on business operations and financial execution.',
       readTime: post.readTime || '5 min read',
-      url: post._type === 'playbook' ? `/playbooks/${post.slug}` : `/ledger/${post.slug}`,
+      url: `/ledger/${post.slug}`,
       category: post.category || 'Guide',
     }));
   } catch (error) {
@@ -127,8 +127,9 @@ export async function getRelatedGuides(category?: string, toolId?: string): Prom
 
 export async function getArticleBySlug(slug: string) {
   try {
-    const query = `*[_type in ["article", "post"] && slug.current == $slug][0]{
+    const query = `*[_type == "article" && (slug.current == $slug || $slug in previousSlugs)][0]{
       ...,
+      "canonicalSlug": slug.current,
       "categoryName": category->name,
       "categorySlug": category->slug.current,
       "authorName": author->name,
@@ -139,53 +140,6 @@ export async function getArticleBySlug(slug: string) {
     return await sanityClient.fetch(query, { slug });
   } catch (err) {
     console.warn('Failed to fetch article by slug:', err);
-    return null;
-  }
-}
-
-export async function getPlaybookBySlug(slug: string) {
-  try {
-    const query = `*[_type == "playbook" && slug.current == $slug][0]{
-      ...,
-      "categoryName": category->name,
-      "categorySlug": category->slug.current,
-      "authorName": author->name,
-      "authorRole": author->role,
-      "reviewerName": reviewedBy->name
-    }`;
-    return await sanityClient.fetch(query, { slug });
-  } catch (err) {
-    console.warn('Failed to fetch playbook by slug:', err);
-    return null;
-  }
-}
-
-export async function getCollectionBySlug(slug: string) {
-  try {
-    const query = `*[_type == "collection" && slug.current == $slug][0]{
-      ...,
-      "categoryName": category->name,
-      "categorySlug": category->slug.current,
-      "reviewerName": reviewedBy->name
-    }`;
-    return await sanityClient.fetch(query, { slug });
-  } catch (err) {
-    console.warn('Failed to fetch collection by slug:', err);
-    return null;
-  }
-}
-
-export async function getGlossaryTermBySlug(slug: string) {
-  try {
-    const query = `*[_type == "glossary" && slug.current == $slug][0]{
-      ...,
-      "categoryName": category->name,
-      "categorySlug": category->slug.current,
-      "reviewerName": reviewedBy->name
-    }`;
-    return await sanityClient.fetch(query, { slug });
-  } catch (err) {
-    console.warn('Failed to fetch glossary term by slug:', err);
     return null;
   }
 }
@@ -202,7 +156,7 @@ export async function getCategoryBySlug(slug: string) {
 
 export async function getCategoryArticles(categorySlug: string) {
   try {
-    const query = `*[_type in ["article", "playbook"] && (category->slug.current == $categorySlug || category == $categorySlug) && defined(slug.current)] | order(coalesce(publishedAt, _updatedAt, _createdAt) desc){
+    const query = `*[_type == "article" && (category->slug.current == $categorySlug || category == $categorySlug) && defined(slug.current)] | order(coalesce(publishedAt, _updatedAt, _createdAt) desc){
       _id,
       _type,
       title,
@@ -224,7 +178,7 @@ export async function getCategoryArticles(categorySlug: string) {
 export async function getBlogHubData() {
   try {
     const query = `{
-      "latestOverall": *[_type in ["article", "playbook"] && defined(slug.current)] | order(coalesce(publishedAt, _updatedAt, _createdAt) desc)[0..2]{
+      "latestOverall": *[_type == "article" && defined(slug.current)] | order(coalesce(publishedAt, _updatedAt, _createdAt) desc)[0..2]{
         _id,
         _type,
         title,
@@ -241,7 +195,7 @@ export async function getBlogHubData() {
         name,
         "slug": slug.current,
         description,
-        "latestArticle": *[_type in ["article", "playbook"] && (category._ref == ^._id || category->slug.current == ^.slug.current || category == ^.slug.current) && defined(slug.current)] | order(coalesce(publishedAt, _updatedAt, _createdAt) desc)[0]{
+        "latestArticle": *[_type == "article" && (category._ref == ^._id || category->slug.current == ^.slug.current || category == ^.slug.current) && defined(slug.current)] | order(coalesce(publishedAt, _updatedAt, _createdAt) desc)[0]{
           _id,
           _type,
           title,

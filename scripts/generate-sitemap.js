@@ -13,6 +13,7 @@ const STATIC_ROUTES = [
   { path: '', priority: '1.0', changefreq: 'daily' },
   { path: '/business', priority: '0.9', changefreq: 'daily' },
   { path: '/students', priority: '0.9', changefreq: 'daily' },
+  { path: '/ledger', priority: '0.8', changefreq: 'daily' },
   { path: '/privacy', priority: '0.3', changefreq: 'monthly' },
   { path: '/terms', priority: '0.3', changefreq: 'monthly' },
   { path: '/about', priority: '0.4', changefreq: 'monthly' },
@@ -37,7 +38,7 @@ async function fetchSanityArticles() {
   const apiVersion = process.env.VITE_SANITY_API_VERSION || envVars.VITE_SANITY_API_VERSION || '2026-01-01';
   const token = process.env.VITE_SANITY_TOKEN || envVars.VITE_SANITY_TOKEN || '';
 
-  const groq = `*[_type in ["article", "playbook"] && defined(slug.current)]{_type, "slug": slug.current, _updatedAt, publishedAt}`;
+  const groq = `*[_type == "article" && defined(slug.current) && !(_id in path("drafts.**"))]{_type, "slug": slug.current, _updatedAt, publishedAt}`;
   const url = `https://${projectId}.api.sanity.io/v${apiVersion}/data/query/${dataset}?query=${encodeURIComponent(groq)}`;
 
   const headers = {};
@@ -78,9 +79,9 @@ async function generateSitemap() {
   const toolList = Array.from(toolIds);
   console.log(`📦 Found ${toolList.length} unique tools in toolsCatalog.ts`);
 
-  // Fetch Sanity articles and playbooks
+  // Fetch Sanity articles
   const sanityDocs = await fetchSanityArticles();
-  console.log(`📰 Found ${sanityDocs.length} published Sanity articles & playbooks`);
+  console.log(`📰 Found ${sanityDocs.length} published Sanity articles`);
 
   let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
   xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
@@ -105,9 +106,8 @@ async function generateSitemap() {
     xml += `  </url>\n`;
   });
 
-  // 3. Add dynamic Sanity articles & playbooks
+  // 3. Add dynamic Sanity articles
   sanityDocs.forEach((doc) => {
-    const routePrefix = doc._type === 'playbook' ? '/playbooks/' : '/ledger/';
     const lastModDate = doc.publishedAt
       ? doc.publishedAt.split('T')[0]
       : doc._updatedAt
@@ -115,7 +115,7 @@ async function generateSitemap() {
       : TODAY;
 
     xml += `  <url>\n`;
-    xml += `    <loc>${DOMAIN}${routePrefix}${doc.slug}</loc>\n`;
+    xml += `    <loc>${DOMAIN}/ledger/${doc.slug}</loc>\n`;
     xml += `    <lastmod>${lastModDate}</lastmod>\n`;
     xml += `    <changefreq>weekly</changefreq>\n`;
     xml += `    <priority>0.7</priority>\n`;

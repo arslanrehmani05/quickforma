@@ -27,9 +27,16 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({ slug, onBack }) => {
     };
   }, [slug]);
 
-  // Social Metadata Fallback Pipeline & Tag Injection
+  // Social Metadata Fallback Pipeline & Tag Injection & Automatic Redirect
   useEffect(() => {
     if (typeof document !== 'undefined' && article) {
+      const activeSlug = article.canonicalSlug || slug;
+
+      // Automatic Redirect Handling: If accessed via a previousSlug, update location bar to canonical URL
+      if (article.canonicalSlug && article.canonicalSlug !== slug) {
+        window.history.replaceState(null, '', `/ledger/${article.canonicalSlug}`);
+      }
+
       const shareTitle = article.socialTitle || article.seoTitle || article.title || 'QuickForma Article';
       const shareDesc = article.socialDescription || article.metaDescription || article.excerpt || 'Read this evergreen business guide on QuickForma.';
       const shareImg = article.socialImage
@@ -38,7 +45,7 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({ slug, onBack }) => {
         ? urlFor(article.featuredImage).width(1200).height(630).url()
         : 'https://www.quickforma.com/branding/Logo%20PNG.png';
 
-      const pageUrl = `https://www.quickforma.com/ledger/${slug}`;
+      const pageUrl = `https://www.quickforma.com/ledger/${activeSlug}`;
 
       document.title = `${shareTitle} — QuickForma`;
 
@@ -99,12 +106,71 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({ slug, onBack }) => {
     );
   }
 
-  const pageUrl = `https://www.quickforma.com/ledger/${slug}`;
+  const activeSlug = article.canonicalSlug || slug;
+  const pageUrl = `https://www.quickforma.com/ledger/${activeSlug}`;
   const shareTitle = article.socialTitle || article.seoTitle || article.title;
   const shareDesc = article.socialDescription || article.metaDescription || article.excerpt;
+  const shareImg = article.featuredImage
+    ? urlFor(article.featuredImage).width(1200).height(630).url()
+    : 'https://www.quickforma.com/branding/Logo%20PNG.png';
+
+  const blogPostingSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: article.title,
+    description: shareDesc,
+    image: shareImg,
+    datePublished: article.publishedAt || article._createdAt,
+    dateModified: article._updatedAt || article.publishedAt,
+    author: article.authorName
+      ? { '@type': 'Person', name: article.authorName }
+      : { '@type': 'Organization', name: 'QuickForma Editorial' },
+    publisher: {
+      '@type': 'Organization',
+      name: 'QuickForma',
+      url: 'https://www.quickforma.com',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://www.quickforma.com/branding/Logo%20PNG.png',
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': pageUrl,
+    },
+  };
+
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://www.quickforma.com/',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Ledger',
+        item: 'https://www.quickforma.com/ledger',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: article.title,
+        item: pageUrl,
+      },
+    ],
+  };
 
   return (
     <article className="max-w-4xl mx-auto py-8 px-4 space-y-8">
+      {/* Rich Snippets Structured Data */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+
       {onBack && (
         <button
           onClick={onBack}

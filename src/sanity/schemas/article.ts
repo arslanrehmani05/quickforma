@@ -155,6 +155,14 @@ export const articleSchema = defineType({
       fieldset: 'searchEngineListing',
       description: 'Specify an external canonical URL if published elsewhere first.',
     }),
+    defineField({
+      name: 'previousSlugs',
+      title: 'Previous Slugs (Redirects)',
+      type: 'array',
+      fieldset: 'searchEngineListing',
+      of: [{ type: 'string' }],
+      description: 'Old URL handles that should permanently redirect to the current URL handle.',
+    }),
 
     // Organization & Media (Shopify Right Sidebar)
     defineField({

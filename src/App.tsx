@@ -136,7 +136,6 @@ import { MarksToGpaConverter } from './components/tools/MarksToGpaConverter';
 
 // Sanity CMS Page Components
 import { ArticlePage } from './pages/ArticlePage';
-import { PlaybookPage } from './pages/PlaybookPage';
 import { CategoryPage } from './pages/CategoryPage';
 import { BlogHubPage } from './pages/BlogHubPage';
 import { BlogPostPage } from './pages/BlogPostPage';
@@ -168,9 +167,6 @@ const getRouteFromPathname = (pathname: string): string => {
   if (cleanPath.startsWith('/blog/')) {
     return `blog:${cleanPath.replace('/blog/', '')}`;
   }
-  if (cleanPath.startsWith('/playbooks/')) {
-    return `playbook:${cleanPath.replace('/playbooks/', '')}`;
-  }
   if (cleanPath.startsWith('/category/')) {
     return `category:${cleanPath.replace('/category/', '')}`;
   }
@@ -191,7 +187,6 @@ const getPathnameFromView = (view: string): string => {
   if (LEGAL_PAGES.includes(view)) return `/${view}`;
   if (view === 'blog:index' || view === 'blog' || view === 'ledger') return '/ledger';
   if (view.startsWith('blog:')) return `/ledger/${view.replace('blog:', '')}`;
-  if (view.startsWith('playbook:')) return `/playbooks/${view.replace('playbook:', '')}`;
   if (view.startsWith('category:')) return `/category/${view.replace('category:', '')}`;
   return `/tools/${view}`;
 };
@@ -399,15 +394,11 @@ export function App() {
         }
         if (activeView.startsWith('blog:')) {
           const articleSlug = activeView.replace('blog:', '');
-          return <BlogPostPage slug={articleSlug} onSelectView={handleSelectView} />;
-        }
-        if (activeView.startsWith('playbook:')) {
-          const playbookSlug = activeView.replace('playbook:', '');
-          return <PlaybookPage slug={playbookSlug} onBack={() => handleSelectView('home')} />;
+          return <ArticlePage slug={articleSlug} onBack={() => handleSelectView('blog:index')} />;
         }
         if (activeView.startsWith('category:')) {
           const categorySlug = activeView.replace('category:', '');
-          return <CategoryPage slug={categorySlug} onBack={() => handleSelectView('home')} />;
+          return <CategoryPage slug={categorySlug} onBack={() => handleSelectView('blog:index')} />;
         }
         return <HomePage tools={TOOLS_CATALOG} onSelectTool={handleSelectView} />;
       }

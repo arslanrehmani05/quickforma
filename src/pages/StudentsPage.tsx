@@ -1,154 +1,43 @@
 import React, { useState } from 'react';
 import { ToolMetadata } from '../types';
+import { getVerticalTools } from '../data/toolsCatalog';
 import { ToolCard } from '../components/layout/ToolCard';
 import { ShareSection } from '../components/social/ShareSection';
-import { GraduationCap, Search, Shield, Lock, Cpu, Sparkles, X, Award, FileText, Clock } from 'lucide-react';
+import { GraduationCap, Search, Shield, Lock, Cpu, Sparkles, X } from 'lucide-react';
 
 interface StudentsPageProps {
   tools: ToolMetadata[];
   onSelectTool: (id: string) => void;
 }
 
-// Student Hub categories mapping to tool IDs across 9 Academic Systems
 const STUDENT_CATEGORIES = [
   { id: 'all', name: 'All Student Tools' },
-  { id: 'grades', name: 'Grades & GPA' },
-  { id: 'math', name: 'Mathematics' },
-  { id: 'stats', name: 'Statistics & Probability' },
-  { id: 'chem', name: 'Chemistry' },
-  { id: 'physics', name: 'Physics' },
-  { id: 'writing', name: 'Academic Writing & Research' },
-  { id: 'study', name: 'Study & Productivity' },
-  { id: 'finance', name: 'Student Finance' },
-  { id: 'conversions', name: 'Academic Conversions' },
+  { id: 'grades-gpa', name: 'Grades & GPA' },
+  { id: 'math-algebra', name: 'Mathematics' },
+  { id: 'stats-probability', name: 'Statistics & Probability' },
+  { id: 'chemistry-science', name: 'Chemistry' },
+  { id: 'physics-engineering', name: 'Physics' },
+  { id: 'writing-research', name: 'Academic Writing' },
+  { id: 'study-productivity', name: 'Study & Productivity' },
+  { id: 'student-finance', name: 'Student Finance' },
+  { id: 'academic-conversions', name: 'Academic Conversions' },
 ];
 
-const GRADES_GPA_TOOL_IDS = [
-  'gpa-calculator',
-  'cumulative-gpa-calculator',
-  'final-grade-calculator',
-  'weighted-grade-calculator',
-  'target-gpa-planner-calculator',
-  'attendance-calculator',
-  'marks-percentage-converter',
-];
-
-const MATH_TOOL_IDS = [
-  'fraction-calculator',
-  'percentage-calculator',
-  'ratio-proportion-calculator',
-  'average-calculator',
-  'scientific-notation-calculator',
-  'exponent-logarithm-calculator',
-  'linear-equation-calculator',
-  'quadratic-formula-calculator',
-  'distance-midpoint-calculator',
-  'sequence-series-calculator',
-  'pythagorean-theorem-calculator',
-  'triangle-area-solver',
-  'circle-calculator',
-  'geometry-area-volume-calculator',
-  'trigonometry-calculator',
-  'law-of-sines-cosines-calculator',
-  'derivative-limit-calculator',
-];
-
-const STATS_TOOL_IDS = [
-  'descriptive-statistics-calculator',
-  'z-score-calculator',
-  'probability-calculator',
-  'permutation-combination-calculator',
-  'probability-distributions-calculator',
-  'confidence-interval-calculator',
-  'hypothesis-test-calculator',
-];
-
-const CHEM_TOOL_IDS = [
-  'molar-mass-calculator',
-  'moles-molarity-calculator',
-  'dilution-calculator',
-  'ph-poh-calculator',
-  'stoichiometry-percent-yield-calculator',
-  'gas-laws-calculator',
-  'significant-figures-calculator',
-];
-
-const PHYSICS_TOOL_IDS = [
-  'kinematics-motion-calculator',
-  'force-friction-momentum-calculator',
-  'work-energy-power-calculator',
-  'ohms-law-electrical-calculator',
-  'wave-frequency-speed-calculator',
-];
-
-const WRITING_TOOL_IDS = [
-  'word-counter',
-  'reading-presentation-time-calculator',
-  'essay-page-count-calculator',
-  'academic-readability-analyzer',
-  'citation-formatter',
-  'pdf-page-counter',
-  'text-diff-checker',
-];
-
-const STUDY_TOOL_IDS = [
-  'pomodoro-timer',
-  'study-schedule-time-calculator',
-  'exam-assignment-countdown',
-  'date-difference-calculator',
-];
-
-const FINANCE_TOOL_IDS = [
-  'student-budget-planner',
-  'cost-per-credit-hour-calculator',
-  'student-loan-payoff-calculator',
-  'roommate-rent-split-calculator',
-];
-
-const CONVERSIONS_TOOL_IDS = [
-  'gpa-scale-converter',
-  'marks-to-gpa-converter',
-  'unit-converter',
-];
-
-const ALL_STUDENT_TOOL_IDS = Array.from(new Set([
-  ...GRADES_GPA_TOOL_IDS,
-  ...MATH_TOOL_IDS,
-  ...STATS_TOOL_IDS,
-  ...CHEM_TOOL_IDS,
-  ...PHYSICS_TOOL_IDS,
-  ...WRITING_TOOL_IDS,
-  ...STUDY_TOOL_IDS,
-  ...FINANCE_TOOL_IDS,
-  ...CONVERSIONS_TOOL_IDS,
-]));
-
-export const StudentsPage: React.FC<StudentsPageProps> = ({ tools, onSelectTool }) => {
+export const StudentsPage: React.FC<StudentsPageProps> = ({ onSelectTool }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
 
-  // Retrieve student tools
-  const studentTools = ALL_STUDENT_TOOL_IDS
-    .map(id => tools.find(t => t.id === id))
-    .filter((t): t is ToolMetadata => t !== undefined);
+  // Dynamically query catalog for students vertical tools
+  const studentTools = getVerticalTools('students');
 
   // Filter tools by category and search query
-  const filteredTools = studentTools.filter(tool => {
-    let matchesCategory = true;
-    if (selectedCategory === 'grades') matchesCategory = GRADES_GPA_TOOL_IDS.includes(tool.id);
-    else if (selectedCategory === 'math') matchesCategory = MATH_TOOL_IDS.includes(tool.id);
-    else if (selectedCategory === 'stats') matchesCategory = STATS_TOOL_IDS.includes(tool.id);
-    else if (selectedCategory === 'chem') matchesCategory = CHEM_TOOL_IDS.includes(tool.id);
-    else if (selectedCategory === 'physics') matchesCategory = PHYSICS_TOOL_IDS.includes(tool.id);
-    else if (selectedCategory === 'writing') matchesCategory = WRITING_TOOL_IDS.includes(tool.id);
-    else if (selectedCategory === 'study') matchesCategory = STUDY_TOOL_IDS.includes(tool.id);
-    else if (selectedCategory === 'finance') matchesCategory = FINANCE_TOOL_IDS.includes(tool.id);
-    else if (selectedCategory === 'conversions') matchesCategory = CONVERSIONS_TOOL_IDS.includes(tool.id);
-
+  const filteredTools = studentTools.filter((tool) => {
+    const matchesCategory = selectedCategory === 'all' || tool.category === selectedCategory;
     const q = searchQuery.toLowerCase();
-    const matchesSearch = tool.name.toLowerCase().includes(q) ||
-                          tool.description.toLowerCase().includes(q) ||
-                          tool.keywords.some(k => k.toLowerCase().includes(q));
+    const matchesSearch =
+      tool.name.toLowerCase().includes(q) ||
+      tool.description.toLowerCase().includes(q) ||
+      tool.keywords.some((k) => k.toLowerCase().includes(q));
 
     return matchesCategory && matchesSearch;
   });
@@ -158,16 +47,16 @@ export const StudentsPage: React.FC<StudentsPageProps> = ({ tools, onSelectTool 
       {/* Hero Section */}
       <section className="text-center space-y-4 max-w-4xl mx-auto px-4 pt-2">
         <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs font-semibold">
-          <GraduationCap className="w-3.5 h-3.5 text-indigo-600" />
-          <span>QuickForma Students • Academic Utilities</span>
+          <GraduationCap className="w-3.5 h-3.5 fill-current text-indigo-600" />
+          <span>QuickForma Students • {studentTools.length} Academic Utilities</span>
         </div>
 
         <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
-          Free Student Tools & Academic Calculators
+          Academic Calculators & Study Utilities
         </h1>
 
         <p className="text-slate-600 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-          Zero sign-ups, zero email paywalls, and zero server uploads. Every GPA calculation, grade estimate, word count, and study timer executes locally in your browser memory.
+          Zero sign-ups, zero email paywalls, and zero cloud tracking. Every GPA calculation, chemistry formula, physics equation, and citation formatter executes 100% locally inside your browser memory.
         </p>
 
         {/* Trust Badges */}
@@ -176,7 +65,7 @@ export const StudentsPage: React.FC<StudentsPageProps> = ({ tools, onSelectTool 
             <Shield className="w-3.5 h-3.5 text-emerald-600" /> 100% Private Client-Side Engine
           </div>
           <div className="flex items-center gap-1.5 bg-white px-3.5 py-1.5 rounded-xl border border-slate-200 shadow-xs">
-            <Lock className="w-3.5 h-3.5 text-indigo-600" /> Zero Academic Data Uploads
+            <Lock className="w-3.5 h-3.5 text-indigo-600" /> Zero File Server Uploads
           </div>
           <div className="flex items-center gap-1.5 bg-white px-3.5 py-1.5 rounded-xl border border-slate-200 shadow-xs">
             <Cpu className="w-3.5 h-3.5 text-amber-600" /> Sub-50ms Calculation
@@ -187,13 +76,13 @@ export const StudentsPage: React.FC<StudentsPageProps> = ({ tools, onSelectTool 
       </section>
 
       {/* Category Tabs & Search Bar */}
-      <section className="space-y-6 max-w-5xl mx-auto px-4">
+      <section className="space-y-6 max-w-5xl mx-auto">
         {/* Search Box */}
         <div className="relative w-full max-w-xl mx-auto">
           <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
           <input
             type="text"
-            placeholder="Search student tools (e.g. gpa, final grade, word counter, pomodoro)..."
+            placeholder="Search academic tools (e.g. GPA, fraction, molar mass, z-score)..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full bg-white border border-slate-200 rounded-2xl pl-10 pr-10 py-3 text-xs sm:text-sm text-slate-900 placeholder-slate-400 outline-none focus:border-indigo-600 focus:ring-4 focus:ring-indigo-600/10 transition-all font-sans shadow-xs"
@@ -209,13 +98,13 @@ export const StudentsPage: React.FC<StudentsPageProps> = ({ tools, onSelectTool 
           )}
         </div>
 
-        {/* Category Filter Pills */}
-        <div className="flex flex-wrap items-center justify-center gap-2 max-w-5xl mx-auto border-b border-slate-200 pb-4 px-2">
-          {STUDENT_CATEGORIES.map(cat => (
+        {/* Horizontal Scroll Category Pills */}
+        <div className="flex items-center justify-start sm:justify-center gap-2 overflow-x-auto scrollbar-none pb-2 pt-1 px-2 no-scrollbar">
+          {STUDENT_CATEGORIES.map((cat) => (
             <button
               key={cat.id}
               onClick={() => setSelectedCategory(cat.id)}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all shrink-0 ${
                 selectedCategory === cat.id
                   ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/20 scale-[1.02]'
                   : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200/80 hover:border-slate-300 hover:bg-slate-50'
@@ -228,7 +117,7 @@ export const StudentsPage: React.FC<StudentsPageProps> = ({ tools, onSelectTool 
 
         {/* Tools Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {filteredTools.map(tool => (
+          {filteredTools.map((tool) => (
             <ToolCard key={tool.id} tool={tool} onSelect={onSelectTool} />
           ))}
         </div>
@@ -237,38 +126,9 @@ export const StudentsPage: React.FC<StudentsPageProps> = ({ tools, onSelectTool 
           <div className="text-center py-16 bg-white rounded-3xl border border-slate-200 shadow-xs">
             <Sparkles className="w-8 h-8 text-slate-400 mx-auto mb-3" />
             <h3 className="text-slate-800 font-bold text-base mb-1">No Student Tools Found</h3>
-            <p className="text-slate-500 text-xs">Try searching for terms like "gpa", "final grade", "word count", or "timer".</p>
+            <p className="text-slate-500 text-xs">Try searching for terms like "GPA", "fraction", "derivative", or "molar mass".</p>
           </div>
         )}
-      </section>
-
-      {/* SEO / Trust Section */}
-      <section className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 space-y-4 text-slate-600 text-sm shadow-xs max-w-5xl mx-auto px-4">
-        <h2 className="text-lg sm:text-xl font-bold text-slate-900">
-          Why Students & Educators Use QuickForma Academic Utilities
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs text-slate-600">
-          <div className="space-y-1.5">
-            <h3 className="font-semibold text-slate-900 text-sm">Uncompromising RAM Privacy</h3>
-            <p className="leading-relaxed">
-              Academic records and course grades are sensitive. QuickForma processes 100% of GPA calculations, grade estimates, and text analysis locally inside your browser memory without server tracking.
-            </p>
-          </div>
-
-          <div className="space-y-1.5">
-            <h3 className="font-semibold text-slate-900 text-sm">Sub-50ms Zero Latency</h3>
-            <p className="leading-relaxed">
-              Without roundtrip server calls or external database queries, final exam target grades and credit-weighted GPAs update instantly as you type.
-            </p>
-          </div>
-
-          <div className="space-y-1.5">
-            <h3 className="font-semibold text-slate-900 text-sm">Zero Paywalls & Forced Signups</h3>
-            <p className="leading-relaxed">
-              No subscription paywalls or account creation required. 100% free academic utilities built for high school, college, and university students.
-            </p>
-          </div>
-        </div>
       </section>
     </div>
   );

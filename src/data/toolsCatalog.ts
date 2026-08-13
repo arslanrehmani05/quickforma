@@ -1,4 +1,19 @@
-import { ToolMetadata } from '../types';
+import { ToolMetadata, VerticalId } from '../types';
+
+export const VERTICALS = [
+  { id: 'business', name: 'Business Hub', description: 'Financial, legal, ecommerce, operations & developer tools' },
+  { id: 'students', name: 'Students Hub', description: 'GPA, math, statistics, science, writing & student utilities' },
+] as const;
+
+export const getVerticalTools = (vertical: VerticalId): ToolMetadata[] => {
+  return TOOLS_CATALOG.filter(t => t.verticals.includes(vertical));
+};
+
+export const getCategoryTools = (tools: ToolMetadata[], categorySlug: string): ToolMetadata[] => {
+  if (!categorySlug || categorySlug === 'all') return tools;
+  return tools.filter(t => t.category === categorySlug);
+};
+
 
 export const CATEGORIES = [
   { id: 'all', name: 'All Utilities', count: 62 },
@@ -14,6 +29,7 @@ export const CATEGORIES = [
 export const TOOLS_CATALOG: ToolMetadata[] = [
   {
     "id": "freelance-hourly-rate-calculator",
+    "verticals": ["business"],
     "name": "Freelancer Hourly Rate Calculator",
     "category": "finance",
     "categoryLabel": "Financial Calculators",
@@ -31,6 +47,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "break-even-calculator",
+    "verticals": ["business"],
     "name": "Break-Even Point Calculator",
     "category": "finance",
     "categoryLabel": "Financial Calculators",
@@ -48,6 +65,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "payroll-tax-estimator",
+    "verticals": ["business"],
     "name": "Payroll Tax Estimator (US)",
     "category": "finance",
     "categoryLabel": "Financial Calculators",
@@ -64,6 +82,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "roi-calculator",
+    "verticals": ["business"],
     "name": "ROI & Return Calculator",
     "category": "finance",
     "categoryLabel": "Financial Calculators",
@@ -81,6 +100,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "mortgage-loan-calculator",
+    "verticals": ["business"],
     "name": "Loan & Mortgage Calculator",
     "category": "finance",
     "categoryLabel": "Financial Calculators",
@@ -97,6 +117,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "markup-margin-calculator",
+    "verticals": ["business"],
     "name": "Markup vs Margin Calculator",
     "category": "finance",
     "categoryLabel": "Financial Calculators",
@@ -113,6 +134,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "salary-hourly-converter",
+    "verticals": ["business"],
     "name": "Salary to Hourly Converter",
     "category": "finance",
     "categoryLabel": "Financial Calculators",
@@ -129,6 +151,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "sales-tax-calculator",
+    "verticals": ["business"],
     "name": "Sales Tax Calculator",
     "category": "finance",
     "categoryLabel": "Financial Calculators",
@@ -145,6 +168,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "discount-calculator",
+    "verticals": ["business"],
     "name": "Discount & Savings Calculator",
     "category": "finance",
     "categoryLabel": "Financial Calculators",
@@ -161,6 +185,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "compound-interest-calculator",
+    "verticals": ["business"],
     "name": "Compound Interest Calculator",
     "category": "finance",
     "categoryLabel": "Financial Calculators",
@@ -178,6 +203,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "loan-payoff-calculator",
+    "verticals": ["business"],
     "name": "Loan Payoff & Extra Payment Calculator",
     "category": "finance",
     "categoryLabel": "Financial Calculators",
@@ -194,6 +220,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "cpm-ad-cost-calculator",
+    "verticals": ["business"],
     "name": "CPM & Ad Cost Calculator",
     "category": "finance",
     "categoryLabel": "Financial Calculators",
@@ -210,6 +237,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "customer-ltv-calculator",
+    "verticals": ["business"],
     "name": "Customer Lifetime Value (LTV) Calculator",
     "category": "finance",
     "categoryLabel": "Financial Calculators",
@@ -226,6 +254,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "invoice-generator",
+    "verticals": ["business"],
     "name": "PDF Invoice Generator",
     "category": "business",
     "categoryLabel": "Business & Legal Docs",
@@ -244,6 +273,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "receipt-generator",
+    "verticals": ["business"],
     "name": "Receipt Maker",
     "category": "business",
     "categoryLabel": "Business & Legal Docs",
@@ -261,6 +291,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "nda-template-generator",
+    "verticals": ["business"],
     "name": "Simple NDA Agreement Generator",
     "category": "business",
     "categoryLabel": "Business & Legal Docs",
@@ -277,6 +308,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "bill-of-sale-generator",
+    "verticals": ["business"],
     "name": "Bill of Sale Generator",
     "category": "business",
     "categoryLabel": "Business & Legal Docs",
@@ -293,6 +325,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "freelance-contract-generator",
+    "verticals": ["business"],
     "name": "Freelance Agreement Builder",
     "category": "business",
     "categoryLabel": "Business & Legal Docs",
@@ -309,6 +342,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "meeting-minutes-generator",
+    "verticals": ["business"],
     "name": "Meeting Minutes Generator",
     "category": "business",
     "categoryLabel": "Business & Legal Docs",
@@ -325,6 +359,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "rent-receipt-generator",
+    "verticals": ["business"],
     "name": "Rent Receipt Generator",
     "category": "business",
     "categoryLabel": "Business & Legal Docs",
@@ -341,6 +376,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "promissory-note-generator",
+    "verticals": ["business"],
     "name": "Promissory Note Generator",
     "category": "business",
     "categoryLabel": "Business & Legal Docs",
@@ -357,6 +393,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "bill-of-lading-generator",
+    "verticals": ["business"],
     "name": "Bill of Lading (BOL) Generator",
     "category": "business",
     "categoryLabel": "Business & Legal Docs",
@@ -373,6 +410,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "unit-converter",
+    "verticals": ["business","students"],
     "name": "Multi-Unit Converter",
     "category": "converters",
     "categoryLabel": "Converters & Formats",
@@ -390,6 +428,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "currency-converter",
+    "verticals": ["business"],
     "name": "Currency Converter",
     "category": "converters",
     "categoryLabel": "Converters & Formats",
@@ -406,6 +445,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "date-difference-calculator",
+    "verticals": ["business","students"],
     "name": "Days Between Dates Calculator",
     "category": "converters",
     "categoryLabel": "Converters & Formats",
@@ -422,6 +462,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "time-zone-converter",
+    "verticals": ["business"],
     "name": "Time Zone Converter",
     "category": "converters",
     "categoryLabel": "Converters & Formats",
@@ -438,6 +479,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "pdf-page-counter",
+    "verticals": ["business","students"],
     "name": "PDF Page Counter",
     "category": "converters",
     "categoryLabel": "Converters & Formats",
@@ -454,6 +496,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "aspect-ratio-calculator",
+    "verticals": ["business"],
     "name": "Aspect Ratio Calculator",
     "category": "converters",
     "categoryLabel": "Converters & Formats",
@@ -470,6 +513,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "color-picker-converter",
+    "verticals": ["business"],
     "name": "Color Picker & HEX/RGB/HSL Converter",
     "category": "converters",
     "categoryLabel": "Converters & Formats",
@@ -486,6 +530,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "image-resizer-converter",
+    "verticals": ["business"],
     "name": "Image Resizer & Format Converter",
     "category": "converters",
     "categoryLabel": "Converters & Formats",
@@ -503,6 +548,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "json-formatter-validator",
+    "verticals": ["business"],
     "name": "JSON Formatter & Validator",
     "category": "developer",
     "categoryLabel": "Developer & Web Tools",
@@ -520,6 +566,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "base64-encoder-decoder",
+    "verticals": ["business"],
     "name": "Base64 Encoder & Decoder",
     "category": "developer",
     "categoryLabel": "Developer & Web Tools",
@@ -536,6 +583,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "hash-generator",
+    "verticals": ["business"],
     "name": "Cryptographic Hash Generator",
     "category": "developer",
     "categoryLabel": "Developer & Web Tools",
@@ -552,6 +600,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "url-encoder-decoder",
+    "verticals": ["business"],
     "name": "URL Encoder & Decoder",
     "category": "developer",
     "categoryLabel": "Developer & Web Tools",
@@ -568,6 +617,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "css-glassmorphism-generator",
+    "verticals": ["business"],
     "name": "CSS Box Shadow & Glass Generator",
     "category": "developer",
     "categoryLabel": "Developer & Web Tools",
@@ -584,6 +634,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "barcode-generator",
+    "verticals": ["business"],
     "name": "Barcode Generator",
     "category": "developer",
     "categoryLabel": "Developer & Web Tools",
@@ -600,6 +651,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "qr-code-generator",
+    "verticals": ["business"],
     "name": "QR Code Maker",
     "category": "developer",
     "categoryLabel": "Developer & Web Tools",
@@ -618,6 +670,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "password-generator",
+    "verticals": ["business"],
     "name": "Secure Password Generator",
     "category": "developer",
     "categoryLabel": "Developer & Web Tools",
@@ -636,6 +689,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "word-counter",
+    "verticals": ["business","students"],
     "name": "Word & Character Counter",
     "category": "content",
     "categoryLabel": "Text & Content Tools",
@@ -654,6 +708,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "case-converter",
+    "verticals": ["business"],
     "name": "Text Case Converter",
     "category": "content",
     "categoryLabel": "Text & Content Tools",
@@ -670,6 +725,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "text-diff-checker",
+    "verticals": ["business","students"],
     "name": "Text Diff & Compare Tool",
     "category": "content",
     "categoryLabel": "Text & Content Tools",
@@ -686,6 +742,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "lorem-ipsum-generator",
+    "verticals": ["business"],
     "name": "Lorem Ipsum Placeholder Generator",
     "category": "content",
     "categoryLabel": "Text & Content Tools",
@@ -702,6 +759,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "business-name-generator",
+    "verticals": ["business"],
     "name": "Business Name Generator",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -718,6 +776,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "slug-generator",
+    "verticals": ["business"],
     "name": "SEO URL Slug Sanitizer",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -734,6 +793,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "pomodoro-timer",
+    "verticals": ["business","students"],
     "name": "Pomodoro Focus Timer",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -751,6 +811,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "uuid-generator",
+    "verticals": ["business"],
     "name": "UUID v4 Generator",
     "category": "developer",
     "categoryLabel": "Developer & Web Tools",
@@ -769,6 +830,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "jwt-decoder",
+    "verticals": ["business"],
     "name": "JWT Decoder",
     "category": "developer",
     "categoryLabel": "Developer & Web Tools",
@@ -787,6 +849,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "shopify-fee-calculator",
+    "verticals": ["business"],
     "name": "Shopify Fee & Margin Calculator",
     "category": "ecommerce",
     "categoryLabel": "Ecommerce & Operations",
@@ -805,6 +868,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "stripe-fee-calculator",
+    "verticals": ["business"],
     "name": "Stripe Fee Calculator",
     "category": "ecommerce",
     "categoryLabel": "Ecommerce & Operations",
@@ -823,6 +887,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "eoq-calculator",
+    "verticals": ["business"],
     "name": "Economic Order Quantity (EOQ) Calculator",
     "category": "ecommerce",
     "categoryLabel": "Ecommerce & Operations",
@@ -841,6 +906,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "reorder-point-calculator",
+    "verticals": ["business"],
     "name": "Reorder Point (ROP) Calculator",
     "category": "ecommerce",
     "categoryLabel": "Ecommerce & Operations",
@@ -858,6 +924,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "oee-calculator",
+    "verticals": ["business"],
     "name": "OEE Manufacturing Calculator",
     "category": "ecommerce",
     "categoryLabel": "Ecommerce & Operations",
@@ -875,6 +942,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "pto-calculator",
+    "verticals": ["business"],
     "name": "PTO Accrual & Balance Calculator",
     "category": "business",
     "categoryLabel": "Business & Legal Docs",
@@ -892,6 +960,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "utm-builder",
+    "verticals": ["business"],
     "name": "Campaign UTM URL Builder",
     "category": "developer",
     "categoryLabel": "Developer & Web Tools",
@@ -909,6 +978,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "paypal-fee-calculator",
+    "verticals": ["business"],
     "name": "PayPal Merchant Fee Calculator",
     "category": "ecommerce",
     "categoryLabel": "Ecommerce & Operations",
@@ -926,6 +996,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "etsy-fee-calculator",
+    "verticals": ["business"],
     "name": "Etsy Fee & Profit Calculator",
     "category": "ecommerce",
     "categoryLabel": "Ecommerce & Operations",
@@ -943,6 +1014,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "volumetric-weight-calculator",
+    "verticals": ["business"],
     "name": "Volumetric Weight Freight Calculator",
     "category": "ecommerce",
     "categoryLabel": "Ecommerce & Operations",
@@ -960,6 +1032,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "depreciation-calculator",
+    "verticals": ["business"],
     "name": "Asset Depreciation Calculator",
     "category": "finance",
     "categoryLabel": "Financial Calculators",
@@ -977,6 +1050,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "gpa-calculator",
+    "verticals": ["students"],
     "name": "GPA Calculator",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -997,6 +1071,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "final-grade-calculator",
+    "verticals": ["students"],
     "name": "Final Grade Calculator",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -1017,6 +1092,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "percentage-calculator",
+    "verticals": ["business","students"],
     "name": "Percentage Calculator",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -1037,6 +1113,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "fraction-calculator",
+    "verticals": ["students"],
     "name": "Fraction Calculator",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -1058,6 +1135,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "cumulative-gpa-calculator",
+    "verticals": ["students"],
     "name": "Cumulative GPA Calculator",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -1070,6 +1148,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "weighted-grade-calculator",
+    "verticals": ["students"],
     "name": "Weighted Grade Calculator",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -1082,6 +1161,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "target-gpa-planner-calculator",
+    "verticals": ["students"],
     "name": "Target GPA & Course Planner",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -1094,6 +1174,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "attendance-calculator",
+    "verticals": ["students"],
     "name": "Attendance & Absence Calculator",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -1106,6 +1187,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "marks-percentage-converter",
+    "verticals": ["students"],
     "name": "Marks & Percentage Converter",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -1118,6 +1200,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "ratio-proportion-calculator",
+    "verticals": ["students"],
     "name": "Ratio & Proportion Calculator",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -1130,6 +1213,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "average-calculator",
+    "verticals": ["business","students"],
     "name": "Average Calculator",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -1142,6 +1226,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "scientific-notation-calculator",
+    "verticals": ["students"],
     "name": "Scientific Notation Calculator",
     "category": "converters",
     "categoryLabel": "Converters & Formats",
@@ -1154,6 +1239,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "exponent-logarithm-calculator",
+    "verticals": ["students"],
     "name": "Exponent & Logarithm Calculator",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -1166,6 +1252,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "linear-equation-calculator",
+    "verticals": ["students"],
     "name": "Linear Equation Solver",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -1178,6 +1265,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "quadratic-formula-calculator",
+    "verticals": ["students"],
     "name": "Quadratic Formula Calculator",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -1190,6 +1278,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "distance-midpoint-calculator",
+    "verticals": ["students"],
     "name": "Distance & Midpoint Calculator",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -1202,6 +1291,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "sequence-series-calculator",
+    "verticals": ["students"],
     "name": "Sequence & Series Calculator",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -1214,6 +1304,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "pythagorean-theorem-calculator",
+    "verticals": ["students"],
     "name": "Pythagorean Theorem Calculator",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -1226,6 +1317,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "triangle-area-solver",
+    "verticals": ["students"],
     "name": "Triangle Area & Solver",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -1238,6 +1330,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "circle-calculator",
+    "verticals": ["students"],
     "name": "Circle & Geometry Calculator",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -1250,6 +1343,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "geometry-area-volume-calculator",
+    "verticals": ["students"],
     "name": "2D & 3D Geometry Calculator",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -1262,6 +1356,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "trigonometry-calculator",
+    "verticals": ["students"],
     "name": "Trigonometry Calculator",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -1274,6 +1369,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "law-of-sines-cosines-calculator",
+    "verticals": ["students"],
     "name": "Law of Sines & Cosines Calculator",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -1286,6 +1382,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "derivative-limit-calculator",
+    "verticals": ["students"],
     "name": "Derivative & Limit Calculator",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -1298,6 +1395,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "descriptive-statistics-calculator",
+    "verticals": ["students"],
     "name": "Descriptive Statistics Calculator",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -1310,6 +1408,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "z-score-calculator",
+    "verticals": ["students"],
     "name": "Z-Score Calculator",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -1322,6 +1421,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "probability-calculator",
+    "verticals": ["students"],
     "name": "Probability Calculator",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -1334,6 +1434,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "permutation-combination-calculator",
+    "verticals": ["students"],
     "name": "Permutation & Combination Calculator",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -1346,6 +1447,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "probability-distributions-calculator",
+    "verticals": ["students"],
     "name": "Binomial Probability Calculator",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -1358,6 +1460,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "confidence-interval-calculator",
+    "verticals": ["students"],
     "name": "Confidence Interval Calculator",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -1370,6 +1473,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "hypothesis-test-calculator",
+    "verticals": ["students"],
     "name": "Hypothesis Test Calculator",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -1382,6 +1486,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "molar-mass-calculator",
+    "verticals": ["students"],
     "name": "Molar Mass & Composition Calculator",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -1394,6 +1499,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "moles-molarity-calculator",
+    "verticals": ["students"],
     "name": "Moles & Molarity Calculator",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -1406,6 +1512,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "dilution-calculator",
+    "verticals": ["students"],
     "name": "Solution Dilution Calculator",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -1418,6 +1525,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "ph-poh-calculator",
+    "verticals": ["students"],
     "name": "pH & pOH Calculator",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -1430,6 +1538,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "stoichiometry-percent-yield-calculator",
+    "verticals": ["students"],
     "name": "Stoichiometry & Percent Yield Calculator",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -1442,6 +1551,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "gas-laws-calculator",
+    "verticals": ["students"],
     "name": "Gas Laws Calculator (PV = nRT)",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -1454,6 +1564,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "significant-figures-calculator",
+    "verticals": ["students"],
     "name": "Significant Figures Calculator",
     "category": "converters",
     "categoryLabel": "Converters & Formats",
@@ -1466,6 +1577,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "kinematics-motion-calculator",
+    "verticals": ["students"],
     "name": "Kinematics & SUVAT Motion Calculator",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -1478,6 +1590,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "force-friction-momentum-calculator",
+    "verticals": ["students"],
     "name": "Force, Friction & Momentum Calculator",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -1490,6 +1603,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "work-energy-power-calculator",
+    "verticals": ["students"],
     "name": "Work, Energy & Power Calculator",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -1502,6 +1616,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "ohms-law-electrical-calculator",
+    "verticals": ["students"],
     "name": "Ohm's Law & Circuit Calculator",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -1514,6 +1629,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "wave-frequency-speed-calculator",
+    "verticals": ["students"],
     "name": "Wave, Frequency & Light Calculator",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -1526,6 +1642,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "reading-presentation-time-calculator",
+    "verticals": ["students"],
     "name": "Reading & Presentation Time Calculator",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -1538,6 +1655,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "essay-page-count-calculator",
+    "verticals": ["students"],
     "name": "Essay Page Count Calculator",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -1550,6 +1668,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "academic-readability-analyzer",
+    "verticals": ["students"],
     "name": "Academic Readability Analyzer",
     "category": "content",
     "categoryLabel": "Text & Content Tools",
@@ -1562,6 +1681,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "citation-formatter",
+    "verticals": ["students"],
     "name": "Academic Citation Formatter",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -1574,6 +1694,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "study-schedule-time-calculator",
+    "verticals": ["students"],
     "name": "Study Time & Schedule Calculator",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -1586,6 +1707,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "exam-assignment-countdown",
+    "verticals": ["students"],
     "name": "Exam & Assignment Countdown",
     "category": "productivity",
     "categoryLabel": "Productivity & Daily",
@@ -1598,6 +1720,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "student-budget-planner",
+    "verticals": ["students"],
     "name": "Student Budget Planner",
     "category": "finance",
     "categoryLabel": "Financial Calculators",
@@ -1610,6 +1733,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "cost-per-credit-hour-calculator",
+    "verticals": ["students"],
     "name": "Cost Per Credit Hour Calculator",
     "category": "finance",
     "categoryLabel": "Financial Calculators",
@@ -1622,6 +1746,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "student-loan-payoff-calculator",
+    "verticals": ["students"],
     "name": "Student Loan Payoff Calculator",
     "category": "finance",
     "categoryLabel": "Financial Calculators",
@@ -1634,6 +1759,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "roommate-rent-split-calculator",
+    "verticals": ["students"],
     "name": "Roommate Rent & Expense Splitter",
     "category": "finance",
     "categoryLabel": "Financial Calculators",
@@ -1646,6 +1772,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "gpa-scale-converter",
+    "verticals": ["students"],
     "name": "GPA Scale Converter",
     "category": "converters",
     "categoryLabel": "Converters & Formats",
@@ -1658,6 +1785,7 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   },
   {
     "id": "marks-to-gpa-converter",
+    "verticals": ["students"],
     "name": "Marks to GPA Converter",
     "category": "converters",
     "categoryLabel": "Converters & Formats",

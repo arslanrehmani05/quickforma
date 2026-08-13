@@ -13,7 +13,7 @@ with open(catalog_file, "r") as f:
     catalog_content = f.read()
 
 # Extract tool IDs from TOOLS_CATALOG array
-tool_ids = re.findall(r"id:\s*'([a-z0-9-]+)'", catalog_content)
+tool_ids = re.findall(r'["\']?id["\']?:\s*["\']([a-z0-9-]+)["\']', catalog_content)
 
 # Filter out non-tool category IDs
 category_ids = {'all', 'finance', 'business', 'ecommerce', 'operations', 'hr', 'developer', 'marketing', 'healthcare', 'converters', 'content', 'productivity'}

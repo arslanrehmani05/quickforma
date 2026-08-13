@@ -1,3 +1,5 @@
+export type VerticalId = 'business' | 'students';
+
 export type ToolCategory = 
   | 'finance'
   | 'business'
@@ -10,7 +12,8 @@ export type ToolCategory =
   | 'hr'
   | 'marketing'
   | 'healthcare'
-  | 'real-estate';
+  | 'real-estate'
+  | string;
 
 export interface FAQItem {
   question: string;
@@ -20,7 +23,8 @@ export interface FAQItem {
 export interface ToolMetadata {
   id: string;
   name: string;
-  category: ToolCategory;
+  verticals: VerticalId[];
+  category: string;
   categoryLabel: string;
   description: string;
   iconName: string;

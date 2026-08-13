@@ -82,12 +82,65 @@ import { EtsyFeeCalculator } from './components/tools/EtsyFeeCalculator';
 import { VolumetricWeightCalculator } from './components/tools/VolumetricWeightCalculator';
 import { DepreciationCalculator } from './components/tools/DepreciationCalculator';
 
+import { CumulativeGpaCalculator } from './components/tools/CumulativeGpaCalculator';
+import { WeightedGradeCalculator } from './components/tools/WeightedGradeCalculator';
+import { TargetGpaPlannerCalculator } from './components/tools/TargetGpaPlannerCalculator';
+import { AttendanceCalculator } from './components/tools/AttendanceCalculator';
+import { MarksPercentageConverter } from './components/tools/MarksPercentageConverter';
+import { RatioProportionCalculator } from './components/tools/RatioProportionCalculator';
+import { AverageCalculator } from './components/tools/AverageCalculator';
+import { ScientificNotationCalculator } from './components/tools/ScientificNotationCalculator';
+import { ExponentLogarithmCalculator } from './components/tools/ExponentLogarithmCalculator';
+import { LinearEquationCalculator } from './components/tools/LinearEquationCalculator';
+import { QuadraticFormulaCalculator } from './components/tools/QuadraticFormulaCalculator';
+import { DistanceMidpointCalculator } from './components/tools/DistanceMidpointCalculator';
+import { SequenceSeriesCalculator } from './components/tools/SequenceSeriesCalculator';
+import { PythagoreanTheoremCalculator } from './components/tools/PythagoreanTheoremCalculator';
+import { TriangleAreaSolver } from './components/tools/TriangleAreaSolver';
+import { CircleCalculator } from './components/tools/CircleCalculator';
+import { GeometryAreaVolumeCalculator } from './components/tools/GeometryAreaVolumeCalculator';
+import { TrigonometryCalculator } from './components/tools/TrigonometryCalculator';
+import { LawOfSinesCosinesCalculator } from './components/tools/LawOfSinesCosinesCalculator';
+import { DerivativeLimitCalculator } from './components/tools/DerivativeLimitCalculator';
+import { DescriptiveStatisticsCalculator } from './components/tools/DescriptiveStatisticsCalculator';
+import { ZScoreCalculator } from './components/tools/ZScoreCalculator';
+import { ProbabilityCalculator } from './components/tools/ProbabilityCalculator';
+import { PermutationCombinationCalculator } from './components/tools/PermutationCombinationCalculator';
+import { ProbabilityDistributionsCalculator } from './components/tools/ProbabilityDistributionsCalculator';
+import { ConfidenceIntervalCalculator } from './components/tools/ConfidenceIntervalCalculator';
+import { HypothesisTestCalculator } from './components/tools/HypothesisTestCalculator';
+import { MolarMassCalculator } from './components/tools/MolarMassCalculator';
+import { MolesMolarityCalculator } from './components/tools/MolesMolarityCalculator';
+import { DilutionCalculator } from './components/tools/DilutionCalculator';
+import { PhPohCalculator } from './components/tools/PhPohCalculator';
+import { StoichiometryPercentYieldCalculator } from './components/tools/StoichiometryPercentYieldCalculator';
+import { GasLawsCalculator } from './components/tools/GasLawsCalculator';
+import { SignificantFiguresCalculator } from './components/tools/SignificantFiguresCalculator';
+import { KinematicsMotionCalculator } from './components/tools/KinematicsMotionCalculator';
+import { ForceFrictionMomentumCalculator } from './components/tools/ForceFrictionMomentumCalculator';
+import { WorkEnergyPowerCalculator } from './components/tools/WorkEnergyPowerCalculator';
+import { OhmsLawElectricalCalculator } from './components/tools/OhmsLawElectricalCalculator';
+import { WaveFrequencySpeedCalculator } from './components/tools/WaveFrequencySpeedCalculator';
+import { ReadingPresentationTimeCalculator } from './components/tools/ReadingPresentationTimeCalculator';
+import { EssayPageCountCalculator } from './components/tools/EssayPageCountCalculator';
+import { AcademicReadabilityAnalyzer } from './components/tools/AcademicReadabilityAnalyzer';
+import { CitationFormatter } from './components/tools/CitationFormatter';
+import { StudyScheduleTimeCalculator } from './components/tools/StudyScheduleTimeCalculator';
+import { ExamAssignmentCountdown } from './components/tools/ExamAssignmentCountdown';
+import { StudentBudgetPlanner } from './components/tools/StudentBudgetPlanner';
+import { CostPerCreditHourCalculator } from './components/tools/CostPerCreditHourCalculator';
+import { StudentLoanPayoffCalculator } from './components/tools/StudentLoanPayoffCalculator';
+import { RoommateRentSplitCalculator } from './components/tools/RoommateRentSplitCalculator';
+import { GpaScaleConverter } from './components/tools/GpaScaleConverter';
+import { MarksToGpaConverter } from './components/tools/MarksToGpaConverter';
+
 // Sanity CMS Page Components
 import { ArticlePage } from './pages/ArticlePage';
 import { PlaybookPage } from './pages/PlaybookPage';
 import { CategoryPage } from './pages/CategoryPage';
 import { BlogHubPage } from './pages/BlogHubPage';
 import { BlogPostPage } from './pages/BlogPostPage';
+import { BusinessPage } from './pages/BusinessPage';
 
 import { Search, X, ChevronRight, ArrowLeft } from 'lucide-react';
 
@@ -102,6 +155,9 @@ const getRouteFromPathname = (pathname: string): string => {
   }
   if (cleanPath === '/students') {
     return 'students';
+  }
+  if (cleanPath === '/business') {
+    return 'business';
   }
   if (cleanPath.startsWith('/tools/')) {
     return cleanPath.replace('/tools/', '');
@@ -128,6 +184,7 @@ const getRouteFromPathname = (pathname: string): string => {
 const getPathnameFromView = (view: string): string => {
   if (!view || view === 'home') return '/';
   if (view === 'students') return '/students';
+  if (view === 'business') return '/business';
   if (LEGAL_PAGES.includes(view)) return `/${view}`;
   if (view === 'blog:index' || view === 'blog') return '/blog';
   if (view.startsWith('blog:')) return `/blog/${view.replace('blog:', '')}`;
@@ -165,6 +222,12 @@ export function App() {
   useEffect(() => {
     if (activeView === 'home') {
       document.title = 'QuickForma | Free Client-Side Utility Tools & Business Calculators';
+    } else if (activeView === 'business') {
+      document.title = 'Free Business Utilities & Financial Calculators | QuickForma';
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) {
+        metaDesc.setAttribute('content', 'Free client-side tools for businesses, freelancers, and e-commerce operators to calculate ROI, margins, taxes, generate contracts, and manage operations.');
+      }
     } else if (activeView === 'students') {
       document.title = 'Free Student Tools & Academic Calculators | QuickForma';
       const metaDesc = document.querySelector('meta[name="description"]');
@@ -200,6 +263,7 @@ export function App() {
   const renderActiveViewComponent = () => {
     switch (activeView) {
       // Hub & Legal Pages
+      case 'business': return <BusinessPage tools={TOOLS_CATALOG} onSelectTool={handleSelectView} />;
       case 'students': return <StudentsPage tools={TOOLS_CATALOG} onSelectTool={handleSelectView} />;
       case 'privacy': return <PrivacyPolicy />;
       case 'terms': return <TermsOfService />;
@@ -273,6 +337,58 @@ export function App() {
       case 'etsy-fee-calculator': return <EtsyFeeCalculator />;
       case 'volumetric-weight-calculator': return <VolumetricWeightCalculator />;
       case 'depreciation-calculator': return <DepreciationCalculator />;
+
+            case 'cumulative-gpa-calculator': return <CumulativeGpaCalculator />;
+      case 'weighted-grade-calculator': return <WeightedGradeCalculator />;
+      case 'target-gpa-planner-calculator': return <TargetGpaPlannerCalculator />;
+      case 'attendance-calculator': return <AttendanceCalculator />;
+      case 'marks-percentage-converter': return <MarksPercentageConverter />;
+      case 'ratio-proportion-calculator': return <RatioProportionCalculator />;
+      case 'average-calculator': return <AverageCalculator />;
+      case 'scientific-notation-calculator': return <ScientificNotationCalculator />;
+      case 'exponent-logarithm-calculator': return <ExponentLogarithmCalculator />;
+      case 'linear-equation-calculator': return <LinearEquationCalculator />;
+      case 'quadratic-formula-calculator': return <QuadraticFormulaCalculator />;
+      case 'distance-midpoint-calculator': return <DistanceMidpointCalculator />;
+      case 'sequence-series-calculator': return <SequenceSeriesCalculator />;
+      case 'pythagorean-theorem-calculator': return <PythagoreanTheoremCalculator />;
+      case 'triangle-area-solver': return <TriangleAreaSolver />;
+      case 'circle-calculator': return <CircleCalculator />;
+      case 'geometry-area-volume-calculator': return <GeometryAreaVolumeCalculator />;
+      case 'trigonometry-calculator': return <TrigonometryCalculator />;
+      case 'law-of-sines-cosines-calculator': return <LawOfSinesCosinesCalculator />;
+      case 'derivative-limit-calculator': return <DerivativeLimitCalculator />;
+      case 'descriptive-statistics-calculator': return <DescriptiveStatisticsCalculator />;
+      case 'z-score-calculator': return <ZScoreCalculator />;
+      case 'probability-calculator': return <ProbabilityCalculator />;
+      case 'permutation-combination-calculator': return <PermutationCombinationCalculator />;
+      case 'probability-distributions-calculator': return <ProbabilityDistributionsCalculator />;
+      case 'confidence-interval-calculator': return <ConfidenceIntervalCalculator />;
+      case 'hypothesis-test-calculator': return <HypothesisTestCalculator />;
+      case 'molar-mass-calculator': return <MolarMassCalculator />;
+      case 'moles-molarity-calculator': return <MolesMolarityCalculator />;
+      case 'dilution-calculator': return <DilutionCalculator />;
+      case 'ph-poh-calculator': return <PhPohCalculator />;
+      case 'stoichiometry-percent-yield-calculator': return <StoichiometryPercentYieldCalculator />;
+      case 'gas-laws-calculator': return <GasLawsCalculator />;
+      case 'significant-figures-calculator': return <SignificantFiguresCalculator />;
+      case 'kinematics-motion-calculator': return <KinematicsMotionCalculator />;
+      case 'force-friction-momentum-calculator': return <ForceFrictionMomentumCalculator />;
+      case 'work-energy-power-calculator': return <WorkEnergyPowerCalculator />;
+      case 'ohms-law-electrical-calculator': return <OhmsLawElectricalCalculator />;
+      case 'wave-frequency-speed-calculator': return <WaveFrequencySpeedCalculator />;
+      case 'reading-presentation-time-calculator': return <ReadingPresentationTimeCalculator />;
+      case 'essay-page-count-calculator': return <EssayPageCountCalculator />;
+      case 'academic-readability-analyzer': return <AcademicReadabilityAnalyzer />;
+      case 'citation-formatter': return <CitationFormatter />;
+      case 'study-schedule-time-calculator': return <StudyScheduleTimeCalculator />;
+      case 'exam-assignment-countdown': return <ExamAssignmentCountdown />;
+      case 'student-budget-planner': return <StudentBudgetPlanner />;
+      case 'cost-per-credit-hour-calculator': return <CostPerCreditHourCalculator />;
+      case 'student-loan-payoff-calculator': return <StudentLoanPayoffCalculator />;
+      case 'roommate-rent-split-calculator': return <RoommateRentSplitCalculator />;
+      case 'gpa-scale-converter': return <GpaScaleConverter />;
+      case 'marks-to-gpa-converter': return <MarksToGpaConverter />;
 
       default: {
         if (activeView === 'blog:index' || activeView === 'blog') {

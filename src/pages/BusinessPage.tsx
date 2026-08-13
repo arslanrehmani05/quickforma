@@ -1,46 +1,59 @@
 import React, { useState } from 'react';
-import { ToolMetadata, VerticalId } from '../types';
+import { ToolMetadata } from '../types';
+import { getVerticalTools, getCategoryTools } from '../data/toolsCatalog';
 import { ToolCard } from '../components/layout/ToolCard';
 import { ShareSection } from '../components/social/ShareSection';
-import { Zap, Search, Shield, Lock, Cpu, Sparkles, X, Briefcase, GraduationCap } from 'lucide-react';
+import { Briefcase, Search, Shield, Lock, Cpu, Sparkles, X } from 'lucide-react';
 
-interface HomePageProps {
+interface BusinessPageProps {
   tools: ToolMetadata[];
   onSelectTool: (id: string) => void;
 }
 
-export const HomePage: React.FC<HomePageProps> = ({ tools, onSelectTool }) => {
-  const [selectedVertical, setSelectedVertical] = useState<'all' | VerticalId>('all');
+const BUSINESS_CATEGORIES = [
+  { id: 'all', name: 'All Business Tools' },
+  { id: 'finance', name: 'Finance & Tax' },
+  { id: 'business', name: 'Documents & Legal' },
+  { id: 'ecommerce', name: 'Ecommerce & Ops' },
+  { id: 'developer', name: 'Developer & Web' },
+  { id: 'converters', name: 'Converters & Formats' },
+  { id: 'content', name: 'Content & Productivity' },
+];
+
+export const BusinessPage: React.FC<BusinessPageProps> = ({ tools, onSelectTool }) => {
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
 
-  // Filter tools by active vertical tab and search query
-  const filteredTools = tools.filter((tool) => {
-    const matchesVertical =
-      selectedVertical === 'all' || tool.verticals.includes(selectedVertical);
+  // Dynamically query catalog for business vertical tools
+  const businessTools = getVerticalTools('business');
+
+  // Filter tools by category and search query
+  const filteredTools = businessTools.filter((tool) => {
+    const matchesCategory = selectedCategory === 'all' || tool.category === selectedCategory;
     const q = searchQuery.toLowerCase();
     const matchesSearch =
       tool.name.toLowerCase().includes(q) ||
       tool.description.toLowerCase().includes(q) ||
       tool.keywords.some((k) => k.toLowerCase().includes(q));
 
-    return matchesVertical && matchesSearch;
+    return matchesCategory && matchesSearch;
   });
 
   return (
     <div className="space-y-12 py-4">
-      {/* Universal Hero Section */}
+      {/* Hero Section */}
       <section className="text-center space-y-4 max-w-4xl mx-auto px-4 pt-2">
         <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs font-semibold">
-          <Zap className="w-3.5 h-3.5 fill-current text-indigo-600" />
-          <span>Universal Tool Platform • {tools.length} Free Utilities</span>
+          <Briefcase className="w-3.5 h-3.5 fill-current text-indigo-600" />
+          <span>Professional Business Hub • {businessTools.length} Client-Side Utilities</span>
         </div>
 
         <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
-          Instant Utilities for Business & Students
+          Business Utilities & Financial Calculators
         </h1>
 
         <p className="text-slate-600 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-          Zero sign-ups, zero email paywalls, and zero server uploads. Every invoice generator, GPA calculator, chemistry parser, and financial estimator executes 100% locally in browser RAM.
+          Financial estimators, legal contract generators, e-commerce fee calculators, and developer tools. Process 100% of calculations locally inside browser RAM with zero server tracking.
         </p>
 
         {/* Trust Badges */}
@@ -59,14 +72,14 @@ export const HomePage: React.FC<HomePageProps> = ({ tools, onSelectTool }) => {
         <ShareSection align="center" className="pt-2 max-w-xl mx-auto border-t-0" />
       </section>
 
-      {/* Vertical Filter Switcher & Search Bar */}
+      {/* Category Tabs & Search Bar */}
       <section className="space-y-6 max-w-5xl mx-auto">
         {/* Search Box */}
         <div className="relative w-full max-w-xl mx-auto">
           <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
           <input
             type="text"
-            placeholder="Search all 113+ tools (e.g. invoice, GPA, fraction, Stripe)..."
+            placeholder="Search business tools (e.g. invoice, ROI, tax, Stripe)..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full bg-white border border-slate-200 rounded-2xl pl-10 pr-10 py-3 text-xs sm:text-sm text-slate-900 placeholder-slate-400 outline-none focus:border-indigo-600 focus:ring-4 focus:ring-indigo-600/10 transition-all font-sans shadow-xs"
@@ -82,38 +95,21 @@ export const HomePage: React.FC<HomePageProps> = ({ tools, onSelectTool }) => {
           )}
         </div>
 
-        {/* Primary Vertical Switcher Tabs */}
-        <div className="flex items-center justify-center gap-2 border-b border-slate-200 pb-4">
-          <button
-            onClick={() => setSelectedVertical('all')}
-            className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-1.5 ${
-              selectedVertical === 'all'
-                ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/20'
-                : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200 hover:bg-slate-50'
-            }`}
-          >
-            <Zap className="w-4 h-4" /> All Tools ({tools.length})
-          </button>
-          <button
-            onClick={() => setSelectedVertical('business')}
-            className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-1.5 ${
-              selectedVertical === 'business'
-                ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/20'
-                : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200 hover:bg-slate-50'
-            }`}
-          >
-            <Briefcase className="w-4 h-4" /> Business Hub (60)
-          </button>
-          <button
-            onClick={() => setSelectedVertical('students')}
-            className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-1.5 ${
-              selectedVertical === 'students'
-                ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/20'
-                : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200 hover:bg-slate-50'
-            }`}
-          >
-            <GraduationCap className="w-4 h-4" /> Students Hub (61)
-          </button>
+        {/* Horizontal Scroll Category Pills */}
+        <div className="flex items-center justify-start sm:justify-center gap-2 overflow-x-auto scrollbar-none pb-2 pt-1 px-2 no-scrollbar">
+          {BUSINESS_CATEGORIES.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => setSelectedCategory(cat.id)}
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all shrink-0 ${
+                selectedCategory === cat.id
+                  ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/20 scale-[1.02]'
+                  : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200/80 hover:border-slate-300 hover:bg-slate-50'
+              }`}
+            >
+              {cat.name}
+            </button>
+          ))}
         </div>
 
         {/* Tools Grid */}
@@ -126,8 +122,8 @@ export const HomePage: React.FC<HomePageProps> = ({ tools, onSelectTool }) => {
         {filteredTools.length === 0 && (
           <div className="text-center py-16 bg-white rounded-3xl border border-slate-200 shadow-xs">
             <Sparkles className="w-8 h-8 text-slate-400 mx-auto mb-3" />
-            <h3 className="text-slate-800 font-bold text-base mb-1">No Tools Found</h3>
-            <p className="text-slate-500 text-xs">Try searching for terms like "calculator", "invoice", "GPA", or "convert".</p>
+            <h3 className="text-slate-800 font-bold text-base mb-1">No Business Tools Found</h3>
+            <p className="text-slate-500 text-xs">Try searching for terms like "invoice", "payroll", "ROI", or "margin".</p>
           </div>
         )}
       </section>

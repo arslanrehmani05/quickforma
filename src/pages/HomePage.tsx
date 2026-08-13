@@ -1,9 +1,9 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { ToolMetadata } from '../types';
 import { CATEGORIES } from '../data/toolsCatalog';
 import { ToolCard } from '../components/layout/ToolCard';
 import { ShareSection } from '../components/social/ShareSection';
-import { Zap, Search, Shield, Lock, Cpu, Sparkles, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Zap, Search, Shield, Lock, Cpu, Sparkles, X } from 'lucide-react';
 
 interface HomePageProps {
   tools: ToolMetadata[];
@@ -13,14 +13,6 @@ interface HomePageProps {
 export const HomePage: React.FC<HomePageProps> = ({ tools, onSelectTool }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-
-  const scrollCategories = (direction: 'left' | 'right') => {
-    if (scrollContainerRef.current) {
-      const scrollAmount = direction === 'left' ? -240 : 240;
-      scrollContainerRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    }
-  };
 
   const filteredTools = tools.filter(tool => {
     const matchesCategory = selectedCategory === 'all' || tool.category === selectedCategory;
@@ -66,7 +58,7 @@ export const HomePage: React.FC<HomePageProps> = ({ tools, onSelectTool }) => {
 
       {/* Category Tabs & Search Bar */}
       <section className="space-y-6 max-w-5xl mx-auto">
-        {/* Search Box - Prominently positioned above category pills and tools */}
+        {/* Search Box */}
         <div className="relative w-full max-w-xl mx-auto">
           <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
           <input
@@ -87,47 +79,21 @@ export const HomePage: React.FC<HomePageProps> = ({ tools, onSelectTool }) => {
           )}
         </div>
 
-        {/* Category Filter Pills Container with Desktop/Mouse Scroll Buttons */}
-        <div className="relative flex items-center group max-w-5xl mx-auto px-1">
-          {/* Scroll Left Arrow Button */}
-          <button
-            onClick={() => scrollCategories('left')}
-            className="flex absolute left-0 z-10 p-1.5 rounded-full bg-white/95 shadow-md border border-slate-200 text-slate-600 hover:text-indigo-600 hover:scale-110 active:scale-95 transition-all -translate-x-2 sm:-translate-x-4 focus:outline-none cursor-pointer"
-            aria-label="Scroll Categories Left"
-            title="Scroll categories left"
-          >
-            <ChevronLeft className="w-4 h-4" />
-          </button>
-
-          {/* Category Filter Pills (Preserves 100% Touch Swipe + Mouse Drag/Scroll) */}
-          <div
-            ref={scrollContainerRef}
-            className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-3 pt-1 px-4 border-b border-slate-200 scroll-smooth w-full"
-          >
-            {CATEGORIES.map(cat => (
-              <button
-                key={cat.id}
-                onClick={() => setSelectedCategory(cat.id)}
-                className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all shrink-0 ${
-                  selectedCategory === cat.id
-                    ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/20'
-                    : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200/80 hover:border-slate-300'
-                }`}
-              >
-                {cat.name}
-              </button>
-            ))}
-          </div>
-
-          {/* Scroll Right Arrow Button */}
-          <button
-            onClick={() => scrollCategories('right')}
-            className="flex absolute right-0 z-10 p-1.5 rounded-full bg-white/95 shadow-md border border-slate-200 text-slate-600 hover:text-indigo-600 hover:scale-110 active:scale-95 transition-all translate-x-2 sm:translate-x-4 focus:outline-none cursor-pointer"
-            aria-label="Scroll Categories Right"
-            title="Scroll categories right"
-          >
-            <ChevronRight className="w-4 h-4" />
-          </button>
+        {/* Multi-Line Category Filter Pills */}
+        <div className="flex flex-wrap items-center justify-center gap-2 max-w-5xl mx-auto border-b border-slate-200 pb-4 px-2">
+          {CATEGORIES.map(cat => (
+            <button
+              key={cat.id}
+              onClick={() => setSelectedCategory(cat.id)}
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
+                selectedCategory === cat.id
+                  ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/20 scale-[1.02]'
+                  : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200/80 hover:border-slate-300 hover:bg-slate-50'
+              }`}
+            >
+              {cat.name}
+            </button>
+          ))}
         </div>
 
         {/* Tools Grid */}

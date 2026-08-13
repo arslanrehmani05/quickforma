@@ -448,6 +448,23 @@
 **Remember This:** Final course grades equal the sum of earned weighted points divided by completed category weight—never treat partial completed weight as a final 100% course grade.
 **Full explanation:** Created `src/components/tools/FinalGradeCalculator.tsx`. Registered metadata in `src/data/toolsCatalog.ts`, added route switch case in `src/App.tsx`, added on-page pSEO data in `src/data/sampleToolSeoData.ts`, and featured the tool in the `Grades & GPA` section of `src/pages/StudentsPage.tsx`. Verified `npm run build` generated 66 sitemap URLs with 0 errors.
 
+## 2026-08-13 — QuickForma — Aligned Students Hub (/students) Page Layout with Main Homepage Architecture
+**Tags:** #StudentsHub #UIPolish #React #ShareSection #SearchFilter #Consistency
+**Importance:** ★★★★☆
+**Frequency:** Common
+**Syntax Introduced:** Multi-category student filter mapping, live search string matching
+**Concept Introduced:** Visual Language Consistency, Audience-Specific Keyword Filtering, Unified Hero & Social Component Reuse
+**Prerequisites:** React State, Layout Composition
+**Decision:** Updated `StudentsPage.tsx` to mirror the core app `HomePage.tsx` layout structure (Hero badge pill, H1 title, subtitle, 3 trust badges, social share bar, live search bar, interactive category filter pills, and bottom SEO trust section).
+**Reason:** Eliminates layout disparity between the main homepage and the `/students` audience hub, providing users with a consistent, premium UX.
+**Alternative:** Maintaining a separate minimalist text layout for the Students Hub.
+**Tradeoff:** Enhances hub visual quality and searchability while keeping student tools grouped logically.
+**General principle:** Audience hubs should share the core application's hero, search, filtering, and trust section patterns to maintain design system consistency across all routes.
+**CS50/roadmap.sh link:** CS50 Web Development — Single Page Layouts & Component Reusability.
+**Remember This:** Maintain structural UI consistency across audience hubs—reuse the core app's hero, search, and category filter patterns while tailoring copy to the audience.
+**Full explanation:** Updated `src/pages/StudentsPage.tsx` with student trust badges, `ShareSection`, live search bar, interactive category filter pills (`All Student Tools`, `Grades & GPA`, `Academic Work & Utilities`, `Study & Productivity`), and student-targeted trust section. Verified `npm run build` completed in 25.46s with 0 errors.
+
+
 
 
 

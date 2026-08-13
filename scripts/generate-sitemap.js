@@ -69,8 +69,8 @@ async function generateSitemap() {
   let match;
 
   while ((match = idRegex.exec(catalogContent)) !== null) {
-    // Exclude category IDs like 'all', 'finance', 'business', 'ecommerce', etc.
-    const categoryIds = ['all', 'finance', 'business', 'ecommerce', 'operations', 'hr', 'marketing', 'healthcare', 'converters', 'developer', 'content', 'productivity'];
+    // Exclude category and vertical IDs like 'all', 'finance', 'business', 'ecommerce', 'students', etc.
+    const categoryIds = ['all', 'finance', 'business', 'ecommerce', 'operations', 'hr', 'marketing', 'healthcare', 'converters', 'developer', 'content', 'productivity', 'students'];
     if (!categoryIds.includes(match[1])) {
       toolIds.add(match[1]);
     }

@@ -15,8 +15,8 @@ with open(catalog_file, "r") as f:
 # Extract tool IDs from TOOLS_CATALOG array
 tool_ids = re.findall(r'["\']?id["\']?:\s*["\']([a-z0-9-]+)["\']', catalog_content)
 
-# Filter out non-tool category IDs
-category_ids = {'all', 'finance', 'business', 'ecommerce', 'operations', 'hr', 'developer', 'marketing', 'healthcare', 'converters', 'content', 'productivity'}
+# Filter out non-tool category and vertical IDs
+category_ids = {'all', 'finance', 'business', 'ecommerce', 'operations', 'hr', 'developer', 'marketing', 'healthcare', 'converters', 'content', 'productivity', 'students'}
 tool_ids = [t for t in tool_ids if t not in category_ids]
 
 print(f"🔍 Auditing {len(tool_ids)} tools in TOOLS_CATALOG...")

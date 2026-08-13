@@ -18,8 +18,6 @@ import { InvoiceGenerator } from './components/tools/InvoiceGenerator';
 import { QRCodeGenerator } from './components/tools/QRCodeGenerator';
 import { WordCounter } from './components/tools/WordCounter';
 import { PasswordGenerator } from './components/tools/PasswordGenerator';
-import { TipCalculator } from './components/tools/TipCalculator';
-import { AgeCalculator } from './components/tools/AgeCalculator';
 import { UnitConverter } from './components/tools/UnitConverter';
 import { FreelanceHourlyRateCalculator } from './components/tools/FreelanceHourlyRateCalculator';
 import { BreakEvenPointCalculator } from './components/tools/BreakEvenPointCalculator';
@@ -58,10 +56,7 @@ import { BarcodeGenerator } from './components/tools/BarcodeGenerator';
 import { CaseConverter } from './components/tools/CaseConverter';
 import { TextDiffChecker } from './components/tools/TextDiffChecker';
 import { LoremIpsumGenerator } from './components/tools/LoremIpsumGenerator';
-import { CoverLetterFormatter } from './components/tools/CoverLetterFormatter';
 import { BusinessNameGenerator } from './components/tools/BusinessNameGenerator';
-import { SloganGenerator } from './components/tools/SloganGenerator';
-import { RandomNamePicker } from './components/tools/RandomNamePicker';
 import { SlugGenerator } from './components/tools/SlugGenerator';
 import { PomodoroTimer } from './components/tools/PomodoroTimer';
 
@@ -75,7 +70,6 @@ import { ReorderPointCalculator } from './components/tools/ReorderPointCalculato
 import { OeeCalculator } from './components/tools/OeeCalculator';
 import { PtoCalculator } from './components/tools/PtoCalculator';
 import { UtmBuilder } from './components/tools/UtmBuilder';
-import { BmiCalculator } from './components/tools/BmiCalculator';
 
 // 4 New Strategic Pillar Tools
 import { PaypalFeeCalculator } from './components/tools/PaypalFeeCalculator';
@@ -201,8 +195,6 @@ export function App() {
       case 'qr-code-generator': return <QRCodeGenerator />;
       case 'word-counter': return <WordCounter />;
       case 'password-generator': return <PasswordGenerator />;
-      case 'tip-calculator': return <TipCalculator />;
-      case 'age-calculator': return <AgeCalculator />;
       case 'unit-converter': return <UnitConverter />;
       case 'freelance-hourly-rate-calculator': return <FreelanceHourlyRateCalculator />;
       case 'break-even-calculator': return <BreakEvenPointCalculator />;
@@ -241,10 +233,7 @@ export function App() {
       case 'case-converter': return <CaseConverter />;
       case 'text-diff-checker': return <TextDiffChecker />;
       case 'lorem-ipsum-generator': return <LoremIpsumGenerator />;
-      case 'cover-letter-formatter': return <CoverLetterFormatter />;
       case 'business-name-generator': return <BusinessNameGenerator />;
-      case 'slogan-generator': return <SloganGenerator />;
-      case 'random-name-picker': return <RandomNamePicker />;
       case 'slug-generator': return <SlugGenerator />;
       case 'pomodoro-timer': return <PomodoroTimer />;
 
@@ -258,7 +247,6 @@ export function App() {
       case 'oee-calculator': return <OeeCalculator />;
       case 'pto-calculator': return <PtoCalculator />;
       case 'utm-builder': return <UtmBuilder />;
-      case 'bmi-calculator': return <BmiCalculator />;
 
       // 4 New Strategic Pillar Tools
       case 'paypal-fee-calculator': return <PaypalFeeCalculator />;

@@ -32,7 +32,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectView }) => {
             <h4 className="font-bold text-slate-900 uppercase text-[11px] tracking-wider mb-3">Financial & Business</h4>
             <ul className="space-y-2 text-slate-500">
               <li><button onClick={() => onSelectView('invoice-generator')} className="hover:text-indigo-600 transition-colors">PDF Invoice Generator</button></li>
-              <li><button onClick={() => onSelectView('tip-calculator')} className="hover:text-indigo-600 transition-colors">Tip & Bill Splitter</button></li>
+              <li><button onClick={() => onSelectView('payroll-tax-estimator')} className="hover:text-indigo-600 transition-colors">Payroll Tax Estimator</button></li>
               <li><button onClick={() => onSelectView('freelance-hourly-rate-calculator')} className="hover:text-indigo-600 transition-colors">Freelance Rate Calculator</button></li>
               <li><button onClick={() => onSelectView('break-even-calculator')} className="hover:text-indigo-600 transition-colors">Break-Even Calculator</button></li>
               <li><button onClick={() => onSelectView('roi-calculator')} className="hover:text-indigo-600 transition-colors">ROI Calculator</button></li>

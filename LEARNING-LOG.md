@@ -432,6 +432,23 @@
 **Remember This:** Always test edge cases (zero credits, impossible targets, custom scales) before declaring a mathematical tool complete.
 **Full explanation:** Updated `src/components/tools/GpaCalculator.tsx` to add What-If mode, custom scale configurator, high school weighting disclaimer copy, and target credit checks. Verified `npm run build` completed in 23.53s with 0 errors and 65 sitemap URLs.
 
+## 2026-08-13 — QuickForma — Built Second Flagship Student Tool: Final Grade Calculator (/tools/final-grade-calculator)
+**Tags:** #FinalGradeCalculator #StudentTools #React #TypeScript #WeightedGrades #AcademicMath
+**Importance:** ★★★★★
+**Frequency:** Rare
+**Syntax Introduced:** Component row state mapping, decimal-to-percentage weight conversions, Math.max/min clamping
+**Concept Introduced:** Syllabus Category Weighting Engine, Partial Weight Grade Validation, Required Remaining Score Formula, What-If Score Impact Analysis
+**Prerequisites:** React State, TypeScript, Percentage Weighting Formulas
+**Decision:** Built `FinalGradeCalculator.tsx` supporting 3 dedicated modes: 1) Current / Projected Grade, 2) Grade Needed on Remaining Work, and 3) What-If Scenario.
+**Reason:** Solves course grade calculation problems (syllabus category weights, final exam scores needed) with maximum mathematical accuracy while keeping GPA logic strictly separated.
+**Alternative:** Forcing course grade calculations into the existing GPA calculator or using letter grade approximations.
+**Tradeoff:** Dedicated component, but provides an unmatched student experience for final exam preparation.
+**General principle:** Decouple distinct domain calculations into purpose-built components rather than forcing different mathematical engines into a single multi-purpose tool.
+**CS50/roadmap.sh link:** CS50 Web Development — Single Page Applications, Mathematical State Calculations, & Component Composition.
+**Remember This:** Final course grades equal the sum of earned weighted points divided by completed category weight—never treat partial completed weight as a final 100% course grade.
+**Full explanation:** Created `src/components/tools/FinalGradeCalculator.tsx`. Registered metadata in `src/data/toolsCatalog.ts`, added route switch case in `src/App.tsx`, added on-page pSEO data in `src/data/sampleToolSeoData.ts`, and featured the tool in the `Grades & GPA` section of `src/pages/StudentsPage.tsx`. Verified `npm run build` generated 66 sitemap URLs with 0 errors.
+
+
 
 
 

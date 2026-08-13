@@ -61,6 +61,7 @@ import { BusinessNameGenerator } from './components/tools/BusinessNameGenerator'
 import { SlugGenerator } from './components/tools/SlugGenerator';
 import { PomodoroTimer } from './components/tools/PomodoroTimer';
 import { GpaCalculator } from './components/tools/GpaCalculator';
+import { FinalGradeCalculator } from './components/tools/FinalGradeCalculator';
 
 // 10 New Strategic Tools
 import { UuidGenerator } from './components/tools/UuidGenerator';
@@ -250,6 +251,7 @@ export function App() {
       case 'slug-generator': return <SlugGenerator />;
       case 'pomodoro-timer': return <PomodoroTimer />;
       case 'gpa-calculator': return <GpaCalculator />;
+      case 'final-grade-calculator': return <FinalGradeCalculator />;
 
       // 10 New Strategic Tools
       case 'uuid-generator': return <UuidGenerator />;

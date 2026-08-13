@@ -11,6 +11,7 @@ interface StudentsPageProps {
 // Curated tool IDs for Students Hub sections
 const GRADES_GPA_TOOL_IDS = [
   'gpa-calculator',
+  'final-grade-calculator',
 ];
 
 const ACADEMIC_WORK_TOOL_IDS = [

@@ -1,14 +1,14 @@
 import { ToolMetadata } from '../types';
 
 export const CATEGORIES = [
-  { id: 'all', name: 'All Utilities', count: 59 },
+  { id: 'all', name: 'All Utilities', count: 60 },
   { id: 'finance', name: 'Financial Calculators', count: 14 },
   { id: 'business', name: 'Business & Legal Docs', count: 10 },
   { id: 'ecommerce', name: 'Ecommerce & Operations', count: 8 },
   { id: 'developer', name: 'Developer & Web Tools', count: 11 },
   { id: 'converters', name: 'Converters & Formats', count: 8 },
   { id: 'content', name: 'Text & Content Tools', count: 4 },
-  { id: 'productivity', name: 'Productivity & Daily', count: 4 },
+  { id: 'productivity', name: 'Productivity & Daily', count: 5 },
 ] as const;
 
 export const TOOLS_CATALOG: ToolMetadata[] = [
@@ -994,5 +994,25 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
     ],
     "metaTitle": "GPA Calculator | Calculate Semester & Cumulative GPA — QuickForma",
     "metaDescription": "Calculate your GPA by course, credits, and grades. Find your semester or cumulative GPA and explore target and what-if GPA scenarios with QuickForma."
+  },
+  {
+    "id": "final-grade-calculator",
+    "name": "Final Grade Calculator",
+    "category": "productivity",
+    "categoryLabel": "Productivity & Daily",
+    "description": "Calculate your current course grade, projected final grade, required score on remaining coursework, and what-if scenarios.",
+    "iconName": "Percent",
+    "popular": true,
+    "badge": "Flagship",
+    "keywords": [
+      "final grade calculator",
+      "grade calculator",
+      "course grade calculator",
+      "grade needed on final exam",
+      "what grade do i need on my final",
+      "weighted grade calculator"
+    ],
+    "metaTitle": "Final Grade Calculator | Calculate Your Course Grade — QuickForma",
+    "metaDescription": "Calculate your current or projected course grade and find the score you need on remaining coursework to reach your target grade."
   }
 ];

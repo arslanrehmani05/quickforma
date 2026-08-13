@@ -1191,6 +1191,86 @@ export const GPA_CALCULATOR_SEO: ToolSeoData = {
   relatedToolIds: ['word-counter', 'pdf-page-counter', 'pomodoro-timer']
 };
 
+export const FINAL_GRADE_CALCULATOR_SEO: ToolSeoData = {
+  atAGlance: {
+    heading: "At a Glance",
+    categoryLabel: "Academic Calculator",
+    bestFor: "High School, College & University Students",
+    privacy: "100% Client-Side RAM",
+    timeRequired: "Under 1 Minute",
+    cost: "Free Forever",
+    lastUpdated: "August 2026"
+  },
+  overview: {
+    heading: "Quick Overview",
+    whatItDoes: "Calculates current course grade, projected final grade, required score on remaining coursework or final exam, and what-if score scenarios.",
+    whoShouldUseIt: "High school, college, and university students tracking syllabus category weightings (homework, quizzes, exams) before finals week.",
+    whenToUseIt: "Use throughout the semester after major exams, before finals week to compute required final exam scores, or during course planning to simulate grade scenarios.",
+    whyItIsUseful: "Different coursework categories carry different percentage weights. Simply averaging test scores produces inaccurate final course grades. This calculator accurately multiplies category scores by syllabus weights."
+  },
+  keyFeatures: {
+    heading: "Why Use This Final Grade Calculator?",
+    features: [
+      { title: "3 Distinct Modes", description: "Calculate Current / Projected Grade, Required Grade Needed, and What-If Scenarios." },
+      { title: "Syllabus Category Weighting", description: "Multiplies component scores by syllabus weight percentages (homework, quizzes, exams)." },
+      { title: "Target Score Feasibility Alert", description: "Instantly alerts you if a target final course grade requires a score > 100% or is already secured." },
+      { title: "Partial Weight Validation", description: "Distinguishes between current grade on completed work vs projected final course grade." },
+      { title: "100% RAM Privacy", description: "Your grades and course components stay completely local in your browser memory." },
+      { title: "Zero Fees or Signups", description: "Free forever without paywalls, signups, or external server uploads." }
+    ]
+  },
+  howToUse: {
+    heading: "How to Calculate Your Final Grade",
+    steps: [
+      { stepNumber: 1, title: "Select Calculation Mode", description: "Choose Current / Projected Grade, Grade Needed, or What-If Scenario." },
+      { stepNumber: 2, title: "Enter Syllabus Components", description: "Input course categories (e.g. Homework, Midterm), weights (e.g. 20%, 30%), and scores." },
+      { stepNumber: 3, title: "Set Target Goal (Optional)", description: "Enter your target final course grade percentage to find the required score on remaining work." },
+      { stepNumber: 4, title: "View Instant Results", description: "Instantly view your current grade, projected final grade, or required final exam score." }
+    ]
+  },
+  workedExample: {
+    heading: "Worked Real-World Example",
+    title: "Scenario: College Student Calculating Required Score on Final Exam",
+    scenarioDescription: "A student has completed 65% of their course weight: Homework (20% weight, 90% score), Quizzes (20% weight, 85% score), Midterm (25% weight, 78% score). The remaining Final Exam is worth 35%. The student wants an 85% final course grade.",
+    sampleInputs: [
+      { label: "Homework (20% Weight)", value: "90% Score (18.0 earned points)" },
+      { label: "Quizzes (20% Weight)", value: "85% Score (17.0 earned points)" },
+      { label: "Midterm (25% Weight)", value: "78% Score (19.5 earned points)" },
+      { label: "Target Final Grade", value: "85.0% Overall Course Grade" },
+      { label: "Remaining Final Exam Weight", value: "35.0% Course Weight" }
+    ],
+    stepsExplanation: [
+      "Completed Earned Points: 18.0 + 17.0 + 19.5 = 54.50 points (across 65% completed weight)",
+      "Points Needed for Target: 85.0 - 54.50 = 30.50 points needed from remaining work",
+      "Required Score on Final Exam: (30.50 ÷ 35) × 100 = 87.14%"
+    ],
+    finalOutput: { label: "Required Score on Final Exam", value: "87.14%" },
+    summary: "The student needs an 87.14% score on their 35%-weighted final exam to finish the course with an overall grade of 85.0%."
+  },
+  howItWorks: {
+    heading: "Final Grade Calculation Formula & Logic",
+    type: "math",
+    explanation: "Course final grades are calculated by taking the sum of each category score multiplied by its syllabus percentage weight.",
+    formulaText: "Final Grade = Σ(Score × Weight) ÷ Total Weight",
+    variables: [
+      { symbol: "Category Score", description: "Percentage grade earned on a specific coursework component (0–100%)" },
+      { symbol: "Category Weight", description: "Percentage of overall course grade assigned to the component in the syllabus" },
+      { symbol: "Required Remaining Score", description: "(Target Grade - Earned Weighted Points) ÷ (Remaining Weight ÷ 100)" }
+    ]
+  },
+  faqs: {
+    heading: "Frequently Asked Questions",
+    faqs: [
+      { question: "How is a weighted course grade calculated?", answer: "Multiply each coursework score by its category percentage weight (e.g. 90% score × 20% weight = 18 points). Sum all category earned points to find your final grade." },
+      { question: "What is the difference between current grade and projected final grade?", answer: "Current grade measures your percentage average on completed coursework (e.g. 65% completed). Projected final grade assumes 100% of syllabus category weights and scores have been entered." },
+      { question: "How do I calculate what grade I need on my final exam?", answer: "Subtract your current earned weighted points from your target final course grade, then divide by the decimal weight of your remaining final exam (e.g. 0.35)." },
+      { question: "What happens if syllabus category weights do not equal 100%?", answer: "If weights total less than 100%, the calculator displays your current grade on completed work. If weights total over 100%, adjust category weights to match your syllabus." },
+      { question: "How does QuickForma protect my academic grade privacy?", answer: "QuickForma operates 100% client-side inside your browser RAM. Your course categories, weights, and scores are never saved to servers or external databases." }
+    ]
+  },
+  relatedToolIds: ['gpa-calculator', 'word-counter', 'pomodoro-timer']
+};
+
 export const TOOL_SEO_DATA_MAP: Record<string, ToolSeoData> = {
   'freelance-hourly-rate-calculator': FREELANCE_HOURLY_RATE_SEO,
   'invoice-generator': INVOICE_GENERATOR_SEO,
@@ -1205,5 +1285,6 @@ export const TOOL_SEO_DATA_MAP: Record<string, ToolSeoData> = {
   'volumetric-weight-calculator': VOLUMETRIC_WEIGHT_SEO,
   'depreciation-calculator': DEPRECIATION_SEO,
   'gpa-calculator': GPA_CALCULATOR_SEO,
+  'final-grade-calculator': FINAL_GRADE_CALCULATOR_SEO,
 };
 

@@ -304,3 +304,20 @@
 **Remember This:** Always branch before a hard reset—safety branches make destructive time travel 100% reversible.
 **Full explanation:** Created backup branch `backup/pre-reset-to-d236c74` to preserve the 342-tool state. Executed `git reset --hard d236c74` to rewind `main` HEAD back to August 11, 2026. Synchronized remote repository via `git push origin main --force`, and verified clean `npm run build` compilation.
 
+## 2026-08-13 — QuickForma — Prominent Search Bar Layout Optimization (Unconstrained Above Category Filters)
+**Tags:** #React #TailwindCSS #UX #ResponsiveLayout #SearchErgonomics #FormLayout
+**Importance:** ★★★☆☆
+**Frequency:** Daily
+**Syntax Introduced:** `max-w-xl mx-auto`, `pl-10 pr-10 py-3`, clear search `X` button conditional rendering
+**Concept Introduced:** Responsive Form Field Ergonomics, Unconstrained Horizontal Scroll Containment, Visual Hierarchy Optimization
+**Prerequisites:** HTML5 Form Controls, CSS Flexbox/Grid, Tailwind Utility Classes
+**Decision:** Extracted the homepage search bar from the horizontally scrolling category pills container and centered it in a dedicated full-width block directly above the category filters and tools grid.
+**Reason:** Eliminates horizontal swiping friction and truncation on mobile and tablet viewports, making tool search instantly accessible.
+**Alternative:** Keeping search inside the category flex row with fixed pixel width.
+**Tradeoff:** Uses slightly more vertical space above the fold, but drastically improves touch-target usability and search discoverability.
+**General principle:** Never place primary search inputs inside horizontally scrolling filter containers.
+**CS50/roadmap.sh link:** CS50 Web Development — Responsive Web Design & User Interface Layout Standards.
+**Remember This:** Keep primary search inputs unconstrained by secondary horizontal scroll containers to maximize touch-target visibility.
+**Full explanation:** Updated `src/pages/HomePage.tsx` layout. Removed the search input from the inline `flex-row` wrapper shared with `CATEGORIES.map()`. Placed a centered `max-w-xl` search bar directly above the category pills bar with an instant `X` clear search button, giving category pills full row width and eliminating horizontal scroll truncation.
+
+

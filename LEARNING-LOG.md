@@ -287,3 +287,20 @@
 **CS50/roadmap.sh link:** CS50 Web Development — Operator UX Optimization, Non-Blocking Form Validations, & Information Architecture.
 **Remember This:** The article editor is the cockpit; Growth OS is the engine. Automate background intelligence and keep human writing friction at zero.
 **Full explanation:** Created backup branch `backup/pre-publishing-os-4-refactor`. Reorganized `article.ts` and `playbook.ts` to implement 2-card Shopify-style layout (`searchEngineListing` and `organization` open by default, `growthOsGroup` collapsed at bottom). Added non-blocking `.warning()` cannibalization validation. Updated `HOW-TO-USE-SANITY.md` to version 4.0. Verified clean `npm run build` compilation and pushed to GitHub.
+
+## 2026-08-13 — QuickForma — Executed Hard Git Reset to Commit d236c74 (Restored Aug 11 CMS AST State)
+**Tags:** #Git #GitReset #SafetyBackupBranch #ForcePush #VersionControl #StateRestoration
+**Importance:** ★★★★★
+**Frequency:** Rare
+**Syntax Introduced:** `git branch backup/<name>`, `git reset --hard <commit-hash>`, `git push origin main --force`
+**Concept Introduced:** Safe Time-Travel Version Control, Safety Backup Branching, Hard Head Pointer Mutability
+**Prerequisites:** Git Version Control, Remote Branch Tracking, Force Push Safety Protocols
+**Decision:** Created safety backup branch `backup/pre-reset-to-d236c74` containing all 342 tools, hard reset local `main` pointer back to commit `d236c74` (August 11, 2026), and force-pushed to GitHub `origin main`.
+**Reason:** Restored the exact application state requested by the user at commit `d236c74` (67 unique tools and initial Sanity PortableText AST /blog routing).
+**Alternative:** `git revert` (would keep post-Aug 11 commits in log history rather than resetting the codebase state back in time).
+**Tradeoff:** Rewrites `main` branch commit history on GitHub (mitigated by creating safety backup branch `backup/pre-reset-to-d236c74`).
+**General principle:** Always create a named safety backup branch before executing a hard git reset or force push.
+**CS50/roadmap.sh link:** CS50 Software Engineering — Version Control, Commit Graphs, Pointer Manipulation, & Remote Synchronization.
+**Remember This:** Always branch before a hard reset—safety branches make destructive time travel 100% reversible.
+**Full explanation:** Created backup branch `backup/pre-reset-to-d236c74` to preserve the 342-tool state. Executed `git reset --hard d236c74` to rewind `main` HEAD back to August 11, 2026. Synchronized remote repository via `git push origin main --force`, and verified clean `npm run build` compilation.
+

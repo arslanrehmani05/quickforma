@@ -116,7 +116,7 @@ export async function getRelatedGuides(category?: string, toolId?: string): Prom
       title: post.title,
       description: post.description || 'Detailed strategic guide on business operations and financial execution.',
       readTime: post.readTime || '5 min read',
-      url: post._type === 'playbook' ? `/playbooks/${post.slug}` : `/blog/${post.slug}`,
+      url: post._type === 'playbook' ? `/playbooks/${post.slug}` : `/ledger/${post.slug}`,
       category: post.category || 'Guide',
     }));
   } catch (error) {

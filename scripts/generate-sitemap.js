@@ -107,7 +107,7 @@ async function generateSitemap() {
 
   // 3. Add dynamic Sanity articles & playbooks
   sanityDocs.forEach((doc) => {
-    const routePrefix = doc._type === 'playbook' ? '/playbooks/' : '/blog/';
+    const routePrefix = doc._type === 'playbook' ? '/playbooks/' : '/ledger/';
     const lastModDate = doc.publishedAt
       ? doc.publishedAt.split('T')[0]
       : doc._updatedAt

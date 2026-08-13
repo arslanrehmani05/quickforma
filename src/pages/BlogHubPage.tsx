@@ -33,7 +33,7 @@ export const BlogHubPage: React.FC<BlogHubPageProps> = ({ onSelectView }) => {
     if (typeof document !== 'undefined') {
       const shareTitle = 'The QuickForma Ledger — Business Guides, Financial Formulas & Playbooks';
       const shareDesc = 'Explore practical financial formulas, business playbooks, e-commerce workflows, and developer guides on QuickForma.';
-      const pageUrl = 'https://www.quickforma.com/blog';
+      const pageUrl = 'https://www.quickforma.com/ledger';
 
       document.title = shareTitle;
 
@@ -131,7 +131,7 @@ export const BlogHubPage: React.FC<BlogHubPageProps> = ({ onSelectView }) => {
             {/* Featured Main Spotlight */}
             {heroArticle && (
               <a
-                href={heroArticle._type === 'playbook' ? `/playbooks/${heroArticle.slug}` : `/blog/${heroArticle.slug}`}
+                href={heroArticle._type === 'playbook' ? `/playbooks/${heroArticle.slug}` : `/ledger/${heroArticle.slug}`}
                 className="lg:col-span-2 p-6 rounded-2xl bg-white border border-slate-200 shadow-xs hover:shadow-md hover:border-indigo-200 transition-all flex flex-col justify-between group"
               >
                 <div className="space-y-4">
@@ -178,7 +178,7 @@ export const BlogHubPage: React.FC<BlogHubPageProps> = ({ onSelectView }) => {
                 {secondaryLatest.map((art) => (
                   <a
                     key={art._id}
-                    href={art._type === 'playbook' ? `/playbooks/${art.slug}` : `/blog/${art.slug}`}
+                    href={art._type === 'playbook' ? `/playbooks/${art.slug}` : `/ledger/${art.slug}`}
                     className="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs hover:shadow-md hover:border-indigo-200 transition-all flex flex-col justify-between flex-1 group"
                   >
                     <div className="space-y-2">
@@ -240,7 +240,7 @@ export const BlogHubPage: React.FC<BlogHubPageProps> = ({ onSelectView }) => {
                 {art ? (
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <a
-                      href={art._type === 'playbook' ? `/playbooks/${art.slug}` : `/blog/${art.slug}`}
+                      href={art._type === 'playbook' ? `/playbooks/${art.slug}` : `/ledger/${art.slug}`}
                       className="md:col-span-3 p-5 rounded-2xl bg-white border border-slate-200 shadow-xs hover:shadow-md hover:border-indigo-200 transition-all flex flex-col md:flex-row gap-5 group items-center"
                     >
                       {art.featuredImage && (
@@ -291,7 +291,7 @@ export const BlogHubPage: React.FC<BlogHubPageProps> = ({ onSelectView }) => {
       <ShareSection
         title="The QuickForma Ledger"
         description="Explore free business calculators, financial guides, and playbooks on QuickForma."
-        url="https://www.quickforma.com/blog"
+        url="https://www.quickforma.com/ledger"
         align="center"
         className="pt-8 border-t border-slate-200"
       />

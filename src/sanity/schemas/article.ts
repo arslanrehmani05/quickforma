@@ -51,7 +51,7 @@ function AutoArticleTitleInput(props: any) {
 
 function AutoUrlInput(props: any) {
   const slug = useFormValue(['slug']) as { current?: string } | undefined;
-  const derivedUrl = slug?.current ? `https://www.quickforma.com/blog/${slug.current}` : '';
+  const derivedUrl = slug?.current ? `https://www.quickforma.com/ledger/${slug.current}` : '';
 
   return (
     React.createElement(TextInput, {
@@ -257,8 +257,8 @@ export const articleSchema = defineType({
       components: {
         input: AutoUrlInput,
       },
-      placeholder: 'https://www.quickforma.com/blog/...',
-      description: '⚡ Auto-derived full canonical URL segment (e.g. /blog/your-slug).',
+      placeholder: 'https://www.quickforma.com/ledger/...',
+      description: '⚡ Auto-derived full canonical URL segment (e.g. /ledger/your-slug).',
     }),
     defineField({
       name: 'primaryKeyword',

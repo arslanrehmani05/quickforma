@@ -23,9 +23,9 @@ export const RelatedGuides: React.FC<RelatedGuidesProps> = ({ guides, onSelectVi
             key={guide.id}
             href={guide.url}
             onClick={(e) => {
-              if (onSelectView && guide.url.startsWith('/blog/')) {
+              if (onSelectView && (guide.url.startsWith('/ledger/') || guide.url.startsWith('/blog/'))) {
                 e.preventDefault();
-                const slug = guide.url.replace('/blog/', '');
+                const slug = guide.url.replace(/^\/(ledger|blog)\//, '');
                 onSelectView(`blog:${slug}`);
               }
             }}

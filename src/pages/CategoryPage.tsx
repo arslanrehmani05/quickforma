@@ -150,7 +150,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({ slug, onBack }) => {
         {articles.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {articles.map((art) => {
-              const artUrl = art._type === 'playbook' ? `/playbooks/${art.slug}` : `/blog/${art.slug}`;
+              const artUrl = art._type === 'playbook' ? `/playbooks/${art.slug}` : `/ledger/${art.slug}`;
               return (
                 <a
                   key={art._id}

@@ -150,7 +150,7 @@ const getRouteFromPathname = (pathname: string): string => {
   const cleanPath = pathname.replace(/\/$/, '').trim();
   if (!cleanPath || cleanPath === '/') return 'home';
 
-  if (cleanPath === '/blog') {
+  if (cleanPath === '/ledger' || cleanPath === '/blog') {
     return 'blog:index';
   }
   if (cleanPath === '/students') {
@@ -161,6 +161,9 @@ const getRouteFromPathname = (pathname: string): string => {
   }
   if (cleanPath.startsWith('/tools/')) {
     return cleanPath.replace('/tools/', '');
+  }
+  if (cleanPath.startsWith('/ledger/')) {
+    return `blog:${cleanPath.replace('/ledger/', '')}`;
   }
   if (cleanPath.startsWith('/blog/')) {
     return `blog:${cleanPath.replace('/blog/', '')}`;
@@ -186,8 +189,8 @@ const getPathnameFromView = (view: string): string => {
   if (view === 'students') return '/students';
   if (view === 'business') return '/business';
   if (LEGAL_PAGES.includes(view)) return `/${view}`;
-  if (view === 'blog:index' || view === 'blog') return '/blog';
-  if (view.startsWith('blog:')) return `/blog/${view.replace('blog:', '')}`;
+  if (view === 'blog:index' || view === 'blog' || view === 'ledger') return '/ledger';
+  if (view.startsWith('blog:')) return `/ledger/${view.replace('blog:', '')}`;
   if (view.startsWith('playbook:')) return `/playbooks/${view.replace('playbook:', '')}`;
   if (view.startsWith('category:')) return `/category/${view.replace('category:', '')}`;
   return `/tools/${view}`;
@@ -476,7 +479,7 @@ export function App() {
               </button>
               <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
               <span className="text-indigo-600 font-bold">
-                {activeView.startsWith('blog:') ? 'Guide' : (activeTool?.name || activeView)}
+                {activeView.startsWith('blog:') ? 'Ledger' : (activeTool?.name || activeView)}
               </span>
             </div>
           )}

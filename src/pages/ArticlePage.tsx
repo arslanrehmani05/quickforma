@@ -38,7 +38,7 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({ slug, onBack }) => {
         ? urlFor(article.featuredImage).width(1200).height(630).url()
         : 'https://www.quickforma.com/branding/Logo%20PNG.png';
 
-      const pageUrl = `https://www.quickforma.com/blog/${slug}`;
+      const pageUrl = `https://www.quickforma.com/ledger/${slug}`;
 
       document.title = `${shareTitle} — QuickForma`;
 
@@ -99,7 +99,7 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({ slug, onBack }) => {
     );
   }
 
-  const pageUrl = `https://www.quickforma.com/blog/${slug}`;
+  const pageUrl = `https://www.quickforma.com/ledger/${slug}`;
   const shareTitle = article.socialTitle || article.seoTitle || article.title;
   const shareDesc = article.socialDescription || article.metaDescription || article.excerpt;
 

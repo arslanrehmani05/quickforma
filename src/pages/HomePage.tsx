@@ -3,7 +3,7 @@ import { ToolMetadata } from '../types';
 import { CATEGORIES } from '../data/toolsCatalog';
 import { ToolCard } from '../components/layout/ToolCard';
 import { ShareSection } from '../components/social/ShareSection';
-import { Zap, Search, Shield, Lock, Cpu, Sparkles } from 'lucide-react';
+import { Zap, Search, Shield, Lock, Cpu, Sparkles, X } from 'lucide-react';
 
 interface HomePageProps {
   tools: ToolMetadata[];
@@ -43,10 +43,10 @@ export const HomePage: React.FC<HomePageProps> = ({ tools, onSelectTool }) => {
         {/* Trust Badges */}
         <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-slate-700 pt-2 font-medium">
           <div className="flex items-center gap-1.5 bg-white px-3.5 py-1.5 rounded-xl border border-slate-200 shadow-xs">
-            <Shield className="w-3.5 h-3.5 text-emerald-600" /> 100% Local Privacy
+            <Shield className="w-3.5 h-3.5 text-emerald-600" /> 100% Private Client-Side Engine
           </div>
           <div className="flex items-center gap-1.5 bg-white px-3.5 py-1.5 rounded-xl border border-slate-200 shadow-xs">
-            <Lock className="w-3.5 h-3.5 text-indigo-600" /> No Account Needed
+            <Lock className="w-3.5 h-3.5 text-indigo-600" /> Zero File Server Uploads
           </div>
           <div className="flex items-center gap-1.5 bg-white px-3.5 py-1.5 rounded-xl border border-slate-200 shadow-xs">
             <Cpu className="w-3.5 h-3.5 text-amber-600" /> Sub-50ms Calculation
@@ -57,36 +57,43 @@ export const HomePage: React.FC<HomePageProps> = ({ tools, onSelectTool }) => {
       </section>
 
       {/* Category Tabs & Search Bar */}
-      <section className="space-y-6">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-slate-200 pb-4">
-          {/* Category Tabs */}
-          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-2 md:pb-0">
-            {CATEGORIES.map(cat => (
-              <button
-                key={cat.id}
-                onClick={() => setSelectedCategory(cat.id)}
-                className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
-                  selectedCategory === cat.id
-                    ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/20'
-                    : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200/80 hover:border-slate-300'
-                }`}
-              >
-                {cat.name}
-              </button>
-            ))}
-          </div>
+      <section className="space-y-6 max-w-5xl mx-auto">
+        {/* Search Box - Prominently positioned above category pills and tools */}
+        <div className="relative w-full max-w-xl mx-auto">
+          <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+          <input
+            type="text"
+            placeholder="Search all tools (e.g. invoice, QR, tax, calculator)..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full bg-white border border-slate-200 rounded-2xl pl-10 pr-10 py-3 text-xs sm:text-sm text-slate-900 placeholder-slate-400 outline-none focus:border-indigo-600 focus:ring-4 focus:ring-indigo-600/10 transition-all font-sans shadow-xs"
+          />
+          {searchQuery && (
+            <button
+              onClick={() => setSearchQuery('')}
+              className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-slate-600 rounded-lg"
+              aria-label="Clear search"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          )}
+        </div>
 
-          {/* Search Box */}
-          <div className="relative w-full md:w-72 shrink-0">
-            <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
-            <input
-              type="text"
-              placeholder="Search tools (e.g. invoice, QR)..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-white border border-slate-200 rounded-xl pl-9 pr-4 py-2 text-xs text-slate-900 placeholder-slate-400 outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-600/20 transition-all font-sans shadow-xs"
-            />
-          </div>
+        {/* Category Filter Pills */}
+        <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-3 border-b border-slate-200 justify-start sm:justify-center">
+          {CATEGORIES.map(cat => (
+            <button
+              key={cat.id}
+              onClick={() => setSelectedCategory(cat.id)}
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
+                selectedCategory === cat.id
+                  ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/20'
+                  : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200/80 hover:border-slate-300'
+              }`}
+            >
+              {cat.name}
+            </button>
+          ))}
         </div>
 
         {/* Tools Grid */}

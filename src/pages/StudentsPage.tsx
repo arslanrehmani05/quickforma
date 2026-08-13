@@ -1,14 +1,18 @@
 import React from 'react';
 import { ToolMetadata } from '../types';
 import { ToolCard } from '../components/layout/ToolCard';
-import { GraduationCap, FileText, Clock } from 'lucide-react';
+import { GraduationCap, FileText, Clock, Award } from 'lucide-react';
 
 interface StudentsPageProps {
   tools: ToolMetadata[];
   onSelectTool: (id: string) => void;
 }
 
-// Exact curated seed tool IDs for Students v1
+// Curated tool IDs for Students Hub sections
+const GRADES_GPA_TOOL_IDS = [
+  'gpa-calculator',
+];
+
 const ACADEMIC_WORK_TOOL_IDS = [
   'word-counter',
   'pdf-page-counter',
@@ -22,7 +26,11 @@ const STUDY_PRODUCTIVITY_TOOL_IDS = [
 ];
 
 export const StudentsPage: React.FC<StudentsPageProps> = ({ tools, onSelectTool }) => {
-  // Retrieve tool metadata for each curated ID preserving order
+  // Retrieve tool metadata for each curated ID
+  const gradesGpaTools = GRADES_GPA_TOOL_IDS
+    .map(id => tools.find(t => t.id === id))
+    .filter((t): t is ToolMetadata => t !== undefined);
+
   const academicWorkTools = ACADEMIC_WORK_TOOL_IDS
     .map(id => tools.find(t => t.id === id))
     .filter((t): t is ToolMetadata => t !== undefined);
@@ -55,7 +63,26 @@ export const StudentsPage: React.FC<StudentsPageProps> = ({ tools, onSelectTool 
         </div>
       </section>
 
-      {/* Section 1: Academic Work & Utilities */}
+      {/* Section 1: Grades & GPA */}
+      <section className="space-y-4">
+        <div className="flex items-center gap-2.5 pb-2 border-b border-slate-200">
+          <div className="p-2 rounded-xl bg-indigo-50 text-indigo-600">
+            <Award className="w-5 h-5" />
+          </div>
+          <div>
+            <h2 className="text-lg font-bold text-slate-900">Grades & GPA</h2>
+            <p className="text-slate-500 text-xs">Flagship grade tools to calculate semester GPA, cumulative projections, and target GPA goals.</p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {gradesGpaTools.map(tool => (
+            <ToolCard key={tool.id} tool={tool} onSelect={onSelectTool} />
+          ))}
+        </div>
+      </section>
+
+      {/* Section 2: Academic Work & Utilities */}
       <section className="space-y-4">
         <div className="flex items-center gap-2.5 pb-2 border-b border-slate-200">
           <div className="p-2 rounded-xl bg-indigo-50 text-indigo-600">

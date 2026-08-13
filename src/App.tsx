@@ -60,6 +60,7 @@ import { LoremIpsumGenerator } from './components/tools/LoremIpsumGenerator';
 import { BusinessNameGenerator } from './components/tools/BusinessNameGenerator';
 import { SlugGenerator } from './components/tools/SlugGenerator';
 import { PomodoroTimer } from './components/tools/PomodoroTimer';
+import { GpaCalculator } from './components/tools/GpaCalculator';
 
 // 10 New Strategic Tools
 import { UuidGenerator } from './components/tools/UuidGenerator';
@@ -248,6 +249,7 @@ export function App() {
       case 'business-name-generator': return <BusinessNameGenerator />;
       case 'slug-generator': return <SlugGenerator />;
       case 'pomodoro-timer': return <PomodoroTimer />;
+      case 'gpa-calculator': return <GpaCalculator />;
 
       // 10 New Strategic Tools
       case 'uuid-generator': return <UuidGenerator />;

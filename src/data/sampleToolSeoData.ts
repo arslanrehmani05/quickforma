@@ -1112,6 +1112,85 @@ export const DEPRECIATION_SEO: ToolSeoData = {
   relatedToolIds: ['break-even-calculator', 'roi-calculator', 'invoice-generator']
 };
 
+export const GPA_CALCULATOR_SEO: ToolSeoData = {
+  atAGlance: {
+    heading: "At a Glance",
+    categoryLabel: "Academic Calculator",
+    bestFor: "High School & College Students",
+    privacy: "100% Client-Side RAM",
+    timeRequired: "Under 1 Minute",
+    cost: "Free Forever",
+    lastUpdated: "August 2026"
+  },
+  overview: {
+    heading: "Quick Overview",
+    whatItDoes: "Calculates semester GPA, cumulative GPA projections, target GPA requirements, and high school weighted GPAs across US 4.0 and AP/Honors grading scales.",
+    whoShouldUseIt: "High school students tracking AP/Honors weightings, college undergrads calculating semester credit-weighted GPAs, and university students planning target graduation GPAs.",
+    whenToUseIt: "Use at the end of a semester to verify official grades, before finals week to compute target GPA requirements, or during course selection to simulate what-if grade scenarios.",
+    whyItIsUseful: "Different courses carry different credit weights. Simply averaging letter grades produces inaccurate GPA results. This calculator accurately multiplies grade points by credit hours to compute true quality points."
+  },
+  keyFeatures: {
+    heading: "Why Use This GPA Calculator?",
+    features: [
+      { title: "4 Distinct GPA Modes", description: "Calculate semester GPA, cumulative GPA, target required GPA, and high school weighted GPA." },
+      { title: "Credit-Weighted Accuracy", description: "Multiplies letter grade points by course credit hours for true academic precision." },
+      { title: "Target GPA Feasibility Check", description: "Instantly alerts you if a target cumulative GPA is mathematically unreachable." },
+      { title: "AP / Honors / IB Weighting", description: "Supports +1.0 AP/IB and +0.5 Honors weightings for high school students." },
+      { title: "100% Client-Side RAM Privacy", description: "Your academic records and grades never leave your local browser memory." },
+      { title: "Zero Signups or Fees", description: "Access all GPA calculations instantly without registration or paywalls." }
+    ]
+  },
+  howToUse: {
+    heading: "How to Calculate Your GPA",
+    steps: [
+      { stepNumber: 1, title: "Select GPA Mode", description: "Choose Semester GPA, Cumulative Projection, Target GPA Needed, or High School GPA." },
+      { stepNumber: 2, title: "Enter Courses & Credits", description: "Input course names, credit hours (e.g. 3 or 4 credits), and letter grades." },
+      { stepNumber: 3, title: "Set Grade Scale", description: "Select standard US 4.0 letter grades or specify high school AP/Honors course types." },
+      { stepNumber: 4, title: "View Instant Results", description: "Instantly view your GPA, total quality points, credit breakdown, and target feasibility." }
+    ]
+  },
+  workedExample: {
+    heading: "Worked Real-World Example",
+    title: "Scenario: College Sophomore Calculating Semester GPA",
+    scenarioDescription: "A student takes 4 courses totaling 14 credit hours: Biology (4 credits, A), English (3 credits, B+), Calculus (4 credits, A-), and History (3 credits, B).",
+    sampleInputs: [
+      { label: "Biology (4 Credits)", value: "A (4.00 pts × 4 cr = 16.00 QP)" },
+      { label: "English (3 Credits)", value: "B+ (3.33 pts × 3 cr = 9.99 QP)" },
+      { label: "Calculus (4 Credits)", value: "A- (3.67 pts × 4 cr = 14.68 QP)" },
+      { label: "History (3 Credits)", value: "B (3.00 pts × 3 cr = 9.00 QP)" }
+    ],
+    stepsExplanation: [
+      "Total Quality Points: 16.00 + 9.99 + 14.68 + 9.00 = 49.67 Quality Points",
+      "Total GPA Credits: 4 + 3 + 4 + 3 = 14.0 Credit Hours",
+      "Semester GPA: 49.67 Quality Points ÷ 14.0 Credits = 3.55 GPA"
+    ],
+    finalOutput: { label: "Semester GPA", value: "3.55 GPA" },
+    summary: "The student achieves a 3.55 semester GPA. Because Biology and Calculus carry higher credit weights (4 credits each), their strong performance in those courses heavily boosted their overall average."
+  },
+  howItWorks: {
+    heading: "GPA Calculation Formula & Logic",
+    type: "math",
+    explanation: "GPA is calculated by dividing total quality points (grade points multiplied by credit hours) by total GPA credit hours attempted.",
+    formulaText: "GPA = Total Quality Points ÷ Total GPA Credits",
+    variables: [
+      { symbol: "Quality Points", description: "Grade Point Value × Course Credit Hours" },
+      { symbol: "Total GPA Credits", description: "Sum of all graded credit hours attempted" },
+      { symbol: "Grade Scale", description: "A = 4.0, A- = 3.67, B+ = 3.33, B = 3.0, B- = 2.67, C+ = 2.33, C = 2.0, D = 1.0, F = 0.0" }
+    ]
+  },
+  faqs: {
+    heading: "Frequently Asked Questions",
+    faqs: [
+      { question: "How is GPA calculated on a 4.0 scale?", answer: "Each letter grade is assigned a point value (A=4.0, B=3.0, C=2.0, D=1.0, F=0.0). Multiply points by course credits to find quality points, then divide total quality points by total credit hours." },
+      { question: "What is the difference between weighted and unweighted GPA?", answer: "Unweighted GPA caps all courses at 4.0 regardless of difficulty. Weighted GPA adds extra points (+1.0 for AP/IB, +0.5 for Honors) to reflect advanced course rigor." },
+      { question: "How do credit hours affect my overall GPA?", answer: "Courses with more credit hours (e.g. 4-credit lab sciences) have a larger impact on your GPA than 1-credit or 2-credit electives." },
+      { question: "Can a target cumulative GPA become mathematically impossible?", answer: "Yes. If reaching your target requires an average higher than the maximum scale limit (4.0) across remaining credits, the target is mathematically unreachable." },
+      { question: "How does QuickForma protect my academic grade data?", answer: "QuickForma operates 100% client-side inside your browser RAM. Your course names, grades, and transcripts are never uploaded to any server or external database." }
+    ]
+  },
+  relatedToolIds: ['word-counter', 'pdf-page-counter', 'pomodoro-timer']
+};
+
 export const TOOL_SEO_DATA_MAP: Record<string, ToolSeoData> = {
   'freelance-hourly-rate-calculator': FREELANCE_HOURLY_RATE_SEO,
   'invoice-generator': INVOICE_GENERATOR_SEO,
@@ -1125,5 +1204,6 @@ export const TOOL_SEO_DATA_MAP: Record<string, ToolSeoData> = {
   'etsy-fee-calculator': ETSY_FEE_SEO,
   'volumetric-weight-calculator': VOLUMETRIC_WEIGHT_SEO,
   'depreciation-calculator': DEPRECIATION_SEO,
+  'gpa-calculator': GPA_CALCULATOR_SEO,
 };
 

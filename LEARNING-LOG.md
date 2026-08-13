@@ -400,6 +400,23 @@
 **Remember This:** Build audience hubs organically—surface only genuinely relevant seed tools and let new categories appear naturally as purpose-built tools are added.
 **Full explanation:** Created `src/pages/StudentsPage.tsx`, updated `src/App.tsx` routing/metadata, added desktop and mobile navigation links in `src/components/layout/Navbar.tsx` and `src/components/layout/Footer.tsx`, and updated `scripts/generate-sitemap.js`. Verified `npm run build` generated 64 total sitemap URLs with 0 errors.
 
+## 2026-08-13 — QuickForma — Built Flagship Student Tool: GPA Calculator (/tools/gpa-calculator)
+**Tags:** #GpaCalculator #StudentTools #React #TypeScript #QualityPoints #AcademicMath
+**Importance:** ★★★★★
+**Frequency:** Rare
+**Syntax Introduced:** React `useMemo` calculation hooks, mode-switch state handlers, custom grade point maps
+**Concept Introduced:** Multi-Mode Academic Calculations, Credit-Weighted Quality Points Engine, Target GPA Feasibility Algorithms, High School AP/Honors Weightings
+**Prerequisites:** React Hooks, TypeScript, Mathematical Weighted Averages
+**Decision:** Built `GpaCalculator.tsx` supporting 4 distinct modes: 1) Semester GPA (College credit-weighted), 2) Cumulative GPA Projection, 3) Target GPA Needed (with mathematical feasibility validation), and 4) High School GPA (Unweighted 4.0 vs AP/Honors/IB +1.0/+0.5 weighting vs Custom Scale).
+**Reason:** Solves all core student GPA calculation needs within a single, elegant tool without creating 4 redundant tool files.
+**Alternative:** Splitting into 4 separate tools or building a simple unweighted letter grade average.
+**Tradeoff:** Component encapsulates 4 modes, but keeps the tool catalog lean and provides an unmatched student UX.
+**General principle:** Multi-mode domain tools should encapsulate related calculation workflows within a unified component rather than splitting them across redundant pages.
+**CS50/roadmap.sh link:** CS50 Web Development — Single Page Applications, Mathematical State Calculations, & Dynamic UI Workflows.
+**Remember This:** GPA calculations must multiply grade points by credit hours to compute quality points—never average letter grades directly when credit weights differ.
+**Full explanation:** Created `src/components/tools/GpaCalculator.tsx`. Registered metadata in `src/data/toolsCatalog.ts`, added route switch case in `src/App.tsx`, added on-page pSEO data in `src/data/sampleToolSeoData.ts`, and featured the tool in the new `Grades & GPA` section of `src/pages/StudentsPage.tsx`. Verified `npm run build` generated 65 sitemap URLs with 0 errors.
+
+
 
 
 

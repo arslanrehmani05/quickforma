@@ -1,14 +1,14 @@
 import { ToolMetadata } from '../types';
 
 export const CATEGORIES = [
-  { id: 'all', name: 'All Utilities', count: 58 },
+  { id: 'all', name: 'All Utilities', count: 59 },
   { id: 'finance', name: 'Financial Calculators', count: 14 },
   { id: 'business', name: 'Business & Legal Docs', count: 10 },
   { id: 'ecommerce', name: 'Ecommerce & Operations', count: 8 },
   { id: 'developer', name: 'Developer & Web Tools', count: 11 },
   { id: 'converters', name: 'Converters & Formats', count: 8 },
   { id: 'content', name: 'Text & Content Tools', count: 4 },
-  { id: 'productivity', name: 'Productivity & Daily', count: 3 },
+  { id: 'productivity', name: 'Productivity & Daily', count: 4 },
 ] as const;
 
 export const TOOLS_CATALOG: ToolMetadata[] = [
@@ -974,5 +974,25 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
     ],
     "metaTitle": "Straight-Line Asset Depreciation Calculator — QuickForma",
     "metaDescription": "Calculate annual asset straight-line depreciation expense and generate depreciation schedules."
+  },
+  {
+    "id": "gpa-calculator",
+    "name": "GPA Calculator",
+    "category": "productivity",
+    "categoryLabel": "Productivity & Daily",
+    "description": "Calculate semester GPA, cumulative GPA projection, target GPA needed, and high school weighted GPA.",
+    "iconName": "GraduationCap",
+    "popular": true,
+    "badge": "Flagship",
+    "keywords": [
+      "gpa calculator",
+      "cumulative gpa calculator",
+      "college gpa calculator",
+      "target gpa needed",
+      "weighted gpa calculator",
+      "high school gpa"
+    ],
+    "metaTitle": "GPA Calculator | Calculate Semester & Cumulative GPA — QuickForma",
+    "metaDescription": "Calculate your GPA by course, credits, and grades. Find your semester or cumulative GPA and explore target and what-if GPA scenarios with QuickForma."
   }
 ];

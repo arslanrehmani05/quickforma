@@ -1,0 +1,86 @@
+import React, { useState, useMemo } from 'react';
+import { Sparkles, Triangle } from 'lucide-react';
+import { solvePythagorean } from '../../utils/math/mathEngine';
+
+export const PythagoreanTheoremCalculator: React.FC = () => {
+  const [sideA, setSideA] = useState<number>(3);
+  const [sideB, setSideB] = useState<number>(4);
+  const [sideC, setSideC] = useState<number | undefined>(undefined);
+
+  const result = useMemo(() => {
+    try {
+      return solvePythagorean(sideA, sideB, sideC);
+    } catch (err: any) {
+      return { missingValue: 0, area: 0, perimeter: 0, missingLabel: err.message };
+    }
+  }, [sideA, sideB, sideC]);
+
+  return (
+    <div className="max-w-4xl mx-auto space-y-8">
+      <div className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-xs space-y-6">
+        <div className="flex items-center gap-3 border-b border-slate-100 pb-4">
+          <div className="p-2.5 bg-indigo-50 text-indigo-600 rounded-2xl">
+            <Triangle className="w-6 h-6" />
+          </div>
+          <div>
+            <h2 className="text-xl font-bold text-slate-900">Pythagorean Theorem Calculator</h2>
+            <p className="text-xs text-slate-500">
+              Solve right triangle side lengths using $a^2 + b^2 = c^2$, hypotenuse, perimeter, and area.
+            </p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div>
+            <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+              Leg $a$
+            </label>
+            <input
+              type="number"
+              value={sideA || ''}
+              onChange={(e) => setSideA(parseFloat(e.target.value) || 0)}
+              placeholder="e.g. 3"
+              className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm font-mono text-center outline-none focus:ring-2 focus:ring-indigo-600"
+            />
+          </div>
+
+          <div>
+            <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+              Leg $b$
+            </label>
+            <input
+              type="number"
+              value={sideB || ''}
+              onChange={(e) => setSideB(parseFloat(e.target.value) || 0)}
+              placeholder="e.g. 4"
+              className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm font-mono text-center outline-none focus:ring-2 focus:ring-indigo-600"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-gradient-to-br from-indigo-900 via-slate-900 to-indigo-950 p-6 sm:p-8 rounded-3xl text-white shadow-xl space-y-6">
+        <div className="flex items-center justify-between border-b border-indigo-800/60 pb-3">
+          <span className="text-xs font-semibold uppercase tracking-wider text-indigo-300 flex items-center gap-1.5">
+            <Sparkles className="w-4 h-4 text-indigo-400" /> Right Triangle Solution
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+          <div className="bg-white/5 p-4 rounded-2xl border border-white/10">
+            <div className="text-xs text-indigo-200 mb-1">Solved Side ({result.missingLabel})</div>
+            <div className="text-3xl font-extrabold text-white font-mono">{result.missingValue}</div>
+          </div>
+          <div className="bg-white/5 p-4 rounded-2xl border border-white/10">
+            <div className="text-xs text-indigo-200 mb-1">Triangle Area</div>
+            <div className="text-3xl font-extrabold text-indigo-300 font-mono">{result.area}</div>
+          </div>
+          <div className="bg-white/5 p-4 rounded-2xl border border-white/10">
+            <div className="text-xs text-indigo-200 mb-1">Perimeter</div>
+            <div className="text-3xl font-extrabold text-emerald-400 font-mono">{result.perimeter}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};

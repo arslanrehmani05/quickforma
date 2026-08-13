@@ -63,6 +63,7 @@ import { PomodoroTimer } from './components/tools/PomodoroTimer';
 import { GpaCalculator } from './components/tools/GpaCalculator';
 import { FinalGradeCalculator } from './components/tools/FinalGradeCalculator';
 import { PercentageCalculator } from './components/tools/PercentageCalculator';
+import { FractionCalculator } from './components/tools/FractionCalculator';
 
 // 10 New Strategic Tools
 import { UuidGenerator } from './components/tools/UuidGenerator';
@@ -254,6 +255,7 @@ export function App() {
       case 'gpa-calculator': return <GpaCalculator />;
       case 'final-grade-calculator': return <FinalGradeCalculator />;
       case 'percentage-calculator': return <PercentageCalculator />;
+      case 'fraction-calculator': return <FractionCalculator />;
 
       // 10 New Strategic Tools
       case 'uuid-generator': return <UuidGenerator />;

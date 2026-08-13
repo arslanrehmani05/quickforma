@@ -1,0 +1,93 @@
+import React, { useState, useMemo } from 'react';
+import { Sparkles, Calculator } from 'lucide-react';
+
+export const LinearEquationCalculator: React.FC = () => {
+  // ax + b = c  => x = (c - b) / a
+  const [valA, setValA] = useState<number>(3);
+  const [valB, setValB] = useState<number>(6);
+  const [valC, setValC] = useState<number>(18);
+
+  const calculation = useMemo(() => {
+    if (valA === 0) {
+      return { x: 0, error: 'Coefficient A cannot be zero in a linear equation.' };
+    }
+    const x = (valC - valB) / valA;
+    return { x: Math.round(x * 10000) / 10000, error: null };
+  }, [valA, valB, valC]);
+
+  return (
+    <div className="max-w-4xl mx-auto space-y-8">
+      <div className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-xs space-y-6">
+        <div className="flex items-center gap-3 border-b border-slate-100 pb-4">
+          <div className="p-2.5 bg-indigo-50 text-indigo-600 rounded-2xl">
+            <Calculator className="w-6 h-6" />
+          </div>
+          <div>
+            <h2 className="text-xl font-bold text-slate-900">Linear Equation Solver</h2>
+            <p className="text-xs text-slate-500">
+              Solve 1-variable linear equations of the form $ax + b = c$ for $x$.
+            </p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+          <div>
+            <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+              Coefficient $a$
+            </label>
+            <input
+              type="number"
+              value={valA}
+              onChange={(e) => setValA(parseFloat(e.target.value) || 0)}
+              className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm font-mono text-slate-900 outline-none focus:ring-2 focus:ring-indigo-600 text-center"
+            />
+          </div>
+
+          <div>
+            <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+              Constant $b$
+            </label>
+            <input
+              type="number"
+              value={valB}
+              onChange={(e) => setValB(parseFloat(e.target.value) || 0)}
+              className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm font-mono text-slate-900 outline-none focus:ring-2 focus:ring-indigo-600 text-center"
+            />
+          </div>
+
+          <div>
+            <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+              Constant $c$
+            </label>
+            <input
+              type="number"
+              value={valC}
+              onChange={(e) => setValC(parseFloat(e.target.value) || 0)}
+              className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm font-mono text-slate-900 outline-none focus:ring-2 focus:ring-indigo-600 text-center"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-gradient-to-br from-indigo-900 via-slate-900 to-indigo-950 p-6 sm:p-8 rounded-3xl text-white shadow-xl space-y-6">
+        <div className="flex items-center justify-between border-b border-indigo-800/60 pb-3">
+          <span className="text-xs font-semibold uppercase tracking-wider text-indigo-300 flex items-center gap-1.5">
+            <Sparkles className="w-4 h-4 text-indigo-400" /> Equation Solution
+          </span>
+        </div>
+
+        <div className="text-center">
+          <div className="text-xs text-indigo-200 mb-1">Solved Variable $x$</div>
+          <div className="text-4xl font-extrabold text-white font-mono">
+            {calculation.error ? calculation.error : `x = ${calculation.x}`}
+          </div>
+          {!calculation.error && (
+            <div className="text-xs text-indigo-300 mt-2 font-mono">
+              {valA}({calculation.x}) + {valB} = {valC}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};

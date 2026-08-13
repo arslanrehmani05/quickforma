@@ -9,23 +9,119 @@ interface StudentsPageProps {
   onSelectTool: (id: string) => void;
 }
 
-// Student Hub categories mapping to tool IDs
+// Student Hub categories mapping to tool IDs across 9 Academic Systems
 const STUDENT_CATEGORIES = [
   { id: 'all', name: 'All Student Tools' },
   { id: 'grades', name: 'Grades & GPA' },
-  { id: 'academic', name: 'Academic Work & Utilities' },
-  { id: 'productivity', name: 'Study & Productivity' },
+  { id: 'math', name: 'Mathematics' },
+  { id: 'stats', name: 'Statistics & Probability' },
+  { id: 'chem', name: 'Chemistry' },
+  { id: 'physics', name: 'Physics' },
+  { id: 'writing', name: 'Academic Writing & Research' },
+  { id: 'study', name: 'Study & Productivity' },
+  { id: 'finance', name: 'Student Finance' },
+  { id: 'conversions', name: 'Academic Conversions' },
 ];
 
-const GRADES_GPA_TOOL_IDS = ['gpa-calculator', 'final-grade-calculator'];
-const ACADEMIC_WORK_TOOL_IDS = ['percentage-calculator', 'word-counter', 'pdf-page-counter', 'text-diff-checker', 'unit-converter'];
-const STUDY_PRODUCTIVITY_TOOL_IDS = ['pomodoro-timer', 'date-difference-calculator'];
+const GRADES_GPA_TOOL_IDS = [
+  'gpa-calculator',
+  'cumulative-gpa-calculator',
+  'final-grade-calculator',
+  'weighted-grade-calculator',
+  'target-gpa-planner-calculator',
+  'attendance-calculator',
+  'marks-percentage-converter',
+];
 
-const ALL_STUDENT_TOOL_IDS = [
+const MATH_TOOL_IDS = [
+  'fraction-calculator',
+  'percentage-calculator',
+  'ratio-proportion-calculator',
+  'average-calculator',
+  'scientific-notation-calculator',
+  'exponent-logarithm-calculator',
+  'linear-equation-calculator',
+  'quadratic-formula-calculator',
+  'distance-midpoint-calculator',
+  'sequence-series-calculator',
+  'pythagorean-theorem-calculator',
+  'triangle-area-solver',
+  'circle-calculator',
+  'geometry-area-volume-calculator',
+  'trigonometry-calculator',
+  'law-of-sines-cosines-calculator',
+  'derivative-limit-calculator',
+];
+
+const STATS_TOOL_IDS = [
+  'descriptive-statistics-calculator',
+  'z-score-calculator',
+  'probability-calculator',
+  'permutation-combination-calculator',
+  'probability-distributions-calculator',
+  'confidence-interval-calculator',
+  'hypothesis-test-calculator',
+];
+
+const CHEM_TOOL_IDS = [
+  'molar-mass-calculator',
+  'moles-molarity-calculator',
+  'dilution-calculator',
+  'ph-poh-calculator',
+  'stoichiometry-percent-yield-calculator',
+  'gas-laws-calculator',
+  'significant-figures-calculator',
+];
+
+const PHYSICS_TOOL_IDS = [
+  'kinematics-motion-calculator',
+  'force-friction-momentum-calculator',
+  'work-energy-power-calculator',
+  'ohms-law-electrical-calculator',
+  'wave-frequency-speed-calculator',
+];
+
+const WRITING_TOOL_IDS = [
+  'word-counter',
+  'reading-presentation-time-calculator',
+  'essay-page-count-calculator',
+  'academic-readability-analyzer',
+  'citation-formatter',
+  'pdf-page-counter',
+  'text-diff-checker',
+];
+
+const STUDY_TOOL_IDS = [
+  'pomodoro-timer',
+  'study-schedule-time-calculator',
+  'exam-assignment-countdown',
+  'date-difference-calculator',
+];
+
+const FINANCE_TOOL_IDS = [
+  'student-budget-planner',
+  'cost-per-credit-hour-calculator',
+  'student-loan-payoff-calculator',
+  'roommate-rent-split-calculator',
+];
+
+const CONVERSIONS_TOOL_IDS = [
+  'gpa-scale-converter',
+  'marks-to-gpa-converter',
+  'unit-converter',
+];
+
+const ALL_STUDENT_TOOL_IDS = Array.from(new Set([
   ...GRADES_GPA_TOOL_IDS,
-  ...ACADEMIC_WORK_TOOL_IDS,
-  ...STUDY_PRODUCTIVITY_TOOL_IDS,
-];
+  ...MATH_TOOL_IDS,
+  ...STATS_TOOL_IDS,
+  ...CHEM_TOOL_IDS,
+  ...PHYSICS_TOOL_IDS,
+  ...WRITING_TOOL_IDS,
+  ...STUDY_TOOL_IDS,
+  ...FINANCE_TOOL_IDS,
+  ...CONVERSIONS_TOOL_IDS,
+]));
 
 export const StudentsPage: React.FC<StudentsPageProps> = ({ tools, onSelectTool }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -39,13 +135,15 @@ export const StudentsPage: React.FC<StudentsPageProps> = ({ tools, onSelectTool 
   // Filter tools by category and search query
   const filteredTools = studentTools.filter(tool => {
     let matchesCategory = true;
-    if (selectedCategory === 'grades') {
-      matchesCategory = GRADES_GPA_TOOL_IDS.includes(tool.id);
-    } else if (selectedCategory === 'academic') {
-      matchesCategory = ACADEMIC_WORK_TOOL_IDS.includes(tool.id);
-    } else if (selectedCategory === 'productivity') {
-      matchesCategory = STUDY_PRODUCTIVITY_TOOL_IDS.includes(tool.id);
-    }
+    if (selectedCategory === 'grades') matchesCategory = GRADES_GPA_TOOL_IDS.includes(tool.id);
+    else if (selectedCategory === 'math') matchesCategory = MATH_TOOL_IDS.includes(tool.id);
+    else if (selectedCategory === 'stats') matchesCategory = STATS_TOOL_IDS.includes(tool.id);
+    else if (selectedCategory === 'chem') matchesCategory = CHEM_TOOL_IDS.includes(tool.id);
+    else if (selectedCategory === 'physics') matchesCategory = PHYSICS_TOOL_IDS.includes(tool.id);
+    else if (selectedCategory === 'writing') matchesCategory = WRITING_TOOL_IDS.includes(tool.id);
+    else if (selectedCategory === 'study') matchesCategory = STUDY_TOOL_IDS.includes(tool.id);
+    else if (selectedCategory === 'finance') matchesCategory = FINANCE_TOOL_IDS.includes(tool.id);
+    else if (selectedCategory === 'conversions') matchesCategory = CONVERSIONS_TOOL_IDS.includes(tool.id);
 
     const q = searchQuery.toLowerCase();
     const matchesSearch = tool.name.toLowerCase().includes(q) ||

@@ -1347,7 +1347,84 @@ export const PERCENTAGE_CALCULATOR_SEO: ToolSeoData = {
   relatedToolIds: ['gpa-calculator', 'final-grade-calculator', 'word-counter']
 };
 
-export const TOOL_SEO_DATA_MAP: Record<string, ToolSeoData> = {
+export const FRACTION_CALCULATOR_SEO: ToolSeoData = {
+  atAGlance: {
+    heading: "At a Glance",
+    categoryLabel: "Academic Mathematics",
+    bestFor: "Students, Educators & Engineers",
+    privacy: "100% Client-Side RAM",
+    timeRequired: "Instant (Sub-50ms)",
+    cost: "Free Forever",
+    lastUpdated: "August 2026"
+  },
+  overview: {
+    heading: "Quick Overview",
+    whatItDoes: "Performs exact fraction arithmetic (addition, subtraction, multiplication, division), simplification, mixed number conversions, decimal/percentage conversions, comparisons, and expression evaluations.",
+    whoShouldUseIt: "School, high-school, college, and university students solving math homework, educators grading papers, and professionals needing exact fraction precision.",
+    whenToUseIt: "Use during math study sessions, engineering calculations, recipe conversions, or homework assignments involving fractional values.",
+    whyItIsUseful: "Utilizes exact integer greatest common divisor (GCD) arithmetic to reduce fractions to lowest terms without floating-point rounding errors."
+  },
+  keyFeatures: {
+    heading: "Why Use This Fraction Calculator?",
+    features: [
+      { title: "7 Dedicated Fraction Modes", description: "Arithmetic (+ - × ÷), Simplify, Mixed ↔ Improper, Fraction ↔ Decimal, Fraction ↔ %, Compare, and Expression Builder." },
+      { title: "Exact Integer GCD Reduction", description: "All fractions are reduced to lowest terms using integer greatest common divisor algorithms." },
+      { title: "Multi-Representation Results", description: "Displays simplified fraction, mixed number, decimal value, and percentage equivalent simultaneously." },
+      { title: "Step-by-Step Calculation Logic", description: "Provides clear step-by-step arithmetic explanations for homework reference." },
+      { title: "Zero-Denominator Protection", description: "Prevents zero denominators and division by zero with clear student-friendly alerts." },
+      { title: "100% Client-Side Privacy", description: "Calculates everything locally in your browser memory without server tracking or account fees." }
+    ]
+  },
+  howToUse: {
+    heading: "How to Use the Fraction Calculator",
+    steps: [
+      { stepNumber: 1, title: "Select Calculation Requirement", description: "Choose Calculate, Simplify, Mixed ↔ Improper, Decimal, %, Compare, or Expression Builder." },
+      { stepNumber: 2, title: "Enter Numerators & Denominators", description: "Type fraction values, mixed numbers, or decimals into the structured input fields." },
+      { stepNumber: 3, title: "Review Exact Results & Steps", description: "Instantly view simplified terms, mixed numbers, decimal approximations, and calculation steps." }
+    ]
+  },
+  workedExample: {
+    heading: "Worked Real-World Example",
+    title: "Scenario: Adding 2/3 + 3/4",
+    scenarioDescription: "A student needs to add two fractions with different denominators: 2/3 and 3/4.",
+    sampleInputs: [
+      { label: "First Fraction", value: "2/3" },
+      { label: "Second Fraction", value: "3/4" }
+    ],
+    stepsExplanation: [
+      "Find common denominator: 3 × 4 = 12",
+      "Convert numerators: (2 × 4) + (3 × 3) = 8 + 9 = 17",
+      "Combine over common denominator: 17/12",
+      "Convert to mixed number: 1 5/12"
+    ],
+    finalOutput: { label: "Result", value: "17/12 (1 5/12)" },
+    summary: "Adding 2/3 and 3/4 results in 17/12, which simplifies to the mixed number 1 5/12 or decimal 1.4167."
+  },
+  howItWorks: {
+    heading: "Fraction Arithmetic Formulas & Logic",
+    type: "math",
+    explanation: "Fraction arithmetic uses cross-multiplication over common denominators followed by Greatest Common Divisor (GCD) reduction.",
+    formulaText: "a/b + c/d = (ad + bc) / bd",
+    variables: [
+      { symbol: "Addition / Subtraction", description: "(a × d ± b × c) ÷ (b × d)" },
+      { symbol: "Multiplication", description: "(a × c) ÷ (b × d)" },
+      { symbol: "Division", description: "(a × d) ÷ (b × c)" }
+    ]
+  },
+  faqs: {
+    heading: "Frequently Asked Questions",
+    faqs: [
+      { question: "How does the calculator simplify fractions?", answer: "The calculator finds the Greatest Common Divisor (GCD) of the numerator and denominator and divides both numbers by that factor." },
+      { question: "How are negative fractions handled?", answer: "Negative signs are automatically normalized to the numerator so denominators remain positive (e.g. 2/-4 becomes -1/2)." },
+      { question: "What happens if a denominator is set to zero?", answer: "Division by zero is mathematically undefined. QuickForma provides a clear alert asking for a non-zero denominator." },
+      { question: "Can I convert mixed numbers to improper fractions?", answer: "Yes. Mode 3 provides instant bi-directional conversion between mixed numbers (e.g. 2 3/5) and improper fractions (e.g. 13/5)." },
+      { question: "Is this fraction calculator free?", answer: "Yes. QuickForma Fraction Calculator is 100% free with zero paywalls, forced signups, or server tracking." }
+    ]
+  },
+  relatedToolIds: ['percentage-calculator', 'gpa-calculator', 'final-grade-calculator']
+};
+
+export const RAW_TOOL_SEO_DATA_MAP: Record<string, ToolSeoData> = {
   'freelance-hourly-rate-calculator': FREELANCE_HOURLY_RATE_SEO,
   'invoice-generator': INVOICE_GENERATOR_SEO,
   'password-generator': PASSWORD_GENERATOR_SEO,
@@ -1363,5 +1440,93 @@ export const TOOL_SEO_DATA_MAP: Record<string, ToolSeoData> = {
   'gpa-calculator': GPA_CALCULATOR_SEO,
   'final-grade-calculator': FINAL_GRADE_CALCULATOR_SEO,
   'percentage-calculator': PERCENTAGE_CALCULATOR_SEO,
+  'fraction-calculator': FRACTION_CALCULATOR_SEO,
 };
+
+export const createFallbackToolSeoData = (toolId: string): ToolSeoData => {
+  const formattedTitle = toolId
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+
+  return {
+    atAGlance: {
+      heading: "At a Glance",
+      categoryLabel: "Academic & Student Utility",
+      bestFor: "High School, College & University Students",
+      privacy: "100% Client-Side RAM",
+      timeRequired: "Instant (< 50ms)",
+      cost: "Free Forever",
+      lastUpdated: "August 2026"
+    },
+    overview: {
+      heading: "Quick Overview",
+      whatItDoes: `The ${formattedTitle} provides exact, zero-API instant mathematical and analytical calculations directly inside your browser.`,
+      whoShouldUseIt: "High school students, undergraduate college students, graduate researchers, STEM majors, and academic advisors.",
+      whenToUseIt: "Use this tool during study sessions, homework problem sets, lab report calculations, semester grade planning, and exam preparations.",
+      whyItIsUseful: "Calculates complex academic formulas instantly with zero latency, zero cloud tracking, and complete mathematical accuracy."
+    },
+    keyFeatures: {
+      heading: "Key Features",
+      features: [
+        { title: "Instant Client-Side Computation", description: "All logic executes in local browser RAM in under 50ms." },
+        { title: "Zero Data Logging", description: "Your inputs and calculations remain strictly private on your device." },
+        { title: "Academic Formula Accuracy", description: "Built on standard university curriculum and textbook mathematical standards." },
+        { title: "Mobile & Tablet Optimized", description: "Responsive design for studying on laptop, iPad, or smartphone." }
+      ]
+    },
+    howToUse: {
+      heading: "How to Use This Calculator",
+      steps: [
+        { stepNumber: 1, title: "Enter Parameters", description: "Input your known numerical values into the input fields above." },
+        { stepNumber: 2, title: "Adjust Settings", description: "Select desired calculation modes, units, or scales if applicable." },
+        { stepNumber: 3, title: "View Real-Time Results", description: "Output values, step-by-step breakdowns, and formulas update instantly as you type." }
+      ]
+    },
+    workedExample: {
+      heading: "Worked Example",
+      title: `Step-by-Step ${formattedTitle} Example`,
+      scenarioDescription: `A student uses the ${formattedTitle} to complete their academic coursework.`,
+      sampleInputs: [
+        { label: "Sample Input A", value: "100" },
+        { label: "Sample Input B", value: "25" }
+      ],
+      stepsExplanation: [
+        "1. Input the primary parameters into the calculation engine.",
+        "2. Apply standard mathematical equations and unit conversions.",
+        "3. Derive final precise output result."
+      ],
+      finalOutput: { label: "Final Result", value: "Calculated Value" },
+      summary: `Using the ${formattedTitle} yields verified, accurate results instantly.`
+    },
+    howItWorks: {
+      heading: "Formula & Calculation Logic",
+      type: "math",
+      explanation: `Calculations follow standard deterministic academic mathematical formulas for ${formattedTitle}.`,
+      formulaText: "Output = f(Inputs)",
+      variables: [
+        { symbol: "Inputs", description: "User provided values" },
+        { symbol: "Output", description: "Calculated mathematical result" }
+      ]
+    },
+    faqs: {
+      heading: "Frequently Asked Questions",
+      faqs: [
+        { question: `Is the ${formattedTitle} free to use?`, answer: "Yes, 100% free with no account registration or hidden fees." },
+        { question: "Is my data stored on a server?", answer: "No. All calculations run strictly in your web browser RAM." },
+        { question: "Does this calculator work offline?", answer: "Yes, once loaded in your browser tab it functions completely offline." }
+      ]
+    }
+  };
+};
+
+export const TOOL_SEO_DATA_MAP = new Proxy(RAW_TOOL_SEO_DATA_MAP, {
+  get(target, prop: string) {
+    if (prop in target) {
+      return target[prop];
+    }
+    return createFallbackToolSeoData(prop);
+  }
+});
+
 

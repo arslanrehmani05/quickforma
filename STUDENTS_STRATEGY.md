@@ -363,17 +363,105 @@ GPA Converter, CGPA Converter, GPA to Percentage, Percentage to GPA, Letter Grad
 
 ---
 
-## 23. Master Candidate Universe
+## 23. Master Candidate Universe & Frozen Tool Manifest
 
-*(Strategic inventory mapping Grades, Math, Statistics, Chemistry, Physics, Writing, Study, Finance, and Conversions).*
+The complete QuickForma Students product universe is formally frozen across **9 Academic Systems**. No further foundational tools will be added after this phase; future work transitions entirely to individual tool optimization, UX refinement, and accuracy benchmarking.
+
+### System 1: Grades & GPA (7 Tools)
+1. **GPA Calculator** (`/gpa-calculator`) — *Existing / Hardened* | Engine: Grade Engine | Modes: Semester GPA, High School Weighted/Unweighted, Custom Scales.
+2. **Cumulative GPA Calculator** (`/cumulative-gpa-calculator`) — *New* | Engine: Grade Engine | Modes: Prior GPA + Credits, New Semester Grades, Projected Cumulative GPA.
+3. **Final Grade Calculator** (`/final-grade-calculator`) — *Existing / Hardened* | Engine: Grade Engine | Modes: Target Score Needed, Weighted Categories, What-If Breakdown.
+4. **Weighted Grade Calculator** (`/weighted-grade-calculator`) — *New* | Engine: Grade Engine | Modes: Assignment Categories, Weight % Allocations, Drop Lowest Score, Incomplete Work.
+5. **Target GPA & Course Planner** (`/target-gpa-planner-calculator`) — *New* | Engine: Grade Engine | Modes: Required Future GPA, Credit Hours Remaining, Feasibility Indicator.
+6. **Attendance & Absence Calculator** (`/attendance-calculator`) — *New* | Engine: Grade Engine | Modes: Current Attendance %, Classes Allowed to Skip, Target Attendance Requirement.
+7. **Marks & Percentage Converter** (`/marks-percentage-converter`) — *New* | Engine: Grade Engine | Modes: Raw Score to %, Marks to Letter Grade, Percentage Scaling & Weighting.
+
+### System 2: Mathematics (16 Tools)
+#### Arithmetic & Basics
+8. **Fraction Calculator** (`/fraction-calculator`) — *Existing / Hardened* | Engine: Math Engine | Modes: Add/Sub/Mul/Div, Mixed Numbers, Simplify, Decimal/Percent Conversion.
+9. **Percentage Calculator** (`/percentage-calculator`) — *Existing / Hardened* | Engine: Math Engine | Modes: % of Total, % Increase/Decrease, % Difference.
+10. **Ratio & Proportion Calculator** (`/ratio-proportion-calculator`) — *New* | Engine: Math Engine | Modes: $a:b = c:x$ Solver, Ratio Simplification, Scale Factors, Multi-Part Ratios.
+11. **Average Calculator** (`/average-calculator`) — *New* | Engine: Math Engine | Modes: Arithmetic Mean, Weighted Average, Trimmed Mean, Grade Average.
+12. **Scientific Notation Calculator** (`/scientific-notation-calculator`) — *New* | Engine: Math Engine | Modes: Standard $\leftrightarrow$ Scientific $\leftrightarrow$ Engineering Notation, Arithmetic in Scientific Form.
+13. **Exponent & Logarithm Calculator** (`/exponent-logarithm-calculator`) — *New* | Engine: Math Engine | Modes: Exponentiation, Square/Cube Roots, $\log_{10}$, Natural Log $\ln$, Base-$b$ Logarithms.
+
+#### Algebra & Equations
+14. **Linear Equation Solver** (`/linear-equation-calculator`) — *New* | Engine: Math Engine | Modes: 1-Variable Linear Equations, System of 2 Linear Equations, Slope-Intercept ($y=mx+b$).
+15. **Quadratic Formula Calculator** (`/quadratic-formula-calculator`) — *New* | Engine: Math Engine | Modes: $ax^2+bx+c=0$, Real & Complex Roots, Discriminant, Vertex Form.
+16. **Distance & Midpoint Calculator** (`/distance-midpoint-calculator`) — *New* | Engine: Math Engine | Modes: 2D/3D Distance Between Points, Midpoint Coordinates, Line Segment Slope.
+17. **Sequence & Series Calculator** (`/sequence-series-calculator`) — *New* | Engine: Math Engine | Modes: Arithmetic & Geometric Sequences, $n$-th Term, Sum of $n$ Terms, Infinite Series.
+
+#### Geometry & Trigonometry
+18. **Pythagorean Theorem Calculator** (`/pythagorean-theorem-calculator`) — *New* | Engine: Math Engine | Modes: Right Triangle $a^2+b^2=c^2$, Solve Leg or Hypotenuse, Area & Perimeter.
+19. **Triangle Area & Solver** (`/triangle-area-solver`) — *New* | Engine: Math Engine | Modes: Base/Height, SSS (Heron's), SAS, AAS, Angle Solvers.
+20. **Circle & Geometry Calculator** (`/circle-calculator`) — *New* | Engine: Math Engine | Modes: Radius, Diameter, Circumference, Area, Arc Length, Sector Area.
+21. **2D & 3D Geometry Calculator** (`/geometry-area-volume-calculator`) — *New* | Engine: Math Engine | Modes: Area/Perimeter (Polygons, Trapezoids), Volume & Surface Area (Sphere, Cylinder, Cone, Prism).
+22. **Trigonometry Calculator** (`/trigonometry-calculator`) — *New* | Engine: Math Engine | Modes: Sine, Cosine, Tangent, Inverse Trig, Radians/Degrees, Unit Circle Reference.
+23. **Law of Sines & Cosines Calculator** (`/law-of-sines-cosines-calculator`) — *New* | Engine: Math Engine | Modes: Non-Right Triangle Solver, SSA Ambiguous Case Detection, Side & Angle Outputs.
+
+#### Calculus Foundation
+24. **Derivative & Limit Calculator** (`/derivative-limit-calculator`) — *New* | Engine: Math Engine | Modes: Polynomial/Trig Derivatives, Secant/Tangent Slope, Limits at Point/Infinity.
+
+### System 3: Statistics & Probability (7 Tools)
+25. **Descriptive Statistics Calculator** (`/descriptive-statistics-calculator`) — *New* | Engine: Statistics Engine | Modes: Mean, Median, Mode, Range, Variance, Standard Deviation (Sample vs Population), Quartiles, IQR.
+26. **Z-Score Calculator** (`/z-score-calculator`) — *New* | Engine: Statistics Engine | Modes: $Z = (X - \mu)/\sigma$, Percentile Rank, Area under Normal Curve, Raw Score Finder.
+27. **Probability Calculator** (`/probability-calculator`) — *New* | Engine: Statistics Engine | Modes: Single Event, Union/Intersection $P(A \cup B)$, Conditional Probability $P(A|B)$, Bayes' Theorem.
+28. **Permutation & Combination Calculator** (`/permutation-combination-calculator`) — *New* | Engine: Statistics Engine | Modes: $nPr$ Permutations, $nCr$ Combinations, Factorials ($n!$), Repetition Toggles.
+29. **Probability Distributions Calculator** (`/probability-distributions-calculator`) — *New* | Engine: Statistics Engine | Modes: Normal Distribution $P(X \le x)$, Binomial Distribution $P(X = k)$, Poisson Distribution.
+30. **Confidence Interval Calculator** (`/confidence-interval-calculator`) — *New* | Engine: Statistics Engine | Modes: Mean ($Z$-interval, $t$-interval), Proportion Interval, Margin of Error, Required Sample Size.
+31. **Hypothesis Test Calculator** (`/hypothesis-test-calculator`) — *New* | Engine: Statistics Engine | Modes: 1-Sample $t$-test, 2-Sample $t$-test, $Z$-test, Chi-Square Goodness-of-Fit, $p$-value & Test Statistic.
+
+### System 4: Chemistry (7 Tools)
+32. **Molar Mass & Composition Calculator** (`/molar-mass-calculator`) — *New* | Engine: Chemistry Engine | Modes: Formula Parsing (e.g., $\text{H}_2\text{SO}_4$, $\text{Ca(NO}_3\text{)}_2$), Molecular Weight, Element Mass % Breakdown.
+33. **Moles & Molarity Calculator** (`/moles-molarity-calculator`) — *New* | Engine: Chemistry Engine | Modes: Moles ($n = m/M$), Molarity ($M = n/V$), Molality, Mass Percent, PPM Concentration.
+34. **Dilution Calculator** (`/dilution-calculator`) — *New* | Engine: Chemistry Engine | Modes: $C_1 V_1 = C_2 V_2$ Solution Dilution, Stock Concentration, Required Solvent Addition.
+35. **pH & pOH Calculator** (`/ph-poh-calculator`) — *New* | Engine: Chemistry Engine | Modes: $\text{pH} = -\log[\text{H}^+]$, $\text{pOH} = -\log[\text{OH}^-]$, $[\text{H}^+], [\text{OH}^-]$, Acid/Base Concentration.
+36. **Stoichiometry & Percent Yield Calculator** (`/stoichiometry-percent-yield-calculator`) — *New* | Engine: Chemistry Engine | Modes: Mole Ratio Conversions, Limiting Reactant Identification, Theoretical Yield, Percent Yield.
+37. **Gas Laws Calculator** (`/gas-laws-calculator`) — *New* | Engine: Chemistry Engine | Modes: Ideal Gas Law ($PV = nRT$), Combined Gas Law, Boyle's Law, Charles's Law, Gay-Lussac's Law.
+38. **Significant Figures Calculator** (`/significant-figures-calculator`) — *New* | Engine: Chemistry Engine | Modes: Sig Fig Counter, Scientific Rounding Rules for Addition/Subtraction and Multiplication/Division.
+
+### System 5: Physics (5 Tools)
+39. **Kinematics & Motion Calculator** (`/kinematics-motion-calculator`) — *New* | Engine: Physics Engine | Modes: SUVAT Equations ($v=u+at$, $s=ut+\frac{1}{2}at^2$, $v^2=u^2+2as$), 1D & 2D Projectile Motion.
+40. **Force, Friction & Momentum Calculator** (`/force-friction-momentum-calculator`) — *New* | Engine: Physics Engine | Modes: Newton's Second Law ($F=ma$), Weight ($W=mg$), Friction ($f=\mu N$), Momentum ($p=mv$), Impulse ($J=F\Delta t$).
+41. **Work, Energy & Power Calculator** (`/work-energy-power-calculator`) — *New* | Engine: Physics Engine | Modes: Kinetic Energy ($\frac{1}{2}mv^2$), Potential Energy ($mgh$), Work ($W=F d \cos\theta$), Mechanical Power ($P=W/t$).
+42. **Ohm's Law & Circuit Calculator** (`/ohms-law-electrical-calculator`) — *New* | Engine: Physics Engine | Modes: $V=IR$, Electrical Power ($P=VI=I^2R=V^2/R$), Series & Parallel Resistor Networks.
+43. **Wave, Frequency & Light Calculator** (`/wave-frequency-speed-calculator`) — *New* | Engine: Physics Engine | Modes: Wave Speed ($v=f\lambda$), Wave Period ($T=1/f$), Photon Energy ($E=hf$).
+
+### System 6: Academic Work & Writing (5 Tools)
+44. **Word Counter & Text Stats** (`/word-counter`) — *Existing / Hardened* | Engine: Formatting Engine | Modes: Word/Character Count, Sentence/Paragraph Count, Reading/Speaking Time, Readability.
+45. **Reading & Presentation Time Calculator** (`/reading-presentation-time-calculator`) — *New* | Engine: Formatting Engine | Modes: Words-to-Reading Time (Slow/Avg/Fast), Slide Presentation Time Allocator.
+46. **Essay Page Count Calculator** (`/essay-page-count-calculator`) — *New* | Engine: Formatting Engine | Modes: Words to Printed Pages (10/11/12pt fonts, Single/1.5/Double spacing, Margins).
+47. **Academic Readability Analyzer** (`/academic-readability-analyzer`) — *New* | Engine: Formatting Engine | Modes: Flesch-Kincaid Grade Level, Flesch Reading Ease, Gunning Fog Index, Coleman-Liau Index.
+48. **Academic Citation Formatter** (`/citation-formatter`) — *New* | Engine: Formatting Engine | Modes: APA 7th, MLA 9th, Chicago 17th, IEEE Formatter for Books, Journals, Websites, DOIs.
+
+### System 7: Study & Productivity (3 Tools)
+49. **Pomodoro Study Timer** (`/pomodoro-timer`) — *Existing / Hardened* | Engine: Formatting Engine | Modes: Focus/Short/Long Break Timers, Sound Chimes, Session Counter.
+50. **Study Time & Schedule Calculator** (`/study-schedule-time-calculator`) — *New* | Engine: Formatting Engine | Modes: Weekly Credit-Hour Study Calculator, Exam Difficulty Factor, Spaced Repetition Planner.
+51. **Exam & Deadline Countdown** (`/exam-assignment-countdown`) — *New* | Engine: Formatting Engine | Modes: Days/Hours Remaining, Daily Required Study Hours, Urgency Indicator.
+
+### System 8: Student Finance (4 Tools)
+52. **Student Budget Planner** (`/student-budget-planner`) — *New* | Engine: Finance Engine | Modes: Monthly Income vs Expenses (Tuition, Books, Rent, Food, Transit), Semester Savings Target.
+53. **Cost Per Credit Hour Calculator** (`/cost-per-credit-hour-calculator`) — *New* | Engine: Finance Engine | Modes: Tuition + Fees / Credit Hours, Cost Per Individual Class Session, Course Drop Financial Cost.
+54. **Student Loan Payoff Calculator** (`/student-loan-payoff-calculator`) — *New* | Engine: Finance Engine | Modes: Loan Balance, Interest Rate, Standard vs Extra Payment Payoff Schedule, Total Interest Saved.
+55. **Roommate Rent & Expense Splitter** (`/roommate-rent-split-calculator`) — *New* | Engine: Finance Engine | Modes: Rent Allocation by Square Footage, Private vs Shared Bathrooms, Shared Utility Distribution.
+
+### System 9: Academic Conversions (2 Tools)
+56. **GPA Scale Converter** (`/gpa-scale-converter`) — *New* | Engine: Grade Engine | Modes: Convert between 4.0, 4.33, 5.0, Percentage, ECTS, and UK Honors Classification (1st, 2:1, 2:2).
+57. **Marks to GPA Converter** (`/marks-to-gpa-converter`) — *New* | Engine: Grade Engine | Modes: Raw Exam Marks / Percentages $\rightarrow$ Letter Grades $\rightarrow$ Weighted GPA.
 
 ---
 
-## 24. Initial Student Core (Phase 1 Build Wave)
+## 24. Build Strategy & Shared Engine Architecture
 
-- **Grades:** GPA Calculator, Cumulative GPA / GPA Planner, Final Grade Calculator, Weighted Grade Calculator, Attendance Calculator, Percentage / Marks Calculator.
-- **Math & Stats:** Fraction Calculator, Quadratic Formula, Pythagorean Theorem, Scientific Notation, Statistics Calculator, Standard Deviation, Probability, Z-Score.
-- **Science:** Molar Mass, Moles / Molarity, Stoichiometry, Force / Motion, Kinetic Energy, Ohm's Law.
+To maintain zero API cost, sub-50ms local execution, and pure browser privacy, all 57 tools rely on **7 Shared Modular Calculation Engines**:
+
+1. **Academic Grade Engine** (`src/utils/math/gradeEngine.ts`) — Powers GPA, Cumulative GPA, Final Grade, Weighted Grade, Target GPA, Attendance, Marks Converter, GPA Scale Converter.
+2. **Mathematics Engine** (`src/utils/math/mathEngine.ts`) — Powers Fractions, Percentages, Ratios, Averages, Scientific Notation, Exponents/Logs, Linear Equations, Quadratics, Distance/Midpoint, Sequences, Geometry, Trigonometry, Derivatives.
+3. **Statistics Engine** (`src/utils/math/statisticsEngine.ts`) — Powers Descriptive Statistics, Z-Score, Probability, Combinatorics, Distributions, Confidence Intervals, Hypothesis Testing.
+4. **Chemistry Engine** (`src/utils/science/chemistryEngine.ts`) — Powers Molar Mass, Molarity/Moles, Dilution, pH/pOH, Stoichiometry, Gas Laws, Sig Figs.
+5. **Physics Engine** (`src/utils/science/physicsEngine.ts`) — Powers Kinematics, Forces/Friction/Momentum, Work/Energy/Power, Ohm's Law/Circuits, Waves/Light.
+6. **Formatting & Text Engine** (`src/utils/formatting/textEngine.ts`) — Powers Word Counter, Reading Time, Essay Page Count, Readability Scores, Citation Formatter, Pomodoro/Study Schedules.
+7. **Student Finance Engine** (`src/utils/finance/studentFinanceEngine.ts`) — Powers Student Budget, Cost Per Credit Hour, Loan Payoff, Roommate Splitter.
 
 ---
 

@@ -320,4 +320,21 @@
 **Remember This:** Keep primary search inputs unconstrained by secondary horizontal scroll containers to maximize touch-target visibility.
 **Full explanation:** Updated `src/pages/HomePage.tsx` layout. Removed the search input from the inline `flex-row` wrapper shared with `CATEGORIES.map()`. Placed a centered `max-w-xl` search bar directly above the category pills bar with an instant `X` clear search button, giving category pills full row width and eliminating horizontal scroll truncation.
 
+## 2026-08-13 — QuickForma — Desktop Category Scroll Arrow Controls (Hybrid Mouse & Touch Navigation)
+**Tags:** #React #UseRef #DOMScrollAPI #Accessibility #CrossPlatformUX #LucideIcons
+**Importance:** ★★★★☆
+**Frequency:** Daily
+**Syntax Introduced:** `useRef<HTMLDivElement>(null)`, `ref.current.scrollBy({ left: +/- 240, behavior: 'smooth' })`, `shrink-0`
+**Concept Introduced:** Cross-Platform Ergonomic Scroll Controls, Programmatic DOM Scroll Manipulation, Hybrid Touch & Mouse Input Coexistence
+**Prerequisites:** React Hooks (`useRef`), DOM Element Scroll APIs, CSS Position Relative/Absolute
+**Decision:** Added smooth-scrolling `ChevronLeft` and `ChevronRight` arrow buttons positioned on the edges of the category filter bar in `HomePage.tsx`, powered by a React `useRef` targeting `scrollBy({ left: +/- 240, behavior: 'smooth' })`.
+**Reason:** Allows desktop mouse and Windows users without trackpad swipe gestures to scroll through category pills effortlessly while preserving 100% of native touch-swipe capabilities for mobile users.
+**Alternative:** Forcing category pills into multi-line wrapped flex rows (clutters header) or hiding overflow.
+**Tradeoff:** Adds two compact icon buttons to the DOM, but unlocks smooth category navigation for mouse-only desktop devices.
+**General principle:** Always provide programmatic click-scroll arrows for mouse users when implementing horizontal pill bars.
+**CS50/roadmap.sh link:** CS50 Web Development — DOM Event Handling, Scroll API, & Cross-Device Accessibility.
+**Remember This:** Always provide programmatic click-scroll arrows for mouse users when implementing horizontal pill bars.
+**Full explanation:** Updated `src/pages/HomePage.tsx`. Attached `scrollContainerRef` to the category pills container `div`. Added absolute-positioned `ChevronLeft` and `ChevronRight` buttons that invoke `.scrollBy({ left: +/- 240, behavior: 'smooth' })` on click. Preserved `overflow-x-auto no-scrollbar` and added `shrink-0` to all category buttons so touch swipe remains 100% intact on mobile devices.
+
+
 

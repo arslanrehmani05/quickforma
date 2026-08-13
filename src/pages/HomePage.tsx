@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { ToolMetadata, VerticalId } from '../types';
+import { getCategoriesForVertical } from '../data/categories';
+import { CategoryPills } from '../components/layout/CategoryPills';
 import { ToolCard } from '../components/layout/ToolCard';
 import { ShareSection } from '../components/social/ShareSection';
 import { Zap, Search, Shield, Lock, Cpu, Sparkles, X, Briefcase, GraduationCap } from 'lucide-react';
@@ -11,20 +13,40 @@ interface HomePageProps {
 
 export const HomePage: React.FC<HomePageProps> = ({ tools, onSelectTool }) => {
   const [selectedVertical, setSelectedVertical] = useState<'all' | VerticalId>('all');
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
 
-  // Filter tools by active vertical tab and search query
+  const handleSelectVertical = (vertical: 'all' | VerticalId) => {
+    setSelectedVertical(vertical);
+    setSelectedCategory('all'); // Reset category selection when vertical changes
+  };
+
+  // Get single source of truth category list for active vertical
+  const activeCategories = getCategoriesForVertical(selectedVertical);
+
+  // Filter tools by active vertical tab, category pill, and search query
   const filteredTools = tools.filter((tool) => {
     const matchesVertical =
       selectedVertical === 'all' || tool.verticals.includes(selectedVertical);
+
+    const matchesCategory =
+      selectedCategory === 'all' || tool.category === selectedCategory;
+
     const q = searchQuery.toLowerCase();
     const matchesSearch =
+      !q ||
       tool.name.toLowerCase().includes(q) ||
       tool.description.toLowerCase().includes(q) ||
       tool.keywords.some((k) => k.toLowerCase().includes(q));
 
-    return matchesVertical && matchesSearch;
+    return matchesVertical && matchesCategory && matchesSearch;
   });
+
+  const getSearchPlaceholder = () => {
+    if (selectedVertical === 'business') return 'Search business tools (e.g. invoice, ROI, tax, Stripe)...';
+    if (selectedVertical === 'students') return 'Search academic tools (e.g. GPA, fraction, molar mass, z-score)...';
+    return 'Search all 113+ tools (e.g. invoice, GPA, fraction, Stripe)...';
+  };
 
   return (
     <div className="space-y-12 py-4">
@@ -59,14 +81,14 @@ export const HomePage: React.FC<HomePageProps> = ({ tools, onSelectTool }) => {
         <ShareSection align="center" className="pt-2 max-w-xl mx-auto border-t-0" />
       </section>
 
-      {/* Vertical Filter Switcher & Search Bar */}
+      {/* Vertical Filter Switcher, Search Bar & Category Pills */}
       <section className="space-y-6 max-w-5xl mx-auto">
         {/* Search Box */}
         <div className="relative w-full max-w-xl mx-auto">
           <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
           <input
             type="text"
-            placeholder="Search all 113+ tools (e.g. invoice, GPA, fraction, Stripe)..."
+            placeholder={getSearchPlaceholder()}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full bg-white border border-slate-200 rounded-2xl pl-10 pr-10 py-3 text-xs sm:text-sm text-slate-900 placeholder-slate-400 outline-none focus:border-indigo-600 focus:ring-4 focus:ring-indigo-600/10 transition-all font-sans shadow-xs"
@@ -85,7 +107,7 @@ export const HomePage: React.FC<HomePageProps> = ({ tools, onSelectTool }) => {
         {/* Primary Vertical Switcher Tabs */}
         <div className="flex items-center justify-center gap-2 border-b border-slate-200 pb-4">
           <button
-            onClick={() => setSelectedVertical('all')}
+            onClick={() => handleSelectVertical('all')}
             className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-1.5 ${
               selectedVertical === 'all'
                 ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/20'
@@ -95,7 +117,7 @@ export const HomePage: React.FC<HomePageProps> = ({ tools, onSelectTool }) => {
             <Zap className="w-4 h-4" /> All Tools ({tools.length})
           </button>
           <button
-            onClick={() => setSelectedVertical('business')}
+            onClick={() => handleSelectVertical('business')}
             className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-1.5 ${
               selectedVertical === 'business'
                 ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/20'
@@ -105,7 +127,7 @@ export const HomePage: React.FC<HomePageProps> = ({ tools, onSelectTool }) => {
             <Briefcase className="w-4 h-4" /> Business Hub (60)
           </button>
           <button
-            onClick={() => setSelectedVertical('students')}
+            onClick={() => handleSelectVertical('students')}
             className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-1.5 ${
               selectedVertical === 'students'
                 ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/20'
@@ -115,6 +137,13 @@ export const HomePage: React.FC<HomePageProps> = ({ tools, onSelectTool }) => {
             <GraduationCap className="w-4 h-4" /> Students Hub (61)
           </button>
         </div>
+
+        {/* Shared Category Filter Pills */}
+        <CategoryPills
+          categories={activeCategories}
+          selectedCategory={selectedCategory}
+          onSelectCategory={setSelectedCategory}
+        />
 
         {/* Tools Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -127,7 +156,7 @@ export const HomePage: React.FC<HomePageProps> = ({ tools, onSelectTool }) => {
           <div className="text-center py-16 bg-white rounded-3xl border border-slate-200 shadow-xs">
             <Sparkles className="w-8 h-8 text-slate-400 mx-auto mb-3" />
             <h3 className="text-slate-800 font-bold text-base mb-1">No Tools Found</h3>
-            <p className="text-slate-500 text-xs">Try searching for terms like "calculator", "invoice", "GPA", or "convert".</p>
+            <p className="text-slate-500 text-xs">Try clearing your category filter or search for terms like "calculator", "invoice", "GPA", or "convert".</p>
           </div>
         )}
       </section>

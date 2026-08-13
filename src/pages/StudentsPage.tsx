@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { ToolMetadata } from '../types';
 import { getVerticalTools } from '../data/toolsCatalog';
+import { STUDENT_CATEGORIES } from '../data/categories';
+import { CategoryPills } from '../components/layout/CategoryPills';
 import { ToolCard } from '../components/layout/ToolCard';
 import { ShareSection } from '../components/social/ShareSection';
 import { GraduationCap, Search, Shield, Lock, Cpu, Sparkles, X } from 'lucide-react';
@@ -9,19 +11,6 @@ interface StudentsPageProps {
   tools: ToolMetadata[];
   onSelectTool: (id: string) => void;
 }
-
-const STUDENT_CATEGORIES = [
-  { id: 'all', name: 'All Student Tools' },
-  { id: 'grades-gpa', name: 'Grades & GPA' },
-  { id: 'math-algebra', name: 'Mathematics' },
-  { id: 'stats-probability', name: 'Statistics & Probability' },
-  { id: 'chemistry-science', name: 'Chemistry' },
-  { id: 'physics-engineering', name: 'Physics' },
-  { id: 'writing-research', name: 'Academic Writing' },
-  { id: 'study-productivity', name: 'Study & Productivity' },
-  { id: 'student-finance', name: 'Student Finance' },
-  { id: 'academic-conversions', name: 'Academic Conversions' },
-];
 
 export const StudentsPage: React.FC<StudentsPageProps> = ({ onSelectTool }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -98,22 +87,12 @@ export const StudentsPage: React.FC<StudentsPageProps> = ({ onSelectTool }) => {
           )}
         </div>
 
-        {/* Horizontal Scroll Category Pills */}
-        <div className="flex items-center justify-start sm:justify-center gap-2 overflow-x-auto scrollbar-none pb-2 pt-1 px-2 no-scrollbar">
-          {STUDENT_CATEGORIES.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setSelectedCategory(cat.id)}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all shrink-0 ${
-                selectedCategory === cat.id
-                  ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/20 scale-[1.02]'
-                  : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200/80 hover:border-slate-300 hover:bg-slate-50'
-              }`}
-            >
-              {cat.name}
-            </button>
-          ))}
-        </div>
+        {/* Shared Horizontal Scroll Category Pills */}
+        <CategoryPills
+          categories={STUDENT_CATEGORIES}
+          selectedCategory={selectedCategory}
+          onSelectCategory={setSelectedCategory}
+        />
 
         {/* Tools Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">

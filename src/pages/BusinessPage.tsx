@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { ToolMetadata } from '../types';
-import { getVerticalTools, getCategoryTools } from '../data/toolsCatalog';
+import { getVerticalTools } from '../data/toolsCatalog';
+import { BUSINESS_CATEGORIES } from '../data/categories';
+import { CategoryPills } from '../components/layout/CategoryPills';
 import { ToolCard } from '../components/layout/ToolCard';
 import { ShareSection } from '../components/social/ShareSection';
 import { Briefcase, Search, Shield, Lock, Cpu, Sparkles, X } from 'lucide-react';
@@ -10,17 +12,7 @@ interface BusinessPageProps {
   onSelectTool: (id: string) => void;
 }
 
-const BUSINESS_CATEGORIES = [
-  { id: 'all', name: 'All Business Tools' },
-  { id: 'finance', name: 'Finance & Tax' },
-  { id: 'business', name: 'Documents & Legal' },
-  { id: 'ecommerce', name: 'Ecommerce & Ops' },
-  { id: 'developer', name: 'Developer & Web' },
-  { id: 'converters', name: 'Converters & Formats' },
-  { id: 'content', name: 'Content & Productivity' },
-];
-
-export const BusinessPage: React.FC<BusinessPageProps> = ({ tools, onSelectTool }) => {
+export const BusinessPage: React.FC<BusinessPageProps> = ({ onSelectTool }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
 
@@ -95,22 +87,12 @@ export const BusinessPage: React.FC<BusinessPageProps> = ({ tools, onSelectTool 
           )}
         </div>
 
-        {/* Horizontal Scroll Category Pills */}
-        <div className="flex items-center justify-start sm:justify-center gap-2 overflow-x-auto scrollbar-none pb-2 pt-1 px-2 no-scrollbar">
-          {BUSINESS_CATEGORIES.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setSelectedCategory(cat.id)}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all shrink-0 ${
-                selectedCategory === cat.id
-                  ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/20 scale-[1.02]'
-                  : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200/80 hover:border-slate-300 hover:bg-slate-50'
-              }`}
-            >
-              {cat.name}
-            </button>
-          ))}
-        </div>
+        {/* Shared Horizontal Scroll Category Pills */}
+        <CategoryPills
+          categories={BUSINESS_CATEGORIES}
+          selectedCategory={selectedCategory}
+          onSelectCategory={setSelectedCategory}
+        />
 
         {/* Tools Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">

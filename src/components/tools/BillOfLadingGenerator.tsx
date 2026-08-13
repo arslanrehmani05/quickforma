@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { FileText, Printer } from 'lucide-react';
+import { ToolHeader } from '../ui/ToolHeader';
+import { Button } from '../ui/Button';
 
 export const BillOfLadingGenerator: React.FC = () => {
   const [shipper, setShipper] = useState('Dunder Mifflin Paper Co.');
@@ -22,19 +24,19 @@ export const BillOfLadingGenerator: React.FC = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
           <div>
-            <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Shipper (From)</label>
+            <label className="block text-slate-700 text-xs font-semibold  mb-2">Shipper (From)</label>
             <input type="text" value={shipper} onChange={(e) => setShipper(e.target.value)} className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-indigo-600 shadow-xs" />
           </div>
           <div>
-            <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Consignee (To)</label>
+            <label className="block text-slate-700 text-xs font-semibold  mb-2">Consignee (To)</label>
             <input type="text" value={consignee} onChange={(e) => setConsignee(e.target.value)} className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-indigo-600 shadow-xs" />
           </div>
           <div>
-            <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Carrier Name</label>
+            <label className="block text-slate-700 text-xs font-semibold  mb-2">Carrier Name</label>
             <input type="text" value={carrier} onChange={(e) => setCarrier(e.target.value)} className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-indigo-600 shadow-xs" />
           </div>
           <div>
-            <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Cargo / Goods Description</label>
+            <label className="block text-slate-700 text-xs font-semibold  mb-2">Cargo / Goods Description</label>
             <input type="text" value={cargoDetails} onChange={(e) => setCargoDetails(e.target.value)} className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-indigo-600 shadow-xs" />
           </div>
         </div>

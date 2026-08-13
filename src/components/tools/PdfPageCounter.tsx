@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { FileText, Upload } from 'lucide-react';
+import { ToolHeader } from '../ui/ToolHeader';
+import { Button } from '../ui/Button';
 
 export const PdfPageCounter: React.FC = () => {
   const [pageCount, setPageCount] = useState<number | null>(null);
@@ -44,11 +46,11 @@ export const PdfPageCounter: React.FC = () => {
           {fileName && (
             <div className="p-6 rounded-2xl bg-indigo-600 text-white flex justify-between items-center shadow-md">
               <div>
-                <span className="text-xs text-indigo-200 font-bold uppercase tracking-wider block">PDF File Loaded</span>
+                <span className="text-xs text-indigo-200 font-bold  block">PDF File Loaded</span>
                 <span className="text-base font-bold text-white">{fileName}</span>
               </div>
               <div className="text-right">
-                <span className="text-xs text-indigo-200 font-bold uppercase tracking-wider block">Total Pages</span>
+                <span className="text-xs text-indigo-200 font-bold  block">Total Pages</span>
                 <span className="text-3xl font-extrabold text-white">{pageCount || '...'}</span>
               </div>
             </div>

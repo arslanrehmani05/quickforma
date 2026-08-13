@@ -1,6 +1,10 @@
 import React, { useState, useMemo } from 'react';
 import { Award, Sparkles, CheckCircle2 } from 'lucide-react';
 import { convertMarksToGrade } from '../../utils/math/gradeEngine';
+import { ToolHeader } from '../ui/ToolHeader';
+import { InputField } from '../ui/InputField';
+import { ResultCard } from '../ui/ResultCard';
+import { ModePillsBar } from '../ui/ModePillsBar';
 
 export const MarksPercentageConverter: React.FC = () => {
   const [marks, setMarks] = useState<number>(85);
@@ -58,7 +62,7 @@ export const MarksPercentageConverter: React.FC = () => {
       {/* Result Display */}
       <div className="bg-gradient-to-br from-indigo-900 via-slate-900 to-indigo-950 p-6 sm:p-8 rounded-3xl text-white shadow-xl space-y-6">
         <div className="flex items-center justify-between border-b border-indigo-800/60 pb-4">
-          <span className="text-xs font-semibold uppercase tracking-wider text-indigo-300 flex items-center gap-1.5">
+          <span className="text-xs font-semibold  text-indigo-300 flex items-center gap-1.5">
             <Sparkles className="w-4 h-4 text-indigo-400" /> Conversion Result
           </span>
           <span className="text-xs px-2.5 py-1 rounded-full bg-indigo-500/20 text-indigo-300 font-mono">

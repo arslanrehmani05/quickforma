@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Globe } from 'lucide-react';
 import { CopyButton } from '../common/CopyButton';
 import { ResetButton } from '../common/ResetButton';
+import { ToolHeader } from '../ui/ToolHeader';
 
 export const UrlEncoderDecoder: React.FC = () => {
   const [input, setInput] = useState('https://quickforma.com/search?query=free tools & privacy=100%');

@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { DollarSign } from 'lucide-react';
+import { ToolHeader } from '../ui/ToolHeader';
+import { InputField } from '../ui/InputField';
+import { ResultCard } from '../ui/ResultCard';
 
 export const CpmAdCostCalculator: React.FC = () => {
   const [cost, setCost] = useState<number>(1500);
@@ -23,7 +26,7 @@ export const CpmAdCostCalculator: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="space-y-4">
             <div>
-              <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Total Campaign Cost ($)</label>
+              <label className="block text-slate-700 text-xs font-semibold  mb-2">Total Campaign Cost ($)</label>
               <input
                 type="number"
                 min="0"
@@ -33,7 +36,7 @@ export const CpmAdCostCalculator: React.FC = () => {
               />
             </div>
             <div>
-              <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Total Ad Impressions</label>
+              <label className="block text-slate-700 text-xs font-semibold  mb-2">Total Ad Impressions</label>
               <input
                 type="number"
                 min="0"
@@ -46,7 +49,7 @@ export const CpmAdCostCalculator: React.FC = () => {
 
           <div className="p-6 rounded-2xl bg-indigo-600 text-white flex flex-col justify-between shadow-md">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-indigo-200">Effective CPM</span>
+              <span className="text-xs font-bold  text-indigo-200">Effective CPM</span>
               <div className="my-4 text-4xl sm:text-5xl font-extrabold text-white tracking-tight">${cpm.toFixed(2)}</div>
             </div>
             <div className="pt-4 border-t border-indigo-500/80 flex justify-between text-xs text-indigo-100">

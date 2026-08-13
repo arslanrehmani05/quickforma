@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { Home } from 'lucide-react';
+import { ToolHeader } from '../ui/ToolHeader';
+import { InputField } from '../ui/InputField';
+import { ResultCard } from '../ui/ResultCard';
 
 export const MortgageLoanCalculator: React.FC = () => {
   const [homePrice, setHomePrice] = useState<number>(350000);
@@ -31,7 +34,7 @@ export const MortgageLoanCalculator: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="space-y-4">
             <div>
-              <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Home Purchase Price ($)</label>
+              <label className="block text-slate-700 text-xs font-semibold  mb-2">Home Purchase Price ($)</label>
               <input
                 type="number"
                 min="0"
@@ -41,7 +44,7 @@ export const MortgageLoanCalculator: React.FC = () => {
               />
             </div>
             <div>
-              <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Down Payment ($)</label>
+              <label className="block text-slate-700 text-xs font-semibold  mb-2">Down Payment ($)</label>
               <input
                 type="number"
                 min="0"
@@ -52,7 +55,7 @@ export const MortgageLoanCalculator: React.FC = () => {
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Interest Rate (%)</label>
+                <label className="block text-slate-700 text-xs font-semibold  mb-2">Interest Rate (%)</label>
                 <input
                   type="number"
                   step="0.1"
@@ -63,7 +66,7 @@ export const MortgageLoanCalculator: React.FC = () => {
                 />
               </div>
               <div>
-                <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Term (Years)</label>
+                <label className="block text-slate-700 text-xs font-semibold  mb-2">Term (Years)</label>
                 <select
                   value={loanTermYears}
                   onChange={(e) => setLoanTermYears(Number(e.target.value))}
@@ -79,7 +82,7 @@ export const MortgageLoanCalculator: React.FC = () => {
 
           <div className="p-6 rounded-2xl bg-indigo-600 text-white flex flex-col justify-between shadow-md">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-indigo-200">Monthly Mortgage Payment</span>
+              <span className="text-xs font-bold  text-indigo-200">Monthly Mortgage Payment</span>
               <div className="my-4 text-4xl sm:text-5xl font-extrabold text-white tracking-tight">${monthlyPayment.toFixed(2)}</div>
             </div>
             <div className="pt-4 border-t border-indigo-500/80 flex justify-between text-xs text-indigo-100">

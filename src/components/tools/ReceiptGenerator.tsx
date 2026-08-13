@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { FileText, Printer } from 'lucide-react';
+import { ToolHeader } from '../ui/ToolHeader';
+import { Button } from '../ui/Button';
 
 export const ReceiptGenerator: React.FC = () => {
   const [businessName, setBusinessName] = useState('Apex Services LLC');
@@ -23,19 +25,19 @@ export const ReceiptGenerator: React.FC = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
           <div>
-            <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Business Name</label>
+            <label className="block text-slate-700 text-xs font-semibold  mb-2">Business Name</label>
             <input type="text" value={businessName} onChange={(e) => setBusinessName(e.target.value)} className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-indigo-600 shadow-xs" />
           </div>
           <div>
-            <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Customer Name</label>
+            <label className="block text-slate-700 text-xs font-semibold  mb-2">Customer Name</label>
             <input type="text" value={customerName} onChange={(e) => setCustomerName(e.target.value)} className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-indigo-600 shadow-xs" />
           </div>
           <div>
-            <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Amount Paid ($)</label>
+            <label className="block text-slate-700 text-xs font-semibold  mb-2">Amount Paid ($)</label>
             <input type="number" min="0" value={amount} onChange={(e) => setAmount(Number(e.target.value))} className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-indigo-600 shadow-xs" />
           </div>
           <div>
-            <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Payment Method</label>
+            <label className="block text-slate-700 text-xs font-semibold  mb-2">Payment Method</label>
             <input type="text" value={paymentMethod} onChange={(e) => setPaymentMethod(e.target.value)} className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-indigo-600 shadow-xs" />
           </div>
         </div>
@@ -49,7 +51,7 @@ export const ReceiptGenerator: React.FC = () => {
       <div className="p-8 sm:p-10 rounded-2xl bg-white text-slate-900 shadow-md border border-slate-200 font-sans leading-relaxed text-sm max-w-md mx-auto space-y-4">
         <div className="text-center border-b border-slate-200 pb-4">
           <h1 className="text-xl font-extrabold text-slate-900 uppercase tracking-tight">{businessName}</h1>
-          <span className="text-xs text-indigo-600 font-bold uppercase tracking-wider">Official Payment Receipt</span>
+          <span className="text-xs text-indigo-600 font-bold ">Official Payment Receipt</span>
         </div>
         <div className="space-y-2 text-xs text-slate-700">
           <div className="flex justify-between"><span>Date:</span><span className="font-semibold text-slate-900">{date}</span></div>

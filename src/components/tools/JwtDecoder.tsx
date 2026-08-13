@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { CopyButton } from '../common/CopyButton';
 import { ResetButton } from '../common/ResetButton';
 import { ShieldCheck, AlertCircle } from 'lucide-react';
+import { ToolHeader } from '../ui/ToolHeader';
 
 export const JwtDecoder: React.FC = () => {
   const [jwt, setJwt] = useState<string>('');
@@ -83,7 +84,7 @@ export const JwtDecoder: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-zinc-900 uppercase tracking-wider">Header (Algorithm & Type)</span>
+                <span className="text-xs font-bold text-zinc-900 ">Header (Algorithm & Type)</span>
                 <CopyButton textToCopy={header} />
               </div>
               <textarea
@@ -96,7 +97,7 @@ export const JwtDecoder: React.FC = () => {
 
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-zinc-900 uppercase tracking-wider">Payload (Data Claims)</span>
+                <span className="text-xs font-bold text-zinc-900 ">Payload (Data Claims)</span>
                 <CopyButton textToCopy={payload} />
               </div>
               <textarea

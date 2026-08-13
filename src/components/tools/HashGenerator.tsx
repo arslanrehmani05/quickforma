@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Shield } from 'lucide-react';
 import { CopyButton } from '../common/CopyButton';
+import { ToolHeader } from '../ui/ToolHeader';
 
 export const HashGenerator: React.FC = () => {
   const [text, setText] = useState('QuickForma 2026');
@@ -42,7 +43,7 @@ export const HashGenerator: React.FC = () => {
 
         <div className="space-y-4">
           <div>
-            <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Input String</label>
+            <label className="block text-slate-700 text-xs font-semibold  mb-2">Input String</label>
             <input
               type="text"
               value={text}
@@ -55,7 +56,7 @@ export const HashGenerator: React.FC = () => {
           <div className="space-y-3 pt-4">
             <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex items-start justify-between gap-4">
               <div className="space-y-1 flex-1">
-                <span className="text-xs font-bold text-indigo-600 uppercase tracking-wider block">SHA-256 Hash</span>
+                <span className="text-xs font-bold text-indigo-600  block">SHA-256 Hash</span>
                 <p className="font-mono text-xs text-slate-900 break-all">{hashes.sha256 || '...'}</p>
               </div>
               {hashes.sha256 && <CopyButton textToCopy={hashes.sha256} variant="secondary" />}
@@ -63,7 +64,7 @@ export const HashGenerator: React.FC = () => {
 
             <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex items-start justify-between gap-4">
               <div className="space-y-1 flex-1">
-                <span className="text-xs font-bold text-emerald-600 uppercase tracking-wider block">SHA-512 Hash</span>
+                <span className="text-xs font-bold text-emerald-600  block">SHA-512 Hash</span>
                 <p className="font-mono text-xs text-slate-900 break-all">{hashes.sha512 || '...'}</p>
               </div>
               {hashes.sha512 && <CopyButton textToCopy={hashes.sha512} variant="secondary" />}

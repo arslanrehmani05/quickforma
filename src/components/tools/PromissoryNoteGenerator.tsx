@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { FileText, Printer } from 'lucide-react';
+import { ToolHeader } from '../ui/ToolHeader';
+import { Button } from '../ui/Button';
 
 export const PromissoryNoteGenerator: React.FC = () => {
   const [borrowerName, setBorrowerName] = useState('Andy Bernard');
@@ -22,19 +24,19 @@ export const PromissoryNoteGenerator: React.FC = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
           <div>
-            <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Borrower Name</label>
+            <label className="block text-slate-700 text-xs font-semibold  mb-2">Borrower Name</label>
             <input type="text" value={borrowerName} onChange={(e) => setBorrowerName(e.target.value)} className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-indigo-600 shadow-xs" />
           </div>
           <div>
-            <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Lender Name</label>
+            <label className="block text-slate-700 text-xs font-semibold  mb-2">Lender Name</label>
             <input type="text" value={lenderName} onChange={(e) => setLenderName(e.target.value)} className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-indigo-600 shadow-xs" />
           </div>
           <div>
-            <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Loan Principal ($)</label>
+            <label className="block text-slate-700 text-xs font-semibold  mb-2">Loan Principal ($)</label>
             <input type="number" min="0" value={principalAmount} onChange={(e) => setPrincipalAmount(Number(e.target.value))} className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-indigo-600 shadow-xs" />
           </div>
           <div>
-            <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Annual Interest (%)</label>
+            <label className="block text-slate-700 text-xs font-semibold  mb-2">Annual Interest (%)</label>
             <input type="number" step="0.1" min="0" value={interestRate} onChange={(e) => setInterestRate(Number(e.target.value))} className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-indigo-600 shadow-xs" />
           </div>
         </div>

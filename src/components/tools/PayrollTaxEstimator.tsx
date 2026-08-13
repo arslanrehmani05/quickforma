@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { DollarSign } from 'lucide-react';
+import { ToolHeader } from '../ui/ToolHeader';
+import { InputField } from '../ui/InputField';
+import { ResultCard } from '../ui/ResultCard';
 
 export const PayrollTaxEstimator: React.FC = () => {
   const [grossPay, setGrossPay] = useState<number>(5000);
@@ -26,7 +29,7 @@ export const PayrollTaxEstimator: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="space-y-4">
             <div>
-              <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Gross Pay Per Period ($)</label>
+              <label className="block text-slate-700 text-xs font-semibold  mb-2">Gross Pay Per Period ($)</label>
               <input
                 type="number"
                 min="0"
@@ -36,7 +39,7 @@ export const PayrollTaxEstimator: React.FC = () => {
               />
             </div>
             <div>
-              <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Pay Frequency</label>
+              <label className="block text-slate-700 text-xs font-semibold  mb-2">Pay Frequency</label>
               <select
                 value={payPeriod}
                 onChange={(e: any) => setPayPeriod(e.target.value)}
@@ -50,7 +53,7 @@ export const PayrollTaxEstimator: React.FC = () => {
 
           <div className="p-6 rounded-2xl bg-indigo-600 text-white flex flex-col justify-between shadow-md">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-indigo-200">Estimated Net Paycheck</span>
+              <span className="text-xs font-bold  text-indigo-200">Estimated Net Paycheck</span>
               <div className="my-4 text-4xl sm:text-5xl font-extrabold text-white tracking-tight">${netPay.toFixed(2)}</div>
             </div>
             <div className="pt-4 border-t border-indigo-500/80 space-y-2 text-xs text-indigo-100">

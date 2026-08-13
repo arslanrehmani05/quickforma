@@ -4,6 +4,7 @@ import { CopyButton } from '../common/CopyButton';
 import { ResetButton } from '../common/ResetButton';
 import { ToolSeoWrapper } from '../seo/ToolSeoWrapper';
 import { WORD_COUNTER_SEO } from '../../data/sampleToolSeoData';
+import { ToolHeader } from '../ui/ToolHeader';
 
 export const WordCounter: React.FC = () => {
   const [text, setText] = useState('Type or paste your document content here to analyze total words, characters, sentences, and estimated reading time.');

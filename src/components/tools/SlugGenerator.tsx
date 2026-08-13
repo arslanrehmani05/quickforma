@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Tag, Copy, Check } from 'lucide-react';
+import { ToolHeader } from '../ui/ToolHeader';
+import { Button } from '../ui/Button';
 
 export const SlugGenerator: React.FC = () => {
   const [headline, setHeadline] = useState('10 Best Client Side Utility Tools For Freelancers In 2026!');
@@ -33,7 +35,7 @@ export const SlugGenerator: React.FC = () => {
 
         <div className="space-y-4">
           <div>
-            <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Headline / Article Title</label>
+            <label className="block text-slate-700 text-xs font-semibold  mb-2">Headline / Article Title</label>
             <input
               type="text"
               value={headline}

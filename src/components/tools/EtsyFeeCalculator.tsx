@@ -3,6 +3,9 @@ import { CopyButton } from '../common/CopyButton';
 import { ResetButton } from '../common/ResetButton';
 import { ShoppingCart } from 'lucide-react';
 import { ToolSeoWrapper } from '../seo/ToolSeoWrapper';
+import { ToolHeader } from '../ui/ToolHeader';
+import { InputField } from '../ui/InputField';
+import { ResultCard } from '../ui/ResultCard';
 
 export const EtsyFeeCalculator: React.FC = () => {
   const [listingPrice, setListingPrice] = useState<number>(45);

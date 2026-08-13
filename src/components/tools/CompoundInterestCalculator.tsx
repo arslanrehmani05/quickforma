@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { TrendingUp } from 'lucide-react';
+import { ToolHeader } from '../ui/ToolHeader';
+import { InputField } from '../ui/InputField';
+import { ResultCard } from '../ui/ResultCard';
 
 export const CompoundInterestCalculator: React.FC = () => {
   const [principal, setPrincipal] = useState<number>(10000);
@@ -25,7 +28,7 @@ export const CompoundInterestCalculator: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="space-y-4">
             <div>
-              <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Initial Principal Deposit ($)</label>
+              <label className="block text-slate-700 text-xs font-semibold  mb-2">Initial Principal Deposit ($)</label>
               <input
                 type="number"
                 min="0"
@@ -35,7 +38,7 @@ export const CompoundInterestCalculator: React.FC = () => {
               />
             </div>
             <div>
-              <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Annual Interest Rate (%)</label>
+              <label className="block text-slate-700 text-xs font-semibold  mb-2">Annual Interest Rate (%)</label>
               <input
                 type="number"
                 step="0.1"
@@ -46,7 +49,7 @@ export const CompoundInterestCalculator: React.FC = () => {
               />
             </div>
             <div>
-              <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Investment Horizon (Years)</label>
+              <label className="block text-slate-700 text-xs font-semibold  mb-2">Investment Horizon (Years)</label>
               <input
                 type="number"
                 min="1"
@@ -60,7 +63,7 @@ export const CompoundInterestCalculator: React.FC = () => {
 
           <div className="p-6 rounded-2xl bg-indigo-600 text-white flex flex-col justify-between shadow-md">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-indigo-200">Future Balance ({years} Yrs)</span>
+              <span className="text-xs font-bold  text-indigo-200">Future Balance ({years} Yrs)</span>
               <div className="my-4 text-4xl sm:text-5xl font-extrabold text-white tracking-tight">${compoundAmount.toFixed(2)}</div>
             </div>
             <div className="pt-4 border-t border-indigo-500/80 flex justify-between text-xs text-indigo-100">

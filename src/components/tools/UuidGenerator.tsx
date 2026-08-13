@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { CopyButton } from '../common/CopyButton';
 import { ResetButton } from '../common/ResetButton';
 import { Key, RefreshCw } from 'lucide-react';
+import { ToolHeader } from '../ui/ToolHeader';
 
 export const UuidGenerator: React.FC = () => {
   const [count, setCount] = useState<number>(5);

@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import { ArrowLeftRight } from 'lucide-react';
+import { ToolHeader } from '../ui/ToolHeader';
+import { InputField } from '../ui/InputField';
+import { ResultCard } from '../ui/ResultCard';
+import { ModePillsBar } from '../ui/ModePillsBar';
 
 export const UnitConverter: React.FC = () => {
   const [val, setVal] = useState<number>(100);
@@ -57,7 +61,7 @@ export const UnitConverter: React.FC = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Input Value & Unit</label>
+              <label className="block text-slate-700 text-xs font-semibold  mb-2">Input Value & Unit</label>
               <div className="flex gap-2">
                 <input
                   type="number"

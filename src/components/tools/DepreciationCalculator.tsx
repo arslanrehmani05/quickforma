@@ -3,6 +3,9 @@ import { CopyButton } from '../common/CopyButton';
 import { ResetButton } from '../common/ResetButton';
 import { TrendingDown, Calculator } from 'lucide-react';
 import { ToolSeoWrapper } from '../seo/ToolSeoWrapper';
+import { ToolHeader } from '../ui/ToolHeader';
+import { InputField } from '../ui/InputField';
+import { ResultCard } from '../ui/ResultCard';
 
 export const DepreciationCalculator: React.FC = () => {
   const [initialCost, setInitialCost] = useState<number>(10000);
@@ -97,7 +100,7 @@ export const DepreciationCalculator: React.FC = () => {
 
         {/* Depreciation Schedule Table */}
         <div className="space-y-2 pt-2">
-          <span className="text-xs font-bold text-zinc-900 uppercase tracking-wider">Depreciation Schedule</span>
+          <span className="text-xs font-bold text-zinc-900 ">Depreciation Schedule</span>
           <div className="border border-zinc-200 rounded-xl overflow-hidden">
             <table className="w-full text-left text-xs font-mono">
               <thead className="bg-zinc-100 text-zinc-700 font-semibold border-b border-zinc-200">

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Type, Copy, Check } from 'lucide-react';
+import { ToolHeader } from '../ui/ToolHeader';
+import { Button } from '../ui/Button';
 
 export const CaseConverter: React.FC = () => {
   const [text, setText] = useState('the quick brown fox jumps over the lazy dog');

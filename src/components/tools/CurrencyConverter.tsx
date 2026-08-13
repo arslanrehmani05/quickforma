@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import { ArrowLeftRight } from 'lucide-react';
+import { ToolHeader } from '../ui/ToolHeader';
+import { InputField } from '../ui/InputField';
+import { ResultCard } from '../ui/ResultCard';
+import { ModePillsBar } from '../ui/ModePillsBar';
 
 export const CurrencyConverter: React.FC = () => {
   const [amount, setAmount] = useState<number>(100);
@@ -33,7 +37,7 @@ export const CurrencyConverter: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="space-y-4">
             <div>
-              <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Amount ($)</label>
+              <label className="block text-slate-700 text-xs font-semibold  mb-2">Amount ($)</label>
               <input
                 type="number"
                 min="0"
@@ -44,7 +48,7 @@ export const CurrencyConverter: React.FC = () => {
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">From</label>
+                <label className="block text-slate-700 text-xs font-semibold  mb-2">From</label>
                 <select
                   value={from}
                   onChange={(e) => setFrom(e.target.value)}
@@ -54,7 +58,7 @@ export const CurrencyConverter: React.FC = () => {
                 </select>
               </div>
               <div>
-                <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">To</label>
+                <label className="block text-slate-700 text-xs font-semibold  mb-2">To</label>
                 <select
                   value={to}
                   onChange={(e) => setTo(e.target.value)}
@@ -68,7 +72,7 @@ export const CurrencyConverter: React.FC = () => {
 
           <div className="p-6 rounded-2xl bg-indigo-600 text-white flex flex-col justify-between shadow-md">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-indigo-200">Converted Amount ({to})</span>
+              <span className="text-xs font-bold  text-indigo-200">Converted Amount ({to})</span>
               <div className="my-4 text-4xl sm:text-5xl font-extrabold text-white tracking-tight">{converted.toFixed(2)} {to}</div>
             </div>
             <div className="pt-4 border-t border-indigo-500/80 text-xs text-indigo-100">

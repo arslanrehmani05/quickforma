@@ -1,5 +1,9 @@
 import React, { useState, useMemo } from 'react';
 import { Sparkles, Triangle } from 'lucide-react';
+import { ToolHeader } from '../ui/ToolHeader';
+import { InputField } from '../ui/InputField';
+import { ResultCard } from '../ui/ResultCard';
+import { ModePillsBar } from '../ui/ModePillsBar';
 
 export const TriangleAreaSolver: React.FC = () => {
   const [base, setBase] = useState<number>(10);
@@ -50,7 +54,7 @@ export const TriangleAreaSolver: React.FC = () => {
       </div>
 
       <div className="bg-gradient-to-br from-indigo-900 via-slate-900 to-indigo-950 p-6 sm:p-8 rounded-3xl text-white shadow-xl text-center space-y-3">
-        <div className="text-xs font-semibold uppercase tracking-wider text-indigo-300 flex items-center justify-center gap-1.5">
+        <div className="text-xs font-semibold  text-indigo-300 flex items-center justify-center gap-1.5">
           <Sparkles className="w-4 h-4 text-indigo-400" /> Triangle Area Result
         </div>
         <div className="text-4xl sm:text-5xl font-extrabold text-white font-mono">{area}</div>

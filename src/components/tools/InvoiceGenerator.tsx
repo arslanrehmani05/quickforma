@@ -3,6 +3,8 @@ import { Plus, Trash2, Printer, Building2, FileText } from 'lucide-react';
 import { InvoiceData, InvoiceItem } from '../../types';
 import { ToolSeoWrapper } from '../seo/ToolSeoWrapper';
 import { INVOICE_GENERATOR_SEO } from '../../data/sampleToolSeoData';
+import { ToolHeader } from '../ui/ToolHeader';
+import { Button } from '../ui/Button';
 
 export const InvoiceGenerator: React.FC = () => {
   const [data, setData] = useState<InvoiceData>({
@@ -86,7 +88,7 @@ export const InvoiceGenerator: React.FC = () => {
         <div className="lg:col-span-6 space-y-6 no-print">
           {/* Sender & Receiver Card */}
           <div className="bg-white p-6 rounded-3xl border border-slate-200 space-y-4 shadow-xs">
-            <h3 className="text-xs font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
+            <h3 className="text-xs font-bold text-slate-900  flex items-center gap-2">
               <Building2 className="w-4 h-4 text-indigo-600" /> Business & Client Details
             </h3>
 
@@ -199,7 +201,7 @@ export const InvoiceGenerator: React.FC = () => {
           {/* Line Items Card */}
           <div className="bg-white p-6 rounded-3xl border border-slate-200 space-y-4 shadow-xs">
             <div className="flex items-center justify-between">
-              <h3 className="text-xs font-bold text-slate-900 uppercase tracking-wider">Line Items</h3>
+              <h3 className="text-xs font-bold text-slate-900 ">Line Items</h3>
               <button
                 onClick={addItem}
                 className="flex items-center gap-1 text-xs font-bold text-indigo-600 hover:text-indigo-700 bg-indigo-50 hover:bg-indigo-100 px-3 py-1.5 rounded-xl border border-indigo-100 transition-colors"
@@ -290,13 +292,13 @@ export const InvoiceGenerator: React.FC = () => {
             {/* Parties Info */}
             <div className="grid grid-cols-2 gap-6 text-xs border-b border-slate-200 pb-6">
               <div>
-                <span className="font-bold text-slate-400 uppercase tracking-wider block mb-1">From</span>
+                <span className="font-bold text-slate-400  block mb-1">From</span>
                 <p className="font-bold text-slate-900">{data.senderName || 'Your Business Name'}</p>
                 <p className="text-slate-600 whitespace-pre-line">{data.senderAddress}</p>
                 <p className="text-slate-600">{data.senderEmail}</p>
               </div>
               <div>
-                <span className="font-bold text-slate-400 uppercase tracking-wider block mb-1">Billed To</span>
+                <span className="font-bold text-slate-400  block mb-1">Billed To</span>
                 <p className="font-bold text-slate-900">{data.clientName || 'Client Business Name'}</p>
                 <p className="text-slate-600 whitespace-pre-line">{data.clientAddress}</p>
                 <p className="text-slate-600">{data.clientEmail}</p>
@@ -306,7 +308,7 @@ export const InvoiceGenerator: React.FC = () => {
             {/* Items Table */}
             <table className="w-full text-xs text-left">
               <thead>
-                <tr className="border-b border-slate-200 text-slate-500 uppercase tracking-wider font-semibold">
+                <tr className="border-b border-slate-200 text-slate-500  font-semibold">
                   <th className="py-2">Description</th>
                   <th className="py-2 text-center">Qty</th>
                   <th className="py-2 text-right">Rate</th>

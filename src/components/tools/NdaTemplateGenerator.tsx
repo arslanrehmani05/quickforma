@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { FileText, Printer } from 'lucide-react';
+import { ToolHeader } from '../ui/ToolHeader';
+import { Button } from '../ui/Button';
 
 export const NdaTemplateGenerator: React.FC = () => {
   const [disclosingParty, setDisclosingParty] = useState('Apex Technologies Inc.');
@@ -22,19 +24,19 @@ export const NdaTemplateGenerator: React.FC = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
           <div>
-            <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Disclosing Party (Owner)</label>
+            <label className="block text-slate-700 text-xs font-semibold  mb-2">Disclosing Party (Owner)</label>
             <input type="text" value={disclosingParty} onChange={(e) => setDisclosingParty(e.target.value)} className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-indigo-600 shadow-xs" />
           </div>
           <div>
-            <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Receiving Party (Recipient)</label>
+            <label className="block text-slate-700 text-xs font-semibold  mb-2">Receiving Party (Recipient)</label>
             <input type="text" value={receivingParty} onChange={(e) => setReceivingParty(e.target.value)} className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-indigo-600 shadow-xs" />
           </div>
           <div>
-            <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Effective Date</label>
+            <label className="block text-slate-700 text-xs font-semibold  mb-2">Effective Date</label>
             <input type="date" value={effectiveDate} onChange={(e) => setEffectiveDate(e.target.value)} className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-indigo-600 shadow-xs" />
           </div>
           <div>
-            <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Governing State / Jurisdiction</label>
+            <label className="block text-slate-700 text-xs font-semibold  mb-2">Governing State / Jurisdiction</label>
             <input type="text" value={jurisdiction} onChange={(e) => setJurisdiction(e.target.value)} className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-indigo-600 shadow-xs" />
           </div>
         </div>

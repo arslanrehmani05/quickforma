@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Sliders } from 'lucide-react';
 import { CopyButton } from '../common/CopyButton';
+import { ToolHeader } from '../ui/ToolHeader';
 
 export const CssGlassmorphismGenerator: React.FC = () => {
   const [blur, setBlur] = useState(12);

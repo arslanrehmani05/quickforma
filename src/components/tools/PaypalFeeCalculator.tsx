@@ -3,6 +3,9 @@ import { CopyButton } from '../common/CopyButton';
 import { ResetButton } from '../common/ResetButton';
 import { CreditCard, DollarSign } from 'lucide-react';
 import { ToolSeoWrapper } from '../seo/ToolSeoWrapper';
+import { ToolHeader } from '../ui/ToolHeader';
+import { InputField } from '../ui/InputField';
+import { ResultCard } from '../ui/ResultCard';
 
 export const PaypalFeeCalculator: React.FC = () => {
   const [amount, setAmount] = useState<number>(250);
@@ -75,7 +78,7 @@ export const PaypalFeeCalculator: React.FC = () => {
         {/* Outputs */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
           <div className="p-5 bg-zinc-50 border border-zinc-200 rounded-xl space-y-3">
-            <span className="text-xs font-bold text-zinc-900 uppercase tracking-wider">If customer pays ${amount.toFixed(2)}</span>
+            <span className="text-xs font-bold text-zinc-900 ">If customer pays ${amount.toFixed(2)}</span>
             <div className="space-y-1">
               <div className="text-xs text-zinc-500">PayPal Fee:</div>
               <div className="text-lg font-extrabold text-black">${feeAmount.toFixed(2)}</div>
@@ -87,7 +90,7 @@ export const PaypalFeeCalculator: React.FC = () => {
           </div>
 
           <div className="p-5 bg-black text-white border border-black rounded-xl space-y-3 shadow-md">
-            <span className="text-xs font-bold text-zinc-300 uppercase tracking-wider">To receive exact ${amount.toFixed(2)} net</span>
+            <span className="text-xs font-bold text-zinc-300 ">To receive exact ${amount.toFixed(2)} net</span>
             <div className="space-y-1">
               <div className="text-xs text-zinc-400">Total amount to invoice customer:</div>
               <div className="text-2xl font-black text-white">${grossInvoiceAmount.toFixed(2)}</div>

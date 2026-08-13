@@ -1,5 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import { Sparkles, FlaskConical } from 'lucide-react';
+import { ToolHeader } from '../ui/ToolHeader';
+import { InputField } from '../ui/InputField';
+import { ResultCard } from '../ui/ResultCard';
 
 export const StoichiometryPercentYieldCalculator: React.FC = () => {
   const [actualYield, setActualYield] = useState<number>(42.5);
@@ -51,7 +54,7 @@ export const StoichiometryPercentYieldCalculator: React.FC = () => {
       </div>
 
       <div className="bg-gradient-to-br from-indigo-900 via-slate-900 to-indigo-950 p-6 sm:p-8 rounded-3xl text-white shadow-xl text-center space-y-3">
-        <div className="text-xs font-semibold uppercase tracking-wider text-indigo-300 flex items-center justify-center gap-1.5">
+        <div className="text-xs font-semibold  text-indigo-300 flex items-center justify-center gap-1.5">
           <Sparkles className="w-4 h-4 text-indigo-400" /> Percent Yield Result
         </div>
         <div className="text-4xl sm:text-5xl font-extrabold text-white font-mono">{percentYield}%</div>

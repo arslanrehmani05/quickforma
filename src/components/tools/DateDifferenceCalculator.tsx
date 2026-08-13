@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Calendar } from 'lucide-react';
+import { ToolHeader } from '../ui/ToolHeader';
+import { Button } from '../ui/Button';
 
 export const DateDifferenceCalculator: React.FC = () => {
   const [startDate, setStartDate] = useState('2026-01-01');
@@ -25,7 +27,7 @@ export const DateDifferenceCalculator: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="space-y-4">
             <div>
-              <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Start Date</label>
+              <label className="block text-slate-700 text-xs font-semibold  mb-2">Start Date</label>
               <input
                 type="date"
                 value={startDate}
@@ -34,7 +36,7 @@ export const DateDifferenceCalculator: React.FC = () => {
               />
             </div>
             <div>
-              <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">End Date</label>
+              <label className="block text-slate-700 text-xs font-semibold  mb-2">End Date</label>
               <input
                 type="date"
                 value={endDate}
@@ -46,7 +48,7 @@ export const DateDifferenceCalculator: React.FC = () => {
 
           <div className="p-6 rounded-2xl bg-indigo-600 text-white flex flex-col justify-between shadow-md">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-indigo-200">Total Duration</span>
+              <span className="text-xs font-bold  text-indigo-200">Total Duration</span>
               <div className="my-4 text-4xl sm:text-5xl font-extrabold text-white tracking-tight">{diffDays} Days</div>
             </div>
             <div className="pt-4 border-t border-indigo-500/80 flex justify-between text-xs text-indigo-100">

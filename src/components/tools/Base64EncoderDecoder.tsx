@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Binary } from 'lucide-react';
 import { CopyButton } from '../common/CopyButton';
 import { ResetButton } from '../common/ResetButton';
+import { ToolHeader } from '../ui/ToolHeader';
 
 export const Base64EncoderDecoder: React.FC = () => {
   const [input, setInput] = useState('Hello QuickForma!');

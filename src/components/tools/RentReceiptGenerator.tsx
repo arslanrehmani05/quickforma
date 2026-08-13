@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { FileText, Printer } from 'lucide-react';
+import { ToolHeader } from '../ui/ToolHeader';
+import { Button } from '../ui/Button';
 
 export const RentReceiptGenerator: React.FC = () => {
   const [landlordName, setLandlordName] = useState('Robert California');
@@ -22,19 +24,19 @@ export const RentReceiptGenerator: React.FC = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
           <div>
-            <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Landlord Name</label>
+            <label className="block text-slate-700 text-xs font-semibold  mb-2">Landlord Name</label>
             <input type="text" value={landlordName} onChange={(e) => setLandlordName(e.target.value)} className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-indigo-600 shadow-xs" />
           </div>
           <div>
-            <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Tenant Name</label>
+            <label className="block text-slate-700 text-xs font-semibold  mb-2">Tenant Name</label>
             <input type="text" value={tenantName} onChange={(e) => setTenantName(e.target.value)} className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-indigo-600 shadow-xs" />
           </div>
           <div className="sm:col-span-2">
-            <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Property Address</label>
+            <label className="block text-slate-700 text-xs font-semibold  mb-2">Property Address</label>
             <input type="text" value={propertyAddress} onChange={(e) => setPropertyAddress(e.target.value)} className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-indigo-600 shadow-xs" />
           </div>
           <div>
-            <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Rent Amount ($)</label>
+            <label className="block text-slate-700 text-xs font-semibold  mb-2">Rent Amount ($)</label>
             <input type="number" min="0" value={rentAmount} onChange={(e) => setRentAmount(Number(e.target.value))} className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-indigo-600 shadow-xs" />
           </div>
         </div>

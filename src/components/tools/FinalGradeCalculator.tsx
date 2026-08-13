@@ -1,5 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import { Percent, Plus, Trash2, Calculator, Target, Sparkles, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { ToolHeader } from '../ui/ToolHeader';
+import { InputField } from '../ui/InputField';
+import { ResultCard } from '../ui/ResultCard';
 
 interface ComponentRow {
   id: string;
@@ -184,7 +187,7 @@ export const FinalGradeCalculator: React.FC = () => {
           <div className="space-y-6">
             <div className="space-y-3">
               <div className="flex items-center justify-between">
-                <label className="text-slate-700 text-xs font-semibold uppercase tracking-wider">Course Components & Weights</label>
+                <label className="text-slate-700 text-xs font-semibold ">Course Components & Weights</label>
                 <span className={`text-xs font-mono font-bold ${currentCalc.isWeightOver100 ? 'text-rose-600' : 'text-slate-500'}`}>
                   Total Weight: {currentCalc.totalWeight.toFixed(1)}%
                 </span>
@@ -258,7 +261,7 @@ export const FinalGradeCalculator: React.FC = () => {
             <div className="p-6 rounded-2xl bg-indigo-50/60 border border-indigo-100 space-y-4">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-indigo-700">
+                  <span className="text-xs font-bold  text-indigo-700">
                     {currentCalc.isComplete100 ? 'PROJECTED FINAL COURSE GRADE' : 'CURRENT GRADE ON COMPLETED WORK'}
                   </span>
                   <div className="text-4xl sm:text-5xl font-extrabold text-indigo-950 mt-1 tracking-tight">
@@ -291,7 +294,7 @@ export const FinalGradeCalculator: React.FC = () => {
         {activeMode === 'needed' && (
           <div className="space-y-6">
             <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
-              <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider">Target Final Course Grade Goal</label>
+              <label className="block text-slate-700 text-xs font-semibold ">Target Final Course Grade Goal</label>
               <div className="flex items-center gap-2 max-w-xs">
                 <input
                   type="number"
@@ -307,7 +310,7 @@ export const FinalGradeCalculator: React.FC = () => {
 
             <div className="space-y-3">
               <div className="flex items-center justify-between">
-                <label className="text-slate-700 text-xs font-semibold uppercase tracking-wider">Completed Coursework Components</label>
+                <label className="text-slate-700 text-xs font-semibold ">Completed Coursework Components</label>
                 <span className="text-xs text-slate-500 font-mono">Completed Weight: {currentCalc.totalWeight.toFixed(1)}%</span>
               </div>
 
@@ -430,7 +433,7 @@ export const FinalGradeCalculator: React.FC = () => {
           <div className="space-y-6">
             <div className="space-y-3">
               <div className="flex items-center justify-between">
-                <label className="text-slate-700 text-xs font-semibold uppercase tracking-wider">Simulate Component Score Changes</label>
+                <label className="text-slate-700 text-xs font-semibold ">Simulate Component Score Changes</label>
                 <span className="text-xs text-slate-500 font-mono">Current vs What-If Score</span>
               </div>
 

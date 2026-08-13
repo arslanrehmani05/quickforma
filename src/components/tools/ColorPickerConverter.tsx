@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { Palette } from 'lucide-react';
 import { CopyButton } from '../common/CopyButton';
+import { ToolHeader } from '../ui/ToolHeader';
+import { InputField } from '../ui/InputField';
+import { ResultCard } from '../ui/ResultCard';
+import { ModePillsBar } from '../ui/ModePillsBar';
 
 export const ColorPickerConverter: React.FC = () => {
   const [hex, setHex] = useState('#4f46e5');
@@ -30,7 +34,7 @@ export const ColorPickerConverter: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div className="space-y-4">
             <div>
-              <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Select Color</label>
+              <label className="block text-slate-700 text-xs font-semibold  mb-2">Select Color</label>
               <input
                 type="color"
                 value={hex}
@@ -39,7 +43,7 @@ export const ColorPickerConverter: React.FC = () => {
               />
             </div>
             <div>
-              <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">HEX Value</label>
+              <label className="block text-slate-700 text-xs font-semibold  mb-2">HEX Value</label>
               <input
                 type="text"
                 value={hex}

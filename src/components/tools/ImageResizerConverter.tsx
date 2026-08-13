@@ -1,5 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Image as ImageIcon, Download, Upload } from 'lucide-react';
+import { ToolHeader } from '../ui/ToolHeader';
+import { Button } from '../ui/Button';
 
 export const ImageResizerConverter: React.FC = () => {
   const [imageSrc, setImageSrc] = useState<string | null>(null);

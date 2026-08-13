@@ -1,5 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import { Divide, Plus, Minus, X, Calculator, RefreshCw, ArrowRightLeft, Percent, HelpCircle, Layers, AlertCircle, Trash2 } from 'lucide-react';
+import { ToolHeader } from '../ui/ToolHeader';
+import { InputField } from '../ui/InputField';
+import { ResultCard } from '../ui/ResultCard';
 
 // GCD Helper
 const gcd = (a: number, b: number): number => {
@@ -447,7 +450,7 @@ export const FractionCalculator: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {/* Fraction 1 */}
               <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
-                <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider">First Fraction</label>
+                <label className="block text-slate-700 text-xs font-semibold ">First Fraction</label>
                 <div className="grid grid-cols-3 gap-2 items-center">
                   <div>
                     <span className="text-[10px] text-slate-400 font-bold block mb-1">WHOLE</span>
@@ -481,7 +484,7 @@ export const FractionCalculator: React.FC = () => {
 
               {/* Fraction 2 */}
               <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
-                <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider">Second Fraction</label>
+                <label className="block text-slate-700 text-xs font-semibold ">Second Fraction</label>
                 <div className="grid grid-cols-3 gap-2 items-center">
                   <div>
                     <span className="text-[10px] text-slate-400 font-bold block mb-1">WHOLE</span>
@@ -525,7 +528,7 @@ export const FractionCalculator: React.FC = () => {
                 <div className="p-6 rounded-2xl bg-indigo-50/60 border border-indigo-100 space-y-4">
                   <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
                     <div>
-                      <span className="text-xs font-bold uppercase tracking-wider text-indigo-700">Simplified Fraction</span>
+                      <span className="text-xs font-bold  text-indigo-700">Simplified Fraction</span>
                       <div className="text-3xl sm:text-4xl font-extrabold text-indigo-950 mt-1 font-mono">
                         {calcMode1.norm.d === 1 ? calcMode1.norm.n : `${calcMode1.norm.n}/${calcMode1.norm.d}`}
                       </div>
@@ -572,7 +575,7 @@ export const FractionCalculator: React.FC = () => {
           <div className="space-y-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Numerator</label>
+                <label className="block text-slate-700 text-xs font-semibold  mb-2">Numerator</label>
                 <input
                   type="number"
                   value={simpNum}
@@ -583,7 +586,7 @@ export const FractionCalculator: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Denominator</label>
+                <label className="block text-slate-700 text-xs font-semibold  mb-2">Denominator</label>
                 <input
                   type="number"
                   value={simpDen}
@@ -605,7 +608,7 @@ export const FractionCalculator: React.FC = () => {
                 <div className="p-6 rounded-2xl bg-indigo-50/60 border border-indigo-100 space-y-4">
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <div>
-                      <span className="text-xs font-bold uppercase tracking-wider text-indigo-700">Simplified Fraction</span>
+                      <span className="text-xs font-bold  text-indigo-700">Simplified Fraction</span>
                       <div className="text-4xl font-extrabold text-indigo-950 mt-1 font-mono">
                         {calcMode2.norm.d === 1 ? calcMode2.norm.n : `${calcMode2.norm.n}/${calcMode2.norm.d}`}
                       </div>
@@ -652,7 +655,7 @@ export const FractionCalculator: React.FC = () => {
             {mixDirection === 'mixedToImp' ? (
               <div className="grid grid-cols-3 gap-3 p-4 rounded-2xl bg-slate-50 border border-slate-200">
                 <div>
-                  <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-1">Whole</label>
+                  <label className="block text-slate-700 text-xs font-semibold  mb-1">Whole</label>
                   <input
                     type="number"
                     value={mixW}
@@ -661,7 +664,7 @@ export const FractionCalculator: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-1">Numerator</label>
+                  <label className="block text-slate-700 text-xs font-semibold  mb-1">Numerator</label>
                   <input
                     type="number"
                     value={mixN}
@@ -670,7 +673,7 @@ export const FractionCalculator: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-1">Denominator</label>
+                  <label className="block text-slate-700 text-xs font-semibold  mb-1">Denominator</label>
                   <input
                     type="number"
                     value={mixD}
@@ -682,7 +685,7 @@ export const FractionCalculator: React.FC = () => {
             ) : (
               <div className="grid grid-cols-2 gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-200">
                 <div>
-                  <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-1">Improper Numerator</label>
+                  <label className="block text-slate-700 text-xs font-semibold  mb-1">Improper Numerator</label>
                   <input
                     type="number"
                     value={impNum}
@@ -691,7 +694,7 @@ export const FractionCalculator: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-1">Denominator</label>
+                  <label className="block text-slate-700 text-xs font-semibold  mb-1">Denominator</label>
                   <input
                     type="number"
                     value={impDen}
@@ -711,7 +714,7 @@ export const FractionCalculator: React.FC = () => {
                 </div>
               ) : (
                 <div className="p-6 rounded-2xl bg-indigo-50/60 border border-indigo-100 space-y-3">
-                  <span className="text-xs font-bold uppercase tracking-wider text-indigo-700">CONVERTED RESULT</span>
+                  <span className="text-xs font-bold  text-indigo-700">CONVERTED RESULT</span>
                   <div className="text-4xl font-extrabold text-indigo-950 tracking-tight font-mono">
                     {calcMode3.type === 'mixedToImp'
                       ? `${calcMode3.frac?.n}/${calcMode3.frac?.d}`
@@ -744,7 +747,7 @@ export const FractionCalculator: React.FC = () => {
             {decDirection === 'fracToDec' ? (
               <div className="grid grid-cols-2 gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-200">
                 <div>
-                  <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-1">Numerator</label>
+                  <label className="block text-slate-700 text-xs font-semibold  mb-1">Numerator</label>
                   <input
                     type="number"
                     value={decFracN}
@@ -753,7 +756,7 @@ export const FractionCalculator: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-1">Denominator</label>
+                  <label className="block text-slate-700 text-xs font-semibold  mb-1">Denominator</label>
                   <input
                     type="number"
                     value={decFracD}
@@ -764,7 +767,7 @@ export const FractionCalculator: React.FC = () => {
               </div>
             ) : (
               <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200">
-                <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-1">Decimal Number</label>
+                <label className="block text-slate-700 text-xs font-semibold  mb-1">Decimal Number</label>
                 <input
                   type="number"
                   step="any"
@@ -784,7 +787,7 @@ export const FractionCalculator: React.FC = () => {
                 </div>
               ) : (
                 <div className="p-6 rounded-2xl bg-indigo-50/60 border border-indigo-100 space-y-3">
-                  <span className="text-xs font-bold uppercase tracking-wider text-indigo-700">CONVERTED RESULT</span>
+                  <span className="text-xs font-bold  text-indigo-700">CONVERTED RESULT</span>
                   <div className="text-4xl font-extrabold text-indigo-950 tracking-tight font-mono">
                     {calcMode4.type === 'fracToDec'
                       ? calcMode4.decimal?.toFixed(4)
@@ -817,7 +820,7 @@ export const FractionCalculator: React.FC = () => {
             {pctDirection === 'fracToPct' ? (
               <div className="grid grid-cols-2 gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-200">
                 <div>
-                  <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-1">Numerator</label>
+                  <label className="block text-slate-700 text-xs font-semibold  mb-1">Numerator</label>
                   <input
                     type="number"
                     value={pctFracN}
@@ -826,7 +829,7 @@ export const FractionCalculator: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-1">Denominator</label>
+                  <label className="block text-slate-700 text-xs font-semibold  mb-1">Denominator</label>
                   <input
                     type="number"
                     value={pctFracD}
@@ -837,7 +840,7 @@ export const FractionCalculator: React.FC = () => {
               </div>
             ) : (
               <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200">
-                <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-1">Percentage Value</label>
+                <label className="block text-slate-700 text-xs font-semibold  mb-1">Percentage Value</label>
                 <div className="flex items-center gap-2 bg-white px-3 py-2 rounded-xl border border-slate-300">
                   <input
                     type="number"
@@ -860,7 +863,7 @@ export const FractionCalculator: React.FC = () => {
                 </div>
               ) : (
                 <div className="p-6 rounded-2xl bg-indigo-50/60 border border-indigo-100 space-y-3">
-                  <span className="text-xs font-bold uppercase tracking-wider text-indigo-700">CONVERTED RESULT</span>
+                  <span className="text-xs font-bold  text-indigo-700">CONVERTED RESULT</span>
                   <div className="text-4xl font-extrabold text-indigo-950 tracking-tight font-mono">
                     {calcMode5.type === 'fracToPct'
                       ? `${calcMode5.pct?.toFixed(2)}%`
@@ -878,7 +881,7 @@ export const FractionCalculator: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {/* Fraction A */}
               <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
-                <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider">Fraction A</label>
+                <label className="block text-slate-700 text-xs font-semibold ">Fraction A</label>
                 <div className="grid grid-cols-2 gap-2">
                   <input
                     type="number"
@@ -899,7 +902,7 @@ export const FractionCalculator: React.FC = () => {
 
               {/* Fraction B */}
               <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
-                <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider">Fraction B</label>
+                <label className="block text-slate-700 text-xs font-semibold ">Fraction B</label>
                 <div className="grid grid-cols-2 gap-2">
                   <input
                     type="number"
@@ -930,7 +933,7 @@ export const FractionCalculator: React.FC = () => {
                 <div className="p-6 rounded-2xl bg-indigo-50/60 border border-indigo-100 space-y-4">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <div>
-                      <span className="text-xs font-bold uppercase tracking-wider text-indigo-700">COMPARISON RESULT</span>
+                      <span className="text-xs font-bold  text-indigo-700">COMPARISON RESULT</span>
                       <div className="text-4xl font-extrabold text-indigo-950 mt-1 font-mono">
                         {calcMode6.f1.n}/{calcMode6.f1.d} <span className="text-indigo-600 px-1">{calcMode6.symbol}</span> {calcMode6.f2.n}/{calcMode6.f2.d}
                       </div>
@@ -961,7 +964,7 @@ export const FractionCalculator: React.FC = () => {
         {activeMode === 'expression' && (
           <div className="space-y-6">
             <div className="space-y-3">
-              <label className="text-slate-700 text-xs font-semibold uppercase tracking-wider block">Expression Fractions & Operators</label>
+              <label className="text-slate-700 text-xs font-semibold  block">Expression Fractions & Operators</label>
 
               <div className="space-y-3">
                 {expRows.map((r, idx) => (
@@ -1043,7 +1046,7 @@ export const FractionCalculator: React.FC = () => {
                 <div className="p-6 rounded-2xl bg-indigo-50/60 border border-indigo-100 space-y-4">
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <div>
-                      <span className="text-xs font-bold uppercase tracking-wider text-indigo-700">Simplified Result</span>
+                      <span className="text-xs font-bold  text-indigo-700">Simplified Result</span>
                       <div className="text-3xl font-extrabold text-indigo-950 mt-1 font-mono">
                         {calcMode7.norm.d === 1 ? calcMode7.norm.n : `${calcMode7.norm.n}/${calcMode7.norm.d}`}
                       </div>

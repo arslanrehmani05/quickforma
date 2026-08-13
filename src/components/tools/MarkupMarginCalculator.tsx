@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { Percent } from 'lucide-react';
+import { ToolHeader } from '../ui/ToolHeader';
+import { InputField } from '../ui/InputField';
+import { ResultCard } from '../ui/ResultCard';
 
 export const MarkupMarginCalculator: React.FC = () => {
   const [cost, setCost] = useState<number>(40);
@@ -25,7 +28,7 @@ export const MarkupMarginCalculator: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="space-y-4">
             <div>
-              <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Item Cost ($)</label>
+              <label className="block text-slate-700 text-xs font-semibold  mb-2">Item Cost ($)</label>
               <input
                 type="number"
                 min="0"
@@ -35,7 +38,7 @@ export const MarkupMarginCalculator: React.FC = () => {
               />
             </div>
             <div>
-              <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Selling Price / Revenue ($)</label>
+              <label className="block text-slate-700 text-xs font-semibold  mb-2">Selling Price / Revenue ($)</label>
               <input
                 type="number"
                 min="0"

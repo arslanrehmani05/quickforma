@@ -1,6 +1,9 @@
 import React, { useState, useMemo } from 'react';
 import { BarChart3, Sparkles } from 'lucide-react';
 import { calculateDescriptiveStats, parseDataSet } from '../../utils/math/statisticsEngine';
+import { ToolHeader } from '../ui/ToolHeader';
+import { InputField } from '../ui/InputField';
+import { ResultCard } from '../ui/ResultCard';
 
 export const DescriptiveStatisticsCalculator: React.FC = () => {
   const [rawInput, setRawInput] = useState<string>('12, 15, 18, 22, 25, 25, 30, 34, 40');
@@ -46,7 +49,7 @@ export const DescriptiveStatisticsCalculator: React.FC = () => {
       {result.stats && (
         <div className="bg-gradient-to-br from-indigo-900 via-slate-900 to-indigo-950 p-6 sm:p-8 rounded-3xl text-white shadow-xl space-y-6">
           <div className="flex items-center justify-between border-b border-indigo-800/60 pb-3">
-            <span className="text-xs font-semibold uppercase tracking-wider text-indigo-300 flex items-center gap-1.5">
+            <span className="text-xs font-semibold  text-indigo-300 flex items-center gap-1.5">
               <Sparkles className="w-4 h-4 text-indigo-400" /> Statistical Summary ($N = {result.stats.count}$)
             </span>
           </div>

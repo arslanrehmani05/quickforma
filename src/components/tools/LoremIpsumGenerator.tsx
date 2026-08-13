@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { FilePlus, Copy, Check } from 'lucide-react';
+import { ToolHeader } from '../ui/ToolHeader';
+import { Button } from '../ui/Button';
 
 const LOREM = [
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -46,7 +48,7 @@ export const LoremIpsumGenerator: React.FC = () => {
 
         <div className="space-y-4">
           <div className="flex items-center gap-4">
-            <label className="text-slate-700 text-xs font-semibold uppercase tracking-wider">Paragraphs:</label>
+            <label className="text-slate-700 text-xs font-semibold ">Paragraphs:</label>
             <input
               type="number"
               min="1"

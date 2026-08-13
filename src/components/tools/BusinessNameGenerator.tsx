@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Sparkles, Copy, Check } from 'lucide-react';
+import { ToolHeader } from '../ui/ToolHeader';
+import { Button } from '../ui/Button';
 
 const PREFIXES = ['Apex', 'Nova', 'Vanguard', 'Prime', 'Hyper', 'Swift', 'Meta', 'Zenith'];
 const SUFFIXES = ['Lab', 'Flow', 'Hub', 'Forma', 'Logic', 'Studio', 'Pulse', 'Craft'];
@@ -43,7 +45,7 @@ export const BusinessNameGenerator: React.FC = () => {
 
         <div className="space-y-6">
           <div>
-            <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Industry Keyword</label>
+            <label className="block text-slate-700 text-xs font-semibold  mb-2">Industry Keyword</label>
             <input
               type="text"
               value={keyword}

@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { DollarSign } from 'lucide-react';
+import { ToolHeader } from '../ui/ToolHeader';
+import { InputField } from '../ui/InputField';
+import { ResultCard } from '../ui/ResultCard';
 
 export const SalaryHourlyConverter: React.FC = () => {
   const [amount, setAmount] = useState<number>(75000);
@@ -38,7 +41,7 @@ export const SalaryHourlyConverter: React.FC = () => {
               </button>
             </div>
             <div>
-              <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">
+              <label className="block text-slate-700 text-xs font-semibold  mb-2">
                 {mode === 'salaryToHourly' ? 'Annual Salary ($)' : 'Hourly Rate ($)'}
               </label>
               <input
@@ -53,7 +56,7 @@ export const SalaryHourlyConverter: React.FC = () => {
 
           <div className="p-6 rounded-2xl bg-indigo-600 text-white flex flex-col justify-between shadow-md">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-indigo-200">
+              <span className="text-xs font-bold  text-indigo-200">
                 {mode === 'salaryToHourly' ? 'Equivalent Hourly Rate' : 'Equivalent Annual Salary'}
               </span>
               <div className="my-4 text-4xl sm:text-5xl font-extrabold text-white tracking-tight">

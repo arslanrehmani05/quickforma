@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Copy } from 'lucide-react';
+import { ToolHeader } from '../ui/ToolHeader';
+import { Button } from '../ui/Button';
 
 export const TextDiffChecker: React.FC = () => {
   const [text1, setText1] = useState('Original line 1\nOriginal line 2\nOriginal line 3');
@@ -24,7 +26,7 @@ export const TextDiffChecker: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
           <div>
-            <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Original Text</label>
+            <label className="block text-slate-700 text-xs font-semibold  mb-2">Original Text</label>
             <textarea
               rows={6}
               value={text1}
@@ -33,7 +35,7 @@ export const TextDiffChecker: React.FC = () => {
             />
           </div>
           <div>
-            <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Modified Text</label>
+            <label className="block text-slate-700 text-xs font-semibold  mb-2">Modified Text</label>
             <textarea
               rows={6}
               value={text2}

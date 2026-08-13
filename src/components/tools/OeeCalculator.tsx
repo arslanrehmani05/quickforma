@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { CopyButton } from '../common/CopyButton';
 import { ResetButton } from '../common/ResetButton';
 import { Gauge } from 'lucide-react';
+import { ToolHeader } from '../ui/ToolHeader';
+import { InputField } from '../ui/InputField';
+import { ResultCard } from '../ui/ResultCard';
 
 export const OeeCalculator: React.FC = () => {
   const [plannedTimeHours, setPlannedTimeHours] = useState<number>(8); // Planned Operating Time

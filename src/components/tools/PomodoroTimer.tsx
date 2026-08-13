@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Clock, Play, Pause, RotateCcw } from 'lucide-react';
+import { ToolHeader } from '../ui/ToolHeader';
+import { Button } from '../ui/Button';
 
 export const PomodoroTimer: React.FC = () => {
   const [secondsLeft, setSecondsLeft] = useState(25 * 60);

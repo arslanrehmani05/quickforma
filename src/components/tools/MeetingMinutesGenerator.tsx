@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { FileText, Printer } from 'lucide-react';
+import { ToolHeader } from '../ui/ToolHeader';
+import { Button } from '../ui/Button';
 
 export const MeetingMinutesGenerator: React.FC = () => {
   const [meetingTitle, setMeetingTitle] = useState('Q3 Strategy & Product Roadmap Review');
@@ -21,15 +23,15 @@ export const MeetingMinutesGenerator: React.FC = () => {
 
         <div className="grid grid-cols-1 gap-4 mb-6">
           <div>
-            <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Meeting Title</label>
+            <label className="block text-slate-700 text-xs font-semibold  mb-2">Meeting Title</label>
             <input type="text" value={meetingTitle} onChange={(e) => setMeetingTitle(e.target.value)} className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-indigo-600 shadow-xs" />
           </div>
           <div>
-            <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Attendees</label>
+            <label className="block text-slate-700 text-xs font-semibold  mb-2">Attendees</label>
             <input type="text" value={attendees} onChange={(e) => setAttendees(e.target.value)} className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-indigo-600 shadow-xs" />
           </div>
           <div>
-            <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Key Decisions & Action Items</label>
+            <label className="block text-slate-700 text-xs font-semibold  mb-2">Key Decisions & Action Items</label>
             <textarea rows={4} value={keyDecisions} onChange={(e) => setKeyDecisions(e.target.value)} className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-indigo-600 resize-none shadow-xs" />
           </div>
         </div>
@@ -46,11 +48,11 @@ export const MeetingMinutesGenerator: React.FC = () => {
           <p className="text-xs text-slate-500 font-medium">Date: {new Date().toISOString().split('T')[0]}</p>
         </div>
         <div>
-          <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Attendees</h3>
+          <h3 className="text-xs font-bold  text-slate-500 mb-1">Attendees</h3>
           <p className="text-slate-800 font-medium">{attendees}</p>
         </div>
         <div>
-          <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Key Decisions & Notes</h3>
+          <h3 className="text-xs font-bold  text-slate-500 mb-1">Key Decisions & Notes</h3>
           <p className="text-slate-800 whitespace-pre-wrap">{keyDecisions}</p>
         </div>
       </div>

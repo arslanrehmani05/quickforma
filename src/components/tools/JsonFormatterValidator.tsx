@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Code, AlertCircle } from 'lucide-react';
 import { CopyButton } from '../common/CopyButton';
+import { ToolHeader } from '../ui/ToolHeader';
 
 export const JsonFormatterValidator: React.FC = () => {
   const [jsonInput, setJsonInput] = useState('{"name":"QuickForma","type":"utility","version":1.0,"features":["client-side","zero-api"]}');
@@ -43,7 +44,7 @@ export const JsonFormatterValidator: React.FC = () => {
 
         <div className="space-y-4">
           <div>
-            <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Raw JSON Input</label>
+            <label className="block text-slate-700 text-xs font-semibold  mb-2">Raw JSON Input</label>
             <textarea
               rows={6}
               value={jsonInput}

@@ -3,6 +3,9 @@ import { CopyButton } from '../common/CopyButton';
 import { ResetButton } from '../common/ResetButton';
 import { Truck, Box } from 'lucide-react';
 import { ToolSeoWrapper } from '../seo/ToolSeoWrapper';
+import { ToolHeader } from '../ui/ToolHeader';
+import { InputField } from '../ui/InputField';
+import { ResultCard } from '../ui/ResultCard';
 
 export const VolumetricWeightCalculator: React.FC = () => {
   const [lengthCm, setLengthCm] = useState<number>(50);

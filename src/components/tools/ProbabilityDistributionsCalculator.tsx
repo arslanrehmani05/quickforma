@@ -1,6 +1,10 @@
 import React, { useState, useMemo } from 'react';
 import { Sparkles, BarChart2 } from 'lucide-react';
 import { calculateBinomialProbability } from '../../utils/math/statisticsEngine';
+import { ToolHeader } from '../ui/ToolHeader';
+import { InputField } from '../ui/InputField';
+import { ResultCard } from '../ui/ResultCard';
+import { ModePillsBar } from '../ui/ModePillsBar';
 
 export const ProbabilityDistributionsCalculator: React.FC = () => {
   const [trialsN, setTrialsN] = useState<number>(10);
@@ -71,7 +75,7 @@ export const ProbabilityDistributionsCalculator: React.FC = () => {
 
       <div className="bg-gradient-to-br from-indigo-900 via-slate-900 to-indigo-950 p-6 sm:p-8 rounded-3xl text-white shadow-xl space-y-6">
         <div className="flex items-center justify-between border-b border-indigo-800/60 pb-3">
-          <span className="text-xs font-semibold uppercase tracking-wider text-indigo-300 flex items-center gap-1.5">
+          <span className="text-xs font-semibold  text-indigo-300 flex items-center gap-1.5">
             <Sparkles className="w-4 h-4 text-indigo-400" /> Binomial Probabilities
           </span>
         </div>

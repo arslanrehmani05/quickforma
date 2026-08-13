@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { FileText, Printer } from 'lucide-react';
+import { ToolHeader } from '../ui/ToolHeader';
+import { Button } from '../ui/Button';
 
 export const FreelanceContractGenerator: React.FC = () => {
   const [freelancerName, setFreelancerName] = useState('Sarah Connor');
@@ -22,19 +24,19 @@ export const FreelanceContractGenerator: React.FC = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
           <div>
-            <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Contractor / Freelancer Name</label>
+            <label className="block text-slate-700 text-xs font-semibold  mb-2">Contractor / Freelancer Name</label>
             <input type="text" value={freelancerName} onChange={(e) => setFreelancerName(e.target.value)} className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-indigo-600 shadow-xs" />
           </div>
           <div>
-            <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Client Company Name</label>
+            <label className="block text-slate-700 text-xs font-semibold  mb-2">Client Company Name</label>
             <input type="text" value={clientName} onChange={(e) => setClientName(e.target.value)} className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-indigo-600 shadow-xs" />
           </div>
           <div className="sm:col-span-2">
-            <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Scope of Work</label>
+            <label className="block text-slate-700 text-xs font-semibold  mb-2">Scope of Work</label>
             <textarea rows={3} value={scopeOfWork} onChange={(e) => setScopeOfWork(e.target.value)} className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-indigo-600 resize-none shadow-xs" />
           </div>
           <div>
-            <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Contract Fee ($)</label>
+            <label className="block text-slate-700 text-xs font-semibold  mb-2">Contract Fee ($)</label>
             <input type="number" min="0" value={contractRate} onChange={(e) => setContractRate(Number(e.target.value))} className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-indigo-600 shadow-xs" />
           </div>
         </div>

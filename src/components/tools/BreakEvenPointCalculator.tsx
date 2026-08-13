@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { TrendingUp, HelpCircle } from 'lucide-react';
+import { ToolHeader } from '../ui/ToolHeader';
+import { InputField } from '../ui/InputField';
+import { ResultCard } from '../ui/ResultCard';
 
 export const BreakEvenPointCalculator: React.FC = () => {
   const [fixedCosts, setFixedCosts] = useState<number>(5000);
@@ -26,7 +29,7 @@ export const BreakEvenPointCalculator: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="space-y-4">
             <div>
-              <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Total Monthly Fixed Costs ($)</label>
+              <label className="block text-slate-700 text-xs font-semibold  mb-2">Total Monthly Fixed Costs ($)</label>
               <input
                 type="number"
                 min="0"
@@ -36,7 +39,7 @@ export const BreakEvenPointCalculator: React.FC = () => {
               />
             </div>
             <div>
-              <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Sale Price Per Unit ($)</label>
+              <label className="block text-slate-700 text-xs font-semibold  mb-2">Sale Price Per Unit ($)</label>
               <input
                 type="number"
                 min="0"
@@ -46,7 +49,7 @@ export const BreakEvenPointCalculator: React.FC = () => {
               />
             </div>
             <div>
-              <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Variable Cost Per Unit ($)</label>
+              <label className="block text-slate-700 text-xs font-semibold  mb-2">Variable Cost Per Unit ($)</label>
               <input
                 type="number"
                 min="0"
@@ -59,7 +62,7 @@ export const BreakEvenPointCalculator: React.FC = () => {
 
           <div className="p-6 rounded-2xl bg-indigo-600 text-white flex flex-col justify-between shadow-md">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-indigo-200">Break-Even Units Required</span>
+              <span className="text-xs font-bold  text-indigo-200">Break-Even Units Required</span>
               <div className="my-4 text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
                 {breakEvenUnits.toLocaleString()} <span className="text-base text-indigo-200 font-normal">units</span>
               </div>

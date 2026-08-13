@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { CopyButton } from '../common/CopyButton';
 import { ResetButton } from '../common/ResetButton';
 import { AlertTriangle, PackageCheck } from 'lucide-react';
+import { ToolHeader } from '../ui/ToolHeader';
+import { InputField } from '../ui/InputField';
+import { ResultCard } from '../ui/ResultCard';
 
 export const ReorderPointCalculator: React.FC = () => {
   const [dailyUsage, setDailyUsage] = useState<number>(50);       // Average daily sales/usage rate
@@ -65,13 +68,13 @@ export const ReorderPointCalculator: React.FC = () => {
         {/* Output */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-zinc-100">
           <div className="p-5 bg-black text-white rounded-xl space-y-2 shadow-sm">
-            <span className="text-xs font-bold text-zinc-300 uppercase tracking-wider">Reorder Trigger Level</span>
+            <span className="text-xs font-bold text-zinc-300 ">Reorder Trigger Level</span>
             <div className="text-3xl font-extrabold">{reorderPoint.toLocaleString()} Units</div>
             <p className="text-xs text-zinc-400">Place a new supplier PO as soon as stock drops to this level.</p>
           </div>
 
           <div className="p-5 bg-zinc-50 border border-zinc-200 rounded-xl space-y-2">
-            <span className="text-xs font-bold text-zinc-700 uppercase tracking-wider">Inventory Breakdown</span>
+            <span className="text-xs font-bold text-zinc-700 ">Inventory Breakdown</span>
             <div className="text-sm font-semibold text-zinc-900">
               <span className="text-zinc-500">Lead Time Consumption:</span> {leadTimeDemand.toLocaleString()} units
             </div>

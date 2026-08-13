@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import { QrCode, Download, Copy, Check } from 'lucide-react';
 import { ToolSeoWrapper } from '../seo/ToolSeoWrapper';
 import { QR_CODE_GENERATOR_SEO } from '../../data/sampleToolSeoData';
+import { ToolHeader } from '../ui/ToolHeader';
+import { Button } from '../ui/Button';
 
 export const QRCodeGenerator: React.FC = () => {
   const [text, setText] = useState('https://quickforma.com');
@@ -97,7 +99,7 @@ export const QRCodeGenerator: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div className="space-y-4">
             <div>
-              <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Target URL or Content</label>
+              <label className="block text-slate-700 text-xs font-semibold  mb-2">Target URL or Content</label>
               <textarea
                 rows={4}
                 value={text}

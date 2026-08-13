@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { FileText, Printer } from 'lucide-react';
+import { ToolHeader } from '../ui/ToolHeader';
+import { Button } from '../ui/Button';
 
 export const BillOfSaleGenerator: React.FC = () => {
   const [sellerName, setSellerName] = useState('Michael Scott');
@@ -22,19 +24,19 @@ export const BillOfSaleGenerator: React.FC = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
           <div>
-            <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Seller Full Name</label>
+            <label className="block text-slate-700 text-xs font-semibold  mb-2">Seller Full Name</label>
             <input type="text" value={sellerName} onChange={(e) => setSellerName(e.target.value)} className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-indigo-600 shadow-xs" />
           </div>
           <div>
-            <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Buyer Full Name</label>
+            <label className="block text-slate-700 text-xs font-semibold  mb-2">Buyer Full Name</label>
             <input type="text" value={buyerName} onChange={(e) => setBuyerName(e.target.value)} className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-indigo-600 shadow-xs" />
           </div>
           <div className="sm:col-span-2">
-            <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Item / Asset Description</label>
+            <label className="block text-slate-700 text-xs font-semibold  mb-2">Item / Asset Description</label>
             <input type="text" value={itemDescription} onChange={(e) => setItemDescription(e.target.value)} className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-indigo-600 shadow-xs" />
           </div>
           <div>
-            <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Total Sale Price ($)</label>
+            <label className="block text-slate-700 text-xs font-semibold  mb-2">Total Sale Price ($)</label>
             <input type="number" min="0" value={salePrice} onChange={(e) => setSalePrice(Number(e.target.value))} className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-indigo-600 shadow-xs" />
           </div>
         </div>

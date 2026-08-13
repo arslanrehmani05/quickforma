@@ -4,6 +4,7 @@ import { CopyButton } from '../common/CopyButton';
 import { ResetButton } from '../common/ResetButton';
 import { ToolSeoWrapper } from '../seo/ToolSeoWrapper';
 import { PASSWORD_GENERATOR_SEO } from '../../data/sampleToolSeoData';
+import { ToolHeader } from '../ui/ToolHeader';
 
 export const PasswordGenerator: React.FC = () => {
   const [password, setPassword] = useState('');

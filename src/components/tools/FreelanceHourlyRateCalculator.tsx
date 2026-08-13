@@ -4,6 +4,9 @@ import { CopyButton } from '../common/CopyButton';
 import { ResetButton } from '../common/ResetButton';
 import { ToolSeoWrapper } from '../seo/ToolSeoWrapper';
 import { FREELANCE_HOURLY_RATE_SEO } from '../../data/sampleToolSeoData';
+import { ToolHeader } from '../ui/ToolHeader';
+import { InputField } from '../ui/InputField';
+import { ResultCard } from '../ui/ResultCard';
 
 export const FreelanceHourlyRateCalculator: React.FC = () => {
   const [targetSalary, setTargetSalary] = useState(80000);
@@ -54,7 +57,7 @@ export const FreelanceHourlyRateCalculator: React.FC = () => {
           {/* Inputs Column */}
           <div className="space-y-4">
             <div>
-              <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-1">Target Annual Take-Home ($)</label>
+              <label className="block text-slate-700 text-xs font-semibold  mb-1">Target Annual Take-Home ($)</label>
               <input
                 type="number"
                 value={targetSalary}
@@ -64,7 +67,7 @@ export const FreelanceHourlyRateCalculator: React.FC = () => {
             </div>
 
             <div>
-              <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-1">Annual Business Overhead Expenses ($)</label>
+              <label className="block text-slate-700 text-xs font-semibold  mb-1">Annual Business Overhead Expenses ($)</label>
               <input
                 type="number"
                 value={expenses}
@@ -75,7 +78,7 @@ export const FreelanceHourlyRateCalculator: React.FC = () => {
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-1">Tax Buffer (%)</label>
+                <label className="block text-slate-700 text-xs font-semibold  mb-1">Tax Buffer (%)</label>
                 <input
                   type="number"
                   value={taxRate}
@@ -84,7 +87,7 @@ export const FreelanceHourlyRateCalculator: React.FC = () => {
                 />
               </div>
               <div>
-                <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-1">Vacation (Weeks)</label>
+                <label className="block text-slate-700 text-xs font-semibold  mb-1">Vacation (Weeks)</label>
                 <input
                   type="number"
                   value={vacationWeeks}
@@ -96,7 +99,7 @@ export const FreelanceHourlyRateCalculator: React.FC = () => {
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-1">Hours / Week</label>
+                <label className="block text-slate-700 text-xs font-semibold  mb-1">Hours / Week</label>
                 <input
                   type="number"
                   value={workHoursPerWeek}
@@ -105,7 +108,7 @@ export const FreelanceHourlyRateCalculator: React.FC = () => {
                 />
               </div>
               <div>
-                <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-1">Unbillable Admin (%)</label>
+                <label className="block text-slate-700 text-xs font-semibold  mb-1">Unbillable Admin (%)</label>
                 <input
                   type="number"
                   value={unbillablePercent}

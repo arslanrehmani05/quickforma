@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import { Sliders } from 'lucide-react';
+import { ToolHeader } from '../ui/ToolHeader';
+import { InputField } from '../ui/InputField';
+import { ResultCard } from '../ui/ResultCard';
+import { ModePillsBar } from '../ui/ModePillsBar';
 
 export const AspectCalculator: React.FC = () => {
   const [width, setWidth] = useState<number>(1920);
@@ -24,7 +28,7 @@ export const AspectCalculator: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="space-y-4">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-700 block">Original Dimensions</span>
+            <span className="text-xs font-bold  text-slate-700 block">Original Dimensions</span>
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className="block text-slate-600 text-xs mb-1">Width (px)</label>
@@ -48,7 +52,7 @@ export const AspectCalculator: React.FC = () => {
               </div>
             </div>
 
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-700 block pt-2">New Target Width</span>
+            <span className="text-xs font-bold  text-slate-700 block pt-2">New Target Width</span>
             <div>
               <input
                 type="number"
@@ -62,7 +66,7 @@ export const AspectCalculator: React.FC = () => {
 
           <div className="p-6 rounded-2xl bg-indigo-600 text-white flex flex-col justify-between shadow-md">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-indigo-200">Proportional Height</span>
+              <span className="text-xs font-bold  text-indigo-200">Proportional Height</span>
               <div className="my-4 text-4xl sm:text-5xl font-extrabold text-white tracking-tight">{calculatedHeight} px</div>
             </div>
             <div className="pt-4 border-t border-indigo-500/80 text-xs text-indigo-100">

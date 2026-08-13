@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { CopyButton } from '../common/CopyButton';
 import { ResetButton } from '../common/ResetButton';
 import { Box, TrendingUp } from 'lucide-react';
+import { ToolHeader } from '../ui/ToolHeader';
+import { InputField } from '../ui/InputField';
+import { ResultCard } from '../ui/ResultCard';
 
 export const EoqCalculator: React.FC = () => {
   const [annualDemand, setAnnualDemand] = useState<number>(10000); // D

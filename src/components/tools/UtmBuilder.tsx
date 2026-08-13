@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { CopyButton } from '../common/CopyButton';
 import { ResetButton } from '../common/ResetButton';
 import { Link, Check } from 'lucide-react';
+import { ToolHeader } from '../ui/ToolHeader';
 
 export const UtmBuilder: React.FC = () => {
   const [baseUrl, setBaseUrl] = useState<string>('https://quickforma.com');
@@ -123,7 +124,7 @@ export const UtmBuilder: React.FC = () => {
         {finalUrl && (
           <div className="space-y-2 pt-2 border-t border-zinc-100">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-zinc-900 uppercase tracking-wider">Generated Campaign URL</span>
+              <span className="text-xs font-bold text-zinc-900 ">Generated Campaign URL</span>
               <CopyButton textToCopy={finalUrl} />
             </div>
             <textarea

@@ -1,5 +1,9 @@
 import React, { useState, useMemo } from 'react';
 import { Sparkles, Box } from 'lucide-react';
+import { ToolHeader } from '../ui/ToolHeader';
+import { InputField } from '../ui/InputField';
+import { ResultCard } from '../ui/ResultCard';
+import { ModePillsBar } from '../ui/ModePillsBar';
 
 export const GeometryAreaVolumeCalculator: React.FC = () => {
   const [shape, setShape] = useState<'sphere' | 'cylinder' | 'cube' | 'cone'>('sphere');
@@ -96,7 +100,7 @@ export const GeometryAreaVolumeCalculator: React.FC = () => {
 
       <div className="bg-gradient-to-br from-indigo-900 via-slate-900 to-indigo-950 p-6 sm:p-8 rounded-3xl text-white shadow-xl space-y-6">
         <div className="flex items-center justify-between border-b border-indigo-800/60 pb-3">
-          <span className="text-xs font-semibold uppercase tracking-wider text-indigo-300 flex items-center gap-1.5">
+          <span className="text-xs font-semibold  text-indigo-300 flex items-center gap-1.5">
             <Sparkles className="w-4 h-4 text-indigo-400" /> 3D Geometry Results
           </span>
         </div>

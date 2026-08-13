@@ -1,5 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import { GraduationCap, Plus, Trash2, Calculator, Target, TrendingUp, BookOpen, AlertCircle, CheckCircle2, Sparkles } from 'lucide-react';
+import { ToolHeader } from '../ui/ToolHeader';
+import { InputField } from '../ui/InputField';
+import { ResultCard } from '../ui/ResultCard';
 
 // Standard US 4.0 Letter Grade to Grade Point Mapping
 const STANDARD_GRADE_SCALE: Record<string, number> = {
@@ -303,7 +306,7 @@ export const GpaCalculator: React.FC = () => {
           <div className="space-y-6">
             <div className="space-y-3">
               <div className="flex items-center justify-between">
-                <label className="text-slate-700 text-xs font-semibold uppercase tracking-wider">Courses & Grades</label>
+                <label className="text-slate-700 text-xs font-semibold ">Courses & Grades</label>
                 <span className="text-xs text-slate-500 font-mono">Standard 4.0 Scale</span>
               </div>
 
@@ -366,7 +369,7 @@ export const GpaCalculator: React.FC = () => {
             <div className="p-6 rounded-2xl bg-indigo-50/60 border border-indigo-100 space-y-4">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-indigo-700">YOUR SEMESTER GPA</span>
+                  <span className="text-xs font-bold  text-indigo-700">YOUR SEMESTER GPA</span>
                   <div className="text-4xl sm:text-5xl font-extrabold text-indigo-950 mt-1 tracking-tight">
                     {semesterCalc.gpa.toFixed(2)}
                   </div>
@@ -396,7 +399,7 @@ export const GpaCalculator: React.FC = () => {
           <div className="space-y-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Current Cumulative GPA</label>
+                <label className="block text-slate-700 text-xs font-semibold  mb-2">Current Cumulative GPA</label>
                 <input
                   type="number"
                   step="0.01"
@@ -409,7 +412,7 @@ export const GpaCalculator: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Completed GPA Credits</label>
+                <label className="block text-slate-700 text-xs font-semibold  mb-2">Completed GPA Credits</label>
                 <input
                   type="number"
                   min="0"
@@ -422,7 +425,7 @@ export const GpaCalculator: React.FC = () => {
 
             {/* New Courses */}
             <div className="space-y-3">
-              <label className="text-slate-700 text-xs font-semibold uppercase tracking-wider block">New Semester Courses</label>
+              <label className="text-slate-700 text-xs font-semibold  block">New Semester Courses</label>
 
               <div className="space-y-3">
                 {newCourses.map((c) => (
@@ -509,7 +512,7 @@ export const GpaCalculator: React.FC = () => {
           <div className="space-y-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Current Cumulative GPA</label>
+                <label className="block text-slate-700 text-xs font-semibold  mb-2">Current Cumulative GPA</label>
                 <input
                   type="number"
                   step="0.01"
@@ -522,7 +525,7 @@ export const GpaCalculator: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Completed Credits</label>
+                <label className="block text-slate-700 text-xs font-semibold  mb-2">Completed Credits</label>
                 <input
                   type="number"
                   min="0"
@@ -533,7 +536,7 @@ export const GpaCalculator: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Remaining Credits</label>
+                <label className="block text-slate-700 text-xs font-semibold  mb-2">Remaining Credits</label>
                 <input
                   type="number"
                   min="1"
@@ -544,7 +547,7 @@ export const GpaCalculator: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Target Cumulative GPA Goal</label>
+                <label className="block text-slate-700 text-xs font-semibold  mb-2">Target Cumulative GPA Goal</label>
                 <input
                   type="number"
                   step="0.01"
@@ -604,7 +607,7 @@ export const GpaCalculator: React.FC = () => {
           <div className="space-y-6">
             <div className="space-y-3">
               <div className="flex items-center justify-between">
-                <label className="text-slate-700 text-xs font-semibold uppercase tracking-wider">Simulate Grade Changes</label>
+                <label className="text-slate-700 text-xs font-semibold ">Simulate Grade Changes</label>
                 <span className="text-xs text-slate-500 font-mono">Original Grade vs What-If Grade</span>
               </div>
 
@@ -743,7 +746,7 @@ export const GpaCalculator: React.FC = () => {
             {/* Custom Grade Points Configurator */}
             {hsWeightType === 'custom' && (
               <div className="p-4 rounded-2xl bg-amber-50/70 border border-amber-200 space-y-3">
-                <h4 className="font-bold text-xs text-amber-900 uppercase tracking-wider">Configure Custom Grade Point Values</h4>
+                <h4 className="font-bold text-xs text-amber-900 ">Configure Custom Grade Point Values</h4>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                   {Object.keys(customGradePoints).map((g) => (
                     <div key={g} className="flex items-center gap-2 bg-white px-2.5 py-1.5 rounded-xl border border-amber-200 text-xs">

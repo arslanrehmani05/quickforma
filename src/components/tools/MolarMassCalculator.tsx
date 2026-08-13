@@ -1,6 +1,9 @@
 import React, { useState, useMemo } from 'react';
 import { Sparkles, Atom } from 'lucide-react';
 import { calculateMolarMass } from '../../utils/science/chemistryEngine';
+import { ToolHeader } from '../ui/ToolHeader';
+import { InputField } from '../ui/InputField';
+import { ResultCard } from '../ui/ResultCard';
 
 export const MolarMassCalculator: React.FC = () => {
   const [formula, setFormula] = useState<string>('H2SO4');
@@ -43,7 +46,7 @@ export const MolarMassCalculator: React.FC = () => {
       {result.data && (
         <div className="bg-gradient-to-br from-indigo-900 via-slate-900 to-indigo-950 p-6 sm:p-8 rounded-3xl text-white shadow-xl space-y-6">
           <div className="flex items-center justify-between border-b border-indigo-800/60 pb-3">
-            <span className="text-xs font-semibold uppercase tracking-wider text-indigo-300 flex items-center gap-1.5">
+            <span className="text-xs font-semibold  text-indigo-300 flex items-center gap-1.5">
               <Sparkles className="w-4 h-4 text-indigo-400" /> Molecular Weight Result
             </span>
           </div>
@@ -54,7 +57,7 @@ export const MolarMassCalculator: React.FC = () => {
           </div>
 
           <div className="bg-white/5 p-4 rounded-2xl border border-white/10 space-y-2">
-            <div className="text-xs font-bold text-indigo-200 uppercase tracking-wider mb-2">Mass Percent Composition</div>
+            <div className="text-xs font-bold text-indigo-200  mb-2">Mass Percent Composition</div>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               {result.data.composition.map((c) => (
                 <div key={c.element} className="bg-white/5 p-3 rounded-xl border border-white/10 text-center">

@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Code, Download } from 'lucide-react';
+import { ToolHeader } from '../ui/ToolHeader';
+import { Button } from '../ui/Button';
 
 export const BarcodeGenerator: React.FC = () => {
   const [text, setText] = useState('QUICKFORMA-9921');
@@ -63,7 +65,7 @@ export const BarcodeGenerator: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div className="space-y-4">
             <div>
-              <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Barcode Text / Numbers</label>
+              <label className="block text-slate-700 text-xs font-semibold  mb-2">Barcode Text / Numbers</label>
               <input
                 type="text"
                 value={text}

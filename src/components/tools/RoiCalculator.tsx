@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { TrendingUp } from 'lucide-react';
 import { ToolSeoWrapper } from '../seo/ToolSeoWrapper';
 import { ROI_CALCULATOR_SEO } from '../../data/sampleToolSeoData';
+import { ToolHeader } from '../ui/ToolHeader';
+import { InputField } from '../ui/InputField';
+import { ResultCard } from '../ui/ResultCard';
 
 export const RoiCalculator: React.FC = () => {
   const [initialInvestment, setInitialInvestment] = useState<number>(10000);
@@ -27,7 +30,7 @@ export const RoiCalculator: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="space-y-4">
             <div>
-              <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Initial Amount Invested ($)</label>
+              <label className="block text-slate-700 text-xs font-semibold  mb-2">Initial Amount Invested ($)</label>
               <input
                 type="number"
                 min="0"
@@ -37,7 +40,7 @@ export const RoiCalculator: React.FC = () => {
               />
             </div>
             <div>
-              <label className="block text-slate-700 text-xs font-semibold uppercase tracking-wider mb-2">Final Value Received ($)</label>
+              <label className="block text-slate-700 text-xs font-semibold  mb-2">Final Value Received ($)</label>
               <input
                 type="number"
                 min="0"
@@ -50,7 +53,7 @@ export const RoiCalculator: React.FC = () => {
 
           <div className="p-6 rounded-2xl bg-indigo-600 text-white flex flex-col justify-between shadow-md">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-indigo-200">Return On Investment (ROI)</span>
+              <span className="text-xs font-bold  text-indigo-200">Return On Investment (ROI)</span>
               <div className="my-4 text-4xl sm:text-5xl font-extrabold text-white tracking-tight">{roiPercent.toFixed(2)}%</div>
             </div>
             <div className="pt-4 border-t border-indigo-500/80 flex justify-between text-xs text-indigo-100">

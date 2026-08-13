@@ -336,5 +336,22 @@
 **Remember This:** Always provide programmatic click-scroll arrows for mouse users when implementing horizontal pill bars.
 **Full explanation:** Updated `src/pages/HomePage.tsx`. Attached `scrollContainerRef` to the category pills container `div`. Added absolute-positioned `ChevronLeft` and `ChevronRight` buttons that invoke `.scrollBy({ left: +/- 240, behavior: 'smooth' })` on click. Preserved `overflow-x-auto no-scrollbar` and added `shrink-0` to all category buttons so touch swipe remains 100% intact on mobile devices.
 
+## 2026-08-13 — QuickForma — Multi-Line Category Filter Layout (100% Instant Viewport Discoverability)
+**Tags:** #React #TailwindCSS #Flexbox #UX #ResponsiveDesign #CategoryFilter
+**Importance:** ★★★☆☆
+**Frequency:** Daily
+**Syntax Introduced:** `flex flex-wrap justify-center gap-2`, `scale-[1.02]`, hover state styling
+**Concept Introduced:** Multi-Line Wrapping Pill Ergonomics, Total Viewport Discoverability, Elimination of Hidden Interactive Controls
+**Prerequisites:** CSS Flexbox (`flex-wrap`), Spacing Utilities, Hover/Focus Micro-interactions
+**Decision:** Replaced the single-row horizontal scrolling category bar and arrow buttons in `HomePage.tsx` with a multi-line wrapped flex layout (`flex flex-wrap items-center justify-center gap-2`).
+**Reason:** Completely removes scroll arrows and swiping friction. Displays 100% of category tabs simultaneously across 2-3 neat, centered lines on all screen sizes.
+**Alternative:** Keeping a single-row horizontal scroll container with overlay arrow buttons.
+**Tradeoff:** Uses slightly more vertical space, but eliminates hidden categories and gives users 1-click access to all 11 tool categories.
+**General principle:** Prefer multi-line wrapping layouts over horizontal scrolling when total item count is small enough to fit within a compact vertical footprint.
+**CS50/roadmap.sh link:** CS50 Web Development — Responsive Web Design, Flexbox Wrapping, & Information Architecture.
+**Remember This:** When category items fit comfortably in 2-3 lines, wrap them into a multi-line layout to eliminate hidden scroll controls.
+**Full explanation:** Refactored `src/pages/HomePage.tsx`. Removed `scrollContainerRef` and scroll arrow button handlers. Converted the category container into `flex flex-wrap justify-center gap-2`. All 11 category pills now render across clean lines, giving desktop and mobile users immediate 1-click access without any swiping or scrolling.
+
+
 
 

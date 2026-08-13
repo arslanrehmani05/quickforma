@@ -1271,6 +1271,82 @@ export const FINAL_GRADE_CALCULATOR_SEO: ToolSeoData = {
   relatedToolIds: ['gpa-calculator', 'word-counter', 'pomodoro-timer']
 };
 
+export const PERCENTAGE_CALCULATOR_SEO: ToolSeoData = {
+  atAGlance: {
+    heading: "At a Glance",
+    categoryLabel: "Academic Calculator",
+    bestFor: "Students, Educators & Professionals",
+    privacy: "100% Client-Side RAM",
+    timeRequired: "Instant (Sub-50ms)",
+    cost: "Free Forever",
+    lastUpdated: "August 2026"
+  },
+  overview: {
+    heading: "Quick Overview",
+    whatItDoes: "Calculates percentage of a number, percentage of a whole, percentage increases, percentage decreases, and percentage differences.",
+    whoShouldUseIt: "Students solving math problems, educators grading assignments, business operators calculating margins, and anyone making quick percentage calculations.",
+    whenToUseIt: "Use during homework sessions, exam prep, financial budgeting, discount comparison, or data analysis when evaluating percentage shifts.",
+    whyItIsUseful: "Combines 4 distinct percentage calculation workflows into one unified tool with zero-division error protection and instant live feedback."
+  },
+  keyFeatures: {
+    heading: "Why Use This Percentage Calculator?",
+    features: [
+      { title: "4 Dedicated Calculation Modes", description: "Percentage of a Number, What Percentage, Percentage Change, and Percentage Difference." },
+      { title: "Zero-Division Protection", description: "Displays clear mathematical validation error messages instead of NaN or Infinity." },
+      { title: "Symmetrical Difference Logic", description: "Accurately distinguishes between Percentage Change (reference point) and Percentage Difference (average)." },
+      { title: "Full Decimal & Negative Support", description: "Calculates precise values with full floating-point precision and 2-decimal display output." },
+      { title: "100% Browser Privacy", description: "Your numbers never leave your browser RAM and are never sent to external servers." },
+      { title: "Zero Signups or Fees", description: "Instant access with zero paywalls, account creation, or email collection." }
+    ]
+  },
+  howToUse: {
+    heading: "How to Use the Percentage Calculator",
+    steps: [
+      { stepNumber: 1, title: "Select Calculation Mode", description: "Choose Percentage of a Number, What Percentage, Percentage Change, or Percentage Difference." },
+      { stepNumber: 2, title: "Enter Input Values", description: "Type your percentage values, starting values, or target numbers." },
+      { stepNumber: 3, title: "View Instant Results", description: "Instantly view calculated outputs, difference breakdowns, and mathematical formulas." }
+    ]
+  },
+  workedExample: {
+    heading: "Worked Real-World Example",
+    title: "Scenario: Calculating Percentage Change vs Percentage Difference",
+    scenarioDescription: "A student compares a score increase from 80 to 100. Percentage Change evaluates growth relative to the starting score (80), whereas Percentage Difference compares the variation relative to the average of both scores (90).",
+    sampleInputs: [
+      { label: "Original Score (A)", value: "80" },
+      { label: "New Score (B)", value: "100" }
+    ],
+    stepsExplanation: [
+      "Percentage Change: ((100 - 80) ÷ 80) × 100 = +25.00% Increase",
+      "Average of Both Scores: (80 + 100) ÷ 2 = 90",
+      "Percentage Difference: (|80 - 100| ÷ 90) × 100 = 22.22%"
+    ],
+    finalOutput: { label: "Percentage Change / Difference", value: "+25.00% Change | 22.22% Diff" },
+    summary: "Moving from 80 to 100 represents a 25.00% increase from the original value, while the percentage difference between the two values is 22.22%."
+  },
+  howItWorks: {
+    heading: "Percentage Calculation Formulas & Logic",
+    type: "math",
+    explanation: "Percentages express numbers as fractions of 100. Percentage change uses the starting value as a baseline, while percentage difference uses the average of two numbers.",
+    formulaText: "Percentage Change = ((New - Original) ÷ |Original|) × 100",
+    variables: [
+      { symbol: "Percentage of Number", description: "(Percentage ÷ 100) × Value" },
+      { symbol: "What Percentage", description: "(Part ÷ Whole) × 100" },
+      { symbol: "Percentage Difference", description: "(|Value A - Value B| ÷ ((Value A + Value B) ÷ 2)) × 100" }
+    ]
+  },
+  faqs: {
+    heading: "Frequently Asked Questions",
+    faqs: [
+      { question: "What is the difference between percentage change and percentage difference?", answer: "Percentage change uses the original value as a starting reference point to determine increase or decrease. Percentage difference treats both values symmetrically by comparing them relative to their average." },
+      { question: "How do you calculate what percentage one number is of another?", answer: "Divide the part by the whole number and multiply the result by 100 (e.g. 30 ÷ 200 × 100 = 15%)." },
+      { question: "What happens when dividing by zero in percentage calculations?", answer: "Dividing by zero is mathematically undefined. QuickForma provides clear validation messages explaining why zero denominators cannot be calculated." },
+      { question: "Can percentage change be negative?", answer: "Yes. If the new value is less than the original value, the percentage change is negative, indicating a percentage decrease." },
+      { question: "Is this percentage calculator free and private?", answer: "Yes. QuickForma is 100% free and processes all calculations client-side in your local browser memory without uploading data." }
+    ]
+  },
+  relatedToolIds: ['gpa-calculator', 'final-grade-calculator', 'word-counter']
+};
+
 export const TOOL_SEO_DATA_MAP: Record<string, ToolSeoData> = {
   'freelance-hourly-rate-calculator': FREELANCE_HOURLY_RATE_SEO,
   'invoice-generator': INVOICE_GENERATOR_SEO,
@@ -1286,5 +1362,6 @@ export const TOOL_SEO_DATA_MAP: Record<string, ToolSeoData> = {
   'depreciation-calculator': DEPRECIATION_SEO,
   'gpa-calculator': GPA_CALCULATOR_SEO,
   'final-grade-calculator': FINAL_GRADE_CALCULATOR_SEO,
+  'percentage-calculator': PERCENTAGE_CALCULATOR_SEO,
 };
 

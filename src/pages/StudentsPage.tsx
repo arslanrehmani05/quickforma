@@ -18,7 +18,7 @@ const STUDENT_CATEGORIES = [
 ];
 
 const GRADES_GPA_TOOL_IDS = ['gpa-calculator', 'final-grade-calculator'];
-const ACADEMIC_WORK_TOOL_IDS = ['word-counter', 'pdf-page-counter', 'text-diff-checker', 'unit-converter'];
+const ACADEMIC_WORK_TOOL_IDS = ['percentage-calculator', 'word-counter', 'pdf-page-counter', 'text-diff-checker', 'unit-converter'];
 const STUDY_PRODUCTIVITY_TOOL_IDS = ['pomodoro-timer', 'date-difference-calculator'];
 
 const ALL_STUDENT_TOOL_IDS = [

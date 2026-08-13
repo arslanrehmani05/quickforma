@@ -1,14 +1,14 @@
 import { ToolMetadata } from '../types';
 
 export const CATEGORIES = [
-  { id: 'all', name: 'All Utilities', count: 60 },
+  { id: 'all', name: 'All Utilities', count: 61 },
   { id: 'finance', name: 'Financial Calculators', count: 14 },
   { id: 'business', name: 'Business & Legal Docs', count: 10 },
   { id: 'ecommerce', name: 'Ecommerce & Operations', count: 8 },
   { id: 'developer', name: 'Developer & Web Tools', count: 11 },
   { id: 'converters', name: 'Converters & Formats', count: 8 },
   { id: 'content', name: 'Text & Content Tools', count: 4 },
-  { id: 'productivity', name: 'Productivity & Daily', count: 5 },
+  { id: 'productivity', name: 'Productivity & Daily', count: 6 },
 ] as const;
 
 export const TOOLS_CATALOG: ToolMetadata[] = [
@@ -1014,5 +1014,25 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
     ],
     "metaTitle": "Final Grade Calculator | Calculate Your Course Grade — QuickForma",
     "metaDescription": "Calculate your current or projected course grade and find the score you need on remaining coursework to reach your target grade."
+  },
+  {
+    "id": "percentage-calculator",
+    "name": "Percentage Calculator",
+    "category": "productivity",
+    "categoryLabel": "Productivity & Daily",
+    "description": "Calculate percentages, percentage values, percentage increases, decreases, and percentage differences easily.",
+    "iconName": "Percent",
+    "popular": true,
+    "badge": "Flagship",
+    "keywords": [
+      "percentage calculator",
+      "percent calculator",
+      "percentage change calculator",
+      "percentage difference calculator",
+      "calculate percentage",
+      "percentage increase"
+    ],
+    "metaTitle": "Percentage Calculator | Calculate Percentages Easily — QuickForma",
+    "metaDescription": "Calculate percentages, percentage changes, increases, decreases, and differences quickly with QuickForma's free percentage calculator."
   }
 ];

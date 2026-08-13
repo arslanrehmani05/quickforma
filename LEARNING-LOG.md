@@ -416,6 +416,23 @@
 **Remember This:** GPA calculations must multiply grade points by credit hours to compute quality points—never average letter grades directly when credit weights differ.
 **Full explanation:** Created `src/components/tools/GpaCalculator.tsx`. Registered metadata in `src/data/toolsCatalog.ts`, added route switch case in `src/App.tsx`, added on-page pSEO data in `src/data/sampleToolSeoData.ts`, and featured the tool in the new `Grades & GPA` section of `src/pages/StudentsPage.tsx`. Verified `npm run build` generated 65 sitemap URLs with 0 errors.
 
+## 2026-08-13 — QuickForma — QA Audit & Hardening of GPA Calculator (/tools/gpa-calculator)
+**Tags:** #QualityAssurance #GpaCalculator #Refactoring #EdgeCases #WhatIfMode
+**Importance:** ★★★★★
+**Frequency:** Rare
+**Syntax Introduced:** What-If scenario differential calculation, interactive custom scale grid controls
+**Concept Introduced:** Rigorous QA Audit, What-If Differential Analysis, Configurable Grade Point Customization, Mathematical Edge Case Guards
+**Prerequisites:** React State Management, Edge Case Testing
+**Decision:** Executed a comprehensive QA audit of `GpaCalculator.tsx`. Added Mode 4 ("What-If Scenario" grade impact shift), added custom grade point configurator UI for high school custom scales, clarified US AP/Honors weighting presets, and guarded zero-remaining-credit target edge cases.
+**Reason:** Ensures 100% compliance with product specification and mathematical precision standards.
+**Alternative:** Leaving What-If mode embedded inside semester mode without explicit differential comparison.
+**Tradeoff:** Minimal added code in `GpaCalculator.tsx`, resulting in bulletproof QA verification.
+**General principle:** Flagship calculators must withstand rigorous mathematical edge-case testing and provide explicit scenario comparisons rather than implicit grade edits.
+**CS50/roadmap.sh link:** CS50 Web Development — Quality Assurance, Testing Frameworks, & Defensiveness.
+**Remember This:** Always test edge cases (zero credits, impossible targets, custom scales) before declaring a mathematical tool complete.
+**Full explanation:** Updated `src/components/tools/GpaCalculator.tsx` to add What-If mode, custom scale configurator, high school weighting disclaimer copy, and target credit checks. Verified `npm run build` completed in 23.53s with 0 errors and 65 sitemap URLs.
+
+
 
 
 

@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { GraduationCap, Plus, Trash2, Calculator, Target, TrendingUp, BookOpen, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { GraduationCap, Plus, Trash2, Calculator, Target, TrendingUp, BookOpen, AlertCircle, CheckCircle2, Sparkles } from 'lucide-react';
 
 // Standard US 4.0 Letter Grade to Grade Point Mapping
 const STANDARD_GRADE_SCALE: Record<string, number> = {
@@ -23,10 +23,11 @@ interface CourseRow {
   name: string;
   credits: number;
   grade: string;
+  whatIfGrade?: string;
   type?: 'regular' | 'honors' | 'ap' | 'ib';
 }
 
-type Mode = 'semester' | 'cumulative' | 'target' | 'highschool';
+type Mode = 'semester' | 'cumulative' | 'target' | 'whatif' | 'highschool';
 type HighSchoolWeightType = 'unweighted' | 'weighted' | 'custom';
 
 export const GpaCalculator: React.FC = () => {
@@ -55,7 +56,15 @@ export const GpaCalculator: React.FC = () => {
   const [targetRemainingCredits, setTargetRemainingCredits] = useState<number>(60);
   const [targetGoalGpa, setTargetGoalGpa] = useState<number>(3.30);
 
-  // Mode 4: High School GPA State
+  // Mode 4: What-If Scenario State
+  const [whatIfCourses, setWhatIfCourses] = useState<CourseRow[]>([
+    { id: 'w1', name: 'Biology 101', credits: 4, grade: 'A', whatIfGrade: 'A' },
+    { id: 'w2', name: 'Organic Chemistry', credits: 4, grade: 'B', whatIfGrade: 'A-' },
+    { id: 'w3', name: 'Calculus I', credits: 4, grade: 'B+', whatIfGrade: 'A' },
+    { id: 'w4', name: 'Microeconomics', credits: 3, grade: 'B-', whatIfGrade: 'B+' },
+  ]);
+
+  // Mode 5: High School GPA State
   const [hsWeightType, setHsWeightType] = useState<HighSchoolWeightType>('weighted');
   const [hsCourses, setHsCourses] = useState<CourseRow[]>([
     { id: 'h1', name: 'AP English Literature', credits: 1, grade: 'A', type: 'ap' },
@@ -84,15 +93,17 @@ export const GpaCalculator: React.FC = () => {
   // --- Handlers for Course Management ---
   const addCourse = (type: Mode) => {
     const newId = Date.now().toString();
-    const defaultRow: CourseRow = { id: newId, name: '', credits: 3, grade: 'A', type: 'regular' };
+    const defaultRow: CourseRow = { id: newId, name: '', credits: 3, grade: 'A', whatIfGrade: 'A', type: 'regular' };
     if (type === 'semester') setSemesterCourses(prev => [...prev, defaultRow]);
     else if (type === 'cumulative') setNewCourses(prev => [...prev, defaultRow]);
+    else if (type === 'whatif') setWhatIfCourses(prev => [...prev, defaultRow]);
     else if (type === 'highschool') setHsCourses(prev => [...prev, { ...defaultRow, credits: 1 }]);
   };
 
   const removeCourse = (id: string, type: Mode) => {
     if (type === 'semester') setSemesterCourses(prev => prev.filter(c => c.id !== id));
     else if (type === 'cumulative') setNewCourses(prev => prev.filter(c => c.id !== id));
+    else if (type === 'whatif') setWhatIfCourses(prev => prev.filter(c => c.id !== id));
     else if (type === 'highschool') setHsCourses(prev => prev.filter(c => c.id !== id));
   };
 
@@ -101,12 +112,13 @@ export const GpaCalculator: React.FC = () => {
       prev.map(c => (c.id === id ? { ...c, [field]: value } : c));
     if (type === 'semester') setSemesterCourses(updater);
     else if (type === 'cumulative') setNewCourses(updater);
+    else if (type === 'whatif') setWhatIfCourses(updater);
     else if (type === 'highschool') setHsCourses(updater);
   };
 
   // --- Calculations ---
 
-  // Semester GPA Calculation
+  // 1. Semester GPA Calculation
   const semesterCalc = useMemo(() => {
     let totalQualityPoints = 0;
     let totalCredits = 0;
@@ -120,7 +132,7 @@ export const GpaCalculator: React.FC = () => {
     return { gpa, totalQualityPoints, totalCredits };
   }, [semesterCourses]);
 
-  // Cumulative GPA Projection Calculation
+  // 2. Cumulative GPA Projection Calculation
   const cumulativeCalc = useMemo(() => {
     const prevQualityPoints = Math.max(0, currentGpa) * Math.max(0, completedCredits);
     let newQualityPoints = 0;
@@ -141,21 +153,46 @@ export const GpaCalculator: React.FC = () => {
     return { projectedGpa, gpaChange, totalCredits, totalQualityPoints, newCredits };
   }, [currentGpa, completedCredits, newCourses]);
 
-  // Target GPA Needed Calculation
+  // 3. Target GPA Needed Calculation
   const targetCalc = useMemo(() => {
-    const totalCredits = Math.max(0, targetCompletedCredits) + Math.max(0, targetRemainingCredits);
-    const prevQualityPoints = Math.max(0, targetCurrentGpa) * Math.max(0, targetCompletedCredits);
+    const remCreds = Math.max(0, targetRemainingCredits);
+    const compCreds = Math.max(0, targetCompletedCredits);
+    const totalCredits = compCreds + remCreds;
+    const prevQualityPoints = Math.max(0, targetCurrentGpa) * compCreds;
     const targetTotalQualityPoints = Math.max(0, targetGoalGpa) * totalCredits;
     const requiredFutureQualityPoints = targetTotalQualityPoints - prevQualityPoints;
 
-    const requiredGpa = targetRemainingCredits > 0 ? requiredFutureQualityPoints / targetRemainingCredits : 0;
+    const requiredGpa = remCreds > 0 ? requiredFutureQualityPoints / remCreds : 0;
     const isUnreachable = requiredGpa > 4.0;
     const isAlreadyAchieved = targetGoalGpa <= targetCurrentGpa;
 
-    return { requiredGpa, totalCredits, isUnreachable, isAlreadyAchieved };
+    return { requiredGpa, totalCredits, isUnreachable, isAlreadyAchieved, remCreds };
   }, [targetCurrentGpa, targetCompletedCredits, targetRemainingCredits, targetGoalGpa]);
 
-  // High School GPA Calculation
+  // 4. What-If Scenario Calculation
+  const whatIfCalc = useMemo(() => {
+    let originalQualityPoints = 0;
+    let whatIfQualityPoints = 0;
+    let totalCredits = 0;
+
+    whatIfCourses.forEach(c => {
+      const cr = Math.max(0, Number(c.credits) || 0);
+      const origPts = STANDARD_GRADE_SCALE[c.grade] ?? 0;
+      const whatIfPts = STANDARD_GRADE_SCALE[c.whatIfGrade || c.grade] ?? 0;
+
+      originalQualityPoints += origPts * cr;
+      whatIfQualityPoints += whatIfPts * cr;
+      totalCredits += cr;
+    });
+
+    const originalGpa = totalCredits > 0 ? originalQualityPoints / totalCredits : 0;
+    const whatIfGpa = totalCredits > 0 ? whatIfQualityPoints / totalCredits : 0;
+    const difference = whatIfGpa - originalGpa;
+
+    return { originalGpa, whatIfGpa, difference, totalCredits };
+  }, [whatIfCourses]);
+
+  // 5. High School GPA Calculation
   const hsCalc = useMemo(() => {
     let unweightedPoints = 0;
     let weightedPoints = 0;
@@ -194,7 +231,7 @@ export const GpaCalculator: React.FC = () => {
           </div>
           <div>
             <h2 className="text-xl sm:text-2xl font-bold text-slate-900">GPA Calculator</h2>
-            <p className="text-slate-600 text-sm">Calculate semester GPA, cumulative GPA projection, target GPA needed, and high school GPA.</p>
+            <p className="text-slate-600 text-sm">Calculate semester GPA, cumulative projections, target GPA goals, hypothetical what-if scenarios, and high school GPAs.</p>
           </div>
         </div>
 
@@ -202,7 +239,7 @@ export const GpaCalculator: React.FC = () => {
         <div className="flex flex-wrap gap-2 p-1.5 rounded-2xl bg-slate-100/80 border border-slate-200 text-xs font-semibold">
           <button
             onClick={() => setActiveMode('semester')}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl transition-all ${
+            className={`flex items-center gap-2 px-3.5 py-2.5 rounded-xl transition-all ${
               activeMode === 'semester'
                 ? 'bg-white text-indigo-600 shadow-xs border border-slate-200/60 font-bold'
                 : 'text-slate-600 hover:text-slate-900'
@@ -214,7 +251,7 @@ export const GpaCalculator: React.FC = () => {
 
           <button
             onClick={() => setActiveMode('cumulative')}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl transition-all ${
+            className={`flex items-center gap-2 px-3.5 py-2.5 rounded-xl transition-all ${
               activeMode === 'cumulative'
                 ? 'bg-white text-indigo-600 shadow-xs border border-slate-200/60 font-bold'
                 : 'text-slate-600 hover:text-slate-900'
@@ -226,7 +263,7 @@ export const GpaCalculator: React.FC = () => {
 
           <button
             onClick={() => setActiveMode('target')}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl transition-all ${
+            className={`flex items-center gap-2 px-3.5 py-2.5 rounded-xl transition-all ${
               activeMode === 'target'
                 ? 'bg-white text-indigo-600 shadow-xs border border-slate-200/60 font-bold'
                 : 'text-slate-600 hover:text-slate-900'
@@ -237,8 +274,20 @@ export const GpaCalculator: React.FC = () => {
           </button>
 
           <button
+            onClick={() => setActiveMode('whatif')}
+            className={`flex items-center gap-2 px-3.5 py-2.5 rounded-xl transition-all ${
+              activeMode === 'whatif'
+                ? 'bg-white text-indigo-600 shadow-xs border border-slate-200/60 font-bold'
+                : 'text-slate-600 hover:text-slate-900'
+            }`}
+          >
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>What-If Scenario</span>
+          </button>
+
+          <button
             onClick={() => setActiveMode('highschool')}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl transition-all ${
+            className={`flex items-center gap-2 px-3.5 py-2.5 rounded-xl transition-all ${
               activeMode === 'highschool'
                 ? 'bg-white text-indigo-600 shadow-xs border border-slate-200/60 font-bold'
                 : 'text-slate-600 hover:text-slate-900'
@@ -509,7 +558,11 @@ export const GpaCalculator: React.FC = () => {
             </div>
 
             {/* Target GPA Result */}
-            {targetCalc.isUnreachable ? (
+            {targetCalc.remCreds <= 0 ? (
+              <div className="p-4 rounded-xl bg-slate-100 text-slate-600 text-xs">
+                Please enter remaining credit hours (e.g. 15, 30, 60) to calculate required GPA.
+              </div>
+            ) : targetCalc.isUnreachable ? (
               <div className="p-6 rounded-2xl bg-amber-50 border border-amber-200 text-amber-900 space-y-2 flex items-start gap-3">
                 <AlertCircle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
                 <div>
@@ -546,31 +599,167 @@ export const GpaCalculator: React.FC = () => {
           </div>
         )}
 
-        {/* ================= MODE 4: HIGH SCHOOL GPA ================= */}
+        {/* ================= MODE 4: WHAT-IF SCENARIO ================= */}
+        {activeMode === 'whatif' && (
+          <div className="space-y-6">
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <label className="text-slate-700 text-xs font-semibold uppercase tracking-wider">Simulate Grade Changes</label>
+                <span className="text-xs text-slate-500 font-mono">Original Grade vs What-If Grade</span>
+              </div>
+
+              <div className="space-y-3">
+                {whatIfCourses.map((c) => (
+                  <div key={c.id} className="grid grid-cols-12 gap-2 sm:gap-3 items-center bg-slate-50 p-3 rounded-2xl border border-slate-200">
+                    <input
+                      type="text"
+                      placeholder="Course Name"
+                      value={c.name}
+                      onChange={(e) => updateCourse(c.id, 'name', e.target.value, 'whatif')}
+                      className="col-span-4 sm:col-span-4 px-3 py-2 rounded-xl bg-white border border-slate-300 text-slate-900 text-xs sm:text-sm focus:outline-none focus:border-indigo-600"
+                    />
+
+                    <select
+                      value={c.credits}
+                      onChange={(e) => updateCourse(c.id, 'credits', Number(e.target.value), 'whatif')}
+                      className="col-span-2 sm:col-span-2 px-2 py-2 rounded-xl bg-white border border-slate-300 text-slate-900 text-xs sm:text-sm focus:outline-none focus:border-indigo-600"
+                    >
+                      <option value={1}>1 cr</option>
+                      <option value={2}>2 cr</option>
+                      <option value={3}>3 cr</option>
+                      <option value={4}>4 cr</option>
+                    </select>
+
+                    <div className="col-span-5 sm:col-span-5 grid grid-cols-2 gap-1.5">
+                      <div>
+                        <span className="text-[10px] text-slate-400 font-bold block uppercase">Current</span>
+                        <select
+                          value={c.grade}
+                          onChange={(e) => updateCourse(c.id, 'grade', e.target.value, 'whatif')}
+                          className="w-full px-2 py-1.5 rounded-lg bg-white border border-slate-300 text-slate-700 font-bold text-xs focus:outline-none focus:border-indigo-600"
+                        >
+                          {Object.keys(STANDARD_GRADE_SCALE).map(g => (
+                            <option key={g} value={g}>{g}</option>
+                          ))}
+                        </select>
+                      </div>
+
+                      <div>
+                        <span className="text-[10px] text-indigo-600 font-bold block uppercase">What-If</span>
+                        <select
+                          value={c.whatIfGrade || c.grade}
+                          onChange={(e) => updateCourse(c.id, 'whatIfGrade', e.target.value, 'whatif')}
+                          className="w-full px-2 py-1.5 rounded-lg bg-indigo-50 border border-indigo-300 text-indigo-900 font-extrabold text-xs focus:outline-none focus:border-indigo-600"
+                        >
+                          {Object.keys(STANDARD_GRADE_SCALE).map(g => (
+                            <option key={g} value={g}>{g}</option>
+                          ))}
+                        </select>
+                      </div>
+                    </div>
+
+                    <button
+                      onClick={() => removeCourse(c.id, 'whatif')}
+                      disabled={whatIfCourses.length <= 1}
+                      className="col-span-1 p-2 text-slate-400 hover:text-rose-600 disabled:opacity-30 flex justify-center"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  </div>
+                ))}
+              </div>
+
+              <button
+                onClick={() => addCourse('whatif')}
+                className="w-full py-3 rounded-2xl border-2 border-dashed border-slate-300 hover:border-indigo-600 text-indigo-600 font-semibold text-xs flex items-center justify-center gap-2"
+              >
+                <Plus className="w-4 h-4" />
+                <span>Add What-If Course</span>
+              </button>
+            </div>
+
+            {/* What-If Result Comparison */}
+            <div className="p-6 rounded-2xl bg-indigo-50/60 border border-indigo-100 space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div>
+                  <span className="text-xs font-semibold text-slate-500 uppercase">Original Base GPA</span>
+                  <div className="text-2xl font-bold text-slate-800 mt-0.5">{whatIfCalc.originalGpa.toFixed(2)}</div>
+                </div>
+
+                <div>
+                  <span className="text-xs font-bold uppercase text-indigo-700">WHAT-IF PROJECTED GPA</span>
+                  <div className="text-4xl font-extrabold text-indigo-950 mt-0.5">{whatIfCalc.whatIfGpa.toFixed(2)}</div>
+                </div>
+
+                <div>
+                  <span className="text-xs font-semibold text-slate-500 uppercase">GPA Impact</span>
+                  <div className={`text-2xl font-bold mt-0.5 ${whatIfCalc.difference >= 0 ? 'text-emerald-600' : 'text-rose-600'}`}>
+                    {whatIfCalc.difference >= 0 ? `+${whatIfCalc.difference.toFixed(2)}` : whatIfCalc.difference.toFixed(2)}
+                  </div>
+                </div>
+              </div>
+
+              <p className="text-slate-600 text-xs border-t border-indigo-100 pt-3">
+                Simulating grade changes result in a <strong>{whatIfCalc.difference >= 0 ? '+' : ''}{whatIfCalc.difference.toFixed(2)} point shift</strong> in your overall GPA across {whatIfCalc.totalCredits} total credit hours.
+              </p>
+            </div>
+          </div>
+        )}
+
+        {/* ================= MODE 5: HIGH SCHOOL GPA ================= */}
         {activeMode === 'highschool' && (
           <div className="space-y-6">
             {/* Weighting Selector */}
-            <div className="flex items-center gap-3 bg-slate-50 p-2 rounded-2xl border border-slate-200 text-xs">
-              <label className="font-semibold text-slate-700 px-2">Weighting Type:</label>
-              <button
-                onClick={() => setHsWeightType('unweighted')}
-                className={`px-3 py-1.5 rounded-xl font-medium transition-all ${hsWeightType === 'unweighted' ? 'bg-indigo-600 text-white font-bold' : 'text-slate-600 hover:text-slate-900'}`}
-              >
-                Unweighted (4.0)
-              </button>
-              <button
-                onClick={() => setHsWeightType('weighted')}
-                className={`px-3 py-1.5 rounded-xl font-medium transition-all ${hsWeightType === 'weighted' ? 'bg-indigo-600 text-white font-bold' : 'text-slate-600 hover:text-slate-900'}`}
-              >
-                Weighted (AP/Honors/IB)
-              </button>
-              <button
-                onClick={() => setHsWeightType('custom')}
-                className={`px-3 py-1.5 rounded-xl font-medium transition-all ${hsWeightType === 'custom' ? 'bg-indigo-600 text-white font-bold' : 'text-slate-600 hover:text-slate-900'}`}
-              >
-                Custom Scale
-              </button>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-slate-50 p-3 rounded-2xl border border-slate-200 text-xs">
+              <div className="flex items-center gap-2">
+                <label className="font-semibold text-slate-700">Weighting Type:</label>
+                <div className="flex gap-1">
+                  <button
+                    onClick={() => setHsWeightType('unweighted')}
+                    className={`px-3 py-1.5 rounded-xl font-medium transition-all ${hsWeightType === 'unweighted' ? 'bg-indigo-600 text-white font-bold' : 'text-slate-600 hover:text-slate-900'}`}
+                  >
+                    Unweighted (4.0)
+                  </button>
+                  <button
+                    onClick={() => setHsWeightType('weighted')}
+                    className={`px-3 py-1.5 rounded-xl font-medium transition-all ${hsWeightType === 'weighted' ? 'bg-indigo-600 text-white font-bold' : 'text-slate-600 hover:text-slate-900'}`}
+                  >
+                    Weighted (AP/Honors/IB)
+                  </button>
+                  <button
+                    onClick={() => setHsWeightType('custom')}
+                    className={`px-3 py-1.5 rounded-xl font-medium transition-all ${hsWeightType === 'custom' ? 'bg-indigo-600 text-white font-bold' : 'text-slate-600 hover:text-slate-900'}`}
+                  >
+                    Custom Scale
+                  </button>
+                </div>
+              </div>
             </div>
+
+            <p className="text-slate-500 text-xs leading-relaxed italic">
+              Note: AP/IB (+1.0) and Honors (+0.5) represent standard US High School presets. Switch to Custom Scale if your school district uses a custom point policy.
+            </p>
+
+            {/* Custom Grade Points Configurator */}
+            {hsWeightType === 'custom' && (
+              <div className="p-4 rounded-2xl bg-amber-50/70 border border-amber-200 space-y-3">
+                <h4 className="font-bold text-xs text-amber-900 uppercase tracking-wider">Configure Custom Grade Point Values</h4>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                  {Object.keys(customGradePoints).map((g) => (
+                    <div key={g} className="flex items-center gap-2 bg-white px-2.5 py-1.5 rounded-xl border border-amber-200 text-xs">
+                      <span className="font-bold text-slate-800 w-6">{g}</span>
+                      <input
+                        type="number"
+                        step="0.01"
+                        value={customGradePoints[g]}
+                        onChange={(e) => setCustomGradePoints({ ...customGradePoints, [g]: Number(e.target.value) })}
+                        className="w-16 px-1.5 py-1 rounded bg-slate-50 border border-slate-300 text-slate-900 font-mono text-xs text-center"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {/* Courses List */}
             <div className="space-y-3">

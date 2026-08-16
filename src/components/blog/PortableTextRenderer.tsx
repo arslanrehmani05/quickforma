@@ -104,7 +104,7 @@ export const PortableTextRenderer: React.FC<PortableTextRendererProps> = ({ cont
           break;
         case 'h2':
           elements.push(
-            <h2 key={key} className="text-xl sm:text-2xl font-bold text-slate-900 mt-8 mb-3 tracking-tight border-b border-slate-100 pb-2">
+            <h2 key={key} className="text-xl sm:text-2xl font-bold text-slate-900 mt-8 mb-3 tracking-tight">
               {children}
             </h2>
           );

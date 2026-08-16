@@ -2,14 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { getArticleBySlug, urlFor } from '../lib/sanity';
 import { ShareSection } from '../components/social/ShareSection';
 import { Clock, User, Calendar, CheckCircle2, ArrowLeft } from 'lucide-react';
-import { PortableText } from '@portabletext/react';
+import { PortableTextRenderer } from '../components/blog/PortableTextRenderer';
 
 interface ArticlePageProps {
   slug: string;
   onBack?: () => void;
+  onSelectView?: (view: string) => void;
 }
 
-export const ArticlePage: React.FC<ArticlePageProps> = ({ slug, onBack }) => {
+export const ArticlePage: React.FC<ArticlePageProps> = ({ slug, onBack, onSelectView }) => {
   const [article, setArticle] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
@@ -254,10 +255,10 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({ slug, onBack }) => {
         </figure>
       )}
 
-      {/* Portable Text Body */}
+      {/* Portable Text Body Content */}
       {article.body && (
-        <div className="prose prose-slate max-w-none prose-headings:font-bold prose-headings:text-slate-900 prose-a:text-indigo-600 prose-img:rounded-xl">
-          <PortableText value={article.body} />
+        <div className="bg-white p-6 sm:p-10 rounded-2xl border border-slate-200/80 shadow-xs my-6">
+          <PortableTextRenderer content={article.body} onSelectTool={onSelectView} />
         </div>
       )}
 

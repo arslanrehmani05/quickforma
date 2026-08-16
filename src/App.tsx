@@ -394,7 +394,7 @@ export function App() {
         }
         if (activeView.startsWith('blog:')) {
           const articleSlug = activeView.replace('blog:', '');
-          return <ArticlePage slug={articleSlug} onBack={() => handleSelectView('blog:index')} />;
+          return <ArticlePage slug={articleSlug} onBack={() => handleSelectView('blog:index')} onSelectView={handleSelectView} />;
         }
         if (activeView.startsWith('category:')) {
           const categorySlug = activeView.replace('category:', '');

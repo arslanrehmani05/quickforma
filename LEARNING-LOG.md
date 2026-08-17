@@ -511,6 +511,22 @@
 **Remember This:** Always reduce fractions to lowest terms using integer GCD division and normalize negative signs to the numerator.
 **Full explanation:** Created `src/components/tools/FractionCalculator.tsx`. Registered metadata in `src/data/toolsCatalog.ts`, added route switch case in `src/App.tsx`, added on-page pSEO data in `src/data/sampleToolSeoData.ts`, and featured the tool in the `Academic Work & Utilities` section of `src/pages/StudentsPage.tsx`. Verified `npm run build` generated 68 sitemap URLs with 0 errors.
 
+## 2026-08-17 — QuickForma — Rendered Dynamic CMS Featured Images on Ledger Hub Sidebar Cards
+**Tags:** #React #SanityCMS #ImageRendering #UIComponent #BlogHub #ConditionalRendering #TypeScript
+**Importance:** ★★★★☆
+**Frequency:** Common
+**Syntax Introduced:** `{art.featuredImage && (<img src={urlFor(art.featuredImage).width(600).height(340).url()} ... />)}`
+**Concept Introduced:** Defensive Media Fallback & Conditional Media Rendering, Image Transformation Pipeline via CMS URL Builder
+**Prerequisites:** React JSX, Conditional Guards (`&&`), Headless CMS Image URL Generation
+**Decision:** Updated `BlogHubPage.tsx` sidebar cards in `secondaryLatest` to check `art.featuredImage` and dynamically render a responsive, aspect-ratio-constrained thumbnail image when present in Sanity CMS.
+**Reason:** Ensures that secondary latest releases uploaded with a featured image display their visual preview on the `/ledger` hub page rather than remaining text-only cards.
+**Alternative:** Text-only sidebar cards regardless of CMS image upload.
+**Tradeoff:** Cards are slightly taller when an image is present, but visual engagement and consistency across CMS content items are restored.
+**General principle:** Always conditionally guard and render visual assets provided by dynamic content management systems to prevent silent UI omission.
+**CS50/roadmap.sh link:** CS50 Web Development — Client-Side Dynamic UI Rendering & Headless CMS Media Pipelines.
+**Remember This:** Always conditionally render CMS-supplied media properties so that visual assets uploaded by editors display dynamically across all UI components.
+**Full explanation:** Diagnosed missing visual thumbnail on sidebar guide cards in `BlogHubPage.tsx`. Identified that while the main spotlight card rendered `heroArticle.featuredImage`, secondary sidebar cards lacked a conditional image element. Added `art.featuredImage && (...)` inside `secondaryLatest.map()` rendering a 600x340 optimized image via `urlFor()`. Executed `npm run build` and verified 100% clean production build compilation.
+
 
 
 

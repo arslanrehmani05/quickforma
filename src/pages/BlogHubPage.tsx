@@ -181,6 +181,15 @@ export const BlogHubPage: React.FC<BlogHubPageProps> = ({ onSelectView }) => {
                     href={`/ledger/${art.slug}`}
                     className="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs hover:shadow-md hover:border-indigo-200 transition-all flex flex-col justify-between flex-1 group"
                   >
+                    {art.featuredImage && (
+                      <div className="rounded-xl overflow-hidden aspect-video bg-slate-100 mb-3">
+                        <img
+                          src={urlFor(art.featuredImage).width(600).height(340).url()}
+                          alt={art.featuredImage.alt || art.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                    )}
                     <div className="space-y-2">
                       <div className="flex items-center justify-between text-xs text-slate-400">
                         <span className="font-semibold text-indigo-600 uppercase text-[10px] tracking-wider">

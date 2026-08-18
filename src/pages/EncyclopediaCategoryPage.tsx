@@ -81,10 +81,10 @@ export const EncyclopediaCategoryPage: React.FC<EncyclopediaCategoryPageProps> =
   }, [catName, localCategory]);
 
   // Find relevant tools from catalog for this category
-  const categoryWords = catName.toLowerCase().split(/\W+/).filter((w) => w.length > 3);
+  const categoryWords = catName.toLowerCase().split(/\W+/).filter((w: string) => w.length > 3);
   const relevantTools = TOOLS_CATALOG.filter((t) => {
     const text = [t.name, t.category, t.description].join(' ').toLowerCase();
-    return categoryWords.some((word) => text.includes(word));
+    return categoryWords.some((word: string) => text.includes(word));
   }).slice(0, 8);
 
   return (

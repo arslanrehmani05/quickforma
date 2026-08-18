@@ -85,6 +85,14 @@ export const Navbar: React.FC<NavbarProps> = ({
               Ledger
             </button>
             <button
+              onClick={() => handleNav('encyclopedia:index')}
+              className={`px-3 py-1.5 rounded-lg transition-colors font-semibold ${
+                activeView === 'encyclopedia:index' || activeView.startsWith('encyclopedia:') ? 'bg-indigo-600 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+              }`}
+            >
+              Encyclopedia
+            </button>
+            <button
               onClick={() => handleNav('privacy')}
               className={`px-3 py-1.5 rounded-lg transition-colors font-semibold ${
                 activeView === 'privacy' ? 'bg-indigo-600 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
@@ -143,6 +151,12 @@ export const Navbar: React.FC<NavbarProps> = ({
             className="w-full text-left px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100"
           >
             The QuickForma Ledger
+          </button>
+          <button
+            onClick={() => handleNav('encyclopedia:index')}
+            className="w-full text-left px-3 py-2 rounded-lg text-indigo-600 font-bold bg-indigo-50/60 hover:bg-indigo-50"
+          >
+            Encyclopedia Knowledge Base
           </button>
           <button
             onClick={() => handleNav('privacy')}

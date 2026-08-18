@@ -543,6 +543,22 @@
 **Remember This:** Start new CMS document types with minimal essential fields (`title`, `slug`) to allow iterative schema design.
 **Full explanation:** Created `src/sanity/schemas/encyclopedia.ts`, registered `encyclopediaSchema` in `src/sanity/schemas/index.ts`, and added `📚 Encyclopedia` to `sanity.config.ts` directly after `📰 Articles`. Verified 100% clean production build compilation via `npm run build`.
 
+## 2026-08-18 — QuickForma — Implemented Encyclopedia Suite + E-Categories Architecture & Composable A–Z Directory
+**Tags:** #SanityCMS #Encyclopedia #ECategories #TypeScript #React #Sitemap #Routing
+**Importance:** ★★★★★
+**Frequency:** Rare
+**Syntax Introduced:** `_type == "eCategory"`, `*[_type in ["article", "encyclopedia", "eCategory"]]`, composable Search + Category + A–Z filtering engine
+**Concept Introduced:** Parallel Taxonomy Isolation, Adaptive 10-Part Concept Architecture, Composable Knowledge Directory Filtering
+**Prerequisites:** Sanity Desk Structure Customization, React `useMemo` Filter Composition, HTML5 History API Routing
+**Decision:** Built the QuickForma Encyclopedia system as a completely separate, additive product without modifying existing tools, articles, categories, or publishing workflows.
+**Reason:** Allows QuickForma to offer concept definitions, formulas, worked scenarios, and operational frameworks alongside tools and deep-dive guides while keeping data structures 100% decoupled.
+**Alternative:** Merging Encyclopedia categories into existing article categories.
+**Tradeoff:** Maintains clean data isolation between Ledger guides and Encyclopedia concepts at the cost of managing two distinct Sanity schema types.
+**General principle:** Build parallel taxonomy systems as additive document types with strict type constraints (`_type`) rather than overloading existing schemas.
+**CS50/roadmap.sh link:** CS50 Web Development — Knowledge Base Architecture, Composable Directory Filtering, & Taxonomy Decoupling.
+**Remember This:** Keep knowledge base taxonomies strictly separated by schema `_type` to preserve pristine data boundaries and scalable GROQ query performance.
+**Full explanation:** Created `src/sanity/schemas/eCategory.ts` (`eCategory`), updated `src/sanity/schemas/encyclopedia.ts` (`encyclopedia`), registered `eCategories` structure tool in `sanity.config.ts`, created initial E-Categories catalog (`initialECategories.ts`), and implemented 3 frontend pages (`EncyclopediaHubPage.tsx`, `EncyclopediaCategoryPage.tsx`, `EncyclopediaEntryPage.tsx`). Implemented a 3-way composable filter engine (Search + Category + A-Z Alphabetical Directory), updated `App.tsx` routes, updated `Navbar.tsx`, and integrated dynamic sitemap generation in `scripts/generate-sitemap.js`. Executed `npm run build` and verified 100% clean production build compilation.
+
 
 
 

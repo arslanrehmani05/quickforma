@@ -140,6 +140,9 @@ import { CategoryPage } from './pages/CategoryPage';
 import { BlogHubPage } from './pages/BlogHubPage';
 import { BlogPostPage } from './pages/BlogPostPage';
 import { BusinessPage } from './pages/BusinessPage';
+import { EncyclopediaHubPage } from './pages/EncyclopediaHubPage';
+import { EncyclopediaCategoryPage } from './pages/EncyclopediaCategoryPage';
+import { EncyclopediaEntryPage } from './pages/EncyclopediaEntryPage';
 
 import { Search, X, ChevronRight, ArrowLeft } from 'lucide-react';
 
@@ -148,6 +151,16 @@ const LEGAL_PAGES = ['privacy', 'terms', 'about', 'contact'];
 const getRouteFromPathname = (pathname: string): string => {
   const cleanPath = pathname.replace(/\/$/, '').trim();
   if (!cleanPath || cleanPath === '/') return 'home';
+
+  if (cleanPath === '/encyclopedia') {
+    return 'encyclopedia:index';
+  }
+  if (cleanPath.startsWith('/encyclopedia/category/')) {
+    return `encyclopedia:category:${cleanPath.replace('/encyclopedia/category/', '')}`;
+  }
+  if (cleanPath.startsWith('/encyclopedia/')) {
+    return `encyclopedia:entry:${cleanPath.replace('/encyclopedia/', '')}`;
+  }
 
   if (cleanPath === '/ledger' || cleanPath === '/blog') {
     return 'blog:index';
@@ -185,6 +198,9 @@ const getPathnameFromView = (view: string): string => {
   if (view === 'students') return '/students';
   if (view === 'business') return '/business';
   if (LEGAL_PAGES.includes(view)) return `/${view}`;
+  if (view === 'encyclopedia:index' || view === 'encyclopedia') return '/encyclopedia';
+  if (view.startsWith('encyclopedia:category:')) return `/encyclopedia/category/${view.replace('encyclopedia:category:', '')}`;
+  if (view.startsWith('encyclopedia:entry:')) return `/encyclopedia/${view.replace('encyclopedia:entry:', '')}`;
   if (view === 'blog:index' || view === 'blog' || view === 'ledger') return '/ledger';
   if (view.startsWith('blog:')) return `/ledger/${view.replace('blog:', '')}`;
   if (view.startsWith('category:')) return `/category/${view.replace('category:', '')}`;
@@ -389,6 +405,29 @@ export function App() {
       case 'marks-to-gpa-converter': return <MarksToGpaConverter />;
 
       default: {
+        if (activeView === 'encyclopedia:index' || activeView === 'encyclopedia') {
+          return <EncyclopediaHubPage onSelectView={handleSelectView} />;
+        }
+        if (activeView.startsWith('encyclopedia:category:')) {
+          const catSlug = activeView.replace('encyclopedia:category:', '');
+          return (
+            <EncyclopediaCategoryPage
+              slug={catSlug}
+              onBack={() => handleSelectView('encyclopedia:index')}
+              onSelectView={handleSelectView}
+            />
+          );
+        }
+        if (activeView.startsWith('encyclopedia:entry:')) {
+          const entrySlug = activeView.replace('encyclopedia:entry:', '');
+          return (
+            <EncyclopediaEntryPage
+              slug={entrySlug}
+              onBack={() => handleSelectView('encyclopedia:index')}
+              onSelectView={handleSelectView}
+            />
+          );
+        }
         if (activeView === 'blog:index' || activeView === 'blog') {
           return <BlogHubPage onSelectView={handleSelectView} />;
         }

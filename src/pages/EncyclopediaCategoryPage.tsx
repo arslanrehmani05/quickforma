@@ -33,12 +33,13 @@ export const EncyclopediaCategoryPage: React.FC<EncyclopediaCategoryPageProps> =
     async function fetchCategoryData() {
       try {
         const query = `{
-          "entries": *[_type == "encyclopedia" && defined(slug.current) && (category->slug.current == $slug || category._ref == $slug) && !(_id in path("drafts.**"))]{
+          "entries": *[_type == "encyclopedia" && defined(slug.current) && ($slug in categories[]->slug.current || $slug in categories[]._ref || category->slug.current == $slug || category._ref == $slug) && !(_id in path("drafts.**"))]{
             _id,
             title,
             "slug": slug.current,
             shortDefinition,
             "categoryName": category->name,
+            "categories": categories[]->{ name, "slug": slug.current },
             synonyms,
             relatedTools
           } | order(title asc),

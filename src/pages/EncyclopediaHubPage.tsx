@@ -53,6 +53,10 @@ export const EncyclopediaHubPage: React.FC<EncyclopediaHubPageProps> = ({ onSele
             shortDefinition,
             "categoryName": category->name,
             "categorySlug": category->slug.current,
+            "categories": categories[]->{
+              name,
+              "slug": slug.current
+            },
             synonyms,
             relatedTools
           } | order(title asc),
@@ -79,14 +83,14 @@ export const EncyclopediaHubPage: React.FC<EncyclopediaHubPageProps> = ({ onSele
 
   // Filter logic: Search + Category + Letter working together simultaneously
   const filteredEntries = useMemo(() => {
-    return entries.filter((item) => {
+    return entries.filter((item: any) => {
       // 1. Search Query Filter
       if (searchQuery.trim()) {
         const q = searchQuery.toLowerCase().trim();
         const matchesTitle = item.title.toLowerCase().includes(q);
         const matchesDef = item.shortDefinition?.toLowerCase().includes(q);
-        const matchesCategory = item.categoryName?.toLowerCase().includes(q);
-        const matchesSynonyms = item.synonyms?.some((s) => s.toLowerCase().includes(q));
+        const matchesCategory = item.categoryName?.toLowerCase().includes(q) || item.categories?.some((c: any) => c.name?.toLowerCase().includes(q));
+        const matchesSynonyms = item.synonyms?.some((s: string) => s.toLowerCase().includes(q));
 
         if (!matchesTitle && !matchesDef && !matchesCategory && !matchesSynonyms) {
           return false;
@@ -95,7 +99,9 @@ export const EncyclopediaHubPage: React.FC<EncyclopediaHubPageProps> = ({ onSele
 
       // 2. Category Filter
       if (selectedCategory !== 'ALL') {
-        if (item.categorySlug !== selectedCategory && item.categoryName !== selectedCategory) {
+        const matchesArray = item.categories?.some((c: any) => c.slug === selectedCategory || c.name === selectedCategory);
+        const matchesSingle = item.categorySlug === selectedCategory || item.categoryName === selectedCategory;
+        if (!matchesArray && !matchesSingle) {
           return false;
         }
       }
@@ -315,13 +321,21 @@ export const EncyclopediaHubPage: React.FC<EncyclopediaHubPageProps> = ({ onSele
                     >
                       <div className="space-y-2">
                         <div className="flex items-center justify-between text-xs">
-                          {entry.categoryName && (
-                            <span className="font-bold text-indigo-600 uppercase text-[10px] tracking-wider bg-indigo-50 px-2 py-0.5 rounded-md border border-indigo-100">
-                              {entry.categoryName}
-                            </span>
-                          )}
+                          <div className="flex flex-wrap gap-1">
+                            {entry.categories && entry.categories.length > 0 ? (
+                              entry.categories.map((c: any, idx: number) => (
+                                <span key={idx} className="font-bold text-indigo-600 uppercase text-[10px] tracking-wider bg-indigo-50 px-2 py-0.5 rounded-md border border-indigo-100">
+                                  {c.name}
+                                </span>
+                              ))
+                            ) : entry.categoryName ? (
+                              <span className="font-bold text-indigo-600 uppercase text-[10px] tracking-wider bg-indigo-50 px-2 py-0.5 rounded-md border border-indigo-100">
+                                {entry.categoryName}
+                              </span>
+                            ) : null}
+                          </div>
                           {entry.relatedTools && entry.relatedTools.length > 0 && (
-                            <span className="text-[10px] font-bold text-slate-400 flex items-center gap-1">
+                            <span className="text-[10px] font-bold text-slate-400 flex items-center gap-1 shrink-0 ml-2">
                               <Sparkles className="w-3 h-3 text-amber-500" /> Tool Linked
                             </span>
                           )}

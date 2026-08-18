@@ -46,6 +46,10 @@ export const EncyclopediaEntryPage: React.FC<EncyclopediaEntryPageProps> = ({
             name,
             "slug": slug.current
           },
+          "categories": categories[]->{
+            name,
+            "slug": slug.current
+          },
           synonyms,
           simpleExplanation,
           howItWorks,
@@ -183,11 +187,26 @@ export const EncyclopediaEntryPage: React.FC<EncyclopediaEntryPageProps> = ({
       {/* Header & Direct Definition Banner */}
       <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-xs space-y-6">
         <div className="space-y-2">
-          {entry.category && (
-            <span className="inline-block px-3 py-1 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs font-bold uppercase tracking-wider">
+          {entry.categories && entry.categories.length > 0 ? (
+            <div className="flex flex-wrap gap-1.5">
+              {entry.categories.map((cat: any, idx: number) => (
+                <button
+                  key={idx}
+                  onClick={() => onSelectView(`encyclopedia:category:${cat.slug}`)}
+                  className="px-3 py-1 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs font-bold uppercase tracking-wider hover:bg-indigo-100 transition-colors"
+                >
+                  {cat.name}
+                </button>
+              ))}
+            </div>
+          ) : entry.category ? (
+            <button
+              onClick={() => onSelectView(`encyclopedia:category:${entry.category.slug}`)}
+              className="inline-block px-3 py-1 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs font-bold uppercase tracking-wider hover:bg-indigo-100 transition-colors"
+            >
               {entry.category.name}
-            </span>
-          )}
+            </button>
+          ) : null}
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
             {entry.title}
           </h1>

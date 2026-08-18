@@ -41,28 +41,45 @@ export const EncyclopediaHubPage: React.FC<EncyclopediaHubPageProps> = ({ onSele
   const [selectedCategory, setSelectedCategory] = useState<string>('ALL');
   const [selectedLetter, setSelectedLetter] = useState<string>('ALL');
 
+  const [categories, setCategories] = useState<any[]>(INITIAL_E_CATEGORIES);
+
   useEffect(() => {
-    async function fetchEntries() {
+    async function fetchEntriesAndCategories() {
       try {
-        const query = `*[_type == "encyclopedia" && defined(slug.current) && !(_id in path("drafts.**"))]{
-          _id,
-          title,
-          "slug": slug.current,
-          shortDefinition,
-          "categoryName": category->name,
-          "categorySlug": category->slug.current,
-          synonyms,
-          relatedTools
-        } | order(title asc)`;
+        const query = `{
+          "entries": *[_type == "encyclopedia" && defined(slug.current) && !(_id in path("drafts.**"))]{
+            _id,
+            title,
+            "slug": slug.current,
+            shortDefinition,
+            "categoryName": category->name,
+            "categorySlug": category->slug.current,
+            synonyms,
+            relatedTools
+          } | order(title asc),
+          "categories": *[_type == "eCategory" && defined(slug.current) && !(_id in path("drafts.**"))]{
+            "_id": _id,
+            "id": slug.current,
+            "name": name,
+            "slug": slug.current,
+            description,
+            displayOrder
+          } | order(displayOrder asc, name asc)
+        }`;
         const fetched = await client.fetch(query);
-        setEntries(fetched || []);
+        setEntries(fetched?.entries || []);
+        if (fetched?.categories && fetched.categories.length > 0) {
+          setCategories(fetched.categories);
+        } else {
+          setCategories(INITIAL_E_CATEGORIES);
+        }
       } catch (err) {
-        console.warn('Could not fetch encyclopedia entries:', err);
+        console.warn('Could not fetch encyclopedia entries/categories:', err);
       } finally {
         setLoading(false);
       }
     }
-    fetchEntries();
+    fetchEntriesAndCategories();
   }, []);
 
   // Filter logic: Search + Category + Letter working together simultaneously
@@ -185,7 +202,7 @@ export const EncyclopediaHubPage: React.FC<EncyclopediaHubPageProps> = ({ onSele
               <span className="text-slate-400 font-medium">Active Filters:</span>
               {selectedCategory !== 'ALL' && (
                 <span className="bg-indigo-50 text-indigo-700 px-2.5 py-1 rounded-lg border border-indigo-100 font-semibold flex items-center gap-1">
-                  Category: {INITIAL_E_CATEGORIES.find((c) => c.slug === selectedCategory)?.name || selectedCategory}
+                  Category: {categories.find((c) => c.slug === selectedCategory)?.name || selectedCategory}
                   <button onClick={() => setSelectedCategory('ALL')} className="hover:text-indigo-900 ml-1">×</button>
                 </span>
               )}
@@ -229,7 +246,7 @@ export const EncyclopediaHubPage: React.FC<EncyclopediaHubPageProps> = ({ onSele
             >
               All Categories
             </button>
-            {INITIAL_E_CATEGORIES.map((cat) => (
+            {categories.map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.slug)}
@@ -367,7 +384,7 @@ export const EncyclopediaHubPage: React.FC<EncyclopediaHubPageProps> = ({ onSele
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {INITIAL_E_CATEGORIES.map((cat) => (
+          {categories.map((cat) => (
             <button
               key={cat.id}
               onClick={() => onSelectView(`encyclopedia:category:${cat.slug}`)}

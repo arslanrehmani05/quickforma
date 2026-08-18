@@ -26,35 +26,46 @@ export const EncyclopediaCategoryPage: React.FC<EncyclopediaCategoryPageProps> =
   onBack,
   onSelectView,
 }) => {
-  const [entries, setEntries] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [categoryDetail, setCategoryDetail] = useState<any>(null);
 
   const localCategory = INITIAL_E_CATEGORIES.find((c) => c.slug === slug);
 
   useEffect(() => {
-    async function fetchCategoryEntries() {
+    async function fetchCategoryData() {
       try {
-        const query = `*[_type == "encyclopedia" && defined(slug.current) && (category->slug.current == $slug || category._ref == $slug) && !(_id in path("drafts.**"))]{
-          _id,
-          title,
-          "slug": slug.current,
-          shortDefinition,
-          "categoryName": category->name,
-          synonyms,
-          relatedTools
-        } | order(title asc)`;
+        const query = `{
+          "entries": *[_type == "encyclopedia" && defined(slug.current) && (category->slug.current == $slug || category._ref == $slug) && !(_id in path("drafts.**"))]{
+            _id,
+            title,
+            "slug": slug.current,
+            shortDefinition,
+            "categoryName": category->name,
+            synonyms,
+            relatedTools
+          } | order(title asc),
+          "catDoc": *[_type == "eCategory" && slug.current == $slug && !(_id in path("drafts.**"))][0]{
+            name,
+            "slug": slug.current,
+            description,
+            seoDescription
+          }
+        }`;
         const fetched = await client.fetch(query, { slug });
-        setEntries(fetched || []);
+        setEntries(fetched?.entries || []);
+        if (fetched?.catDoc) {
+          setCategoryDetail(fetched.catDoc);
+        }
       } catch (err) {
-        console.warn('Could not fetch category entries:', err);
+        console.warn('Could not fetch category data:', err);
       } finally {
         setLoading(false);
       }
     }
-    fetchCategoryEntries();
+    fetchCategoryData();
   }, [slug]);
 
-  const catName = localCategory?.name || slug.replace(/-/g, ' ');
+  const activeCategory = categoryDetail || localCategory;
+  const catName = activeCategory?.name || slug.replace(/-/g, ' ');
 
   useEffect(() => {
     document.title = `${catName} Concepts | QuickForma Encyclopedia`;
@@ -93,9 +104,9 @@ export const EncyclopediaCategoryPage: React.FC<EncyclopediaCategoryPageProps> =
         <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
           {catName}
         </h1>
-        {localCategory?.description && (
+        {activeCategory?.description && (
           <p className="text-slate-600 text-sm sm:text-base max-w-3xl leading-relaxed">
-            {localCategory.description}
+            {activeCategory.description}
           </p>
         )}
       </div>

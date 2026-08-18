@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { createClient } from '@sanity/client';
-import { INITIAL_E_CATEGORIES } from '../data/initialECategories';
 import { TOOLS_CATALOG } from '../data/toolsCatalog';
 import { BookOpen, ArrowLeft, ChevronRight, Layers, Sparkles } from 'lucide-react';
 
@@ -30,8 +29,6 @@ export const EncyclopediaCategoryPage: React.FC<EncyclopediaCategoryPageProps> =
   const [loading, setLoading] = useState(true);
   const [categoryDetail, setCategoryDetail] = useState<any>(null);
 
-  const localCategory = INITIAL_E_CATEGORIES.find((c) => c.slug === slug);
-
   useEffect(() => {
     async function fetchCategoryData() {
       try {
@@ -54,9 +51,7 @@ export const EncyclopediaCategoryPage: React.FC<EncyclopediaCategoryPageProps> =
         }`;
         const fetched = await client.fetch(query, { slug });
         setEntries(fetched?.entries || []);
-        if (fetched?.catDoc) {
-          setCategoryDetail(fetched.catDoc);
-        }
+        setCategoryDetail(fetched?.catDoc || null);
       } catch (err) {
         console.warn('Could not fetch category data:', err);
       } finally {
@@ -66,8 +61,7 @@ export const EncyclopediaCategoryPage: React.FC<EncyclopediaCategoryPageProps> =
     fetchCategoryData();
   }, [slug]);
 
-  const activeCategory = categoryDetail || localCategory;
-  const catName = activeCategory?.name || slug.replace(/-/g, ' ');
+  const catName = categoryDetail?.name || slug.replace(/-/g, ' ');
 
   useEffect(() => {
     document.title = `${catName} Concepts | QuickForma Encyclopedia`;
@@ -75,10 +69,10 @@ export const EncyclopediaCategoryPage: React.FC<EncyclopediaCategoryPageProps> =
     if (metaDesc) {
       metaDesc.setAttribute(
         'content',
-        localCategory?.seoDescription || localCategory?.description || `Explore ${catName} concepts, formulas, worked examples, and QuickForma tools.`
+        categoryDetail?.seoDescription || categoryDetail?.description || `Explore ${catName} concepts, formulas, worked examples, and QuickForma tools.`
       );
     }
-  }, [catName, localCategory]);
+  }, [catName, categoryDetail]);
 
   // Find relevant tools from catalog for this category
   const categoryWords = catName.toLowerCase().split(/\W+/).filter((w: string) => w.length > 3);
@@ -106,9 +100,9 @@ export const EncyclopediaCategoryPage: React.FC<EncyclopediaCategoryPageProps> =
         <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
           {catName}
         </h1>
-        {activeCategory?.description && (
+        {categoryDetail?.description && (
           <p className="text-slate-600 text-sm sm:text-base max-w-3xl leading-relaxed">
-            {activeCategory.description}
+            {categoryDetail.description}
           </p>
         )}
       </div>

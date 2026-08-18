@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { createClient } from '@sanity/client';
-import { INITIAL_E_CATEGORIES } from '../data/initialECategories';
 import { TOOLS_CATALOG } from '../data/toolsCatalog';
 import { Search, BookOpen, ChevronRight, Layers, Filter, Sparkles } from 'lucide-react';
 
@@ -41,7 +40,7 @@ export const EncyclopediaHubPage: React.FC<EncyclopediaHubPageProps> = ({ onSele
   const [selectedCategory, setSelectedCategory] = useState<string>('ALL');
   const [selectedLetter, setSelectedLetter] = useState<string>('ALL');
 
-  const [categories, setCategories] = useState<any[]>(INITIAL_E_CATEGORIES);
+  const [categories, setCategories] = useState<any[]>([]);
 
   useEffect(() => {
     async function fetchEntriesAndCategories() {
@@ -68,11 +67,7 @@ export const EncyclopediaHubPage: React.FC<EncyclopediaHubPageProps> = ({ onSele
         }`;
         const fetched = await client.fetch(query);
         setEntries(fetched?.entries || []);
-        if (fetched?.categories && fetched.categories.length > 0) {
-          setCategories(fetched.categories);
-        } else {
-          setCategories(INITIAL_E_CATEGORIES);
-        }
+        setCategories(fetched?.categories || []);
       } catch (err) {
         console.warn('Could not fetch encyclopedia entries/categories:', err);
       } finally {

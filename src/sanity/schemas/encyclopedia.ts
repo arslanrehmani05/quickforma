@@ -1,4 +1,5 @@
 import { defineField, defineType } from 'sanity';
+import { TOOLS_CATALOG } from '../../data/toolsCatalog';
 
 export const encyclopediaSchema = defineType({
   name: 'encyclopedia',
@@ -155,8 +156,18 @@ export const encyclopediaSchema = defineType({
       title: 'QuickForma Tools',
       type: 'array',
       fieldset: 'relationships',
-      of: [{ type: 'string' }],
-      description: 'Select canonical tool IDs from QuickForma Catalog (e.g. profit-margin-calculator, break-even-calculator).',
+      of: [
+        {
+          type: 'string',
+          options: {
+            list: TOOLS_CATALOG.map((tool) => ({
+              title: `${tool.name} [${tool.category}]`,
+              value: tool.id,
+            })),
+          },
+        },
+      ],
+      description: 'Select one or more QuickForma tools from the dropdown.',
     }),
     defineField({
       name: 'relatedConcepts',

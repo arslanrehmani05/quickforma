@@ -35,6 +35,11 @@ export default defineConfig({
       structure: (S) => S.documentTypeList('article').title('Articles'),
     }),
     structureTool({
+      name: 'encyclopedia',
+      title: '📚 Encyclopedia',
+      structure: (S) => S.documentTypeList('encyclopedia').title('Encyclopedia'),
+    }),
+    structureTool({
       name: 'categories',
       title: '📁 Categories',
       structure: (S) => S.documentTypeList('category').title('Categories'),

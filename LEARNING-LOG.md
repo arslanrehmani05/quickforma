@@ -527,6 +527,22 @@
 **Remember This:** Always conditionally render CMS-supplied media properties so that visual assets uploaded by editors display dynamically across all UI components.
 **Full explanation:** Diagnosed missing visual thumbnail on sidebar guide cards in `BlogHubPage.tsx`. Identified that while the main spotlight card rendered `heroArticle.featuredImage`, secondary sidebar cards lacked a conditional image element. Added `art.featuredImage && (...)` inside `secondaryLatest.map()` rendering a 600x340 optimized image via `urlFor()`. Executed `npm run build` and verified 100% clean production build compilation.
 
+## 2026-08-18 — QuickForma — Added Minimal Encyclopedia Tab & Document Schema in Sanity Studio
+**Tags:** #SanityCMS #SanityStudio #DeskStructure #Encyclopedia #DocumentSchema #React
+**Importance:** ★★★★☆
+**Frequency:** Rare
+**Syntax Introduced:** `S.documentTypeList('encyclopedia').title('Encyclopedia')`, initial `defineType` document schema
+**Concept Introduced:** Modular Step-by-Step CMS Taxonomy Expansion, Clean Top-Level Studio Navigation
+**Prerequisites:** Sanity Desk Structure Customization, Sanity Schema Registration
+**Decision:** Created `src/sanity/schemas/encyclopedia.ts` with minimal `title` and `slug` fields, registered it in `index.ts`, and added `📚 Encyclopedia` right next to `📰 Articles` in `sanity.config.ts`.
+**Reason:** Prepares the foundation for QuickForma's upcoming business & technical Encyclopedia pillar while keeping schema fields blank so we can build it step-by-step.
+**Alternative:** Defining complex pre-built schema fields before agreeing on editorial structure.
+**Tradeoff:** Starts as a clean blank template; allows iterative step-by-step feature design.
+**General principle:** Add new CMS content types with minimal initial schemas so document structures can be refined incrementally.
+**CS50/roadmap.sh link:** CS50 Web Development — Headless Content Taxonomy Modeling & Incremental System Growth.
+**Remember This:** Start new CMS document types with minimal essential fields (`title`, `slug`) to allow iterative schema design.
+**Full explanation:** Created `src/sanity/schemas/encyclopedia.ts`, registered `encyclopediaSchema` in `src/sanity/schemas/index.ts`, and added `📚 Encyclopedia` to `sanity.config.ts` directly after `📰 Articles`. Verified 100% clean production build compilation via `npm run build`.
+
 
 
 

@@ -26,6 +26,8 @@ export const EncyclopediaCategoryPage: React.FC<EncyclopediaCategoryPageProps> =
   onBack,
   onSelectView,
 }) => {
+  const [entries, setEntries] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
   const [categoryDetail, setCategoryDetail] = useState<any>(null);
 
   const localCategory = INITIAL_E_CATEGORIES.find((c) => c.slug === slug);

@@ -21,6 +21,7 @@ export interface EncyclopediaEntryItem {
   shortDefinition: string;
   categoryName?: string;
   categorySlug?: string;
+  categories?: Array<{ name: string; slug: string }>;
   synonyms?: string[];
   relatedTools?: string[];
 }

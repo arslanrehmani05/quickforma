@@ -143,6 +143,7 @@ import { BusinessPage } from './pages/BusinessPage';
 import { EncyclopediaHubPage } from './pages/EncyclopediaHubPage';
 import { EncyclopediaCategoryPage } from './pages/EncyclopediaCategoryPage';
 import { EncyclopediaEntryPage } from './pages/EncyclopediaEntryPage';
+import { MindPage } from './pages/MindPage';
 
 import { Search, X, ChevronRight, ArrowLeft } from 'lucide-react';
 
@@ -164,6 +165,9 @@ const getRouteFromPathname = (pathname: string): string => {
 
   if (cleanPath === '/ledger' || cleanPath === '/blog') {
     return 'blog:index';
+  }
+  if (cleanPath === '/mind') {
+    return 'mind';
   }
   if (cleanPath === '/students') {
     return 'students';
@@ -195,6 +199,7 @@ const getRouteFromPathname = (pathname: string): string => {
 
 const getPathnameFromView = (view: string): string => {
   if (!view || view === 'home') return '/';
+  if (view === 'mind') return '/mind';
   if (view === 'students') return '/students';
   if (view === 'business') return '/business';
   if (LEGAL_PAGES.includes(view)) return `/${view}`;
@@ -247,6 +252,12 @@ export function App() {
       const metaDesc = document.querySelector('meta[name="description"]');
       if (metaDesc) {
         metaDesc.setAttribute('content', 'Free tools for students to calculate grades, solve math and science problems, analyze statistics, plan study time, and handle everyday academic work.');
+      }
+    } else if (activeView === 'mind') {
+      document.title = 'QuickForma Mind — Mental Math Challenge';
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) {
+        metaDesc.setAttribute('content', 'Train your mental math speed and accuracy with QuickForma Mind 60-second arithmetic sprints.');
       }
     } else if (activeView.startsWith('blog:')) {
       // Document title and meta handled inside BlogPostPage / ArticlePage components
@@ -405,6 +416,9 @@ export function App() {
       case 'marks-to-gpa-converter': return <MarksToGpaConverter />;
 
       default: {
+        if (activeView === 'mind') {
+          return <MindPage onSelectView={handleSelectView} />;
+        }
         if (activeView === 'encyclopedia:index' || activeView === 'encyclopedia') {
           return <EncyclopediaHubPage onSelectView={handleSelectView} />;
         }

@@ -499,7 +499,7 @@ export function App() {
 
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           {/* Breadcrumb Navigation for Tool Pages */}
-          {activeView !== 'home' && (
+          {activeTool && (
             <div className="flex items-center gap-2 text-xs text-slate-500 mb-6 no-print">
               <button
                 onClick={() => handleSelectView('home')}
@@ -509,7 +509,7 @@ export function App() {
               </button>
               <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
               <span className="text-indigo-600 font-bold">
-                {activeView.startsWith('blog:') ? 'Ledger' : (activeTool?.name || activeView)}
+                {activeTool.name}
               </span>
             </div>
           )}

@@ -559,6 +559,22 @@
 **Remember This:** Keep knowledge base taxonomies strictly separated by schema `_type` to preserve pristine data boundaries and scalable GROQ query performance.
 **Full explanation:** Created `src/sanity/schemas/eCategory.ts` (`eCategory`), updated `src/sanity/schemas/encyclopedia.ts` (`encyclopedia`), registered `eCategories` structure tool in `sanity.config.ts`, created initial E-Categories catalog (`initialECategories.ts`), and implemented 3 frontend pages (`EncyclopediaHubPage.tsx`, `EncyclopediaCategoryPage.tsx`, `EncyclopediaEntryPage.tsx`). Implemented a 3-way composable filter engine (Search + Category + A-Z Alphabetical Directory), updated `App.tsx` routes, updated `Navbar.tsx`, and integrated dynamic sitemap generation in `scripts/generate-sitemap.js`. Executed `npm run build` and verified 100% clean production build compilation.
 
+## 2026-08-19 — QuickForma — Restricted Global Tool Breadcrumb Header to Active Calculator Routes
+**Tags:** #React #Routing #Breadcrumbs #Layout #UI
+**Importance:** ★★★☆☆
+**Frequency:** Weekly
+**Syntax Introduced:** `{activeTool && (...)}` scoping pattern
+**Concept Introduced:** Layout Condition Scoping & Structural Breadcrumb Scoping
+**Prerequisites:** React Conditional Rendering, Route Matching Rules
+**Decision:** Scoped the global `App.tsx` header breadcrumb strictly to `activeTool` routes.
+**Reason:** Prevents non-tool views like Encyclopedia concepts and Ledger guides from rendering redundant calculator breadcrumb bars and printing raw technical route keys.
+**Alternative:** Passing custom breadcrumb config objects per route.
+**Tradeoff:** Simple state-based check keeps `App.tsx` compact while eliminating cross-route UI bugs.
+**General principle:** Scope global layout headers strictly to the specific view type that requires them to prevent leaky UI elements on sub-routes.
+**CS50/roadmap.sh link:** CS50 Web Development — React Conditional Rendering & Global Layout Boundaries.
+**Remember This:** Always scope global layout headers to specific component state types so sub-views render clean, isolated page structures.
+**Full explanation:** Updated `src/App.tsx` line 502 to scope the global breadcrumb navigation header strictly to `activeTool` routes (`{activeTool && (...)}`). Verified 100% clean production build compilation via `npm run build`.
+
 
 
 

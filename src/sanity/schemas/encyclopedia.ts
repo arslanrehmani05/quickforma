@@ -114,7 +114,7 @@ export const encyclopediaSchema = defineType({
       type: 'array',
       fieldset: 'content',
       of: [{ type: 'block' }],
-      description: 'Benchmarks, good vs bad thresholds, and executive decision guidance.',
+      description: 'Common mistakes, misconceptions, limitations, and factors that can make the calculated result inappropriate.',
     }),
     defineField({
       name: 'realWorldApplications',

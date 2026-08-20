@@ -591,6 +591,22 @@
 **Remember This:** Build the smallest zero-backend version of an interactive experiment to test engagement before adding database persistence.
 **Full explanation:** Created `src/pages/MindPage.tsx` (`Mental Math Sprint` game with 60-second countdown timer, dynamic +, -, ×, ÷ question generator with clean integer division, early/middle/later progressive difficulty, keyboard-first Enter handling, live metrics, and summary results screen). Updated `src/components/layout/Navbar.tsx` (added `Mind` button to desktop and mobile nav), `src/App.tsx` (mapped `/mind` route, view rendering, document title), and `scripts/generate-sitemap.js` (added `/mind` with priority `0.7` and changefreq `monthly`). Verified 100% clean production build compilation via `npm run build`.
 
+## 2026-08-20 — QuickForma — Expanded QuickForma Mind to 6 Games
+**Tags:** #QuickFormaMind #React #GameSuite #ClientSide #TypeScript #HighResolutionTiming
+**Importance:** ★★★★★
+**Frequency:** Rare
+**Syntax Introduced:** `performance.now()`, modular sub-component hub architecture, target-stimulus stream handlers
+**Concept Introduced:** Monotonic High-Resolution Timing, Multi-Game Ephemeral Hub Orchestration, Signal Detection Theory (Hits/Misses/False Alarms)
+**Prerequisites:** React `useState`/`useRef`/`useEffect`, Event Listeners, Performance API
+**Decision:** Expanded QuickForma Mind into a 6-game suite (`Mental Math Sprint`, `Number Sense`, `Pattern Challenge`, `Logic Challenge`, `Probability Challenge`, `Focus Challenge`) using modular sub-components in `src/components/mind/` orchestrated by `MindPage.tsx`.
+**Reason:** Gives users a diverse cognitive skill collection while preserving 100% ephemeral state (0 database, 0 localStorage, 0 APIs).
+**Alternative:** Storing scores in localStorage or building a backend leaderboard database.
+**Tradeoff:** Refreshing the page wipes session state, keeping deployment costs zero and architecture clean.
+**General principle:** Use monotonic timing (`performance.now()`) for measuring reaction speed independent of variable rendering loop intervals.
+**CS50/roadmap.sh link:** CS50 Web Development — Client-Side Game Loop Architecture & Web Performance API.
+**Remember This:** Always measure human reaction times using monotonic high-resolution timestamps (`performance.now()`) rather than frame or timer intervals.
+**Full explanation:** Preserved existing `Mental Math Sprint` verbatim in `MentalMathSprint.tsx`. Built 5 new games in `src/components/mind/`: `NumberSenseGame.tsx` (evaluation of fraction sizes, percentage estimates, closest approximations, ratios), `PatternChallengeGame.tsx` (arithmetic, geometric, alternating, and increasing step patterns), `LogicChallengeGame.tsx` (ordering, spatial, conditional deduction, syllogisms), `ProbabilityChallengeGame.tsx` (coin flips, dice, marble bags, card odds), and `FocusChallengeGame.tsx` (rapid stimulus stream with `performance.now()` monotonic timing for hit/miss/false alarm and ms reaction speed tracking). Transformed `src/pages/MindPage.tsx` into the 6-game selection hub. Verified 100% clean production build compilation via `npm run build`.
+
 
 
 

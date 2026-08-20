@@ -109,26 +109,34 @@ function createCandidateQuestion(difficulty: MindDifficulty): MathSprintQuestion
     }
 
     case 'expert': {
-      // Multi-operation arithmetic + deliberate mental-math shortcut families (N * 11, N * 25, N^2)
-      const families = ['shortcut_11', 'shortcut_25', 'square_5', 'large_mult_add'];
+      // 100% Mathematical Fluency & Mental Calculation Shortcut Families
+      const families = ['shortcut_11', 'shortcut_25', 'square_5', 'diff_squares', 'multiply_99', 'pct_shortcut'];
       const fam = families[Math.floor(Math.random() * families.length)];
 
       if (fam === 'shortcut_11') {
-        const n = Math.floor(Math.random() * 70) + 12; // e.g. 34 * 11
+        const n = Math.floor(Math.random() * 75) + 14; // e.g. 34 * 11 = 374
         return { text: `${n} × 11`, answer: n * 11, isShortcut: true };
       } else if (fam === 'shortcut_25') {
-        const factor = Math.floor(Math.random() * 12) + 3;
+        const factor = Math.floor(Math.random() * 14) + 3;
         const n = factor * 4; // e.g. 16 * 25 = 400
         return { text: `${n} × 25`, answer: n * 25, isShortcut: true };
       } else if (fam === 'square_5') {
-        const bases = [15, 25, 35, 45, 55];
+        const bases = [15, 25, 35, 45, 55, 65, 75, 85, 95];
         const base = bases[Math.floor(Math.random() * bases.length)];
         return { text: `${base}²`, answer: base * base, isShortcut: true };
+      } else if (fam === 'diff_squares') {
+        const mid = [15, 20, 25, 30, 40, 50][Math.floor(Math.random() * 6)];
+        const n1 = mid - 1;
+        const n2 = mid + 1;
+        return { text: `${n1} × ${n2}`, answer: mid * mid - 1, isShortcut: true };
+      } else if (fam === 'multiply_99') {
+        const n = Math.floor(Math.random() * 40) + 12; // e.g. 24 * 99 = 2400 - 24 = 2376
+        return { text: `${n} × 99`, answer: n * 99, isShortcut: true };
       } else {
-        const a = Math.floor(Math.random() * 25) + 12;
-        const b = Math.floor(Math.random() * 15) + 4;
-        const c = Math.floor(Math.random() * 100) + 20;
-        return { text: `${a} × ${b} + ${c}`, answer: a * b + c };
+        const base = [40, 60, 80, 120, 160, 200, 240][Math.floor(Math.random() * 7)];
+        const pct = [15, 25, 75][Math.floor(Math.random() * 3)];
+        const ans = (pct / 100) * base;
+        return { text: `${pct}% of ${base}`, answer: ans, isShortcut: true };
       }
     }
   }

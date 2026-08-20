@@ -703,6 +703,22 @@
 **Remember This:** Test probabilistic intuition through EV risk comparisons and base-rate de-biasing rather than single-operation calculator arithmetic.
 **Full explanation:** Updated `src/types/mind.ts` (`ProbabilityQuestion` interface) and `src/utils/mindGenerators.ts` (`generateProbabilityQuestion` procedural engine). Built mathematical model pipeline (Family $\to$ Parameters $\to$ Exact Math Model $\to$ Derive Answer $\to$ Distractors $\to$ Validate $\to$ Render). Implemented EV risk comparison in Hard mode (Game A EV vs Game B EV) and exact Bayes base-rate evaluation in Expert mode ($P(\text{Disease} \mid \text{Pos}) \approx 9\% \implies \text{closer to 10\%}$). Updated `src/components/mind/ProbabilityChallengeGame.tsx` with difficulty selector buttons, correctness-dominant scoring, and live header badge. Preserved Mental Math, Number Sense, Pattern, and Logic Challenges 100% frozen. Verified 100% clean production build compilation via `npm run build`.
 
+## 2026-08-20 — QuickForma — Implemented Phase 2 Step 6 Focus Challenge Upgrade (Final Game)
+**Tags:** #QuickFormaMind #Step6 #FocusChallenge #StroopInterference #ResponseLatency #React #TypeScript
+**Importance:** ★★★★★
+**Frequency:** Weekly
+**Syntax Introduced:** `generateFocusQuestion`, 3-way Stroop rule switching engine, stimulus-activation `performance.now()` timestamping
+**Concept Introduced:** High-Precision Monotonic Response Latency, Classical vs Reverse Stroop Interference, Dynamic 3-Way Rule Switching (Word vs Ink vs Shape)
+**Prerequisites:** React `useState`/`useRef`, High-Precision Monotonic Timers, Cognitive Interference Task Design
+**Decision:** Upgraded Focus Challenge into a high-precision Stroop attention and reaction engine across 4 difficulty tiers (`Easy`, `Medium`, `Hard`, `Expert`), with 3-way rule switching (WORD vs INK vs SHAPE), `FocusQuestion` shape property, and response latency timestamping captured at exact stimulus activation.
+**Reason:** Ensures difficulty stems from cognitive attention control and rule switching under conflicting visual signals rather than merely reducing timer intervals.
+**Alternative:** Making difficulty dependent solely on faster stimulus timers.
+**Tradeoff:** Required adding container shape modeling to support 3-way rule switching.
+**General principle:** Attention games must test cognitive control and rule switching under conflicting signals—difficulty stems from rule complexity, not raw timer speed.
+**CS50/roadmap.sh link:** CS50 Web Development — Sub-Millisecond Response Latency & Cognitive Interference Systems.
+**Remember This:** Measure response latency at the exact moment a stimulus activates, and differentiate Stroop attention difficulty through multi-signal rule switching rather than timer adjustments alone.
+**Full explanation:** Updated `src/types/mind.ts` (`FocusQuestion` interface with `shape?: 'circle' | 'square' | 'triangle'`) and `src/utils/mindGenerators.ts` (`generateFocusQuestion` procedural engine). Implemented cognitive attention tiering (Easy: Target identification + response speed; Medium: Classical Stroop "Tap INK COLOR"; Hard: Reverse Stroop alternating "WORD" vs "INK"; Expert: Dynamic 3-way rule switching WORD vs INK vs SHAPE). Captured `performance.now()` latency timestamping at exact stimulus activation. Updated `src/components/mind/FocusChallengeGame.tsx` with difficulty selector buttons, correctness-dominant scoring, and live header badge. Preserved Games 1–5 100% frozen. Verified 100% clean production build compilation via `npm run build`.
+
 
 
 

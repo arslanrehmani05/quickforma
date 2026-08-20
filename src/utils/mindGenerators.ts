@@ -1024,3 +1024,183 @@ function createCandidateProbabilityQuestion(difficulty: MindDifficulty): Probabi
     }
   }
 }
+
+import { FocusQuestion } from '../types/mind';
+
+const COLOR_PALETTE = [
+  { name: 'RED', hex: '#EF4444' },
+  { name: 'BLUE', hex: '#3B82F6' },
+  { name: 'GREEN', hex: '#10B981' },
+  { name: 'YELLOW', hex: '#F59E0B' },
+  { name: 'PURPLE', hex: '#8B5CF6' },
+];
+
+const SHAPES: ('circle' | 'square' | 'triangle')[] = ['circle', 'square', 'triangle'];
+
+/**
+ * Procedural Question Generator for Focus Challenge
+ * Attention control, reaction speed, Stroop interference, and dynamic 3-way rule switching.
+ */
+export function generateFocusQuestion(
+  difficulty: MindDifficulty,
+  _qIndex: number
+): FocusQuestion {
+  let attempt = 0;
+  while (attempt < 50) {
+    attempt++;
+    const q = createCandidateFocusQuestion(difficulty);
+    if (isValidFocusQuestion(q)) {
+      return q;
+    }
+  }
+
+  // Fallback safe default
+  return {
+    instructionText: 'TAP THE GREEN BUTTON',
+    wordText: 'GREEN',
+    colorHex: '#10B981',
+    options: [
+      { text: 'RED', hex: '#EF4444' },
+      { text: 'BLUE', hex: '#3B82F6' },
+      { text: 'GREEN', hex: '#10B981' },
+      { text: 'YELLOW', hex: '#F59E0B' },
+    ],
+    correctIndex: 2,
+    family: 'target_id_easy',
+  };
+}
+
+function isValidFocusQuestion(q: FocusQuestion): boolean {
+  if (!q.instructionText || !q.wordText || !q.options || q.options.length !== 4) return false;
+  if (q.correctIndex < 0 || q.correctIndex >= 4) return false;
+  return true;
+}
+
+function createCandidateFocusQuestion(difficulty: MindDifficulty): FocusQuestion {
+  switch (difficulty) {
+    case 'easy': {
+      // Easy: Target Identification + Reaction (No conflict, matching text & color)
+      const targetColor = COLOR_PALETTE[Math.floor(Math.random() * COLOR_PALETTE.length)];
+      const instructionText = `TAP THE ${targetColor.name} BUTTON`;
+      const wordText = targetColor.name;
+      const colorHex = targetColor.hex;
+
+      const otherColors = COLOR_PALETTE.filter((c) => c.name !== targetColor.name).slice(0, 3);
+      const options = [
+        { text: targetColor.name, hex: targetColor.hex },
+        ...otherColors.map((c) => ({ text: c.name, hex: c.hex })),
+      ].sort(() => Math.random() - 0.5);
+
+      const correctIndex = options.findIndex((o) => o.text === targetColor.name);
+
+      return {
+        instructionText,
+        wordText,
+        colorHex,
+        options,
+        correctIndex,
+        family: 'target_id_easy',
+      };
+    }
+
+    case 'medium': {
+      // Medium: Classical Stroop Test (Instruction: TAP INK COLOR)
+      const wordObj = COLOR_PALETTE[Math.floor(Math.random() * COLOR_PALETTE.length)];
+      const inkObj = COLOR_PALETTE.filter((c) => c.name !== wordObj.name)[Math.floor(Math.random() * 4)];
+
+      const instructionText = 'TAP THE INK COLOR (IGNORE WORD)';
+      const wordText = wordObj.name;
+      const colorHex = inkObj.hex;
+
+      const otherColors = COLOR_PALETTE.filter((c) => c.name !== inkObj.name).slice(0, 3);
+      const options = [
+        { text: inkObj.name, hex: inkObj.hex },
+        ...otherColors.map((c) => ({ text: c.name, hex: c.hex })),
+      ].sort(() => Math.random() - 0.5);
+
+      const correctIndex = options.findIndex((o) => o.text === inkObj.name);
+
+      return {
+        instructionText,
+        wordText,
+        colorHex,
+        options,
+        correctIndex,
+        family: 'stroop_medium',
+      };
+    }
+
+    case 'hard': {
+      // Hard: Reverse Stroop / Alternating Instruction (TAP INK COLOR vs TAP WORD MEANING)
+      const isInkRule = Math.random() > 0.5;
+      const wordObj = COLOR_PALETTE[Math.floor(Math.random() * COLOR_PALETTE.length)];
+      const inkObj = COLOR_PALETTE.filter((c) => c.name !== wordObj.name)[Math.floor(Math.random() * 4)];
+
+      const instructionText = isInkRule ? 'TAP THE INK COLOR' : 'TAP THE WORD MEANING';
+      const targetName = isInkRule ? inkObj.name : wordObj.name;
+
+      const otherColors = COLOR_PALETTE.filter((c) => c.name !== targetName).slice(0, 3);
+      const options = [
+        { text: targetName, hex: isInkRule ? inkObj.hex : wordObj.hex },
+        ...otherColors.map((c) => ({ text: c.name, hex: c.hex })),
+      ].sort(() => Math.random() - 0.5);
+
+      const correctIndex = options.findIndex((o) => o.text === targetName);
+
+      return {
+        instructionText,
+        wordText: wordObj.name,
+        colorHex: inkObj.hex,
+        options,
+        correctIndex,
+        family: 'rule_inversion_hard',
+      };
+    }
+
+    case 'expert': {
+      // Expert: 3-Way Rule Switching (WORD vs INK vs SHAPE)
+      const ruleType = ['WORD', 'INK', 'SHAPE'][Math.floor(Math.random() * 3)] as 'WORD' | 'INK' | 'SHAPE';
+      const wordObj = COLOR_PALETTE[Math.floor(Math.random() * COLOR_PALETTE.length)];
+      const inkObj = COLOR_PALETTE.filter((c) => c.name !== wordObj.name)[Math.floor(Math.random() * 4)];
+      const shape = SHAPES[Math.floor(Math.random() * SHAPES.length)];
+
+      let instructionText = 'TAP THE WORD MEANING';
+      let targetText = wordObj.name;
+      let targetHex = wordObj.hex;
+
+      if (ruleType === 'INK') {
+        instructionText = 'TAP THE INK COLOR';
+        targetText = inkObj.name;
+        targetHex = inkObj.hex;
+      } else if (ruleType === 'SHAPE') {
+        instructionText = `TAP THE SHAPE (${shape.toUpperCase()})`;
+        targetText = shape.toUpperCase();
+        targetHex = '#6366F1';
+      }
+
+      const options = [
+        { text: targetText, hex: targetHex },
+        { text: 'CIRCLE', hex: '#3B82F6' },
+        { text: 'SQUARE', hex: '#10B981' },
+        { text: 'TRIANGLE', hex: '#EF4444' },
+      ].filter((v, idx, arr) => arr.findIndex((t) => t.text === v.text) === idx).slice(0, 4);
+
+      while (options.length < 4) {
+        options.push({ text: `COLOR-${options.length}`, hex: '#64748B' });
+      }
+
+      options.sort(() => Math.random() - 0.5);
+      const correctIndex = options.findIndex((o) => o.text === targetText);
+
+      return {
+        instructionText,
+        wordText: wordObj.name,
+        colorHex: inkObj.hex,
+        shape,
+        options,
+        correctIndex,
+        family: '3way_switching_expert',
+      };
+    }
+  }
+}

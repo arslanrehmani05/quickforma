@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Target, RotateCcw, ArrowLeft, Clock, CheckCircle2, XCircle, Flame, Play, Eye } from 'lucide-react';
+import { Eye, RotateCcw, ArrowLeft, Target, Clock, CheckCircle2, XCircle, Flame, Play } from 'lucide-react';
+import { MindDifficulty, MIND_DIFFICULTIES, FocusQuestion } from '../../types/mind';
+import { generateFocusQuestion } from '../../utils/mindGenerators';
 
 interface FocusChallengeGameProps {
   onBack: () => void;
@@ -8,132 +10,104 @@ interface FocusChallengeGameProps {
 type GameState = 'idle' | 'playing' | 'results';
 
 export const FocusChallengeGame: React.FC<FocusChallengeGameProps> = ({ onBack }) => {
+  const [difficulty, setDifficulty] = useState<MindDifficulty>('medium');
   const [gameState, setGameState] = useState<GameState>('idle');
   const [timeLeft, setTimeLeft] = useState<number>(60);
   const [score, setScore] = useState<number>(0);
-  const [hitsCount, setHitsCount] = useState<number>(0);
-  const [missesCount, setMissesCount] = useState<number>(0);
-  const [falseAlarmsCount, setFalseAlarmsCount] = useState<number>(0);
-  const [reactionTimes, setReactionTimes] = useState<number[]>([]);
+  const [correctCount, setCorrectCount] = useState<number>(0);
+  const [incorrectCount, setIncorrectCount] = useState<number>(0);
+  const [currentStreak, setCurrentStreak] = useState<number>(0);
+  const [bestStreak, setBestStreak] = useState<number>(0);
+  const [questionCount, setQuestionCount] = useState<number>(0);
 
-  const [currentSymbol, setCurrentSymbol] = useState<number>(7);
-  const [targetSymbol, setTargetSymbol] = useState<number>(8);
-  const [feedback, setFeedback] = useState<'hit' | 'miss' | 'false_alarm' | null>(null);
+  const [currentQuestion, setCurrentQuestion] = useState<FocusQuestion | null>(null);
+  const [selectedOption, setSelectedOption] = useState<number | null>(null);
+  const [feedback, setFeedback] = useState<'correct' | 'incorrect' | null>(null);
 
   const timerRef = useRef<NodeJS.Timeout | null>(null);
-  const streamRef = useRef<NodeJS.Timeout | null>(null);
-  
-  // High-resolution monotonic timestamp tracking (performance.now())
-  const stimulusTimeRef = useRef<number>(0);
-  const currentSymbolRef = useRef<number>(7);
-  const hasRespondedRef = useRef<boolean>(false);
+  const questionStartTimeRef = useRef<number>(0);
 
   const handleStartGame = () => {
     setGameState('playing');
     setTimeLeft(60);
     setScore(0);
-    setHitsCount(0);
-    setMissesCount(0);
-    setFalseAlarmsCount(0);
-    setReactionTimes([]);
+    setCorrectCount(0);
+    setIncorrectCount(0);
+    setCurrentStreak(0);
+    setBestStreak(0);
+    setQuestionCount(1);
+    setSelectedOption(null);
     setFeedback(null);
 
-    const target = 8;
-    setTargetSymbol(target);
-    const initialSym = 7;
-    setCurrentSymbol(initialSym);
-    currentSymbolRef.current = initialSym;
-    hasRespondedRef.current = false;
-    stimulusTimeRef.current = performance.now();
+    const firstQ = generateFocusQuestion(difficulty, 1);
+    setCurrentQuestion(firstQ);
+    // Record timestamp AT STIMULUS ACTIVATION
+    questionStartTimeRef.current = performance.now();
   };
 
-  // Main 60s Countdown Timer
   useEffect(() => {
     if (gameState === 'playing') {
       timerRef.current = setInterval(() => {
         setTimeLeft((prev) => {
           if (prev <= 1) {
             if (timerRef.current) clearInterval(timerRef.current);
-            if (streamRef.current) clearInterval(streamRef.current);
             setGameState('results');
             return 0;
           }
           return prev - 1;
         });
       }, 1000);
-
-      // Rapid Stimulus Stream (updates symbol every 750ms)
-      streamRef.current = setInterval(() => {
-        // Check if previous symbol was target and user missed it
-        if (currentSymbolRef.current === 8 && !hasRespondedRef.current) {
-          setMissesCount((m) => m + 1);
-        }
-
-        // Pick next symbol (30% chance of target 8, 70% chance of random number 1-9 except 8)
-        let nextSym = 8;
-        if (Math.random() > 0.3) {
-          const pool = [1, 2, 3, 4, 5, 6, 7, 9];
-          nextSym = pool[Math.floor(Math.random() * pool.length)];
-        }
-
-        setCurrentSymbol(nextSym);
-        currentSymbolRef.current = nextSym;
-        hasRespondedRef.current = false;
-        stimulusTimeRef.current = performance.now();
-      }, 750);
     } else {
       if (timerRef.current) clearInterval(timerRef.current);
-      if (streamRef.current) clearInterval(streamRef.current);
     }
 
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
-      if (streamRef.current) clearInterval(streamRef.current);
     };
   }, [gameState]);
 
-  // High-precision Tap / Response Handler
-  const handleUserTap = () => {
-    if (gameState !== 'playing' || hasRespondedRef.current) return;
+  const handleOptionClick = (index: number) => {
+    if (!currentQuestion || gameState !== 'playing') return;
 
-    const responseTimeMs = performance.now() - stimulusTimeRef.current;
-    hasRespondedRef.current = true;
+    // Response latency measured from exact stimulus activation
+    const responseLatencyMs = performance.now() - questionStartTimeRef.current;
+    setSelectedOption(index);
+    const isCorrect = index === currentQuestion.correctIndex;
 
-    if (currentSymbolRef.current === targetSymbol) {
-      // HIT!
-      const preciseMs = Math.round(responseTimeMs);
-      setHitsCount((h) => h + 1);
-      setScore((s) => s + 1);
-      setReactionTimes((arr) => [...arr, preciseMs]);
-      setFeedback('hit');
+    if (isCorrect) {
+      const diffConfig = MIND_DIFFICULTIES[difficulty];
+      const streakBonus = Math.min(0.5, currentStreak * 0.05);
+      const cappedSpeedBonus = Math.min(25, Math.max(0, Math.floor((2500 - responseLatencyMs) / 100)));
+      const pointsEarned = Math.round(100 * diffConfig.multiplier * (1 + streakBonus) + cappedSpeedBonus);
+
+      setScore((prev) => prev + pointsEarned);
+      setCorrectCount((prev) => prev + 1);
+      setCurrentStreak((prev) => {
+        const next = prev + 1;
+        setBestStreak((b) => Math.max(b, next));
+        return next;
+      });
+      setFeedback('correct');
     } else {
-      // FALSE ALARM!
-      setFalseAlarmsCount((f) => f + 1);
-      setFeedback('false_alarm');
+      setScore((prev) => Math.max(0, prev - 25));
+      setIncorrectCount((prev) => prev + 1);
+      setCurrentStreak(0);
+      setFeedback('incorrect');
     }
 
     setTimeout(() => {
       setFeedback(null);
-    }, 250);
+      setSelectedOption(null);
+      const nextQ = questionCount + 1;
+      setQuestionCount(nextQ);
+      setCurrentQuestion(generateFocusQuestion(difficulty, nextQ));
+      // Record timestamp AT STIMULUS ACTIVATION
+      questionStartTimeRef.current = performance.now();
+    }, 200);
   };
 
-  // Keyboard shortcut listener (Spacebar / Enter to tap)
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (gameState === 'playing' && (e.code === 'Space' || e.code === 'Enter')) {
-        e.preventDefault();
-        handleUserTap();
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [gameState]);
-
-  const totalEvents = hitsCount + missesCount + falseAlarmsCount;
-  const accuracyPercentage = totalEvents > 0 ? Math.round((hitsCount / totalEvents) * 100) : 0;
-  const avgReactionTime = reactionTimes.length > 0
-    ? Math.round(reactionTimes.reduce((a, b) => a + b, 0) / reactionTimes.length)
-    : 0;
+  const totalAttempted = correctCount + incorrectCount;
+  const accuracyPercentage = totalAttempted > 0 ? Math.round((correctCount / totalAttempted) * 100) : 0;
 
   return (
     <div className="space-y-8 py-4 max-w-4xl mx-auto">
@@ -150,7 +124,7 @@ export const FocusChallengeGame: React.FC<FocusChallengeGameProps> = ({ onBack }
                 QuickForma Mind
               </span>
             </h1>
-            <p className="text-xs text-slate-500">Test sustained attention, reaction speed, and impulse control</p>
+            <p className="text-xs text-slate-500">Attention control, Stroop interference, and dynamic rule switching</p>
           </div>
         </div>
 
@@ -171,10 +145,42 @@ export const FocusChallengeGame: React.FC<FocusChallengeGameProps> = ({ onBack }
 
           <div className="space-y-3 max-w-xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-              Attention & Reaction Speed
+              Focus & Attention Challenge
             </h2>
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-              60 seconds. A rapid stream of numbers will appear. <strong>TAP or press SPACE</strong> as fast as you can ONLY when target number <span className="inline-block bg-indigo-100 text-indigo-800 font-extrabold px-2 py-0.5 rounded-md">8</span> appears!
+              60 seconds. Resist Stroop cognitive interference, process visual signals, and switch focus rapidly between text, ink color, and shape.
+            </p>
+          </div>
+
+          {/* Difficulty Selector Framework */}
+          <div className="space-y-3 max-w-lg mx-auto pt-2">
+            <div className="text-xs font-extrabold uppercase tracking-wider text-slate-400">
+              Select Difficulty Level
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+              {(['easy', 'medium', 'hard', 'expert'] as MindDifficulty[]).map((dKey) => {
+                const cfg = MIND_DIFFICULTIES[dKey];
+                const isSelected = difficulty === dKey;
+                return (
+                  <button
+                    key={dKey}
+                    onClick={() => setDifficulty(dKey)}
+                    className={`py-3 px-3 rounded-2xl font-extrabold text-xs border transition-all flex flex-col items-center justify-center gap-1 ${
+                      isSelected
+                        ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm'
+                        : 'bg-slate-50 hover:bg-slate-100 border-slate-200 text-slate-700'
+                    }`}
+                  >
+                    <span className="capitalize">{cfg.name}</span>
+                    <span className={`text-[10px] ${isSelected ? 'text-indigo-100' : 'text-slate-400'}`}>
+                      {cfg.multiplier}× pts
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+            <p className="text-xs text-slate-500 italic">
+              {MIND_DIFFICULTIES[difficulty].description}
             </p>
           </div>
 
@@ -188,7 +194,7 @@ export const FocusChallengeGame: React.FC<FocusChallengeGameProps> = ({ onBack }
       )}
 
       {/* PLAYING SCREEN */}
-      {gameState === 'playing' && (
+      {gameState === 'playing' && currentQuestion && (
         <div className="space-y-6">
           <div className="grid grid-cols-4 gap-3 text-center">
             <div className={`p-4 rounded-2xl border ${timeLeft <= 10 ? 'bg-amber-50 border-amber-200 text-amber-700 animate-pulse' : 'bg-white border-slate-200'}`}>
@@ -196,42 +202,64 @@ export const FocusChallengeGame: React.FC<FocusChallengeGameProps> = ({ onBack }
               <div className="text-2xl sm:text-3xl font-extrabold"><Clock className="w-5 h-5 text-amber-500 inline mr-1" />{timeLeft}s</div>
             </div>
             <div className="p-4 rounded-2xl bg-white border border-slate-200">
-              <div className="text-[10px] font-bold text-slate-400 uppercase">Hits</div>
-              <div className="text-2xl sm:text-3xl font-extrabold text-emerald-600">{hitsCount}</div>
+              <div className="text-[10px] font-bold text-slate-400 uppercase">Score</div>
+              <div className="text-2xl sm:text-3xl font-extrabold text-indigo-600">{score}</div>
             </div>
             <div className="p-4 rounded-2xl bg-white border border-slate-200">
-              <div className="text-[10px] font-bold text-slate-400 uppercase">Misses</div>
-              <div className="text-2xl sm:text-3xl font-extrabold text-amber-600">{missesCount}</div>
+              <div className="text-[10px] font-bold text-slate-400 uppercase">Difficulty</div>
+              <div className="text-sm sm:text-base font-extrabold text-slate-700 capitalize mt-1">
+                <span className="bg-indigo-50 text-indigo-700 px-2 py-0.5 rounded-full border border-indigo-100">
+                  {MIND_DIFFICULTIES[difficulty].name} ({MIND_DIFFICULTIES[difficulty].multiplier}×)
+                </span>
+              </div>
             </div>
             <div className="p-4 rounded-2xl bg-white border border-slate-200">
-              <div className="text-[10px] font-bold text-slate-400 uppercase">False Alarms</div>
-              <div className="text-2xl sm:text-3xl font-extrabold text-rose-600">{falseAlarmsCount}</div>
+              <div className="text-[10px] font-bold text-slate-400 uppercase">Streak</div>
+              <div className="text-2xl sm:text-3xl font-extrabold text-emerald-600"><Flame className="w-5 h-5 text-emerald-500 fill-emerald-500 inline mr-1" />{currentStreak}</div>
             </div>
           </div>
 
-          <div className={`p-8 sm:p-12 rounded-3xl border text-center space-y-6 bg-white transition-all ${
-            feedback === 'hit'
-              ? 'border-emerald-400 ring-4 ring-emerald-100 bg-emerald-50/30'
-              : feedback === 'false_alarm'
-              ? 'border-rose-400 ring-4 ring-rose-100 bg-rose-50/30'
-              : 'border-slate-200 shadow-xs'
+          <div className={`p-8 sm:p-12 rounded-3xl border text-center space-y-6 bg-white ${
+            feedback === 'correct' ? 'border-emerald-300 ring-2 ring-emerald-200' : feedback === 'incorrect' ? 'border-rose-300 ring-2 ring-rose-200' : 'border-slate-200 shadow-xs'
           }`}>
-            <div className="text-xs font-bold text-slate-400 uppercase tracking-widest">
-              Target: TAP ONLY ON <span className="text-indigo-600 font-extrabold text-sm">8</span> (Or Press Space)
+            <div className="text-xs font-extrabold text-indigo-600 uppercase tracking-widest bg-indigo-50 py-1.5 px-4 rounded-full inline-block border border-indigo-100">
+              {currentQuestion.instructionText}
             </div>
 
-            {/* Stimulus Stream Display */}
-            <div className="text-7xl sm:text-9xl font-black text-slate-900 font-mono tracking-tight my-4">
-              {currentSymbol}
+            {/* Stimulus Card */}
+            <div className="py-6 flex items-center justify-center">
+              <div
+                className={`p-6 rounded-3xl border border-slate-200 shadow-xs transition-all flex items-center justify-center ${
+                  currentQuestion.shape === 'circle' ? 'rounded-full w-40 h-40' : currentQuestion.shape === 'triangle' ? 'w-44 h-40 bg-indigo-50' : 'w-44 h-40 rounded-2xl'
+                }`}
+                style={{ backgroundColor: '#F8FAFC' }}
+              >
+                <span
+                  className="text-4xl sm:text-5xl font-black tracking-wider"
+                  style={{ color: currentQuestion.colorHex }}
+                >
+                  {currentQuestion.wordText}
+                </span>
+              </div>
             </div>
 
-            {/* Tap Action Area Button */}
-            <button
-              onClick={handleUserTap}
-              className="w-full max-w-sm py-6 rounded-2xl bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white font-black text-2xl shadow-lg hover:shadow-xl transition-all tracking-wider transform active:scale-95 select-none"
-            >
-              TAP NOW (SPACE) 🎯
-            </button>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-xl mx-auto">
+              {currentQuestion.options.map((opt, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => handleOptionClick(idx)}
+                  className={`py-4 px-4 rounded-2xl font-extrabold text-base border transition-all ${
+                    selectedOption === idx
+                      ? idx === currentQuestion.correctIndex
+                        ? 'bg-emerald-600 text-white border-emerald-600'
+                        : 'bg-rose-600 text-white border-rose-600'
+                      : 'bg-slate-50 hover:bg-indigo-50 border-slate-200 text-slate-900 hover:border-indigo-200'
+                  }`}
+                >
+                  {opt.text}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       )}
@@ -240,20 +268,25 @@ export const FocusChallengeGame: React.FC<FocusChallengeGameProps> = ({ onBack }
       {gameState === 'results' && (
         <div className="bg-white border border-slate-200 rounded-3xl p-8 sm:p-12 shadow-xs text-center space-y-8">
           <div className="space-y-2">
-            <span className="text-xs font-bold uppercase tracking-wider bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full border border-indigo-100">Sprint Complete</span>
+            <span className="text-xs font-bold uppercase tracking-wider bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full border border-indigo-100">
+              Sprint Complete · {MIND_DIFFICULTIES[difficulty].name} Mode
+            </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900">Focus Challenge Summary</h2>
           </div>
-
+          <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 max-w-sm mx-auto space-y-1">
+            <div className="text-xs font-bold text-slate-400 uppercase">Final Score</div>
+            <div className="text-5xl font-black text-indigo-600">{score}</div>
+          </div>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto">
             <div className="p-4 rounded-2xl bg-white border border-slate-200 text-center space-y-1">
               <CheckCircle2 className="w-5 h-5 text-emerald-500 mx-auto" />
-              <div className="text-xl font-black text-slate-900">{hitsCount}</div>
-              <div className="text-[10px] font-bold text-slate-400 uppercase">Target Hits</div>
+              <div className="text-xl font-black text-slate-900">{correctCount}</div>
+              <div className="text-[10px] font-bold text-slate-400 uppercase">Correct</div>
             </div>
             <div className="p-4 rounded-2xl bg-white border border-slate-200 text-center space-y-1">
               <XCircle className="w-5 h-5 text-rose-500 mx-auto" />
-              <div className="text-xl font-black text-slate-900">{falseAlarmsCount}</div>
-              <div className="text-[10px] font-bold text-slate-400 uppercase">False Alarms</div>
+              <div className="text-xl font-black text-slate-900">{incorrectCount}</div>
+              <div className="text-[10px] font-bold text-slate-400 uppercase">Incorrect</div>
             </div>
             <div className="p-4 rounded-2xl bg-white border border-slate-200 text-center space-y-1">
               <Target className="w-5 h-5 text-indigo-500 mx-auto" />
@@ -261,14 +294,18 @@ export const FocusChallengeGame: React.FC<FocusChallengeGameProps> = ({ onBack }
               <div className="text-[10px] font-bold text-slate-400 uppercase">Accuracy</div>
             </div>
             <div className="p-4 rounded-2xl bg-white border border-slate-200 text-center space-y-1">
-              <Clock className="w-5 h-5 text-amber-500 mx-auto" />
-              <div className="text-xl font-black text-slate-900">{avgReactionTime} ms</div>
-              <div className="text-[10px] font-bold text-slate-400 uppercase">Avg Reaction Time</div>
+              <Flame className="w-5 h-5 text-emerald-500 fill-emerald-500 mx-auto" />
+              <div className="text-xl font-black text-slate-900">{bestStreak}</div>
+              <div className="text-[10px] font-bold text-slate-400 uppercase">Best Streak</div>
             </div>
           </div>
-
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <button onClick={handleStartGame} className="px-8 py-3.5 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-base flex items-center gap-2"><RotateCcw className="w-4 h-4" /> Play Again</button>
+            <button
+              onClick={handleStartGame}
+              className="px-8 py-3.5 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-base flex items-center gap-2"
+            >
+              <RotateCcw className="w-4 h-4" /> Play Again ({MIND_DIFFICULTIES[difficulty].name})
+            </button>
             <button onClick={onBack} className="px-6 py-3.5 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-base">Back to Mind Hub</button>
           </div>
         </div>

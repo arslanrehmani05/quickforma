@@ -45,6 +45,16 @@ export interface ProbabilityQuestion {
   family: string;
 }
 
+export interface FocusQuestion {
+  instructionText: string;
+  wordText: string;
+  colorHex: string;
+  shape?: 'circle' | 'square' | 'triangle';
+  options: { text: string; hex: string }[];
+  correctIndex: number;
+  family: string;
+}
+
 export const MIND_DIFFICULTIES: Record<MindDifficulty, MindDifficultyConfig> = {
   easy: {
     id: 'easy',

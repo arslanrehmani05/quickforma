@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Zap, RotateCcw, ArrowLeft, Target, Clock, CheckCircle2, XCircle, Flame, Play, Sparkles } from 'lucide-react';
-import { MindDifficulty, MIND_DIFFICULTIES, MathSprintQuestion } from '../../types/mind';
+import { MindDifficulty, MIND_DIFFICULTIES, MathSprintQuestion, SprintHistoryItem } from '../../types/mind';
 import { generateMathSprintQuestion } from '../../utils/mindGenerators';
+import { SprintReviewPanel } from './SprintReviewPanel';
 
 interface MentalMathSprintProps {
   onBack: () => void;
@@ -19,6 +20,7 @@ export const MentalMathSprint: React.FC<MentalMathSprintProps> = ({ onBack }) =>
   const [currentStreak, setCurrentStreak] = useState<number>(0);
   const [bestStreak, setBestStreak] = useState<number>(0);
   const [questionCount, setQuestionCount] = useState<number>(0);
+  const [sprintHistory, setSprintHistory] = useState<SprintHistoryItem[]>([]);
 
   const [currentQuestion, setCurrentQuestion] = useState<MathSprintQuestion | null>(null);
   const [userAnswer, setUserAnswer] = useState<string>('');
@@ -38,6 +40,7 @@ export const MentalMathSprint: React.FC<MentalMathSprintProps> = ({ onBack }) =>
     setCurrentStreak(0);
     setBestStreak(0);
     setQuestionCount(1);
+    setSprintHistory([]);
     setUserAnswer('');
     setFeedback(null);
 
@@ -87,6 +90,19 @@ export const MentalMathSprint: React.FC<MentalMathSprintProps> = ({ onBack }) =>
 
     const isCorrect = parsedInput === currentQuestion.answer;
     const solveTimeMs = performance.now() - questionStartTimeRef.current;
+
+    // Track in sprint history
+    setSprintHistory((prev) => [
+      ...prev,
+      {
+        id: questionCount,
+        prompt: currentQuestion.text,
+        userAnswer: `${parsedInput}`,
+        correctAnswer: `${currentQuestion.answer}`,
+        isCorrect,
+        explanation: currentQuestion.explanation || `Correct answer: ${currentQuestion.answer}`,
+      },
+    ]);
 
     if (isCorrect) {
       const diffConfig = MIND_DIFFICULTIES[difficulty];
@@ -406,6 +422,9 @@ export const MentalMathSprint: React.FC<MentalMathSprintProps> = ({ onBack }) =>
                 Back to Mind Hub
               </button>
             </div>
+
+            {/* Sprint Solutions & Breakdown Review */}
+            <SprintReviewPanel history={sprintHistory} />
           </div>
         </div>
       )}

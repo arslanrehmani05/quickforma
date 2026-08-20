@@ -14,6 +14,7 @@ export interface MathSprintQuestion {
   text: string;
   answer: number;
   isShortcut?: boolean;
+  explanation?: string;
 }
 
 export interface NumberSenseQuestion {
@@ -21,6 +22,7 @@ export interface NumberSenseQuestion {
   options: string[];
   correctIndex: number;
   family: string;
+  explanation?: string;
 }
 
 export interface PatternQuestion {
@@ -28,6 +30,7 @@ export interface PatternQuestion {
   answer: number;
   options: number[];
   family: string;
+  explanation?: string;
 }
 
 export interface LogicQuestion {
@@ -36,6 +39,7 @@ export interface LogicQuestion {
   options: string[];
   correctIndex: number;
   family: string;
+  explanation?: string;
 }
 
 export interface ProbabilityQuestion {
@@ -43,6 +47,7 @@ export interface ProbabilityQuestion {
   options: string[];
   correctIndex: number;
   family: string;
+  explanation?: string;
 }
 
 export interface FocusQuestion {
@@ -53,6 +58,16 @@ export interface FocusQuestion {
   options: { text: string; hex: string }[];
   correctIndex: number;
   family: string;
+  explanation?: string;
+}
+
+export interface SprintHistoryItem {
+  id: number;
+  prompt: string;
+  userAnswer: string;
+  correctAnswer: string;
+  isCorrect: boolean;
+  explanation: string;
 }
 
 export const MIND_DIFFICULTIES: Record<MindDifficulty, MindDifficultyConfig> = {

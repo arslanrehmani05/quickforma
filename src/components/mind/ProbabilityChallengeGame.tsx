@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { PieChart, RotateCcw, ArrowLeft, Target, Clock, CheckCircle2, XCircle, Flame, Play } from 'lucide-react';
-import { MindDifficulty, MIND_DIFFICULTIES, ProbabilityQuestion } from '../../types/mind';
+import { MindDifficulty, MIND_DIFFICULTIES, ProbabilityQuestion, SprintHistoryItem } from '../../types/mind';
 import { generateProbabilityQuestion } from '../../utils/mindGenerators';
+import { SprintReviewPanel } from './SprintReviewPanel';
 
 interface ProbabilityChallengeGameProps {
   onBack: () => void;
@@ -19,6 +20,7 @@ export const ProbabilityChallengeGame: React.FC<ProbabilityChallengeGameProps> =
   const [currentStreak, setCurrentStreak] = useState<number>(0);
   const [bestStreak, setBestStreak] = useState<number>(0);
   const [questionCount, setQuestionCount] = useState<number>(0);
+  const [sprintHistory, setSprintHistory] = useState<SprintHistoryItem[]>([]);
 
   const [currentQuestion, setCurrentQuestion] = useState<ProbabilityQuestion | null>(null);
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
@@ -36,6 +38,7 @@ export const ProbabilityChallengeGame: React.FC<ProbabilityChallengeGameProps> =
     setCurrentStreak(0);
     setBestStreak(0);
     setQuestionCount(1);
+    setSprintHistory([]);
     setSelectedOption(null);
     setFeedback(null);
 
@@ -71,6 +74,19 @@ export const ProbabilityChallengeGame: React.FC<ProbabilityChallengeGameProps> =
     setSelectedOption(index);
     const isCorrect = index === currentQuestion.correctIndex;
     const solveTimeMs = performance.now() - questionStartTimeRef.current;
+
+    // Track in sprint history
+    setSprintHistory((prev) => [
+      ...prev,
+      {
+        id: questionCount,
+        prompt: currentQuestion.prompt,
+        userAnswer: currentQuestion.options[index] || 'No response',
+        correctAnswer: currentQuestion.options[currentQuestion.correctIndex],
+        isCorrect,
+        explanation: currentQuestion.explanation || `Correct answer: ${currentQuestion.options[currentQuestion.correctIndex]}`,
+      },
+    ]);
 
     if (isCorrect) {
       const diffConfig = MIND_DIFFICULTIES[difficulty];
@@ -287,6 +303,8 @@ export const ProbabilityChallengeGame: React.FC<ProbabilityChallengeGameProps> =
             </button>
             <button onClick={onBack} className="px-6 py-3.5 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-base">Back to Mind Hub</button>
           </div>
+
+          <SprintReviewPanel history={sprintHistory} />
         </div>
       )}
     </div>

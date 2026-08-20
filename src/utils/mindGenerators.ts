@@ -40,15 +40,15 @@ function createCandidateQuestion(difficulty: MindDifficulty): MathSprintQuestion
       if (op === '+') {
         const n1 = Math.floor(Math.random() * 15) + 3;
         const n2 = Math.floor(Math.random() * 15) + 3;
-        return { text: `${n1} + ${n2}`, answer: n1 + n2 };
+        return { text: `${n1} + ${n2}`, answer: n1 + n2, explanation: `Addition: ${n1} + ${n2} = ${n1 + n2}` };
       } else if (op === '-') {
         const n1 = Math.floor(Math.random() * 20) + 5;
         const n2 = Math.floor(Math.random() * (n1 - 1)) + 1;
-        return { text: `${n1} - ${n2}`, answer: n1 - n2 };
+        return { text: `${n1} - ${n2}`, answer: n1 - n2, explanation: `Subtraction: ${n1} - ${n2} = ${n1 - n2}` };
       } else {
         const n1 = Math.floor(Math.random() * 8) + 2;
         const n2 = Math.floor(Math.random() * 8) + 2;
-        return { text: `${n1} × ${n2}`, answer: n1 * n2 };
+        return { text: `${n1} × ${n2}`, answer: n1 * n2, explanation: `Multiplication: ${n1} × ${n2} = ${n1 * n2}` };
       }
     }
 
@@ -60,21 +60,21 @@ function createCandidateQuestion(difficulty: MindDifficulty): MathSprintQuestion
       if (op === '+') {
         const n1 = Math.floor(Math.random() * 60) + 15;
         const n2 = Math.floor(Math.random() * 60) + 15;
-        return { text: `${n1} + ${n2}`, answer: n1 + n2 };
+        return { text: `${n1} + ${n2}`, answer: n1 + n2, explanation: `Addition: ${n1} + ${n2} = ${n1 + n2}` };
       } else if (op === '-') {
         const n1 = Math.floor(Math.random() * 90) + 20;
         const n2 = Math.floor(Math.random() * (n1 - 10)) + 5;
-        return { text: `${n1} - ${n2}`, answer: n1 - n2 };
+        return { text: `${n1} - ${n2}`, answer: n1 - n2, explanation: `Subtraction: ${n1} - ${n2} = ${n1 - n2}` };
       } else if (op === '×') {
         const n1 = Math.floor(Math.random() * 14) + 3;
         const n2 = Math.floor(Math.random() * 11) + 3;
-        return { text: `${n1} × ${n2}`, answer: n1 * n2 };
+        return { text: `${n1} × ${n2}`, answer: n1 * n2, explanation: `Multiplication: ${n1} × ${n2} = ${n1 * n2}` };
       } else {
         // Clean integer division
         const divisor = Math.floor(Math.random() * 11) + 2;
         const quotient = Math.floor(Math.random() * 12) + 2;
         const dividend = divisor * quotient;
-        return { text: `${dividend} ÷ ${divisor}`, answer: quotient };
+        return { text: `${dividend} ÷ ${divisor}`, answer: quotient, explanation: `Clean division: ${dividend} ÷ ${divisor} = ${quotient}` };
       }
     }
 
@@ -87,24 +87,24 @@ function createCandidateQuestion(difficulty: MindDifficulty): MathSprintQuestion
         const a = Math.floor(Math.random() * 12) + 3;
         const b = Math.floor(Math.random() * 9) + 2;
         const c = Math.floor(Math.random() * 30) + 5;
-        return { text: `${a} × ${b} + ${c}`, answer: a * b + c };
+        return { text: `${a} × ${b} + ${c}`, answer: a * b + c, explanation: `Sequencing: (${a} × ${b}) + ${c} = ${a * b} + ${c} = ${a * b + c}` };
       } else if (pat === 'mult_sub') {
         const a = Math.floor(Math.random() * 12) + 3;
         const b = Math.floor(Math.random() * 9) + 2;
         const prod = a * b;
         const c = Math.floor(Math.random() * (prod - 2)) + 1;
-        return { text: `${a} × ${b} - ${c}`, answer: prod - c };
+        return { text: `${a} × ${b} - ${c}`, answer: prod - c, explanation: `Sequencing: (${a} × ${b}) - ${c} = ${prod} - ${c} = ${prod - c}` };
       } else if (pat === 'add_sub_three') {
         const a = Math.floor(Math.random() * 80) + 20;
         const b = Math.floor(Math.random() * 50) + 10;
         const c = Math.floor(Math.random() * 35) + 5;
-        return { text: `${a} + ${b} - ${c}`, answer: a + b - c };
+        return { text: `${a} + ${b} - ${c}`, answer: a + b - c, explanation: `Sequencing: (${a} + ${b}) - ${c} = ${a + b} - ${c} = ${a + b - c}` };
       } else {
         const divisor = Math.floor(Math.random() * 10) + 2;
         const quotient = Math.floor(Math.random() * 15) + 3;
         const dividend = divisor * quotient;
         const addVal = Math.floor(Math.random() * 25) + 5;
-        return { text: `${dividend} ÷ ${divisor} + ${addVal}`, answer: quotient + addVal };
+        return { text: `${dividend} ÷ ${divisor} + ${addVal}`, answer: quotient + addVal, explanation: `Sequencing: (${dividend} ÷ ${divisor}) + ${addVal} = ${quotient} + ${addVal} = ${quotient + addVal}` };
       }
     }
 
@@ -115,28 +115,29 @@ function createCandidateQuestion(difficulty: MindDifficulty): MathSprintQuestion
 
       if (fam === 'shortcut_11') {
         const n = Math.floor(Math.random() * 75) + 14; // e.g. 34 * 11 = 374
-        return { text: `${n} × 11`, answer: n * 11, isShortcut: true };
+        return { text: `${n} × 11`, answer: n * 11, isShortcut: true, explanation: `Shortcut (N × 11): Insert digit sum inside -> ${n} × 11 = ${n * 11}` };
       } else if (fam === 'shortcut_25') {
         const factor = Math.floor(Math.random() * 14) + 3;
         const n = factor * 4; // e.g. 16 * 25 = 400
-        return { text: `${n} × 25`, answer: n * 25, isShortcut: true };
+        return { text: `${n} × 25`, answer: n * 25, isShortcut: true, explanation: `Shortcut (N × 25): (${n} ÷ 4) × 100 = ${factor} × 100 = ${n * 25}` };
       } else if (fam === 'square_5') {
         const bases = [15, 25, 35, 45, 55, 65, 75, 85, 95];
         const base = bases[Math.floor(Math.random() * bases.length)];
-        return { text: `${base}²`, answer: base * base, isShortcut: true };
+        const tens = Math.floor(base / 10);
+        return { text: `${base}²`, answer: base * base, isShortcut: true, explanation: `Shortcut (N² ending in 5): (${tens} × ${tens + 1})_25 = ${tens * (tens + 1)}25 = ${base * base}` };
       } else if (fam === 'diff_squares') {
         const mid = [15, 20, 25, 30, 40, 50][Math.floor(Math.random() * 6)];
         const n1 = mid - 1;
         const n2 = mid + 1;
-        return { text: `${n1} × ${n2}`, answer: mid * mid - 1, isShortcut: true };
+        return { text: `${n1} × ${n2}`, answer: mid * mid - 1, isShortcut: true, explanation: `Difference of Squares: (${mid}-1) × (${mid}+1) = ${mid}² - 1 = ${mid * mid - 1}` };
       } else if (fam === 'multiply_99') {
         const n = Math.floor(Math.random() * 40) + 12; // e.g. 24 * 99 = 2400 - 24 = 2376
-        return { text: `${n} × 99`, answer: n * 99, isShortcut: true };
+        return { text: `${n} × 99`, answer: n * 99, isShortcut: true, explanation: `Shortcut (N × 99): ${n} × 100 - ${n} = ${n * 100} - ${n} = ${n * 99}` };
       } else {
         const base = [40, 60, 80, 120, 160, 200, 240][Math.floor(Math.random() * 7)];
         const pct = [15, 25, 75][Math.floor(Math.random() * 3)];
         const ans = (pct / 100) * base;
-        return { text: `${pct}% of ${base}`, answer: ans, isShortcut: true };
+        return { text: `${pct}% of ${base}`, answer: ans, isShortcut: true, explanation: `Percentage Benchmark: ${pct}% of ${base} = (${pct}/100) × ${base} = ${ans}` };
       }
     }
   }

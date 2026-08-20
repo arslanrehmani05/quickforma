@@ -735,6 +735,22 @@
 **Remember This:** Provide immediate, itemized question-by-question solution breakdowns on session completion to maximize educational value.
 **Full explanation:** Created `src/components/mind/SprintReviewPanel.tsx` with tab filters (`All`, `Incorrect Only`, `Correct Only`) and detailed solution callout cards styled using QuickForma's core Indigo/Slate/Emerald/Rose design tokens. Updated `src/types/mind.ts` (`SprintHistoryItem` interface and `explanation` property across all question types). Updated procedural generators in `src/utils/mindGenerators.ts` to attach human-readable solution explanations for every generated question. Integrated `sprintHistory` tracking and `<SprintReviewPanel history={sprintHistory} />` across all 6 game components (`MentalMathSprint.tsx`, `NumberSenseGame.tsx`, `PatternChallengeGame.tsx`, `LogicChallengeGame.tsx`, `ProbabilityChallengeGame.tsx`, `FocusChallengeGame.tsx`). Verified 100% clean production build compilation via `npm run build`.
 
+## 2026-08-20 — QuickForma — Implemented Collapsible How-It-Got-There Solutions across all 6 Games
+**Tags:** #QuickFormaMind #CollapsibleSolutions #SprintReview #InteractiveUI #React #TypeScript
+**Importance:** ★★★★★
+**Frequency:** Weekly
+**Syntax Introduced:** `isExpanded` item state in `SprintReviewPanel`, `ChevronDown`/`ChevronUp` toggle icon, procedural solution derivation
+**Concept Introduced:** Collapsible Micro-Interactions & Explicit Procedural Derivation Explanations
+**Prerequisites:** React `useState`, Accordion Toggle Logic, Mathematical Derivation Strings
+**Decision:** Updated the Post-Sprint Review panel across all 6 QuickForma Mind games to make solution explanations collapsible (`View Solution & Explanation ▾`) by default to prevent UI clutter, while upgrading every question generator to supply explicit how-it-got-there solution explanations.
+**Reason:** Prevents 20+ solution cards from cluttering the user interface while ensuring that when expanded, every answer across all 4 difficulty levels clearly explains the mathematical rule, trick, or logical derivation used to reach the answer.
+**Alternative:** Displaying open solution boxes by default or showing generic "Sequence rule answer: 19" text.
+**Tradeoff:** Requires extra click/tap to expand individual question explanations.
+**General principle:** Solution review interfaces should keep cards compact by default and provide interactive toggle controls to reveal explicit procedural derivations on demand.
+**CS50/roadmap.sh link:** CS50 Web Development — Collapsible UI Components & Interactive Feedback Systems.
+**Remember This:** Keep solution review cards compact by default with collapsible toggles, and ensure every explanation explicitly details the step-by-step mathematical rule used to arrive at the answer.
+**Full explanation:** Updated `src/components/mind/SprintReviewPanel.tsx` with `expandedItems` state and a styled `View Solution & Explanation ▾` toggle button. Audited and updated `src/utils/mindGenerators.ts` across all 6 games (Mental Math, Number Sense, Pattern, Logic, Probability, Focus) and all 4 difficulty tiers (Easy, Medium, Hard, Expert). For example, Pattern Challenge Fibonacci question `3, 2, 5, 7, 12, ?` now explicitly explains: `Fibonacci rule: Sum of previous 2 terms (7 + 12 = 19)`. Verified 100% clean production build compilation via `npm run build`.
+
 
 
 

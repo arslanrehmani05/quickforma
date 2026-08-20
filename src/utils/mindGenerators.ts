@@ -198,6 +198,7 @@ function createCandidateNumberSenseQuestion(difficulty: MindDifficulty): NumberS
           options,
           correctIndex: decGreater ? 0 : 1,
           family: 'decimal_vs_fraction_easy',
+          explanation: `${dec} equals ${Math.round(dec * 100)}%, while ${fracText} equals 50% → ${decGreater ? dec : fracText} is larger.`,
         };
       } else if (type === 'ratio_easy') {
         const n = Math.floor(Math.random() * 6) + 3; // 3 to 8
@@ -207,6 +208,7 @@ function createCandidateNumberSenseQuestion(difficulty: MindDifficulty): NumberS
           options,
           correctIndex: 0,
           family: 'ratio_easy',
+          explanation: `${n}:1 equals ${n}, while 1:${n} equals ${(1 / n).toFixed(2)} → ${n}:1 is larger.`,
         };
       } else {
         const val1 = Math.floor(Math.random() * 700) + 200; // 200 to 900
@@ -217,6 +219,7 @@ function createCandidateNumberSenseQuestion(difficulty: MindDifficulty): NumberS
           options,
           correctIndex: 0,
           family: 'magnitude_easy',
+          explanation: `${val1} is 10× larger than ${val2}.`,
         };
       }
     }
@@ -226,33 +229,31 @@ function createCandidateNumberSenseQuestion(difficulty: MindDifficulty): NumberS
       const type = ['mult_estimation', 'pct_estimation', 'fraction_benchmark'][Math.floor(Math.random() * 3)];
 
       if (type === 'mult_estimation') {
-        // e.g. 0.48 * 500 (= 240) vs 0.5 * 470 (= 235)
         const base = [400, 500, 600][Math.floor(Math.random() * 3)];
         const dec = 0.48;
         const compBase = base - 30;
         const options = [`${dec} × ${base}`, `0.5 × ${compBase}`];
         const val1 = dec * base;
         const val2 = 0.5 * compBase;
+        const isFirst = val1 > val2;
         return {
           prompt: 'Which expression is larger?',
           options,
-          correctIndex: val1 > val2 ? 0 : 1,
+          correctIndex: isFirst ? 0 : 1,
           family: 'mult_estimation',
+          explanation: `${dec} × ${base} = ${val1}, while 0.5 × ${compBase} = ${val2} → ${isFirst ? `${dec} × ${base}` : `0.5 × ${compBase}`} is larger.`,
         };
       } else if (type === 'pct_estimation') {
-        // e.g. Without calculating, which is closest to 19% of 250? -> 50
         const pct = [18, 19, 21, 24][Math.floor(Math.random() * 4)];
         const base = [200, 250, 300, 400][Math.floor(Math.random() * 4)];
         const exact = (pct / 100) * base;
 
-        // Bounded magnitude options
         const opt25 = Math.round(base * 0.1);
         const opt50 = Math.round(base * 0.2);
         const opt75 = Math.round(base * 0.3);
         const opt100 = Math.round(base * 0.4);
 
         const options = [`${opt25}`, `${opt50}`, `${opt75}`, `${opt100}`];
-        // Exact 47.5 is closest to opt50 (exact/base is ~0.19, closest to 0.20)
         let closestIdx = 0;
         let minDiff = Math.abs(exact - opt25);
         [opt50, opt75, opt100].forEach((optVal, idx) => {
@@ -268,9 +269,9 @@ function createCandidateNumberSenseQuestion(difficulty: MindDifficulty): NumberS
           options,
           correctIndex: closestIdx,
           family: 'pct_estimation',
+          explanation: `${pct}% of ${base} = (${pct}/100) × ${base} = ${exact} → closest to ${options[closestIdx]}.`,
         };
       } else {
-        // Benchmark e.g. closest to 1/3 or 2/3
         const benchmarks = [
           { text: '1/3', val: 1 / 3, targetPct: '33%' },
           { text: '2/3', val: 2 / 3, targetPct: '66%' },
@@ -288,6 +289,7 @@ function createCandidateNumberSenseQuestion(difficulty: MindDifficulty): NumberS
           options,
           correctIndex,
           family: 'fraction_benchmark',
+          explanation: `${pick.text} equals ${(pick.val * 100).toFixed(1)}% → closest to ${pick.targetPct}.`,
         };
       }
     }
@@ -304,11 +306,13 @@ function createCandidateNumberSenseQuestion(difficulty: MindDifficulty): NumberS
         ];
         const pick = pairs[Math.floor(Math.random() * pairs.length)];
         const options = [pick.f1, pick.f2];
+        const isF1Greater = pick.v1 > pick.v2;
         return {
           prompt: 'Which fraction is larger?',
           options,
-          correctIndex: pick.v1 > pick.v2 ? 0 : 1,
+          correctIndex: isF1Greater ? 0 : 1,
           family: 'fraction_magnitude_hard',
+          explanation: `${pick.f1} ≈ ${pick.v1.toFixed(3)}, while ${pick.f2} ≈ ${pick.v2.toFixed(3)} → ${isF1Greater ? pick.f1 : pick.f2} is larger.`,
         };
       } else if (type === 'pct_shift') {
         const shifts = [
@@ -328,9 +332,9 @@ function createCandidateNumberSenseQuestion(difficulty: MindDifficulty): NumberS
           options,
           correctIndex,
           family: 'pct_shift',
+          explanation: `Increase of ${pick.end - pick.start} on a base of ${pick.start} = (${pick.end - pick.start}/${pick.start}) = ${pick.pct}.`,
         };
       } else {
-        // Order of magnitude: e.g. 4.8 * 10^3 = 4800 vs 5200
         const mantissa = parseFloat((Math.random() * 3 + 2.5).toFixed(1)); // 2.5 to 5.5
         const val1 = mantissa * 1000;
         const val2 = Math.round(val1 + (Math.random() * 800 + 400));
@@ -340,6 +344,7 @@ function createCandidateNumberSenseQuestion(difficulty: MindDifficulty): NumberS
           options,
           correctIndex: 1, // val2 is larger
           family: 'order_magnitude',
+          explanation: `${mantissa} × 10³ = ${val1}, which is smaller than ${val2.toLocaleString()}.`,
         };
       }
     }
@@ -349,7 +354,6 @@ function createCandidateNumberSenseQuestion(difficulty: MindDifficulty): NumberS
       const type = ['structural_fraction', 'sqrt_bounds', 'indisputable_impossible'][Math.floor(Math.random() * 3)];
 
       if (type === 'structural_fraction') {
-        // e.g. 49/51 vs 97/101
         const pairs = [
           { f1: '49/51', v1: 49 / 51, f2: '97/101', v2: 97 / 101 },
           { f1: '19/21', v1: 19 / 21, f2: '39/41', v2: 39 / 41 },
@@ -357,14 +361,15 @@ function createCandidateNumberSenseQuestion(difficulty: MindDifficulty): NumberS
         ];
         const pick = pairs[Math.floor(Math.random() * pairs.length)];
         const options = [pick.f1, pick.f2];
+        const isF1Greater = pick.v1 > pick.v2;
         return {
           prompt: 'Which fraction is larger?',
           options,
-          correctIndex: pick.v1 > pick.v2 ? 0 : 1,
+          correctIndex: isF1Greater ? 0 : 1,
           family: 'structural_fraction',
+          explanation: `${pick.f1} = (1 - 2/${pick.f1.split('/')[1]}) ≈ ${pick.v1.toFixed(4)}, while ${pick.f2} = (1 - 4/${pick.f2.split('/')[1]}) ≈ ${pick.v2.toFixed(4)} → ${isF1Greater ? pick.f1 : pick.f2} is larger.`,
         };
       } else if (type === 'sqrt_bounds') {
-        // e.g. Is √87 closer to 9 or 10? (81 vs 100, 87 is 6 from 81 and 13 from 100 -> 9)
         const k = [70, 72, 75, 87, 92][Math.floor(Math.random() * 5)];
         const floorRoot = Math.floor(Math.sqrt(k));
         const ceilRoot = floorRoot + 1;
@@ -379,9 +384,9 @@ function createCandidateNumberSenseQuestion(difficulty: MindDifficulty): NumberS
           options,
           correctIndex,
           family: 'sqrt_bounds',
+          explanation: `√${k} ≈ ${Math.sqrt(k).toFixed(2)}, which is closer to ${closestRoot} (distance to ${floorRoot}²=${floorRoot * floorRoot} is ${diffFloor}, distance to ${ceilRoot}²=${ceilRoot * ceilRoot} is ${diffCeil}).`,
         };
       } else {
-        // Indisputable impossible
         const impossibles = [
           'Probability of an event = 1.4',
           'Square of a real number = -9',
@@ -404,6 +409,7 @@ function createCandidateNumberSenseQuestion(difficulty: MindDifficulty): NumberS
           options,
           correctIndex,
           family: 'indisputable_impossible',
+          explanation: `Probabilities and real squares have strict mathematical bounds. "${pickImp}" is mathematically impossible.`,
         };
       }
     }
@@ -458,26 +464,20 @@ function createCandidatePatternQuestion(difficulty: MindDifficulty): PatternQues
       const numTerms = Math.floor(Math.random() * 2) + 4; // 4 or 5 terms
 
       if (family === 'add_step') {
-        const start = Math.floor(Math.random() * 15) + 2;
-        const step = Math.floor(Math.random() * 7) + 2;
+        const step = Math.floor(Math.random() * 8) + 2;
+        const start = Math.floor(Math.random() * 20) + 1;
         const terms: number[] = [];
         for (let i = 0; i < numTerms; i++) {
           terms.push(start + i * step);
         }
         const answer = start + numTerms * step;
-        // Plausible distractors: repeat last term, add step-1, add step+2
-        const options = [
-          answer,
-          answer - step, // repeat last addition
-          answer + step, // double step
-          answer - 1,
-        ].sort(() => Math.random() - 0.5);
-
+        const options = [answer, answer + step, answer - step, answer + 1].sort(() => Math.random() - 0.5);
         return {
           sequenceText: `${terms.join(', ')}, ?`,
           answer,
           options,
           family: 'add_step',
+          explanation: `Constant addition rule: +${step} per term (${terms[terms.length - 1]} + ${step} = ${answer})`,
         };
       } else if (family === 'sub_step') {
         const step = Math.floor(Math.random() * 5) + 3;
@@ -493,6 +493,7 @@ function createCandidatePatternQuestion(difficulty: MindDifficulty): PatternQues
           answer,
           options,
           family: 'sub_step',
+          explanation: `Constant subtraction rule: -${step} per term (${terms[terms.length - 1]} - ${step} = ${answer})`,
         };
       } else {
         // mult_step
@@ -513,6 +514,7 @@ function createCandidatePatternQuestion(difficulty: MindDifficulty): PatternQues
           answer,
           options,
           family: 'mult_step',
+          explanation: `Constant multiplication rule: ×2 per term (${lastTerm} × 2 = ${answer})`,
         };
       }
     }
@@ -538,11 +540,14 @@ function createCandidatePatternQuestion(difficulty: MindDifficulty): PatternQues
         const wrongStepAns = nextOpIsAdd ? terms[terms.length - 1] - subB : terms[terms.length - 1] + addA;
         const options = [answer, wrongStepAns, answer + 2, answer - 3].sort(() => Math.random() - 0.5);
 
+        const lastTerm = terms[terms.length - 1];
+        const stepDesc = nextOpIsAdd ? `+${addA}` : `-${subB}`;
         return {
           sequenceText: `${terms.join(', ')}, ?`,
           answer,
           options,
           family: 'alternating_add_sub',
+          explanation: `Alternating rule (+${addA}, -${subB}): Next step is ${stepDesc} (${lastTerm} ${stepDesc} = ${answer})`,
         };
       } else {
         // mult_div_step: Clean integer operations e.g. * 4, / 2
@@ -555,11 +560,14 @@ function createCandidatePatternQuestion(difficulty: MindDifficulty): PatternQues
         }
         const answer = curr;
         const options = [answer, answer + 4, Math.max(1, answer - 2), answer * 2].sort(() => Math.random() - 0.5);
+        const lastTerm = terms[terms.length - 1];
+        const stepIsMult = numTerms % 2 === 0;
         return {
           sequenceText: `${terms.join(', ')}, ?`,
           answer,
           options,
           family: 'mult_div_step',
+          explanation: `Alternating rule (×4, ÷2): Next step is ${stepIsMult ? '× 4' : '÷ 2'} (${lastTerm} ${stepIsMult ? '× 4' : '÷ 2'} = ${answer})`,
         };
       }
     }
@@ -590,6 +598,7 @@ function createCandidatePatternQuestion(difficulty: MindDifficulty): PatternQues
           answer,
           options,
           family: 'increasing_diff',
+          explanation: `2nd-order difference: Step increases by 1 each term; next step is +${diff} (${curr} + ${diff} = ${answer})`,
         };
       } else {
         // decreasing_diff e.g. 100, 90, 81, 73, 66 -> -10, -9, -8, -7
@@ -611,6 +620,7 @@ function createCandidatePatternQuestion(difficulty: MindDifficulty): PatternQues
           answer,
           options,
           family: 'decreasing_diff',
+          explanation: `2nd-order difference: Decrease magnitude shrinks by 1 each term; next step is -${dec} (${curr} - ${dec} = ${answer})`,
         };
       }
     }
@@ -625,10 +635,12 @@ function createCandidatePatternQuestion(difficulty: MindDifficulty): PatternQues
       for (let i = 2; i < numTerms; i++) {
         terms.push(terms[i - 1] + terms[i - 2]);
       }
-      const answer = terms[terms.length - 1] + terms[terms.length - 2];
+      const lastTerm = terms[terms.length - 1];
+      const prevTerm = terms[terms.length - 2];
+      const answer = lastTerm + prevTerm;
       // Plausible distractors: add last term to itself, multiply last two terms
-      const doubleLast = terms[terms.length - 1] * 2;
-      const wrongSum = terms[terms.length - 1] + terms[terms.length - 3] || answer - 2;
+      const doubleLast = lastTerm * 2;
+      const wrongSum = lastTerm + (terms[terms.length - 3] || 1);
 
       const options = [answer, doubleLast, wrongSum, answer + 4].sort(() => Math.random() - 0.5);
 
@@ -637,6 +649,7 @@ function createCandidatePatternQuestion(difficulty: MindDifficulty): PatternQues
         answer,
         options,
         family: 'fibonacci_expert',
+        explanation: `Fibonacci rule: Sum of previous 2 terms (${prevTerm} + ${lastTerm} = ${answer})`,
       };
     }
   }
@@ -713,6 +726,7 @@ function createCandidateLogicQuestion(difficulty: MindDifficulty): LogicQuestion
           options,
           correctIndex: options.indexOf(correctAns),
           family: 'modus_ponens',
+          explanation: `Modus Ponens deduction: "If P then Q". Since P occurred ("${pick.valP}"), Q MUST logically follow ("${correctAns}").`,
         };
       } else {
         // Basic Syllogism: All A are B. All B are C.
@@ -738,6 +752,7 @@ function createCandidateLogicQuestion(difficulty: MindDifficulty): LogicQuestion
           options,
           correctIndex: options.indexOf(correctAns),
           family: 'basic_syllogism',
+          explanation: `Categorical Syllogism: "All A are B" and "All B are C" transitively guarantees that "All A are C".`,
         };
       }
     }
@@ -772,6 +787,7 @@ function createCandidateLogicQuestion(difficulty: MindDifficulty): LogicQuestion
           options,
           correctIndex: options.indexOf(correctAns),
           family: 'transitive_3',
+          explanation: `Transitive chain: ${names[0]} > ${names[1]} > ${names[2]} → ${names[2]} is at the bottom of the order (${oppMetric}).`,
         };
       } else {
         // Modus Tollens: If P then Q. Q is FALSE -> P is FALSE.
@@ -796,6 +812,7 @@ function createCandidateLogicQuestion(difficulty: MindDifficulty): LogicQuestion
           options,
           correctIndex: options.indexOf(correctAns),
           family: 'modus_tollens',
+          explanation: `Modus Tollens deduction: "If P then Q". Since Q is FALSE ("${pick.notQ}"), P MUST be FALSE.`,
         };
       }
     }
@@ -819,6 +836,7 @@ function createCandidateLogicQuestion(difficulty: MindDifficulty): LogicQuestion
         options,
         correctIndex: options.indexOf(correctAns),
         family: 'transitive_4',
+        explanation: `Transitive chain: Alpha > Beta > Gamma > Delta guarantees Alpha is higher than Delta.`,
       };
     }
 
@@ -840,6 +858,7 @@ function createCandidateLogicQuestion(difficulty: MindDifficulty): LogicQuestion
         options,
         correctIndex: options.indexOf(correctAns),
         family: 'constraint_satisfaction',
+        explanation: `Proof by contrapositive: Rule states "If A hired → D rejected". Since D IS hired, Candidate A cannot be hired.`,
       };
     }
   }
@@ -900,6 +919,7 @@ function createCandidateProbabilityQuestion(difficulty: MindDifficulty): Probabi
           options,
           correctIndex: options.indexOf(correctAns),
           family: 'single_event_urn',
+          explanation: `Urn probability: ${red} red marbles out of 10 total marbles = ${pct}%`,
         };
       } else {
         const prompt = 'A fair 6-sided die is rolled. What is the probability of rolling an even number?';
@@ -911,6 +931,7 @@ function createCandidateProbabilityQuestion(difficulty: MindDifficulty): Probabi
           options,
           correctIndex: options.indexOf(correctAns),
           family: 'fair_die_even',
+          explanation: `Fair die probability: 3 even outcomes (2, 4, 6) out of 6 faces = 3/6 = 50%`,
         };
       }
     }
@@ -929,6 +950,7 @@ function createCandidateProbabilityQuestion(difficulty: MindDifficulty): Probabi
           options,
           correctIndex: options.indexOf(correctAns),
           family: 'complement_rule',
+          explanation: `Complement rule: P(≥1 head in 2 flips) = 1 - P(no heads) = 1 - (1/2 × 1/2) = 1 - 0.25 = 75%`,
         };
       } else {
         const prompt = 'Two fair 6-sided dice are rolled independently. What is the probability of rolling two 6s?';
@@ -940,6 +962,7 @@ function createCandidateProbabilityQuestion(difficulty: MindDifficulty): Probabi
           options,
           correctIndex: options.indexOf(correctAns),
           family: 'independent_events',
+          explanation: `Independent product rule: P(two 6s) = P(6) × P(6) = (1/6) × (1/6) = 1/36 ≈ 2.78%`,
         };
       }
     }
@@ -971,6 +994,7 @@ function createCandidateProbabilityQuestion(difficulty: MindDifficulty): Probabi
         options,
         correctIndex: options.indexOf(correctAns),
         family: 'ev_risk_comparison',
+        explanation: `Expected Value Comparison: EV(Game A) = 0.5($${gainA}) - 0.5($${lossA}) = +$${evA} vs EV(Game B) = 0.8($${gainB}) - 0.2($${lossB}) = +$${evB} → ${correctAns} has higher EV.`,
       };
     }
 
@@ -983,9 +1007,8 @@ function createCandidateProbabilityQuestion(difficulty: MindDifficulty): Probabi
         const prevVal = 0.001;
         const sens = 0.99;
         const spec = 0.99;
-        // P(D|+) = (0.99 * 0.001) / (0.99 * 0.001 + 0.01 * 0.999) = 0.00099 / 0.01098 = ~9.016%
         const probExact = (sens * prevVal) / (sens * prevVal + (1 - spec) * (1 - prevVal));
-        const closestPct = Math.round(probExact * 100); // 9% -> closest to 10%
+        const closestPct = Math.round(probExact * 100);
 
         const prompt = `A disease affects ${prevText} people. A test correctly identifies ${Math.round(sens * 100)}% of infected people and correctly clears ${Math.round(spec * 100)}% of uninfected people. If a person tests positive, the probability they actually have the disease is closest to:`;
         const correctAns = `${closestPct === 9 ? '10%' : `${closestPct}%`}`;
@@ -1002,6 +1025,7 @@ function createCandidateProbabilityQuestion(difficulty: MindDifficulty): Probabi
           options,
           correctIndex: options.indexOf(correctAns),
           family: 'bayes_base_rate',
+          explanation: `Bayesian Base-Rate: P(Disease | +) = (0.99 × 0.001) / (0.99 × 0.001 + 0.01 × 0.999) = 0.00099 / 0.01098 ≈ 9.016% → closest to 10%.`,
         };
       } else {
         const k = Math.floor(Math.random() * 4) + 4; // 4 to 7
@@ -1020,6 +1044,7 @@ function createCandidateProbabilityQuestion(difficulty: MindDifficulty): Probabi
           options,
           correctIndex: options.indexOf(correctAns),
           family: 'gamblers_fallacy',
+          explanation: `Gambler's Fallacy De-biasing: Coin flips are memoryless independent events; after ${k} consecutive heads, the ${k + 1}th flip probability remains 50%.`,
         };
       }
     }
@@ -1101,6 +1126,7 @@ function createCandidateFocusQuestion(difficulty: MindDifficulty): FocusQuestion
         options,
         correctIndex,
         family: 'target_id_easy',
+        explanation: `Target Identification: Instruction specifies "${instructionText}" → select ${wordText}.`,
       };
     }
 
@@ -1128,6 +1154,7 @@ function createCandidateFocusQuestion(difficulty: MindDifficulty): FocusQuestion
         options,
         correctIndex,
         family: 'stroop_medium',
+        explanation: `Classical Stroop Test: Instruction requires selecting INK COLOR (${inkObj.name}), ignoring printed text ("${wordObj.name}").`,
       };
     }
 
@@ -1155,6 +1182,7 @@ function createCandidateFocusQuestion(difficulty: MindDifficulty): FocusQuestion
         options,
         correctIndex,
         family: 'rule_inversion_hard',
+        explanation: `Reverse Stroop / Rule Switching: Active rule is "${instructionText}" → select ${targetName}.`,
       };
     }
 
@@ -1201,6 +1229,7 @@ function createCandidateFocusQuestion(difficulty: MindDifficulty): FocusQuestion
         options,
         correctIndex,
         family: '3way_switching_expert',
+        explanation: `Dynamic 3-Way Rule Switching: Active rule is "${instructionText}" → select ${targetText}.`,
       };
     }
   }

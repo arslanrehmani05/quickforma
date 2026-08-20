@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CheckCircle2, XCircle, HelpCircle, Filter } from 'lucide-react';
+import { CheckCircle2, XCircle, HelpCircle, ChevronDown, ChevronUp } from 'lucide-react';
 import { SprintHistoryItem } from '../../types/mind';
 
 interface SprintReviewPanelProps {
@@ -8,6 +8,7 @@ interface SprintReviewPanelProps {
 
 export const SprintReviewPanel: React.FC<SprintReviewPanelProps> = ({ history }) => {
   const [filter, setFilter] = useState<'all' | 'incorrect' | 'correct'>('all');
+  const [expandedItems, setExpandedItems] = useState<Record<number, boolean>>({});
 
   if (!history || history.length === 0) return null;
 
@@ -16,6 +17,10 @@ export const SprintReviewPanel: React.FC<SprintReviewPanelProps> = ({ history })
 
   const displayedItems =
     filter === 'incorrect' ? incorrectItems : filter === 'correct' ? correctItems : history;
+
+  const toggleExpand = (id: number) => {
+    setExpandedItems((prev) => ({ ...prev, [id]: !prev[id] }));
+  };
 
   return (
     <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-xs space-y-6 text-left max-w-4xl mx-auto mt-8">
@@ -72,65 +77,87 @@ export const SprintReviewPanel: React.FC<SprintReviewPanelProps> = ({ history })
             No questions match the selected filter tab.
           </div>
         ) : (
-          displayedItems.map((item, idx) => (
-            <div
-              key={item.id || idx}
-              className={`p-5 rounded-2xl border transition-all space-y-3 ${
-                item.isCorrect
-                  ? 'bg-emerald-50/40 border-emerald-200/80'
-                  : 'bg-rose-50/40 border-rose-200/80'
-              }`}
-            >
-              {/* Card Header */}
-              <div className="flex items-center justify-between text-xs font-bold">
-                <span className="text-slate-400 uppercase tracking-wider font-extrabold">
-                  Question #{item.id}
-                </span>
-                {item.isCorrect ? (
-                  <span className="bg-emerald-100 text-emerald-800 px-2.5 py-0.5 rounded-full flex items-center gap-1 text-[11px] font-extrabold border border-emerald-200">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" /> Correct
+          displayedItems.map((item, idx) => {
+            const isExpanded = !!expandedItems[item.id];
+            return (
+              <div
+                key={item.id || idx}
+                className={`p-5 rounded-2xl border transition-all space-y-3 ${
+                  item.isCorrect
+                    ? 'bg-emerald-50/30 border-emerald-200/80'
+                    : 'bg-rose-50/30 border-rose-200/80'
+                }`}
+              >
+                {/* Card Header */}
+                <div className="flex items-center justify-between text-xs font-bold">
+                  <span className="text-slate-400 uppercase tracking-wider font-extrabold">
+                    Question #{item.id}
                   </span>
-                ) : (
-                  <span className="bg-rose-100 text-rose-800 px-2.5 py-0.5 rounded-full flex items-center gap-1 text-[11px] font-extrabold border border-rose-200">
-                    <XCircle className="w-3.5 h-3.5 text-rose-600" /> Incorrect
-                  </span>
+                  {item.isCorrect ? (
+                    <span className="bg-emerald-100 text-emerald-800 px-2.5 py-0.5 rounded-full flex items-center gap-1 text-[11px] font-extrabold border border-emerald-200">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" /> Correct
+                    </span>
+                  ) : (
+                    <span className="bg-rose-100 text-rose-800 px-2.5 py-0.5 rounded-full flex items-center gap-1 text-[11px] font-extrabold border border-rose-200">
+                      <XCircle className="w-3.5 h-3.5 text-rose-600" /> Incorrect
+                    </span>
+                  )}
+                </div>
+
+                {/* Question Prompt */}
+                <div className="text-base sm:text-lg font-extrabold text-slate-900 font-mono">
+                  {item.prompt}
+                </div>
+
+                {/* Answers Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                  <div className="p-2.5 rounded-xl bg-white/80 border border-slate-200/70 flex items-center justify-between">
+                    <span className="text-slate-400 font-medium">Your Answer:</span>
+                    <span
+                      className={`font-extrabold ${
+                        item.isCorrect ? 'text-emerald-700' : 'text-rose-600 line-through'
+                      }`}
+                    >
+                      {item.userAnswer || 'No response'}
+                    </span>
+                  </div>
+                  <div className="p-2.5 rounded-xl bg-white/80 border border-slate-200/70 flex items-center justify-between">
+                    <span className="text-slate-400 font-medium">Correct Answer:</span>
+                    <span className="font-extrabold text-emerald-700">{item.correctAnswer}</span>
+                  </div>
+                </div>
+
+                {/* Collapsible Solution Toggle Button & Box */}
+                {item.explanation && (
+                  <div className="pt-1">
+                    <button
+                      onClick={() => toggleExpand(item.id)}
+                      className="text-xs font-bold text-indigo-600 hover:text-indigo-700 transition-colors flex items-center gap-1 focus:outline-none"
+                    >
+                      {isExpanded ? (
+                        <>
+                          Hide Solution & Explanation <ChevronUp className="w-3.5 h-3.5 text-indigo-500" />
+                        </>
+                      ) : (
+                        <>
+                          View Solution & Explanation <ChevronDown className="w-3.5 h-3.5 text-indigo-500" />
+                        </>
+                      )}
+                    </button>
+
+                    {isExpanded && (
+                      <div className="mt-2 p-3 rounded-xl bg-indigo-50/80 border border-indigo-100 text-xs text-indigo-950 leading-relaxed animate-in fade-in duration-150">
+                        <span className="font-extrabold text-indigo-700 uppercase tracking-wider block text-[10px] mb-0.5">
+                          How To Solve:
+                        </span>
+                        {item.explanation}
+                      </div>
+                    )}
+                  </div>
                 )}
               </div>
-
-              {/* Question Prompt */}
-              <div className="text-base sm:text-lg font-extrabold text-slate-900 font-mono">
-                {item.prompt}
-              </div>
-
-              {/* Answers Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-                <div className="p-2.5 rounded-xl bg-white/80 border border-slate-200/70 flex items-center justify-between">
-                  <span className="text-slate-400 font-medium">Your Answer:</span>
-                  <span
-                    className={`font-extrabold ${
-                      item.isCorrect ? 'text-emerald-700' : 'text-rose-600 line-through'
-                    }`}
-                  >
-                    {item.userAnswer || 'No response'}
-                  </span>
-                </div>
-                <div className="p-2.5 rounded-xl bg-white/80 border border-slate-200/70 flex items-center justify-between">
-                  <span className="text-slate-400 font-medium">Correct Answer:</span>
-                  <span className="font-extrabold text-emerald-700">{item.correctAnswer}</span>
-                </div>
-              </div>
-
-              {/* Solution / Explanation Box */}
-              {item.explanation && (
-                <div className="p-3 rounded-xl bg-indigo-50/60 border border-indigo-100 text-xs text-indigo-900 leading-relaxed">
-                  <span className="font-extrabold text-indigo-700 uppercase tracking-wider block text-[10px] mb-0.5">
-                    Solution Explanation:
-                  </span>
-                  {item.explanation}
-                </div>
-              )}
-            </div>
-          ))
+            );
+          })
         )}
       </div>
     </div>

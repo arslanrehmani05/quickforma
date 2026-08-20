@@ -945,22 +945,22 @@ function createCandidateProbabilityQuestion(difficulty: MindDifficulty): Probabi
 
     case 'hard': {
       // Hard: EV Risk Comparison (Comparing Game A vs Game B)
-      // Game A: 50% +100, 50% -40 -> EV = +30
-      // Game B: 80% +30, 20% -20 -> EV = +20
-      const gainA = 100;
-      const lossA = 40;
-      const evA = 0.5 * gainA - 0.5 * lossA; // +30
+      const gainA = [80, 100, 120][Math.floor(Math.random() * 3)];
+      const lossA = [30, 40, 50][Math.floor(Math.random() * 3)];
+      const evA = 0.5 * gainA - 0.5 * lossA; // e.g. +30
 
-      const gainB = 30;
-      const lossB = 20;
-      const evB = 0.8 * gainB - 0.2 * lossB; // +20
+      const gainB = [25, 30, 35][Math.floor(Math.random() * 3)];
+      const lossB = [10, 15, 20][Math.floor(Math.random() * 3)];
+      const evB = 0.8 * gainB - 0.2 * lossB; // e.g. +20
 
+      const isAGreater = evA > evB;
       const prompt = `Game A gives a 50% chance of +$${gainA} and 50% chance of -$${lossA}. Game B gives an 80% chance of +$${gainB} and 20% chance of -$${lossB}. Which wager has the higher expected value?`;
-      const correctAns = `Game A (EV = +$${evA})`;
+      const correctAns = isAGreater ? `Game A (EV = +$${evA})` : `Game B (EV = +$${evB})`;
+      const otherAns = isAGreater ? `Game B (EV = +$${evB})` : `Game A (EV = +$${evA})`;
 
       const options = [
         correctAns,
-        `Game B (EV = +$${evB})`,
+        otherAns,
         'Both have equal expected value',
         'Neither has positive expected value',
       ].sort(() => Math.random() - 0.5);
@@ -978,9 +978,16 @@ function createCandidateProbabilityQuestion(difficulty: MindDifficulty): Probabi
       const family = ['bayes_base_rate', 'gamblers_fallacy'][Math.floor(Math.random() * 2)];
 
       if (family === 'bayes_base_rate') {
-        // Disease 1 in 1000. Sensitivity 99%, Specificity 99%. P(D|+) = (0.99 * 0.001) / (0.99 * 0.001 + 0.01 * 0.999) = ~9%
-        const prompt = 'A disease affects 1 in 1,000 people. A test correctly identifies 99% of infected people and correctly clears 99% of uninfected people. If a person tests positive, the probability they actually have the disease is closest to:';
-        const correctAns = '10%';
+        const prevText = '1 in 1,000';
+        const prevVal = 0.001;
+        const sens = 0.99;
+        const spec = 0.99;
+        // P(D|+) = (0.99 * 0.001) / (0.99 * 0.001 + 0.01 * 0.999) = 0.00099 / 0.01098 = ~9.016%
+        const probExact = (sens * prevVal) / (sens * prevVal + (1 - spec) * (1 - prevVal));
+        const closestPct = Math.round(probExact * 100); // 9% -> closest to 10%
+
+        const prompt = `A disease affects ${prevText} people. A test correctly identifies ${Math.round(sens * 100)}% of infected people and correctly clears ${Math.round(spec * 100)}% of uninfected people. If a person tests positive, the probability they actually have the disease is closest to:`;
+        const correctAns = `${closestPct === 9 ? '10%' : `${closestPct}%`}`;
 
         const options = [
           correctAns,
@@ -996,7 +1003,8 @@ function createCandidateProbabilityQuestion(difficulty: MindDifficulty): Probabi
           family: 'bayes_base_rate',
         };
       } else {
-        const prompt = 'A perfectly fair coin has landed on heads 5 times in a row. What is the probability that the 6th flip is heads?';
+        const k = Math.floor(Math.random() * 4) + 4; // 4 to 7
+        const prompt = `A perfectly fair coin has landed on heads ${k} times in a row. What is the probability that the ${k + 1}th flip is heads?`;
         const correctAns = '50%';
 
         const options = [

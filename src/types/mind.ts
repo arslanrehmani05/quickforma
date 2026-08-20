@@ -23,6 +23,13 @@ export interface NumberSenseQuestion {
   family: string;
 }
 
+export interface PatternQuestion {
+  sequenceText: string;
+  answer: number;
+  options: number[];
+  family: string;
+}
+
 export const MIND_DIFFICULTIES: Record<MindDifficulty, MindDifficultyConfig> = {
   easy: {
     id: 'easy',

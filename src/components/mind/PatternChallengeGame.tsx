@@ -1,11 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Layers, RotateCcw, ArrowLeft, Target, Clock, CheckCircle2, XCircle, Flame, Play } from 'lucide-react';
-
-interface PatternQuestion {
-  sequenceText: string;
-  answer: number;
-  options: number[];
-}
+import { MindDifficulty, MIND_DIFFICULTIES, PatternQuestion } from '../../types/mind';
+import { generatePatternQuestion } from '../../utils/mindGenerators';
 
 interface PatternChallengeGameProps {
   onBack: () => void;
@@ -14,6 +10,7 @@ interface PatternChallengeGameProps {
 type GameState = 'idle' | 'playing' | 'results';
 
 export const PatternChallengeGame: React.FC<PatternChallengeGameProps> = ({ onBack }) => {
+  const [difficulty, setDifficulty] = useState<MindDifficulty>('medium');
   const [gameState, setGameState] = useState<GameState>('idle');
   const [timeLeft, setTimeLeft] = useState<number>(60);
   const [score, setScore] = useState<number>(0);
@@ -28,62 +25,7 @@ export const PatternChallengeGame: React.FC<PatternChallengeGameProps> = ({ onBa
   const [feedback, setFeedback] = useState<'correct' | 'incorrect' | null>(null);
 
   const timerRef = useRef<NodeJS.Timeout | null>(null);
-
-  const generatePattern = (qIndex: number): PatternQuestion => {
-    const patternTypes = ['arithmetic', 'geometric', 'increasing_diff', 'alternating', 'decreasing'];
-    const pType = patternTypes[Math.floor(Math.random() * patternTypes.length)];
-
-    let seq: number[] = [];
-    let nextVal = 0;
-
-    if (pType === 'arithmetic') {
-      const start = Math.floor(Math.random() * 20) + 2;
-      const step = Math.floor(Math.random() * 8) + 2;
-      seq = [start, start + step, start + step * 2, start + step * 3];
-      nextVal = start + step * 4;
-    } else if (pType === 'geometric') {
-      const start = Math.floor(Math.random() * 5) + 2;
-      const mult = [2, 3][Math.floor(Math.random() * 2)];
-      seq = [start, start * mult, start * mult * mult, start * mult * mult * mult];
-      nextVal = start * mult * mult * mult * mult;
-    } else if (pType === 'increasing_diff') {
-      const start = Math.floor(Math.random() * 10) + 1;
-      let curr = start;
-      seq = [curr];
-      for (let i = 2; i <= 4; i++) {
-        curr += i;
-        seq.push(curr);
-      }
-      nextVal = curr + 5;
-    } else if (pType === 'alternating') {
-      const start = Math.floor(Math.random() * 20) + 10;
-      const addStep = Math.floor(Math.random() * 5) + 4;
-      const subStep = Math.floor(Math.random() * 3) + 1;
-      let curr = start;
-      seq = [curr];
-      for (let i = 0; i < 3; i++) {
-        curr = i % 2 === 0 ? curr + addStep : curr - subStep;
-        seq.push(curr);
-      }
-      nextVal = curr + addStep;
-    } else {
-      // Decreasing differences e.g. 100, 90, 81, 73 -> 66 (-10, -9, -8, -7)
-      let curr = Math.floor(Math.random() * 50) + 80;
-      seq = [curr];
-      let dec = 10;
-      for (let i = 0; i < 3; i++) {
-        curr -= dec;
-        seq.push(curr);
-        dec--;
-      }
-      nextVal = curr - dec;
-    }
-
-    const sequenceText = `${seq.join(', ')}, ?`;
-    const options = [nextVal, nextVal + 2, nextVal - 3, nextVal + 5].sort(() => Math.random() - 0.5);
-
-    return { sequenceText, answer: nextVal, options };
-  };
+  const questionStartTimeRef = useRef<number>(0);
 
   const handleStartGame = () => {
     setGameState('playing');
@@ -97,7 +39,9 @@ export const PatternChallengeGame: React.FC<PatternChallengeGameProps> = ({ onBa
     setSelectedOption(null);
     setFeedback(null);
 
-    setCurrentQuestion(generatePattern(1));
+    const firstQ = generatePatternQuestion(difficulty, 1);
+    setCurrentQuestion(firstQ);
+    questionStartTimeRef.current = performance.now();
   };
 
   useEffect(() => {
@@ -126,9 +70,15 @@ export const PatternChallengeGame: React.FC<PatternChallengeGameProps> = ({ onBa
 
     setSelectedOption(val);
     const isCorrect = val === currentQuestion.answer;
+    const solveTimeMs = performance.now() - questionStartTimeRef.current;
 
     if (isCorrect) {
-      setScore((prev) => prev + 1);
+      const diffConfig = MIND_DIFFICULTIES[difficulty];
+      const streakBonus = Math.min(0.5, currentStreak * 0.05);
+      const cappedSpeedBonus = Math.min(25, Math.max(0, Math.floor((3000 - solveTimeMs) / 120)));
+      const pointsEarned = Math.round(100 * diffConfig.multiplier * (1 + streakBonus) + cappedSpeedBonus);
+
+      setScore((prev) => prev + pointsEarned);
       setCorrectCount((prev) => prev + 1);
       setCurrentStreak((prev) => {
         const next = prev + 1;
@@ -137,6 +87,7 @@ export const PatternChallengeGame: React.FC<PatternChallengeGameProps> = ({ onBa
       });
       setFeedback('correct');
     } else {
+      setScore((prev) => Math.max(0, prev - 25));
       setIncorrectCount((prev) => prev + 1);
       setCurrentStreak(0);
       setFeedback('incorrect');
@@ -147,7 +98,8 @@ export const PatternChallengeGame: React.FC<PatternChallengeGameProps> = ({ onBa
       setSelectedOption(null);
       const nextQ = questionCount + 1;
       setQuestionCount(nextQ);
-      setCurrentQuestion(generatePattern(nextQ));
+      setCurrentQuestion(generatePatternQuestion(difficulty, nextQ));
+      questionStartTimeRef.current = performance.now();
     }, 250);
   };
 
@@ -197,6 +149,38 @@ export const PatternChallengeGame: React.FC<PatternChallengeGameProps> = ({ onBa
             </p>
           </div>
 
+          {/* Difficulty Selector Framework */}
+          <div className="space-y-3 max-w-lg mx-auto pt-2">
+            <div className="text-xs font-extrabold uppercase tracking-wider text-slate-400">
+              Select Difficulty Level
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+              {(['easy', 'medium', 'hard', 'expert'] as MindDifficulty[]).map((dKey) => {
+                const cfg = MIND_DIFFICULTIES[dKey];
+                const isSelected = difficulty === dKey;
+                return (
+                  <button
+                    key={dKey}
+                    onClick={() => setDifficulty(dKey)}
+                    className={`py-3 px-3 rounded-2xl font-extrabold text-xs border transition-all flex flex-col items-center justify-center gap-1 ${
+                      isSelected
+                        ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm'
+                        : 'bg-slate-50 hover:bg-slate-100 border-slate-200 text-slate-700'
+                    }`}
+                  >
+                    <span className="capitalize">{cfg.name}</span>
+                    <span className={`text-[10px] ${isSelected ? 'text-indigo-100' : 'text-slate-400'}`}>
+                      {cfg.multiplier}× pts
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+            <p className="text-xs text-slate-500 italic">
+              {MIND_DIFFICULTIES[difficulty].description}
+            </p>
+          </div>
+
           <button
             onClick={handleStartGame}
             className="px-8 py-4 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-lg shadow-md hover:shadow-lg transition-all inline-flex items-center gap-3"
@@ -219,8 +203,12 @@ export const PatternChallengeGame: React.FC<PatternChallengeGameProps> = ({ onBa
               <div className="text-2xl sm:text-3xl font-extrabold text-indigo-600">{score}</div>
             </div>
             <div className="p-4 rounded-2xl bg-white border border-slate-200">
-              <div className="text-[10px] font-bold text-slate-400 uppercase">Question</div>
-              <div className="text-2xl sm:text-3xl font-extrabold text-slate-700">#{questionCount}</div>
+              <div className="text-[10px] font-bold text-slate-400 uppercase">Difficulty</div>
+              <div className="text-sm sm:text-base font-extrabold text-slate-700 capitalize mt-1">
+                <span className="bg-indigo-50 text-indigo-700 px-2 py-0.5 rounded-full border border-indigo-100">
+                  {MIND_DIFFICULTIES[difficulty].name} ({MIND_DIFFICULTIES[difficulty].multiplier}×)
+                </span>
+              </div>
             </div>
             <div className="p-4 rounded-2xl bg-white border border-slate-200">
               <div className="text-[10px] font-bold text-slate-400 uppercase">Streak</div>
@@ -232,7 +220,7 @@ export const PatternChallengeGame: React.FC<PatternChallengeGameProps> = ({ onBa
             feedback === 'correct' ? 'border-emerald-300 ring-2 ring-emerald-200' : feedback === 'incorrect' ? 'border-rose-300 ring-2 ring-rose-200' : 'border-slate-200 shadow-xs'
           }`}>
             <div className="text-xs font-bold text-slate-400 uppercase tracking-widest">Find Missing Term (?)</div>
-            <div className="text-3xl sm:text-5xl font-black text-slate-900 font-mono">{currentQuestion.sequenceText}</div>
+            <div className="text-3xl sm:text-5xl font-black text-slate-900 font-mono leading-relaxed">{currentQuestion.sequenceText}</div>
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-md mx-auto">
               {currentQuestion.options.map((optVal, idx) => (
@@ -259,7 +247,9 @@ export const PatternChallengeGame: React.FC<PatternChallengeGameProps> = ({ onBa
       {gameState === 'results' && (
         <div className="bg-white border border-slate-200 rounded-3xl p-8 sm:p-12 shadow-xs text-center space-y-8">
           <div className="space-y-2">
-            <span className="text-xs font-bold uppercase tracking-wider bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full border border-indigo-100">Sprint Complete</span>
+            <span className="text-xs font-bold uppercase tracking-wider bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full border border-indigo-100">
+              Sprint Complete · {MIND_DIFFICULTIES[difficulty].name} Mode
+            </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900">Pattern Challenge Summary</h2>
           </div>
           <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 max-w-sm mx-auto space-y-1">
@@ -289,7 +279,12 @@ export const PatternChallengeGame: React.FC<PatternChallengeGameProps> = ({ onBa
             </div>
           </div>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <button onClick={handleStartGame} className="px-8 py-3.5 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-base flex items-center gap-2"><RotateCcw className="w-4 h-4" /> Play Again</button>
+            <button
+              onClick={handleStartGame}
+              className="px-8 py-3.5 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-base flex items-center gap-2"
+            >
+              <RotateCcw className="w-4 h-4" /> Play Again ({MIND_DIFFICULTIES[difficulty].name})
+            </button>
             <button onClick={onBack} className="px-6 py-3.5 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-base">Back to Mind Hub</button>
           </div>
         </div>

@@ -408,3 +408,235 @@ function createCandidateNumberSenseQuestion(difficulty: MindDifficulty): NumberS
     }
   }
 }
+
+import { PatternQuestion } from '../types/mind';
+
+/**
+ * Rule-First Procedural Question Generator for Pattern Challenge
+ * Rule Family -> Parameters -> Deterministic Sequence -> Target Answer -> Plausible Distractors -> Validate -> Render
+ */
+export function generatePatternQuestion(
+  difficulty: MindDifficulty,
+  _qIndex: number
+): PatternQuestion {
+  let attempt = 0;
+  while (attempt < 50) {
+    attempt++;
+    const q = createCandidatePatternQuestion(difficulty);
+    if (isValidPatternQuestion(q)) {
+      return q;
+    }
+  }
+
+  // Fallback safe default
+  return {
+    sequenceText: '2, 4, 6, 8, ?',
+    answer: 10,
+    options: [10, 9, 12, 14],
+    family: 'arithmetic_easy',
+  };
+}
+
+function isValidPatternQuestion(q: PatternQuestion): boolean {
+  if (!q.sequenceText || isNaN(q.answer) || !isFinite(q.answer)) return false;
+  if (!Number.isInteger(q.answer)) return false;
+  if (!q.options || q.options.length !== 4) return false;
+  // Ensure target answer is in options
+  if (!q.options.includes(q.answer)) return false;
+  // Ensure all options are unique
+  const set = new Set(q.options);
+  if (set.size !== 4) return false;
+  return true;
+}
+
+function createCandidatePatternQuestion(difficulty: MindDifficulty): PatternQuestion {
+  switch (difficulty) {
+    case 'easy': {
+      // Easy: Constant +d, -d, or *r (4-5 visible terms)
+      const family = ['add_step', 'sub_step', 'mult_step'][Math.floor(Math.random() * 3)];
+      const numTerms = Math.floor(Math.random() * 2) + 4; // 4 or 5 terms
+
+      if (family === 'add_step') {
+        const start = Math.floor(Math.random() * 15) + 2;
+        const step = Math.floor(Math.random() * 7) + 2;
+        const terms: number[] = [];
+        for (let i = 0; i < numTerms; i++) {
+          terms.push(start + i * step);
+        }
+        const answer = start + numTerms * step;
+        // Plausible distractors: repeat last term, add step-1, add step+2
+        const options = [
+          answer,
+          answer - step, // repeat last addition
+          answer + step, // double step
+          answer - 1,
+        ].sort(() => Math.random() - 0.5);
+
+        return {
+          sequenceText: `${terms.join(', ')}, ?`,
+          answer,
+          options,
+          family: 'add_step',
+        };
+      } else if (family === 'sub_step') {
+        const step = Math.floor(Math.random() * 5) + 3;
+        const start = step * numTerms + Math.floor(Math.random() * 20) + 10;
+        const terms: number[] = [];
+        for (let i = 0; i < numTerms; i++) {
+          terms.push(start - i * step);
+        }
+        const answer = start - numTerms * step;
+        const options = [answer, answer + step, answer - (step + 2), answer - 1].sort(() => Math.random() - 0.5);
+        return {
+          sequenceText: `${terms.join(', ')}, ?`,
+          answer,
+          options,
+          family: 'sub_step',
+        };
+      } else {
+        // mult_step
+        const start = Math.floor(Math.random() * 4) + 2;
+        const ratio = 2;
+        const terms: number[] = [];
+        let curr = start;
+        for (let i = 0; i < numTerms; i++) {
+          terms.push(curr);
+          curr *= ratio;
+        }
+        const answer = curr;
+        // Plausible distractors: add ratio instead of multiply, multiply by 3
+        const lastTerm = terms[terms.length - 1];
+        const options = [answer, lastTerm + ratio, lastTerm * 3, lastTerm + ratio * 2].sort(() => Math.random() - 0.5);
+        return {
+          sequenceText: `${terms.join(', ')}, ?`,
+          answer,
+          options,
+          family: 'mult_step',
+        };
+      }
+    }
+
+    case 'medium': {
+      // Medium: Alternating +A, -B (5-6 visible terms)
+      const family = ['alternating_add_sub', 'mult_div_step'][Math.floor(Math.random() * 2)];
+      const numTerms = Math.floor(Math.random() * 2) + 5; // 5 or 6 terms
+
+      if (family === 'alternating_add_sub') {
+        const start = Math.floor(Math.random() * 15) + 10;
+        const addA = Math.floor(Math.random() * 5) + 4; // e.g. +5
+        const subB = Math.floor(Math.random() * 3) + 1; // e.g. -2
+        const terms: number[] = [];
+        let curr = start;
+        for (let i = 0; i < numTerms; i++) {
+          terms.push(curr);
+          curr = i % 2 === 0 ? curr + addA : curr - subB;
+        }
+        const answer = curr;
+        const nextOpIsAdd = numTerms % 2 === 0;
+        // Plausible distractors: apply wrong alternating step
+        const wrongStepAns = nextOpIsAdd ? terms[terms.length - 1] - subB : terms[terms.length - 1] + addA;
+        const options = [answer, wrongStepAns, answer + 2, answer - 3].sort(() => Math.random() - 0.5);
+
+        return {
+          sequenceText: `${terms.join(', ')}, ?`,
+          answer,
+          options,
+          family: 'alternating_add_sub',
+        };
+      } else {
+        // mult_div_step e.g. * 3, / 2
+        const start = Math.floor(Math.random() * 6) + 4;
+        const terms: number[] = [];
+        let curr = start;
+        for (let i = 0; i < numTerms; i++) {
+          terms.push(curr);
+          curr = i % 2 === 0 ? curr * 3 : Math.floor(curr / 2);
+        }
+        const answer = curr;
+        const options = [answer, answer + 4, answer - 2, answer * 2].sort(() => Math.random() - 0.5);
+        return {
+          sequenceText: `${terms.join(', ')}, ?`,
+          answer,
+          options,
+          family: 'mult_div_step',
+        };
+      }
+    }
+
+    case 'hard': {
+      // Hard: Increasing differences (+2, +3, +4...) or Decreasing differences (-10, -9, -8...) (5-7 visible terms)
+      const family = ['increasing_diff', 'decreasing_diff'][Math.floor(Math.random() * 2)];
+      const numTerms = Math.floor(Math.random() * 3) + 5; // 5 to 7 terms
+
+      if (family === 'increasing_diff') {
+        const start = Math.floor(Math.random() * 10) + 1;
+        const baseStep = Math.floor(Math.random() * 2) + 1;
+        const terms: number[] = [start];
+        let curr = start;
+        let diff = baseStep;
+        for (let i = 1; i < numTerms; i++) {
+          curr += diff;
+          terms.push(curr);
+          diff++;
+        }
+        const answer = curr + diff;
+        // Plausible distractors: repeating previous diff without incrementing (curr + diff - 1)
+        const repeatDiffAns = curr + (diff - 1);
+        const options = [answer, repeatDiffAns, answer + 3, answer - 4].sort(() => Math.random() - 0.5);
+
+        return {
+          sequenceText: `${terms.join(', ')}, ?`,
+          answer,
+          options,
+          family: 'increasing_diff',
+        };
+      } else {
+        // decreasing_diff e.g. 100, 90, 81, 73, 66 -> -10, -9, -8, -7
+        let curr = Math.floor(Math.random() * 30) + 90;
+        let dec = 10;
+        const terms: number[] = [curr];
+        for (let i = 1; i < numTerms; i++) {
+          curr -= dec;
+          terms.push(curr);
+          dec--;
+        }
+        const answer = curr - dec;
+        // Plausible distractor: repeating last decrease (curr - (dec + 1))
+        const repeatDecAns = curr - (dec + 1);
+        const options = [answer, repeatDecAns, answer + 2, answer - 3].sort(() => Math.random() - 0.5);
+
+        return {
+          sequenceText: `${terms.join(', ')}, ?`,
+          answer,
+          options,
+          family: 'decreasing_diff',
+        };
+      }
+    }
+
+    case 'expert': {
+      // Expert: Fibonacci-style recurrence (a_n = a_{n-1} + a_{n-2}) (5-8 visible terms)
+      const numTerms = Math.floor(Math.random() * 4) + 5; // 5 to 8 terms
+      const a1 = Math.floor(Math.random() * 3) + 1;
+      const a2 = Math.floor(Math.random() * 3) + 2;
+      const terms: number[] = [a1, a2];
+
+      for (let i = 2; i < numTerms; i++) {
+        terms.push(terms[i - 1] + terms[i - 2]);
+      }
+      const answer = terms[terms.length - 1] + terms[terms.length - 2];
+      // Plausible distractors: add last term to itself, multiply last two terms
+      const doubleLast = terms[terms.length - 1] * 2;
+      const wrongSum = terms[terms.length - 1] + terms[terms.length - 3] || answer - 2;
+
+      const options = [answer, doubleLast, wrongSum, answer + 4].sort(() => Math.random() - 0.5);
+
+      return {
+        sequenceText: `${terms.join(', ')}, ?`,
+        answer,
+        options,
+        family: 'fibonacci_expert',
+      };
+    }
+  }
+}

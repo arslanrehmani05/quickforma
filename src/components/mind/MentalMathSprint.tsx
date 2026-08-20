@@ -1,13 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Zap, RotateCcw, ArrowLeft, Target, Clock, CheckCircle2, XCircle, Flame, Play } from 'lucide-react';
-
-interface Question {
-  num1: number;
-  num2: number;
-  operator: '+' | '-' | '×' | '÷';
-  answer: number;
-  text: string;
-}
+import { Zap, RotateCcw, ArrowLeft, Target, Clock, CheckCircle2, XCircle, Flame, Play, Sparkles } from 'lucide-react';
+import { MindDifficulty, MIND_DIFFICULTIES, MathSprintQuestion } from '../../types/mind';
+import { generateMathSprintQuestion } from '../../utils/mindGenerators';
 
 interface MentalMathSprintProps {
   onBack: () => void;
@@ -16,6 +10,7 @@ interface MentalMathSprintProps {
 type GameState = 'idle' | 'playing' | 'results';
 
 export const MentalMathSprint: React.FC<MentalMathSprintProps> = ({ onBack }) => {
+  const [difficulty, setDifficulty] = useState<MindDifficulty>('medium');
   const [gameState, setGameState] = useState<GameState>('idle');
   const [timeLeft, setTimeLeft] = useState<number>(60);
   const [score, setScore] = useState<number>(0);
@@ -25,85 +20,13 @@ export const MentalMathSprint: React.FC<MentalMathSprintProps> = ({ onBack }) =>
   const [bestStreak, setBestStreak] = useState<number>(0);
   const [questionCount, setQuestionCount] = useState<number>(0);
 
-  const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
+  const [currentQuestion, setCurrentQuestion] = useState<MathSprintQuestion | null>(null);
   const [userAnswer, setUserAnswer] = useState<string>('');
   const [feedback, setFeedback] = useState<'correct' | 'incorrect' | null>(null);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
-
-  // Helper to generate dynamic arithmetic questions based on question index
-  const generateQuestion = (qIndex: number): Question => {
-    const ops: Array<'+' | '-' | '×' | '÷'> = ['+', '-', '×', '÷'];
-    let op = ops[Math.floor(Math.random() * ops.length)];
-
-    let n1 = 0;
-    let n2 = 0;
-    let ans = 0;
-
-    if (qIndex <= 5) {
-      // Early Phase: Easy & intuitive
-      if (op === '+') {
-        n1 = Math.floor(Math.random() * 20) + 5;
-        n2 = Math.floor(Math.random() * 20) + 5;
-        ans = n1 + n2;
-      } else if (op === '-') {
-        n1 = Math.floor(Math.random() * 30) + 10;
-        n2 = Math.floor(Math.random() * (n1 - 1)) + 1;
-        ans = n1 - n2;
-      } else if (op === '×') {
-        n1 = Math.floor(Math.random() * 9) + 2;
-        n2 = Math.floor(Math.random() * 9) + 2;
-        ans = n1 * n2;
-      } else {
-        // Division: Clean integer
-        n2 = Math.floor(Math.random() * 8) + 2;
-        ans = Math.floor(Math.random() * 8) + 2;
-        n1 = n2 * ans;
-      }
-    } else if (qIndex <= 15) {
-      // Middle Phase: Moderate mental arithmetic
-      if (op === '+') {
-        n1 = Math.floor(Math.random() * 60) + 15;
-        n2 = Math.floor(Math.random() * 60) + 15;
-        ans = n1 + n2;
-      } else if (op === '-') {
-        n1 = Math.floor(Math.random() * 90) + 25;
-        n2 = Math.floor(Math.random() * (n1 - 10)) + 5;
-        ans = n1 - n2;
-      } else if (op === '×') {
-        n1 = Math.floor(Math.random() * 14) + 3;
-        n2 = Math.floor(Math.random() * 11) + 3;
-        ans = n1 * n2;
-      } else {
-        n2 = Math.floor(Math.random() * 12) + 3;
-        ans = Math.floor(Math.random() * 12) + 3;
-        n1 = n2 * ans;
-      }
-    } else {
-      // Later Phase: Advanced arithmetic
-      if (op === '+') {
-        n1 = Math.floor(Math.random() * 150) + 35;
-        n2 = Math.floor(Math.random() * 150) + 35;
-        ans = n1 + n2;
-      } else if (op === '-') {
-        n1 = Math.floor(Math.random() * 250) + 50;
-        n2 = Math.floor(Math.random() * (n1 - 20)) + 10;
-        ans = n1 - n2;
-      } else if (op === '×') {
-        n1 = Math.floor(Math.random() * 25) + 5;
-        n2 = Math.floor(Math.random() * 15) + 4;
-        ans = n1 * n2;
-      } else {
-        n2 = Math.floor(Math.random() * 15) + 4;
-        ans = Math.floor(Math.random() * 16) + 4;
-        n1 = n2 * ans;
-      }
-    }
-
-    const text = `${n1} ${op} ${n2}`;
-    return { num1: n1, num2: n2, operator: op, answer: ans, text };
-  };
+  const questionStartTimeRef = useRef<number>(0);
 
   // Start fresh game session
   const handleStartGame = () => {
@@ -118,8 +41,9 @@ export const MentalMathSprint: React.FC<MentalMathSprintProps> = ({ onBack }) =>
     setUserAnswer('');
     setFeedback(null);
 
-    const firstQ = generateQuestion(1);
+    const firstQ = generateMathSprintQuestion(difficulty, 1);
     setCurrentQuestion(firstQ);
+    questionStartTimeRef.current = performance.now();
   };
 
   // Countdown timer effect
@@ -153,7 +77,7 @@ export const MentalMathSprint: React.FC<MentalMathSprintProps> = ({ onBack }) =>
     }
   }, [gameState, currentQuestion]);
 
-  // Handle answer submission
+  // Handle answer submission with correctness-dominant scoring
   const handleSubmitAnswer = (e?: React.FormEvent) => {
     if (e) e.preventDefault();
     if (!currentQuestion || gameState !== 'playing') return;
@@ -162,9 +86,15 @@ export const MentalMathSprint: React.FC<MentalMathSprintProps> = ({ onBack }) =>
     if (isNaN(parsedInput)) return;
 
     const isCorrect = parsedInput === currentQuestion.answer;
+    const solveTimeMs = performance.now() - questionStartTimeRef.current;
 
     if (isCorrect) {
-      setScore((prev) => prev + 1);
+      const diffConfig = MIND_DIFFICULTIES[difficulty];
+      const streakBonus = Math.min(0.5, currentStreak * 0.05); // Max +50% streak bonus
+      const cappedSpeedBonus = Math.min(25, Math.max(0, Math.floor((3000 - solveTimeMs) / 120))); // Max +25 pts speed bonus
+      const pointsEarned = Math.round(100 * diffConfig.multiplier * (1 + streakBonus) + cappedSpeedBonus);
+
+      setScore((prev) => prev + pointsEarned);
       setCorrectCount((prev) => prev + 1);
       setCurrentStreak((prev) => {
         const next = prev + 1;
@@ -173,6 +103,7 @@ export const MentalMathSprint: React.FC<MentalMathSprintProps> = ({ onBack }) =>
       });
       setFeedback('correct');
     } else {
+      setScore((prev) => Math.max(0, prev - 25)); // Slight penalty for incorrect
       setIncorrectCount((prev) => prev + 1);
       setCurrentStreak(0);
       setFeedback('incorrect');
@@ -186,7 +117,8 @@ export const MentalMathSprint: React.FC<MentalMathSprintProps> = ({ onBack }) =>
     // Next question
     const nextQIndex = questionCount + 1;
     setQuestionCount(nextQIndex);
-    setCurrentQuestion(generateQuestion(nextQIndex));
+    setCurrentQuestion(generateMathSprintQuestion(difficulty, nextQIndex));
+    questionStartTimeRef.current = performance.now();
     setUserAnswer('');
   };
 
@@ -233,7 +165,39 @@ export const MentalMathSprint: React.FC<MentalMathSprintProps> = ({ onBack }) =>
                 Mental Math Sprint
               </h2>
               <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                60 seconds. Solve as many mental arithmetic questions as you can. Test your speed, accuracy, and concentration.
+                60 seconds. Solve mental arithmetic questions as fast and accurately as you can.
+              </p>
+            </div>
+
+            {/* Difficulty Selector Framework */}
+            <div className="space-y-3 max-w-lg mx-auto pt-2">
+              <div className="text-xs font-extrabold uppercase tracking-wider text-slate-400">
+                Select Difficulty Level
+              </div>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                {(['easy', 'medium', 'hard', 'expert'] as MindDifficulty[]).map((dKey) => {
+                  const cfg = MIND_DIFFICULTIES[dKey];
+                  const isSelected = difficulty === dKey;
+                  return (
+                    <button
+                      key={dKey}
+                      onClick={() => setDifficulty(dKey)}
+                      className={`py-3 px-3 rounded-2xl font-extrabold text-xs border transition-all flex flex-col items-center justify-center gap-1 ${
+                        isSelected
+                          ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm'
+                          : 'bg-slate-50 hover:bg-slate-100 border-slate-200 text-slate-700'
+                      }`}
+                    >
+                      <span className="capitalize">{cfg.name}</span>
+                      <span className={`text-[10px] ${isSelected ? 'text-indigo-100' : 'text-slate-400'}`}>
+                        {cfg.multiplier}× pts
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+              <p className="text-xs text-slate-500 italic">
+                {MIND_DIFFICULTIES[difficulty].description}
               </p>
             </div>
 
@@ -262,16 +226,16 @@ export const MentalMathSprint: React.FC<MentalMathSprintProps> = ({ onBack }) =>
               <div className="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center">
                 <Target className="w-4 h-4" />
               </div>
-              <h3 className="text-sm font-bold text-slate-900">Progressive Arithmetic</h3>
-              <p className="text-xs text-slate-500">Addition, subtraction, multiplication, and clean integer division.</p>
+              <h3 className="text-sm font-bold text-slate-900">Cognitive Structure Progression</h3>
+              <p className="text-xs text-slate-500">Single operations, clean division, compound sequencing, & mental shortcuts.</p>
             </div>
 
             <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-2">
               <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
                 <Flame className="w-4 h-4" />
               </div>
-              <h3 className="text-sm font-bold text-slate-900">Streak & Accuracy Tracking</h3>
-              <p className="text-xs text-slate-500">Keyboard-first operation designed to maximize questions per minute.</p>
+              <h3 className="text-sm font-bold text-slate-900">Correctness-First Scoring</h3>
+              <p className="text-xs text-slate-500">Rewards accuracy & streaks; speed provides a small secondary bonus.</p>
             </div>
           </div>
         </div>
@@ -301,11 +265,13 @@ export const MentalMathSprint: React.FC<MentalMathSprintProps> = ({ onBack }) =>
               </div>
             </div>
 
-            {/* Question # Card */}
+            {/* Difficulty Badge Card */}
             <div className="p-4 rounded-2xl bg-white border border-slate-200 text-slate-900">
-              <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Question</div>
-              <div className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-700">
-                #{questionCount}
+              <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Difficulty</div>
+              <div className="text-sm sm:text-base font-extrabold tracking-tight text-slate-700 capitalize mt-1">
+                <span className="bg-indigo-50 text-indigo-700 px-2 py-0.5 rounded-full border border-indigo-100">
+                  {MIND_DIFFICULTIES[difficulty].name} ({MIND_DIFFICULTIES[difficulty].multiplier}×)
+                </span>
               </div>
             </div>
 
@@ -337,8 +303,13 @@ export const MentalMathSprint: React.FC<MentalMathSprintProps> = ({ onBack }) =>
               ? 'border-rose-300 ring-2 ring-rose-200'
               : 'border-slate-200 shadow-xs'
           }`}>
-            <div className="text-xs font-bold text-slate-400 uppercase tracking-widest">
+            <div className="flex items-center justify-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-widest">
               Calculate Solution
+              {currentQuestion.isShortcut && (
+                <span className="text-[10px] font-extrabold uppercase bg-amber-50 text-amber-700 px-2 py-0.5 rounded-full border border-amber-200 flex items-center gap-1">
+                  <Sparkles className="w-3 h-3" /> Shortcut Family
+                </span>
+              )}
             </div>
 
             <div className="text-4xl sm:text-6xl font-black text-slate-900 tracking-tight font-mono">
@@ -377,7 +348,7 @@ export const MentalMathSprint: React.FC<MentalMathSprintProps> = ({ onBack }) =>
           <div className="bg-white border border-slate-200 rounded-3xl p-8 sm:p-12 shadow-xs text-center space-y-8">
             <div className="space-y-2">
               <span className="text-xs font-bold uppercase tracking-wider bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full border border-indigo-100">
-                Sprint Complete
+                Sprint Complete · {MIND_DIFFICULTIES[difficulty].name} Mode
               </span>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
                 Mental Math Sprint Summary
@@ -425,7 +396,7 @@ export const MentalMathSprint: React.FC<MentalMathSprintProps> = ({ onBack }) =>
                 onClick={handleStartGame}
                 className="w-full sm:w-auto px-8 py-3.5 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-base shadow-xs hover:shadow-md transition-all flex items-center justify-center gap-2"
               >
-                <RotateCcw className="w-4 h-4" /> Play Again
+                <RotateCcw className="w-4 h-4" /> Play Again ({MIND_DIFFICULTIES[difficulty].name})
               </button>
 
               <button

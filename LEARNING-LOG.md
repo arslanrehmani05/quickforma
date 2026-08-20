@@ -623,6 +623,22 @@
 **Remember This:** Always align component color schemes with core brand tokens to maintain visual harmony across product hubs.
 **Full explanation:** Updated `src/pages/MindPage.tsx` to set all 6 game cards (`Mental Math Sprint`, `Number Sense`, `Pattern Challenge`, `Logic Challenge`, `Probability Challenge`, `Focus Challenge`) to use QuickForma's primary Indigo theme styling (`bg-indigo-50 border-indigo-100 text-indigo-600/700`). Verified 100% clean production build compilation via `npm run build`.
 
+## 2026-08-20 — QuickForma — Implemented Phase 1 Difficulty Framework & Mental Math Sprint (Step 1)
+**Tags:** #QuickFormaMind #Phase1 #MentalMathSprint #DifficultyFramework #ProceduralGeneration #React #TypeScript
+**Importance:** ★★★★★
+**Frequency:** Weekly
+**Syntax Introduced:** `MindDifficulty`, `generateMathSprintQuestion`, correctness-dominant scoring with capped speed bonuses
+**Concept Introduced:** Cognitive Structure Tiering, Procedural Question Family Generation, Non-Predictable Randomized Sequence Validation
+**Prerequisites:** React `useState`/`useRef`, TypeScript Union Types, Monotonic Latency Measurement
+**Decision:** Built the Phase 1 Shared Difficulty Framework (`src/types/mind.ts`) and Phase 2 Step 1 Mental Math Sprint Upgrade (`src/utils/mindGenerators.ts` & `src/components/mind/MentalMathSprint.tsx`).
+**Reason:** Gives Mental Math Sprint explicit cognitive structure tiers (Easy, Medium, Hard, Expert) with non-predictable procedural question families and correctness-dominant scoring.
+**Alternative:** Generating random number pairs without difficulty tiers or structural family differentiation.
+**Tradeoff:** Requires rigorous pre-render validation checks while guaranteeing clear cognitive progression.
+**General principle:** Define difficulty by underlying question structure rather than term counts or timer lengths.
+**CS50/roadmap.sh link:** CS50 Web Development — Structural Algorithmic Generation & Game Balancing.
+**Remember This:** Differentiate difficulty tiers by cognitive structure (single-operation $\to$ division $\to$ compound expressions $\to$ shortcut families) rather than timer adjustments.
+**Full explanation:** Created `src/types/mind.ts` (`MindDifficulty` framework) and `src/utils/mindGenerators.ts` (`generateMathSprintQuestion` procedural engine with 5 question families). Updated `src/components/mind/MentalMathSprint.tsx` to include Easy/Medium/Hard/Expert start screen selector buttons, correctness-dominant scoring ($100 \times \text{DiffMult} \times (1 + \text{Streak}) + \text{CappedSpeedBonus}$), and live difficulty header badge. Stopped before touching Game 2 (*Number Sense*) per strict QA workflow. Verified 100% clean production build compilation via `npm run build`.
+
 
 
 

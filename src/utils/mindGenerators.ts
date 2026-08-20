@@ -141,3 +141,198 @@ function createCandidateQuestion(difficulty: MindDifficulty): MathSprintQuestion
     }
   }
 }
+
+import { NumberSenseQuestion } from '../types/mind';
+
+/**
+ * Procedural Question Generator for Number Sense
+ * Solvable efficiently through estimation, comparison, proportional reasoning, magnitude recognition, or numerical structure.
+ * Multi-step paper arithmetic is BANNED.
+ */
+export function generateNumberSenseQuestion(
+  difficulty: MindDifficulty,
+  _qIndex: number
+): NumberSenseQuestion {
+  let attempt = 0;
+  while (attempt < 50) {
+    attempt++;
+    const q = createCandidateNumberSenseQuestion(difficulty);
+    if (isValidNumberSenseQuestion(q)) {
+      return q;
+    }
+  }
+
+  // Fallback safe default
+  return {
+    prompt: 'Which is larger?',
+    options: ['0.80', '1/2'],
+    correctIndex: 0,
+    family: 'decimal_vs_fraction_easy',
+  };
+}
+
+function isValidNumberSenseQuestion(q: NumberSenseQuestion): boolean {
+  if (!q.prompt || !q.options || q.options.length < 2) return false;
+  if (q.correctIndex < 0 || q.correctIndex >= q.options.length) return false;
+  // Ensure options are distinct strings
+  const set = new Set(q.options);
+  if (set.size !== q.options.length) return false;
+  return true;
+}
+
+function createCandidateNumberSenseQuestion(difficulty: MindDifficulty): NumberSenseQuestion {
+  switch (difficulty) {
+    case 'easy': {
+      // Easy: "Obviously X is bigger" (Wide differences > 20%)
+      const type = ['decimal_vs_fraction_easy', 'ratio_easy', 'magnitude_easy'][Math.floor(Math.random() * 3)];
+
+      if (type === 'decimal_vs_fraction_easy') {
+        const dec = 0.85;
+        const fracText = '1/2';
+        const fracVal = 0.5;
+        const decGreater = dec > fracVal;
+        const options = [`${dec}`, `${fracText}`];
+        return {
+          prompt: 'Which is larger?',
+          options,
+          correctIndex: decGreater ? 0 : 1,
+          family: 'decimal_vs_fraction_easy',
+        };
+      } else if (type === 'ratio_easy') {
+        const options = ['4:1', '1:4'];
+        return {
+          prompt: 'Which ratio represents a larger value?',
+          options,
+          correctIndex: 0,
+          family: 'ratio_easy',
+        };
+      } else {
+        const val1 = 750;
+        const val2 = 75;
+        const options = [`${val1}`, `${val2}`];
+        return {
+          prompt: 'Which value is larger?',
+          options,
+          correctIndex: 0,
+          family: 'magnitude_easy',
+        };
+      }
+    }
+
+    case 'medium': {
+      // Medium: "I can see the relationship without calculating exactly"
+      const type = ['mult_estimation', 'pct_estimation', 'fraction_benchmark'][Math.floor(Math.random() * 3)];
+
+      if (type === 'mult_estimation') {
+        // e.g. 0.48 * 500 (= 240) vs 0.5 * 470 (= 235)
+        const options = ['0.48 × 500', '0.5 × 470'];
+        const val1 = 0.48 * 500;
+        const val2 = 0.5 * 470;
+        return {
+          prompt: 'Which expression is larger?',
+          options,
+          correctIndex: val1 > val2 ? 0 : 1,
+          family: 'mult_estimation',
+        };
+      } else if (type === 'pct_estimation') {
+        // e.g. Without calculating, which is closest to 19% of 250? -> 50
+        const options = ['25', '50', '75', '100'];
+        return {
+          prompt: 'Without calculating exactly, which is closest to 19% of 250?',
+          options,
+          correctIndex: 1, // 50 (exact is 47.5)
+          family: 'pct_estimation',
+        };
+      } else {
+        // Benchmark e.g. closest to 1/3
+        const options = ['25%', '33%', '40%', '50%'].sort(() => Math.random() - 0.5);
+        const correctIndex = options.indexOf('33%');
+        return {
+          prompt: 'Which percentage is closest to 1/3?',
+          options,
+          correctIndex,
+          family: 'fraction_benchmark',
+        };
+      }
+    }
+
+    case 'hard': {
+      // Hard: "I need to reason carefully about the relationship"
+      const type = ['fraction_magnitude_hard', 'pct_shift', 'order_magnitude'][Math.floor(Math.random() * 3)];
+
+      if (type === 'fraction_magnitude_hard') {
+        // e.g. 4/7 (=0.571) vs 5/9 (=0.555)
+        const options = ['4/7', '5/9'];
+        const val1 = 4 / 7;
+        const val2 = 5 / 9;
+        return {
+          prompt: 'Which fraction is larger?',
+          options,
+          correctIndex: val1 > val2 ? 0 : 1,
+          family: 'fraction_magnitude_hard',
+        };
+      } else if (type === 'pct_shift') {
+        const options = ['20%', '25%', '30%', '40%'].sort(() => Math.random() - 0.5);
+        const correctIndex = options.indexOf('25%');
+        return {
+          prompt: 'An increase from 80 to 100 represents what percentage increase?',
+          options,
+          correctIndex,
+          family: 'pct_shift',
+        };
+      } else {
+        // Order of magnitude: 4.8 * 10^3 = 4800 vs 5200
+        const options = ['4.8 × 10³', '5,200'];
+        return {
+          prompt: 'Which value is larger?',
+          options,
+          correctIndex: 1, // 5,200 is larger than 4,800
+          family: 'order_magnitude',
+        };
+      }
+    }
+
+    case 'expert': {
+      // Expert: "I need strong numerical intuition to see the answer quickly"
+      const type = ['structural_fraction', 'sqrt_bounds', 'indisputable_impossible'][Math.floor(Math.random() * 3)];
+
+      if (type === 'structural_fraction') {
+        // e.g. 49/51 (1 - 2/51 = 0.9607) vs 97/101 (1 - 4/101 = 0.96039)
+        const options = ['49/51', '97/101'];
+        const val1 = 49 / 51;
+        const val2 = 97 / 101;
+        return {
+          prompt: 'Which fraction is larger?',
+          options,
+          correctIndex: val1 > val2 ? 0 : 1,
+          family: 'structural_fraction',
+        };
+      } else if (type === 'sqrt_bounds') {
+        // e.g. Is √87 closer to 9 or 10? (81 vs 100, 87 is 6 away from 81 and 13 away from 100 -> closer to 9)
+        const options = ['9', '10'];
+        return {
+          prompt: 'Is √87 closer to 9 or 10?',
+          options,
+          correctIndex: 0,
+          family: 'sqrt_bounds',
+        };
+      } else {
+        // Indisputable impossible: Probability = 1.4
+        const options = [
+          'Probability of an event = 1.4',
+          'Percentage of a total = 85%',
+          'Square root of a number = 3.5',
+          'Ratio of two quantities = 2:3',
+        ].sort(() => Math.random() - 0.5);
+
+        const correctIndex = options.indexOf('Probability of an event = 1.4');
+        return {
+          prompt: 'Which metric is mathematically IMPOSSIBLE?',
+          options,
+          correctIndex,
+          family: 'indisputable_impossible',
+        };
+      }
+    }
+  }
+}

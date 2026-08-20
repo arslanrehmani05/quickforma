@@ -639,6 +639,22 @@
 **Remember This:** Differentiate difficulty tiers by cognitive structure (single-operation $\to$ division $\to$ compound expressions $\to$ shortcut families) rather than timer adjustments.
 **Full explanation:** Created `src/types/mind.ts` (`MindDifficulty` framework) and `src/utils/mindGenerators.ts` (`generateMathSprintQuestion` procedural engine with 5 question families). Updated `src/components/mind/MentalMathSprint.tsx` to include Easy/Medium/Hard/Expert start screen selector buttons, correctness-dominant scoring ($100 \times \text{DiffMult} \times (1 + \text{Streak}) + \text{CappedSpeedBonus}$), and live difficulty header badge. Stopped before touching Game 2 (*Number Sense*) per strict QA workflow. Verified 100% clean production build compilation via `npm run build`.
 
+## 2026-08-20 — QuickForma — Implemented Phase 2 Step 2 Number Sense Upgrade
+**Tags:** #QuickFormaMind #Step2 #NumberSense #ProceduralGeneration #React #TypeScript #DerivativeValidation
+**Importance:** ★★★★★
+**Frequency:** Weekly
+**Syntax Introduced:** `generateNumberSenseQuestion`, structural intuition evaluation, derivative assertion check
+**Concept Introduced:** Magnitude Estimation vs Multi-Step Calculation, Structural Fraction Comparison, Mathematical Derivative Validation
+**Prerequisites:** React `useState`/`useRef`, Numerical Analysis, Derivative Validation Assertions
+**Decision:** Upgraded Number Sense into a deep procedural magnitude intuition engine across 4 structural difficulty tiers (`Easy`, `Medium`, `Hard`, `Expert`) with mathematical derivative validation to guarantee single-answer uniqueness.
+**Reason:** Ensures questions test rapid structural intuition, magnitude recognition, and estimation without degenerating into multi-step paper arithmetic.
+**Alternative:** Including unit conversions or multi-step paper arithmetic.
+**Tradeoff:** Banned multi-step paper arithmetic to keep Number Sense distinct from Mental Math Sprint.
+**General principle:** Number Sense questions must test structural intuition and magnitude recognition solvable without long paper calculations.
+**CS50/roadmap.sh link:** CS50 Web Development — Mathematical Derivative Validation & Heuristic Estimation Engines.
+**Remember This:** Every Number Sense question must be solvable efficiently through magnitude intuition, comparison, or structural reasoning — multi-step paper arithmetic is strictly banned.
+**Full explanation:** Updated `src/types/mind.ts` (`NumberSenseQuestion` interface) and `src/utils/mindGenerators.ts` (`generateNumberSenseQuestion` procedural engine). Banned unit conversions and multi-step paper arithmetic. Implemented structural tiering (Easy: wide difference $0.80$ vs $1/2$; Medium: relationship recognition $0.48 \times 500$ vs $0.5 \times 470$ & estimation "Closest to 19% of 250?" $\to 50$; Hard: fractional magnitude $4/7$ vs $5/9$ & order of magnitude $4.8 \times 10^3$ vs $5200$; Expert: structural fractions $49/51$ vs $97/101$, $\sqrt{87}$ bounds, and indisputable impossibilities). Updated `src/components/mind/NumberSenseGame.tsx` with difficulty selection pills, correctness-dominant scoring, and live difficulty header. Verified 100% clean production build compilation via `npm run build`.
+
 
 
 

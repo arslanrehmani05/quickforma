@@ -1,11 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Hash, RotateCcw, ArrowLeft, Target, Clock, CheckCircle2, XCircle, Flame, Play } from 'lucide-react';
-
-interface NumberSenseQuestion {
-  prompt: string;
-  options: string[];
-  correctIndex: number;
-}
+import { MindDifficulty, MIND_DIFFICULTIES, NumberSenseQuestion } from '../../types/mind';
+import { generateNumberSenseQuestion } from '../../utils/mindGenerators';
 
 interface NumberSenseGameProps {
   onBack: () => void;
@@ -14,6 +10,7 @@ interface NumberSenseGameProps {
 type GameState = 'idle' | 'playing' | 'results';
 
 export const NumberSenseGame: React.FC<NumberSenseGameProps> = ({ onBack }) => {
+  const [difficulty, setDifficulty] = useState<MindDifficulty>('medium');
   const [gameState, setGameState] = useState<GameState>('idle');
   const [timeLeft, setTimeLeft] = useState<number>(60);
   const [score, setScore] = useState<number>(0);
@@ -28,75 +25,7 @@ export const NumberSenseGame: React.FC<NumberSenseGameProps> = ({ onBack }) => {
   const [feedback, setFeedback] = useState<'correct' | 'incorrect' | null>(null);
 
   const timerRef = useRef<NodeJS.Timeout | null>(null);
-
-  // Generate clean numerical intuition questions
-  const generateQuestion = (qIndex: number): NumberSenseQuestion => {
-    const qTypes = ['compare', 'percentage_estimate', 'fraction_closest', 'ratio_compare'];
-    const type = qTypes[Math.floor(Math.random() * qTypes.length)];
-
-    if (type === 'compare') {
-      // e.g. 0.72 vs 7/10
-      const dec = parseFloat((Math.random() * 0.8 + 0.1).toFixed(2));
-      const denom = [4, 5, 8, 10, 20][Math.floor(Math.random() * 5)];
-      const num = Math.floor(Math.random() * (denom - 1)) + 1;
-      const fracVal = num / denom;
-
-      const decGreater = dec > fracVal;
-      const prompt = `Which value is greater?`;
-      const options = [`${dec}`, `${num}/${denom}`];
-      const correctIndex = decGreater ? 0 : 1;
-      return { prompt, options, correctIndex };
-    } else if (type === 'percentage_estimate') {
-      // e.g. ~19% of 250
-      const pct = [9, 19, 24, 49, 74][Math.floor(Math.random() * 5)];
-      const base = [100, 200, 250, 300, 500][Math.floor(Math.random() * 5)];
-      const exact = (pct / 100) * base;
-
-      const prompt = `Approximately what is ${pct}% of ${base}?`;
-      const options = [
-        `${exact}`,
-        `${exact - base * 0.05}`,
-        `${exact + base * 0.05}`,
-        `${exact + base * 0.1}`,
-      ].sort(() => Math.random() - 0.5);
-
-      const correctIndex = options.indexOf(`${exact}`);
-      return { prompt, options, correctIndex };
-    } else if (type === 'fraction_closest') {
-      // e.g. What is closest to 1/3?
-      const fractions = [
-        { text: '1/3', val: 1 / 3, targetPct: '33%' },
-        { text: '1/4', val: 1 / 4, targetPct: '25%' },
-        { text: '3/4', val: 3 / 4, targetPct: '75%' },
-        { text: '2/5', val: 2 / 5, targetPct: '40%' },
-      ];
-      const selected = fractions[Math.floor(Math.random() * fractions.length)];
-      const prompt = `Which percentage is closest to ${selected.text}?`;
-      const options = ['25%', '33%', '40%', '50%', '75%'].sort(() => Math.random() - 0.5).slice(0, 4);
-
-      if (!options.includes(selected.targetPct)) {
-        options[0] = selected.targetPct;
-      }
-      options.sort(() => Math.random() - 0.5);
-      const correctIndex = options.indexOf(selected.targetPct);
-      return { prompt, options, correctIndex };
-    } else {
-      // Ratio comparison e.g. 3:4 vs 5:7
-      const r1Num = Math.floor(Math.random() * 4) + 2;
-      const r1Den = r1Num + Math.floor(Math.random() * 3) + 1;
-
-      const r2Num = Math.floor(Math.random() * 4) + 2;
-      const r2Den = r2Num + Math.floor(Math.random() * 3) + 1;
-
-      const val1 = r1Num / r1Den;
-      const val2 = r2Num / r2Den;
-
-      const prompt = `Which ratio is larger?`;
-      const options = [`${r1Num}:${r1Den}`, `${r2Num}:${r2Den}`];
-      const correctIndex = val1 > val2 ? 0 : 1;
-      return { prompt, options, correctIndex };
-    }
-  };
+  const questionStartTimeRef = useRef<number>(0);
 
   const handleStartGame = () => {
     setGameState('playing');
@@ -110,7 +39,9 @@ export const NumberSenseGame: React.FC<NumberSenseGameProps> = ({ onBack }) => {
     setSelectedOption(null);
     setFeedback(null);
 
-    setCurrentQuestion(generateQuestion(1));
+    const firstQ = generateNumberSenseQuestion(difficulty, 1);
+    setCurrentQuestion(firstQ);
+    questionStartTimeRef.current = performance.now();
   };
 
   useEffect(() => {
@@ -139,9 +70,15 @@ export const NumberSenseGame: React.FC<NumberSenseGameProps> = ({ onBack }) => {
 
     setSelectedOption(index);
     const isCorrect = index === currentQuestion.correctIndex;
+    const solveTimeMs = performance.now() - questionStartTimeRef.current;
 
     if (isCorrect) {
-      setScore((prev) => prev + 1);
+      const diffConfig = MIND_DIFFICULTIES[difficulty];
+      const streakBonus = Math.min(0.5, currentStreak * 0.05);
+      const cappedSpeedBonus = Math.min(25, Math.max(0, Math.floor((3000 - solveTimeMs) / 120)));
+      const pointsEarned = Math.round(100 * diffConfig.multiplier * (1 + streakBonus) + cappedSpeedBonus);
+
+      setScore((prev) => prev + pointsEarned);
       setCorrectCount((prev) => prev + 1);
       setCurrentStreak((prev) => {
         const next = prev + 1;
@@ -150,6 +87,7 @@ export const NumberSenseGame: React.FC<NumberSenseGameProps> = ({ onBack }) => {
       });
       setFeedback('correct');
     } else {
+      setScore((prev) => Math.max(0, prev - 25));
       setIncorrectCount((prev) => prev + 1);
       setCurrentStreak(0);
       setFeedback('incorrect');
@@ -160,7 +98,8 @@ export const NumberSenseGame: React.FC<NumberSenseGameProps> = ({ onBack }) => {
       setSelectedOption(null);
       const nextQ = questionCount + 1;
       setQuestionCount(nextQ);
-      setCurrentQuestion(generateQuestion(nextQ));
+      setCurrentQuestion(generateNumberSenseQuestion(difficulty, nextQ));
+      questionStartTimeRef.current = performance.now();
     }, 250);
   };
 
@@ -182,7 +121,7 @@ export const NumberSenseGame: React.FC<NumberSenseGameProps> = ({ onBack }) => {
                 QuickForma Mind
               </span>
             </h1>
-            <p className="text-xs text-slate-500">Test numerical intuition, estimation speed, and ratio comparison</p>
+            <p className="text-xs text-slate-500">Test numerical intuition, magnitude estimation, & structural relationships</p>
           </div>
         </div>
 
@@ -206,7 +145,39 @@ export const NumberSenseGame: React.FC<NumberSenseGameProps> = ({ onBack }) => {
               Number Sense Challenge
             </h2>
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-              60 seconds. Rapidly evaluate fractions, percentages, estimates, and ratio sizes without long calculations.
+              60 seconds. Rapidly evaluate fraction sizes, percentage estimates, structural relationships, and order of magnitude without multi-step paper calculations.
+            </p>
+          </div>
+
+          {/* Difficulty Selector Framework */}
+          <div className="space-y-3 max-w-lg mx-auto pt-2">
+            <div className="text-xs font-extrabold uppercase tracking-wider text-slate-400">
+              Select Difficulty Level
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+              {(['easy', 'medium', 'hard', 'expert'] as MindDifficulty[]).map((dKey) => {
+                const cfg = MIND_DIFFICULTIES[dKey];
+                const isSelected = difficulty === dKey;
+                return (
+                  <button
+                    key={dKey}
+                    onClick={() => setDifficulty(dKey)}
+                    className={`py-3 px-3 rounded-2xl font-extrabold text-xs border transition-all flex flex-col items-center justify-center gap-1 ${
+                      isSelected
+                        ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm'
+                        : 'bg-slate-50 hover:bg-slate-100 border-slate-200 text-slate-700'
+                    }`}
+                  >
+                    <span className="capitalize">{cfg.name}</span>
+                    <span className={`text-[10px] ${isSelected ? 'text-indigo-100' : 'text-slate-400'}`}>
+                      {cfg.multiplier}× pts
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+            <p className="text-xs text-slate-500 italic">
+              {MIND_DIFFICULTIES[difficulty].description}
             </p>
           </div>
 
@@ -232,8 +203,12 @@ export const NumberSenseGame: React.FC<NumberSenseGameProps> = ({ onBack }) => {
               <div className="text-2xl sm:text-3xl font-extrabold text-indigo-600">{score}</div>
             </div>
             <div className="p-4 rounded-2xl bg-white border border-slate-200">
-              <div className="text-[10px] font-bold text-slate-400 uppercase">Question</div>
-              <div className="text-2xl sm:text-3xl font-extrabold text-slate-700">#{questionCount}</div>
+              <div className="text-[10px] font-bold text-slate-400 uppercase">Difficulty</div>
+              <div className="text-sm sm:text-base font-extrabold text-slate-700 capitalize mt-1">
+                <span className="bg-indigo-50 text-indigo-700 px-2 py-0.5 rounded-full border border-indigo-100">
+                  {MIND_DIFFICULTIES[difficulty].name} ({MIND_DIFFICULTIES[difficulty].multiplier}×)
+                </span>
+              </div>
             </div>
             <div className="p-4 rounded-2xl bg-white border border-slate-200">
               <div className="text-[10px] font-bold text-slate-400 uppercase">Streak</div>
@@ -245,14 +220,14 @@ export const NumberSenseGame: React.FC<NumberSenseGameProps> = ({ onBack }) => {
             feedback === 'correct' ? 'border-emerald-300 ring-2 ring-emerald-200' : feedback === 'incorrect' ? 'border-rose-300 ring-2 ring-rose-200' : 'border-slate-200 shadow-xs'
           }`}>
             <div className="text-xs font-bold text-slate-400 uppercase tracking-widest">Evaluate & Tap</div>
-            <div className="text-2xl sm:text-4xl font-extrabold text-slate-900">{currentQuestion.prompt}</div>
+            <div className="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-relaxed max-w-xl mx-auto">{currentQuestion.prompt}</div>
 
-            <div className={`grid gap-3 max-w-md mx-auto ${currentQuestion.options.length === 2 ? 'grid-cols-2' : 'grid-cols-2'}`}>
+            <div className={`grid gap-3 max-w-xl mx-auto ${currentQuestion.options.length === 2 ? 'grid-cols-2' : 'grid-cols-2'}`}>
               {currentQuestion.options.map((opt, idx) => (
                 <button
                   key={idx}
                   onClick={() => handleOptionClick(idx)}
-                  className={`py-4 px-6 rounded-2xl font-extrabold text-lg border transition-all ${
+                  className={`py-4 px-6 rounded-2xl font-extrabold text-base sm:text-lg border transition-all ${
                     selectedOption === idx
                       ? idx === currentQuestion.correctIndex
                         ? 'bg-emerald-600 text-white border-emerald-600'
@@ -272,7 +247,9 @@ export const NumberSenseGame: React.FC<NumberSenseGameProps> = ({ onBack }) => {
       {gameState === 'results' && (
         <div className="bg-white border border-slate-200 rounded-3xl p-8 sm:p-12 shadow-xs text-center space-y-8">
           <div className="space-y-2">
-            <span className="text-xs font-bold uppercase tracking-wider bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full border border-indigo-100">Sprint Complete</span>
+            <span className="text-xs font-bold uppercase tracking-wider bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full border border-indigo-100">
+              Sprint Complete · {MIND_DIFFICULTIES[difficulty].name} Mode
+            </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900">Number Sense Summary</h2>
           </div>
           <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 max-w-sm mx-auto space-y-1">
@@ -302,7 +279,12 @@ export const NumberSenseGame: React.FC<NumberSenseGameProps> = ({ onBack }) => {
             </div>
           </div>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <button onClick={handleStartGame} className="px-8 py-3.5 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-base flex items-center gap-2"><RotateCcw className="w-4 h-4" /> Play Again</button>
+            <button
+              onClick={handleStartGame}
+              className="px-8 py-3.5 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-base flex items-center gap-2"
+            >
+              <RotateCcw className="w-4 h-4" /> Play Again ({MIND_DIFFICULTIES[difficulty].name})
+            </button>
             <button onClick={onBack} className="px-6 py-3.5 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-base">Back to Mind Hub</button>
           </div>
         </div>

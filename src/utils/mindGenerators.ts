@@ -544,16 +544,16 @@ function createCandidatePatternQuestion(difficulty: MindDifficulty): PatternQues
           family: 'alternating_add_sub',
         };
       } else {
-        // mult_div_step e.g. * 3, / 2
-        const start = Math.floor(Math.random() * 6) + 4;
+        // mult_div_step: Clean integer operations e.g. * 4, / 2
+        const start = Math.floor(Math.random() * 5) + 3; // e.g. 3
         const terms: number[] = [];
         let curr = start;
         for (let i = 0; i < numTerms; i++) {
           terms.push(curr);
-          curr = i % 2 === 0 ? curr * 3 : Math.floor(curr / 2);
+          curr = i % 2 === 0 ? curr * 4 : curr / 2;
         }
         const answer = curr;
-        const options = [answer, answer + 4, answer - 2, answer * 2].sort(() => Math.random() - 0.5);
+        const options = [answer, answer + 4, Math.max(1, answer - 2), answer * 2].sort(() => Math.random() - 0.5);
         return {
           sequenceText: `${terms.join(', ')}, ?`,
           answer,

@@ -187,7 +187,7 @@ function createCandidateNumberSenseQuestion(difficulty: MindDifficulty): NumberS
       const type = ['decimal_vs_fraction_easy', 'ratio_easy', 'magnitude_easy'][Math.floor(Math.random() * 3)];
 
       if (type === 'decimal_vs_fraction_easy') {
-        const dec = 0.85;
+        const dec = parseFloat((Math.random() * 0.25 + 0.70).toFixed(2)); // 0.70 to 0.95
         const fracText = '1/2';
         const fracVal = 0.5;
         const decGreater = dec > fracVal;
@@ -199,7 +199,8 @@ function createCandidateNumberSenseQuestion(difficulty: MindDifficulty): NumberS
           family: 'decimal_vs_fraction_easy',
         };
       } else if (type === 'ratio_easy') {
-        const options = ['4:1', '1:4'];
+        const n = Math.floor(Math.random() * 6) + 3; // 3 to 8
+        const options = [`${n}:1`, `1:${n}`];
         return {
           prompt: 'Which ratio represents a larger value?',
           options,
@@ -207,8 +208,8 @@ function createCandidateNumberSenseQuestion(difficulty: MindDifficulty): NumberS
           family: 'ratio_easy',
         };
       } else {
-        const val1 = 750;
-        const val2 = 75;
+        const val1 = Math.floor(Math.random() * 700) + 200; // 200 to 900
+        const val2 = Math.floor(val1 / 10);
         const options = [`${val1}`, `${val2}`];
         return {
           prompt: 'Which value is larger?',
@@ -225,9 +226,12 @@ function createCandidateNumberSenseQuestion(difficulty: MindDifficulty): NumberS
 
       if (type === 'mult_estimation') {
         // e.g. 0.48 * 500 (= 240) vs 0.5 * 470 (= 235)
-        const options = ['0.48 × 500', '0.5 × 470'];
-        const val1 = 0.48 * 500;
-        const val2 = 0.5 * 470;
+        const base = [400, 500, 600][Math.floor(Math.random() * 3)];
+        const dec = 0.48;
+        const compBase = base - 30;
+        const options = [`${dec} × ${base}`, `0.5 × ${compBase}`];
+        const val1 = dec * base;
+        const val2 = 0.5 * compBase;
         return {
           prompt: 'Which expression is larger?',
           options,
@@ -236,19 +240,50 @@ function createCandidateNumberSenseQuestion(difficulty: MindDifficulty): NumberS
         };
       } else if (type === 'pct_estimation') {
         // e.g. Without calculating, which is closest to 19% of 250? -> 50
-        const options = ['25', '50', '75', '100'];
+        const pct = [18, 19, 21, 24][Math.floor(Math.random() * 4)];
+        const base = [200, 250, 300, 400][Math.floor(Math.random() * 4)];
+        const exact = (pct / 100) * base;
+
+        // Bounded magnitude options
+        const opt25 = Math.round(base * 0.1);
+        const opt50 = Math.round(base * 0.2);
+        const opt75 = Math.round(base * 0.3);
+        const opt100 = Math.round(base * 0.4);
+
+        const options = [`${opt25}`, `${opt50}`, `${opt75}`, `${opt100}`];
+        // Exact 47.5 is closest to opt50 (exact/base is ~0.19, closest to 0.20)
+        let closestIdx = 0;
+        let minDiff = Math.abs(exact - opt25);
+        [opt50, opt75, opt100].forEach((optVal, idx) => {
+          const diff = Math.abs(exact - optVal);
+          if (diff < minDiff) {
+            minDiff = diff;
+            closestIdx = idx + 1;
+          }
+        });
+
         return {
-          prompt: 'Without calculating exactly, which is closest to 19% of 250?',
+          prompt: `Without calculating exactly, which is closest to ${pct}% of ${base}?`,
           options,
-          correctIndex: 1, // 50 (exact is 47.5)
+          correctIndex: closestIdx,
           family: 'pct_estimation',
         };
       } else {
-        // Benchmark e.g. closest to 1/3
-        const options = ['25%', '33%', '40%', '50%'].sort(() => Math.random() - 0.5);
-        const correctIndex = options.indexOf('33%');
+        // Benchmark e.g. closest to 1/3 or 2/3
+        const benchmarks = [
+          { text: '1/3', val: 1 / 3, targetPct: '33%' },
+          { text: '2/3', val: 2 / 3, targetPct: '66%' },
+          { text: '3/4', val: 3 / 4, targetPct: '75%' },
+        ];
+        const pick = benchmarks[Math.floor(Math.random() * benchmarks.length)];
+        const allOpts = ['25%', '33%', '40%', '66%', '75%'];
+        const options = allOpts.filter((o) => o !== pick.targetPct).slice(0, 3);
+        options.push(pick.targetPct);
+        options.sort(() => Math.random() - 0.5);
+
+        const correctIndex = options.indexOf(pick.targetPct);
         return {
-          prompt: 'Which percentage is closest to 1/3?',
+          prompt: `Which percentage is closest to ${pick.text}?`,
           options,
           correctIndex,
           family: 'fraction_benchmark',
@@ -261,32 +296,48 @@ function createCandidateNumberSenseQuestion(difficulty: MindDifficulty): NumberS
       const type = ['fraction_magnitude_hard', 'pct_shift', 'order_magnitude'][Math.floor(Math.random() * 3)];
 
       if (type === 'fraction_magnitude_hard') {
-        // e.g. 4/7 (=0.571) vs 5/9 (=0.555)
-        const options = ['4/7', '5/9'];
-        const val1 = 4 / 7;
-        const val2 = 5 / 9;
+        const pairs = [
+          { f1: '4/7', v1: 4 / 7, f2: '5/9', v2: 5 / 9 },
+          { f1: '3/8', v1: 3 / 8, f2: '4/11', v2: 4 / 11 },
+          { f1: '5/8', v1: 5 / 8, f2: '7/12', v2: 7 / 12 },
+        ];
+        const pick = pairs[Math.floor(Math.random() * pairs.length)];
+        const options = [pick.f1, pick.f2];
         return {
           prompt: 'Which fraction is larger?',
           options,
-          correctIndex: val1 > val2 ? 0 : 1,
+          correctIndex: pick.v1 > pick.v2 ? 0 : 1,
           family: 'fraction_magnitude_hard',
         };
       } else if (type === 'pct_shift') {
-        const options = ['20%', '25%', '30%', '40%'].sort(() => Math.random() - 0.5);
-        const correctIndex = options.indexOf('25%');
+        const shifts = [
+          { start: 80, end: 100, pct: '25%' },
+          { start: 50, end: 60, pct: '20%' },
+          { start: 40, end: 50, pct: '25%' },
+          { start: 80, end: 120, pct: '50%' },
+        ];
+        const pick = shifts[Math.floor(Math.random() * shifts.length)];
+        const options = ['15%', '20%', '25%', '30%', '50%'].filter((o) => o !== pick.pct).slice(0, 3);
+        options.push(pick.pct);
+        options.sort(() => Math.random() - 0.5);
+
+        const correctIndex = options.indexOf(pick.pct);
         return {
-          prompt: 'An increase from 80 to 100 represents what percentage increase?',
+          prompt: `An increase from ${pick.start} to ${pick.end} represents what percentage increase?`,
           options,
           correctIndex,
           family: 'pct_shift',
         };
       } else {
-        // Order of magnitude: 4.8 * 10^3 = 4800 vs 5200
-        const options = ['4.8 × 10³', '5,200'];
+        // Order of magnitude: e.g. 4.8 * 10^3 = 4800 vs 5200
+        const mantissa = parseFloat((Math.random() * 3 + 2.5).toFixed(1)); // 2.5 to 5.5
+        const val1 = mantissa * 1000;
+        const val2 = Math.round(val1 + (Math.random() * 800 + 400));
+        const options = [`${mantissa} × 10³`, `${val2.toLocaleString()}`];
         return {
           prompt: 'Which value is larger?',
           options,
-          correctIndex: 1, // 5,200 is larger than 4,800
+          correctIndex: 1, // val2 is larger
           family: 'order_magnitude',
         };
       }
@@ -297,35 +348,56 @@ function createCandidateNumberSenseQuestion(difficulty: MindDifficulty): NumberS
       const type = ['structural_fraction', 'sqrt_bounds', 'indisputable_impossible'][Math.floor(Math.random() * 3)];
 
       if (type === 'structural_fraction') {
-        // e.g. 49/51 (1 - 2/51 = 0.9607) vs 97/101 (1 - 4/101 = 0.96039)
-        const options = ['49/51', '97/101'];
-        const val1 = 49 / 51;
-        const val2 = 97 / 101;
+        // e.g. 49/51 vs 97/101
+        const pairs = [
+          { f1: '49/51', v1: 49 / 51, f2: '97/101', v2: 97 / 101 },
+          { f1: '19/21', v1: 19 / 21, f2: '39/41', v2: 39 / 41 },
+          { f1: '29/31', v1: 29 / 31, f2: '59/61', v2: 59 / 61 },
+        ];
+        const pick = pairs[Math.floor(Math.random() * pairs.length)];
+        const options = [pick.f1, pick.f2];
         return {
           prompt: 'Which fraction is larger?',
           options,
-          correctIndex: val1 > val2 ? 0 : 1,
+          correctIndex: pick.v1 > pick.v2 ? 0 : 1,
           family: 'structural_fraction',
         };
       } else if (type === 'sqrt_bounds') {
-        // e.g. Is √87 closer to 9 or 10? (81 vs 100, 87 is 6 away from 81 and 13 away from 100 -> closer to 9)
-        const options = ['9', '10'];
+        // e.g. Is √87 closer to 9 or 10? (81 vs 100, 87 is 6 from 81 and 13 from 100 -> 9)
+        const k = [70, 72, 75, 87, 92][Math.floor(Math.random() * 5)];
+        const floorRoot = Math.floor(Math.sqrt(k));
+        const ceilRoot = floorRoot + 1;
+        const diffFloor = Math.abs(k - floorRoot * floorRoot);
+        const diffCeil = Math.abs(k - ceilRoot * ceilRoot);
+        const closestRoot = diffFloor < diffCeil ? floorRoot : ceilRoot;
+
+        const options = [`${floorRoot}`, `${ceilRoot}`];
+        const correctIndex = options.indexOf(`${closestRoot}`);
         return {
-          prompt: 'Is √87 closer to 9 or 10?',
+          prompt: `Is √${k} closer to ${floorRoot} or ${ceilRoot}?`,
           options,
-          correctIndex: 0,
+          correctIndex,
           family: 'sqrt_bounds',
         };
       } else {
-        // Indisputable impossible: Probability = 1.4
-        const options = [
+        // Indisputable impossible
+        const impossibles = [
           'Probability of an event = 1.4',
+          'Square of a real number = -9',
+          'Probability of a certainty = -0.2',
+        ];
+        const pickImp = impossibles[Math.floor(Math.random() * impossibles.length)];
+        const validMetrics = [
           'Percentage of a total = 85%',
           'Square root of a number = 3.5',
           'Ratio of two quantities = 2:3',
-        ].sort(() => Math.random() - 0.5);
+          'Average of positive numbers = 42',
+        ];
+        const options = validMetrics.sort(() => Math.random() - 0.5).slice(0, 3);
+        options.push(pickImp);
+        options.sort(() => Math.random() - 0.5);
 
-        const correctIndex = options.indexOf('Probability of an event = 1.4');
+        const correctIndex = options.indexOf(pickImp);
         return {
           prompt: 'Which metric is mathematically IMPOSSIBLE?',
           options,

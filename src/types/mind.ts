@@ -30,6 +30,14 @@ export interface PatternQuestion {
   family: string;
 }
 
+export interface LogicQuestion {
+  premiseText: string;
+  questionText: string;
+  options: string[];
+  correctIndex: number;
+  family: string;
+}
+
 export const MIND_DIFFICULTIES: Record<MindDifficulty, MindDifficultyConfig> = {
   easy: {
     id: 'easy',

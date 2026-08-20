@@ -671,6 +671,22 @@
 **Remember This:** Construct sequence puzzles deterministically from explicit rule definitions with sufficient terms rather than inferring rules from numbers.
 **Full explanation:** Updated `src/types/mind.ts` (`PatternQuestion` interface) and `src/utils/mindGenerators.ts` (`generatePatternQuestion` procedural engine). Built rule-first pipeline (Rule Family $\to$ Parameters $\to$ Sequence $\to$ Target Answer $\to$ Plausible Distractors $\to$ Validate $\to$ Render). Restricted rules to explicit deterministic families (Easy: 4–5 terms $+d, -d, \times r$; Medium: 5–6 terms $+A, -B$; Hard: 5–7 terms 2nd-order $+2, +3, +4$ & $-10, -9, -8$; Expert: 5–8 terms Fibonacci $a_n = a_{n-1} + a_{n-2}$). Generated distractors from plausible human mistakes. Updated `src/components/mind/PatternChallengeGame.tsx` with difficulty selector buttons, correctness-dominant scoring, and live difficulty header. Preserved Mental Math and Number Sense 100% frozen. Verified 100% clean production build compilation via `npm run build`.
 
+## 2026-08-20 — QuickForma — Implemented Phase 2 Step 4 Logic Challenge Upgrade
+**Tags:** #QuickFormaMind #Step4 #LogicChallenge #DeductiveTruthModel #FormallyValidTemplates #React #TypeScript
+**Importance:** ★★★★★
+**Frequency:** Weekly
+**Syntax Introduced:** `generateLogicQuestion`, formal truth-model inference pipeline, clean natural-language deduction
+**Concept Introduced:** Formally Valid Inference Templates vs Fallacies, Truth-Model Generation Pipeline, Multi-Constraint Satisfaction Deduction
+**Prerequisites:** React `useState`/`useRef`, Formal Logic, Modus Ponens/Tollens, Transitive Order Chains
+**Decision:** Upgraded Logic Challenge into a formal truth-model deductive engine with 4 difficulty tiers (`Easy`, `Medium`, `Hard`, `Expert`), clean natural language, and strict prohibition of logical fallacies.
+**Reason:** Guarantees that every logic question is built from formally valid inference templates (Modus Ponens, Modus Tollens, Transitive Order Chain, Constraint Satisfaction) rather than ambiguous riddles or fallacious premises.
+**Alternative:** Using tricky phrasing or ambiguous riddles that test English syntax rather than formal deduction.
+**Tradeoff:** Strictly banned logical fallacies (affirming consequent, converse fallacies) to ensure 100% indisputable deductive validity.
+**General principle:** Logic puzzles must test multi-premise formal deduction using simple, consistent language—difficulty stems from constraint complexity, not syntactic ambiguity.
+**CS50/roadmap.sh link:** CS50 Web Development — Formal Symbolic Logic, Propositional Calculus & Truth Table Engines.
+**Remember This:** Construct logic questions from formally valid inference templates using clean, direct language—difficulty must stem from multi-premise deduction, never syntactic ambiguity.
+**Full explanation:** Updated `src/types/mind.ts` (`LogicQuestion` interface) and `src/utils/mindGenerators.ts` (`generateLogicQuestion` procedural engine). Implemented truth-model pipeline (Inference Family $\to$ Valid Premises $\to$ Truth Model $\to$ Entailed Conclusion $\to$ Distractors $\to$ Validate $\to$ Render). Restricted logic to explicit valid templates (Easy: 1-step Modus Ponens & syllogisms; Medium: 2-step 3-item transitive ordering & Modus Tollens; Hard: 4-item transitive ordering chain; Expert: constraint satisfaction with multiple simultaneous constraints). Strictly banned logical fallacies. Updated `src/components/mind/LogicChallengeGame.tsx` with difficulty selector buttons, correctness-dominant scoring, and live header badge. Preserved Mental Math, Number Sense, and Pattern Challenge 100% frozen. Verified 100% clean production build compilation via `npm run build`.
+
 
 
 

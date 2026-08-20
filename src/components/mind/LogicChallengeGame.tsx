@@ -1,12 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Lightbulb, RotateCcw, ArrowLeft, Target, Clock, CheckCircle2, XCircle, Flame, Play } from 'lucide-react';
-
-interface LogicQuestion {
-  premise: string;
-  questionText: string;
-  options: string[];
-  correctIndex: number;
-}
+import { Brain, RotateCcw, ArrowLeft, Target, Clock, CheckCircle2, XCircle, Flame, Play } from 'lucide-react';
+import { MindDifficulty, MIND_DIFFICULTIES, LogicQuestion } from '../../types/mind';
+import { generateLogicQuestion } from '../../utils/mindGenerators';
 
 interface LogicChallengeGameProps {
   onBack: () => void;
@@ -15,6 +10,7 @@ interface LogicChallengeGameProps {
 type GameState = 'idle' | 'playing' | 'results';
 
 export const LogicChallengeGame: React.FC<LogicChallengeGameProps> = ({ onBack }) => {
+  const [difficulty, setDifficulty] = useState<MindDifficulty>('medium');
   const [gameState, setGameState] = useState<GameState>('idle');
   const [timeLeft, setTimeLeft] = useState<number>(60);
   const [score, setScore] = useState<number>(0);
@@ -29,59 +25,7 @@ export const LogicChallengeGame: React.FC<LogicChallengeGameProps> = ({ onBack }
   const [feedback, setFeedback] = useState<'correct' | 'incorrect' | null>(null);
 
   const timerRef = useRef<NodeJS.Timeout | null>(null);
-
-  const generateLogicQuestion = (qIndex: number): LogicQuestion => {
-    const templates = [
-      () => {
-        const names = ['Alex', 'Ben', 'Chris', 'David', 'Emma', 'Frank'].sort(() => Math.random() - 0.5);
-        const p1 = `${names[0]} is taller than ${names[1]}.`;
-        const p2 = `${names[1]} is taller than ${names[2]}.`;
-        return {
-          premise: `${p1} ${p2}`,
-          questionText: `Who is the shortest?`,
-          options: [names[2], names[1], names[0]],
-          correctIndex: 0,
-        };
-      },
-      () => {
-        const items = ['Box A', 'Box B', 'Box C'].sort(() => Math.random() - 0.5);
-        return {
-          premise: `${items[0]} is to the left of ${items[1]}. ${items[1]} is to the left of ${items[2]}.`,
-          questionText: `Where is ${items[0]} relative to ${items[2]}?`,
-          options: [`Left of ${items[2]}`, `Right of ${items[2]}`, `In front of ${items[2]}`],
-          correctIndex: 0,
-        };
-      },
-      () => {
-        return {
-          premise: `If the alarm sounds, the gate locks. The gate is NOT locked.`,
-          questionText: `Did the alarm sound?`,
-          options: [`No`, `Yes`, `Cannot be determined`],
-          correctIndex: 0,
-        };
-      },
-      () => {
-        return {
-          premise: `All Alpha elements are Beta elements. All Beta elements are Gamma elements.`,
-          questionText: `Are all Alpha elements also Gamma elements?`,
-          options: [`Yes`, `No`, `Only half of them`],
-          correctIndex: 0,
-        };
-      },
-      () => {
-        const names = ['Liam', 'Noah', 'Oliver', 'Sophia'].sort(() => Math.random() - 0.5);
-        return {
-          premise: `${names[0]} is older than ${names[1]}. ${names[2]} is younger than ${names[1]}.`,
-          questionText: `Who is the oldest among these three?`,
-          options: [names[0], names[1], names[2]],
-          correctIndex: 0,
-        };
-      },
-    ];
-
-    const pick = templates[Math.floor(Math.random() * templates.length)];
-    return pick();
-  };
+  const questionStartTimeRef = useRef<number>(0);
 
   const handleStartGame = () => {
     setGameState('playing');
@@ -95,7 +39,9 @@ export const LogicChallengeGame: React.FC<LogicChallengeGameProps> = ({ onBack }
     setSelectedOption(null);
     setFeedback(null);
 
-    setCurrentQuestion(generateLogicQuestion(1));
+    const firstQ = generateLogicQuestion(difficulty, 1);
+    setCurrentQuestion(firstQ);
+    questionStartTimeRef.current = performance.now();
   };
 
   useEffect(() => {
@@ -119,14 +65,20 @@ export const LogicChallengeGame: React.FC<LogicChallengeGameProps> = ({ onBack }
     };
   }, [gameState]);
 
-  const handleOptionClick = (idx: number) => {
+  const handleOptionClick = (index: number) => {
     if (!currentQuestion || gameState !== 'playing') return;
 
-    setSelectedOption(idx);
-    const isCorrect = idx === currentQuestion.correctIndex;
+    setSelectedOption(index);
+    const isCorrect = index === currentQuestion.correctIndex;
+    const solveTimeMs = performance.now() - questionStartTimeRef.current;
 
     if (isCorrect) {
-      setScore((prev) => prev + 1);
+      const diffConfig = MIND_DIFFICULTIES[difficulty];
+      const streakBonus = Math.min(0.5, currentStreak * 0.05);
+      const cappedSpeedBonus = Math.min(25, Math.max(0, Math.floor((3000 - solveTimeMs) / 120)));
+      const pointsEarned = Math.round(100 * diffConfig.multiplier * (1 + streakBonus) + cappedSpeedBonus);
+
+      setScore((prev) => prev + pointsEarned);
       setCorrectCount((prev) => prev + 1);
       setCurrentStreak((prev) => {
         const next = prev + 1;
@@ -135,6 +87,7 @@ export const LogicChallengeGame: React.FC<LogicChallengeGameProps> = ({ onBack }
       });
       setFeedback('correct');
     } else {
+      setScore((prev) => Math.max(0, prev - 25));
       setIncorrectCount((prev) => prev + 1);
       setCurrentStreak(0);
       setFeedback('incorrect');
@@ -145,7 +98,8 @@ export const LogicChallengeGame: React.FC<LogicChallengeGameProps> = ({ onBack }
       setSelectedOption(null);
       const nextQ = questionCount + 1;
       setQuestionCount(nextQ);
-      setCurrentQuestion(generateLogicQuestion(nextQ));
+      setCurrentQuestion(generateLogicQuestion(difficulty, nextQ));
+      questionStartTimeRef.current = performance.now();
     }, 250);
   };
 
@@ -158,7 +112,7 @@ export const LogicChallengeGame: React.FC<LogicChallengeGameProps> = ({ onBack }
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <span className="w-8 h-8 rounded-xl bg-indigo-600 text-white flex items-center justify-center shadow-xs">
-            <Lightbulb className="w-4 h-4" />
+            <Brain className="w-4 h-4" />
           </span>
           <div>
             <h1 className="text-xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
@@ -167,7 +121,7 @@ export const LogicChallengeGame: React.FC<LogicChallengeGameProps> = ({ onBack }
                 QuickForma Mind
               </span>
             </h1>
-            <p className="text-xs text-slate-500">Test rapid deductive reasoning, ordering, and conditional logic</p>
+            <p className="text-xs text-slate-500">Formal deductive logic, transitive ordering, and constraint satisfaction</p>
           </div>
         </div>
 
@@ -183,15 +137,47 @@ export const LogicChallengeGame: React.FC<LogicChallengeGameProps> = ({ onBack }
       {gameState === 'idle' && (
         <div className="bg-white border border-slate-200 rounded-3xl p-8 sm:p-12 shadow-xs text-center space-y-6">
           <div className="w-16 h-16 rounded-2xl bg-indigo-50 border border-indigo-100 text-indigo-600 flex items-center justify-center mx-auto shadow-xs">
-            <Lightbulb className="w-8 h-8" />
+            <Brain className="w-8 h-8" />
           </div>
 
           <div className="space-y-3 max-w-xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-              Deductive Reasoning
+              Deductive Logic Challenge
             </h2>
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-              60 seconds. Rapidly solve short deduction, ordering, and conditional reasoning puzzles.
+              60 seconds. Evaluate formal syllogisms, transitive ordering chains, Modus Tollens, and constraint satisfaction.
+            </p>
+          </div>
+
+          {/* Difficulty Selector Framework */}
+          <div className="space-y-3 max-w-lg mx-auto pt-2">
+            <div className="text-xs font-extrabold uppercase tracking-wider text-slate-400">
+              Select Difficulty Level
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+              {(['easy', 'medium', 'hard', 'expert'] as MindDifficulty[]).map((dKey) => {
+                const cfg = MIND_DIFFICULTIES[dKey];
+                const isSelected = difficulty === dKey;
+                return (
+                  <button
+                    key={dKey}
+                    onClick={() => setDifficulty(dKey)}
+                    className={`py-3 px-3 rounded-2xl font-extrabold text-xs border transition-all flex flex-col items-center justify-center gap-1 ${
+                      isSelected
+                        ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm'
+                        : 'bg-slate-50 hover:bg-slate-100 border-slate-200 text-slate-700'
+                    }`}
+                  >
+                    <span className="capitalize">{cfg.name}</span>
+                    <span className={`text-[10px] ${isSelected ? 'text-indigo-100' : 'text-slate-400'}`}>
+                      {cfg.multiplier}× pts
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+            <p className="text-xs text-slate-500 italic">
+              {MIND_DIFFICULTIES[difficulty].description}
             </p>
           </div>
 
@@ -217,8 +203,12 @@ export const LogicChallengeGame: React.FC<LogicChallengeGameProps> = ({ onBack }
               <div className="text-2xl sm:text-3xl font-extrabold text-indigo-600">{score}</div>
             </div>
             <div className="p-4 rounded-2xl bg-white border border-slate-200">
-              <div className="text-[10px] font-bold text-slate-400 uppercase">Question</div>
-              <div className="text-2xl sm:text-3xl font-extrabold text-slate-700">#{questionCount}</div>
+              <div className="text-[10px] font-bold text-slate-400 uppercase">Difficulty</div>
+              <div className="text-sm sm:text-base font-extrabold text-slate-700 capitalize mt-1">
+                <span className="bg-indigo-50 text-indigo-700 px-2 py-0.5 rounded-full border border-indigo-100">
+                  {MIND_DIFFICULTIES[difficulty].name} ({MIND_DIFFICULTIES[difficulty].multiplier}×)
+                </span>
+              </div>
             </div>
             <div className="p-4 rounded-2xl bg-white border border-slate-200">
               <div className="text-[10px] font-bold text-slate-400 uppercase">Streak</div>
@@ -229,18 +219,17 @@ export const LogicChallengeGame: React.FC<LogicChallengeGameProps> = ({ onBack }
           <div className={`p-8 sm:p-12 rounded-3xl border text-center space-y-6 bg-white ${
             feedback === 'correct' ? 'border-emerald-300 ring-2 ring-emerald-200' : feedback === 'incorrect' ? 'border-rose-300 ring-2 ring-rose-200' : 'border-slate-200 shadow-xs'
           }`}>
-            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-slate-700 font-medium text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
-              "{currentQuestion.premise}"
-            </div>
+            <div className="text-xs font-bold text-slate-400 uppercase tracking-widest">Premise</div>
+            <div className="text-xl sm:text-2xl font-bold text-slate-900 leading-relaxed max-w-xl mx-auto">{currentQuestion.premiseText}</div>
 
-            <div className="text-2xl sm:text-3xl font-extrabold text-slate-900">{currentQuestion.questionText}</div>
+            <div className="text-xs font-extrabold text-indigo-600 uppercase tracking-wider">{currentQuestion.questionText}</div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-lg mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-xl mx-auto">
               {currentQuestion.options.map((optText, idx) => (
                 <button
                   key={idx}
                   onClick={() => handleOptionClick(idx)}
-                  className={`py-4 px-4 rounded-2xl font-extrabold text-base border transition-all ${
+                  className={`py-4 px-6 rounded-2xl font-bold text-sm sm:text-base border transition-all text-left ${
                     selectedOption === idx
                       ? idx === currentQuestion.correctIndex
                         ? 'bg-emerald-600 text-white border-emerald-600'
@@ -260,7 +249,9 @@ export const LogicChallengeGame: React.FC<LogicChallengeGameProps> = ({ onBack }
       {gameState === 'results' && (
         <div className="bg-white border border-slate-200 rounded-3xl p-8 sm:p-12 shadow-xs text-center space-y-8">
           <div className="space-y-2">
-            <span className="text-xs font-bold uppercase tracking-wider bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full border border-indigo-100">Sprint Complete</span>
+            <span className="text-xs font-bold uppercase tracking-wider bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full border border-indigo-100">
+              Sprint Complete · {MIND_DIFFICULTIES[difficulty].name} Mode
+            </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900">Logic Challenge Summary</h2>
           </div>
           <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 max-w-sm mx-auto space-y-1">
@@ -290,7 +281,12 @@ export const LogicChallengeGame: React.FC<LogicChallengeGameProps> = ({ onBack }
             </div>
           </div>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <button onClick={handleStartGame} className="px-8 py-3.5 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-base flex items-center gap-2"><RotateCcw className="w-4 h-4" /> Play Again</button>
+            <button
+              onClick={handleStartGame}
+              className="px-8 py-3.5 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-base flex items-center gap-2"
+            >
+              <RotateCcw className="w-4 h-4" /> Play Again ({MIND_DIFFICULTIES[difficulty].name})
+            </button>
             <button onClick={onBack} className="px-6 py-3.5 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-base">Back to Mind Hub</button>
           </div>
         </div>

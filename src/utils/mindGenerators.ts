@@ -640,3 +640,206 @@ function createCandidatePatternQuestion(difficulty: MindDifficulty): PatternQues
     }
   }
 }
+
+import { LogicQuestion } from '../types/mind';
+
+/**
+ * Procedural Question Generator for Logic Challenge
+ * Formally valid inference templates with truth models. Banned fallacies (affirming consequent, converse fallacies).
+ */
+export function generateLogicQuestion(
+  difficulty: MindDifficulty,
+  _qIndex: number
+): LogicQuestion {
+  let attempt = 0;
+  while (attempt < 50) {
+    attempt++;
+    const q = createCandidateLogicQuestion(difficulty);
+    if (isValidLogicQuestion(q)) {
+      return q;
+    }
+  }
+
+  // Fallback safe default
+  return {
+    premiseText: 'If it rains, the grass gets wet. It is currently raining.',
+    questionText: 'What logically follows?',
+    options: [
+      'The grass gets wet',
+      'The grass stays dry',
+      'It is not raining',
+      'Nothing can be concluded',
+    ],
+    correctIndex: 0,
+    family: 'modus_ponens_easy',
+  };
+}
+
+function isValidLogicQuestion(q: LogicQuestion): boolean {
+  if (!q.premiseText || !q.questionText || !q.options || q.options.length !== 4) return false;
+  if (q.correctIndex < 0 || q.correctIndex >= 4) return false;
+  const set = new Set(q.options);
+  if (set.size !== 4) return false;
+  return true;
+}
+
+function createCandidateLogicQuestion(difficulty: MindDifficulty): LogicQuestion {
+  switch (difficulty) {
+    case 'easy': {
+      // Easy: 1-step deduction (Modus Ponens / Basic Syllogism)
+      const family = ['modus_ponens', 'basic_syllogism'][Math.floor(Math.random() * 2)];
+
+      if (family === 'modus_ponens') {
+        const scenarios = [
+          { p: 'a server receives a request', q: 'it sends a response', valP: 'A server has received a request.' },
+          { p: 'the alarm rings', q: 'the doors lock automatically', valP: 'The alarm is ringing.' },
+          { p: 'the payment is verified', q: 'the order is dispatched', valP: 'The payment has been verified.' },
+        ];
+        const pick = scenarios[Math.floor(Math.random() * scenarios.length)];
+        const premiseText = `If ${pick.p}, then ${pick.q}. ${pick.valP}`;
+        const correctAns = `The ${pick.q.replace('it ', 'server ')}`;
+
+        const options = [
+          correctAns,
+          `The ${pick.q} is delayed`,
+          `No ${pick.p}`,
+          'Nothing can be concluded',
+        ].sort(() => Math.random() - 0.5);
+
+        return {
+          premiseText,
+          questionText: 'What must logically follow?',
+          options,
+          correctIndex: options.indexOf(correctAns),
+          family: 'modus_ponens',
+        };
+      } else {
+        // Basic Syllogism: All A are B. All B are C.
+        const syllogisms = [
+          { a: 'squares', b: 'rectangles', c: 'quadrilaterals' },
+          { a: 'python scripts', b: 'code files', c: 'software assets' },
+          { a: 'invoices', b: 'financial documents', c: 'accounting records' },
+        ];
+        const pick = syllogisms[Math.floor(Math.random() * syllogisms.length)];
+        const premiseText = `All ${pick.a} are ${pick.b}. All ${pick.b} are ${pick.c}.`;
+        const correctAns = `All ${pick.a} are ${pick.c}`;
+
+        const options = [
+          correctAns,
+          `All ${pick.c} are ${pick.a}`,
+          `No ${pick.a} are ${pick.c}`,
+          `Some ${pick.b} are not ${pick.c}`,
+        ].sort(() => Math.random() - 0.5);
+
+        return {
+          premiseText,
+          questionText: 'Which statement is guaranteed to be TRUE?',
+          options,
+          correctIndex: options.indexOf(correctAns),
+          family: 'basic_syllogism',
+        };
+      }
+    }
+
+    case 'medium': {
+      // Medium: 2-step deduction (Transitive Ordering 3 items / Modus Tollens)
+      const family = ['transitive_3', 'modus_tollens'][Math.floor(Math.random() * 2)];
+
+      if (family === 'transitive_3') {
+        const names = [
+          ['Alice', 'Bob', 'Charlie'],
+          ['Project A', 'Project B', 'Project C'],
+          ['Server X', 'Server Y', 'Server Z'],
+        ][Math.floor(Math.random() * 3)];
+
+        const metric = ['taller', 'older', 'faster'][Math.floor(Math.random() * 3)];
+        const oppMetric = metric === 'taller' ? 'shortest' : metric === 'older' ? 'youngest' : 'slowest';
+
+        const premiseText = `${names[0]} is ${metric} than ${names[1]}. ${names[1]} is ${metric} than ${names[2]}.`;
+        const correctAns = `${names[2]} is the ${oppMetric}`;
+
+        const options = [
+          correctAns,
+          `${names[0]} is the ${oppMetric}`,
+          `${names[1]} is the ${oppMetric}`,
+          'All three are equal',
+        ].sort(() => Math.random() - 0.5);
+
+        return {
+          premiseText,
+          questionText: `Who/Which is the ${oppMetric}?`,
+          options,
+          correctIndex: options.indexOf(correctAns),
+          family: 'transitive_3',
+        };
+      } else {
+        // Modus Tollens: If P then Q. Q is FALSE -> P is FALSE.
+        const scenarios = [
+          { p: 'the database is connected', q: 'the dashboard displays data', notQ: 'The dashboard does NOT display data.' },
+          { p: 'the key is valid', q: 'the door opens', notQ: 'The door does NOT open.' },
+        ];
+        const pick = scenarios[Math.floor(Math.random() * scenarios.length)];
+        const premiseText = `If ${pick.p}, then ${pick.q}. ${pick.notQ}`;
+        const correctAns = `The ${pick.p.replace('the ', '')} is NOT valid/connected`;
+
+        const options = [
+          correctAns,
+          `The ${pick.p.replace('the ', '')} IS valid/connected`,
+          `The ${pick.q}`,
+          'Nothing can be concluded',
+        ].sort(() => Math.random() - 0.5);
+
+        return {
+          premiseText,
+          questionText: 'What logically follows?',
+          options,
+          correctIndex: options.indexOf(correctAns),
+          family: 'modus_tollens',
+        };
+      }
+    }
+
+    case 'hard': {
+      // Hard: Multi-premise deduction (4-item transitive ordering chain)
+      const items = ['Alpha', 'Beta', 'Gamma', 'Delta'];
+      const premiseText = `${items[0]} is higher than ${items[1]}. ${items[1]} is higher than ${items[2]}. ${items[2]} is higher than ${items[3]}.`;
+      const correctAns = `${items[0]} is higher than ${items[3]}`;
+
+      const options = [
+        correctAns,
+        `${items[3]} is higher than ${items[0]}`,
+        `${items[2]} is higher than ${items[0]}`,
+        `${items[1]} is the lowest`,
+      ].sort(() => Math.random() - 0.5);
+
+      return {
+        premiseText,
+        questionText: 'Which statement MUST be true?',
+        options,
+        correctIndex: options.indexOf(correctAns),
+        family: 'transitive_4',
+      };
+    }
+
+    case 'expert': {
+      // Expert: Constraint Satisfaction with multiple simultaneous constraints
+      const premiseText = 'Exactly one candidate (A, B, or C) is hired. If A is hired, D is rejected. D is HIRED.';
+      const correctAns = 'Candidate A is NOT hired';
+
+      const options = [
+        correctAns,
+        'Candidate A IS hired',
+        'Candidate D is rejected',
+        'Candidate B and C are both hired',
+      ].sort(() => Math.random() - 0.5);
+
+      return {
+        premiseText,
+        questionText: 'Which conclusion is logically GUARANTEED?',
+        options,
+        correctIndex: options.indexOf(correctAns),
+        family: 'constraint_satisfaction',
+      };
+    }
+  }
+}

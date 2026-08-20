@@ -607,6 +607,22 @@
 **Remember This:** Always measure human reaction times using monotonic high-resolution timestamps (`performance.now()`) rather than frame or timer intervals.
 **Full explanation:** Preserved existing `Mental Math Sprint` verbatim in `MentalMathSprint.tsx`. Built 5 new games in `src/components/mind/`: `NumberSenseGame.tsx` (evaluation of fraction sizes, percentage estimates, closest approximations, ratios), `PatternChallengeGame.tsx` (arithmetic, geometric, alternating, and increasing step patterns), `LogicChallengeGame.tsx` (ordering, spatial, conditional deduction, syllogisms), `ProbabilityChallengeGame.tsx` (coin flips, dice, marble bags, card odds), and `FocusChallengeGame.tsx` (rapid stimulus stream with `performance.now()` monotonic timing for hit/miss/false alarm and ms reaction speed tracking). Transformed `src/pages/MindPage.tsx` into the 6-game selection hub. Verified 100% clean production build compilation via `npm run build`.
 
+## 2026-08-20 — QuickForma — Standardized Mind Game Cards to Core Indigo Theme
+**Tags:** #QuickFormaMind #UI #ThemeConsistency #Tailwind #React
+**Importance:** ★★★☆☆
+**Frequency:** Weekly
+**Syntax Introduced:** `bg-indigo-50`, `border-indigo-100`, `text-indigo-600/700`
+**Concept Introduced:** Brand Palette Alignment & Visual Consistency
+**Prerequisites:** Tailwind CSS Utilities, React Component Styling
+**Decision:** Standardized all 6 Mind game cards to strictly use QuickForma's core Indigo theme palette for icon containers and category badges.
+**Reason:** Ensures complete visual alignment with QuickForma's brand identity without experimental accent colors.
+**Alternative:** Using multi-colored pastel accents per game domain.
+**Tradeoff:** Cards use identical theme colors while keeping distinct iconography and titles to maintain clarity.
+**General principle:** Consolidate UI elements to core design tokens for strong, unified brand identity.
+**CS50/roadmap.sh link:** CS50 Web Development — Visual Design Systems & Consistency.
+**Remember This:** Always align component color schemes with core brand tokens to maintain visual harmony across product hubs.
+**Full explanation:** Updated `src/pages/MindPage.tsx` to set all 6 game cards (`Mental Math Sprint`, `Number Sense`, `Pattern Challenge`, `Logic Challenge`, `Probability Challenge`, `Focus Challenge`) to use QuickForma's primary Indigo theme styling (`bg-indigo-50 border-indigo-100 text-indigo-600/700`). Verified 100% clean production build compilation via `npm run build`.
+
 
 
 

@@ -82,7 +82,7 @@ export const MindPage: React.FC<MindPageProps> = () => {
               <div className="w-12 h-12 rounded-2xl bg-indigo-50 border border-indigo-100 text-indigo-600 flex items-center justify-center group-hover:scale-105 transition-transform">
                 <Zap className="w-6 h-6 fill-indigo-600" />
               </div>
-              <span className="text-[10px] font-extrabold text-indigo-600 uppercase tracking-widest bg-indigo-50 px-2.5 py-0.5 rounded-full inline-block">
+              <span className="text-[10px] font-extrabold text-indigo-700 uppercase tracking-widest bg-indigo-50 px-2.5 py-0.5 rounded-full inline-block">
                 60 Seconds · Arithmetic
               </span>
               <h3 className="text-lg font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">
@@ -104,10 +104,10 @@ export const MindPage: React.FC<MindPageProps> = () => {
             className="p-6 rounded-3xl bg-white border border-slate-200 hover:border-indigo-300 shadow-xs hover:shadow-md transition-all text-left flex flex-col justify-between group space-y-6"
           >
             <div className="space-y-3">
-              <div className="w-12 h-12 rounded-2xl bg-amber-50 border border-amber-100 text-amber-600 flex items-center justify-center group-hover:scale-105 transition-transform">
+              <div className="w-12 h-12 rounded-2xl bg-indigo-50 border border-indigo-100 text-indigo-600 flex items-center justify-center group-hover:scale-105 transition-transform">
                 <Hash className="w-6 h-6" />
               </div>
-              <span className="text-[10px] font-extrabold text-amber-700 uppercase tracking-widest bg-amber-50 px-2.5 py-0.5 rounded-full inline-block">
+              <span className="text-[10px] font-extrabold text-indigo-700 uppercase tracking-widest bg-indigo-50 px-2.5 py-0.5 rounded-full inline-block">
                 60 Seconds · Intuition
               </span>
               <h3 className="text-lg font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">
@@ -129,10 +129,10 @@ export const MindPage: React.FC<MindPageProps> = () => {
             className="p-6 rounded-3xl bg-white border border-slate-200 hover:border-indigo-300 shadow-xs hover:shadow-md transition-all text-left flex flex-col justify-between group space-y-6"
           >
             <div className="space-y-3">
-              <div className="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-100 text-emerald-600 flex items-center justify-center group-hover:scale-105 transition-transform">
+              <div className="w-12 h-12 rounded-2xl bg-indigo-50 border border-indigo-100 text-indigo-600 flex items-center justify-center group-hover:scale-105 transition-transform">
                 <Layers className="w-6 h-6" />
               </div>
-              <span className="text-[10px] font-extrabold text-emerald-700 uppercase tracking-widest bg-emerald-50 px-2.5 py-0.5 rounded-full inline-block">
+              <span className="text-[10px] font-extrabold text-indigo-700 uppercase tracking-widest bg-indigo-50 px-2.5 py-0.5 rounded-full inline-block">
                 60 Seconds · Sequences
               </span>
               <h3 className="text-lg font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">
@@ -154,10 +154,10 @@ export const MindPage: React.FC<MindPageProps> = () => {
             className="p-6 rounded-3xl bg-white border border-slate-200 hover:border-indigo-300 shadow-xs hover:shadow-md transition-all text-left flex flex-col justify-between group space-y-6"
           >
             <div className="space-y-3">
-              <div className="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-100 text-blue-600 flex items-center justify-center group-hover:scale-105 transition-transform">
+              <div className="w-12 h-12 rounded-2xl bg-indigo-50 border border-indigo-100 text-indigo-600 flex items-center justify-center group-hover:scale-105 transition-transform">
                 <Lightbulb className="w-6 h-6" />
               </div>
-              <span className="text-[10px] font-extrabold text-blue-700 uppercase tracking-widest bg-blue-50 px-2.5 py-0.5 rounded-full inline-block">
+              <span className="text-[10px] font-extrabold text-indigo-700 uppercase tracking-widest bg-indigo-50 px-2.5 py-0.5 rounded-full inline-block">
                 60 Seconds · Reasoning
               </span>
               <h3 className="text-lg font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">
@@ -179,10 +179,10 @@ export const MindPage: React.FC<MindPageProps> = () => {
             className="p-6 rounded-3xl bg-white border border-slate-200 hover:border-indigo-300 shadow-xs hover:shadow-md transition-all text-left flex flex-col justify-between group space-y-6"
           >
             <div className="space-y-3">
-              <div className="w-12 h-12 rounded-2xl bg-purple-50 border border-purple-100 text-purple-600 flex items-center justify-center group-hover:scale-105 transition-transform">
+              <div className="w-12 h-12 rounded-2xl bg-indigo-50 border border-indigo-100 text-indigo-600 flex items-center justify-center group-hover:scale-105 transition-transform">
                 <Dices className="w-6 h-6" />
               </div>
-              <span className="text-[10px] font-extrabold text-purple-700 uppercase tracking-widest bg-purple-50 px-2.5 py-0.5 rounded-full inline-block">
+              <span className="text-[10px] font-extrabold text-indigo-700 uppercase tracking-widest bg-indigo-50 px-2.5 py-0.5 rounded-full inline-block">
                 60 Seconds · Probability
               </span>
               <h3 className="text-lg font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">
@@ -204,10 +204,10 @@ export const MindPage: React.FC<MindPageProps> = () => {
             className="p-6 rounded-3xl bg-white border border-slate-200 hover:border-indigo-300 shadow-xs hover:shadow-md transition-all text-left flex flex-col justify-between group space-y-6"
           >
             <div className="space-y-3">
-              <div className="w-12 h-12 rounded-2xl bg-rose-50 border border-rose-100 text-rose-600 flex items-center justify-center group-hover:scale-105 transition-transform">
+              <div className="w-12 h-12 rounded-2xl bg-indigo-50 border border-indigo-100 text-indigo-600 flex items-center justify-center group-hover:scale-105 transition-transform">
                 <Eye className="w-6 h-6" />
               </div>
-              <span className="text-[10px] font-extrabold text-rose-700 uppercase tracking-widest bg-rose-50 px-2.5 py-0.5 rounded-full inline-block">
+              <span className="text-[10px] font-extrabold text-indigo-700 uppercase tracking-widest bg-indigo-50 px-2.5 py-0.5 rounded-full inline-block">
                 60 Seconds · Attention & Reaction
               </span>
               <h3 className="text-lg font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">

@@ -1,11 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Dices, RotateCcw, ArrowLeft, Target, Clock, CheckCircle2, XCircle, Flame, Play } from 'lucide-react';
-
-interface ProbabilityQuestion {
-  questionText: string;
-  options: string[];
-  correctIndex: number;
-}
+import { PieChart, RotateCcw, ArrowLeft, Target, Clock, CheckCircle2, XCircle, Flame, Play } from 'lucide-react';
+import { MindDifficulty, MIND_DIFFICULTIES, ProbabilityQuestion } from '../../types/mind';
+import { generateProbabilityQuestion } from '../../utils/mindGenerators';
 
 interface ProbabilityChallengeGameProps {
   onBack: () => void;
@@ -14,6 +10,7 @@ interface ProbabilityChallengeGameProps {
 type GameState = 'idle' | 'playing' | 'results';
 
 export const ProbabilityChallengeGame: React.FC<ProbabilityChallengeGameProps> = ({ onBack }) => {
+  const [difficulty, setDifficulty] = useState<MindDifficulty>('medium');
   const [gameState, setGameState] = useState<GameState>('idle');
   const [timeLeft, setTimeLeft] = useState<number>(60);
   const [score, setScore] = useState<number>(0);
@@ -28,52 +25,7 @@ export const ProbabilityChallengeGame: React.FC<ProbabilityChallengeGameProps> =
   const [feedback, setFeedback] = useState<'correct' | 'incorrect' | null>(null);
 
   const timerRef = useRef<NodeJS.Timeout | null>(null);
-
-  const generateQuestion = (qIndex: number): ProbabilityQuestion => {
-    const types = ['coin', 'die', 'marbles', 'cards'];
-    const type = types[Math.floor(Math.random() * types.length)];
-
-    if (type === 'coin') {
-      const flips = Math.floor(Math.random() * 2) + 1;
-      if (flips === 1) {
-        return {
-          questionText: `A fair coin is flipped once. What is the probability of landing Heads?`,
-          options: [`1/2 (50%)`, `1/4 (25%)`, `3/4 (75%)`, `1/3 (33%)`],
-          correctIndex: 0,
-        };
-      } else {
-        return {
-          questionText: `A fair coin is flipped 2 times. What is the probability of getting Heads both times?`,
-          options: [`1/4 (25%)`, `1/2 (50%)`, `3/4 (75%)`, `1/8 (12.5%)`],
-          correctIndex: 0,
-        };
-      }
-    } else if (type === 'die') {
-      const threshold = [3, 4, 5][Math.floor(Math.random() * 3)];
-      const favorable = 6 - threshold;
-      return {
-        questionText: `What is the probability of rolling a number greater than ${threshold} on a standard 6-sided die?`,
-        options: [`${favorable}/6`, `${favorable + 1}/6`, `${favorable - 1}/6`, `1/2`],
-        correctIndex: 0,
-      };
-    } else if (type === 'marbles') {
-      const red = Math.floor(Math.random() * 4) + 2;
-      const blue = Math.floor(Math.random() * 5) + 4;
-      const total = red + blue;
-      return {
-        questionText: `A bag contains ${red} red marbles and ${blue} blue marbles. What is the probability of drawing a red marble?`,
-        options: [`${red}/${total}`, `${blue}/${total}`, `${red}/${blue}`, `1/2`],
-        correctIndex: 0,
-      };
-    } else {
-      // Cards
-      return {
-        questionText: `What is the probability of drawing an Ace from a standard 52-card deck?`,
-        options: [`4/52 (1/13)`, `1/52`, `2/52 (1/26)`, `13/52 (1/4)`],
-        correctIndex: 0,
-      };
-    }
-  };
+  const questionStartTimeRef = useRef<number>(0);
 
   const handleStartGame = () => {
     setGameState('playing');
@@ -87,7 +39,9 @@ export const ProbabilityChallengeGame: React.FC<ProbabilityChallengeGameProps> =
     setSelectedOption(null);
     setFeedback(null);
 
-    setCurrentQuestion(generateQuestion(1));
+    const firstQ = generateProbabilityQuestion(difficulty, 1);
+    setCurrentQuestion(firstQ);
+    questionStartTimeRef.current = performance.now();
   };
 
   useEffect(() => {
@@ -111,14 +65,20 @@ export const ProbabilityChallengeGame: React.FC<ProbabilityChallengeGameProps> =
     };
   }, [gameState]);
 
-  const handleOptionClick = (idx: number) => {
+  const handleOptionClick = (index: number) => {
     if (!currentQuestion || gameState !== 'playing') return;
 
-    setSelectedOption(idx);
-    const isCorrect = idx === currentQuestion.correctIndex;
+    setSelectedOption(index);
+    const isCorrect = index === currentQuestion.correctIndex;
+    const solveTimeMs = performance.now() - questionStartTimeRef.current;
 
     if (isCorrect) {
-      setScore((prev) => prev + 1);
+      const diffConfig = MIND_DIFFICULTIES[difficulty];
+      const streakBonus = Math.min(0.5, currentStreak * 0.05);
+      const cappedSpeedBonus = Math.min(25, Math.max(0, Math.floor((3000 - solveTimeMs) / 120)));
+      const pointsEarned = Math.round(100 * diffConfig.multiplier * (1 + streakBonus) + cappedSpeedBonus);
+
+      setScore((prev) => prev + pointsEarned);
       setCorrectCount((prev) => prev + 1);
       setCurrentStreak((prev) => {
         const next = prev + 1;
@@ -127,6 +87,7 @@ export const ProbabilityChallengeGame: React.FC<ProbabilityChallengeGameProps> =
       });
       setFeedback('correct');
     } else {
+      setScore((prev) => Math.max(0, prev - 25));
       setIncorrectCount((prev) => prev + 1);
       setCurrentStreak(0);
       setFeedback('incorrect');
@@ -137,7 +98,8 @@ export const ProbabilityChallengeGame: React.FC<ProbabilityChallengeGameProps> =
       setSelectedOption(null);
       const nextQ = questionCount + 1;
       setQuestionCount(nextQ);
-      setCurrentQuestion(generateQuestion(nextQ));
+      setCurrentQuestion(generateProbabilityQuestion(difficulty, nextQ));
+      questionStartTimeRef.current = performance.now();
     }, 250);
   };
 
@@ -150,7 +112,7 @@ export const ProbabilityChallengeGame: React.FC<ProbabilityChallengeGameProps> =
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <span className="w-8 h-8 rounded-xl bg-indigo-600 text-white flex items-center justify-center shadow-xs">
-            <Dices className="w-4 h-4" />
+            <PieChart className="w-4 h-4" />
           </span>
           <div>
             <h1 className="text-xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
@@ -159,7 +121,7 @@ export const ProbabilityChallengeGame: React.FC<ProbabilityChallengeGameProps> =
                 QuickForma Mind
               </span>
             </h1>
-            <p className="text-xs text-slate-500">Develop intuitive reasoning for odds, probability, and uncertainty</p>
+            <p className="text-xs text-slate-500">Probabilistic intuition, expected value risk comparisons, and base rates</p>
           </div>
         </div>
 
@@ -175,15 +137,47 @@ export const ProbabilityChallengeGame: React.FC<ProbabilityChallengeGameProps> =
       {gameState === 'idle' && (
         <div className="bg-white border border-slate-200 rounded-3xl p-8 sm:p-12 shadow-xs text-center space-y-6">
           <div className="w-16 h-16 rounded-2xl bg-indigo-50 border border-indigo-100 text-indigo-600 flex items-center justify-center mx-auto shadow-xs">
-            <Dices className="w-8 h-8" />
+            <PieChart className="w-8 h-8" />
           </div>
 
           <div className="space-y-3 max-w-xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-              Probability Intuition
+              Probability & Risk Challenge
             </h2>
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-              60 seconds. Rapidly evaluate odds, coin flips, dice probabilities, and selection ratios.
+              60 seconds. Test odds estimation, complement rules, expected value comparisons, and base-rate intuition.
+            </p>
+          </div>
+
+          {/* Difficulty Selector Framework */}
+          <div className="space-y-3 max-w-lg mx-auto pt-2">
+            <div className="text-xs font-extrabold uppercase tracking-wider text-slate-400">
+              Select Difficulty Level
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+              {(['easy', 'medium', 'hard', 'expert'] as MindDifficulty[]).map((dKey) => {
+                const cfg = MIND_DIFFICULTIES[dKey];
+                const isSelected = difficulty === dKey;
+                return (
+                  <button
+                    key={dKey}
+                    onClick={() => setDifficulty(dKey)}
+                    className={`py-3 px-3 rounded-2xl font-extrabold text-xs border transition-all flex flex-col items-center justify-center gap-1 ${
+                      isSelected
+                        ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm'
+                        : 'bg-slate-50 hover:bg-slate-100 border-slate-200 text-slate-700'
+                    }`}
+                  >
+                    <span className="capitalize">{cfg.name}</span>
+                    <span className={`text-[10px] ${isSelected ? 'text-indigo-100' : 'text-slate-400'}`}>
+                      {cfg.multiplier}× pts
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+            <p className="text-xs text-slate-500 italic">
+              {MIND_DIFFICULTIES[difficulty].description}
             </p>
           </div>
 
@@ -209,8 +203,12 @@ export const ProbabilityChallengeGame: React.FC<ProbabilityChallengeGameProps> =
               <div className="text-2xl sm:text-3xl font-extrabold text-indigo-600">{score}</div>
             </div>
             <div className="p-4 rounded-2xl bg-white border border-slate-200">
-              <div className="text-[10px] font-bold text-slate-400 uppercase">Question</div>
-              <div className="text-2xl sm:text-3xl font-extrabold text-slate-700">#{questionCount}</div>
+              <div className="text-[10px] font-bold text-slate-400 uppercase">Difficulty</div>
+              <div className="text-sm sm:text-base font-extrabold text-slate-700 capitalize mt-1">
+                <span className="bg-indigo-50 text-indigo-700 px-2 py-0.5 rounded-full border border-indigo-100">
+                  {MIND_DIFFICULTIES[difficulty].name} ({MIND_DIFFICULTIES[difficulty].multiplier}×)
+                </span>
+              </div>
             </div>
             <div className="p-4 rounded-2xl bg-white border border-slate-200">
               <div className="text-[10px] font-bold text-slate-400 uppercase">Streak</div>
@@ -221,16 +219,15 @@ export const ProbabilityChallengeGame: React.FC<ProbabilityChallengeGameProps> =
           <div className={`p-8 sm:p-12 rounded-3xl border text-center space-y-6 bg-white ${
             feedback === 'correct' ? 'border-emerald-300 ring-2 ring-emerald-200' : feedback === 'incorrect' ? 'border-rose-300 ring-2 ring-rose-200' : 'border-slate-200 shadow-xs'
           }`}>
-            <div className="text-xs font-bold text-slate-400 uppercase tracking-widest">Evaluate Probability</div>
+            <div className="text-xs font-bold text-slate-400 uppercase tracking-widest">Evaluate Odds & Select</div>
+            <div className="text-xl sm:text-2xl font-bold text-slate-900 leading-relaxed max-w-xl mx-auto">{currentQuestion.prompt}</div>
 
-            <div className="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-relaxed max-w-xl mx-auto">{currentQuestion.questionText}</div>
-
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-lg mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-xl mx-auto">
               {currentQuestion.options.map((optText, idx) => (
                 <button
                   key={idx}
                   onClick={() => handleOptionClick(idx)}
-                  className={`py-4 px-4 rounded-2xl font-extrabold text-base border transition-all ${
+                  className={`py-4 px-6 rounded-2xl font-bold text-sm sm:text-base border transition-all text-left ${
                     selectedOption === idx
                       ? idx === currentQuestion.correctIndex
                         ? 'bg-emerald-600 text-white border-emerald-600'
@@ -250,7 +247,9 @@ export const ProbabilityChallengeGame: React.FC<ProbabilityChallengeGameProps> =
       {gameState === 'results' && (
         <div className="bg-white border border-slate-200 rounded-3xl p-8 sm:p-12 shadow-xs text-center space-y-8">
           <div className="space-y-2">
-            <span className="text-xs font-bold uppercase tracking-wider bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full border border-indigo-100">Sprint Complete</span>
+            <span className="text-xs font-bold uppercase tracking-wider bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full border border-indigo-100">
+              Sprint Complete · {MIND_DIFFICULTIES[difficulty].name} Mode
+            </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900">Probability Challenge Summary</h2>
           </div>
           <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 max-w-sm mx-auto space-y-1">
@@ -280,7 +279,12 @@ export const ProbabilityChallengeGame: React.FC<ProbabilityChallengeGameProps> =
             </div>
           </div>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <button onClick={handleStartGame} className="px-8 py-3.5 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-base flex items-center gap-2"><RotateCcw className="w-4 h-4" /> Play Again</button>
+            <button
+              onClick={handleStartGame}
+              className="px-8 py-3.5 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-base flex items-center gap-2"
+            >
+              <RotateCcw className="w-4 h-4" /> Play Again ({MIND_DIFFICULTIES[difficulty].name})
+            </button>
             <button onClick={onBack} className="px-6 py-3.5 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-base">Back to Mind Hub</button>
           </div>
         </div>

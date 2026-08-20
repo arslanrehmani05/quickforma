@@ -38,6 +38,13 @@ export interface LogicQuestion {
   family: string;
 }
 
+export interface ProbabilityQuestion {
+  prompt: string;
+  options: string[];
+  correctIndex: number;
+  family: string;
+}
+
 export const MIND_DIFFICULTIES: Record<MindDifficulty, MindDifficultyConfig> = {
   easy: {
     id: 'easy',

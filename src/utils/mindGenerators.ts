@@ -843,3 +843,176 @@ function createCandidateLogicQuestion(difficulty: MindDifficulty): LogicQuestion
     }
   }
 }
+
+import { ProbabilityQuestion } from '../types/mind';
+
+/**
+ * Procedural Question Generator for Probability Challenge
+ * Mathematical evaluation pipeline: EV risk comparisons, exact Bayes base-rate derivation, complement rule.
+ */
+export function generateProbabilityQuestion(
+  difficulty: MindDifficulty,
+  _qIndex: number
+): ProbabilityQuestion {
+  let attempt = 0;
+  while (attempt < 50) {
+    attempt++;
+    const q = createCandidateProbabilityQuestion(difficulty);
+    if (isValidProbabilityQuestion(q)) {
+      return q;
+    }
+  }
+
+  // Fallback safe default
+  return {
+    prompt: 'An urn has 4 red marbles and 6 blue marbles. With replacement, what is the probability of drawing a red marble?',
+    options: ['40%', '60%', '25%', '50%'],
+    correctIndex: 0,
+    family: 'single_event_urn',
+  };
+}
+
+function isValidProbabilityQuestion(q: ProbabilityQuestion): boolean {
+  if (!q.prompt || !q.options || q.options.length !== 4) return false;
+  if (q.correctIndex < 0 || q.correctIndex >= 4) return false;
+  const set = new Set(q.options);
+  if (set.size !== 4) return false;
+  return true;
+}
+
+function createCandidateProbabilityQuestion(difficulty: MindDifficulty): ProbabilityQuestion {
+  switch (difficulty) {
+    case 'easy': {
+      // Easy: Direct Single-Event Odds (Urn draws, die rolls)
+      const family = ['single_event_urn', 'fair_die_even'][Math.floor(Math.random() * 2)];
+
+      if (family === 'single_event_urn') {
+        const red = Math.floor(Math.random() * 4) + 3; // 3 to 6
+        const blue = 10 - red;
+        const pct = red * 10;
+        const prompt = `An urn contains ${red} red marbles and ${blue} blue marbles. With replacement, what is the probability of drawing a red marble?`;
+        const correctAns = `${pct}%`;
+        const options = [correctAns, `${100 - pct}%`, `${pct / 2}%`, `${Math.min(90, pct + 20)}%`].sort(() => Math.random() - 0.5);
+
+        return {
+          prompt,
+          options,
+          correctIndex: options.indexOf(correctAns),
+          family: 'single_event_urn',
+        };
+      } else {
+        const prompt = 'A fair 6-sided die is rolled. What is the probability of rolling an even number?';
+        const options = ['50%', '33%', '66%', '16%'].sort(() => Math.random() - 0.5);
+        const correctAns = '50%';
+
+        return {
+          prompt,
+          options,
+          correctIndex: options.indexOf(correctAns),
+          family: 'fair_die_even',
+        };
+      }
+    }
+
+    case 'medium': {
+      // Medium: Complement Rule & Independent Events
+      const family = ['complement_rule', 'independent_events'][Math.floor(Math.random() * 2)];
+
+      if (family === 'complement_rule') {
+        const prompt = 'A fair coin is flipped twice. What is the probability of getting at least 1 head?';
+        const options = ['75%', '50%', '25%', '100%'].sort(() => Math.random() - 0.5);
+        const correctAns = '75%';
+
+        return {
+          prompt,
+          options,
+          correctIndex: options.indexOf(correctAns),
+          family: 'complement_rule',
+        };
+      } else {
+        const prompt = 'Two fair 6-sided dice are rolled independently. What is the probability of rolling two 6s?';
+        const options = ['1/36 (~2.8%)', '1/6 (~16.7%)', '1/12 (~8.3%)', '1/18 (~5.6%)'].sort(() => Math.random() - 0.5);
+        const correctAns = '1/36 (~2.8%)';
+
+        return {
+          prompt,
+          options,
+          correctIndex: options.indexOf(correctAns),
+          family: 'independent_events',
+        };
+      }
+    }
+
+    case 'hard': {
+      // Hard: EV Risk Comparison (Comparing Game A vs Game B)
+      // Game A: 50% +100, 50% -40 -> EV = +30
+      // Game B: 80% +30, 20% -20 -> EV = +20
+      const gainA = 100;
+      const lossA = 40;
+      const evA = 0.5 * gainA - 0.5 * lossA; // +30
+
+      const gainB = 30;
+      const lossB = 20;
+      const evB = 0.8 * gainB - 0.2 * lossB; // +20
+
+      const prompt = `Game A gives a 50% chance of +$${gainA} and 50% chance of -$${lossA}. Game B gives an 80% chance of +$${gainB} and 20% chance of -$${lossB}. Which wager has the higher expected value?`;
+      const correctAns = `Game A (EV = +$${evA})`;
+
+      const options = [
+        correctAns,
+        `Game B (EV = +$${evB})`,
+        'Both have equal expected value',
+        'Neither has positive expected value',
+      ].sort(() => Math.random() - 0.5);
+
+      return {
+        prompt,
+        options,
+        correctIndex: options.indexOf(correctAns),
+        family: 'ev_risk_comparison',
+      };
+    }
+
+    case 'expert': {
+      // Expert: Base-rate Bayes calculation or Gambler's Fallacy De-biasing
+      const family = ['bayes_base_rate', 'gamblers_fallacy'][Math.floor(Math.random() * 2)];
+
+      if (family === 'bayes_base_rate') {
+        // Disease 1 in 1000. Sensitivity 99%, Specificity 99%. P(D|+) = (0.99 * 0.001) / (0.99 * 0.001 + 0.01 * 0.999) = ~9%
+        const prompt = 'A disease affects 1 in 1,000 people. A test correctly identifies 99% of infected people and correctly clears 99% of uninfected people. If a person tests positive, the probability they actually have the disease is closest to:';
+        const correctAns = '10%';
+
+        const options = [
+          correctAns,
+          '99%',
+          '1%',
+          '50%',
+        ].sort(() => Math.random() - 0.5);
+
+        return {
+          prompt,
+          options,
+          correctIndex: options.indexOf(correctAns),
+          family: 'bayes_base_rate',
+        };
+      } else {
+        const prompt = 'A perfectly fair coin has landed on heads 5 times in a row. What is the probability that the 6th flip is heads?';
+        const correctAns = '50%';
+
+        const options = [
+          correctAns,
+          'Less than 10%',
+          'Greater than 90%',
+          '75%',
+        ].sort(() => Math.random() - 0.5);
+
+        return {
+          prompt,
+          options,
+          correctIndex: options.indexOf(correctAns),
+          family: 'gamblers_fallacy',
+        };
+      }
+    }
+  }
+}

@@ -687,6 +687,22 @@
 **Remember This:** Construct logic questions from formally valid inference templates using clean, direct language—difficulty must stem from multi-premise deduction, never syntactic ambiguity.
 **Full explanation:** Updated `src/types/mind.ts` (`LogicQuestion` interface) and `src/utils/mindGenerators.ts` (`generateLogicQuestion` procedural engine). Implemented truth-model pipeline (Inference Family $\to$ Valid Premises $\to$ Truth Model $\to$ Entailed Conclusion $\to$ Distractors $\to$ Validate $\to$ Render). Restricted logic to explicit valid templates (Easy: 1-step Modus Ponens & syllogisms; Medium: 2-step 3-item transitive ordering & Modus Tollens; Hard: 4-item transitive ordering chain; Expert: constraint satisfaction with multiple simultaneous constraints). Strictly banned logical fallacies. Updated `src/components/mind/LogicChallengeGame.tsx` with difficulty selector buttons, correctness-dominant scoring, and live header badge. Preserved Mental Math, Number Sense, and Pattern Challenge 100% frozen. Verified 100% clean production build compilation via `npm run build`.
 
+## 2026-08-20 — QuickForma — Implemented Phase 2 Step 5 Probability Challenge Upgrade
+**Tags:** #QuickFormaMind #Step5 #ProbabilityChallenge #MathematicalProbability #EVRiskComparison #React #TypeScript
+**Importance:** ★★★★★
+**Frequency:** Weekly
+**Syntax Introduced:** `generateProbabilityQuestion`, mathematical probability model pipeline, EV risk evaluation, Bayes base-rate derivation
+**Concept Introduced:** EV Risk Comparison vs Single-Calculator Arithmetic, Base-Rate Bias De-biasing, Gambler's Fallacy De-biasing
+**Prerequisites:** React `useState`/`useRef`, Elementary Probability, Expected Value Analysis, Bayes' Theorem
+**Decision:** Upgraded Probability Challenge into a mathematical probability model engine across 4 difficulty tiers (`Easy`, `Medium`, `Hard`, `Expert`) with EV risk comparisons, base-rate Bayes evaluation, and Gambler's fallacy de-biasing.
+**Reason:** Ensures questions test genuine probabilistic reasoning, complement rules, risk tradeoffs, and cognitive de-biasing rather than simple calculator arithmetic.
+**Alternative:** Using heavy calculus or complex paper combinatorics ($_{15}C_7$).
+**Tradeoff:** Strictly enforced explicit replacement and independence statements to eliminate semantic ambiguity.
+**General principle:** Probability puzzles must test risk comparison, complement rules, and cognitive de-biasing using mathematically complete parameterizations.
+**CS50/roadmap.sh link:** CS50 Web Development — Probability Theory, Risk Analysis & Bayesian Inference Engines.
+**Remember This:** Test probabilistic intuition through EV risk comparisons and base-rate de-biasing rather than single-operation calculator arithmetic.
+**Full explanation:** Updated `src/types/mind.ts` (`ProbabilityQuestion` interface) and `src/utils/mindGenerators.ts` (`generateProbabilityQuestion` procedural engine). Built mathematical model pipeline (Family $\to$ Parameters $\to$ Exact Math Model $\to$ Derive Answer $\to$ Distractors $\to$ Validate $\to$ Render). Implemented EV risk comparison in Hard mode (Game A EV vs Game B EV) and exact Bayes base-rate evaluation in Expert mode ($P(\text{Disease} \mid \text{Pos}) \approx 9\% \implies \text{closer to 10\%}$). Updated `src/components/mind/ProbabilityChallengeGame.tsx` with difficulty selector buttons, correctness-dominant scoring, and live header badge. Preserved Mental Math, Number Sense, Pattern, and Logic Challenges 100% frozen. Verified 100% clean production build compilation via `npm run build`.
+
 
 
 

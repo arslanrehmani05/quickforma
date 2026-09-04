@@ -751,6 +751,22 @@
 **Remember This:** Keep solution review cards compact by default with collapsible toggles, and ensure every explanation explicitly details the step-by-step mathematical rule used to arrive at the answer.
 **Full explanation:** Updated `src/components/mind/SprintReviewPanel.tsx` with `expandedItems` state and a styled `View Solution & Explanation ▾` toggle button. Audited and updated `src/utils/mindGenerators.ts` across all 6 games (Mental Math, Number Sense, Pattern, Logic, Probability, Focus) and all 4 difficulty tiers (Easy, Medium, Hard, Expert). For example, Pattern Challenge Fibonacci question `3, 2, 5, 7, 12, ?` now explicitly explains: `Fibonacci rule: Sum of previous 2 terms (7 + 12 = 19)`. Verified 100% clean production build compilation via `npm run build`.
 
+## 2026-09-04 — QuickForma — Applied Tailwind Dark-Mode Inverted Typography (`prose-invert`) and Arbitrary Selector Grouping to Sanity Formula Renderer
+**Tags:** #TailwindCSS #CSSResets #Typography #SanityCMS #PortableText #DOMStyling #FrontEnd #DesignSystems
+**Importance:** ★★★★☆
+**Frequency:** Daily
+**Syntax Introduced:** `prose prose-invert`, `[&_p]:mb-3`, `[&_p:last-child]:mb-0`
+**Concept Introduced:** Inverted Typography Themes (`prose-invert`), CSS Reset Neutralization, Arbitrary Child Selector Grouping (`[&_p]:`)
+**Prerequisites:** CSS Specificity, DOM Element Hierarchy, Tailwind Arbitrary Variants
+**Decision:** Applied Tailwind's `prose prose-invert` alongside arbitrary descendant selector utilities (`[&_p]:mb-3`) to the dark formula block container in `src/pages/EncyclopediaEntryPage.tsx`.
+**Reason:** Restores standard vertical paragraph margins stripped by Tailwind CSS resets without adding extra JavaScript bundle code or custom React rendering loops.
+**Alternative:** Writing a custom React renderer component for Sanity PortableText block paragraphs or inline style overrides.
+**Tradeoff:** Relies on Tailwind CSS compiler output for arbitrary child selectors (`[&_p]`).
+**General principle:** Use container-level CSS typography theme and descendant rules to style dynamic HTML content injected by headless CMSs without mutating client-side JS runtime logic.
+**CS50/roadmap.sh link:** CS50 Web Development — CSS Specificity, Descendant Selectors, & Design System Rules.
+**Remember This:** Inverted typography classes and arbitrary child selectors preserve CMS rich-text layout on dark containers with zero runtime overhead.
+**Full explanation:** Updated `EncyclopediaEntryPage.tsx` to wrap Sanity PortableText `formulaMethod` blocks inside `<div className="prose prose-invert max-w-none p-5 rounded-2xl bg-slate-900 text-slate-100 font-mono text-sm overflow-x-auto leading-relaxed border border-slate-800 space-y-4 [&_p]:mb-3 [&_p:last-child]:mb-0">`. This counters Tailwind's global `<p>` margin reset (`margin: 0`), ensuring line breaks and paragraph spacing entered in Sanity Studio render properly with white text on dark slate backgrounds. Verified clean production compile via `npm run build`.
+
 
 
 

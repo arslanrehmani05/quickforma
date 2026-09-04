@@ -289,7 +289,7 @@ export const EncyclopediaEntryPage: React.FC<EncyclopediaEntryPageProps> = ({
               <Calculator className="w-5 h-5 text-indigo-600" />
               Formula & Calculation Method
             </h2>
-            <div className="p-4 rounded-2xl bg-slate-900 text-white font-mono text-sm overflow-x-auto leading-relaxed border border-slate-800">
+            <div className="prose prose-invert max-w-none p-5 rounded-2xl bg-slate-900 text-slate-100 font-mono text-sm overflow-x-auto leading-relaxed border border-slate-800 space-y-4 [&_p]:mb-3 [&_p:last-child]:mb-0">
               <PortableText value={entry.formulaMethod} />
             </div>
           </section>

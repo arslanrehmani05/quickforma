@@ -13,7 +13,6 @@ const STATIC_ROUTES = [
   { path: '', priority: '1.0', changefreq: 'daily' },
   { path: '/business', priority: '0.9', changefreq: 'daily' },
   { path: '/students', priority: '0.9', changefreq: 'daily' },
-  { path: '/ledger', priority: '0.8', changefreq: 'daily' },
   { path: '/encyclopedia', priority: '0.8', changefreq: 'daily' },
   { path: '/mind', priority: '0.7', changefreq: 'monthly' },
   { path: '/privacy', priority: '0.3', changefreq: 'monthly' },
@@ -40,7 +39,7 @@ async function fetchSanityArticles() {
   const apiVersion = process.env.VITE_SANITY_API_VERSION || envVars.VITE_SANITY_API_VERSION || '2026-01-01';
   const token = process.env.VITE_SANITY_TOKEN || envVars.VITE_SANITY_TOKEN || '';
 
-  const groq = `*[_type in ["article", "encyclopedia", "eCategory"] && defined(slug.current) && !(_id in path("drafts.**"))]{_type, "slug": slug.current, _updatedAt, publishedAt}`;
+  const groq = `*[_type in ["encyclopedia", "eCategory"] && defined(slug.current) && !(_id in path("drafts.**"))]{_type, "slug": slug.current, _updatedAt, publishedAt}`;
   const url = `https://${projectId}.api.sanity.io/v${apiVersion}/data/query/${dataset}?query=${encodeURIComponent(groq)}`;
 
   const headers = {};
@@ -81,9 +80,9 @@ async function generateSitemap() {
   const toolList = Array.from(toolIds);
   console.log(`📦 Found ${toolList.length} unique tools in toolsCatalog.ts`);
 
-  // Fetch Sanity articles
+  // Fetch Sanity documents
   const sanityDocs = await fetchSanityArticles();
-  console.log(`📰 Found ${sanityDocs.length} published Sanity articles`);
+  console.log(`📚 Found ${sanityDocs.length} published Sanity Encyclopedia documents`);
 
   let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
   xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
@@ -108,7 +107,7 @@ async function generateSitemap() {
     xml += `  </url>\n`;
   });
 
-  // 3. Add dynamic Sanity documents (Articles, Encyclopedia entries, E-Categories)
+  // 3. Add dynamic Sanity documents (Encyclopedia entries & E-Categories)
   sanityDocs.forEach((doc) => {
     const lastModDate = doc.publishedAt
       ? doc.publishedAt.split('T')[0]
@@ -116,12 +115,9 @@ async function generateSitemap() {
       ? doc._updatedAt.split('T')[0]
       : TODAY;
 
-    let routePath = `/ledger/${doc.slug}`;
-    if (doc._type === 'encyclopedia') {
-      routePath = `/encyclopedia/${doc.slug}`;
-    } else if (doc._type === 'eCategory') {
-      routePath = `/encyclopedia/category/${doc.slug}`;
-    }
+    let routePath = doc._type === 'eCategory'
+      ? `/encyclopedia/category/${doc.slug}`
+      : `/encyclopedia/${doc.slug}`;
 
     xml += `  <url>\n`;
     xml += `    <loc>${DOMAIN}${routePath}</loc>\n`;

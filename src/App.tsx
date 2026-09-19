@@ -135,10 +135,6 @@ import { GpaScaleConverter } from './components/tools/GpaScaleConverter';
 import { MarksToGpaConverter } from './components/tools/MarksToGpaConverter';
 
 // Sanity CMS Page Components
-import { ArticlePage } from './pages/ArticlePage';
-import { CategoryPage } from './pages/CategoryPage';
-import { BlogHubPage } from './pages/BlogHubPage';
-import { BlogPostPage } from './pages/BlogPostPage';
 import { BusinessPage } from './pages/BusinessPage';
 import { EncyclopediaHubPage } from './pages/EncyclopediaHubPage';
 import { EncyclopediaCategoryPage } from './pages/EncyclopediaCategoryPage';
@@ -163,9 +159,17 @@ const getRouteFromPathname = (pathname: string): string => {
     return `encyclopedia:entry:${cleanPath.replace('/encyclopedia/', '')}`;
   }
 
-  if (cleanPath === '/ledger' || cleanPath === '/blog') {
-    return 'blog:index';
+  // Redirect legacy blog & ledger URLs to Encyclopedia Knowledge Hub
+  if (
+    cleanPath === '/ledger' ||
+    cleanPath === '/blog' ||
+    cleanPath.startsWith('/ledger/') ||
+    cleanPath.startsWith('/blog/') ||
+    cleanPath.startsWith('/category/')
+  ) {
+    return 'encyclopedia:index';
   }
+
   if (cleanPath === '/mind') {
     return 'mind';
   }
@@ -177,15 +181,6 @@ const getRouteFromPathname = (pathname: string): string => {
   }
   if (cleanPath.startsWith('/tools/')) {
     return cleanPath.replace('/tools/', '');
-  }
-  if (cleanPath.startsWith('/ledger/')) {
-    return `blog:${cleanPath.replace('/ledger/', '')}`;
-  }
-  if (cleanPath.startsWith('/blog/')) {
-    return `blog:${cleanPath.replace('/blog/', '')}`;
-  }
-  if (cleanPath.startsWith('/category/')) {
-    return `category:${cleanPath.replace('/category/', '')}`;
   }
 
   const slug = cleanPath.replace(/^\//, '');
@@ -206,9 +201,6 @@ const getPathnameFromView = (view: string): string => {
   if (view === 'encyclopedia:index' || view === 'encyclopedia') return '/encyclopedia';
   if (view.startsWith('encyclopedia:category:')) return `/encyclopedia/category/${view.replace('encyclopedia:category:', '')}`;
   if (view.startsWith('encyclopedia:entry:')) return `/encyclopedia/${view.replace('encyclopedia:entry:', '')}`;
-  if (view === 'blog:index' || view === 'blog' || view === 'ledger') return '/ledger';
-  if (view.startsWith('blog:')) return `/ledger/${view.replace('blog:', '')}`;
-  if (view.startsWith('category:')) return `/category/${view.replace('category:', '')}`;
   return `/tools/${view}`;
 };
 
@@ -441,17 +433,6 @@ export function App() {
               onSelectView={handleSelectView}
             />
           );
-        }
-        if (activeView === 'blog:index' || activeView === 'blog') {
-          return <BlogHubPage onSelectView={handleSelectView} />;
-        }
-        if (activeView.startsWith('blog:')) {
-          const articleSlug = activeView.replace('blog:', '');
-          return <ArticlePage slug={articleSlug} onBack={() => handleSelectView('blog:index')} onSelectView={handleSelectView} />;
-        }
-        if (activeView.startsWith('category:')) {
-          const categorySlug = activeView.replace('category:', '');
-          return <CategoryPage slug={categorySlug} onBack={() => handleSelectView('blog:index')} />;
         }
         return <HomePage tools={TOOLS_CATALOG} onSelectTool={handleSelectView} />;
       }

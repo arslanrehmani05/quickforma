@@ -50,7 +50,7 @@ const CATEGORY_MAP: Record<string, string[]> = {
 };
 
 /**
- * Fetch published Sanity blog guides related to a specific tool or category.
+ * Fetch published Sanity Encyclopedia entries related to a specific tool or category.
  * Implements a 2-tier fallback (Direct Tool Matches -> Category Backfill) capped at 4 total items.
  */
 export async function getRelatedGuides(category?: string, toolId?: string): Promise<RelatedGuideItem[]> {
@@ -58,22 +58,19 @@ export async function getRelatedGuides(category?: string, toolId?: string): Prom
     const totalMax = 4;
     let directMatches: any[] = [];
 
-    // Clean toolId parameter to strip any potential leading slash or /tools/ prefix defensively
     const cleanToolId = toolId ? toolId.replace(/^\/?tools\//, '').trim() : '';
-    const toolUrlPath = cleanToolId ? `/tools/${cleanToolId}` : '';
 
-    // 1. Tier-1 Direct Matches: targetTool == cleanToolId || targetTool == toolUrlPath || cleanToolId in relatedToolIds
+    // 1. Tier-1 Direct Matches: cleanToolId in relatedTools
     if (cleanToolId) {
-      const directQuery = `*[_type == "article" && defined(slug.current) && (targetTool == $cleanToolId || targetTool == $toolUrlPath || $cleanToolId in relatedToolIds)] | order(coalesce(publishedAt, _updatedAt, _createdAt) desc)[0..3]{
+      const directQuery = `*[_type == "encyclopedia" && defined(slug.current) && $cleanToolId in relatedTools] | order(coalesce(_updatedAt, _createdAt) desc)[0..3]{
         _id,
         _type,
         title,
         "slug": slug.current,
-        "description": coalesce(excerpt, metaDescription),
-        "readTime": coalesce(readTime, "5 min read"),
-        "category": coalesce(category->name, category, "Guide")
+        "description": shortDefinition,
+        "category": coalesce(categories[0]->name, category->name, "Concept")
       }`;
-      directMatches = await sanityClient.fetch(directQuery, { cleanToolId, toolUrlPath });
+      directMatches = await sanityClient.fetch(directQuery, { cleanToolId });
     }
 
     let categoryMatches: any[] = [];
@@ -85,14 +82,13 @@ export async function getRelatedGuides(category?: string, toolId?: string): Prom
       const directIds = Array.isArray(directMatches) ? directMatches.map((m: any) => m._id) : [];
       const targetCategories = CATEGORY_MAP[category] || [category];
 
-      const categoryQuery = `*[_type == "article" && defined(slug.current) && !(_id in $directIds) && (category->slug.current in $targetCategories || lower(category->name) in $targetCategories || category in $targetCategories)] | order(coalesce(publishedAt, _updatedAt, _createdAt) desc)[0..$limit]{
+      const categoryQuery = `*[_type == "encyclopedia" && defined(slug.current) && !(_id in $directIds) && (categories[]->slug.current in $targetCategories || lower(categories[]->name) in $targetCategories || category->slug.current in $targetCategories)] | order(coalesce(_updatedAt, _createdAt) desc)[0..$limit]{
         _id,
         _type,
         title,
         "slug": slug.current,
-        "description": coalesce(excerpt, metaDescription),
-        "readTime": coalesce(readTime, "5 min read"),
-        "category": coalesce(category->name, category, "Guide")
+        "description": shortDefinition,
+        "category": coalesce(categories[0]->name, category->name, "Concept")
       }`;
 
       categoryMatches = await sanityClient.fetch(categoryQuery, {
@@ -102,158 +98,25 @@ export async function getRelatedGuides(category?: string, toolId?: string): Prom
       });
     }
 
-    const combinedPosts = [
+    const combined = [
       ...(Array.isArray(directMatches) ? directMatches : []),
       ...(Array.isArray(categoryMatches) ? categoryMatches : []),
     ].slice(0, totalMax);
 
-    if (combinedPosts.length === 0) {
+    if (combined.length === 0) {
       return [];
     }
 
-    return combinedPosts.map((post: any) => ({
-      id: post._id,
-      title: post.title,
-      description: post.description || 'Detailed strategic guide on business operations and financial execution.',
-      readTime: post.readTime || '5 min read',
-      url: `/ledger/${post.slug}`,
-      category: post.category || 'Guide',
+    return combined.map((item: any) => ({
+      id: item._id,
+      title: item.title,
+      description: item.description || 'Core business concept definition and calculation framework.',
+      readTime: 'Concept Entry',
+      url: `/encyclopedia/${item.slug}`,
+      category: item.category || 'Encyclopedia',
     }));
   } catch (error) {
-    console.warn('Sanity CMS query encountered an issue (falling back to local guides):', error);
+    console.warn('Sanity CMS query issue (falling back gracefully):', error);
     return [];
-  }
-}
-
-export async function getArticleBySlug(slug: string) {
-  try {
-    const query = `*[_type == "article" && (slug.current == $slug || $slug in previousSlugs)][0]{
-      ...,
-      "canonicalSlug": slug.current,
-      "categoryName": category->name,
-      "categorySlug": category->slug.current,
-      "authorName": author->name,
-      "authorRole": author->role,
-      "authorImage": author->avatar,
-      "reviewerName": reviewedBy->name
-    }`;
-    return await sanityClient.fetch(query, { slug });
-  } catch (err) {
-    console.warn('Failed to fetch article by slug:', err);
-    return null;
-  }
-}
-
-export async function getCategoryBySlug(slug: string) {
-  try {
-    const query = `*[_type == "category" && slug.current == $slug][0]`;
-    return await sanityClient.fetch(query, { slug });
-  } catch (err) {
-    console.warn('Failed to fetch category by slug:', err);
-    return null;
-  }
-}
-
-export async function getCategoryArticles(categorySlug: string) {
-  try {
-    const query = `*[_type == "article" && (category->slug.current == $categorySlug || category == $categorySlug) && defined(slug.current)] | order(coalesce(publishedAt, _updatedAt, _createdAt) desc){
-      _id,
-      _type,
-      title,
-      "slug": slug.current,
-      excerpt,
-      publishedAt,
-      _updatedAt,
-      featuredImage,
-      "categoryName": category->name,
-      "categorySlug": category->slug.current
-    }`;
-    return await sanityClient.fetch(query, { categorySlug });
-  } catch (err) {
-    console.warn('Failed to fetch category articles:', err);
-    return [];
-  }
-}
-
-export async function getBlogHubData() {
-  try {
-    const query = `{
-      "latestOverall": *[_type == "article" && defined(slug.current)] | order(coalesce(publishedAt, _updatedAt, _createdAt) desc)[0..2]{
-        _id,
-        _type,
-        title,
-        "slug": slug.current,
-        excerpt,
-        publishedAt,
-        _updatedAt,
-        featuredImage,
-        "categoryName": category->name,
-        "categorySlug": category->slug.current
-      },
-      "categories": *[_type == "category"] | order(displayOrder asc, name asc){
-        _id,
-        name,
-        "slug": slug.current,
-        description,
-        "latestArticle": *[_type == "article" && (category._ref == ^._id || category->slug.current == ^.slug.current || category == ^.slug.current) && defined(slug.current)] | order(coalesce(publishedAt, _updatedAt, _createdAt) desc)[0]{
-          _id,
-          _type,
-          title,
-          "slug": slug.current,
-          excerpt,
-          publishedAt,
-          _updatedAt,
-          featuredImage,
-          "categoryName": category->name,
-          "categorySlug": category->slug.current
-        }
-      }
-    }`;
-    return await sanityClient.fetch(query);
-  } catch (err) {
-    console.warn('Failed to fetch blog hub data:', err);
-    return { latestOverall: [], categories: [] };
-  }
-}
-
-/**
- * Fetch a single published Sanity blog post by slug with full body & related tool IDs.
- */
-export async function getBlogPostBySlug(slug: string): Promise<SanityGuidePost | null> {
-  try {
-    const query = `*[_type in ["post", "article"] && slug.current == $slug][0]{
-      _id,
-      title,
-      "slug": slug.current,
-      excerpt,
-      readTime,
-      category,
-      publishedAt,
-      mainImage,
-      featuredImage,
-      body,
-      content,
-      relatedToolIds
-    }`;
-
-    const post = await sanityClient.fetch(query, { slug });
-    if (!post) return null;
-
-    // Normalize field names (mainImage vs featuredImage, body vs content)
-    return {
-      _id: post._id,
-      title: post.title,
-      slug: { current: post.slug },
-      excerpt: post.excerpt || post.metaDescription,
-      readTime: post.readTime || '5 min read',
-      category: typeof post.category === 'string' ? post.category : post.categoryName || 'Guide',
-      publishedAt: post.publishedAt,
-      mainImage: post.mainImage || post.featuredImage,
-      body: post.body || post.content,
-      relatedToolIds: post.relatedToolIds,
-    };
-  } catch (error) {
-    console.warn('Error fetching Sanity blog post by slug:', error);
-    return null;
   }
 }

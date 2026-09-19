@@ -415,35 +415,6 @@ export const EncyclopediaEntryPage: React.FC<EncyclopediaEntryPageProps> = ({
             </div>
           </div>
         )}
-
-        {/* Related Ledger Articles */}
-        {entry.relatedArticles && entry.relatedArticles.length > 0 && (
-          <div className="space-y-4">
-            <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider">
-              Deep-Dive Ledger Guides
-            </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {entry.relatedArticles.map((art: any) => (
-                <button
-                  key={art._id}
-                  onClick={() => onSelectView(`blog:${art.slug}`)}
-                  className="p-4 rounded-2xl bg-white border border-slate-200 hover:border-indigo-200 hover:shadow-xs transition-all text-left flex items-center justify-between group"
-                >
-                  <div className="space-y-0.5 pr-2">
-                    <span className="text-[10px] font-bold text-indigo-600 uppercase flex items-center gap-1">
-                      <FileText className="w-3 h-3" /> Ledger Guide
-                    </span>
-                    <h4 className="text-xs font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">
-                      {art.title}
-                    </h4>
-                    {art.excerpt && <p className="text-[11px] text-slate-500 line-clamp-1">{art.excerpt}</p>}
-                  </div>
-                  <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-indigo-600 group-hover:translate-x-1 transition-transform shrink-0" />
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );

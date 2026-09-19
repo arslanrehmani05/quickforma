@@ -17,47 +17,14 @@ export default defineConfig({
 
   plugins: [
     structureTool({
-      name: 'home',
-      title: '🏠 Home',
-      structure: (S) =>
-        S.documentTypeList('category')
-          .title('Published Content by Category')
-          .child((categoryId) =>
-            S.documentList()
-              .title('Articles in Category')
-              .filter('_type in ["article", "playbook"] && (category._ref == $categoryId || category->slug.current == $categoryId)')
-              .params({ categoryId })
-          ),
-    }),
-    structureTool({
-      name: 'articles',
-      title: '📰 Articles',
-      structure: (S) => S.documentTypeList('article').title('Articles'),
-    }),
-    structureTool({
       name: 'encyclopedia',
       title: '📚 Encyclopedia',
-      structure: (S) => S.documentTypeList('encyclopedia').title('Encyclopedia'),
+      structure: (S) => S.documentTypeList('encyclopedia').title('Encyclopedia Entries'),
     }),
     structureTool({
       name: 'eCategories',
       title: '📁 E-Categories',
-      structure: (S) => S.documentTypeList('eCategory').title('E-Categories'),
-    }),
-    structureTool({
-      name: 'categories',
-      title: '📁 Categories',
-      structure: (S) => S.documentTypeList('category').title('Categories'),
-    }),
-    structureTool({
-      name: 'authors',
-      title: '👤 Authors',
-      structure: (S) => S.documentTypeList('author').title('Authors'),
-    }),
-    structureTool({
-      name: 'tags',
-      title: '🏷️ Tags',
-      structure: (S) => S.documentTypeList('tag').title('Tags'),
+      structure: (S) => S.documentTypeList('eCategory').title('Encyclopedia Categories'),
     }),
     structureTool({
       name: 'seoDefaults',

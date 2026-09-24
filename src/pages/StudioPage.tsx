@@ -19,7 +19,7 @@ export const StudioPage: React.FC = () => {
   }, []);
 
   return (
-    <div style={{ height: '100vh', width: '100vw', margin: 0, padding: 0 }}>
+    <div style={{ height: '100vh', width: '100vw', margin: 0, padding: 0, backgroundColor: '#0f172a', paddingTop: 'env(safe-area-inset-top)' }}>
       <Studio config={sanityConfig} />
     </div>
   );

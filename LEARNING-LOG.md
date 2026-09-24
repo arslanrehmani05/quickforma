@@ -767,6 +767,21 @@
 **Remember This:** Inverted typography classes and arbitrary child selectors preserve CMS rich-text layout on dark containers with zero runtime overhead.
 **Full explanation:** Updated `EncyclopediaEntryPage.tsx` to wrap Sanity PortableText `formulaMethod` blocks inside `<div className="prose prose-invert max-w-none p-5 rounded-2xl bg-slate-900 text-slate-100 font-mono text-sm overflow-x-auto leading-relaxed border border-slate-800 space-y-4 [&_p]:mb-3 [&_p:last-child]:mb-0">`. This counters Tailwind's global `<p>` margin reset (`margin: 0`), ensuring line breaks and paragraph spacing entered in Sanity Studio render properly with white text on dark slate backgrounds. Verified clean production compile via `npm run build`.
 
+## 2026-09-24 — QuickForma — Applied iOS Viewport Safe-Area Inset Top Padding (`env(safe-area-inset-top)`) and Solid Status Bar Meta Tag
+**Tags:** #iOS #PWA #SafeAreas #ViewportFit #CSSVariables #MobileUX #Safari
+**Importance:** ★★★★☆
+**Frequency:** Daily
+**Syntax Introduced:** `paddingTop: 'env(safe-area-inset-top)'`, `<meta name="apple-mobile-web-app-status-bar-style" content="black" />`
+**Concept Introduced:** iOS Notch / Dynamic Island Safe Area Insets, CSS Environment Variables (`env()`), Non-Translucent Web App Status Bar Styling
+**Prerequisites:** HTML Viewport Metadata, CSS Variables & Environment Variables, Mobile Display Hardware (Notch / Dynamic Island)
+**Decision:** Updated `index.html` status bar style to `content="black"` and added `paddingTop: 'env(safe-area-inset-top)'` with `backgroundColor: '#0f172a'` on `StudioPage.tsx` container `<div>`.
+**Reason:** Prevents iOS Safari's `black-translucent` mode from rendering a blurry white frosted-glass overlay across the top notch area in Portrait orientation, ensuring a solid dark slate status bar that matches Landscape mode.
+**Alternative:** Using fixed pixel top margins (`pt-11`) which fail across different iPhone screen models (iPhone 14 Pro Max vs iPhone SE vs iPad).
+**Tradeoff:** Shifts content down by the dynamic hardware notch height on iOS devices.
+**General principle:** Use CSS environment variables (`env(safe-area-inset-top)`) to adapt web app layouts dynamically to physical hardware notches and status bars without hardcoding pixel values.
+**CS50/roadmap.sh link:** CS50 Web Development — Responsive Viewports, Mobile Web Standards, & Device Hardware Safe Areas.
+**Remember This:** CSS env(safe-area-inset-top) dynamically pads full-screen PWAs below mobile hardware notches across all display aspect ratios.
+
 
 
 

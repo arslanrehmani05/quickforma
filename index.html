@@ -20,7 +20,13 @@
     </script>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Studio" />
+    <link rel="apple-touch-icon" href="/branding/apple-touch-icon.png" />
+    <meta name="theme-color" content="#0f172a" />
     <title>QuickForma — Instant, Private, Zero-Cost Utility Tools</title>
     <meta name="description" content="Free online business and developer tools. Instant invoice generator, QR code maker, password generator, word counter, tip splitter, age calculator & unit converter. 100% private, client-side." />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,5 +36,12 @@
   <body class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-indigo-600 selection:text-white min-h-screen">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      if ('serviceWorker' in navigator && window.location.protocol === 'https:') {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').catch(err => console.log('SW registration issue:', err));
+        });
+      }
+    </script>
   </body>
 </html>

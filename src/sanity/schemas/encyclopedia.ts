@@ -1,5 +1,6 @@
 import { defineField, defineType } from 'sanity';
 import { TOOLS_CATALOG } from '../../data/toolsCatalog';
+import { GeminiImporterInput } from '../components/GeminiImporterInput';
 
 export const encyclopediaSchema = defineType({
   name: 'encyclopedia',
@@ -12,6 +13,18 @@ export const encyclopediaSchema = defineType({
     { name: 'seo', title: '4. Search Engine Optimization', options: { collapsible: true, collapsed: true } },
   ],
   fields: [
+    // --- 1-SHOT IMPORTER ---
+    defineField({
+      name: 'importHelper',
+      title: '✨ 1-Shot Gemini Content Importer',
+      type: 'string',
+      fieldset: 'identity',
+      components: {
+        input: GeminiImporterInput,
+      },
+      description: 'Paste your raw Markdown article or notes here to auto-fill all 18 Sanity Studio fields in 1 shot.',
+    }),
+
     // --- IDENTITY ---
     defineField({
       name: 'title',

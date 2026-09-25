@@ -782,15 +782,18 @@
 **CS50/roadmap.sh link:** CS50 Web Development — Responsive Viewports, Mobile Web Standards, & Device Hardware Safe Areas.
 **Remember This:** CSS env(safe-area-inset-top) dynamically pads full-screen PWAs below mobile hardware notches across all display aspect ratios.
 
-
-
-
-
-
-
-
-
-
-
-
-
+## 2026-09-25 — QuickForma — Implemented 1-Shot Gemini AI & Markdown Section Importer in Sanity Studio
+**Tags:** #SanityCMS #SanityStudio #GeminiAPI #PortableText #React #CustomInputComponents #CMSAutomation #AST
+**Importance:** ★★★★★
+**Frequency:** Weekly
+**Syntax Introduced:** `useDocumentOperation(id, type)`, `patch.execute([{ set: patchObject }])`, `@sanity/ui` (`Card`, `Stack`, `TextArea`, `TextInput`, `Button`), Gemini REST API (`generateContent`)
+**Concept Introduced:** CMS Form Automation via Custom Studio Inputs, Deterministic Markdown AST Slicing, API Key Persistence in LocalStorage
+**Prerequisites:** Headless CMS Schema Customization, React Component State & Form Hooks, REST API Integration
+**Decision:** Created a custom Sanity Studio input component (`GeminiImporterInput.tsx`) backed by `markdownToSanity.ts` utility functions, attached as a top-level field `importHelper` in `encyclopedia.ts`.
+**Reason:** Allows single-click, 1-shot population of all 18 Sanity Encyclopedia fields (title, slug, definition, PortableText content blocks, FAQs, tool references, and SEO tags) from raw Markdown notes pasted on desktop or mobile devices.
+**Alternative:** Manually copy-pasting text into 18 separate Sanity Studio input boxes.
+**Tradeoff:** Adds custom component files to the CMS schema surface area; eliminates 95% of data entry friction.
+**General principle:** Build custom CMS input components that parse structured text into AST blocks to make multi-field publishing instantaneous.
+**CS50/roadmap.sh link:** CS50 Computer Science — AST Parsers, API Integrations, & Headless CMS UI Components.
+**Remember This:** Custom CMS input components paired with deterministic Markdown parsers convert raw structured text into populated database fields in a single click.
+**Full explanation:** Built `src/sanity/components/GeminiImporterInput.tsx` and `src/sanity/utils/markdownToSanity.ts`. Integrated `useDocumentOperation` from `sanity` to execute real-time document patches across all 18 fields of the `encyclopedia` schema. Supported two operational modes: 1) Instant offline section parsing using anchor headers (`### Concept Title`, `## Simple Explanation`, etc.), and 2) Intelligent Gemini AI parsing using user's Gemini API key (persisted in browser `localStorage`). Attached `importHelper` input component to `encyclopedia.ts`. Verified clean production compile via `npm run build` and pushed to GitHub `origin/main`.

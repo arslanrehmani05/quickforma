@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useFormValue, useDocumentOperation, PatchEvent, set } from 'sanity';
 import { Card, Stack, TextArea, Button, Text, Badge, Flex, Inline, Box } from '@sanity/ui';
-import { parseMasterMarkdownTemplate, callGeminiApi, ParsedEncyclopediaData } from '../utils/markdownToSanity';
+import { parseMasterMarkdownTemplate, callServerlessGeminiImport, ParsedEncyclopediaData } from '../utils/markdownToSanity';
 
 export function GeminiImporterInput(props: any) {
   const [rawContent, setRawContent] = useState<string>('');
@@ -13,9 +13,6 @@ export function GeminiImporterInput(props: any) {
   const cleanDocId = documentId ? documentId.replace(/^drafts\./, '') : '';
 
   const { patch } = useDocumentOperation(cleanDocId, documentType);
-
-  // Automatically read Gemini API Key from environment variables (configured in Vercel / .env)
-  const envApiKey = (typeof import.meta !== 'undefined' && import.meta.env?.VITE_GEMINI_API_KEY) || '';
 
   const handleImport = async () => {
     if (!rawContent.trim()) {
@@ -33,10 +30,10 @@ export function GeminiImporterInput(props: any) {
       parsedData = parseMasterMarkdownTemplate(rawContent);
       let fieldCount = Object.keys(parsedData).length;
 
-      // 2. If section headers were not present and Vercel Gemini API key is configured, fallback to Gemini AI
-      if (fieldCount === 0 && envApiKey.trim()) {
-        setStatus({ message: 'Connecting to Gemini AI behind the scenes...', type: 'info' });
-        parsedData = await callGeminiApi(envApiKey.trim(), rawContent);
+      // 2. If section headers were not matched, fallback to secure serverless Gemini AI endpoint (/api/gemini-import)
+      if (fieldCount === 0) {
+        setStatus({ message: 'Calling secure Vercel Gemini API backend serverlessly...', type: 'info' });
+        parsedData = await callServerlessGeminiImport(rawContent);
         fieldCount = Object.keys(parsedData).length;
       }
 

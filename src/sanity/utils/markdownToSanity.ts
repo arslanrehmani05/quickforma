@@ -358,3 +358,41 @@ ${rawText}`;
     metaDescription: parsed.metaDescription,
   };
 }
+
+/**
+ * Call secure Vercel serverless endpoint (/api/gemini-import) which uses process.env.GEMINI_API_KEY secret
+ */
+export async function callServerlessGeminiImport(rawText: string): Promise<ParsedEncyclopediaData> {
+  const res = await fetch('/api/gemini-import', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ rawText }),
+  });
+
+  if (!res.ok) {
+    const errJson = await res.json().catch(() => ({}));
+    throw new Error(errJson.error || `Serverless Gemini import failed (${res.status})`);
+  }
+
+  const parsed = await res.json();
+
+  return {
+    title: parsed.title,
+    slug: parsed.slug ? { current: parsed.slug } : undefined,
+    shortDefinition: parsed.shortDefinition,
+    categoryName: parsed.categoryName,
+    synonyms: parsed.synonyms,
+    simpleExplanation: parsed.simpleExplanationMarkdown ? convertMarkdownToPortableText(parsed.simpleExplanationMarkdown) : undefined,
+    howItWorks: parsed.howItWorksMarkdown ? convertMarkdownToPortableText(parsed.howItWorksMarkdown) : undefined,
+    formulaMethod: parsed.formulaMethodMarkdown ? convertMarkdownToPortableText(parsed.formulaMethodMarkdown) : undefined,
+    workedExample: parsed.workedExampleMarkdown ? convertMarkdownToPortableText(parsed.workedExampleMarkdown) : undefined,
+    interpretation: parsed.interpretationMarkdown ? convertMarkdownToPortableText(parsed.interpretationMarkdown) : undefined,
+    realWorldApplications: parsed.realWorldApplicationsMarkdown ? convertMarkdownToPortableText(parsed.realWorldApplicationsMarkdown) : undefined,
+    commonMistakes: parsed.commonMistakesMarkdown ? convertMarkdownToPortableText(parsed.commonMistakesMarkdown) : undefined,
+    faqs: parsed.faqs,
+    relatedTools: parsed.relatedTools,
+    seoTitle: parsed.seoTitle,
+    metaDescription: parsed.metaDescription,
+  };
+}
+

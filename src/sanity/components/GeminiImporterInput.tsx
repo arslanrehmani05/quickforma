@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useFormValue, useDocumentOperation, PatchEvent, set } from 'sanity';
-import { Card, Stack, TextArea, TextInput, Button, Text, Badge, Flex, Inline, Box } from '@sanity/ui';
+import { Card, Stack, TextArea, Button, Text, Badge, Flex, Inline, Box } from '@sanity/ui';
 import { parseMasterMarkdownTemplate, callGeminiApi, ParsedEncyclopediaData } from '../utils/markdownToSanity';
 
 export function GeminiImporterInput(props: any) {
-  const [apiKey, setApiKey] = useState<string>('');
   const [rawContent, setRawContent] = useState<string>('');
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
   const [status, setStatus] = useState<{ message: string; type: 'info' | 'success' | 'error' } | null>(null);
@@ -15,37 +14,30 @@ export function GeminiImporterInput(props: any) {
 
   const { patch } = useDocumentOperation(cleanDocId, documentType);
 
-  // Load saved Gemini API Key from localStorage
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const savedKey = localStorage.getItem('QUICKFORMA_GEMINI_API_KEY') || '';
-      if (savedKey) setApiKey(savedKey);
-    }
-  }, []);
+  // Automatically read Gemini API Key from environment variables (configured in Vercel / .env)
+  const envApiKey = (typeof import.meta !== 'undefined' && import.meta.env?.VITE_GEMINI_API_KEY) || '';
 
-  const handleSaveApiKey = (key: string) => {
-    setApiKey(key);
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('QUICKFORMA_GEMINI_API_KEY', key.trim());
-    }
-  };
-
-  const handleImport = async (useAi: boolean) => {
+  const handleImport = async () => {
     if (!rawContent.trim()) {
-      setStatus({ message: 'Please paste your Markdown content before importing.', type: 'error' });
+      setStatus({ message: 'Please paste your content before importing.', type: 'error' });
       return;
     }
 
     setIsProcessing(true);
-    setStatus({ message: useAi ? 'Sending content to Gemini AI for intelligent schema parsing...' : 'Parsing markdown section headers...', type: 'info' });
+    setStatus({ message: 'Parsing content and auto-filling Sanity fields...', type: 'info' });
 
     try {
       let parsedData: ParsedEncyclopediaData;
 
-      if (useAi && apiKey.trim()) {
-        parsedData = await callGeminiApi(apiKey.trim(), rawContent);
-      } else {
-        parsedData = parseMasterMarkdownTemplate(rawContent);
+      // 1. Try deterministic section header parser first
+      parsedData = parseMasterMarkdownTemplate(rawContent);
+      let fieldCount = Object.keys(parsedData).length;
+
+      // 2. If section headers were not present and Vercel Gemini API key is configured, fallback to Gemini AI
+      if (fieldCount === 0 && envApiKey.trim()) {
+        setStatus({ message: 'Connecting to Gemini AI behind the scenes...', type: 'info' });
+        parsedData = await callGeminiApi(envApiKey.trim(), rawContent);
+        fieldCount = Object.keys(parsedData).length;
       }
 
       const patchSet: Record<string, any> = {};
@@ -67,10 +59,10 @@ export function GeminiImporterInput(props: any) {
       if (parsedData.seoTitle) patchSet.seoTitle = parsedData.seoTitle;
       if (parsedData.metaDescription) patchSet.metaDescription = parsedData.metaDescription;
 
-      const fieldCount = Object.keys(patchSet).length;
+      const totalPatched = Object.keys(patchSet).length;
 
-      if (fieldCount === 0) {
-        setStatus({ message: 'No matching headers found. Make sure your text uses standard headers like ### Concept Title or ## Simple Explanation.', type: 'error' });
+      if (totalPatched === 0) {
+        setStatus({ message: 'Could not auto-detect content sections. Make sure text contains standard headings like ### Concept Title or ## Simple Explanation.', type: 'error' });
         setIsProcessing(false);
         return;
       }
@@ -81,9 +73,9 @@ export function GeminiImporterInput(props: any) {
       }
 
       // Update current field value with confirmation log
-      props.onChange(PatchEvent.from(set(`Imported ${fieldCount} fields on ${new Date().toLocaleTimeString()}`)));
+      props.onChange(PatchEvent.from(set(`Imported ${totalPatched} fields on ${new Date().toLocaleTimeString()}`)));
 
-      setStatus({ message: `✨ Success! Auto-filled ${fieldCount} Sanity fields instantly. Scroll down to review!`, type: 'success' });
+      setStatus({ message: `✨ Success! Auto-filled ${totalPatched} Sanity fields instantly. Scroll down to review!`, type: 'success' });
     } catch (err: any) {
       console.error('Import issue:', err);
       setStatus({ message: `Import error: ${err.message || 'Failed to parse content'}`, type: 'error' });
@@ -98,9 +90,9 @@ export function GeminiImporterInput(props: any) {
         <Flex justify="space-between" align="center">
           <Inline space={2}>
             <Text weight="bold" style={{ color: '#38bdf8', fontSize: '15px' }}>
-              ✨ 1-Shot Gemini Content Importer
+              ✨ 1-Shot Content Importer
             </Text>
-            <Badge tone="caution" style={{ backgroundColor: '#1e293b', color: '#38bdf8' }}>
+            <Badge tone="positive" style={{ backgroundColor: '#064e3b', color: '#6ee7b7' }}>
               Auto-Fill All 18 Fields
             </Badge>
           </Inline>
@@ -109,20 +101,6 @@ export function GeminiImporterInput(props: any) {
           </Text>
         </Flex>
 
-        {/* Gemini API Key Collapsible Input */}
-        <Box>
-          <Text size={1} weight="medium" style={{ color: '#cbd5e1', marginBottom: '6px' }}>
-            Gemini API Key (Optional — Auto-saved in browser)
-          </Text>
-          <TextInput
-            type="password"
-            placeholder="AIzaSy... (Leave empty for instant offline section parser)"
-            value={apiKey}
-            onChange={(e) => handleSaveApiKey(e.currentTarget.value)}
-            style={{ backgroundColor: '#1e293b', color: '#f8fafc', borderColor: '#334155' }}
-          />
-        </Box>
-
         {/* Content Paste Text Area */}
         <Box>
           <Text size={1} weight="medium" style={{ color: '#cbd5e1', marginBottom: '6px' }}>
@@ -130,7 +108,7 @@ export function GeminiImporterInput(props: any) {
           </Text>
           <TextArea
             rows={7}
-            placeholder="Paste your markdown content (e.g. ### Concept Title, ## Simple Explanation, # Formula, # Worked Example)..."
+            placeholder="Paste your article or markdown content here..."
             value={rawContent}
             onChange={(e) => setRawContent(e.currentTarget.value)}
             style={{ backgroundColor: '#1e293b', color: '#f8fafc', borderColor: '#334155', fontFamily: 'monospace', fontSize: '12px' }}
@@ -142,19 +120,10 @@ export function GeminiImporterInput(props: any) {
           <Button
             tone="primary"
             disabled={isProcessing || !rawContent.trim()}
-            onClick={() => handleImport(false)}
-            text={isProcessing ? 'Parsing Content...' : '⚡ Instant 1-Shot Section Import'}
+            onClick={handleImport}
+            text={isProcessing ? 'Processing Content...' : '⚡ Instant 1-Shot Import'}
             style={{ backgroundColor: '#4f46e5', color: '#ffffff', fontWeight: 'bold' }}
           />
-          {apiKey.trim() && (
-            <Button
-              tone="positive"
-              disabled={isProcessing || !rawContent.trim()}
-              onClick={() => handleImport(true)}
-              text="✨ Gemini AI Intelligent Import"
-              style={{ backgroundColor: '#059669', color: '#ffffff', fontWeight: 'bold' }}
-            />
-          )}
           {rawContent.trim() && (
             <Button
               tone="critical"

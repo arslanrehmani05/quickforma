@@ -16,6 +16,7 @@ export interface ParsedEncyclopediaData {
   commonMistakes?: any[];
   faqs?: Array<{ question: string; answer: string }>;
   relatedTools?: string[];
+  relatedConceptsTitles?: string[];
   seoTitle?: string;
   metaDescription?: string;
 }
@@ -269,6 +270,14 @@ export function parseMasterMarkdownTemplate(rawText: string): ParsedEncyclopedia
       }
     }
     if (matchedToolIds.length > 0) data.relatedTools = matchedToolIds;
+  }
+
+  // 15b. Related Concepts
+  const conceptsSection = extractSection(/##\s*Related Encyclopedia Concepts\s*\n/i, endSectionRegex);
+  if (conceptsSection) {
+    const conceptLines = conceptsSection.split(/\r?\n/).map(l => l.replace(/^[*|-]\s+/, '').trim()).filter(Boolean);
+    const conceptTitles = conceptLines.filter(l => l.toLowerCase() !== 'none');
+    if (conceptTitles.length > 0) data.relatedConceptsTitles = conceptTitles;
   }
 
   // 16. SEO Title

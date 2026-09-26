@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useFormValue, useDocumentOperation, PatchEvent, set } from 'sanity';
+import { useFormValue, useDocumentOperation, useClient, PatchEvent, set } from 'sanity';
 import { Card, Stack, TextArea, Button, Text, Badge, Flex, Inline, Box } from '@sanity/ui';
 import { parseMasterMarkdownTemplate, callServerlessGeminiImport, ParsedEncyclopediaData } from '../utils/markdownToSanity';
 
@@ -7,6 +7,8 @@ export function GeminiImporterInput(props: any) {
   const [rawContent, setRawContent] = useState<string>('');
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
   const [status, setStatus] = useState<{ message: string; type: 'info' | 'success' | 'error' } | null>(null);
+
+  const client = useClient({ apiVersion: '2026-01-01' });
 
   const documentId = (useFormValue(['_id']) as string) || '';
   const documentType = (useFormValue(['_type']) as string) || 'encyclopedia';
@@ -55,6 +57,44 @@ export function GeminiImporterInput(props: any) {
       if (parsedData.relatedTools) patchSet.relatedTools = parsedData.relatedTools;
       if (parsedData.seoTitle) patchSet.seoTitle = parsedData.seoTitle;
       if (parsedData.metaDescription) patchSet.metaDescription = parsedData.metaDescription;
+
+      // Resolve E-Category Reference in Sanity
+      if (parsedData.categoryName) {
+        try {
+          const catName = parsedData.categoryName.trim();
+          const catSlug = catName.toLowerCase().replace(/[^a-z0-9-]/g, '-');
+          const foundCatId = await client.fetch<string | null>(
+            `*[_type == "eCategory" && (lower(name) == lower($catName) || slug.current == $catSlug)][0]._id`,
+            { catName, catSlug }
+          );
+          if (foundCatId) {
+            patchSet.categories = [{ _type: 'reference', _ref: foundCatId, _key: `cat_${Date.now()}` }];
+          }
+        } catch (e) {
+          console.warn('Category reference resolution warning:', e);
+        }
+      }
+
+      // Resolve Related Encyclopedia Concepts References in Sanity
+      if (parsedData.relatedConceptsTitles && parsedData.relatedConceptsTitles.length > 0) {
+        try {
+          const lowerTitles = parsedData.relatedConceptsTitles.map(t => t.toLowerCase());
+          const slugs = parsedData.relatedConceptsTitles.map(t => t.toLowerCase().replace(/[^a-z0-9-]/g, '-'));
+          const foundConceptIds = await client.fetch<string[]>(
+            `*[_type == "encyclopedia" && (lower(title) in $lowerTitles || slug.current in $slugs)]._id`,
+            { lowerTitles, slugs }
+          );
+          if (foundConceptIds && foundConceptIds.length > 0) {
+            patchSet.relatedConcepts = foundConceptIds.map((id, idx) => ({
+              _type: 'reference',
+              _ref: id,
+              _key: `rel_${idx}_${Date.now()}`,
+            }));
+          }
+        } catch (e) {
+          console.warn('Related concepts reference resolution warning:', e);
+        }
+      }
 
       const totalPatched = Object.keys(patchSet).length;
 

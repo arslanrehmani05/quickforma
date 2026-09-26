@@ -797,3 +797,19 @@
 **CS50/roadmap.sh link:** CS50 Computer Science — AST Parsers, API Integrations, & Headless CMS UI Components.
 **Remember This:** Custom CMS input components paired with deterministic Markdown parsers convert raw structured text into populated database fields in a single click.
 **Full explanation:** Built `src/sanity/components/GeminiImporterInput.tsx` and `src/sanity/utils/markdownToSanity.ts`. Integrated `useDocumentOperation` from `sanity` to execute real-time document patches across all 18 fields of the `encyclopedia` schema. Supported two operational modes: 1) Instant offline section parsing using anchor headers (`### Concept Title`, `## Simple Explanation`, etc.), and 2) Intelligent Gemini AI parsing using user's Gemini API key (persisted in browser `localStorage`). Attached `importHelper` input component to `encyclopedia.ts`. Verified clean production compile via `npm run build` and pushed to GitHub `origin/main`.
+
+## 2026-09-26 — QuickForma — Implemented Secure Vercel Serverless Function (`/api/gemini-import`) for GEMINI_API_KEY Secret
+**Tags:** #Vercel #ServerlessFunctions #NodeJS #APIKeys #Security #GEMINI_API_KEY #SanityStudio #CORS
+**Importance:** ★★★★★
+**Frequency:** Weekly
+**Syntax Introduced:** `export default async function handler(req, res)`, `process.env.GEMINI_API_KEY`, Vercel `api/` directory routes, `Access-Control-Allow-Origin`
+**Concept Introduced:** Server-Side Secret Key Encapsulation, Vercel Serverless Function Routing, Client-Side Zero-Exposure Security Pattern
+**Prerequisites:** Node.js HTTP Serverless Handlers, Environment Variable Scoping (Secret vs Public VITE_), Vercel Routing Rules
+**Decision:** Built `/api/gemini-import.ts` as a Vercel Serverless Function reading `process.env.GEMINI_API_KEY` securely on the server backend and updated `vercel.json` to exclude `/api/` routes from SPA rewrites.
+**Reason:** Prevents exposing API keys to client-side browser bundles (`VITE_` prefix) and satisfies Vercel's strict environment variable security requirements.
+**Alternative:** Exposing `VITE_GEMINI_API_KEY` to browser client bundle (triggers public key warnings).
+**Tradeoff:** Requires hosting on a serverless-compatible platform (Vercel) for server-side execution.
+**General principle:** Never expose API secret keys in frontend client bundles; proxy AI requests through secure serverless backend functions using server-side environment variables.
+**CS50/roadmap.sh link:** CS50 Web Development — Serverless Architectures, Environment Security, & CORS Protocols.
+**Remember This:** Proxy AI requests through Vercel serverless functions (`api/`) to keep API keys 100% secret without exposing public framework prefixes in browser code.
+**Full explanation:** Built `api/gemini-import.ts` to handle AI parsing requests server-side using `process.env.GEMINI_API_KEY`. Updated `vercel.json` rewrites regex to exclude `/api/*` from SPA `index.html` fallback. Updated `GeminiImporterInput.tsx` to post payloads directly to `/api/gemini-import`. Verified clean production compile via `npm run build` and pushed commit `ed101ff` to GitHub `origin/main`.

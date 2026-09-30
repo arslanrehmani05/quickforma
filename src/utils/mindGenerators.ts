@@ -1,0 +1,1236 @@
+import { MindDifficulty, MathSprintQuestion } from '../types/mind';
+
+/**
+ * Procedural Question Generator for Mental Math Sprint
+ * Randomized non-predictably per invocation with programmatic validation assertions before return.
+ */
+export function generateMathSprintQuestion(
+  difficulty: MindDifficulty,
+  _qIndex: number
+): MathSprintQuestion {
+  let attempt = 0;
+  while (attempt < 50) {
+    attempt++;
+    const q = createCandidateQuestion(difficulty);
+    if (isValidQuestion(q)) {
+      return q;
+    }
+  }
+
+  // Fallback safe default if loop hits 50 attempts
+  return {
+    text: '12 + 15',
+    answer: 27,
+  };
+}
+
+function isValidQuestion(q: MathSprintQuestion): boolean {
+  if (isNaN(q.answer) || !isFinite(q.answer)) return false;
+  if (!Number.isInteger(q.answer)) return false;
+  return true;
+}
+
+function createCandidateQuestion(difficulty: MindDifficulty): MathSprintQuestion {
+  switch (difficulty) {
+    case 'easy': {
+      // Single-operation arithmetic with small values (N <= 20)
+      const ops = ['+', '-', '×'];
+      const op = ops[Math.floor(Math.random() * ops.length)];
+
+      if (op === '+') {
+        const n1 = Math.floor(Math.random() * 15) + 3;
+        const n2 = Math.floor(Math.random() * 15) + 3;
+        return { text: `${n1} + ${n2}`, answer: n1 + n2, explanation: `Addition: ${n1} + ${n2} = ${n1 + n2}` };
+      } else if (op === '-') {
+        const n1 = Math.floor(Math.random() * 20) + 5;
+        const n2 = Math.floor(Math.random() * (n1 - 1)) + 1;
+        return { text: `${n1} - ${n2}`, answer: n1 - n2, explanation: `Subtraction: ${n1} - ${n2} = ${n1 - n2}` };
+      } else {
+        const n1 = Math.floor(Math.random() * 8) + 2;
+        const n2 = Math.floor(Math.random() * 8) + 2;
+        return { text: `${n1} × ${n2}`, answer: n1 * n2, explanation: `Multiplication: ${n1} × ${n2} = ${n1 * n2}` };
+      }
+    }
+
+    case 'medium': {
+      // Larger single-operation arithmetic + clean division + double-digit multiplication (N <= 90)
+      const ops = ['+', '-', '×', '÷'];
+      const op = ops[Math.floor(Math.random() * ops.length)];
+
+      if (op === '+') {
+        const n1 = Math.floor(Math.random() * 60) + 15;
+        const n2 = Math.floor(Math.random() * 60) + 15;
+        return { text: `${n1} + ${n2}`, answer: n1 + n2, explanation: `Addition: ${n1} + ${n2} = ${n1 + n2}` };
+      } else if (op === '-') {
+        const n1 = Math.floor(Math.random() * 90) + 20;
+        const n2 = Math.floor(Math.random() * (n1 - 10)) + 5;
+        return { text: `${n1} - ${n2}`, answer: n1 - n2, explanation: `Subtraction: ${n1} - ${n2} = ${n1 - n2}` };
+      } else if (op === '×') {
+        const n1 = Math.floor(Math.random() * 14) + 3;
+        const n2 = Math.floor(Math.random() * 11) + 3;
+        return { text: `${n1} × ${n2}`, answer: n1 * n2, explanation: `Multiplication: ${n1} × ${n2} = ${n1 * n2}` };
+      } else {
+        // Clean integer division
+        const divisor = Math.floor(Math.random() * 11) + 2;
+        const quotient = Math.floor(Math.random() * 12) + 2;
+        const dividend = divisor * quotient;
+        return { text: `${dividend} ÷ ${divisor}`, answer: quotient, explanation: `Clean division: ${dividend} ÷ ${divisor} = ${quotient}` };
+      }
+    }
+
+    case 'hard': {
+      // Multi-operation expressions requiring mental sequencing (A * B + C, A + B - C)
+      const patterns = ['mult_add', 'mult_sub', 'add_sub_three', 'div_add'];
+      const pat = patterns[Math.floor(Math.random() * patterns.length)];
+
+      if (pat === 'mult_add') {
+        const a = Math.floor(Math.random() * 12) + 3;
+        const b = Math.floor(Math.random() * 9) + 2;
+        const c = Math.floor(Math.random() * 30) + 5;
+        return { text: `${a} × ${b} + ${c}`, answer: a * b + c, explanation: `Sequencing: (${a} × ${b}) + ${c} = ${a * b} + ${c} = ${a * b + c}` };
+      } else if (pat === 'mult_sub') {
+        const a = Math.floor(Math.random() * 12) + 3;
+        const b = Math.floor(Math.random() * 9) + 2;
+        const prod = a * b;
+        const c = Math.floor(Math.random() * (prod - 2)) + 1;
+        return { text: `${a} × ${b} - ${c}`, answer: prod - c, explanation: `Sequencing: (${a} × ${b}) - ${c} = ${prod} - ${c} = ${prod - c}` };
+      } else if (pat === 'add_sub_three') {
+        const a = Math.floor(Math.random() * 80) + 20;
+        const b = Math.floor(Math.random() * 50) + 10;
+        const c = Math.floor(Math.random() * 35) + 5;
+        return { text: `${a} + ${b} - ${c}`, answer: a + b - c, explanation: `Sequencing: (${a} + ${b}) - ${c} = ${a + b} - ${c} = ${a + b - c}` };
+      } else {
+        const divisor = Math.floor(Math.random() * 10) + 2;
+        const quotient = Math.floor(Math.random() * 15) + 3;
+        const dividend = divisor * quotient;
+        const addVal = Math.floor(Math.random() * 25) + 5;
+        return { text: `${dividend} ÷ ${divisor} + ${addVal}`, answer: quotient + addVal, explanation: `Sequencing: (${dividend} ÷ ${divisor}) + ${addVal} = ${quotient} + ${addVal} = ${quotient + addVal}` };
+      }
+    }
+
+    case 'expert': {
+      // 100% Mathematical Fluency & Mental Calculation Shortcut Families
+      const families = ['shortcut_11', 'shortcut_25', 'square_5', 'diff_squares', 'multiply_99', 'pct_shortcut'];
+      const fam = families[Math.floor(Math.random() * families.length)];
+
+      if (fam === 'shortcut_11') {
+        const n = Math.floor(Math.random() * 75) + 14; // e.g. 34 * 11 = 374
+        return { text: `${n} × 11`, answer: n * 11, isShortcut: true, explanation: `Shortcut (N × 11): Insert digit sum inside -> ${n} × 11 = ${n * 11}` };
+      } else if (fam === 'shortcut_25') {
+        const factor = Math.floor(Math.random() * 14) + 3;
+        const n = factor * 4; // e.g. 16 * 25 = 400
+        return { text: `${n} × 25`, answer: n * 25, isShortcut: true, explanation: `Shortcut (N × 25): (${n} ÷ 4) × 100 = ${factor} × 100 = ${n * 25}` };
+      } else if (fam === 'square_5') {
+        const bases = [15, 25, 35, 45, 55, 65, 75, 85, 95];
+        const base = bases[Math.floor(Math.random() * bases.length)];
+        const tens = Math.floor(base / 10);
+        return { text: `${base}²`, answer: base * base, isShortcut: true, explanation: `Shortcut (N² ending in 5): (${tens} × ${tens + 1})_25 = ${tens * (tens + 1)}25 = ${base * base}` };
+      } else if (fam === 'diff_squares') {
+        const mid = [15, 20, 25, 30, 40, 50][Math.floor(Math.random() * 6)];
+        const n1 = mid - 1;
+        const n2 = mid + 1;
+        return { text: `${n1} × ${n2}`, answer: mid * mid - 1, isShortcut: true, explanation: `Difference of Squares: (${mid}-1) × (${mid}+1) = ${mid}² - 1 = ${mid * mid - 1}` };
+      } else if (fam === 'multiply_99') {
+        const n = Math.floor(Math.random() * 40) + 12; // e.g. 24 * 99 = 2400 - 24 = 2376
+        return { text: `${n} × 99`, answer: n * 99, isShortcut: true, explanation: `Shortcut (N × 99): ${n} × 100 - ${n} = ${n * 100} - ${n} = ${n * 99}` };
+      } else {
+        const base = [40, 60, 80, 120, 160, 200, 240][Math.floor(Math.random() * 7)];
+        const pct = [15, 25, 75][Math.floor(Math.random() * 3)];
+        const ans = (pct / 100) * base;
+        return { text: `${pct}% of ${base}`, answer: ans, isShortcut: true, explanation: `Percentage Benchmark: ${pct}% of ${base} = (${pct}/100) × ${base} = ${ans}` };
+      }
+    }
+  }
+}
+
+import { NumberSenseQuestion } from '../types/mind';
+
+/**
+ * Procedural Question Generator for Number Sense
+ * Solvable efficiently through estimation, comparison, proportional reasoning, magnitude recognition, or numerical structure.
+ * Multi-step paper arithmetic is BANNED.
+ */
+export function generateNumberSenseQuestion(
+  difficulty: MindDifficulty,
+  _qIndex: number
+): NumberSenseQuestion {
+  let attempt = 0;
+  while (attempt < 50) {
+    attempt++;
+    const q = createCandidateNumberSenseQuestion(difficulty);
+    if (isValidNumberSenseQuestion(q)) {
+      return q;
+    }
+  }
+
+  // Fallback safe default
+  return {
+    prompt: 'Which is larger?',
+    options: ['0.80', '1/2'],
+    correctIndex: 0,
+    family: 'decimal_vs_fraction_easy',
+  };
+}
+
+function isValidNumberSenseQuestion(q: NumberSenseQuestion): boolean {
+  if (!q.prompt || !q.options || q.options.length < 2) return false;
+  if (q.correctIndex < 0 || q.correctIndex >= q.options.length) return false;
+  // Ensure options are distinct strings
+  const set = new Set(q.options);
+  if (set.size !== q.options.length) return false;
+  return true;
+}
+
+function createCandidateNumberSenseQuestion(difficulty: MindDifficulty): NumberSenseQuestion {
+  switch (difficulty) {
+    case 'easy': {
+      // Easy: "Obviously X is bigger" (Wide differences > 20%)
+      const type = ['decimal_vs_fraction_easy', 'ratio_easy', 'magnitude_easy'][Math.floor(Math.random() * 3)];
+
+      if (type === 'decimal_vs_fraction_easy') {
+        const dec = parseFloat((Math.random() * 0.25 + 0.70).toFixed(2)); // 0.70 to 0.95
+        const fracText = '1/2';
+        const fracVal = 0.5;
+        const decGreater = dec > fracVal;
+        const options = [`${dec}`, `${fracText}`];
+        return {
+          prompt: 'Which is larger?',
+          options,
+          correctIndex: decGreater ? 0 : 1,
+          family: 'decimal_vs_fraction_easy',
+          explanation: `${dec} equals ${Math.round(dec * 100)}%, while ${fracText} equals 50% → ${decGreater ? dec : fracText} is larger.`,
+        };
+      } else if (type === 'ratio_easy') {
+        const n = Math.floor(Math.random() * 6) + 3; // 3 to 8
+        const options = [`${n}:1`, `1:${n}`];
+        return {
+          prompt: 'Which ratio represents a larger value?',
+          options,
+          correctIndex: 0,
+          family: 'ratio_easy',
+          explanation: `${n}:1 equals ${n}, while 1:${n} equals ${(1 / n).toFixed(2)} → ${n}:1 is larger.`,
+        };
+      } else {
+        const val1 = Math.floor(Math.random() * 700) + 200; // 200 to 900
+        const val2 = Math.floor(val1 / 10);
+        const options = [`${val1}`, `${val2}`];
+        return {
+          prompt: 'Which value is larger?',
+          options,
+          correctIndex: 0,
+          family: 'magnitude_easy',
+          explanation: `${val1} is 10× larger than ${val2}.`,
+        };
+      }
+    }
+
+    case 'medium': {
+      // Medium: "I can see the relationship without calculating exactly"
+      const type = ['mult_estimation', 'pct_estimation', 'fraction_benchmark'][Math.floor(Math.random() * 3)];
+
+      if (type === 'mult_estimation') {
+        const base = [400, 500, 600][Math.floor(Math.random() * 3)];
+        const dec = 0.48;
+        const compBase = base - 30;
+        const options = [`${dec} × ${base}`, `0.5 × ${compBase}`];
+        const val1 = dec * base;
+        const val2 = 0.5 * compBase;
+        const isFirst = val1 > val2;
+        return {
+          prompt: 'Which expression is larger?',
+          options,
+          correctIndex: isFirst ? 0 : 1,
+          family: 'mult_estimation',
+          explanation: `${dec} × ${base} = ${val1}, while 0.5 × ${compBase} = ${val2} → ${isFirst ? `${dec} × ${base}` : `0.5 × ${compBase}`} is larger.`,
+        };
+      } else if (type === 'pct_estimation') {
+        const pct = [18, 19, 21, 24][Math.floor(Math.random() * 4)];
+        const base = [200, 250, 300, 400][Math.floor(Math.random() * 4)];
+        const exact = (pct / 100) * base;
+
+        const opt25 = Math.round(base * 0.1);
+        const opt50 = Math.round(base * 0.2);
+        const opt75 = Math.round(base * 0.3);
+        const opt100 = Math.round(base * 0.4);
+
+        const options = [`${opt25}`, `${opt50}`, `${opt75}`, `${opt100}`];
+        let closestIdx = 0;
+        let minDiff = Math.abs(exact - opt25);
+        [opt50, opt75, opt100].forEach((optVal, idx) => {
+          const diff = Math.abs(exact - optVal);
+          if (diff < minDiff) {
+            minDiff = diff;
+            closestIdx = idx + 1;
+          }
+        });
+
+        return {
+          prompt: `Without calculating exactly, which is closest to ${pct}% of ${base}?`,
+          options,
+          correctIndex: closestIdx,
+          family: 'pct_estimation',
+          explanation: `${pct}% of ${base} = (${pct}/100) × ${base} = ${exact} → closest to ${options[closestIdx]}.`,
+        };
+      } else {
+        const benchmarks = [
+          { text: '1/3', val: 1 / 3, targetPct: '33%' },
+          { text: '2/3', val: 2 / 3, targetPct: '66%' },
+          { text: '3/4', val: 3 / 4, targetPct: '75%' },
+        ];
+        const pick = benchmarks[Math.floor(Math.random() * benchmarks.length)];
+        const allOpts = ['25%', '33%', '40%', '66%', '75%'];
+        const options = allOpts.filter((o) => o !== pick.targetPct).slice(0, 3);
+        options.push(pick.targetPct);
+        options.sort(() => Math.random() - 0.5);
+
+        const correctIndex = options.indexOf(pick.targetPct);
+        return {
+          prompt: `Which percentage is closest to ${pick.text}?`,
+          options,
+          correctIndex,
+          family: 'fraction_benchmark',
+          explanation: `${pick.text} equals ${(pick.val * 100).toFixed(1)}% → closest to ${pick.targetPct}.`,
+        };
+      }
+    }
+
+    case 'hard': {
+      // Hard: "I need to reason carefully about the relationship"
+      const type = ['fraction_magnitude_hard', 'pct_shift', 'order_magnitude'][Math.floor(Math.random() * 3)];
+
+      if (type === 'fraction_magnitude_hard') {
+        const pairs = [
+          { f1: '4/7', v1: 4 / 7, f2: '5/9', v2: 5 / 9 },
+          { f1: '3/8', v1: 3 / 8, f2: '4/11', v2: 4 / 11 },
+          { f1: '5/8', v1: 5 / 8, f2: '7/12', v2: 7 / 12 },
+        ];
+        const pick = pairs[Math.floor(Math.random() * pairs.length)];
+        const options = [pick.f1, pick.f2];
+        const isF1Greater = pick.v1 > pick.v2;
+        return {
+          prompt: 'Which fraction is larger?',
+          options,
+          correctIndex: isF1Greater ? 0 : 1,
+          family: 'fraction_magnitude_hard',
+          explanation: `${pick.f1} ≈ ${pick.v1.toFixed(3)}, while ${pick.f2} ≈ ${pick.v2.toFixed(3)} → ${isF1Greater ? pick.f1 : pick.f2} is larger.`,
+        };
+      } else if (type === 'pct_shift') {
+        const shifts = [
+          { start: 80, end: 100, pct: '25%' },
+          { start: 50, end: 60, pct: '20%' },
+          { start: 40, end: 50, pct: '25%' },
+          { start: 80, end: 120, pct: '50%' },
+        ];
+        const pick = shifts[Math.floor(Math.random() * shifts.length)];
+        const options = ['15%', '20%', '25%', '30%', '50%'].filter((o) => o !== pick.pct).slice(0, 3);
+        options.push(pick.pct);
+        options.sort(() => Math.random() - 0.5);
+
+        const correctIndex = options.indexOf(pick.pct);
+        return {
+          prompt: `An increase from ${pick.start} to ${pick.end} represents what percentage increase?`,
+          options,
+          correctIndex,
+          family: 'pct_shift',
+          explanation: `Increase of ${pick.end - pick.start} on a base of ${pick.start} = (${pick.end - pick.start}/${pick.start}) = ${pick.pct}.`,
+        };
+      } else {
+        const mantissa = parseFloat((Math.random() * 3 + 2.5).toFixed(1)); // 2.5 to 5.5
+        const val1 = mantissa * 1000;
+        const val2 = Math.round(val1 + (Math.random() * 800 + 400));
+        const options = [`${mantissa} × 10³`, `${val2.toLocaleString()}`];
+        return {
+          prompt: 'Which value is larger?',
+          options,
+          correctIndex: 1, // val2 is larger
+          family: 'order_magnitude',
+          explanation: `${mantissa} × 10³ = ${val1}, which is smaller than ${val2.toLocaleString()}.`,
+        };
+      }
+    }
+
+    case 'expert': {
+      // Expert: "I need strong numerical intuition to see the answer quickly"
+      const type = ['structural_fraction', 'sqrt_bounds', 'indisputable_impossible'][Math.floor(Math.random() * 3)];
+
+      if (type === 'structural_fraction') {
+        const pairs = [
+          { f1: '49/51', v1: 49 / 51, f2: '97/101', v2: 97 / 101 },
+          { f1: '19/21', v1: 19 / 21, f2: '39/41', v2: 39 / 41 },
+          { f1: '29/31', v1: 29 / 31, f2: '59/61', v2: 59 / 61 },
+        ];
+        const pick = pairs[Math.floor(Math.random() * pairs.length)];
+        const options = [pick.f1, pick.f2];
+        const isF1Greater = pick.v1 > pick.v2;
+        return {
+          prompt: 'Which fraction is larger?',
+          options,
+          correctIndex: isF1Greater ? 0 : 1,
+          family: 'structural_fraction',
+          explanation: `${pick.f1} = (1 - 2/${pick.f1.split('/')[1]}) ≈ ${pick.v1.toFixed(4)}, while ${pick.f2} = (1 - 4/${pick.f2.split('/')[1]}) ≈ ${pick.v2.toFixed(4)} → ${isF1Greater ? pick.f1 : pick.f2} is larger.`,
+        };
+      } else if (type === 'sqrt_bounds') {
+        const k = [70, 72, 75, 87, 92][Math.floor(Math.random() * 5)];
+        const floorRoot = Math.floor(Math.sqrt(k));
+        const ceilRoot = floorRoot + 1;
+        const diffFloor = Math.abs(k - floorRoot * floorRoot);
+        const diffCeil = Math.abs(k - ceilRoot * ceilRoot);
+        const closestRoot = diffFloor < diffCeil ? floorRoot : ceilRoot;
+
+        const options = [`${floorRoot}`, `${ceilRoot}`];
+        const correctIndex = options.indexOf(`${closestRoot}`);
+        return {
+          prompt: `Is √${k} closer to ${floorRoot} or ${ceilRoot}?`,
+          options,
+          correctIndex,
+          family: 'sqrt_bounds',
+          explanation: `√${k} ≈ ${Math.sqrt(k).toFixed(2)}, which is closer to ${closestRoot} (distance to ${floorRoot}²=${floorRoot * floorRoot} is ${diffFloor}, distance to ${ceilRoot}²=${ceilRoot * ceilRoot} is ${diffCeil}).`,
+        };
+      } else {
+        const impossibles = [
+          'Probability of an event = 1.4',
+          'Square of a real number = -9',
+          'Probability of a certainty = -0.2',
+        ];
+        const pickImp = impossibles[Math.floor(Math.random() * impossibles.length)];
+        const validMetrics = [
+          'Percentage of a total = 85%',
+          'Square root of a number = 3.5',
+          'Ratio of two quantities = 2:3',
+          'Average of positive numbers = 42',
+        ];
+        const options = validMetrics.sort(() => Math.random() - 0.5).slice(0, 3);
+        options.push(pickImp);
+        options.sort(() => Math.random() - 0.5);
+
+        const correctIndex = options.indexOf(pickImp);
+        return {
+          prompt: 'Which metric is mathematically IMPOSSIBLE?',
+          options,
+          correctIndex,
+          family: 'indisputable_impossible',
+          explanation: `Probabilities and real squares have strict mathematical bounds. "${pickImp}" is mathematically impossible.`,
+        };
+      }
+    }
+  }
+}
+
+import { PatternQuestion } from '../types/mind';
+
+/**
+ * Rule-First Procedural Question Generator for Pattern Challenge
+ * Rule Family -> Parameters -> Deterministic Sequence -> Target Answer -> Plausible Distractors -> Validate -> Render
+ */
+export function generatePatternQuestion(
+  difficulty: MindDifficulty,
+  _qIndex: number
+): PatternQuestion {
+  let attempt = 0;
+  while (attempt < 50) {
+    attempt++;
+    const q = createCandidatePatternQuestion(difficulty);
+    if (isValidPatternQuestion(q)) {
+      return q;
+    }
+  }
+
+  // Fallback safe default
+  return {
+    sequenceText: '2, 4, 6, 8, ?',
+    answer: 10,
+    options: [10, 9, 12, 14],
+    family: 'arithmetic_easy',
+  };
+}
+
+function isValidPatternQuestion(q: PatternQuestion): boolean {
+  if (!q.sequenceText || isNaN(q.answer) || !isFinite(q.answer)) return false;
+  if (!Number.isInteger(q.answer)) return false;
+  if (!q.options || q.options.length !== 4) return false;
+  // Ensure target answer is in options
+  if (!q.options.includes(q.answer)) return false;
+  // Ensure all options are unique
+  const set = new Set(q.options);
+  if (set.size !== 4) return false;
+  return true;
+}
+
+function createCandidatePatternQuestion(difficulty: MindDifficulty): PatternQuestion {
+  switch (difficulty) {
+    case 'easy': {
+      // Easy: Constant +d, -d, or *r (4-5 visible terms)
+      const family = ['add_step', 'sub_step', 'mult_step'][Math.floor(Math.random() * 3)];
+      const numTerms = Math.floor(Math.random() * 2) + 4; // 4 or 5 terms
+
+      if (family === 'add_step') {
+        const step = Math.floor(Math.random() * 8) + 2;
+        const start = Math.floor(Math.random() * 20) + 1;
+        const terms: number[] = [];
+        for (let i = 0; i < numTerms; i++) {
+          terms.push(start + i * step);
+        }
+        const answer = start + numTerms * step;
+        const options = [answer, answer + step, answer - step, answer + 1].sort(() => Math.random() - 0.5);
+        return {
+          sequenceText: `${terms.join(', ')}, ?`,
+          answer,
+          options,
+          family: 'add_step',
+          explanation: `Constant addition rule: +${step} per term (${terms[terms.length - 1]} + ${step} = ${answer})`,
+        };
+      } else if (family === 'sub_step') {
+        const step = Math.floor(Math.random() * 5) + 3;
+        const start = step * numTerms + Math.floor(Math.random() * 20) + 10;
+        const terms: number[] = [];
+        for (let i = 0; i < numTerms; i++) {
+          terms.push(start - i * step);
+        }
+        const answer = start - numTerms * step;
+        const options = [answer, answer + step, answer - (step + 2), answer - 1].sort(() => Math.random() - 0.5);
+        return {
+          sequenceText: `${terms.join(', ')}, ?`,
+          answer,
+          options,
+          family: 'sub_step',
+          explanation: `Constant subtraction rule: -${step} per term (${terms[terms.length - 1]} - ${step} = ${answer})`,
+        };
+      } else {
+        // mult_step
+        const start = Math.floor(Math.random() * 4) + 2;
+        const ratio = 2;
+        const terms: number[] = [];
+        let curr = start;
+        for (let i = 0; i < numTerms; i++) {
+          terms.push(curr);
+          curr *= ratio;
+        }
+        const answer = curr;
+        // Plausible distractors: add ratio instead of multiply, multiply by 3
+        const lastTerm = terms[terms.length - 1];
+        const options = [answer, lastTerm + ratio, lastTerm * 3, lastTerm + ratio * 2].sort(() => Math.random() - 0.5);
+        return {
+          sequenceText: `${terms.join(', ')}, ?`,
+          answer,
+          options,
+          family: 'mult_step',
+          explanation: `Constant multiplication rule: ×2 per term (${lastTerm} × 2 = ${answer})`,
+        };
+      }
+    }
+
+    case 'medium': {
+      // Medium: Alternating +A, -B (5-6 visible terms)
+      const family = ['alternating_add_sub', 'mult_div_step'][Math.floor(Math.random() * 2)];
+      const numTerms = Math.floor(Math.random() * 2) + 5; // 5 or 6 terms
+
+      if (family === 'alternating_add_sub') {
+        const start = Math.floor(Math.random() * 15) + 10;
+        const addA = Math.floor(Math.random() * 5) + 4; // e.g. +5
+        const subB = Math.floor(Math.random() * 3) + 1; // e.g. -2
+        const terms: number[] = [];
+        let curr = start;
+        for (let i = 0; i < numTerms; i++) {
+          terms.push(curr);
+          curr = i % 2 === 0 ? curr + addA : curr - subB;
+        }
+        const answer = curr;
+        const nextOpIsAdd = numTerms % 2 === 0;
+        // Plausible distractors: apply wrong alternating step
+        const wrongStepAns = nextOpIsAdd ? terms[terms.length - 1] - subB : terms[terms.length - 1] + addA;
+        const options = [answer, wrongStepAns, answer + 2, answer - 3].sort(() => Math.random() - 0.5);
+
+        const lastTerm = terms[terms.length - 1];
+        const stepDesc = nextOpIsAdd ? `+${addA}` : `-${subB}`;
+        return {
+          sequenceText: `${terms.join(', ')}, ?`,
+          answer,
+          options,
+          family: 'alternating_add_sub',
+          explanation: `Alternating rule (+${addA}, -${subB}): Next step is ${stepDesc} (${lastTerm} ${stepDesc} = ${answer})`,
+        };
+      } else {
+        // mult_div_step: Clean integer operations e.g. * 4, / 2
+        const start = Math.floor(Math.random() * 5) + 3; // e.g. 3
+        const terms: number[] = [];
+        let curr = start;
+        for (let i = 0; i < numTerms; i++) {
+          terms.push(curr);
+          curr = i % 2 === 0 ? curr * 4 : curr / 2;
+        }
+        const answer = curr;
+        const options = [answer, answer + 4, Math.max(1, answer - 2), answer * 2].sort(() => Math.random() - 0.5);
+        const lastTerm = terms[terms.length - 1];
+        const stepIsMult = numTerms % 2 === 0;
+        return {
+          sequenceText: `${terms.join(', ')}, ?`,
+          answer,
+          options,
+          family: 'mult_div_step',
+          explanation: `Alternating rule (×4, ÷2): Next step is ${stepIsMult ? '× 4' : '÷ 2'} (${lastTerm} ${stepIsMult ? '× 4' : '÷ 2'} = ${answer})`,
+        };
+      }
+    }
+
+    case 'hard': {
+      // Hard: Increasing differences (+2, +3, +4...) or Decreasing differences (-10, -9, -8...) (5-7 visible terms)
+      const family = ['increasing_diff', 'decreasing_diff'][Math.floor(Math.random() * 2)];
+      const numTerms = Math.floor(Math.random() * 3) + 5; // 5 to 7 terms
+
+      if (family === 'increasing_diff') {
+        const start = Math.floor(Math.random() * 10) + 1;
+        const baseStep = Math.floor(Math.random() * 2) + 1;
+        const terms: number[] = [start];
+        let curr = start;
+        let diff = baseStep;
+        for (let i = 1; i < numTerms; i++) {
+          curr += diff;
+          terms.push(curr);
+          diff++;
+        }
+        const answer = curr + diff;
+        // Plausible distractors: repeating previous diff without incrementing (curr + diff - 1)
+        const repeatDiffAns = curr + (diff - 1);
+        const options = [answer, repeatDiffAns, answer + 3, answer - 4].sort(() => Math.random() - 0.5);
+
+        return {
+          sequenceText: `${terms.join(', ')}, ?`,
+          answer,
+          options,
+          family: 'increasing_diff',
+          explanation: `2nd-order difference: Step increases by 1 each term; next step is +${diff} (${curr} + ${diff} = ${answer})`,
+        };
+      } else {
+        // decreasing_diff e.g. 100, 90, 81, 73, 66 -> -10, -9, -8, -7
+        let curr = Math.floor(Math.random() * 30) + 90;
+        let dec = 10;
+        const terms: number[] = [curr];
+        for (let i = 1; i < numTerms; i++) {
+          curr -= dec;
+          terms.push(curr);
+          dec--;
+        }
+        const answer = curr - dec;
+        // Plausible distractor: repeating last decrease (curr - (dec + 1))
+        const repeatDecAns = curr - (dec + 1);
+        const options = [answer, repeatDecAns, answer + 2, answer - 3].sort(() => Math.random() - 0.5);
+
+        return {
+          sequenceText: `${terms.join(', ')}, ?`,
+          answer,
+          options,
+          family: 'decreasing_diff',
+          explanation: `2nd-order difference: Decrease magnitude shrinks by 1 each term; next step is -${dec} (${curr} - ${dec} = ${answer})`,
+        };
+      }
+    }
+
+    case 'expert': {
+      // Expert: Fibonacci-style recurrence (a_n = a_{n-1} + a_{n-2}) (5-8 visible terms)
+      const numTerms = Math.floor(Math.random() * 4) + 5; // 5 to 8 terms
+      const a1 = Math.floor(Math.random() * 3) + 1;
+      const a2 = Math.floor(Math.random() * 3) + 2;
+      const terms: number[] = [a1, a2];
+
+      for (let i = 2; i < numTerms; i++) {
+        terms.push(terms[i - 1] + terms[i - 2]);
+      }
+      const lastTerm = terms[terms.length - 1];
+      const prevTerm = terms[terms.length - 2];
+      const answer = lastTerm + prevTerm;
+      // Plausible distractors: add last term to itself, multiply last two terms
+      const doubleLast = lastTerm * 2;
+      const wrongSum = lastTerm + (terms[terms.length - 3] || 1);
+
+      const options = [answer, doubleLast, wrongSum, answer + 4].sort(() => Math.random() - 0.5);
+
+      return {
+        sequenceText: `${terms.join(', ')}, ?`,
+        answer,
+        options,
+        family: 'fibonacci_expert',
+        explanation: `Fibonacci rule: Sum of previous 2 terms (${prevTerm} + ${lastTerm} = ${answer})`,
+      };
+    }
+  }
+}
+
+import { LogicQuestion } from '../types/mind';
+
+/**
+ * Procedural Question Generator for Logic Challenge
+ * Formally valid inference templates with truth models. Banned fallacies (affirming consequent, converse fallacies).
+ */
+export function generateLogicQuestion(
+  difficulty: MindDifficulty,
+  _qIndex: number
+): LogicQuestion {
+  let attempt = 0;
+  while (attempt < 50) {
+    attempt++;
+    const q = createCandidateLogicQuestion(difficulty);
+    if (isValidLogicQuestion(q)) {
+      return q;
+    }
+  }
+
+  // Fallback safe default
+  return {
+    premiseText: 'If it rains, the grass gets wet. It is currently raining.',
+    questionText: 'What logically follows?',
+    options: [
+      'The grass gets wet',
+      'The grass stays dry',
+      'It is not raining',
+      'Nothing can be concluded',
+    ],
+    correctIndex: 0,
+    family: 'modus_ponens_easy',
+  };
+}
+
+function isValidLogicQuestion(q: LogicQuestion): boolean {
+  if (!q.premiseText || !q.questionText || !q.options || q.options.length !== 4) return false;
+  if (q.correctIndex < 0 || q.correctIndex >= 4) return false;
+  const set = new Set(q.options);
+  if (set.size !== 4) return false;
+  return true;
+}
+
+function createCandidateLogicQuestion(difficulty: MindDifficulty): LogicQuestion {
+  switch (difficulty) {
+    case 'easy': {
+      // Easy: 1-step deduction (Modus Ponens / Basic Syllogism)
+      const family = ['modus_ponens', 'basic_syllogism'][Math.floor(Math.random() * 2)];
+
+      if (family === 'modus_ponens') {
+        const scenarios = [
+          { p: 'a server receives a request', q: 'it sends a response', valP: 'A server has received a request.' },
+          { p: 'the alarm rings', q: 'the doors lock automatically', valP: 'The alarm is ringing.' },
+          { p: 'the payment is verified', q: 'the order is dispatched', valP: 'The payment has been verified.' },
+        ];
+        const pick = scenarios[Math.floor(Math.random() * scenarios.length)];
+        const premiseText = `If ${pick.p}, then ${pick.q}. ${pick.valP}`;
+        const correctAns = `The ${pick.q.replace('it ', 'server ')}`;
+
+        const options = [
+          correctAns,
+          `The ${pick.q} is delayed`,
+          `No ${pick.p}`,
+          'Nothing can be concluded',
+        ].sort(() => Math.random() - 0.5);
+
+        return {
+          premiseText,
+          questionText: 'What must logically follow?',
+          options,
+          correctIndex: options.indexOf(correctAns),
+          family: 'modus_ponens',
+          explanation: `Modus Ponens deduction: "If P then Q". Since P occurred ("${pick.valP}"), Q MUST logically follow ("${correctAns}").`,
+        };
+      } else {
+        // Basic Syllogism: All A are B. All B are C.
+        const syllogisms = [
+          { a: 'squares', b: 'rectangles', c: 'quadrilaterals' },
+          { a: 'python scripts', b: 'code files', c: 'software assets' },
+          { a: 'invoices', b: 'financial documents', c: 'accounting records' },
+        ];
+        const pick = syllogisms[Math.floor(Math.random() * syllogisms.length)];
+        const premiseText = `All ${pick.a} are ${pick.b}. All ${pick.b} are ${pick.c}.`;
+        const correctAns = `All ${pick.a} are ${pick.c}`;
+
+        const options = [
+          correctAns,
+          `All ${pick.c} are ${pick.a}`,
+          `No ${pick.a} are ${pick.c}`,
+          `Some ${pick.b} are not ${pick.c}`,
+        ].sort(() => Math.random() - 0.5);
+
+        return {
+          premiseText,
+          questionText: 'Which statement is guaranteed to be TRUE?',
+          options,
+          correctIndex: options.indexOf(correctAns),
+          family: 'basic_syllogism',
+          explanation: `Categorical Syllogism: "All A are B" and "All B are C" transitively guarantees that "All A are C".`,
+        };
+      }
+    }
+
+    case 'medium': {
+      // Medium: 2-step deduction (Transitive Ordering 3 items / Modus Tollens)
+      const family = ['transitive_3', 'modus_tollens'][Math.floor(Math.random() * 2)];
+
+      if (family === 'transitive_3') {
+        const names = [
+          ['Alice', 'Bob', 'Charlie'],
+          ['Project A', 'Project B', 'Project C'],
+          ['Server X', 'Server Y', 'Server Z'],
+        ][Math.floor(Math.random() * 3)];
+
+        const metric = ['taller', 'older', 'faster'][Math.floor(Math.random() * 3)];
+        const oppMetric = metric === 'taller' ? 'shortest' : metric === 'older' ? 'youngest' : 'slowest';
+
+        const premiseText = `${names[0]} is ${metric} than ${names[1]}. ${names[1]} is ${metric} than ${names[2]}.`;
+        const correctAns = `${names[2]} is the ${oppMetric}`;
+
+        const options = [
+          correctAns,
+          `${names[0]} is the ${oppMetric}`,
+          `${names[1]} is the ${oppMetric}`,
+          'All three are equal',
+        ].sort(() => Math.random() - 0.5);
+
+        return {
+          premiseText,
+          questionText: `Who/Which is the ${oppMetric}?`,
+          options,
+          correctIndex: options.indexOf(correctAns),
+          family: 'transitive_3',
+          explanation: `Transitive chain: ${names[0]} > ${names[1]} > ${names[2]} → ${names[2]} is at the bottom of the order (${oppMetric}).`,
+        };
+      } else {
+        // Modus Tollens: If P then Q. Q is FALSE -> P is FALSE.
+        const scenarios = [
+          { p: 'the database is connected', q: 'the dashboard displays data', notQ: 'The dashboard does NOT display data.' },
+          { p: 'the key is valid', q: 'the door opens', notQ: 'The door does NOT open.' },
+        ];
+        const pick = scenarios[Math.floor(Math.random() * scenarios.length)];
+        const premiseText = `If ${pick.p}, then ${pick.q}. ${pick.notQ}`;
+        const correctAns = `The ${pick.p.replace('the ', '')} is NOT valid/connected`;
+
+        const options = [
+          correctAns,
+          `The ${pick.p.replace('the ', '')} IS valid/connected`,
+          `The ${pick.q}`,
+          'Nothing can be concluded',
+        ].sort(() => Math.random() - 0.5);
+
+        return {
+          premiseText,
+          questionText: 'What logically follows?',
+          options,
+          correctIndex: options.indexOf(correctAns),
+          family: 'modus_tollens',
+          explanation: `Modus Tollens deduction: "If P then Q". Since Q is FALSE ("${pick.notQ}"), P MUST be FALSE.`,
+        };
+      }
+    }
+
+    case 'hard': {
+      // Hard: Multi-premise deduction (4-item transitive ordering chain)
+      const items = ['Alpha', 'Beta', 'Gamma', 'Delta'];
+      const premiseText = `${items[0]} is higher than ${items[1]}. ${items[1]} is higher than ${items[2]}. ${items[2]} is higher than ${items[3]}.`;
+      const correctAns = `${items[0]} is higher than ${items[3]}`;
+
+      const options = [
+        correctAns,
+        `${items[3]} is higher than ${items[0]}`,
+        `${items[2]} is higher than ${items[0]}`,
+        `${items[1]} is the lowest`,
+      ].sort(() => Math.random() - 0.5);
+
+      return {
+        premiseText,
+        questionText: 'Which statement MUST be true?',
+        options,
+        correctIndex: options.indexOf(correctAns),
+        family: 'transitive_4',
+        explanation: `Transitive chain: Alpha > Beta > Gamma > Delta guarantees Alpha is higher than Delta.`,
+      };
+    }
+
+    case 'expert': {
+      // Expert: Constraint Satisfaction with multiple simultaneous constraints
+      const premiseText = 'Exactly one candidate (A, B, or C) is hired. If A is hired, D is rejected. D is HIRED.';
+      const correctAns = 'Candidate A is NOT hired';
+
+      const options = [
+        correctAns,
+        'Candidate A IS hired',
+        'Candidate D is rejected',
+        'Candidate B and C are both hired',
+      ].sort(() => Math.random() - 0.5);
+
+      return {
+        premiseText,
+        questionText: 'Which conclusion is logically GUARANTEED?',
+        options,
+        correctIndex: options.indexOf(correctAns),
+        family: 'constraint_satisfaction',
+        explanation: `Proof by contrapositive: Rule states "If A hired → D rejected". Since D IS hired, Candidate A cannot be hired.`,
+      };
+    }
+  }
+}
+
+import { ProbabilityQuestion } from '../types/mind';
+
+/**
+ * Procedural Question Generator for Probability Challenge
+ * Mathematical evaluation pipeline: EV risk comparisons, exact Bayes base-rate derivation, complement rule.
+ */
+export function generateProbabilityQuestion(
+  difficulty: MindDifficulty,
+  _qIndex: number
+): ProbabilityQuestion {
+  let attempt = 0;
+  while (attempt < 50) {
+    attempt++;
+    const q = createCandidateProbabilityQuestion(difficulty);
+    if (isValidProbabilityQuestion(q)) {
+      return q;
+    }
+  }
+
+  // Fallback safe default
+  return {
+    prompt: 'An urn has 4 red marbles and 6 blue marbles. With replacement, what is the probability of drawing a red marble?',
+    options: ['40%', '60%', '25%', '50%'],
+    correctIndex: 0,
+    family: 'single_event_urn',
+  };
+}
+
+function isValidProbabilityQuestion(q: ProbabilityQuestion): boolean {
+  if (!q.prompt || !q.options || q.options.length !== 4) return false;
+  if (q.correctIndex < 0 || q.correctIndex >= 4) return false;
+  const set = new Set(q.options);
+  if (set.size !== 4) return false;
+  return true;
+}
+
+function createCandidateProbabilityQuestion(difficulty: MindDifficulty): ProbabilityQuestion {
+  switch (difficulty) {
+    case 'easy': {
+      // Easy: Direct Single-Event Odds (Urn draws, die rolls)
+      const family = ['single_event_urn', 'fair_die_even'][Math.floor(Math.random() * 2)];
+
+      if (family === 'single_event_urn') {
+        const red = Math.floor(Math.random() * 4) + 3; // 3 to 6
+        const blue = 10 - red;
+        const pct = red * 10;
+        const prompt = `An urn contains ${red} red marbles and ${blue} blue marbles. With replacement, what is the probability of drawing a red marble?`;
+        const correctAns = `${pct}%`;
+        const options = [correctAns, `${100 - pct}%`, `${pct / 2}%`, `${Math.min(90, pct + 20)}%`].sort(() => Math.random() - 0.5);
+
+        return {
+          prompt,
+          options,
+          correctIndex: options.indexOf(correctAns),
+          family: 'single_event_urn',
+          explanation: `Urn probability: ${red} red marbles out of 10 total marbles = ${pct}%`,
+        };
+      } else {
+        const prompt = 'A fair 6-sided die is rolled. What is the probability of rolling an even number?';
+        const options = ['50%', '33%', '66%', '16%'].sort(() => Math.random() - 0.5);
+        const correctAns = '50%';
+
+        return {
+          prompt,
+          options,
+          correctIndex: options.indexOf(correctAns),
+          family: 'fair_die_even',
+          explanation: `Fair die probability: 3 even outcomes (2, 4, 6) out of 6 faces = 3/6 = 50%`,
+        };
+      }
+    }
+
+    case 'medium': {
+      // Medium: Complement Rule & Independent Events
+      const family = ['complement_rule', 'independent_events'][Math.floor(Math.random() * 2)];
+
+      if (family === 'complement_rule') {
+        const prompt = 'A fair coin is flipped twice. What is the probability of getting at least 1 head?';
+        const options = ['75%', '50%', '25%', '100%'].sort(() => Math.random() - 0.5);
+        const correctAns = '75%';
+
+        return {
+          prompt,
+          options,
+          correctIndex: options.indexOf(correctAns),
+          family: 'complement_rule',
+          explanation: `Complement rule: P(≥1 head in 2 flips) = 1 - P(no heads) = 1 - (1/2 × 1/2) = 1 - 0.25 = 75%`,
+        };
+      } else {
+        const prompt = 'Two fair 6-sided dice are rolled independently. What is the probability of rolling two 6s?';
+        const options = ['1/36 (~2.8%)', '1/6 (~16.7%)', '1/12 (~8.3%)', '1/18 (~5.6%)'].sort(() => Math.random() - 0.5);
+        const correctAns = '1/36 (~2.8%)';
+
+        return {
+          prompt,
+          options,
+          correctIndex: options.indexOf(correctAns),
+          family: 'independent_events',
+          explanation: `Independent product rule: P(two 6s) = P(6) × P(6) = (1/6) × (1/6) = 1/36 ≈ 2.78%`,
+        };
+      }
+    }
+
+    case 'hard': {
+      // Hard: EV Risk Comparison (Comparing Game A vs Game B)
+      const gainA = [80, 100, 120][Math.floor(Math.random() * 3)];
+      const lossA = [30, 40, 50][Math.floor(Math.random() * 3)];
+      const evA = 0.5 * gainA - 0.5 * lossA; // e.g. +30
+
+      const gainB = [25, 30, 35][Math.floor(Math.random() * 3)];
+      const lossB = [10, 15, 20][Math.floor(Math.random() * 3)];
+      const evB = 0.8 * gainB - 0.2 * lossB; // e.g. +20
+
+      const isAGreater = evA > evB;
+      const prompt = `Game A gives a 50% chance of +$${gainA} and 50% chance of -$${lossA}. Game B gives an 80% chance of +$${gainB} and 20% chance of -$${lossB}. Which wager has the higher expected value?`;
+      const correctAns = isAGreater ? `Game A (EV = +$${evA})` : `Game B (EV = +$${evB})`;
+      const otherAns = isAGreater ? `Game B (EV = +$${evB})` : `Game A (EV = +$${evA})`;
+
+      const options = [
+        correctAns,
+        otherAns,
+        'Both have equal expected value',
+        'Neither has positive expected value',
+      ].sort(() => Math.random() - 0.5);
+
+      return {
+        prompt,
+        options,
+        correctIndex: options.indexOf(correctAns),
+        family: 'ev_risk_comparison',
+        explanation: `Expected Value Comparison: EV(Game A) = 0.5($${gainA}) - 0.5($${lossA}) = +$${evA} vs EV(Game B) = 0.8($${gainB}) - 0.2($${lossB}) = +$${evB} → ${correctAns} has higher EV.`,
+      };
+    }
+
+    case 'expert': {
+      // Expert: Base-rate Bayes calculation or Gambler's Fallacy De-biasing
+      const family = ['bayes_base_rate', 'gamblers_fallacy'][Math.floor(Math.random() * 2)];
+
+      if (family === 'bayes_base_rate') {
+        const prevText = '1 in 1,000';
+        const prevVal = 0.001;
+        const sens = 0.99;
+        const spec = 0.99;
+        const probExact = (sens * prevVal) / (sens * prevVal + (1 - spec) * (1 - prevVal));
+        const closestPct = Math.round(probExact * 100);
+
+        const prompt = `A disease affects ${prevText} people. A test correctly identifies ${Math.round(sens * 100)}% of infected people and correctly clears ${Math.round(spec * 100)}% of uninfected people. If a person tests positive, the probability they actually have the disease is closest to:`;
+        const correctAns = `${closestPct === 9 ? '10%' : `${closestPct}%`}`;
+
+        const options = [
+          correctAns,
+          '99%',
+          '1%',
+          '50%',
+        ].sort(() => Math.random() - 0.5);
+
+        return {
+          prompt,
+          options,
+          correctIndex: options.indexOf(correctAns),
+          family: 'bayes_base_rate',
+          explanation: `Bayesian Base-Rate: P(Disease | +) = (0.99 × 0.001) / (0.99 × 0.001 + 0.01 × 0.999) = 0.00099 / 0.01098 ≈ 9.016% → closest to 10%.`,
+        };
+      } else {
+        const k = Math.floor(Math.random() * 4) + 4; // 4 to 7
+        const prompt = `A perfectly fair coin has landed on heads ${k} times in a row. What is the probability that the ${k + 1}th flip is heads?`;
+        const correctAns = '50%';
+
+        const options = [
+          correctAns,
+          'Less than 10%',
+          'Greater than 90%',
+          '75%',
+        ].sort(() => Math.random() - 0.5);
+
+        return {
+          prompt,
+          options,
+          correctIndex: options.indexOf(correctAns),
+          family: 'gamblers_fallacy',
+          explanation: `Gambler's Fallacy De-biasing: Coin flips are memoryless independent events; after ${k} consecutive heads, the ${k + 1}th flip probability remains 50%.`,
+        };
+      }
+    }
+  }
+}
+
+import { FocusQuestion } from '../types/mind';
+
+const COLOR_PALETTE = [
+  { name: 'RED', hex: '#EF4444' },
+  { name: 'BLUE', hex: '#3B82F6' },
+  { name: 'GREEN', hex: '#10B981' },
+  { name: 'YELLOW', hex: '#F59E0B' },
+  { name: 'PURPLE', hex: '#8B5CF6' },
+];
+
+const SHAPES: ('circle' | 'square' | 'triangle')[] = ['circle', 'square', 'triangle'];
+
+/**
+ * Procedural Question Generator for Focus Challenge
+ * Attention control, reaction speed, Stroop interference, and dynamic 3-way rule switching.
+ */
+export function generateFocusQuestion(
+  difficulty: MindDifficulty,
+  _qIndex: number
+): FocusQuestion {
+  let attempt = 0;
+  while (attempt < 50) {
+    attempt++;
+    const q = createCandidateFocusQuestion(difficulty);
+    if (isValidFocusQuestion(q)) {
+      return q;
+    }
+  }
+
+  // Fallback safe default
+  return {
+    instructionText: 'TAP THE GREEN BUTTON',
+    wordText: 'GREEN',
+    colorHex: '#10B981',
+    options: [
+      { text: 'RED', hex: '#EF4444' },
+      { text: 'BLUE', hex: '#3B82F6' },
+      { text: 'GREEN', hex: '#10B981' },
+      { text: 'YELLOW', hex: '#F59E0B' },
+    ],
+    correctIndex: 2,
+    family: 'target_id_easy',
+  };
+}
+
+function isValidFocusQuestion(q: FocusQuestion): boolean {
+  if (!q.instructionText || !q.wordText || !q.options || q.options.length !== 4) return false;
+  if (q.correctIndex < 0 || q.correctIndex >= 4) return false;
+  return true;
+}
+
+function createCandidateFocusQuestion(difficulty: MindDifficulty): FocusQuestion {
+  switch (difficulty) {
+    case 'easy': {
+      // Easy: Target Identification + Reaction (No conflict, matching text & color)
+      const targetColor = COLOR_PALETTE[Math.floor(Math.random() * COLOR_PALETTE.length)];
+      const instructionText = `TAP THE ${targetColor.name} BUTTON`;
+      const wordText = targetColor.name;
+      const colorHex = targetColor.hex;
+
+      const otherColors = COLOR_PALETTE.filter((c) => c.name !== targetColor.name).slice(0, 3);
+      const options = [
+        { text: targetColor.name, hex: targetColor.hex },
+        ...otherColors.map((c) => ({ text: c.name, hex: c.hex })),
+      ].sort(() => Math.random() - 0.5);
+
+      const correctIndex = options.findIndex((o) => o.text === targetColor.name);
+
+      return {
+        instructionText,
+        wordText,
+        colorHex,
+        options,
+        correctIndex,
+        family: 'target_id_easy',
+        explanation: `Target Identification: Instruction specifies "${instructionText}" → select ${wordText}.`,
+      };
+    }
+
+    case 'medium': {
+      // Medium: Classical Stroop Test (Instruction: TAP INK COLOR)
+      const wordObj = COLOR_PALETTE[Math.floor(Math.random() * COLOR_PALETTE.length)];
+      const inkObj = COLOR_PALETTE.filter((c) => c.name !== wordObj.name)[Math.floor(Math.random() * 4)];
+
+      const instructionText = 'TAP THE INK COLOR (IGNORE WORD)';
+      const wordText = wordObj.name;
+      const colorHex = inkObj.hex;
+
+      const otherColors = COLOR_PALETTE.filter((c) => c.name !== inkObj.name).slice(0, 3);
+      const options = [
+        { text: inkObj.name, hex: inkObj.hex },
+        ...otherColors.map((c) => ({ text: c.name, hex: c.hex })),
+      ].sort(() => Math.random() - 0.5);
+
+      const correctIndex = options.findIndex((o) => o.text === inkObj.name);
+
+      return {
+        instructionText,
+        wordText,
+        colorHex,
+        options,
+        correctIndex,
+        family: 'stroop_medium',
+        explanation: `Classical Stroop Test: Instruction requires selecting INK COLOR (${inkObj.name}), ignoring printed text ("${wordObj.name}").`,
+      };
+    }
+
+    case 'hard': {
+      // Hard: Reverse Stroop / Alternating Instruction (TAP INK COLOR vs TAP WORD MEANING)
+      const isInkRule = Math.random() > 0.5;
+      const wordObj = COLOR_PALETTE[Math.floor(Math.random() * COLOR_PALETTE.length)];
+      const inkObj = COLOR_PALETTE.filter((c) => c.name !== wordObj.name)[Math.floor(Math.random() * 4)];
+
+      const instructionText = isInkRule ? 'TAP THE INK COLOR' : 'TAP THE WORD MEANING';
+      const targetName = isInkRule ? inkObj.name : wordObj.name;
+
+      const otherColors = COLOR_PALETTE.filter((c) => c.name !== targetName).slice(0, 3);
+      const options = [
+        { text: targetName, hex: isInkRule ? inkObj.hex : wordObj.hex },
+        ...otherColors.map((c) => ({ text: c.name, hex: c.hex })),
+      ].sort(() => Math.random() - 0.5);
+
+      const correctIndex = options.findIndex((o) => o.text === targetName);
+
+      return {
+        instructionText,
+        wordText: wordObj.name,
+        colorHex: inkObj.hex,
+        options,
+        correctIndex,
+        family: 'rule_inversion_hard',
+        explanation: `Reverse Stroop / Rule Switching: Active rule is "${instructionText}" → select ${targetName}.`,
+      };
+    }
+
+    case 'expert': {
+      // Expert: 3-Way Rule Switching (WORD vs INK vs SHAPE)
+      const ruleType = ['WORD', 'INK', 'SHAPE'][Math.floor(Math.random() * 3)] as 'WORD' | 'INK' | 'SHAPE';
+      const wordObj = COLOR_PALETTE[Math.floor(Math.random() * COLOR_PALETTE.length)];
+      const inkObj = COLOR_PALETTE.filter((c) => c.name !== wordObj.name)[Math.floor(Math.random() * 4)];
+      const shape = SHAPES[Math.floor(Math.random() * SHAPES.length)];
+
+      let instructionText = 'TAP THE WORD MEANING';
+      let targetText = wordObj.name;
+      let targetHex = wordObj.hex;
+
+      if (ruleType === 'INK') {
+        instructionText = 'TAP THE INK COLOR';
+        targetText = inkObj.name;
+        targetHex = inkObj.hex;
+      } else if (ruleType === 'SHAPE') {
+        instructionText = `TAP THE SHAPE (${shape.toUpperCase()})`;
+        targetText = shape.toUpperCase();
+        targetHex = '#6366F1';
+      }
+
+      const options = [
+        { text: targetText, hex: targetHex },
+        { text: 'CIRCLE', hex: '#3B82F6' },
+        { text: 'SQUARE', hex: '#10B981' },
+        { text: 'TRIANGLE', hex: '#EF4444' },
+      ].filter((v, idx, arr) => arr.findIndex((t) => t.text === v.text) === idx).slice(0, 4);
+
+      while (options.length < 4) {
+        options.push({ text: `COLOR-${options.length}`, hex: '#64748B' });
+      }
+
+      options.sort(() => Math.random() - 0.5);
+      const correctIndex = options.findIndex((o) => o.text === targetText);
+
+      return {
+        instructionText,
+        wordText: wordObj.name,
+        colorHex: inkObj.hex,
+        shape,
+        options,
+        correctIndex,
+        family: '3way_switching_expert',
+        explanation: `Dynamic 3-Way Rule Switching: Active rule is "${instructionText}" → select ${targetText}.`,
+      };
+    }
+  }
+}

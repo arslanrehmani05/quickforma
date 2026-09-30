@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" width="1200" height="320">
+  <g transform="translate(40, 20)">
+    <rect x="16" y="16" width="248" height="248" rx="72" ry="72" fill="#4f46e5"/>
+    <path d="M 158 44 L 78 158 L 140 158 L 122 236 L 202 122 L 140 122 Z" fill="#FFFFFF"/>
+  </g>
+  <text x="340" y="188" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="112" fill="#0f172a" letter-spacing="-3">QuickForma</text>
+</svg>

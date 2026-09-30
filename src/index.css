@@ -1,0 +1,147 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Hide Sanity promotional dev conference link */
+  a[href*="sanity.io/everything"],
+  div:has(> a[href*="sanity.io/everything"]) {
+    display: none !important;
+  }
+
+  * {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #f8fafc;
+    color: #0f172a;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
+}
+
+.tool-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tool-card:hover {
+  border-color: #4f46e5;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.1), 0 8px 10px -6px rgba(79, 70, 229, 0.05);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+}
+
+/* Suppress Sanity Studio Unknown Fields Warning Card */
+[data-testid*="unknown"],
+[data-ui="Card"][tone="caution"],
+[data-ui="Card"][tone="warning"] {
+  display: none !important;
+}
+
+/* Shopify-Style Compact 240px Left List Drawer */
+[data-pane-index="0"],
+[data-pane-key="pane-0"],
+[data-testid="pane-0"] {
+  flex: 0 0 240px !important;
+  width: 240px !important;
+  min-width: 240px !important;
+  max-width: 240px !important;
+}
+
+/* Document Panel Container: Fill all remaining screen width */
+[data-pane-index="1"],
+[data-pane-key="pane-1"],
+[data-testid="pane-1"] {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  width: 100% !important;
+}
+
+[data-testid="document-panel"] > div,
+[data-ui="DocumentPanel"] > div {
+  max-width: 100% !important;
+  width: 100% !important;
+  padding: 24px 32px !important;
+}
+
+/* Shopify 2-Column Document Form Grid (70% Left Main Content / 30% Right Sidebar) */
+@media (min-width: 1024px) {
+  [data-testid="document-panel"] form {
+    display: grid !important;
+    grid-template-columns: 1fr 340px !important;
+    grid-gap: 28px !important;
+    align-items: start !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+
+  [data-testid="document-panel"] [data-testid="field-title"],
+  [data-testid="document-panel"] [data-testid="field-body"],
+  [data-testid="document-panel"] [data-testid="field-excerpt"],
+  [data-testid="document-panel"] [data-testid="fieldset-searchEngineListing"] {
+    grid-column: 1 / 2 !important;
+  }
+
+  [data-testid="document-panel"] [data-testid="fieldset-organization"] {
+    grid-column: 2 / 3 !important;
+  }
+}
+
+/* Hide Sanity Studio Perspective/Drafts/Releases Menu Selector & Tasks */
+[data-testid*="perspective"],
+[data-testid*="release"],
+[data-testid*="task"],
+[data-testid*="tasks"],
+button[aria-label*="perspective"],
+button[aria-label*="Perspective"],
+button[aria-label*="release"],
+button[aria-label*="Release"],
+button[aria-label*="task"],
+button[aria-label*="Task"],
+button[aria-label*="tasks"],
+button[aria-label*="Tasks"],
+div:has(> button[data-testid*="perspective"]),
+div:has(> button[data-testid*="release"]),
+div:has(> button[data-testid*="task"]) {
+  display: none !important;
+}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,74 @@
+import React, { useState } from 'react';
+import { DollarSign } from 'lucide-react';
+import { ToolHeader } from '../ui/ToolHeader';
+import { InputField } from '../ui/InputField';
+import { ResultCard } from '../ui/ResultCard';
+
+export const SalaryHourlyConverter: React.FC = () => {
+  const [amount, setAmount] = useState<number>(75000);
+  const [mode, setMode] = useState<'salaryToHourly' | 'hourlyToSalary'>('salaryToHourly');
+
+  const hourly = mode === 'salaryToHourly' ? (amount || 0) / (52 * 40) : (amount || 0);
+  const annual = mode === 'salaryToHourly' ? (amount || 0) : (amount || 0) * (52 * 40);
+
+  return (
+    <div className="max-w-4xl mx-auto space-y-8">
+      <div className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-sm">
+        <div className="flex items-center gap-3 mb-6">
+          <div className="p-3 rounded-2xl bg-indigo-50 border border-indigo-100 text-indigo-600">
+            <DollarSign className="w-6 h-6" />
+          </div>
+          <div>
+            <h2 className="text-xl sm:text-2xl font-bold text-slate-900">Salary to Hourly Converter</h2>
+            <p className="text-slate-600 text-sm">Convert annual salary to hourly rate (based on 2,080 hours/year).</p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="space-y-4">
+            <div className="flex gap-2">
+              <button
+                onClick={() => setMode('salaryToHourly')}
+                className={`flex-1 py-2 rounded-xl text-xs font-bold ${mode === 'salaryToHourly' ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-700'}`}
+              >
+                Annual to Hourly
+              </button>
+              <button
+                onClick={() => setMode('hourlyToSalary')}
+                className={`flex-1 py-2 rounded-xl text-xs font-bold ${mode === 'hourlyToSalary' ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-700'}`}
+              >
+                Hourly to Annual
+              </button>
+            </div>
+            <div>
+              <label className="block text-slate-700 text-xs font-semibold  mb-2">
+                {mode === 'salaryToHourly' ? 'Annual Salary ($)' : 'Hourly Rate ($)'}
+              </label>
+              <input
+                type="number"
+                min="0"
+                value={amount}
+                onChange={(e) => setAmount(Number(e.target.value))}
+                className="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-indigo-600 shadow-xs"
+              />
+            </div>
+          </div>
+
+          <div className="p-6 rounded-2xl bg-indigo-600 text-white flex flex-col justify-between shadow-md">
+            <div>
+              <span className="text-xs font-bold  text-indigo-200">
+                {mode === 'salaryToHourly' ? 'Equivalent Hourly Rate' : 'Equivalent Annual Salary'}
+              </span>
+              <div className="my-4 text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
+                ${mode === 'salaryToHourly' ? hourly.toFixed(2) : annual.toLocaleString()}
+              </div>
+            </div>
+            <div className="pt-4 border-t border-indigo-500/80 text-xs text-indigo-100">
+              <span>Based on 40 billable hours / week x 52 weeks</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};

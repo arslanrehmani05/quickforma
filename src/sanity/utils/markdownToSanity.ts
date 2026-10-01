@@ -64,6 +64,30 @@ export function convertMarkdownToPortableText(markdown: string): any[] {
     // Horizontal rule divider
     if (trimmed === '---' || trimmed === '***' || trimmed === '___') continue;
 
+    // Check if rawLine is an indented continuation line following a list item
+    // (e.g. 2+ spaces or tab, without starting a new heading or list item)
+    const isIndented = /^(\s{2,}|\t)\S/.test(rawLine);
+    const lastBlock = blocks[blocks.length - 1];
+
+    if (
+      isIndented &&
+      lastBlock &&
+      lastBlock._type === 'block' &&
+      (lastBlock.listItem === 'number' || lastBlock.listItem === 'bullet') &&
+      !trimmed.startsWith('#') &&
+      !trimmed.startsWith('* ') &&
+      !trimmed.startsWith('- ') &&
+      !/^\d+\.\s+/.test(trimmed)
+    ) {
+      // Merge continuation text into preceding list item's children/spans
+      const continuationSpans = parseInlineSpans(trimmed);
+      if (continuationSpans.length > 0) {
+        continuationSpans[0].text = '\n' + continuationSpans[0].text;
+        lastBlock.children.push(...continuationSpans);
+      }
+      continue;
+    }
+
     let style = 'normal';
     let listItem: string | undefined = undefined;
     let lineContent = rawLine;

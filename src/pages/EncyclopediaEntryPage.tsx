@@ -34,7 +34,7 @@ const encyclopediaPortableTextComponents = {
   },
   listItem: {
     bullet: ({ children }: any) => <li className="leading-relaxed">{children}</li>,
-    number: ({ children }: any) => <li className="leading-relaxed">{children}</li>,
+    number: ({ children }: any) => <li className="leading-relaxed whitespace-pre-line">{children}</li>,
   },
   marks: {
     strong: ({ children }: any) => <strong className="font-bold text-slate-900">{children}</strong>,
@@ -69,8 +69,84 @@ const formulaPortableTextComponents = {
     normal: ({ children }: any) => (
       <p className="mb-2 last:mb-0 text-slate-200 leading-relaxed font-mono text-xs sm:text-sm">{children}</p>
     ),
+    blockquote: ({ children }: any) => (
+      <blockquote className="border-l-4 border-amber-400 pl-4 py-1.5 italic text-slate-300 my-3 bg-slate-800/60 rounded-r-lg font-mono text-xs sm:text-sm">
+        {children}
+      </blockquote>
+    ),
+  },
+  list: {
+    bullet: ({ children }: any) => <ul className="list-disc pl-5 my-2 space-y-1 text-slate-200 font-mono text-xs sm:text-sm">{children}</ul>,
+    number: ({ children }: any) => <ol className="list-decimal pl-5 my-2 space-y-1 text-slate-200 font-mono text-xs sm:text-sm">{children}</ol>,
+  },
+  listItem: {
+    bullet: ({ children }: any) => <li className="leading-relaxed text-slate-200">{children}</li>,
+    number: ({ children }: any) => <li className="leading-relaxed text-slate-200 whitespace-pre-line">{children}</li>,
+  },
+  marks: {
+    ...encyclopediaPortableTextComponents.marks,
+    strong: ({ children }: any) => <strong className="font-bold text-white tracking-wide">{children}</strong>,
+    em: ({ children }: any) => <em className="italic text-slate-300">{children}</em>,
+    code: ({ children }: any) => (
+      <code className="bg-slate-800/90 text-amber-300 px-1.5 py-0.5 rounded text-xs font-mono border border-slate-700">{children}</code>
+    ),
+    link: ({ value, children }: any) => (
+      <a href={value?.href} target="_blank" rel="noopener noreferrer" className="text-amber-400 underline hover:text-amber-300 font-medium">
+        {children}
+      </a>
+    ),
   },
 };
+
+/**
+ * Normalizes PortableText blocks for step lists where descriptions were stored
+ * as separated normal paragraphs, merging continuation text into the preceding numbered list item.
+ */
+function normalizeStepListBlocks(blocks: any[]): any[] {
+  if (!Array.isArray(blocks) || blocks.length === 0) return blocks;
+
+  const normalized: any[] = [];
+  for (let i = 0; i < blocks.length; i++) {
+    const current = blocks[i];
+    const next = blocks[i + 1];
+
+    if (
+      current?.listItem === 'number' &&
+      next &&
+      !next.listItem &&
+      next._type === 'block' &&
+      Array.isArray(next.children)
+    ) {
+      const nextRawText = next.children.map((c: any) => c.text || '').join('');
+      const isContinuation = /^\s{2,}/.test(nextRawText) || (i + 2 < blocks.length && blocks[i + 2]?.listItem === 'number');
+
+      if (isContinuation) {
+        const cleanNextText = nextRawText.replace(/^\s+/, '');
+        const updatedChildren = [
+          ...(current.children || []),
+          {
+            _type: 'span',
+            _key: `span_sub_${Date.now()}_${i}`,
+            text: `\n${cleanNextText}`,
+            marks: [],
+          },
+        ];
+
+        normalized.push({
+          ...current,
+          children: updatedChildren,
+        });
+
+        i++; // Skip continuation paragraph since it's merged into the list item
+        continue;
+      }
+    }
+
+    normalized.push(current);
+  }
+
+  return normalized;
+}
 
 const projectId = import.meta.env.VITE_SANITY_PROJECT_ID || '60xo4tvv';
 const dataset = import.meta.env.VITE_SANITY_DATASET || 'production';
@@ -345,7 +421,7 @@ export const EncyclopediaEntryPage: React.FC<EncyclopediaEntryPageProps> = ({
               How It Works
             </h2>
             <div className="prose prose-slate max-w-none text-slate-700 text-sm leading-relaxed space-y-4">
-              <PortableText value={entry.howItWorks} components={encyclopediaPortableTextComponents} />
+              <PortableText value={normalizeStepListBlocks(entry.howItWorks)} components={encyclopediaPortableTextComponents} />
             </div>
           </section>
         )}

@@ -190,42 +190,43 @@ export function parseMasterMarkdownTemplate(rawText: string): ParsedEncyclopedia
 
   if (!rawText || !rawText.trim()) return data;
 
-  // Helper to extract a single plain-text value under a header (e.g. ### Concept Title)
+  const TERMINATOR_PATTERN = /\n(?=(?:#{1,3}\s*)?(?:Concept Title|URL Handle|Previous Slugs|Short Direct Definition|E-Category|Synonyms \/ Alternative Names|Simple Explanation|How It Works|Formula \/ Calculation Method|Worked Example|How to Interpret It|Real-World Applications|Common Mistakes & Misconceptions|Frequently Asked Questions|3\.\s*Structured|QuickForma Tools|Related Encyclopedia Concepts|4\.\s*Search|SEO Title|SEO Meta Description|---))/i;
+
+  // Helper to extract a single plain-text value under a header (e.g. ### Concept Title or Concept Title)
   const extractFieldValue = (headerRegex: RegExp): string => {
     const match = rawText.match(headerRegex);
     if (!match) return '';
     const startIndex = match.index! + match[0].length;
     const rest = rawText.slice(startIndex);
-    const nextHeaderMatch = rest.match(/\n(?=#{1,3}\s|---|\n#)/);
+    const nextHeaderMatch = rest.match(TERMINATOR_PATTERN);
     const rawVal = nextHeaderMatch ? rest.slice(0, nextHeaderMatch.index) : rest;
     return cleanMarkdownString(rawVal);
   };
 
   // Helper to extract a major content section up to the NEXT major section header or ---
-  // Note: NEVER terminates at sub-headers (### 1. Step) that belong inside the section!
   const extractMajorSection = (headerRegex: RegExp): string => {
     const match = rawText.match(headerRegex);
     if (!match) return '';
     const startIndex = match.index! + match[0].length;
     const rest = rawText.slice(startIndex);
-    const nextMajorMatch = rest.match(/\n(?=#[^#]|##[^#]|---|\n#[^#]|\n##[^#])/);
+    const nextMajorMatch = rest.match(TERMINATOR_PATTERN);
     const content = nextMajorMatch ? rest.slice(0, nextMajorMatch.index) : rest;
     return content.trim();
   };
 
   // 1. Concept Title
-  const titleVal = extractFieldValue(/###\s*Concept Title/i);
+  const titleVal = extractFieldValue(/(?:#{1,3}\s*)?Concept Title:?/i);
   if (titleVal) {
     data.title = titleVal;
   } else {
-    const fallbackTitle = rawText.match(/^#\s+(.*?)$/m);
-    if (fallbackTitle && fallbackTitle[1]) {
-      data.title = cleanMarkdownString(fallbackTitle[1]);
+    const fallbackTitle = rawText.match(/^#?\s*(Concept Title\s*\n+)?(.*?)$/m);
+    if (fallbackTitle && fallbackTitle[2]) {
+      data.title = cleanMarkdownString(fallbackTitle[2]);
     }
   }
 
   // 2. Slug / URL Handle
-  const slugVal = extractFieldValue(/###\s*URL Handle/i);
+  const slugVal = extractFieldValue(/(?:#{1,3}\s*)?URL Handle:?/i);
   if (slugVal && slugVal.toLowerCase() !== 'none') {
     const cleanSlug = slugVal.toLowerCase().replace(/[^a-z0-9-]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
     if (cleanSlug) data.slug = { current: cleanSlug };
@@ -235,26 +236,26 @@ export function parseMasterMarkdownTemplate(rawText: string): ParsedEncyclopedia
   }
 
   // 3. Previous Slugs
-  const prevVal = extractFieldValue(/###\s*Previous Slugs/i);
+  const prevVal = extractFieldValue(/(?:#{1,3}\s*)?Previous Slugs:?/i);
   if (prevVal && prevVal.toLowerCase() !== 'none') {
     const prevArr = prevVal.split(',').map(s => cleanMarkdownString(s)).filter(s => s && s.toLowerCase() !== 'none');
     if (prevArr.length > 0) data.previousSlugs = prevArr;
   }
 
   // 4. Short Direct Definition
-  const shortDefVal = extractFieldValue(/###\s*Short Direct Definition/i);
+  const shortDefVal = extractFieldValue(/(?:#{1,3}\s*)?Short Direct Definition:?/i);
   if (shortDefVal) {
     data.shortDefinition = shortDefVal;
   }
 
   // 5. Category Name
-  const catVal = extractFieldValue(/###\s*E-Category/i);
+  const catVal = extractFieldValue(/(?:#{1,3}\s*)?E-Category:?/i);
   if (catVal && catVal.toLowerCase() !== 'none') {
     data.categoryName = catVal;
   }
 
   // 6. Synonyms / Alternative Names
-  const synsMatch = rawText.match(/###\s*Synonyms \/ Alternative Names\s*\n+(.*?)(?=\n#{1,3}\s|\n---|$)/is);
+  const synsMatch = rawText.match(/(?:#{1,3}\s*)?Synonyms \/ Alternative Names:?\s*\n+(.*?)(?=\n(?:#{1,3}\s*)?(?:Simple Explanation|How It Works|Formula|Worked Example|---)|$)/is);
   if (synsMatch && synsMatch[1]) {
     const lines = synsMatch[1].split(/\r?\n/);
     const syns: string[] = [];
@@ -268,47 +269,46 @@ export function parseMasterMarkdownTemplate(rawText: string): ParsedEncyclopedia
   }
 
   // 7. Simple Explanation
-  const simpleText = extractMajorSection(/##\s*Simple Explanation/i);
+  const simpleText = extractMajorSection(/(?:#{1,3}\s*)?Simple Explanation:?/i);
   if (simpleText) data.simpleExplanation = convertMarkdownToPortableText(simpleText);
 
   // 8. How It Works
-  const howText = extractMajorSection(/##\s*How It Works/i);
+  const howText = extractMajorSection(/(?:#{1,3}\s*)?How It Works:?/i);
   if (howText) data.howItWorks = convertMarkdownToPortableText(howText);
 
   // 9. Formula Method
-  const formulaText = extractMajorSection(/#\s*Formula \/ Calculation Method/i);
+  const formulaText = extractMajorSection(/(?:#{1,3}\s*)?Formula \/ Calculation Method:?/i);
   if (formulaText) data.formulaMethod = convertMarkdownToPortableText(formulaText);
 
   // 10. Worked Example
-  const workedText = extractMajorSection(/#\s*Worked Example/i);
+  const workedText = extractMajorSection(/(?:#{1,3}\s*)?Worked Example:?/i);
   if (workedText) data.workedExample = convertMarkdownToPortableText(workedText);
 
   // 11. Interpretation
-  const interpText = extractMajorSection(/#\s*How to Interpret It/i);
+  const interpText = extractMajorSection(/(?:#{1,3}\s*)?How to Interpret It:?/i);
   if (interpText) data.interpretation = convertMarkdownToPortableText(interpText);
 
   // 12. Real World Applications
-  const appText = extractMajorSection(/#\s*Real-World Applications/i);
+  const appText = extractMajorSection(/(?:#{1,3}\s*)?Real-World Applications:?/i);
   if (appText) data.realWorldApplications = convertMarkdownToPortableText(appText);
 
   // 13. Common Mistakes
-  const mistakesText = extractMajorSection(/#\s*Common Mistakes & Misconceptions/i);
+  const mistakesText = extractMajorSection(/(?:#{1,3}\s*)?Common Mistakes & Misconceptions:?/i);
   if (mistakesText) data.commonMistakes = convertMarkdownToPortableText(mistakesText);
 
   // 14. FAQs
-  const faqMatch = rawText.match(/#\s*Frequently Asked Questions/i);
+  const faqMatch = rawText.match(/(?:#{1,3}\s*)?Frequently Asked Questions:?/i);
   let faqSection = '';
   if (faqMatch) {
     const startIndex = faqMatch.index! + faqMatch[0].length;
     const rest = rawText.slice(startIndex);
-    // Terminate at divider (---), or next major section (e.g. # 3. Structured Ecosystem Connections or ## QuickForma Tools)
-    const nextSectionMatch = rest.match(/\n(?=---\s*|\n#\s*[34]\.|\n#\s*Structured|\n#\s*Search|\n##\s*QuickForma Tools)/i);
+    const nextSectionMatch = rest.match(/\n(?=---\s*|\n(?:#{1,3}\s*)?[34]\.|\n(?:#{1,3}\s*)?Structured|\n(?:#{1,3}\s*)?Search|\n(?:#{1,3}\s*)?QuickForma Tools|\n(?:#{1,3}\s*)?Related Encyclopedia Concepts|\n(?:#{1,3}\s*)?SEO Title)/i);
     faqSection = nextSectionMatch ? rest.slice(0, nextSectionMatch.index) : rest;
     faqSection = faqSection.trim();
   }
 
   if (faqSection) {
-    const faqBlocks = faqSection.split(/\n(?=(?:##|###)?\s*\d+\.\s+|##\s+|###\s+)/i).filter(Boolean);
+    const faqBlocks = faqSection.split(/\n(?=(?:##|###)?\s*\d+\.\s+|\n?\d+\.\s+)/i).filter(Boolean);
     const faqs: Array<{ question: string; answer: string }> = [];
 
     for (const b of faqBlocks) {
@@ -316,7 +316,7 @@ export function parseMasterMarkdownTemplate(rawText: string): ParsedEncyclopedia
       if (!cleanBlock) continue;
       const firstLineEnd = cleanBlock.indexOf('\n');
       if (firstLineEnd !== -1) {
-        const qLine = cleanBlock.slice(0, firstLineEnd).replace(/^(?:##|###)?\s*\d+\.\s*/, '').replace(/^(?:##|###)\s*/, '').trim();
+        const qLine = cleanBlock.slice(0, firstLineEnd).replace(/^(?:##|###)?\s*\d+\.\s*/, '').replace(/^\d+\.\s*/, '').trim();
         const aLine = cleanBlock.slice(firstLineEnd).trim();
         const cleanQ = cleanMarkdownString(qLine);
         const cleanA = cleanMarkdownString(aLine);
@@ -329,7 +329,7 @@ export function parseMasterMarkdownTemplate(rawText: string): ParsedEncyclopedia
   }
 
   // 15. Related Tools
-  const toolsSection = extractMajorSection(/##\s*QuickForma Tools/i);
+  const toolsSection = extractMajorSection(/(?:#{1,3}\s*)?QuickForma Tools:?/i);
   if (toolsSection) {
     const toolLines = toolsSection.split(/\r?\n/).map(l => cleanMarkdownString(l.replace(/^[*|-]\s+/, ''))).filter(Boolean);
     const matchedToolIds: string[] = [];
@@ -348,7 +348,7 @@ export function parseMasterMarkdownTemplate(rawText: string): ParsedEncyclopedia
   }
 
   // 15b. Related Concepts
-  const conceptsSection = extractMajorSection(/##\s*Related Encyclopedia Concepts/i);
+  const conceptsSection = extractMajorSection(/(?:#{1,3}\s*)?Related Encyclopedia Concepts:?/i);
   if (conceptsSection) {
     const conceptLines = conceptsSection.split(/\r?\n/).map(l => cleanMarkdownString(l.replace(/^[*|-]\s+/, ''))).filter(Boolean);
     const conceptTitles = conceptLines.filter(l => l.toLowerCase() !== 'none');
@@ -356,13 +356,13 @@ export function parseMasterMarkdownTemplate(rawText: string): ParsedEncyclopedia
   }
 
   // 16. SEO Title
-  const seoTitleVal = extractFieldValue(/##\s*SEO Title/i);
+  const seoTitleVal = extractFieldValue(/(?:#{1,3}\s*)?SEO Title:?/i);
   if (seoTitleVal) {
     data.seoTitle = seoTitleVal;
   }
 
   // 17. SEO Meta Description
-  const metaDescVal = extractFieldValue(/##\s*SEO Meta Description/i);
+  const metaDescVal = extractFieldValue(/(?:#{1,3}\s*)?SEO Meta Description:?/i);
   if (metaDescVal) {
     data.metaDescription = metaDescVal;
   }

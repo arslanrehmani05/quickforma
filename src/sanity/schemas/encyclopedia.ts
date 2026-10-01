@@ -190,6 +190,14 @@ export const encyclopediaSchema = defineType({
       of: [{ type: 'reference', to: [{ type: 'encyclopedia' }] }],
       description: 'Cross-reference complementary concepts in the QuickForma Encyclopedia.',
     }),
+    defineField({
+      name: 'relatedArticles',
+      title: 'Related Ledger Guides',
+      type: 'array',
+      fieldset: 'relationships',
+      of: [{ type: 'reference', to: [{ type: 'article' }] }],
+      description: 'Cross-reference related Ledger Guides or articles.',
+    }),
 
     // --- SEO SUITE ---
     defineField({

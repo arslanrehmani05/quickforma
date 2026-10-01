@@ -22,12 +22,25 @@ export interface ParsedEncyclopediaData {
 }
 
 /**
+ * Safely strip markdown formatting markers (bold **, code ``, orphan **) from plain text strings
+ * while preserving legitimate single asterisks (e.g. math operations) and content text.
+ */
+export function stripMarkdownFormatting(text: string): string {
+  if (!text) return '';
+  return text
+    .replace(/\*\*(.*?)\*\*/g, '$1') // Convert **bold** -> bold
+    .replace(/`([^`]+)`/g, '$1')      // Convert `code` -> code
+    .replace(/\*\*/g, '')             // Remove orphan ** syntax
+    .trim();
+}
+
+/**
  * Clean markdown asterisks, backticks, bold/italic syntax wrappers from string values
  */
 function cleanMarkdownString(text: string): string {
   if (!text) return '';
-  return text
-    .trim()
+  const stripped = stripMarkdownFormatting(text);
+  return stripped
     .replace(/^[\s*_`]+|[\s*_`]+$/g, '')
     .replace(/\s+/g, ' ');
 }

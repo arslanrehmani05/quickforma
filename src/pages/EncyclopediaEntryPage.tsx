@@ -3,6 +3,74 @@ import { createClient } from '@sanity/client';
 import { PortableText } from '@portabletext/react';
 import { TOOLS_CATALOG } from '../data/toolsCatalog';
 import { BookOpen, ArrowLeft, ChevronRight, Calculator, FileText, Sparkles, CheckCircle2, AlertCircle, HelpCircle } from 'lucide-react';
+import { stripMarkdownFormatting } from '../sanity/utils/markdownToSanity';
+
+const encyclopediaPortableTextComponents = {
+  block: {
+    h1: ({ children }: any) => (
+      <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-6 mb-3 tracking-tight">{children}</h1>
+    ),
+    h2: ({ children }: any) => (
+      <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mt-6 mb-3 tracking-tight">{children}</h2>
+    ),
+    h3: ({ children }: any) => (
+      <h3 className="text-lg font-bold text-slate-900 mt-5 mb-2 tracking-tight">{children}</h3>
+    ),
+    h4: ({ children }: any) => (
+      <h4 className="text-base font-semibold text-slate-800 mt-4 mb-1.5">{children}</h4>
+    ),
+    normal: ({ children }: any) => (
+      <p className="mb-3 last:mb-0 text-slate-700 leading-relaxed">{children}</p>
+    ),
+    blockquote: ({ children }: any) => (
+      <blockquote className="border-l-4 border-indigo-500 pl-4 py-1.5 italic text-slate-600 my-4 bg-slate-50 rounded-r-lg">
+        {children}
+      </blockquote>
+    ),
+  },
+  list: {
+    bullet: ({ children }: any) => <ul className="list-disc pl-5 my-3 space-y-1.5 text-slate-700">{children}</ul>,
+    number: ({ children }: any) => <ol className="list-decimal pl-5 my-3 space-y-1.5 text-slate-700">{children}</ol>,
+  },
+  listItem: {
+    bullet: ({ children }: any) => <li className="leading-relaxed">{children}</li>,
+    number: ({ children }: any) => <li className="leading-relaxed">{children}</li>,
+  },
+  marks: {
+    strong: ({ children }: any) => <strong className="font-bold text-slate-900">{children}</strong>,
+    em: ({ children }: any) => <em className="italic text-slate-800">{children}</em>,
+    code: ({ children }: any) => (
+      <code className="bg-slate-100 px-1.5 py-0.5 rounded text-xs font-mono text-indigo-600">{children}</code>
+    ),
+    link: ({ value, children }: any) => (
+      <a href={value?.href} target="_blank" rel="noopener noreferrer" className="text-indigo-600 underline hover:text-indigo-800 font-medium">
+        {children}
+      </a>
+    ),
+  },
+};
+
+const formulaPortableTextComponents = {
+  ...encyclopediaPortableTextComponents,
+  block: {
+    ...encyclopediaPortableTextComponents.block,
+    h1: ({ children }: any) => (
+      <h1 className="text-xl font-bold text-white mt-4 mb-2 tracking-tight">{children}</h1>
+    ),
+    h2: ({ children }: any) => (
+      <h2 className="text-lg font-bold text-white mt-4 mb-2 tracking-tight">{children}</h2>
+    ),
+    h3: ({ children }: any) => (
+      <h3 className="text-base font-bold text-amber-400 mt-3 mb-1.5 tracking-tight">{children}</h3>
+    ),
+    h4: ({ children }: any) => (
+      <h4 className="text-sm font-semibold text-slate-200 mt-2 mb-1">{children}</h4>
+    ),
+    normal: ({ children }: any) => (
+      <p className="mb-2 last:mb-0 text-slate-200 leading-relaxed font-mono text-xs sm:text-sm">{children}</p>
+    ),
+  },
+};
 
 const projectId = import.meta.env.VITE_SANITY_PROJECT_ID || '60xo4tvv';
 const dataset = import.meta.env.VITE_SANITY_DATASET || 'production';
@@ -264,7 +332,7 @@ export const EncyclopediaEntryPage: React.FC<EncyclopediaEntryPageProps> = ({
               What Is {entry.title}?
             </h2>
             <div className="prose prose-slate max-w-none text-slate-700 text-sm leading-relaxed space-y-4">
-              <PortableText value={entry.simpleExplanation} />
+              <PortableText value={entry.simpleExplanation} components={encyclopediaPortableTextComponents} />
             </div>
           </section>
         )}
@@ -277,7 +345,7 @@ export const EncyclopediaEntryPage: React.FC<EncyclopediaEntryPageProps> = ({
               How It Works
             </h2>
             <div className="prose prose-slate max-w-none text-slate-700 text-sm leading-relaxed space-y-4">
-              <PortableText value={entry.howItWorks} />
+              <PortableText value={entry.howItWorks} components={encyclopediaPortableTextComponents} />
             </div>
           </section>
         )}
@@ -290,7 +358,7 @@ export const EncyclopediaEntryPage: React.FC<EncyclopediaEntryPageProps> = ({
               Formula & Calculation Method
             </h2>
             <div className="prose prose-invert max-w-none p-5 rounded-2xl bg-slate-900 text-slate-100 font-mono text-sm overflow-x-auto leading-relaxed border border-slate-800 space-y-4 [&_p]:mb-3 [&_p:last-child]:mb-0">
-              <PortableText value={entry.formulaMethod} />
+              <PortableText value={entry.formulaMethod} components={formulaPortableTextComponents} />
             </div>
           </section>
         )}
@@ -303,7 +371,7 @@ export const EncyclopediaEntryPage: React.FC<EncyclopediaEntryPageProps> = ({
               Worked Example
             </h2>
             <div className="prose prose-slate max-w-none text-slate-700 text-sm leading-relaxed space-y-4 bg-amber-50/40 p-5 rounded-2xl border border-amber-100">
-              <PortableText value={entry.workedExample} />
+              <PortableText value={entry.workedExample} components={encyclopediaPortableTextComponents} />
             </div>
           </section>
         )}
@@ -313,7 +381,7 @@ export const EncyclopediaEntryPage: React.FC<EncyclopediaEntryPageProps> = ({
           <section className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-xs space-y-4">
             <h2 className="text-xl font-extrabold text-slate-900 tracking-tight">How to Interpret Results</h2>
             <div className="prose prose-slate max-w-none text-slate-700 text-sm leading-relaxed space-y-4">
-              <PortableText value={entry.interpretation} />
+              <PortableText value={entry.interpretation} components={encyclopediaPortableTextComponents} />
             </div>
           </section>
         )}
@@ -323,7 +391,7 @@ export const EncyclopediaEntryPage: React.FC<EncyclopediaEntryPageProps> = ({
           <section className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-xs space-y-4">
             <h2 className="text-xl font-extrabold text-slate-900 tracking-tight">Real-World Applications</h2>
             <div className="prose prose-slate max-w-none text-slate-700 text-sm leading-relaxed space-y-4">
-              <PortableText value={entry.realWorldApplications} />
+              <PortableText value={entry.realWorldApplications} components={encyclopediaPortableTextComponents} />
             </div>
           </section>
         )}
@@ -336,7 +404,7 @@ export const EncyclopediaEntryPage: React.FC<EncyclopediaEntryPageProps> = ({
               Common Mistakes & Misconceptions
             </h2>
             <div className="prose prose-slate max-w-none text-slate-700 text-sm leading-relaxed space-y-4 bg-rose-50/40 p-5 rounded-2xl border border-rose-100">
-              <PortableText value={entry.commonMistakes} />
+              <PortableText value={entry.commonMistakes} components={encyclopediaPortableTextComponents} />
             </div>
           </section>
         )}
@@ -351,8 +419,8 @@ export const EncyclopediaEntryPage: React.FC<EncyclopediaEntryPageProps> = ({
             <div className="space-y-4 divide-y divide-slate-100">
               {entry.faqs.map((faq: any, idx: number) => (
                 <div key={idx} className={idx > 0 ? 'pt-4 space-y-1.5' : 'space-y-1.5'}>
-                  <h3 className="text-sm font-bold text-slate-900">{faq.question}</h3>
-                  <p className="text-xs text-slate-600 leading-relaxed">{faq.answer}</p>
+                  <h3 className="text-sm font-bold text-slate-900">{stripMarkdownFormatting(faq.question)}</h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">{stripMarkdownFormatting(faq.answer)}</p>
                 </div>
               ))}
             </div>

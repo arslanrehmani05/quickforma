@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { useFormValue, useDocumentOperation, useClient, PatchEvent, set } from 'sanity';
 import { Card, Stack, TextArea, Button, Text, Badge, Flex, Inline, Box } from '@sanity/ui';
-import { parseMasterMarkdownTemplate, callServerlessGeminiImport, ParsedEncyclopediaData } from '../utils/markdownToSanity';
+import { parseMasterMarkdownTemplate, ParsedEncyclopediaData } from '../utils/markdownToSanity';
 
-const MASTER_LLM_PROMPT = `CRITICAL FORMATTING INSTRUCTION:
-Format the following topic or raw notes into the QuickForma Encyclopedia Master Template matching these EXACT markdown headers.
-Do NOT add colons (:) to headers, do NOT add bold (**) formatting around headers, and do NOT alter header words or heading level signs (#, ##, ###).
+const MASTER_LLM_PROMPT = `CRITICAL FORMATTING INSTRUCTIONS FOR LLM:
+Format the following topic or raw notes into the QuickForma Encyclopedia Master Template matching these EXACT markdown headers and heading levels (#, ##, ###).
+You MUST include the exact heading hashes (#, ##, ###) at the start of each line as shown below.
+Do NOT omit the heading hashes (#, ##, ###), do NOT add colons (:) to headers, do NOT add bold (**) formatting around headers, and do NOT alter header text.
 
 # [Concept Name]
 
@@ -114,18 +115,9 @@ export function GeminiImporterInput(props: any) {
     setStatus({ message: 'Parsing content and auto-filling Sanity fields...', type: 'info' });
 
     try {
-      let parsedData: ParsedEncyclopediaData;
-
-      // 1. Try deterministic section header parser first
-      parsedData = parseMasterMarkdownTemplate(rawContent);
-      let fieldCount = Object.keys(parsedData).length;
-
-      // 2. If section headers were not matched, fallback to secure serverless Gemini AI endpoint (/api/gemini-import)
-      if (fieldCount === 0) {
-        setStatus({ message: 'Calling secure Vercel Gemini API backend serverlessly...', type: 'info' });
-        parsedData = await callServerlessGeminiImport(rawContent);
-        fieldCount = Object.keys(parsedData).length;
-      }
+      // 1-Shot Local Master Markdown Template Parser
+      const parsedData: ParsedEncyclopediaData = parseMasterMarkdownTemplate(rawContent);
+      const totalParsedFields = Object.keys(parsedData).length;
 
       const patchSet: Record<string, any> = {};
 

@@ -3,7 +3,9 @@ import { useFormValue, useDocumentOperation, useClient, PatchEvent, set } from '
 import { Card, Stack, TextArea, Button, Text, Badge, Flex, Inline, Box } from '@sanity/ui';
 import { parseMasterMarkdownTemplate, callServerlessGeminiImport, ParsedEncyclopediaData } from '../utils/markdownToSanity';
 
-const MASTER_LLM_PROMPT = `Format the following topic or raw notes into the QuickForma Encyclopedia Master Template matching these exact headers:
+const MASTER_LLM_PROMPT = `CRITICAL FORMATTING INSTRUCTION:
+Format the following topic or raw notes into the QuickForma Encyclopedia Master Template matching these EXACT markdown headers.
+Do NOT add colons (:) to headers, do NOT add bold (**) formatting around headers, and do NOT alter header words or heading level signs (#, ##, ###).
 
 # [Concept Name]
 

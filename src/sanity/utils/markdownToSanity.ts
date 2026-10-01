@@ -374,7 +374,7 @@ export function parseMasterMarkdownTemplate(rawText: string): ParsedEncyclopedia
  * Call Gemini API to parse raw text into structured Sanity Encyclopedia JSON
  */
 export async function callGeminiApi(apiKey: string, rawText: string): Promise<ParsedEncyclopediaData> {
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
   const prompt = `You are an expert financial and business content structured JSON parser.
 Analyze the following document and parse it into a JSON object matching this TypeScript interface:

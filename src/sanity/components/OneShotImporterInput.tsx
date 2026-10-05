@@ -52,6 +52,11 @@ Do NOT alter header text.
 Do NOT change heading levels.
 Do NOT create alternative headings.
 
+SCHEMA POPULATION RULE:
+The template below is the REQUIRED STRUCTURE. Replace every placeholder with the appropriate content for the supplied topic or raw notes. Do not output placeholder text such as [Concept Name], [Answer 1], or [Synonym 1] unless the supplied material genuinely requires that exact text.
+
+Preserve the template's exact heading text, heading levels, field order, separators, and Markdown structure while replacing the placeholder content.
+
 # [Concept Name]
 
 ### Concept Title

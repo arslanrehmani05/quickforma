@@ -3,10 +3,32 @@ import { useFormValue, useDocumentOperation, useClient, PatchEvent, set } from '
 import { Card, Stack, TextArea, Button, Text, Badge, Flex, Inline, Box } from '@sanity/ui';
 import { parseMasterMarkdownTemplate, ParsedEncyclopediaData } from '../utils/markdownToSanity';
 
-const MASTER_LLM_PROMPT = `CRITICAL FORMATTING INSTRUCTIONS FOR LLM:
-Format the following topic or raw notes into the QuickForma Encyclopedia Master Template matching these EXACT markdown headers and heading levels (#, ##, ###).
-You MUST include the exact heading hashes (#, ##, ###) at the start of each line as shown below.
-Do NOT omit the heading hashes (#, ##, ###), do NOT add colons (:) to headers, do NOT add bold (**) formatting around headers, and do NOT alter header text.
+const MASTER_LLM_PROMPT = `CRITICAL OUTPUT MODE:
+Return the completed template as RAW MARKDOWN SOURCE, not rendered Markdown.
+
+The entire completed entry MUST be enclosed in ONE Markdown fenced code block.
+
+The opening line of the response must be exactly:
+\`\`\`markdown
+
+The closing line of the response must be exactly:
+\`\`\`
+
+Inside that code block, every required heading MUST contain its literal # characters exactly as specified in this template.
+
+For example, the output MUST visibly contain:
+# [Concept Name]
+### Concept Title
+## Simple Explanation
+# Formula / Calculation Method
+
+Do NOT render these as visual headings.
+Do NOT remove the # characters.
+Do NOT convert headings to bold (**Header**).
+Do NOT put any text before the opening code fence.
+Do NOT put any text after the closing code fence.
+
+The code block exists specifically to preserve the literal Markdown source for direct copying into the QuickForma importer.
 
 # [Concept Name]
 
@@ -80,9 +102,19 @@ None
 [SEO Headline | QuickForma]
 
 ## SEO Meta Description
-[Compelling search meta description under 160 characters]`;
+[Compelling search meta description under 160 characters]
 
-export function GeminiImporterInput(props: any) {
+FINAL QA BEFORE OUTPUT:
+Verify that:
+1. Every required heading contains its exact # / ## / ### prefix.
+2. No heading has been rendered without its # characters.
+3. No heading has been changed, renamed, or given a colon.
+4. The entire response is inside one fenced markdown code block.
+5. There is no text outside the code block.
+6. All schema fields are present.
+7. Empty fields remain explicitly represented where required.`;
+
+export function OneShotImporterInput(props: any) {
   const [rawContent, setRawContent] = useState<string>('');
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
   const [showPrompt, setShowPrompt] = useState<boolean>(false);
@@ -117,7 +149,6 @@ export function GeminiImporterInput(props: any) {
     try {
       // 1-Shot Local Master Markdown Template Parser
       const parsedData: ParsedEncyclopediaData = parseMasterMarkdownTemplate(rawContent);
-      const totalParsedFields = Object.keys(parsedData).length;
 
       const patchSet: Record<string, any> = {};
 
@@ -233,7 +264,7 @@ export function GeminiImporterInput(props: any) {
                     🤖 Master LLM System Prompt Template
                   </Text>
                   <Text size={0} style={{ color: '#94a3b8', marginTop: '2px' }}>
-                    Give this prompt to ChatGPT, Claude, or Gemini along with any notes to get 100% formatted markdown.
+                    Give this prompt to ChatGPT, Claude, or any LLM along with any notes to get 100% formatted markdown.
                   </Text>
                 </Box>
                 <Button
@@ -304,4 +335,6 @@ export function GeminiImporterInput(props: any) {
   );
 }
 
-export default GeminiImporterInput;
+// Backward compatibility export alias
+export const GeminiImporterInput = OneShotImporterInput;
+export default OneShotImporterInput;

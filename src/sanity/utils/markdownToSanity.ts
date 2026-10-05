@@ -190,6 +190,9 @@ export function parseMasterMarkdownTemplate(rawText: string): ParsedEncyclopedia
 
   if (!rawText || !rawText.trim()) return data;
 
+  // Clean rawText: Strip leading/trailing code fences if user copied outer ```markdown ... ```
+  rawText = rawText.trim().replace(/^```(?:markdown)?\s*\r?\n/i, '').replace(/\r?\n```\s*$/i, '');
+
   const TERMINATOR_PATTERN = /\n(?=(?:#{1,3}\s*)?(?:Concept Title|URL Handle|Previous Slugs|Short Direct Definition|E-Category|Synonyms \/ Alternative Names|Simple Explanation|How It Works|Formula \/ Calculation Method|Worked Example|How to Interpret It|Real-World Applications|Common Mistakes & Misconceptions|Frequently Asked Questions|3\.\s*Structured|QuickForma Tools|Related Encyclopedia Concepts|4\.\s*Search|SEO Title|SEO Meta Description|---))/i;
 
   // Helper to extract a single plain-text value under a header (e.g. ### Concept Title or Concept Title)
@@ -370,111 +373,3 @@ export function parseMasterMarkdownTemplate(rawText: string): ParsedEncyclopedia
   return data;
 }
 
-/**
- * Call Gemini API to parse raw text into structured Sanity Encyclopedia JSON
- */
-export async function callGeminiApi(apiKey: string, rawText: string): Promise<ParsedEncyclopediaData> {
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-
-  const prompt = `You are an expert financial and business content structured JSON parser.
-Analyze the following document and parse it into a JSON object matching this TypeScript interface:
-
-{
-  "title": string,
-  "slug": string,
-  "shortDefinition": string,
-  "categoryName": string,
-  "synonyms": string[],
-  "simpleExplanationMarkdown": string,
-  "howItWorksMarkdown": string,
-  "formulaMethodMarkdown": string,
-  "workedExampleMarkdown": string,
-  "interpretationMarkdown": string,
-  "realWorldApplicationsMarkdown": string,
-  "commonMistakesMarkdown": string,
-  "faqs": Array<{ "question": string, "answer": string }>,
-  "relatedTools": string[],
-  "seoTitle": string,
-  "metaDescription": string
-}
-
-Return ONLY valid JSON. Do not include markdown code block ticks (\`\`\`json).
-
-Document:
-${rawText}`;
-
-  const res = await fetch(url, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      contents: [{ parts: [{ text: prompt }] }],
-    }),
-  });
-
-  if (!res.ok) {
-    const errText = await res.text();
-    throw new Error(`Gemini API call failed (${res.status}): ${errText}`);
-  }
-
-  const jsonRes = await res.json();
-  const textOutput = jsonRes?.candidates?.[0]?.content?.parts?.[0]?.text || '';
-  const cleanJsonText = textOutput.replace(/```json/g, '').replace(/```/g, '').trim();
-
-  const parsed = JSON.parse(cleanJsonText);
-
-  return {
-    title: parsed.title,
-    slug: parsed.slug ? { current: parsed.slug } : undefined,
-    shortDefinition: parsed.shortDefinition,
-    categoryName: parsed.categoryName,
-    synonyms: parsed.synonyms,
-    simpleExplanation: parsed.simpleExplanationMarkdown ? convertMarkdownToPortableText(parsed.simpleExplanationMarkdown) : undefined,
-    howItWorks: parsed.howItWorksMarkdown ? convertMarkdownToPortableText(parsed.howItWorksMarkdown) : undefined,
-    formulaMethod: parsed.formulaMethodMarkdown ? convertMarkdownToPortableText(parsed.formulaMethodMarkdown) : undefined,
-    workedExample: parsed.workedExampleMarkdown ? convertMarkdownToPortableText(parsed.workedExampleMarkdown) : undefined,
-    interpretation: parsed.interpretationMarkdown ? convertMarkdownToPortableText(parsed.interpretationMarkdown) : undefined,
-    realWorldApplications: parsed.realWorldApplicationsMarkdown ? convertMarkdownToPortableText(parsed.realWorldApplicationsMarkdown) : undefined,
-    commonMistakes: parsed.commonMistakesMarkdown ? convertMarkdownToPortableText(parsed.commonMistakesMarkdown) : undefined,
-    faqs: parsed.faqs,
-    relatedTools: parsed.relatedTools,
-    seoTitle: parsed.seoTitle,
-    metaDescription: parsed.metaDescription,
-  };
-}
-
-/**
- * Call secure Vercel serverless endpoint (/api/gemini-import) which uses process.env.GEMINI_API_KEY secret
- */
-export async function callServerlessGeminiImport(rawText: string): Promise<ParsedEncyclopediaData> {
-  const res = await fetch('/api/gemini-import', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ rawText }),
-  });
-
-  if (!res.ok) {
-    const errJson = await res.json().catch(() => ({}));
-    throw new Error(errJson.error || `Serverless Gemini import failed (${res.status})`);
-  }
-
-  const parsed = await res.json();
-
-  return {
-    title: parsed.title,
-    slug: parsed.slug ? { current: parsed.slug } : undefined,
-    shortDefinition: parsed.shortDefinition,
-    categoryName: parsed.categoryName,
-    synonyms: parsed.synonyms,
-    simpleExplanation: parsed.simpleExplanationMarkdown ? convertMarkdownToPortableText(parsed.simpleExplanationMarkdown) : undefined,
-    howItWorks: parsed.howItWorksMarkdown ? convertMarkdownToPortableText(parsed.howItWorksMarkdown) : undefined,
-    formulaMethod: parsed.formulaMethodMarkdown ? convertMarkdownToPortableText(parsed.formulaMethodMarkdown) : undefined,
-    workedExample: parsed.workedExampleMarkdown ? convertMarkdownToPortableText(parsed.workedExampleMarkdown) : undefined,
-    interpretation: parsed.interpretationMarkdown ? convertMarkdownToPortableText(parsed.interpretationMarkdown) : undefined,
-    realWorldApplications: parsed.realWorldApplicationsMarkdown ? convertMarkdownToPortableText(parsed.realWorldApplicationsMarkdown) : undefined,
-    commonMistakes: parsed.commonMistakesMarkdown ? convertMarkdownToPortableText(parsed.commonMistakesMarkdown) : undefined,
-    faqs: parsed.faqs,
-    relatedTools: parsed.relatedTools,
-    seoTitle: parsed.seoTitle,
-    metaDescription: parsed.metaDescription,
-  };
-}

@@ -3,29 +3,44 @@ import { useFormValue, useDocumentOperation, useClient, PatchEvent, set } from '
 import { Card, Stack, TextArea, Button, Text, Badge, Flex, Inline, Box } from '@sanity/ui';
 import { parseMasterMarkdownTemplate, ParsedEncyclopediaData } from '../utils/markdownToSanity';
 
-const MASTER_LLM_PROMPT = `CRITICAL OUTPUT MODE:
-Return the completed QuickForma Encyclopedia entry as RAW MARKDOWN SOURCE, not rendered Markdown.
+const MASTER_LLM_PROMPT = `CRITICAL OUTPUT MODE — MACHINE-READABLE SOURCE
 
-The ENTIRE completed entry MUST be enclosed in ONE fenced Markdown code block.
+The QuickForma importer requires RAW MARKDOWN SOURCE.
 
-The response MUST:
-1. Begin immediately with the opening Markdown fence: \`\`\`markdown
-2. Contain the complete QuickForma Encyclopedia entry inside that code block.
-3. Preserve every #, ##, and ### character as literal characters.
-4. End with the closing Markdown fence: \`\`\`
-5. Contain NOTHING before the opening fence.
-6. Contain NOTHING after the closing fence.
+The completed entry MUST be returned as raw Markdown source, NOT as rendered Markdown.
 
-Do NOT render Markdown headings as visual headings.
-Do NOT remove, hide, or replace the # characters.
-Do NOT convert headings to bold (**Header**).
-Do NOT add colons (:) to headers.
-Do NOT rename, reorder, or alter any required header.
-Do NOT add commentary, explanations, notes, or QA outside the code block.
+The ENTIRE completed entry MUST be contained inside EXACTLY ONE fenced Markdown code block.
 
-The code block is REQUIRED because the output will be copied directly into the QuickForma Markdown importer. The literal Markdown syntax must therefore remain visible and preserved.
+The literal characters #, ##, and ### are REQUIRED DATA. They MUST physically appear in the generated output exactly as specified by the schema.
+
+The model MUST preserve the Markdown source rather than relying on the interface to render it.
+
+OUTPUT CONTRACT:
+
+1. The first line MUST be exactly the opening Markdown fence \`\`\`markdown with no additional characters.
+2. The complete QuickForma Encyclopedia entry MUST appear inside that code block.
+3. Every required heading MUST retain its literal #, ##, or ### prefix.
+4. The final line MUST be exactly the closing Markdown fence \`\`\` with no additional characters.
+5. NOTHING may appear before the opening code fence.
+6. NOTHING may appear after the closing code fence.
+7. The response MUST contain exactly ONE fenced code block.
+8. Do NOT provide a second version of the entry.
+9. Do NOT provide explanations, commentary, notes, warnings, or analysis outside the code block.
+10. Do NOT convert headings into bold text, plain text, HTML, JSON, or any alternative format.
+11. Do NOT remove, hide, escape, or replace any required # characters.
+12. Do NOT add colons to headers.
+13. Do NOT rename headers.
+14. Do NOT reorder headers.
+15. Do NOT change heading levels.
+16. Do NOT create alternative headers.
+17. Do NOT add schema fields that are not present in the template.
+18. Do NOT omit schema fields that are present in the template.
+
+IMPORTANT:
+The # characters are literal source characters required by the QuickForma importer. Do not treat "include the # characters" as merely a request to create Markdown headings. The actual # characters must remain physically present in the raw output.
 
 CRITICAL FORMATTING INSTRUCTIONS FOR LLM:
+
 Format the following topic or raw notes into the QuickForma Encyclopedia Master Template matching these EXACT markdown headers and heading levels (#, ##, ###).
 
 You MUST include the exact heading hashes (#, ##, ###) at the start of each required heading exactly as shown below.
@@ -112,20 +127,25 @@ None
 [Compelling search meta description under 160 characters]
 
 FINAL QA BEFORE OUTPUT:
-Before producing the final response, verify all of the following:
 
-1. The entire response is inside ONE fenced Markdown code block.
-2. The first line is exactly \`\`\`markdown.
-3. The last line is exactly \`\`\`.
+Before producing the final response, internally verify all of the following:
+
+1. The response begins with exactly \`\`\`markdown.
+2. The response ends with exactly \`\`\`.
+3. There is exactly ONE fenced code block.
 4. Every required heading contains its literal #, ##, or ### prefix.
-5. No required heading has been rendered without its # characters.
+5. The literal heading characters are physically present in the output source.
 6. No required heading has been renamed.
 7. No required heading has been given a colon.
 8. No required heading has been converted to bold.
-9. All schema fields are present.
-10. Empty fields remain explicitly represented where required.
-11. Nothing appears outside the code block.
-12. The final output contains only the completed QuickForma Encyclopedia entry.`;
+9. No heading level has been changed.
+10. All schema fields are present.
+11. Empty fields remain explicitly represented where required.
+12. No additional schema fields have been invented.
+13. Nothing appears outside the code block.
+14. The final response contains ONLY the completed QuickForma Encyclopedia entry.
+
+If any QA condition fails, correct the output before sending the response.`;
 
 export function OneShotImporterInput(props: any) {
   const [rawContent, setRawContent] = useState<string>('');

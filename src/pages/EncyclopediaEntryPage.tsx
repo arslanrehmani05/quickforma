@@ -250,6 +250,82 @@ function normalizeStepListBlocks(blocks: any[]): any[] {
   return normalized;
 }
 
+/**
+ * Defensive Normalizer: Converts raw markdown pipe table blocks (| Header | ... |)
+ * stored as legacy plain paragraphs in Sanity into structured table blocks at render time.
+ */
+function normalizeTableBlocks(blocks: any[]): any[] {
+  if (!Array.isArray(blocks) || blocks.length === 0) return blocks;
+
+  const normalized: any[] = [];
+  let i = 0;
+  while (i < blocks.length) {
+    const current = blocks[i];
+    const rawText = current?.children?.map((c: any) => c.text || '').join('').trim() || '';
+
+    if (current?._type === 'block' && rawText.startsWith('|') && rawText.endsWith('|')) {
+      const tableLines: string[] = [];
+      let j = i;
+      while (j < blocks.length) {
+        const blk = blocks[j];
+        const txt = blk?.children?.map((c: any) => c.text || '').join('').trim() || '';
+        if (blk?._type === 'block' && txt.startsWith('|') && txt.endsWith('|')) {
+          tableLines.push(txt);
+          j++;
+        } else {
+          break;
+        }
+      }
+
+      if (tableLines.length >= 2) {
+        const headers = tableLines[0].slice(1, -1).split('|').map(c => stripMarkdownFormatting(c.trim()));
+        let dataStartIdx = 1;
+        let alignments: string[] = [];
+
+        if (tableLines.length > 1 && /^\|[\s:-|-]+\|$/.test(tableLines[1])) {
+          dataStartIdx = 2;
+          alignments = tableLines[1].slice(1, -1).split('|').map(c => {
+            const cell = c.trim();
+            if (cell.startsWith(':') && cell.endsWith(':')) return 'center';
+            if (cell.endsWith(':')) return 'right';
+            return 'left';
+          });
+        }
+
+        const rows: string[][] = [];
+        for (let r = dataStartIdx; r < tableLines.length; r++) {
+          const rowCells = tableLines[r].slice(1, -1).split('|').map(c => stripMarkdownFormatting(c.trim()));
+          rows.push(rowCells);
+        }
+
+        normalized.push({
+          _type: 'table',
+          _key: `table_def_${Date.now()}_${i}`,
+          headers,
+          alignments,
+          rows,
+        });
+
+        i = j;
+        continue;
+      }
+    }
+
+    normalized.push(current);
+    i++;
+  }
+
+  return normalized;
+}
+
+/**
+ * Universal PortableText Block Normalizer for Encyclopedia section blocks.
+ */
+function normalizeEncyclopediaBlocks(blocks: any[]): any[] {
+  if (!Array.isArray(blocks) || blocks.length === 0) return blocks;
+  return normalizeTableBlocks(normalizeStepListBlocks(blocks));
+}
+
 const projectId = import.meta.env.VITE_SANITY_PROJECT_ID || '60xo4tvv';
 const dataset = import.meta.env.VITE_SANITY_DATASET || 'production';
 const apiVersion = '2026-01-01';
@@ -510,7 +586,7 @@ export const EncyclopediaEntryPage: React.FC<EncyclopediaEntryPageProps> = ({
               What Is {entry.title}?
             </h2>
             <div className="prose prose-slate max-w-none text-slate-700 text-sm leading-relaxed space-y-4">
-              <PortableText value={entry.simpleExplanation} components={encyclopediaPortableTextComponents} />
+              <PortableText value={normalizeEncyclopediaBlocks(entry.simpleExplanation)} components={encyclopediaPortableTextComponents} />
             </div>
           </section>
         )}
@@ -523,7 +599,7 @@ export const EncyclopediaEntryPage: React.FC<EncyclopediaEntryPageProps> = ({
               How It Works
             </h2>
             <div className="prose prose-slate max-w-none text-slate-700 text-sm leading-relaxed space-y-4">
-              <PortableText value={normalizeStepListBlocks(entry.howItWorks)} components={encyclopediaPortableTextComponents} />
+              <PortableText value={normalizeEncyclopediaBlocks(entry.howItWorks)} components={encyclopediaPortableTextComponents} />
             </div>
           </section>
         )}
@@ -536,7 +612,7 @@ export const EncyclopediaEntryPage: React.FC<EncyclopediaEntryPageProps> = ({
               Formula & Calculation Method
             </h2>
             <div className="prose prose-invert max-w-none p-5 rounded-2xl bg-slate-900 text-slate-100 font-mono text-sm overflow-x-auto leading-relaxed border border-slate-800 space-y-4 [&_p]:mb-3 [&_p:last-child]:mb-0">
-              <PortableText value={entry.formulaMethod} components={formulaPortableTextComponents} />
+              <PortableText value={normalizeEncyclopediaBlocks(entry.formulaMethod)} components={formulaPortableTextComponents} />
             </div>
           </section>
         )}
@@ -549,7 +625,7 @@ export const EncyclopediaEntryPage: React.FC<EncyclopediaEntryPageProps> = ({
               Worked Example
             </h2>
             <div className="prose prose-slate max-w-none text-slate-700 text-sm leading-relaxed space-y-4 bg-amber-50/40 p-5 rounded-2xl border border-amber-100">
-              <PortableText value={entry.workedExample} components={encyclopediaPortableTextComponents} />
+              <PortableText value={normalizeEncyclopediaBlocks(entry.workedExample)} components={encyclopediaPortableTextComponents} />
             </div>
           </section>
         )}
@@ -559,7 +635,7 @@ export const EncyclopediaEntryPage: React.FC<EncyclopediaEntryPageProps> = ({
           <section className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-xs space-y-4">
             <h2 className="text-xl font-extrabold text-slate-900 tracking-tight">How to Interpret Results</h2>
             <div className="prose prose-slate max-w-none text-slate-700 text-sm leading-relaxed space-y-4">
-              <PortableText value={entry.interpretation} components={encyclopediaPortableTextComponents} />
+              <PortableText value={normalizeEncyclopediaBlocks(entry.interpretation)} components={encyclopediaPortableTextComponents} />
             </div>
           </section>
         )}
@@ -569,7 +645,7 @@ export const EncyclopediaEntryPage: React.FC<EncyclopediaEntryPageProps> = ({
           <section className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-xs space-y-4">
             <h2 className="text-xl font-extrabold text-slate-900 tracking-tight">Real-World Applications</h2>
             <div className="prose prose-slate max-w-none text-slate-700 text-sm leading-relaxed space-y-4">
-              <PortableText value={entry.realWorldApplications} components={encyclopediaPortableTextComponents} />
+              <PortableText value={normalizeEncyclopediaBlocks(entry.realWorldApplications)} components={encyclopediaPortableTextComponents} />
             </div>
           </section>
         )}
@@ -582,7 +658,7 @@ export const EncyclopediaEntryPage: React.FC<EncyclopediaEntryPageProps> = ({
               Common Mistakes & Misconceptions
             </h2>
             <div className="prose prose-slate max-w-none text-slate-700 text-sm leading-relaxed space-y-4 bg-rose-50/40 p-5 rounded-2xl border border-rose-100">
-              <PortableText value={entry.commonMistakes} components={encyclopediaPortableTextComponents} />
+              <PortableText value={normalizeEncyclopediaBlocks(entry.commonMistakes)} components={encyclopediaPortableTextComponents} />
             </div>
           </section>
         )}

@@ -48,6 +48,57 @@ const encyclopediaPortableTextComponents = {
       </a>
     ),
   },
+  types: {
+    table: ({ value }: any) => {
+      if (!value || !value.rows) return null;
+      const headers: string[] = value.headers || [];
+      const alignments: string[] = value.alignments || [];
+      const rows: string[][] = value.rows || [];
+
+      return (
+        <div className="my-6 overflow-x-auto rounded-2xl border border-slate-200 shadow-xs bg-white">
+          <table className="min-w-full divide-y divide-slate-200 text-xs sm:text-sm">
+            {headers.length > 0 && (
+              <thead className="bg-slate-50 text-slate-900 font-bold">
+                <tr>
+                  {headers.map((h: string, idx: number) => {
+                    const align = alignments[idx] || 'left';
+                    return (
+                      <th
+                        key={idx}
+                        className="px-4 py-3 border-b border-slate-200 uppercase tracking-wider text-[11px]"
+                        style={{ textAlign: align as any }}
+                      >
+                        {h}
+                      </th>
+                    );
+                  })}
+                </tr>
+              </thead>
+            )}
+            <tbody className="divide-y divide-slate-100 bg-white">
+              {rows.map((row: string[], rIdx: number) => (
+                <tr key={rIdx} className={rIdx % 2 === 0 ? 'bg-white hover:bg-slate-50/50' : 'bg-slate-50/40 hover:bg-slate-50'}>
+                  {row.map((cell: string, cIdx: number) => {
+                    const align = alignments[cIdx] || 'left';
+                    return (
+                      <td
+                        key={cIdx}
+                        className="px-4 py-2.5 text-slate-700 font-medium whitespace-pre-wrap"
+                        style={{ textAlign: align as any }}
+                      >
+                        {cell}
+                      </td>
+                    );
+                  })}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      );
+    },
+  },
 };
 
 const formulaPortableTextComponents = {
@@ -95,6 +146,57 @@ const formulaPortableTextComponents = {
         {children}
       </a>
     ),
+  },
+  types: {
+    table: ({ value }: any) => {
+      if (!value || !value.rows) return null;
+      const headers: string[] = value.headers || [];
+      const alignments: string[] = value.alignments || [];
+      const rows: string[][] = value.rows || [];
+
+      return (
+        <div className="my-6 overflow-x-auto rounded-2xl border border-slate-800 shadow-xs bg-slate-900 font-mono">
+          <table className="min-w-full divide-y divide-slate-800 text-xs sm:text-sm">
+            {headers.length > 0 && (
+              <thead className="bg-slate-800/80 text-amber-400 font-bold">
+                <tr>
+                  {headers.map((h: string, idx: number) => {
+                    const align = alignments[idx] || 'left';
+                    return (
+                      <th
+                        key={idx}
+                        className="px-4 py-3 border-b border-slate-800 uppercase tracking-wider text-[11px]"
+                        style={{ textAlign: align as any }}
+                      >
+                        {h}
+                      </th>
+                    );
+                  })}
+                </tr>
+              </thead>
+            )}
+            <tbody className="divide-y divide-slate-800/60 bg-slate-900">
+              {rows.map((row: string[], rIdx: number) => (
+                <tr key={rIdx} className={rIdx % 2 === 0 ? 'bg-slate-900' : 'bg-slate-800/30'}>
+                  {row.map((cell: string, cIdx: number) => {
+                    const align = alignments[cIdx] || 'left';
+                    return (
+                      <td
+                        key={cIdx}
+                        className="px-4 py-2.5 text-slate-200 font-medium whitespace-pre-wrap"
+                        style={{ textAlign: align as any }}
+                      >
+                        {cell}
+                      </td>
+                    );
+                  })}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      );
+    },
   },
 };
 

@@ -64,6 +64,50 @@ export function convertMarkdownToPortableText(markdown: string): any[] {
     // Horizontal rule divider
     if (trimmed === '---' || trimmed === '***' || trimmed === '___') continue;
 
+    // Table block detection (lines starting and ending with '|')
+    if (trimmed.startsWith('|') && trimmed.endsWith('|')) {
+      const tableLines: string[] = [];
+      let j = i;
+      while (j < lines.length && lines[j].trim().startsWith('|') && lines[j].trim().endsWith('|')) {
+        tableLines.push(lines[j].trim());
+        j++;
+      }
+      i = j - 1; // Advance main loop pointer
+
+      if (tableLines.length >= 2) {
+        // Line 0 is headers
+        const headers = tableLines[0].slice(1, -1).split('|').map(c => cleanMarkdownString(c));
+
+        // Line 1 is delimiter row (|---|---:|)
+        let dataStartIdx = 1;
+        let alignments: string[] = [];
+        if (tableLines.length > 1 && /^\|[\s:-|-]+\|$/.test(tableLines[1])) {
+          dataStartIdx = 2;
+          alignments = tableLines[1].slice(1, -1).split('|').map(c => {
+            const cell = c.trim();
+            if (cell.startsWith(':') && cell.endsWith(':')) return 'center';
+            if (cell.endsWith(':')) return 'right';
+            return 'left';
+          });
+        }
+
+        const rows: string[][] = [];
+        for (let r = dataStartIdx; r < tableLines.length; r++) {
+          const rowCells = tableLines[r].slice(1, -1).split('|').map(c => cleanMarkdownString(c));
+          rows.push(rowCells);
+        }
+
+        blocks.push({
+          _type: 'table',
+          _key: `table_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`,
+          headers,
+          alignments,
+          rows,
+        });
+        continue;
+      }
+    }
+
     // Check if rawLine is an indented continuation line following a list item
     // (e.g. 2+ spaces or tab, without starting a new heading or list item)
     const isIndented = /^(\s{2,}|\t)\S/.test(rawLine);

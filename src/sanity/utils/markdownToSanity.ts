@@ -349,13 +349,13 @@ export function parseMasterMarkdownTemplate(rawText: string): ParsedEncyclopedia
   if (faqMatch) {
     const startIndex = faqMatch.index! + faqMatch[0].length;
     const rest = rawText.slice(startIndex);
-    const nextSectionMatch = rest.match(/\n(?=---\s*|\n(?:#{1,3}\s*)?[34]\.|\n(?:#{1,3}\s*)?Structured|\n(?:#{1,3}\s*)?Search|\n(?:#{1,3}\s*)?QuickForma Tools|\n(?:#{1,3}\s*)?Related Encyclopedia Concepts|\n(?:#{1,3}\s*)?SEO Title)/i);
+    const nextSectionMatch = rest.match(/\n(?=(?:#{1,3}\s*)?(?:3\.\s*Structured|Structured Ecosystem|4\.\s*Search|Search Engine Optimization|QuickForma Tools|Related Encyclopedia Concepts|SEO Title|SEO Meta Description))/i);
     faqSection = nextSectionMatch ? rest.slice(0, nextSectionMatch.index) : rest;
     faqSection = faqSection.trim();
   }
 
   if (faqSection) {
-    const faqBlocks = faqSection.split(/\n(?=(?:##|###)?\s*\d+\.\s+|\n?\d+\.\s+)/i).filter(Boolean);
+    const faqBlocks = faqSection.split(/\n(?=(?:##|###)\s*(?:\d+\.\s*)?|\n\d+\.\s+[A-Z])/i).filter(Boolean);
     const faqs: Array<{ question: string; answer: string }> = [];
 
     for (const b of faqBlocks) {

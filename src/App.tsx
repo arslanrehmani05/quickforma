@@ -134,6 +134,58 @@ import { RoommateRentSplitCalculator } from './components/tools/RoommateRentSpli
 import { GpaScaleConverter } from './components/tools/GpaScaleConverter';
 import { MarksToGpaConverter } from './components/tools/MarksToGpaConverter';
 
+// Batch 1: 50 Production Tools
+import { CashFlowRunwayCalculator } from './components/tools/CashFlowRunwayCalculator';
+import { EbitdaCalculator } from './components/tools/EbitdaCalculator';
+import { WorkingCapitalCalculator } from './components/tools/WorkingCapitalCalculator';
+import { NpvIrrCalculator } from './components/tools/NpvIrrCalculator';
+import { CashConversionCycleCalculator } from './components/tools/CashConversionCycleCalculator';
+import { CostOfGoodsSoldCalculator } from './components/tools/CostOfGoodsSoldCalculator';
+import { SaasNetRetentionRateCalculator } from './components/tools/SaasNetRetentionRateCalculator';
+import { PurchaseOrderGenerator } from './components/tools/PurchaseOrderGenerator';
+import { QuoteGenerator } from './components/tools/QuoteGenerator';
+import { PackingSlipGenerator } from './components/tools/PackingSlipGenerator';
+import { RegexTester } from './components/tools/RegexTester';
+import { SubnetCalculator } from './components/tools/SubnetCalculator';
+import { MetaTagGenerator } from './components/tools/MetaTagGenerator';
+import { SchemaMarkupGenerator } from './components/tools/SchemaMarkupGenerator';
+import { GoogleSerpPreviewTool } from './components/tools/GoogleSerpPreviewTool';
+import { HighSchoolGpaCalculator } from './components/tools/HighSchoolGpaCalculator';
+import { CollegeGpaCalculator } from './components/tools/CollegeGpaCalculator';
+import { SemesterGradeCalculator } from './components/tools/SemesterGradeCalculator';
+import { PrimeFactorizationCalculator } from './components/tools/PrimeFactorizationCalculator';
+import { BaseConverter } from './components/tools/BaseConverter';
+import { LinearRegressionCalculator } from './components/tools/LinearRegressionCalculator';
+import { StandardDeviationCalculator } from './components/tools/StandardDeviationCalculator';
+import { SampleSizeCalculator } from './components/tools/SampleSizeCalculator';
+import { DensityMassVolumeCalculator } from './components/tools/DensityMassVolumeCalculator';
+import { ProjectileMotionCalculator } from './components/tools/ProjectileMotionCalculator';
+import { EbayFinalValueFeeCalculator } from './components/tools/EbayFinalValueFeeCalculator';
+import { TiktokShopFeeCalculator } from './components/tools/TiktokShopFeeCalculator';
+import { CostPerAcquisitionCpaCalculator } from './components/tools/CostPerAcquisitionCpaCalculator';
+import { EcommerceConversionRateCalculator } from './components/tools/EcommerceConversionRateCalculator';
+import { EcommerceNetProfitMarginCalculator } from './components/tools/EcommerceNetProfitMarginCalculator';
+import { SafetyStockCalculator } from './components/tools/SafetyStockCalculator';
+import { MachineDowntimeCostCalculator } from './components/tools/MachineDowntimeCostCalculator';
+import { CapacityUtilizationCalculator } from './components/tools/CapacityUtilizationCalculator';
+import { TaktTimeCalculator } from './components/tools/TaktTimeCalculator';
+import { CapRateCalculator } from './components/tools/CapRateCalculator';
+import { CashOnCashReturnCalculator } from './components/tools/CashOnCashReturnCalculator';
+import { RentalPropertyRoiCalculator } from './components/tools/RentalPropertyRoiCalculator';
+import { AmortizationScheduleExtraPayments } from './components/tools/AmortizationScheduleExtraPayments';
+import { ShortTermRentalAirbnbCalculator } from './components/tools/ShortTermRentalAirbnbCalculator';
+import { CustomerAcquisitionCostCac } from './components/tools/CustomerAcquisitionCostCac';
+import { ReturnOnAdSpendRoas } from './components/tools/ReturnOnAdSpendRoas';
+import { ClickThroughRateCtrCalculator } from './components/tools/ClickThroughRateCtrCalculator';
+import { AbTestSignificanceCalculator } from './components/tools/AbTestSignificanceCalculator';
+import { EmployeeTurnoverCostCalculator } from './components/tools/EmployeeTurnoverCostCalculator';
+import { TotalCompensationCalculator } from './components/tools/TotalCompensationCalculator';
+import { EmployeeCostToEmployerCalculator } from './components/tools/EmployeeCostToEmployerCalculator';
+import { ContractorVsEmployeeCostCalculator } from './components/tools/ContractorVsEmployeeCostCalculator';
+import { EmergencyFundCalculator } from './components/tools/EmergencyFundCalculator';
+import { DebtSnowballAvalancheCalculator } from './components/tools/DebtSnowballAvalancheCalculator';
+import { NetWorthCalculator } from './components/tools/NetWorthCalculator';
+
 // Sanity CMS Page Components
 import { BusinessPage } from './pages/BusinessPage';
 import { EncyclopediaHubPage } from './pages/EncyclopediaHubPage';
@@ -406,6 +458,58 @@ export function App() {
       case 'roommate-rent-split-calculator': return <RoommateRentSplitCalculator />;
       case 'gpa-scale-converter': return <GpaScaleConverter />;
       case 'marks-to-gpa-converter': return <MarksToGpaConverter />;
+
+      // Batch 1: 50 Production Tools
+      case 'cash-flow-runway-calculator': return <CashFlowRunwayCalculator />;
+      case 'ebitda-calculator': return <EbitdaCalculator />;
+      case 'working-capital-calculator': return <WorkingCapitalCalculator />;
+      case 'npv-irr-calculator': return <NpvIrrCalculator />;
+      case 'cash-conversion-cycle-calculator': return <CashConversionCycleCalculator />;
+      case 'cost-of-goods-sold-calculator': return <CostOfGoodsSoldCalculator />;
+      case 'saas-net-retention-rate-calculator': return <SaasNetRetentionRateCalculator />;
+      case 'purchase-order-generator': return <PurchaseOrderGenerator />;
+      case 'quote-generator': return <QuoteGenerator />;
+      case 'packing-slip-generator': return <PackingSlipGenerator />;
+      case 'regex-tester': return <RegexTester />;
+      case 'subnet-calculator': return <SubnetCalculator />;
+      case 'meta-tag-generator': return <MetaTagGenerator />;
+      case 'schema-markup-generator': return <SchemaMarkupGenerator />;
+      case 'google-serp-preview-tool': return <GoogleSerpPreviewTool />;
+      case 'high-school-gpa-calculator': return <HighSchoolGpaCalculator />;
+      case 'college-gpa-calculator': return <CollegeGpaCalculator />;
+      case 'semester-grade-calculator': return <SemesterGradeCalculator />;
+      case 'prime-factorization-calculator': return <PrimeFactorizationCalculator />;
+      case 'base-converter': return <BaseConverter />;
+      case 'linear-regression-calculator': return <LinearRegressionCalculator />;
+      case 'standard-deviation-calculator': return <StandardDeviationCalculator />;
+      case 'sample-size-calculator': return <SampleSizeCalculator />;
+      case 'density-mass-volume-calculator': return <DensityMassVolumeCalculator />;
+      case 'projectile-motion-calculator': return <ProjectileMotionCalculator />;
+      case 'ebay-final-value-fee-calculator': return <EbayFinalValueFeeCalculator />;
+      case 'tiktok-shop-fee-calculator': return <TiktokShopFeeCalculator />;
+      case 'cost-per-acquisition-cpa-calculator': return <CostPerAcquisitionCpaCalculator />;
+      case 'ecommerce-conversion-rate-calculator': return <EcommerceConversionRateCalculator />;
+      case 'ecommerce-net-profit-margin-calculator': return <EcommerceNetProfitMarginCalculator />;
+      case 'safety-stock-calculator': return <SafetyStockCalculator />;
+      case 'machine-downtime-cost-calculator': return <MachineDowntimeCostCalculator />;
+      case 'capacity-utilization-calculator': return <CapacityUtilizationCalculator />;
+      case 'takt-time-calculator': return <TaktTimeCalculator />;
+      case 'cap-rate-calculator': return <CapRateCalculator />;
+      case 'cash-on-cash-return-calculator': return <CashOnCashReturnCalculator />;
+      case 'rental-property-roi-calculator': return <RentalPropertyRoiCalculator />;
+      case 'amortization-schedule-extra-payments': return <AmortizationScheduleExtraPayments />;
+      case 'short-term-rental-airbnb-calculator': return <ShortTermRentalAirbnbCalculator />;
+      case 'customer-acquisition-cost-cac': return <CustomerAcquisitionCostCac />;
+      case 'return-on-ad-spend-roas': return <ReturnOnAdSpendRoas />;
+      case 'click-through-rate-ctr-calculator': return <ClickThroughRateCtrCalculator />;
+      case 'ab-test-significance-calculator': return <AbTestSignificanceCalculator />;
+      case 'employee-turnover-cost-calculator': return <EmployeeTurnoverCostCalculator />;
+      case 'total-compensation-calculator': return <TotalCompensationCalculator />;
+      case 'employee-cost-to-employer-calculator': return <EmployeeCostToEmployerCalculator />;
+      case 'contractor-vs-employee-cost-calculator': return <ContractorVsEmployeeCostCalculator />;
+      case 'emergency-fund-calculator': return <EmergencyFundCalculator />;
+      case 'debt-snowball-avalanche-calculator': return <DebtSnowballAvalancheCalculator />;
+      case 'net-worth-calculator': return <NetWorthCalculator />;
 
       default: {
         if (activeView === 'mind') {

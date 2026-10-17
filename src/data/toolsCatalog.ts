@@ -1795,5 +1795,1005 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
     "keywords": ["marks to gpa converter", "score to gpa", "percentage to gpa points", "exam mark grade"],
     "metaTitle": "Marks to GPA Converter — QuickForma",
     "metaDescription": "Convert raw exam marks and percentages directly into 4.0 GPA points."
-  }
+  },
+{
+  "id": "cash-flow-runway-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Cash Flow Runway & Burn Rate Calculator",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Calculates net burn rate, cash zero date, and runway under revenue drop scenarios.",
+  "iconName": "TrendingDown",
+  "badge": "New",
+  "keywords": [
+    "cash flow runway calculator",
+    "cash flow runway & burn rate calculator",
+    "finance tool",
+    "online calculator"
+  ],
+  "metaTitle": "Cash Flow Runway & Burn Rate Calculator \u2014 QuickForma",
+  "metaDescription": "Free online Cash Flow Runway & Burn Rate Calculator. Calculates net burn rate, cash zero date, and runway under revenue drop scenarios. Fast, private, client-side execution."
+},
+{
+  "id": "ebitda-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "EBITDA & Operating Margin Calculator",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Calculates EBITDA, EBITDA margin %, and adjusted operating cash flow.",
+  "iconName": "TrendingUp",
+  "badge": "New",
+  "keywords": [
+    "ebitda calculator",
+    "ebitda & operating margin calculator",
+    "finance tool",
+    "online calculator"
+  ],
+  "metaTitle": "EBITDA & Operating Margin Calculator \u2014 QuickForma",
+  "metaDescription": "Free online EBITDA & Operating Margin Calculator. Calculates EBITDA, EBITDA margin %, and adjusted operating cash flow. Fast, private, client-side execution."
+},
+{
+  "id": "working-capital-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Working Capital & Current Ratio Calculator",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Computes working capital, current ratio, and quick ratio for credit analysis.",
+  "iconName": "Scale",
+  "badge": "New",
+  "keywords": [
+    "working capital calculator",
+    "working capital & current ratio calculator",
+    "finance tool",
+    "online calculator"
+  ],
+  "metaTitle": "Working Capital & Current Ratio Calculator \u2014 QuickForma",
+  "metaDescription": "Free online Working Capital & Current Ratio Calculator. Computes working capital, current ratio, and quick ratio for credit analysis. Fast, private, client-side execution."
+},
+{
+  "id": "npv-irr-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Net Present Value (NPV) & IRR Calculator",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Capital budgeting solver for project NPV, Internal Rate of Return (IRR), and cash flows.",
+  "iconName": "BarChart3",
+  "badge": "New",
+  "keywords": [
+    "npv irr calculator",
+    "net present value (npv) & irr calculator",
+    "finance tool",
+    "online calculator"
+  ],
+  "metaTitle": "Net Present Value (NPV) & IRR Calculator \u2014 QuickForma",
+  "metaDescription": "Free online Net Present Value (NPV) & IRR Calculator. Capital budgeting solver for project NPV, Internal Rate of Return (IRR), and cash flows. Fast, private, client-side execution."
+},
+{
+  "id": "cash-conversion-cycle-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Cash Conversion Cycle (CCC) Solver",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Combines DIO + DSO - DPO to calculate total days capital is tied up in operations.",
+  "iconName": "RefreshCw",
+  "badge": "New",
+  "keywords": [
+    "cash conversion cycle calculator",
+    "cash conversion cycle (ccc) solver",
+    "finance tool",
+    "online calculator"
+  ],
+  "metaTitle": "Cash Conversion Cycle (CCC) Solver \u2014 QuickForma",
+  "metaDescription": "Free online Cash Conversion Cycle (CCC) Solver. Combines DIO + DSO - DPO to calculate total days capital is tied up in operations. Fast, private, client-side execution."
+},
+{
+  "id": "cost-of-goods-sold-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "COGS & Ending Inventory Cost Estimator",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Calculates Beginning Inventory + Purchases - Ending Inventory under FIFO/LIFO.",
+  "iconName": "Calculator",
+  "badge": "New",
+  "keywords": [
+    "cost of goods sold calculator",
+    "cogs & ending inventory cost estimator",
+    "finance tool",
+    "online calculator"
+  ],
+  "metaTitle": "COGS & Ending Inventory Cost Estimator \u2014 QuickForma",
+  "metaDescription": "Free online COGS & Ending Inventory Cost Estimator. Calculates Beginning Inventory + Purchases - Ending Inventory under FIFO/LIFO. Fast, private, client-side execution."
+},
+{
+  "id": "saas-net-retention-rate-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Net Revenue Retention (NRR) & Expansion ARR Solver",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Solves SaaS Net Revenue Retention (NRR %) and expansion MRR growth efficiency.",
+  "iconName": "Percent",
+  "badge": "New",
+  "keywords": [
+    "saas net retention rate calculator",
+    "net revenue retention (nrr) & expansion arr solver",
+    "finance tool",
+    "online calculator"
+  ],
+  "metaTitle": "Net Revenue Retention (NRR) & Expansion ARR Solver \u2014 QuickForma",
+  "metaDescription": "Free online Net Revenue Retention (NRR) & Expansion ARR Solver. Solves SaaS Net Revenue Retention (NRR %) and expansion MRR growth efficiency. Fast, private, client-side execution."
+},
+{
+  "id": "purchase-order-generator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Purchase Order (PO) PDF Generator",
+  "category": "business",
+  "categoryLabel": "Business & Legal Docs",
+  "description": "Generates downloadable PDF purchase orders with line items, vendor terms, and shipping instructions.",
+  "iconName": "FileText",
+  "badge": "New",
+  "keywords": [
+    "purchase order generator",
+    "purchase order (po) pdf generator",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Purchase Order (PO) PDF Generator \u2014 QuickForma",
+  "metaDescription": "Free online Purchase Order (PO) PDF Generator. Generates downloadable PDF purchase orders with line items, vendor terms, and shipping instructions. Fast, private, client-side execution."
+},
+{
+  "id": "quote-generator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Client Price Quote & Estimate Generator",
+  "category": "business",
+  "categoryLabel": "Business & Legal Docs",
+  "description": "Creates formal client price quotes with itemized pricing, expiration date, and acceptance terms.",
+  "iconName": "FileText",
+  "badge": "New",
+  "keywords": [
+    "quote generator",
+    "client price quote & estimate generator",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Client Price Quote & Estimate Generator \u2014 QuickForma",
+  "metaDescription": "Free online Client Price Quote & Estimate Generator. Creates formal client price quotes with itemized pricing, expiration date, and acceptance terms. Fast, private, client-side execution."
+},
+{
+  "id": "packing-slip-generator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Warehouse Shipping Packing Slip Generator",
+  "category": "business",
+  "categoryLabel": "Business & Legal Docs",
+  "description": "Generates order packing slips for ecommerce fulfillment and B2B order shipments.",
+  "iconName": "FileText",
+  "badge": "New",
+  "keywords": [
+    "packing slip generator",
+    "warehouse shipping packing slip generator",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Warehouse Shipping Packing Slip Generator \u2014 QuickForma",
+  "metaDescription": "Free online Warehouse Shipping Packing Slip Generator. Generates order packing slips for ecommerce fulfillment and B2B order shipments. Fast, private, client-side execution."
+},
+{
+  "id": "regex-tester",
+  "verticals": [
+    "business"
+  ],
+  "name": "Regex Matcher, Visualizer & Cheatsheet",
+  "category": "developer",
+  "categoryLabel": "Developer & Web Tools",
+  "description": "Client-side regular expression tester with live match highlighting, group extraction, and regex cheatsheet.",
+  "iconName": "Code",
+  "badge": "New",
+  "keywords": [
+    "regex tester",
+    "regex matcher, visualizer & cheatsheet",
+    "developer tool",
+    "online calculator"
+  ],
+  "metaTitle": "Regex Matcher, Visualizer & Cheatsheet \u2014 QuickForma",
+  "metaDescription": "Free online Regex Matcher, Visualizer & Cheatsheet. Client-side regular expression tester with live match highlighting, group extraction, and regex cheatsheet. Fast, private, client-side execution."
+},
+{
+  "id": "subnet-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "IPv4 Subnet Mask & CIDR Notation Calculator",
+  "category": "developer",
+  "categoryLabel": "Developer & Web Tools",
+  "description": "Solves CIDR notation (e.g. `/24`), subnet mask, usable host range, broadcast address, and total IPs.",
+  "iconName": "Globe",
+  "badge": "New",
+  "keywords": [
+    "subnet calculator",
+    "ipv4 subnet mask & cidr notation calculator",
+    "developer tool",
+    "online calculator"
+  ],
+  "metaTitle": "IPv4 Subnet Mask & CIDR Notation Calculator \u2014 QuickForma",
+  "metaDescription": "Free online IPv4 Subnet Mask & CIDR Notation Calculator. Solves CIDR notation (e.g. `/24`), subnet mask, usable host range, broadcast address, and total IPs. Fast, private, client-side execution."
+},
+{
+  "id": "meta-tag-generator",
+  "verticals": [
+    "business"
+  ],
+  "name": "SEO Meta Title & Open Graph Tag Generator",
+  "category": "content",
+  "categoryLabel": "Text & Content Tools",
+  "description": "Generates Google search meta tags and Open Graph (OG) Facebook/Twitter social card tags.",
+  "iconName": "Search",
+  "badge": "New",
+  "keywords": [
+    "meta tag generator",
+    "seo meta title & open graph tag generator",
+    "content tool",
+    "online calculator"
+  ],
+  "metaTitle": "SEO Meta Title & Open Graph Tag Generator \u2014 QuickForma",
+  "metaDescription": "Free online SEO Meta Title & Open Graph Tag Generator. Generates Google search meta tags and Open Graph (OG) Facebook/Twitter social card tags. Fast, private, client-side execution."
+},
+{
+  "id": "schema-markup-generator",
+  "verticals": [
+    "business"
+  ],
+  "name": "JSON-LD Schema.org Generator for Local Business & FAQ",
+  "category": "content",
+  "categoryLabel": "Text & Content Tools",
+  "description": "Visual builder for Schema.org JSON-LD code (FAQPage, Article, LocalBusiness, Product).",
+  "iconName": "Search",
+  "badge": "New",
+  "keywords": [
+    "schema markup generator",
+    "json-ld schema.org generator for local business & faq",
+    "content tool",
+    "online calculator"
+  ],
+  "metaTitle": "JSON-LD Schema.org Generator for Local Business & FAQ \u2014 QuickForma",
+  "metaDescription": "Free online JSON-LD Schema.org Generator for Local Business & FAQ. Visual builder for Schema.org JSON-LD code (FAQPage, Article, LocalBusiness, Product). Fast, private, client-side execution."
+},
+{
+  "id": "google-serp-preview-tool",
+  "verticals": [
+    "business"
+  ],
+  "name": "Google Desktop & Mobile SERP Snippet Preview",
+  "category": "content",
+  "categoryLabel": "Text & Content Tools",
+  "description": "Simulates exact pixel width truncation of titles (600px) and meta descriptions (960px) on Google.",
+  "iconName": "Search",
+  "badge": "New",
+  "keywords": [
+    "google serp preview tool",
+    "google desktop & mobile serp snippet preview",
+    "content tool",
+    "online calculator"
+  ],
+  "metaTitle": "Google Desktop & Mobile SERP Snippet Preview \u2014 QuickForma",
+  "metaDescription": "Free online Google Desktop & Mobile SERP Snippet Preview. Simulates exact pixel width truncation of titles (600px) and meta descriptions (960px) on Google. Fast, private, client-side execution."
+},
+{
+  "id": "high-school-gpa-calculator",
+  "verticals": [
+    "students"
+  ],
+  "name": "Weighted 5.0 vs Unweighted 4.0 High School GPA",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Calculates high school GPA accounting for AP/Honors (+1.0) and IB (+0.5) course weights.",
+  "iconName": "GraduationCap",
+  "badge": "New",
+  "keywords": [
+    "high school gpa calculator",
+    "weighted 5.0 vs unweighted 4.0 high school gpa",
+    "students tool",
+    "online calculator"
+  ],
+  "metaTitle": "Weighted 5.0 vs Unweighted 4.0 High School GPA \u2014 QuickForma",
+  "metaDescription": "Free online Weighted 5.0 vs Unweighted 4.0 High School GPA. Calculates high school GPA accounting for AP/Honors (+1.0) and IB (+0.5) course weights. Fast, private, client-side execution."
+},
+{
+  "id": "college-gpa-calculator",
+  "verticals": [
+    "students"
+  ],
+  "name": "University Credit Hour GPA Calculator",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Standard college GPA calculator supporting 3-credit, 4-credit, and lab courses.",
+  "iconName": "GraduationCap",
+  "badge": "New",
+  "keywords": [
+    "college gpa calculator",
+    "university credit hour gpa calculator",
+    "students tool",
+    "online calculator"
+  ],
+  "metaTitle": "University Credit Hour GPA Calculator \u2014 QuickForma",
+  "metaDescription": "Free online University Credit Hour GPA Calculator. Standard college GPA calculator supporting 3-credit, 4-credit, and lab courses. Fast, private, client-side execution."
+},
+{
+  "id": "semester-grade-calculator",
+  "verticals": [
+    "students"
+  ],
+  "name": "Midterm, Final Exam & Assignment Weight Solver",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Calculates overall semester course grade from weighted midterms, homework, labs, and final exam.",
+  "iconName": "BookOpen",
+  "badge": "New",
+  "keywords": [
+    "semester grade calculator",
+    "midterm, final exam & assignment weight solver",
+    "students tool",
+    "online calculator"
+  ],
+  "metaTitle": "Midterm, Final Exam & Assignment Weight Solver \u2014 QuickForma",
+  "metaDescription": "Free online Midterm, Final Exam & Assignment Weight Solver. Calculates overall semester course grade from weighted midterms, homework, labs, and final exam. Fast, private, client-side execution."
+},
+{
+  "id": "prime-factorization-calculator",
+  "verticals": [
+    "students"
+  ],
+  "name": "Prime Factors, GCF & LCM Calculator",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Solves prime factor trees, Greatest Common Factor (GCF), and Least Common Multiple (LCM) for integer sets.",
+  "iconName": "Divide",
+  "badge": "New",
+  "keywords": [
+    "prime factorization calculator",
+    "prime factors, gcf & lcm calculator",
+    "students tool",
+    "online calculator"
+  ],
+  "metaTitle": "Prime Factors, GCF & LCM Calculator \u2014 QuickForma",
+  "metaDescription": "Free online Prime Factors, GCF & LCM Calculator. Solves prime factor trees, Greatest Common Factor (GCF), and Least Common Multiple (LCM) for integer sets. Fast, private, client-side execution."
+},
+{
+  "id": "base-converter",
+  "verticals": [
+    "students"
+  ],
+  "name": "Binary, Octal, Decimal & Hexadecimal Converter",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Converts numbers between Base-2 (Binary), Base-8 (Octal), Base-10 (Decimal), and Base-16 (Hexadecimal).",
+  "iconName": "RefreshCw",
+  "badge": "New",
+  "keywords": [
+    "base converter",
+    "binary, octal, decimal & hexadecimal converter",
+    "students tool",
+    "online calculator"
+  ],
+  "metaTitle": "Binary, Octal, Decimal & Hexadecimal Converter \u2014 QuickForma",
+  "metaDescription": "Free online Binary, Octal, Decimal & Hexadecimal Converter. Converts numbers between Base-2 (Binary), Base-8 (Octal), Base-10 (Decimal), and Base-16 (Hexadecimal). Fast, private, client-side execution."
+},
+{
+  "id": "linear-regression-calculator",
+  "verticals": [
+    "students"
+  ],
+  "name": "Simple Linear Regression & $R^2$ Line of Best Fit",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Calculates regression line equation $\\hat{y} = \\beta_0 + \\beta_1 x$, correlation $r$, and coefficient of determination $R^2$.",
+  "iconName": "BarChart3",
+  "badge": "New",
+  "keywords": [
+    "linear regression calculator",
+    "simple linear regression & $r^2$ line of best fit",
+    "students tool",
+    "online calculator"
+  ],
+  "metaTitle": "Simple Linear Regression & $R^2$ Line of Best Fit \u2014 QuickForma",
+  "metaDescription": "Free online Simple Linear Regression & $R^2$ Line of Best Fit. Calculates regression line equation $\\hat{y} = \\beta_0 + \\beta_1 x$, correlation $r$, and coefficient of determination $R^2$. Fast, private, client-side execution."
+},
+{
+  "id": "standard-deviation-calculator",
+  "verticals": [
+    "students"
+  ],
+  "name": "Sample & Population Standard Deviation Solver",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Solves sample ($s$) and population ($\\sigma$) standard deviation with variance steps.",
+  "iconName": "GraduationCap",
+  "badge": "New",
+  "keywords": [
+    "standard deviation calculator",
+    "sample & population standard deviation solver",
+    "students tool",
+    "online calculator"
+  ],
+  "metaTitle": "Sample & Population Standard Deviation Solver \u2014 QuickForma",
+  "metaDescription": "Free online Sample & Population Standard Deviation Solver. Solves sample ($s$) and population ($\\sigma$) standard deviation with variance steps. Fast, private, client-side execution."
+},
+{
+  "id": "sample-size-calculator",
+  "verticals": [
+    "students"
+  ],
+  "name": "Margin of Error & Survey Sample Size Solver",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Calculates minimum required survey sample size based on confidence level (95%, 99%) and margin of error.",
+  "iconName": "GraduationCap",
+  "badge": "New",
+  "keywords": [
+    "sample size calculator",
+    "margin of error & survey sample size solver",
+    "students tool",
+    "online calculator"
+  ],
+  "metaTitle": "Margin of Error & Survey Sample Size Solver \u2014 QuickForma",
+  "metaDescription": "Free online Margin of Error & Survey Sample Size Solver. Calculates minimum required survey sample size based on confidence level (95%, 99%) and margin of error. Fast, private, client-side execution."
+},
+{
+  "id": "density-mass-volume-calculator",
+  "verticals": [
+    "students"
+  ],
+  "name": "Density, Mass & Volume Chemistry Solver",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Solves $\\text{Density} = \\frac{\\text{Mass}}{\\text{Volume}}$ with automatic unit conversions ($\\text{g/cm}^3, \\text{kg/m}^3, \\text{g/mL}$).",
+  "iconName": "FlaskConical",
+  "badge": "New",
+  "keywords": [
+    "density mass volume calculator",
+    "density, mass & volume chemistry solver",
+    "students tool",
+    "online calculator"
+  ],
+  "metaTitle": "Density, Mass & Volume Chemistry Solver \u2014 QuickForma",
+  "metaDescription": "Free online Density, Mass & Volume Chemistry Solver. Solves $\\text{Density} = \\frac{\\text{Mass}}{\\text{Volume}}$ with automatic unit conversions ($\\text{g/cm}^3, \\text{kg/m}^3, \\text{g/mL}$). Fast, private, client-side execution."
+},
+{
+  "id": "projectile-motion-calculator",
+  "verticals": [
+    "students"
+  ],
+  "name": "2D Trajectory, Range & Max Height Solver",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Solves 2D projectile motion: launching angle $\\theta$, velocity $v_0$, flight time, maximum height, and horizontal range.",
+  "iconName": "Compass",
+  "badge": "New",
+  "keywords": [
+    "projectile motion calculator",
+    "2d trajectory, range & max height solver",
+    "students tool",
+    "online calculator"
+  ],
+  "metaTitle": "2D Trajectory, Range & Max Height Solver \u2014 QuickForma",
+  "metaDescription": "Free online 2D Trajectory, Range & Max Height Solver. Solves 2D projectile motion: launching angle $\\theta$, velocity $v_0$, flight time, maximum height, and horizontal range. Fast, private, client-side execution."
+},
+{
+  "id": "ebay-final-value-fee-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "eBay Seller Fee & Store Subscription Profit",
+  "category": "ecommerce",
+  "categoryLabel": "Ecommerce & Operations",
+  "description": "Calculates eBay final value fees, insertion fees, store subscription discount tiers, and profit.",
+  "iconName": "ShoppingBag",
+  "badge": "New",
+  "keywords": [
+    "ebay final value fee calculator",
+    "ebay seller fee & store subscription profit",
+    "ecommerce tool",
+    "online calculator"
+  ],
+  "metaTitle": "eBay Seller Fee & Store Subscription Profit \u2014 QuickForma",
+  "metaDescription": "Free online eBay Seller Fee & Store Subscription Profit. Calculates eBay final value fees, insertion fees, store subscription discount tiers, and profit. Fast, private, client-side execution."
+},
+{
+  "id": "tiktok-shop-fee-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "TikTok Shop Commission & Creator Affiliate Margin",
+  "category": "ecommerce",
+  "categoryLabel": "Ecommerce & Operations",
+  "description": "Solves TikTok Shop referral commissions, payment processing fees, and creator affiliate payouts.",
+  "iconName": "ShoppingBag",
+  "badge": "New",
+  "keywords": [
+    "tiktok shop fee calculator",
+    "tiktok shop commission & creator affiliate margin",
+    "ecommerce tool",
+    "online calculator"
+  ],
+  "metaTitle": "TikTok Shop Commission & Creator Affiliate Margin \u2014 QuickForma",
+  "metaDescription": "Free online TikTok Shop Commission & Creator Affiliate Margin. Solves TikTok Shop referral commissions, payment processing fees, and creator affiliate payouts. Fast, private, client-side execution."
+},
+{
+  "id": "cost-per-acquisition-cpa-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Ecommerce Customer CPA & LTV:CAC Ratio",
+  "category": "ecommerce",
+  "categoryLabel": "Ecommerce & Operations",
+  "description": "Calculates Cost Per Acquisition (CPA) across ad channels and compares against 3:1 LTV:CAC benchmark.",
+  "iconName": "Target",
+  "badge": "New",
+  "keywords": [
+    "cost per acquisition cpa calculator",
+    "ecommerce customer cpa & ltv:cac ratio",
+    "ecommerce tool",
+    "online calculator"
+  ],
+  "metaTitle": "Ecommerce Customer CPA & LTV:CAC Ratio \u2014 QuickForma",
+  "metaDescription": "Free online Ecommerce Customer CPA & LTV:CAC Ratio. Calculates Cost Per Acquisition (CPA) across ad channels and compares against 3:1 LTV:CAC benchmark. Fast, private, client-side execution."
+},
+{
+  "id": "ecommerce-conversion-rate-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Store Visitor to Purchase Conversion Solver",
+  "category": "ecommerce",
+  "categoryLabel": "Ecommerce & Operations",
+  "description": "Calculates store conversion rate % and models revenue impact of 0.5% conversion rate improvements.",
+  "iconName": "Percent",
+  "badge": "New",
+  "keywords": [
+    "ecommerce conversion rate calculator",
+    "store visitor to purchase conversion solver",
+    "ecommerce tool",
+    "online calculator"
+  ],
+  "metaTitle": "Store Visitor to Purchase Conversion Solver \u2014 QuickForma",
+  "metaDescription": "Free online Store Visitor to Purchase Conversion Solver. Calculates store conversion rate % and models revenue impact of 0.5% conversion rate improvements. Fast, private, client-side execution."
+},
+{
+  "id": "ecommerce-net-profit-margin-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "All-in Ecommerce Store P&L Profit Solver",
+  "category": "ecommerce",
+  "categoryLabel": "Ecommerce & Operations",
+  "description": "Comprehensive P&L solver subtracting COGS, ad spend, merchant fees, shipping, and software costs.",
+  "iconName": "TrendingUp",
+  "badge": "New",
+  "keywords": [
+    "ecommerce net profit margin calculator",
+    "all-in ecommerce store p&l profit solver",
+    "ecommerce tool",
+    "online calculator"
+  ],
+  "metaTitle": "All-in Ecommerce Store P&L Profit Solver \u2014 QuickForma",
+  "metaDescription": "Free online All-in Ecommerce Store P&L Profit Solver. Comprehensive P&L solver subtracting COGS, ad spend, merchant fees, shipping, and software costs. Fast, private, client-side execution."
+},
+{
+  "id": "safety-stock-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Safety Stock & Desired Service Level Solver",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Solves required safety stock $SS = Z \\times \\sigma_{LT}$ based on lead time variability and service level targets (95%, 99%).",
+  "iconName": "Shield",
+  "badge": "New",
+  "keywords": [
+    "safety stock calculator",
+    "safety stock & desired service level solver",
+    "operations tool",
+    "online calculator"
+  ],
+  "metaTitle": "Safety Stock & Desired Service Level Solver \u2014 QuickForma",
+  "metaDescription": "Free online Safety Stock & Desired Service Level Solver. Solves required safety stock $SS = Z \\times \\sigma_{LT}$ based on lead time variability and service level targets (95%, 99%). Fast, private, client-side execution."
+},
+{
+  "id": "machine-downtime-cost-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Unplanned Equipment Downtime Financial Loss",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculates hourly financial cost of factory downtime including lost throughput and idle labor.",
+  "iconName": "Clock",
+  "badge": "New",
+  "keywords": [
+    "machine downtime cost calculator",
+    "unplanned equipment downtime financial loss",
+    "operations tool",
+    "online calculator"
+  ],
+  "metaTitle": "Unplanned Equipment Downtime Financial Loss \u2014 QuickForma",
+  "metaDescription": "Free online Unplanned Equipment Downtime Financial Loss. Calculates hourly financial cost of factory downtime including lost throughput and idle labor. Fast, private, client-side execution."
+},
+{
+  "id": "capacity-utilization-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Machine Hours Available vs Actual Run Time",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculates machine capacity utilization %, available capacity hours, and bottleneck constraints.",
+  "iconName": "Gauge",
+  "badge": "New",
+  "keywords": [
+    "capacity utilization calculator",
+    "machine hours available vs actual run time",
+    "operations tool",
+    "online calculator"
+  ],
+  "metaTitle": "Machine Hours Available vs Actual Run Time \u2014 QuickForma",
+  "metaDescription": "Free online Machine Hours Available vs Actual Run Time. Calculates machine capacity utilization %, available capacity hours, and bottleneck constraints. Fast, private, client-side execution."
+},
+{
+  "id": "takt-time-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Production Pace & Customer Demand Rate Solver",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Solves Takt Time $T = \\frac{\\text{Available Production Time}}{\\text{Customer Demand Quantity}}$ in seconds per unit.",
+  "iconName": "Clock",
+  "badge": "New",
+  "keywords": [
+    "takt time calculator",
+    "production pace & customer demand rate solver",
+    "operations tool",
+    "online calculator"
+  ],
+  "metaTitle": "Production Pace & Customer Demand Rate Solver \u2014 QuickForma",
+  "metaDescription": "Free online Production Pace & Customer Demand Rate Solver. Solves Takt Time $T = \\frac{\\text{Available Production Time}}{\\text{Customer Demand Quantity}}$ in seconds per unit. Fast, private, client-side execution."
+},
+{
+  "id": "cap-rate-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Real Estate Capitalization Rate & Net Operating Income",
+  "category": "finance",
+  "categoryLabel": "Real Estate & Property",
+  "description": "Calculates Cap Rate $\\text{Cap Rate} = \\frac{\\text{NOI}}{\\text{Property Price}}$ and Net Operating Income (NOI).",
+  "iconName": "Percent",
+  "badge": "New",
+  "keywords": [
+    "cap rate calculator",
+    "real estate capitalization rate & net operating income",
+    "finance tool",
+    "online calculator"
+  ],
+  "metaTitle": "Real Estate Capitalization Rate & Net Operating Income \u2014 QuickForma",
+  "metaDescription": "Free online Real Estate Capitalization Rate & Net Operating Income. Calculates Cap Rate $\\text{Cap Rate} = \\frac{\\text{NOI}}{\\text{Property Price}}$ and Net Operating Income (NOI). Fast, private, client-side execution."
+},
+{
+  "id": "cash-on-cash-return-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Cash-on-Cash Return & Initial Outlay Solver",
+  "category": "finance",
+  "categoryLabel": "Real Estate & Property",
+  "description": "Solves annual pre-tax cash flow divided by total cash invested ($\\text{Down Payment} + \\text{Closing Costs}$).",
+  "iconName": "Building",
+  "badge": "New",
+  "keywords": [
+    "cash on cash return calculator",
+    "cash-on-cash return & initial outlay solver",
+    "finance tool",
+    "online calculator"
+  ],
+  "metaTitle": "Cash-on-Cash Return & Initial Outlay Solver \u2014 QuickForma",
+  "metaDescription": "Free online Cash-on-Cash Return & Initial Outlay Solver. Solves annual pre-tax cash flow divided by total cash invested ($\\text{Down Payment} + \\text{Closing Costs}$). Fast, private, client-side execution."
+},
+{
+  "id": "rental-property-roi-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "All-In Rental Property Monthly Cash Flow & ROI",
+  "category": "finance",
+  "categoryLabel": "Real Estate & Property",
+  "description": "Solves net rental cash flow after mortgage, taxes, insurance, vacancy allowance, and maintenance.",
+  "iconName": "Home",
+  "badge": "New",
+  "keywords": [
+    "rental property roi calculator",
+    "all-in rental property monthly cash flow & roi",
+    "finance tool",
+    "online calculator"
+  ],
+  "metaTitle": "All-In Rental Property Monthly Cash Flow & ROI \u2014 QuickForma",
+  "metaDescription": "Free online All-In Rental Property Monthly Cash Flow & ROI. Solves net rental cash flow after mortgage, taxes, insurance, vacancy allowance, and maintenance. Fast, private, client-side execution."
+},
+{
+  "id": "amortization-schedule-extra-payments",
+  "verticals": [
+    "business"
+  ],
+  "name": "Mortgage Payoff Acceleration & Interest Saved",
+  "category": "finance",
+  "categoryLabel": "Real Estate & Property",
+  "description": "Calculates loan payoff date acceleration and total interest saved by making extra monthly principal payments.",
+  "iconName": "Calendar",
+  "badge": "New",
+  "keywords": [
+    "amortization schedule extra payments",
+    "mortgage payoff acceleration & interest saved",
+    "finance tool",
+    "online calculator"
+  ],
+  "metaTitle": "Mortgage Payoff Acceleration & Interest Saved \u2014 QuickForma",
+  "metaDescription": "Free online Mortgage Payoff Acceleration & Interest Saved. Calculates loan payoff date acceleration and total interest saved by making extra monthly principal payments. Fast, private, client-side execution."
+},
+{
+  "id": "short-term-rental-airbnb-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Airbnb Occupancy Rate & ADR Revenue Solver",
+  "category": "finance",
+  "categoryLabel": "Real Estate & Property",
+  "description": "Estimates short-term rental monthly revenue based on Average Daily Rate (ADR) and Occupancy Rate %.",
+  "iconName": "Home",
+  "badge": "New",
+  "keywords": [
+    "short term rental airbnb calculator",
+    "airbnb occupancy rate & adr revenue solver",
+    "finance tool",
+    "online calculator"
+  ],
+  "metaTitle": "Airbnb Occupancy Rate & ADR Revenue Solver \u2014 QuickForma",
+  "metaDescription": "Free online Airbnb Occupancy Rate & ADR Revenue Solver. Estimates short-term rental monthly revenue based on Average Daily Rate (ADR) and Occupancy Rate %. Fast, private, client-side execution."
+},
+{
+  "id": "customer-acquisition-cost-cac",
+  "verticals": [
+    "business"
+  ],
+  "name": "Blended vs Paid CAC & Channel Efficiency Solver",
+  "category": "marketing",
+  "categoryLabel": "Marketing & Growth",
+  "description": "Solves Customer Acquisition Cost (CAC = $\\text{Total S&M Spend} / \\text{New Customers}$) by channel.",
+  "iconName": "Target",
+  "badge": "New",
+  "keywords": [
+    "customer acquisition cost cac",
+    "blended vs paid cac & channel efficiency solver",
+    "marketing tool",
+    "online calculator"
+  ],
+  "metaTitle": "Blended vs Paid CAC & Channel Efficiency Solver \u2014 QuickForma",
+  "metaDescription": "Free online Blended vs Paid CAC & Channel Efficiency Solver. Solves Customer Acquisition Cost (CAC = $\\text{Total S&M Spend} / \\text{New Customers}$) by channel. Fast, private, client-side execution."
+},
+{
+  "id": "return-on-ad-spend-roas",
+  "verticals": [
+    "business"
+  ],
+  "name": "Google, Meta, TikTok Ad Spend ROAS & Break-Even",
+  "category": "marketing",
+  "categoryLabel": "Marketing & Growth",
+  "description": "Solves Return on Ad Spend ($ROAS = \\text{Ad Revenue} / \\text{Ad Cost}$) and break-even target.",
+  "iconName": "Percent",
+  "badge": "New",
+  "keywords": [
+    "return on ad spend roas",
+    "google, meta, tiktok ad spend roas & break-even",
+    "marketing tool",
+    "online calculator"
+  ],
+  "metaTitle": "Google, Meta, TikTok Ad Spend ROAS & Break-Even \u2014 QuickForma",
+  "metaDescription": "Free online Google, Meta, TikTok Ad Spend ROAS & Break-Even. Solves Return on Ad Spend ($ROAS = \\text{Ad Revenue} / \\text{Ad Cost}$) and break-even target. Fast, private, client-side execution."
+},
+{
+  "id": "click-through-rate-ctr-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Impressions & Clicks CTR Percentage Solver",
+  "category": "marketing",
+  "categoryLabel": "Marketing & Growth",
+  "description": "Solves Click-Through Rate ($CTR = \\frac{\\text{Clicks}}{\\text{Impressions}} \\times 100\\%$) for ads and organic search.",
+  "iconName": "Percent",
+  "badge": "New",
+  "keywords": [
+    "click through rate ctr calculator",
+    "impressions & clicks ctr percentage solver",
+    "marketing tool",
+    "online calculator"
+  ],
+  "metaTitle": "Impressions & Clicks CTR Percentage Solver \u2014 QuickForma",
+  "metaDescription": "Free online Impressions & Clicks CTR Percentage Solver. Solves Click-Through Rate ($CTR = \\frac{\\text{Clicks}}{\\text{Impressions}} \\times 100\\%$) for ads and organic search. Fast, private, client-side execution."
+},
+{
+  "id": "ab-test-significance-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Statistical Significance & Confidence Level Solver",
+  "category": "marketing",
+  "categoryLabel": "Marketing & Growth",
+  "description": "Evaluates A/B test conversion rate results for statistical significance ($p < 0.05$).",
+  "iconName": "Target",
+  "badge": "New",
+  "keywords": [
+    "ab test significance calculator",
+    "statistical significance & confidence level solver",
+    "marketing tool",
+    "online calculator"
+  ],
+  "metaTitle": "Statistical Significance & Confidence Level Solver \u2014 QuickForma",
+  "metaDescription": "Free online Statistical Significance & Confidence Level Solver. Evaluates A/B test conversion rate results for statistical significance ($p < 0.05$). Fast, private, client-side execution."
+},
+{
+  "id": "employee-turnover-cost-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Cost of Replacing an Employee & Departure Loss",
+  "category": "hr",
+  "categoryLabel": "Career & HR",
+  "description": "Quantifies financial cost of employee turnover (typically 0.5x to 2x annual salary in recruiting & lost productivity).",
+  "iconName": "Briefcase",
+  "badge": "New",
+  "keywords": [
+    "employee turnover cost calculator",
+    "cost of replacing an employee & departure loss",
+    "hr tool",
+    "online calculator"
+  ],
+  "metaTitle": "Cost of Replacing an Employee & Departure Loss \u2014 QuickForma",
+  "metaDescription": "Free online Cost of Replacing an Employee & Departure Loss. Quantifies financial cost of employee turnover (typically 0.5x to 2x annual salary in recruiting & lost productivity). Fast, private, client-side execution."
+},
+{
+  "id": "total-compensation-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Base Salary + Health + 401k + Bonus Total Value",
+  "category": "hr",
+  "categoryLabel": "Career & HR",
+  "description": "Calculates total employee compensation package value including benefits, employer 401k match, and bonuses.",
+  "iconName": "Briefcase",
+  "badge": "New",
+  "keywords": [
+    "total compensation calculator",
+    "base salary + health + 401k + bonus total value",
+    "hr tool",
+    "online calculator"
+  ],
+  "metaTitle": "Base Salary + Health + 401k + Bonus Total Value \u2014 QuickForma",
+  "metaDescription": "Free online Base Salary + Health + 401k + Bonus Total Value. Calculates total employee compensation package value including benefits, employer 401k match, and bonuses. Fast, private, client-side execution."
+},
+{
+  "id": "employee-cost-to-employer-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "FUTA, SUTA, FICA & Benefits Full Burden Rate",
+  "category": "hr",
+  "categoryLabel": "Career & HR",
+  "description": "Calculates full employer labor burden (typically 1.25x to 1.4x base salary) including payroll taxes and insurance.",
+  "iconName": "Briefcase",
+  "badge": "New",
+  "keywords": [
+    "employee cost to employer calculator",
+    "futa, suta, fica & benefits full burden rate",
+    "hr tool",
+    "online calculator"
+  ],
+  "metaTitle": "FUTA, SUTA, FICA & Benefits Full Burden Rate \u2014 QuickForma",
+  "metaDescription": "Free online FUTA, SUTA, FICA & Benefits Full Burden Rate. Calculates full employer labor burden (typically 1.25x to 1.4x base salary) including payroll taxes and insurance. Fast, private, client-side execution."
+},
+{
+  "id": "contractor-vs-employee-cost-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "1099 Contractor vs W-2 Employee Cost",
+  "category": "hr",
+  "categoryLabel": "Career & HR",
+  "description": "Side-by-side cost comparison between hiring a 1099 independent contractor vs a full-time W-2 employee.",
+  "iconName": "Scale",
+  "badge": "New",
+  "keywords": [
+    "contractor vs employee cost calculator",
+    "1099 contractor vs w-2 employee cost",
+    "hr tool",
+    "online calculator"
+  ],
+  "metaTitle": "1099 Contractor vs W-2 Employee Cost \u2014 QuickForma",
+  "metaDescription": "Free online 1099 Contractor vs W-2 Employee Cost. Side-by-side cost comparison between hiring a 1099 independent contractor vs a full-time W-2 employee. Fast, private, client-side execution."
+},
+{
+  "id": "emergency-fund-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "3-to-6 Month Household Expense Reserve Solver",
+  "category": "finance",
+  "categoryLabel": "Personal Finance",
+  "description": "Calculates recommended emergency fund cash reserve based on monthly essential living expenses.",
+  "iconName": "DollarSign",
+  "badge": "New",
+  "keywords": [
+    "emergency fund calculator",
+    "3-to-6 month household expense reserve solver",
+    "finance tool",
+    "online calculator"
+  ],
+  "metaTitle": "3-to-6 Month Household Expense Reserve Solver \u2014 QuickForma",
+  "metaDescription": "Free online 3-to-6 Month Household Expense Reserve Solver. Calculates recommended emergency fund cash reserve based on monthly essential living expenses. Fast, private, client-side execution."
+},
+{
+  "id": "debt-snowball-avalanche-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Credit Card & Debt Acceleration Payoff",
+  "category": "finance",
+  "categoryLabel": "Personal Finance",
+  "description": "Compares Debt Snowball (lowest balance first) vs Debt Avalanche (highest interest first) payoff schedules.",
+  "iconName": "CreditCard",
+  "badge": "New",
+  "keywords": [
+    "debt snowball avalanche calculator",
+    "credit card & debt acceleration payoff",
+    "finance tool",
+    "online calculator"
+  ],
+  "metaTitle": "Credit Card & Debt Acceleration Payoff \u2014 QuickForma",
+  "metaDescription": "Free online Credit Card & Debt Acceleration Payoff. Compares Debt Snowball (lowest balance first) vs Debt Avalanche (highest interest first) payoff schedules. Fast, private, client-side execution."
+},
+{
+  "id": "net-worth-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Assets minus Liabilities Household Net Worth Solver",
+  "category": "finance",
+  "categoryLabel": "Personal Finance",
+  "description": "Solves total personal net worth by summing liquid cash, investments, home equity minus total debts.",
+  "iconName": "DollarSign",
+  "badge": "New",
+  "keywords": [
+    "net worth calculator",
+    "assets minus liabilities household net worth solver",
+    "finance tool",
+    "online calculator"
+  ],
+  "metaTitle": "Assets minus Liabilities Household Net Worth Solver \u2014 QuickForma",
+  "metaDescription": "Free online Assets minus Liabilities Household Net Worth Solver. Solves total personal net worth by summing liquid cash, investments, home equity minus total debts. Fast, private, client-side execution."
+}
 ];

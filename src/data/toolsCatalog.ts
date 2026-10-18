@@ -2795,5 +2795,3182 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   ],
   "metaTitle": "Assets minus Liabilities Household Net Worth Solver \u2014 QuickForma",
   "metaDescription": "Free online Assets minus Liabilities Household Net Worth Solver. Solves total personal net worth by summing liquid cash, investments, home equity minus total debts. Fast, private, client-side execution."
+},
+{
+  "id": "contribution-margin-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Contribution Margin Ratio Calculator",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Solves sales minus variable costs and contribution margin per unit.",
+  "iconName": "TrendingUp",
+  "badge": "New",
+  "keywords": [
+    "contribution margin calculator",
+    "contribution margin ratio calculator",
+    "financial calculators",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Contribution Margin Ratio Calculator \u2014 QuickForma",
+  "metaDescription": "Free online Contribution Margin Ratio Calculator. Solves sales minus variable costs and contribution margin per unit. Fast, private, client-side execution."
+},
+{
+  "id": "bibliography-generator",
+  "verticals": [
+    "students"
+  ],
+  "name": "APA 7, MLA 9, Chicago Manual Style Builder",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Generates formatted academic citations and full bibliography entries for books, journals, and websites.",
+  "iconName": "FileText",
+  "badge": "New",
+  "keywords": [
+    "bibliography generator",
+    "apa 7, mla 9, chicago manual style builder",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "APA 7, MLA 9, Chicago Manual Style Builder \u2014 QuickForma",
+  "metaDescription": "Free online APA 7, MLA 9, Chicago Manual Style Builder. Generates formatted academic citations and full bibliography entries for books, journals, and websites. Fast, private, client-side execution."
+},
+{
+  "id": "amazon-fba-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Amazon FBA Fee & Net Profit Margin per ASIN",
+  "category": "ecommerce",
+  "categoryLabel": "Ecommerce & Operations",
+  "description": "Calculates Amazon referral fees, FBA fulfillment fees, monthly storage, and net margin per product ASIN.",
+  "iconName": "ShoppingBag",
+  "badge": "New",
+  "keywords": [
+    "amazon fba calculator",
+    "amazon fba fee & net profit margin per asin",
+    "ecommerce & operations",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Amazon FBA Fee & Net Profit Margin per ASIN \u2014 QuickForma",
+  "metaDescription": "Free online Amazon FBA Fee & Net Profit Margin per ASIN. Calculates Amazon referral fees, FBA fulfillment fees, monthly storage, and net margin per product ASIN. Fast, private, client-side execution."
+},
+{
+  "id": "take-home-pay-paycheck-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "US Gross to Net Paycheck Tax Estimator",
+  "category": "hr",
+  "categoryLabel": "Career & HR",
+  "description": "Calculates net take-home pay after Federal income tax, FICA (Social Security & Medicare), and state withholding.",
+  "iconName": "Receipt",
+  "badge": "New",
+  "keywords": [
+    "take home pay paycheck calculator",
+    "us gross to net paycheck tax estimator",
+    "career & hr",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "US Gross to Net Paycheck Tax Estimator \u2014 QuickForma",
+  "metaDescription": "Free online US Gross to Net Paycheck Tax Estimator. Calculates net take-home pay after Federal income tax, FICA (Social Security & Medicare), and state withholding. Fast, private, client-side execution."
+},
+{
+  "id": "time-card-hours-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Weekly Time Card Clock-In / Clock-Out Total Hours",
+  "category": "hr",
+  "categoryLabel": "Career & HR",
+  "description": "Solves weekly time card total hours, subtracting unpaid lunch breaks across 7 days.",
+  "iconName": "Clock",
+  "badge": "New",
+  "keywords": [
+    "time card hours calculator",
+    "weekly time card clock-in / clock-out total hours",
+    "career & hr",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Weekly Time Card Clock-In / Clock-Out Total Hours \u2014 QuickForma",
+  "metaDescription": "Free online Weekly Time Card Clock-In / Clock-Out Total Hours. Solves weekly time card total hours, subtracting unpaid lunch breaks across 7 days. Fast, private, client-side execution."
+},
+{
+  "id": "budget-50-30-20-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "50/30/20 Rule Needs, Wants & Savings Budget Solver",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Divides net take-home income into 50% Needs, 30% Wants, and 20% Savings & Debt Repayment.",
+  "iconName": "PieChart",
+  "badge": "New",
+  "keywords": [
+    "budget 50 30 20 calculator",
+    "50/30/20 rule needs, wants & savings budget solver",
+    "financial calculators",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "50/30/20 Rule Needs, Wants & Savings Budget Solver \u2014 QuickForma",
+  "metaDescription": "Free online 50/30/20 Rule Needs, Wants & Savings Budget Solver. Divides net take-home income into 50% Needs, 30% Wants, and 20% Savings & Debt Repayment. Fast, private, client-side execution."
+},
+{
+  "id": "car-loan-payment-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Auto Loan Monthly Payment & Trade-In Interest",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Calculates monthly auto loan payments, total interest paid, trade-in equity, and sales tax.",
+  "iconName": "Building",
+  "badge": "New",
+  "keywords": [
+    "car loan payment calculator",
+    "auto loan monthly payment & trade-in interest",
+    "financial calculators",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Auto Loan Monthly Payment & Trade-In Interest \u2014 QuickForma",
+  "metaDescription": "Free online Auto Loan Monthly Payment & Trade-In Interest. Calculates monthly auto loan payments, total interest paid, trade-in equity, and sales tax. Fast, private, client-side execution."
+},
+{
+  "id": "retirement-nest-egg-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "401k / IRA Compound Growth & Safe Withdrawal",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Projects retirement portfolio growth and safe annual withdrawal amounts based on the 4% rule.",
+  "iconName": "TrendingUp",
+  "badge": "New",
+  "keywords": [
+    "retirement nest egg calculator",
+    "401k / ira compound growth & safe withdrawal",
+    "financial calculators",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "401k / IRA Compound Growth & Safe Withdrawal \u2014 QuickForma",
+  "metaDescription": "Free online 401k / IRA Compound Growth & Safe Withdrawal. Projects retirement portfolio growth and safe annual withdrawal amounts based on the 4% rule. Fast, private, client-side execution."
+},
+{
+  "id": "personal-cash-flow-savings-rate",
+  "verticals": [
+    "business"
+  ],
+  "name": "Monthly Household Savings Rate & Surplus Solver",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Solves household net savings rate % ($\\frac{\\text{Income} - \\text{Expenses}}{\\text{Income}} \\times 100\\%$).",
+  "iconName": "DollarSign",
+  "badge": "New",
+  "keywords": [
+    "personal cash flow savings rate",
+    "monthly household savings rate & surplus solver",
+    "financial calculators",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Monthly Household Savings Rate & Surplus Solver \u2014 QuickForma",
+  "metaDescription": "Free online Monthly Household Savings Rate & Surplus Solver. Solves household net savings rate % ($\\frac{\\text{Income} - \\text{Expenses}}{\\text{Income}} \\times 100\\%$). Fast, private, client-side execution."
+},
+{
+  "id": "debt-to-income-dti-ratio-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Front-End & Back-End DTI Ratio Mortgage Solver",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Solves front-end housing DTI (28% max) and back-end total debt DTI (36\u201343% max) for mortgage qualification.",
+  "iconName": "Scale",
+  "badge": "New",
+  "keywords": [
+    "debt to income dti ratio calculator",
+    "front-end & back-end dti ratio mortgage solver",
+    "financial calculators",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Front-End & Back-End DTI Ratio Mortgage Solver \u2014 QuickForma",
+  "metaDescription": "Free online Front-End & Back-End DTI Ratio Mortgage Solver. Solves front-end housing DTI (28% max) and back-end total debt DTI (36\u201343% max) for mortgage qualification. Fast, private, client-side execution."
+},
+{
+  "id": "dscr-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Debt Service Coverage Ratio (DSCR) Calculator",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Commercial loan qualification metric used by banks and SBA lenders.",
+  "iconName": "Building",
+  "badge": "New",
+  "keywords": [
+    "dscr calculator",
+    "debt service coverage ratio (dscr) calculator",
+    "financial calculators",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Debt Service Coverage Ratio (DSCR) Calculator \u2014 QuickForma",
+  "metaDescription": "Free online Debt Service Coverage Ratio (DSCR) Calculator. Commercial loan qualification metric used by banks and SBA lenders. Fast, private, client-side execution."
+},
+{
+  "id": "cac-payback-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Customer Acquisition Cost (CAC) & Payback",
+  "category": "marketing",
+  "categoryLabel": "Marketing & Growth",
+  "description": "Calculates CAC across marketing channels and months to recover acquisition costs.",
+  "iconName": "Users",
+  "badge": "New",
+  "keywords": [
+    "cac payback calculator",
+    "customer acquisition cost (cac) & payback",
+    "marketing & growth",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Customer Acquisition Cost (CAC) & Payback \u2014 QuickForma",
+  "metaDescription": "Free online Customer Acquisition Cost (CAC) & Payback. Calculates CAC across marketing channels and months to recover acquisition costs. Fast, private, client-side execution."
+},
+{
+  "id": "wacc-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Weighted Average Cost of Capital (WACC) Solver",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Calculates corporate cost of capital using cost of equity and post-tax cost of debt.",
+  "iconName": "Percent",
+  "badge": "New",
+  "keywords": [
+    "wacc calculator",
+    "weighted average cost of capital (wacc) solver",
+    "financial calculators",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Weighted Average Cost of Capital (WACC) Solver \u2014 QuickForma",
+  "metaDescription": "Free online Weighted Average Cost of Capital (WACC) Solver. Calculates corporate cost of capital using cost of equity and post-tax cost of debt. Fast, private, client-side execution."
+},
+{
+  "id": "free-cash-flow-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Free Cash Flow (FCF) & Unlevered FCF Calculator",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Computes FCF to Firm (FCFF) and FCF to Equity (FCFE) for valuation.",
+  "iconName": "BarChart3",
+  "badge": "New",
+  "keywords": [
+    "free cash flow calculator",
+    "free cash flow (fcf) & unlevered fcf calculator",
+    "financial calculators",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Free Cash Flow (FCF) & Unlevered FCF Calculator \u2014 QuickForma",
+  "metaDescription": "Free online Free Cash Flow (FCF) & Unlevered FCF Calculator. Computes FCF to Firm (FCFF) and FCF to Equity (FCFE) for valuation. Fast, private, client-side execution."
+},
+{
+  "id": "inventory-holding-cost-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Inventory Carrying & Holding Cost Calculator",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculates annual holding cost %, storage fees, capital cost, and insurance.",
+  "iconName": "Package",
+  "badge": "New",
+  "keywords": [
+    "inventory holding cost calculator",
+    "inventory carrying & holding cost calculator",
+    "operations & manufacturing",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Inventory Carrying & Holding Cost Calculator \u2014 QuickForma",
+  "metaDescription": "Free online Inventory Carrying & Holding Cost Calculator. Calculates annual holding cost %, storage fees, capital cost, and insurance. Fast, private, client-side execution."
+},
+{
+  "id": "payback-period-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Discounted Payback Period Calculator",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Time required to recover initial investment taking time value of money into account.",
+  "iconName": "Clock",
+  "badge": "New",
+  "keywords": [
+    "payback period calculator",
+    "discounted payback period calculator",
+    "financial calculators",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Discounted Payback Period Calculator \u2014 QuickForma",
+  "metaDescription": "Free online Discounted Payback Period Calculator. Time required to recover initial investment taking time value of money into account. Fast, private, client-side execution."
+},
+{
+  "id": "saas-magic-number-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "SaaS Magic Number & Efficiency Calculator",
+  "category": "marketing",
+  "categoryLabel": "Marketing & Growth",
+  "description": "Evaluates sales efficiency by measuring net new ARR generated per dollar of S&M spend.",
+  "iconName": "Zap",
+  "badge": "New",
+  "keywords": [
+    "saas magic number calculator",
+    "saas magic number & efficiency calculator",
+    "marketing & growth",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "SaaS Magic Number & Efficiency Calculator \u2014 QuickForma",
+  "metaDescription": "Free online SaaS Magic Number & Efficiency Calculator. Evaluates sales efficiency by measuring net new ARR generated per dollar of S&M spend. Fast, private, client-side execution."
+},
+{
+  "id": "churn-rate-impact-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Customer Churn Revenue Loss Calculator",
+  "category": "marketing",
+  "categoryLabel": "Marketing & Growth",
+  "description": "Quantifies annual recurring revenue (ARR) lost to monthly customer churn.",
+  "iconName": "TrendingDown",
+  "badge": "New",
+  "keywords": [
+    "churn rate impact calculator",
+    "customer churn revenue loss calculator",
+    "marketing & growth",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Customer Churn Revenue Loss Calculator \u2014 QuickForma",
+  "metaDescription": "Free online Customer Churn Revenue Loss Calculator. Quantifies annual recurring revenue (ARR) lost to monthly customer churn. Fast, private, client-side execution."
+},
+{
+  "id": "sba-7a-loan-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "SBA 7(a) Loan Amortization Calculator",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Calculates SBA guarantee fees, interest caps, and monthly principal/interest payments.",
+  "iconName": "Building",
+  "badge": "New",
+  "keywords": [
+    "sba 7a loan calculator",
+    "sba 7(a) loan amortization calculator",
+    "financial calculators",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "SBA 7(a) Loan Amortization Calculator \u2014 QuickForma",
+  "metaDescription": "Free online SBA 7(a) Loan Amortization Calculator. Calculates SBA guarantee fees, interest caps, and monthly principal/interest payments. Fast, private, client-side execution."
+},
+{
+  "id": "saas-rule-of-40-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "SaaS Rule of 40 Benchmark Calculator",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Combines YoY revenue growth rate and EBITDA margin to measure software health.",
+  "iconName": "Award",
+  "badge": "New",
+  "keywords": [
+    "saas rule of 40 calculator",
+    "saas rule of 40 benchmark calculator",
+    "financial calculators",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "SaaS Rule of 40 Benchmark Calculator \u2014 QuickForma",
+  "metaDescription": "Free online SaaS Rule of 40 Benchmark Calculator. Combines YoY revenue growth rate and EBITDA margin to measure software health. Fast, private, client-side execution."
+},
+{
+  "id": "accounts-receivable-turnover-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Days Sales Outstanding (DSO) Calculator",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Measures average number of days required to collect payment after a sale.",
+  "iconName": "RotateCw",
+  "badge": "New",
+  "keywords": [
+    "accounts receivable turnover calculator",
+    "days sales outstanding (dso) calculator",
+    "financial calculators",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Days Sales Outstanding (DSO) Calculator \u2014 QuickForma",
+  "metaDescription": "Free online Days Sales Outstanding (DSO) Calculator. Measures average number of days required to collect payment after a sale. Fast, private, client-side execution."
+},
+{
+  "id": "accounts-payable-turnover-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Days Payable Outstanding (DPO) Calculator",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Measures average time a company takes to pay vendor bills and invoices.",
+  "iconName": "RotateCcw",
+  "badge": "New",
+  "keywords": [
+    "accounts payable turnover calculator",
+    "days payable outstanding (dpo) calculator",
+    "financial calculators",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Days Payable Outstanding (DPO) Calculator \u2014 QuickForma",
+  "metaDescription": "Free online Days Payable Outstanding (DPO) Calculator. Measures average time a company takes to pay vendor bills and invoices. Fast, private, client-side execution."
+},
+{
+  "id": "credit-card-processing-savings-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Interchange Plus vs Flat Rate Savings Calculator",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Audits credit card processor statements to calculate true interchange savings.",
+  "iconName": "CreditCard",
+  "badge": "New",
+  "keywords": [
+    "credit card processing savings calculator",
+    "interchange plus vs flat rate savings calculator",
+    "financial calculators",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Interchange Plus vs Flat Rate Savings Calculator \u2014 QuickForma",
+  "metaDescription": "Free online Interchange Plus vs Flat Rate Savings Calculator. Audits credit card processor statements to calculate true interchange savings. Fast, private, client-side execution."
+},
+{
+  "id": "merchant-cash-advance-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Merchant Cash Advance Factor Rate & APR Solver",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Converts MCA factor rates (e.g. 1.35x) into effective annual percentage rate (APR).",
+  "iconName": "AlertCircle",
+  "badge": "New",
+  "keywords": [
+    "merchant cash advance calculator",
+    "merchant cash advance factor rate & apr solver",
+    "financial calculators",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Merchant Cash Advance Factor Rate & APR Solver \u2014 QuickForma",
+  "metaDescription": "Free online Merchant Cash Advance Factor Rate & APR Solver. Converts MCA factor rates (e.g. 1.35x) into effective annual percentage rate (APR). Fast, private, client-side execution."
+},
+{
+  "id": "startup-seed-runway-planner",
+  "verticals": [
+    "business"
+  ],
+  "name": "Pre-Seed/Seed Round Funding Runway Planner",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Plans hiring roadmap, burn rate expansion, and milestone dates for tech startups.",
+  "iconName": "TrendingDown",
+  "badge": "New",
+  "keywords": [
+    "startup seed runway planner",
+    "pre-seed/seed round funding runway planner",
+    "financial calculators",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Pre-Seed/Seed Round Funding Runway Planner \u2014 QuickForma",
+  "metaDescription": "Free online Pre-Seed/Seed Round Funding Runway Planner. Plans hiring roadmap, burn rate expansion, and milestone dates for tech startups. Fast, private, client-side execution."
+},
+{
+  "id": "sales-commission-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Tiered Sales Commission & Split Calculator",
+  "category": "hr",
+  "categoryLabel": "Career & HR",
+  "description": "Calculates quota achievement tiers, commission accelerators, and split payments.",
+  "iconName": "Percent",
+  "badge": "New",
+  "keywords": [
+    "sales commission calculator",
+    "tiered sales commission & split calculator",
+    "career & hr",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Tiered Sales Commission & Split Calculator \u2014 QuickForma",
+  "metaDescription": "Free online Tiered Sales Commission & Split Calculator. Calculates quota achievement tiers, commission accelerators, and split payments. Fast, private, client-side execution."
+},
+{
+  "id": "overhead-rate-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Manufacturing & Service Overhead Rate Solver",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Solves predetermined overhead rate per direct labor hour or machine hour.",
+  "iconName": "Factory",
+  "badge": "New",
+  "keywords": [
+    "overhead rate calculator",
+    "manufacturing & service overhead rate solver",
+    "operations & manufacturing",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Manufacturing & Service Overhead Rate Solver \u2014 QuickForma",
+  "metaDescription": "Free online Manufacturing & Service Overhead Rate Solver. Solves predetermined overhead rate per direct labor hour or machine hour. Fast, private, client-side execution."
+},
+{
+  "id": "quick-ratio-acid-test-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Acid-Test / Quick Ratio Liquidity Solver",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Measures instant liquidity excluding inventory from current assets.",
+  "iconName": "ShieldCheck",
+  "badge": "New",
+  "keywords": [
+    "quick ratio acid test calculator",
+    "acid-test / quick ratio liquidity solver",
+    "financial calculators",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Acid-Test / Quick Ratio Liquidity Solver \u2014 QuickForma",
+  "metaDescription": "Free online Acid-Test / Quick Ratio Liquidity Solver. Measures instant liquidity excluding inventory from current assets. Fast, private, client-side execution."
+},
+{
+  "id": "retained-earnings-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Beginning vs Ending Retained Earnings Solver",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Solves Retained Earnings = Prior Balance + Net Income - Dividends Paid.",
+  "iconName": "DollarSign",
+  "badge": "New",
+  "keywords": [
+    "retained earnings calculator",
+    "beginning vs ending retained earnings solver",
+    "financial calculators",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Beginning vs Ending Retained Earnings Solver \u2014 QuickForma",
+  "metaDescription": "Free online Beginning vs Ending Retained Earnings Solver. Solves Retained Earnings = Prior Balance + Net Income - Dividends Paid. Fast, private, client-side execution."
+},
+{
+  "id": "altman-z-score-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Altman Z-Score Business Bankruptcy Predictor",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Uses 5 financial ratios to predict public and private business insolvency risk.",
+  "iconName": "AlertCircle",
+  "badge": "New",
+  "keywords": [
+    "altman z score calculator",
+    "altman z-score business bankruptcy predictor",
+    "financial calculators",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Altman Z-Score Business Bankruptcy Predictor \u2014 QuickForma",
+  "metaDescription": "Free online Altman Z-Score Business Bankruptcy Predictor. Uses 5 financial ratios to predict public and private business insolvency risk. Fast, private, client-side execution."
+},
+{
+  "id": "cost-benefit-analysis-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Cost-Benefit Ratio & Net Benefit Solver",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Evaluates commercial project viability using Benefit-Cost Ratio (BCR).",
+  "iconName": "Scale",
+  "badge": "New",
+  "keywords": [
+    "cost benefit analysis calculator",
+    "cost-benefit ratio & net benefit solver",
+    "financial calculators",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Cost-Benefit Ratio & Net Benefit Solver \u2014 QuickForma",
+  "metaDescription": "Free online Cost-Benefit Ratio & Net Benefit Solver. Evaluates commercial project viability using Benefit-Cost Ratio (BCR). Fast, private, client-side execution."
+},
+{
+  "id": "gross-margin-standalone-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Gross Margin Percentage Standalone Calculator",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Dedicated gross margin percentage solver for quick financial checks.",
+  "iconName": "Percent",
+  "badge": "New",
+  "keywords": [
+    "gross margin standalone calculator",
+    "gross margin percentage standalone calculator",
+    "financial calculators",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Gross Margin Percentage Standalone Calculator \u2014 QuickForma",
+  "metaDescription": "Free online Gross Margin Percentage Standalone Calculator. Dedicated gross margin percentage solver for quick financial checks. Fast, private, client-side execution."
+},
+{
+  "id": "credit-note-generator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Credit Note & Adjustment Note Generator",
+  "category": "business",
+  "categoryLabel": "Business & Legal Docs",
+  "description": "Accounting document generator for client invoice credits, billing adjustments, and returns.",
+  "iconName": "FileText",
+  "badge": "New",
+  "keywords": [
+    "credit note generator",
+    "credit note & adjustment note generator",
+    "business & legal docs",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Credit Note & Adjustment Note Generator \u2014 QuickForma",
+  "metaDescription": "Free online Credit Note & Adjustment Note Generator. Accounting document generator for client invoice credits, billing adjustments, and returns. Fast, private, client-side execution."
+},
+{
+  "id": "contractor-agreement-generator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Independent Contractor Agreement PDF",
+  "category": "business",
+  "categoryLabel": "Business & Legal Docs",
+  "description": "B2B contractor agreement generator with IP assignment, payment terms, and non-solicit clauses.",
+  "iconName": "FileText",
+  "badge": "New",
+  "keywords": [
+    "contractor agreement generator",
+    "independent contractor agreement pdf",
+    "business & legal docs",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Independent Contractor Agreement PDF \u2014 QuickForma",
+  "metaDescription": "Free online Independent Contractor Agreement PDF. B2B contractor agreement generator with IP assignment, payment terms, and non-solicit clauses. Fast, private, client-side execution."
+},
+{
+  "id": "offer-letter-generator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Employee Job Offer Letter Generator",
+  "category": "business",
+  "categoryLabel": "Business & Legal Docs",
+  "description": "HR offer letter generator with salary, benefits, start date, and at-will employment terms.",
+  "iconName": "FileText",
+  "badge": "New",
+  "keywords": [
+    "offer letter generator",
+    "employee job offer letter generator",
+    "business & legal docs",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Employee Job Offer Letter Generator \u2014 QuickForma",
+  "metaDescription": "Free online Employee Job Offer Letter Generator. HR offer letter generator with salary, benefits, start date, and at-will employment terms. Fast, private, client-side execution."
+},
+{
+  "id": "expense-report-generator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Employee Expense Reimbursement Sheet",
+  "category": "business",
+  "categoryLabel": "Business & Legal Docs",
+  "description": "Employee expense report generator with category totals, mileage log, and receipt attach options.",
+  "iconName": "FileText",
+  "badge": "New",
+  "keywords": [
+    "expense report generator",
+    "employee expense reimbursement sheet",
+    "business & legal docs",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Employee Expense Reimbursement Sheet \u2014 QuickForma",
+  "metaDescription": "Free online Employee Expense Reimbursement Sheet. Employee expense report generator with category totals, mileage log, and receipt attach options. Fast, private, client-side execution."
+},
+{
+  "id": "consulting-proposal-generator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Consulting Proposal & Scope Builder",
+  "category": "business",
+  "categoryLabel": "Business & Legal Docs",
+  "description": "Professional service proposal builder with problem statement, methodology, and pricing options.",
+  "iconName": "FileText",
+  "badge": "New",
+  "keywords": [
+    "consulting proposal generator",
+    "consulting proposal & scope builder",
+    "business & legal docs",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Consulting Proposal & Scope Builder \u2014 QuickForma",
+  "metaDescription": "Free online Consulting Proposal & Scope Builder. Professional service proposal builder with problem statement, methodology, and pricing options. Fast, private, client-side execution."
+},
+{
+  "id": "bill-of-materials-generator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Manufacturing Bill of Materials (BOM) Sheet",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Generates multi-level manufacturing BOM sheets with component part numbers and unit quantities.",
+  "iconName": "Layers",
+  "badge": "New",
+  "keywords": [
+    "bill of materials generator",
+    "manufacturing bill of materials (bom) sheet",
+    "operations & manufacturing",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Manufacturing Bill of Materials (BOM) Sheet \u2014 QuickForma",
+  "metaDescription": "Free online Manufacturing Bill of Materials (BOM) Sheet. Generates multi-level manufacturing BOM sheets with component part numbers and unit quantities. Fast, private, client-side execution."
+},
+{
+  "id": "sql-formatter",
+  "verticals": [
+    "business"
+  ],
+  "name": "SQL Query Formatter & Minifier",
+  "category": "developer",
+  "categoryLabel": "Developer & Web Tools",
+  "description": "Cleans, formats, and minifies SQL queries client-side across MySQL, PostgreSQL, and T-SQL dialects.",
+  "iconName": "Code",
+  "badge": "New",
+  "keywords": [
+    "sql formatter",
+    "sql query formatter & minifier",
+    "developer & web tools",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "SQL Query Formatter & Minifier \u2014 QuickForma",
+  "metaDescription": "Free online SQL Query Formatter & Minifier. Cleans, formats, and minifies SQL queries client-side across MySQL, PostgreSQL, and T-SQL dialects. Fast, private, client-side execution."
+},
+{
+  "id": "xml-json-converter",
+  "verticals": [
+    "business"
+  ],
+  "name": "XML to JSON & JSON to XML Converter",
+  "category": "converters",
+  "categoryLabel": "Converters & Formats",
+  "description": "Bi-directional client-side converter between XML documents and JSON data objects.",
+  "iconName": "FileCode",
+  "badge": "New",
+  "keywords": [
+    "xml json converter",
+    "xml to json & json to xml converter",
+    "converters & formats",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "XML to JSON & JSON to XML Converter \u2014 QuickForma",
+  "metaDescription": "Free online XML to JSON & JSON to XML Converter. Bi-directional client-side converter between XML documents and JSON data objects. Fast, private, client-side execution."
+},
+{
+  "id": "yaml-json-converter",
+  "verticals": [
+    "business"
+  ],
+  "name": "YAML to JSON & JSON to YAML Converter",
+  "category": "converters",
+  "categoryLabel": "Converters & Formats",
+  "description": "Converts Kubernetes, Docker, and CI/CD YAML configuration files to JSON and back.",
+  "iconName": "FileCode",
+  "badge": "New",
+  "keywords": [
+    "yaml json converter",
+    "yaml to json & json to yaml converter",
+    "converters & formats",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "YAML to JSON & JSON to YAML Converter \u2014 QuickForma",
+  "metaDescription": "Free online YAML to JSON & JSON to YAML Converter. Converts Kubernetes, Docker, and CI/CD YAML configuration files to JSON and back. Fast, private, client-side execution."
+},
+{
+  "id": "cron-expression-generator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Cron Schedule Expression Builder & Visualizer",
+  "category": "developer",
+  "categoryLabel": "Developer & Web Tools",
+  "description": "Visual GUI cron builder with human-readable schedule explanations and next 10 execution dates.",
+  "iconName": "Clock",
+  "badge": "New",
+  "keywords": [
+    "cron expression generator",
+    "cron schedule expression builder & visualizer",
+    "developer & web tools",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Cron Schedule Expression Builder & Visualizer \u2014 QuickForma",
+  "metaDescription": "Free online Cron Schedule Expression Builder & Visualizer. Visual GUI cron builder with human-readable schedule explanations and next 10 execution dates. Fast, private, client-side execution."
+},
+{
+  "id": "unix-timestamp-converter",
+  "verticals": [
+    "business"
+  ],
+  "name": "Unix Epoch Timestamp to ISO Date Converter",
+  "category": "developer",
+  "categoryLabel": "Developer & Web Tools",
+  "description": "Converts Unix timestamps (seconds & milliseconds) to UTC/Local ISO dates and vice versa.",
+  "iconName": "Clock",
+  "badge": "New",
+  "keywords": [
+    "unix timestamp converter",
+    "unix epoch timestamp to iso date converter",
+    "developer & web tools",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Unix Epoch Timestamp to ISO Date Converter \u2014 QuickForma",
+  "metaDescription": "Free online Unix Epoch Timestamp to ISO Date Converter. Converts Unix timestamps (seconds & milliseconds) to UTC/Local ISO dates and vice versa. Fast, private, client-side execution."
+},
+{
+  "id": "markdown-to-html-converter",
+  "verticals": [
+    "business"
+  ],
+  "name": "Markdown to Clean HTML Live Converter",
+  "category": "developer",
+  "categoryLabel": "Developer & Web Tools",
+  "description": "Converts raw Markdown text into clean HTML code with live split-screen preview.",
+  "iconName": "FileCode",
+  "badge": "New",
+  "keywords": [
+    "markdown to html converter",
+    "markdown to clean html live converter",
+    "developer & web tools",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Markdown to Clean HTML Live Converter \u2014 QuickForma",
+  "metaDescription": "Free online Markdown to Clean HTML Live Converter. Converts raw Markdown text into clean HTML code with live split-screen preview. Fast, private, client-side execution."
+},
+{
+  "id": "chmod-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Linux File Permission Chmod Octal Calculator",
+  "category": "developer",
+  "categoryLabel": "Developer & Web Tools",
+  "description": "Interactive Linux permission grid generating octal codes (e.g. `755`, `644`) and `chmod` commands.",
+  "iconName": "Terminal",
+  "badge": "New",
+  "keywords": [
+    "chmod calculator",
+    "linux file permission chmod octal calculator",
+    "developer & web tools",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Linux File Permission Chmod Octal Calculator \u2014 QuickForma",
+  "metaDescription": "Free online Linux File Permission Chmod Octal Calculator. Interactive Linux permission grid generating octal codes (e.g. `755`, `644`) and `chmod` commands. Fast, private, client-side execution."
+},
+{
+  "id": "keyword-density-analyzer",
+  "verticals": [
+    "business"
+  ],
+  "name": "Keyword Density & Frequency Counter",
+  "category": "content",
+  "categoryLabel": "Text & Content Tools",
+  "description": "Analyzes text to extract 1-word, 2-word, and 3-word keyword density percentages.",
+  "iconName": "Search",
+  "badge": "New",
+  "keywords": [
+    "keyword density analyzer",
+    "keyword density & frequency counter",
+    "text & content tools",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Keyword Density & Frequency Counter \u2014 QuickForma",
+  "metaDescription": "Free online Keyword Density & Frequency Counter. Analyzes text to extract 1-word, 2-word, and 3-word keyword density percentages. Fast, private, client-side execution."
+},
+{
+  "id": "robots-txt-generator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Robots.txt File Generator & Validator",
+  "category": "developer",
+  "categoryLabel": "Developer & Web Tools",
+  "description": "Builds custom `robots.txt` files with User-agent rules, Disallow paths, and Sitemap URLs.",
+  "iconName": "ShieldCheck",
+  "badge": "New",
+  "keywords": [
+    "robots txt generator",
+    "robots.txt file generator & validator",
+    "developer & web tools",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Robots.txt File Generator & Validator \u2014 QuickForma",
+  "metaDescription": "Free online Robots.txt File Generator & Validator. Builds custom `robots.txt` files with User-agent rules, Disallow paths, and Sitemap URLs. Fast, private, client-side execution."
+},
+{
+  "id": "headline-analyzer",
+  "verticals": [
+    "business"
+  ],
+  "name": "Click-Through Rate Headline Quality Analyzer",
+  "category": "content",
+  "categoryLabel": "Text & Content Tools",
+  "description": "Evaluates article titles based on emotional word count, length, clarity, and SEO power words.",
+  "iconName": "Sparkles",
+  "badge": "New",
+  "keywords": [
+    "headline analyzer",
+    "click-through rate headline quality analyzer",
+    "text & content tools",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Click-Through Rate Headline Quality Analyzer \u2014 QuickForma",
+  "metaDescription": "Free online Click-Through Rate Headline Quality Analyzer. Evaluates article titles based on emotional word count, length, clarity, and SEO power words. Fast, private, client-side execution."
+},
+{
+  "id": "character-count-limit-tool",
+  "verticals": [
+    "business"
+  ],
+  "name": "Social Media Post Length Checker",
+  "category": "content",
+  "categoryLabel": "Text & Content Tools",
+  "description": "Character counter showing real-time limits for Twitter/X (280), LinkedIn (3000), Meta, and Instagram.",
+  "iconName": "AlignLeft",
+  "badge": "New",
+  "keywords": [
+    "character count limit tool",
+    "social media post length checker",
+    "text & content tools",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Social Media Post Length Checker \u2014 QuickForma",
+  "metaDescription": "Free online Social Media Post Length Checker. Character counter showing real-time limits for Twitter/X (280), LinkedIn (3000), Meta, and Instagram. Fast, private, client-side execution."
+},
+{
+  "id": "duplicate-line-remover",
+  "verticals": [
+    "business"
+  ],
+  "name": "Text Deduplication & Line Sorter Tool",
+  "category": "productivity",
+  "categoryLabel": "Productivity & Daily",
+  "description": "Removes duplicate text lines, sorts lists alphabetically, and strips blank lines.",
+  "iconName": "ListFilter",
+  "badge": "New",
+  "keywords": [
+    "duplicate line remover",
+    "text deduplication & line sorter tool",
+    "productivity & daily",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Text Deduplication & Line Sorter Tool \u2014 QuickForma",
+  "metaDescription": "Free online Text Deduplication & Line Sorter Tool. Removes duplicate text lines, sorts lists alphabetically, and strips blank lines. Fast, private, client-side execution."
+},
+{
+  "id": "markdown-table-generator",
+  "verticals": [
+    "business",
+    "students"
+  ],
+  "name": "Visual GUI Markdown Table Builder",
+  "category": "content",
+  "categoryLabel": "Text & Content Tools",
+  "description": "Interactive GUI table editor that exports clean Markdown table syntax.",
+  "iconName": "Table",
+  "badge": "New",
+  "keywords": [
+    "markdown table generator",
+    "visual gui markdown table builder",
+    "text & content tools",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Visual GUI Markdown Table Builder \u2014 QuickForma",
+  "metaDescription": "Free online Visual GUI Markdown Table Builder. Interactive GUI table editor that exports clean Markdown table syntax. Fast, private, client-side execution."
+},
+{
+  "id": "email-subject-line-tester",
+  "verticals": [
+    "business",
+    "students"
+  ],
+  "name": "Email Subject Line Character & Spam Word Checker",
+  "category": "content",
+  "categoryLabel": "Text & Content Tools",
+  "description": "Tests subject lines for mobile truncation (under 50 chars) and flags email spam trigger words.",
+  "iconName": "Mail",
+  "badge": "New",
+  "keywords": [
+    "email subject line tester",
+    "email subject line character & spam word checker",
+    "text & content tools",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Email Subject Line Character & Spam Word Checker \u2014 QuickForma",
+  "metaDescription": "Free online Email Subject Line Character & Spam Word Checker. Tests subject lines for mobile truncation (under 50 chars) and flags email spam trigger words. Fast, private, client-side execution."
+},
+{
+  "id": "text-cleaner-sanitizer",
+  "verticals": [
+    "business",
+    "students"
+  ],
+  "name": "HTML Strip, Non-ASCII Remove & White Space Cleaner",
+  "category": "content",
+  "categoryLabel": "Text & Content Tools",
+  "description": "Cleans raw text by stripping HTML tags, removing non-ASCII characters, and normalizing spacing.",
+  "iconName": "Sparkles",
+  "badge": "New",
+  "keywords": [
+    "text cleaner sanitizer",
+    "html strip, non-ascii remove & white space cleaner",
+    "text & content tools",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "HTML Strip, Non-ASCII Remove & White Space Cleaner \u2014 QuickForma",
+  "metaDescription": "Free online HTML Strip, Non-ASCII Remove & White Space Cleaner. Cleans raw text by stripping HTML tags, removing non-ASCII characters, and normalizing spacing. Fast, private, client-side execution."
+},
+{
+  "id": "camel-snake-kebab-converter",
+  "verticals": [
+    "business",
+    "students"
+  ],
+  "name": "Developer Naming Convention Converter",
+  "category": "content",
+  "categoryLabel": "Text & Content Tools",
+  "description": "Converts strings between camelCase, PascalCase, snake_case, kebab-case, and CONSTANT_CASE.",
+  "iconName": "Code2",
+  "badge": "New",
+  "keywords": [
+    "camel snake kebab converter",
+    "developer naming convention converter",
+    "text & content tools",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Developer Naming Convention Converter \u2014 QuickForma",
+  "metaDescription": "Free online Developer Naming Convention Converter. Converts strings between camelCase, PascalCase, snake_case, kebab-case, and CONSTANT_CASE. Fast, private, client-side execution."
+},
+{
+  "id": "reading-ease-score-calculator",
+  "verticals": [
+    "business",
+    "students"
+  ],
+  "name": "Flesch-Kincaid & Gunning Fog Score Calculator",
+  "category": "content",
+  "categoryLabel": "Text & Content Tools",
+  "description": "Calculates readability ease score and grade level reading difficulty.",
+  "iconName": "BookOpen",
+  "badge": "New",
+  "keywords": [
+    "reading ease score calculator",
+    "flesch-kincaid & gunning fog score calculator",
+    "text & content tools",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Flesch-Kincaid & Gunning Fog Score Calculator \u2014 QuickForma",
+  "metaDescription": "Free online Flesch-Kincaid & Gunning Fog Score Calculator. Calculates readability ease score and grade level reading difficulty. Fast, private, client-side execution."
+},
+{
+  "id": "meta-description-length-tool",
+  "verticals": [
+    "business",
+    "students"
+  ],
+  "name": "Pixel-Width Search Snippet Truncation Tester",
+  "category": "content",
+  "categoryLabel": "Text & Content Tools",
+  "description": "Measures exact font pixel width for Google title and meta description snippets.",
+  "iconName": "Search",
+  "badge": "New",
+  "keywords": [
+    "meta description length tool",
+    "pixel-width search snippet truncation tester",
+    "text & content tools",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Pixel-Width Search Snippet Truncation Tester \u2014 QuickForma",
+  "metaDescription": "Free online Pixel-Width Search Snippet Truncation Tester. Measures exact font pixel width for Google title and meta description snippets. Fast, private, client-side execution."
+},
+{
+  "id": "quarter-to-semester-gpa-calculator",
+  "verticals": [
+    "students"
+  ],
+  "name": "Quarter Unit to Semester Credit GPA Converter",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Converts academic credits and GPAs between quarter hour and semester hour systems.",
+  "iconName": "GraduationCap",
+  "badge": "New",
+  "keywords": [
+    "quarter to semester gpa calculator",
+    "quarter unit to semester credit gpa converter",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Quarter Unit to Semester Credit GPA Converter \u2014 QuickForma",
+  "metaDescription": "Free online Quarter Unit to Semester Credit GPA Converter. Converts academic credits and GPAs between quarter hour and semester hour systems. Fast, private, client-side execution."
+},
+{
+  "id": "gpa-boost-calculator",
+  "verticals": [
+    "students"
+  ],
+  "name": "Minimum Grade Needed to Raise GPA to Target",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Calculates the exact GPA and course grades required in future terms to hit a target cumulative GPA.",
+  "iconName": "TrendingUp",
+  "badge": "New",
+  "keywords": [
+    "gpa boost calculator",
+    "minimum grade needed to raise gpa to target",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Minimum Grade Needed to Raise GPA to Target \u2014 QuickForma",
+  "metaDescription": "Free online Minimum Grade Needed to Raise GPA to Target. Calculates the exact GPA and course grades required in future terms to hit a target cumulative GPA. Fast, private, client-side execution."
+},
+{
+  "id": "grade-point-average-scale-converter",
+  "verticals": [
+    "students"
+  ],
+  "name": "International 10-Point to 4.0 GPA Converter",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Converts international grading systems (India 10-point CGPA, UK First Class, ECTS) to US 4.0 scale.",
+  "iconName": "Sliders",
+  "badge": "New",
+  "keywords": [
+    "grade point average scale converter",
+    "international 10-point to 4.0 gpa converter",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "International 10-Point to 4.0 GPA Converter \u2014 QuickForma",
+  "metaDescription": "Free online International 10-Point to 4.0 GPA Converter. Converts international grading systems (India 10-point CGPA, UK First Class, ECTS) to US 4.0 scale. Fast, private, client-side execution."
+},
+{
+  "id": "honors-ap-ib-gpa-calculator",
+  "verticals": [
+    "students"
+  ],
+  "name": "AP / IB / Honors Course Grade Weighting Solver",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Calculates custom GPA impact of Advanced Placement (AP), International Baccalaureate (IB), and Honors courses.",
+  "iconName": "Award",
+  "badge": "New",
+  "keywords": [
+    "honors ap ib gpa calculator",
+    "ap / ib / honors course grade weighting solver",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "AP / IB / Honors Course Grade Weighting Solver \u2014 QuickForma",
+  "metaDescription": "Free online AP / IB / Honors Course Grade Weighting Solver. Calculates custom GPA impact of Advanced Placement (AP), International Baccalaureate (IB), and Honors courses. Fast, private, client-side execution."
+},
+{
+  "id": "test-score-percentage-calculator",
+  "verticals": [
+    "students"
+  ],
+  "name": "Raw Quiz / Exam Test Score Percentage Solver",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Converts raw exam points (e.g. 47 out of 58) into percentage, letter grade, and grade points.",
+  "iconName": "Percent",
+  "badge": "New",
+  "keywords": [
+    "test score percentage calculator",
+    "raw quiz / exam test score percentage solver",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Raw Quiz / Exam Test Score Percentage Solver \u2014 QuickForma",
+  "metaDescription": "Free online Raw Quiz / Exam Test Score Percentage Solver. Converts raw exam points (e.g. 47 out of 58) into percentage, letter grade, and grade points. Fast, private, client-side execution."
+},
+{
+  "id": "curved-grade-calculator",
+  "verticals": [
+    "students"
+  ],
+  "name": "Standard Bell Curve & Root Grade Curve Solver",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Calculates curved exam grades using Flat Addition, Root Curve ($\\sqrt{\\text{score}} \\times 10$), or Bell Curve ($Z$-score).",
+  "iconName": "TrendingUp",
+  "badge": "New",
+  "keywords": [
+    "curved grade calculator",
+    "standard bell curve & root grade curve solver",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Standard Bell Curve & Root Grade Curve Solver \u2014 QuickForma",
+  "metaDescription": "Free online Standard Bell Curve & Root Grade Curve Solver. Calculates curved exam grades using Flat Addition, Root Curve ($\\sqrt{\\text{score}} \\times 10$), or Bell Curve ($Z$-score). Fast, private, client-side execution."
+},
+{
+  "id": "assignment-weight-calculator",
+  "verticals": [
+    "students"
+  ],
+  "name": "Individual Category Assignment Grade Weight Solver",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Solves total category contribution when assignments within a category have varying point totals.",
+  "iconName": "BookOpen",
+  "badge": "New",
+  "keywords": [
+    "assignment weight calculator",
+    "individual category assignment grade weight solver",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Individual Category Assignment Grade Weight Solver \u2014 QuickForma",
+  "metaDescription": "Free online Individual Category Assignment Grade Weight Solver. Solves total category contribution when assignments within a category have varying point totals. Fast, private, client-side execution."
+},
+{
+  "id": "study-hours-per-credit-calculator",
+  "verticals": [
+    "students"
+  ],
+  "name": "Credit Hour Workload & Study Hour Estimator",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Calculates recommended weekly out-of-class study hours based on course credit load (2:1 rule).",
+  "iconName": "Clock",
+  "badge": "New",
+  "keywords": [
+    "study hours per credit calculator",
+    "credit hour workload & study hour estimator",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Credit Hour Workload & Study Hour Estimator \u2014 QuickForma",
+  "metaDescription": "Free online Credit Hour Workload & Study Hour Estimator. Calculates recommended weekly out-of-class study hours based on course credit load (2:1 rule). Fast, private, client-side execution."
+},
+{
+  "id": "sat-act-concordance-calculator",
+  "verticals": [
+    "students"
+  ],
+  "name": "SAT to ACT Score Equivalence Converter",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Converts SAT total scores (400\u20131600) to ACT composite scores (1\u201336) using official concordance tables.",
+  "iconName": "ArrowRightLeft",
+  "badge": "New",
+  "keywords": [
+    "sat act concordance calculator",
+    "sat to act score equivalence converter",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "SAT to ACT Score Equivalence Converter \u2014 QuickForma",
+  "metaDescription": "Free online SAT to ACT Score Equivalence Converter. Converts SAT total scores (400\u20131600) to ACT composite scores (1\u201336) using official concordance tables. Fast, private, client-side execution."
+},
+{
+  "id": "transfer-credit-gpa-calculator",
+  "verticals": [
+    "students"
+  ],
+  "name": "Community College Transfer Credit GPA Solver",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Calculates combined transfer GPA when moving credits from community college to a 4-year university.",
+  "iconName": "GraduationCap",
+  "badge": "New",
+  "keywords": [
+    "transfer credit gpa calculator",
+    "community college transfer credit gpa solver",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Community College Transfer Credit GPA Solver \u2014 QuickForma",
+  "metaDescription": "Free online Community College Transfer Credit GPA Solver. Calculates combined transfer GPA when moving credits from community college to a 4-year university. Fast, private, client-side execution."
+},
+{
+  "id": "integral-calculus-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "Definite & Indefinite Integration Solver",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Calculates polynomial, exponential, and trigonometric definite/indefinite integrals with step-by-step logic.",
+  "iconName": "FunctionSquare",
+  "badge": "New",
+  "keywords": [
+    "integral calculus calculator",
+    "definite & indefinite integration solver",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Definite & Indefinite Integration Solver \u2014 QuickForma",
+  "metaDescription": "Free online Definite & Indefinite Integration Solver. Calculates polynomial, exponential, and trigonometric definite/indefinite integrals with step-by-step logic. Fast, private, client-side execution."
+},
+{
+  "id": "matrix-algebra-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "Matrix Addition, Multiplication & Determinant Solver",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Performs $2\\times 2$ and $3\\times 3$ matrix operations, determinant calculation, and matrix inversion.",
+  "iconName": "Grid",
+  "badge": "New",
+  "keywords": [
+    "matrix algebra calculator",
+    "matrix addition, multiplication & determinant solver",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Matrix Addition, Multiplication & Determinant Solver \u2014 QuickForma",
+  "metaDescription": "Free online Matrix Addition, Multiplication & Determinant Solver. Performs $2\\times 2$ and $3\\times 3$ matrix operations, determinant calculation, and matrix inversion. Fast, private, client-side execution."
+},
+{
+  "id": "vector-math-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "Dot Product, Cross Product & Vector Magnitude Solver",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Solves 2D/3D vector addition, magnitude $|\\vec{v}|$, dot product $\\vec{a}\\cdot\\vec{b}$, and cross product $\\vec{a}\\times\\vec{b}$.",
+  "iconName": "Compass",
+  "badge": "New",
+  "keywords": [
+    "vector math calculator",
+    "dot product, cross product & vector magnitude solver",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Dot Product, Cross Product & Vector Magnitude Solver \u2014 QuickForma",
+  "metaDescription": "Free online Dot Product, Cross Product & Vector Magnitude Solver. Solves 2D/3D vector addition, magnitude $|\\vec{v}|$, dot product $\\vec{a}\\cdot\\vec{b}$, and cross product $\\vec{a}\\times\\vec{b}$. Fast, private, client-side execution."
+},
+{
+  "id": "polynomial-roots-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "Polynomial Factoring & Synthetic Division Solver",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Solves polynomial roots, synthetic division, and factors quadratic/cubic expressions.",
+  "iconName": "FunctionSquare",
+  "badge": "New",
+  "keywords": [
+    "polynomial roots calculator",
+    "polynomial factoring & synthetic division solver",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Polynomial Factoring & Synthetic Division Solver \u2014 QuickForma",
+  "metaDescription": "Free online Polynomial Factoring & Synthetic Division Solver. Solves polynomial roots, synthetic division, and factors quadratic/cubic expressions. Fast, private, client-side execution."
+},
+{
+  "id": "system-of-equations-solver",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "3x3 Systems of Linear Equations Solver",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Solves 2-variable and 3-variable systems of linear equations using Cramer's Rule / Gaussian elimination.",
+  "iconName": "GitMerge",
+  "badge": "New",
+  "keywords": [
+    "system of equations solver",
+    "3x3 systems of linear equations solver",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "3x3 Systems of Linear Equations Solver \u2014 QuickForma",
+  "metaDescription": "Free online 3x3 Systems of Linear Equations Solver. Solves 2-variable and 3-variable systems of linear equations using Cramer's Rule / Gaussian elimination. Fast, private, client-side execution."
+},
+{
+  "id": "slope-intercept-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "Line Slope, Y-Intercept & Equation Solver",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Solves line slope $m = \\frac{y_2-y_1}{x_2-x_1}$, point-slope form, and slope-intercept equation $y=mx+b$.",
+  "iconName": "TrendingUp",
+  "badge": "New",
+  "keywords": [
+    "slope intercept calculator",
+    "line slope, y-intercept & equation solver",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Line Slope, Y-Intercept & Equation Solver \u2014 QuickForma",
+  "metaDescription": "Free online Line Slope, Y-Intercept & Equation Solver. Solves line slope $m = \\frac{y_2-y_1}{x_2-x_1}$, point-slope form, and slope-intercept equation $y=mx+b$. Fast, private, client-side execution."
+},
+{
+  "id": "percentage-change-standalone-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "Percentage Change & Percentage Difference Solver",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Dedicated standalone solver for percentage change vs percentage difference calculations.",
+  "iconName": "Percent",
+  "badge": "New",
+  "keywords": [
+    "percentage change standalone calculator",
+    "percentage change & percentage difference solver",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Percentage Change & Percentage Difference Solver \u2014 QuickForma",
+  "metaDescription": "Free online Percentage Change & Percentage Difference Solver. Dedicated standalone solver for percentage change vs percentage difference calculations. Fast, private, client-side execution."
+},
+{
+  "id": "chi-square-calculator",
+  "verticals": [
+    "business",
+    "students"
+  ],
+  "name": "Chi-Square Goodness-of-Fit & Independence Test",
+  "category": "developer",
+  "categoryLabel": "Developer & Web Tools",
+  "description": "Calculates Chi-Square statistic ($\\chi^2$), degrees of freedom, and $p$-value for contingency tables.",
+  "iconName": "BarChart3",
+  "badge": "New",
+  "keywords": [
+    "chi square calculator",
+    "chi-square goodness-of-fit & independence test",
+    "developer & web tools",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Chi-Square Goodness-of-Fit & Independence Test \u2014 QuickForma",
+  "metaDescription": "Free online Chi-Square Goodness-of-Fit & Independence Test. Calculates Chi-Square statistic ($\\chi^2$), degrees of freedom, and $p$-value for contingency tables. Fast, private, client-side execution."
+},
+{
+  "id": "anova-calculator",
+  "verticals": [
+    "business",
+    "students"
+  ],
+  "name": "One-Way & Two-Way ANOVA F-Test Calculator",
+  "category": "developer",
+  "categoryLabel": "Developer & Web Tools",
+  "description": "Computes Analysis of Variance (ANOVA) table, Sum of Squares, Mean Squares, and $F$-statistic.",
+  "iconName": "BarChart2",
+  "badge": "New",
+  "keywords": [
+    "anova calculator",
+    "one-way & two-way anova f-test calculator",
+    "developer & web tools",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "One-Way & Two-Way ANOVA F-Test Calculator \u2014 QuickForma",
+  "metaDescription": "Free online One-Way & Two-Way ANOVA F-Test Calculator. Computes Analysis of Variance (ANOVA) table, Sum of Squares, Mean Squares, and $F$-statistic. Fast, private, client-side execution."
+},
+{
+  "id": "variance-calculator",
+  "verticals": [
+    "business",
+    "students"
+  ],
+  "name": "Sample & Population Variance Standalone Solver",
+  "category": "developer",
+  "categoryLabel": "Developer & Web Tools",
+  "description": "Calculates sample variance ($s^2$) and population variance ($\\sigma^2$) with step-by-step deviation sums.",
+  "iconName": "Activity",
+  "badge": "New",
+  "keywords": [
+    "variance calculator",
+    "sample & population variance standalone solver",
+    "developer & web tools",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Sample & Population Variance Standalone Solver \u2014 QuickForma",
+  "metaDescription": "Free online Sample & Population Variance Standalone Solver. Calculates sample variance ($s^2$) and population variance ($\\sigma^2$) with step-by-step deviation sums. Fast, private, client-side execution."
+},
+{
+  "id": "t-test-calculator",
+  "verticals": [
+    "business",
+    "students"
+  ],
+  "name": "Paired & Unpaired Two-Sample Student's t-Test",
+  "category": "developer",
+  "categoryLabel": "Developer & Web Tools",
+  "description": "Calculates 1-sample, 2-sample independent, and paired $t$-test statistics and $p$-values.",
+  "iconName": "GitCommit",
+  "badge": "New",
+  "keywords": [
+    "t test calculator",
+    "paired & unpaired two-sample student's t-test",
+    "developer & web tools",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Paired & Unpaired Two-Sample Student's t-Test \u2014 QuickForma",
+  "metaDescription": "Free online Paired & Unpaired Two-Sample Student's t-Test. Calculates 1-sample, 2-sample independent, and paired $t$-test statistics and $p$-values. Fast, private, client-side execution."
+},
+{
+  "id": "p-value-calculator",
+  "verticals": [
+    "business",
+    "students"
+  ],
+  "name": "p-Value Calculator from Z, t, F & Chi-Square Statistics",
+  "category": "developer",
+  "categoryLabel": "Developer & Web Tools",
+  "description": "Converts test statistics ($Z, t, F, \\chi^2$) into one-tailed and two-tailed $p$-values.",
+  "iconName": "Percent",
+  "badge": "New",
+  "keywords": [
+    "p value calculator",
+    "p-value calculator from z, t, f & chi-square statistics",
+    "developer & web tools",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "p-Value Calculator from Z, t, F & Chi-Square Statistics \u2014 QuickForma",
+  "metaDescription": "Free online p-Value Calculator from Z, t, F & Chi-Square Statistics. Converts test statistics ($Z, t, F, \\chi^2$) into one-tailed and two-tailed $p$-values. Fast, private, client-side execution."
+},
+{
+  "id": "correlation-coefficient-calculator",
+  "verticals": [
+    "business",
+    "students"
+  ],
+  "name": "Pearson r & Spearman Rank Correlation",
+  "category": "developer",
+  "categoryLabel": "Developer & Web Tools",
+  "description": "Computes Pearson product-moment correlation coefficient $r$ and Spearman rank correlation.",
+  "iconName": "TrendingUp",
+  "badge": "New",
+  "keywords": [
+    "correlation coefficient calculator",
+    "pearson r & spearman rank correlation",
+    "developer & web tools",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Pearson r & Spearman Rank Correlation \u2014 QuickForma",
+  "metaDescription": "Free online Pearson r & Spearman Rank Correlation. Computes Pearson product-moment correlation coefficient $r$ and Spearman rank correlation. Fast, private, client-side execution."
+},
+{
+  "id": "interquartile-range-calculator",
+  "verticals": [
+    "business",
+    "students"
+  ],
+  "name": "IQR, Box Plot Quartiles & Outlier Detector",
+  "category": "developer",
+  "categoryLabel": "Developer & Web Tools",
+  "description": "Solves Q1, Q2 (Median), Q3, Interquartile Range (IQR), and identifies mild/extreme outliers ($1.5 \\times \\text{IQR}$).",
+  "iconName": "Sliders",
+  "badge": "New",
+  "keywords": [
+    "interquartile range calculator",
+    "iqr, box plot quartiles & outlier detector",
+    "developer & web tools",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "IQR, Box Plot Quartiles & Outlier Detector \u2014 QuickForma",
+  "metaDescription": "Free online IQR, Box Plot Quartiles & Outlier Detector. Solves Q1, Q2 (Median), Q3, Interquartile Range (IQR), and identifies mild/extreme outliers ($1.5 \\times \\text{IQR}$). Fast, private, client-side execution."
+},
+{
+  "id": "half-life-calculator",
+  "verticals": [
+    "students"
+  ],
+  "name": "Radioactive & Chemical Half-Life Decay Solver",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Solves remaining quantity $N(t) = N_0 (\\frac{1}{2})^{t/t_{1/2}}$, decay constant $\\lambda$, and elapsed time.",
+  "iconName": "Atom",
+  "badge": "New",
+  "keywords": [
+    "half life calculator",
+    "radioactive & chemical half-life decay solver",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Radioactive & Chemical Half-Life Decay Solver \u2014 QuickForma",
+  "metaDescription": "Free online Radioactive & Chemical Half-Life Decay Solver. Solves remaining quantity $N(t) = N_0 (\\frac{1}{2})^{t/t_{1/2}}$, decay constant $\\lambda$, and elapsed time. Fast, private, client-side execution."
+},
+{
+  "id": "empirical-formula-calculator",
+  "verticals": [
+    "students"
+  ],
+  "name": "Empirical & Molecular Formula Solver",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Converts percent element composition by mass into simplest empirical formula and molecular formula.",
+  "iconName": "FlaskConical",
+  "badge": "New",
+  "keywords": [
+    "empirical formula calculator",
+    "empirical & molecular formula solver",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Empirical & Molecular Formula Solver \u2014 QuickForma",
+  "metaDescription": "Free online Empirical & Molecular Formula Solver. Converts percent element composition by mass into simplest empirical formula and molecular formula. Fast, private, client-side execution."
+},
+{
+  "id": "thermodynamics-gibbs-calculator",
+  "verticals": [
+    "students"
+  ],
+  "name": "Gibbs Free Energy $\\Delta G = \\Delta H - T\\Delta S$",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Solves enthalpy, entropy, temperature, and reaction spontaneity ($\\Delta G < 0$).",
+  "iconName": "Flame",
+  "badge": "New",
+  "keywords": [
+    "thermodynamics gibbs calculator",
+    "gibbs free energy $\\delta g = \\delta h - t\\delta s$",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Gibbs Free Energy $\\Delta G = \\Delta H - T\\Delta S$ \u2014 QuickForma",
+  "metaDescription": "Free online Gibbs Free Energy $\\Delta G = \\Delta H - T\\Delta S$. Solves enthalpy, entropy, temperature, and reaction spontaneity ($\\Delta G < 0$). Fast, private, client-side execution."
+},
+{
+  "id": "solution-concentration-converter",
+  "verticals": [
+    "students"
+  ],
+  "name": "Molarity, Molality & Mass Percent Converter",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Converts solution concentrations between Molarity ($M$), Molality ($m$), Mass %, and Mole Fraction.",
+  "iconName": "Droplet",
+  "badge": "New",
+  "keywords": [
+    "solution concentration converter",
+    "molarity, molality & mass percent converter",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Molarity, Molality & Mass Percent Converter \u2014 QuickForma",
+  "metaDescription": "Free online Molarity, Molality & Mass Percent Converter. Converts solution concentrations between Molarity ($M$), Molality ($m$), Mass %, and Mole Fraction. Fast, private, client-side execution."
+},
+{
+  "id": "gravitational-force-calculator",
+  "verticals": [
+    "business",
+    "students"
+  ],
+  "name": "Newton's Law of Universal Gravitation Solver",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Solves gravitational force $F = G \\frac{m_1 m_2}{r^2}$ between celestial bodies or masses.",
+  "iconName": "Orbit",
+  "badge": "New",
+  "keywords": [
+    "gravitational force calculator",
+    "newton's law of universal gravitation solver",
+    "operations & manufacturing",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Newton's Law of Universal Gravitation Solver \u2014 QuickForma",
+  "metaDescription": "Free online Newton's Law of Universal Gravitation Solver. Solves gravitational force $F = G \\frac{m_1 m_2}{r^2}$ between celestial bodies or masses. Fast, private, client-side execution."
+},
+{
+  "id": "centripetal-force-calculator",
+  "verticals": [
+    "business",
+    "students"
+  ],
+  "name": "Circular Motion & Centripetal Acceleration Solver",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Solves centripetal acceleration $a_c = \\frac{v^2}{r}$ and centripetal force $F_c = \\frac{m v^2}{r}$.",
+  "iconName": "RotateCw",
+  "badge": "New",
+  "keywords": [
+    "centripetal force calculator",
+    "circular motion & centripetal acceleration solver",
+    "operations & manufacturing",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Circular Motion & Centripetal Acceleration Solver \u2014 QuickForma",
+  "metaDescription": "Free online Circular Motion & Centripetal Acceleration Solver. Solves centripetal acceleration $a_c = \\frac{v^2}{r}$ and centripetal force $F_c = \\frac{m v^2}{r}$. Fast, private, client-side execution."
+},
+{
+  "id": "heat-transfer-calorimetry-calculator",
+  "verticals": [
+    "business",
+    "students"
+  ],
+  "name": "Specific Heat Capacity $Q = mc\\Delta T$ Solver",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Solves heat transfer $Q = m c \\Delta T$, latent heat of fusion/vaporization ($Q = m L$), and final mixture temperature.",
+  "iconName": "Flame",
+  "badge": "New",
+  "keywords": [
+    "heat transfer calorimetry calculator",
+    "specific heat capacity $q = mc\\delta t$ solver",
+    "operations & manufacturing",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Specific Heat Capacity $Q = mc\\Delta T$ Solver \u2014 QuickForma",
+  "metaDescription": "Free online Specific Heat Capacity $Q = mc\\Delta T$ Solver. Solves heat transfer $Q = m c \\Delta T$, latent heat of fusion/vaporization ($Q = m L$), and final mixture temperature. Fast, private, client-side execution."
+},
+{
+  "id": "spaced-repetition-scheduler",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "SuperMemo SM-2 Flashcard Revision Scheduler",
+  "category": "productivity",
+  "categoryLabel": "Productivity & Daily",
+  "description": "Calculates optimal flashcard review intervals based on SuperMemo SM-2 spaced repetition algorithm.",
+  "iconName": "Brain",
+  "badge": "New",
+  "keywords": [
+    "spaced repetition scheduler",
+    "supermemo sm-2 flashcard revision scheduler",
+    "productivity & daily",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "SuperMemo SM-2 Flashcard Revision Scheduler \u2014 QuickForma",
+  "metaDescription": "Free online SuperMemo SM-2 Flashcard Revision Scheduler. Calculates optimal flashcard review intervals based on SuperMemo SM-2 spaced repetition algorithm. Fast, private, client-side execution."
+},
+{
+  "id": "plagiarism-similarity-score-tool",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "Text Matching & Similarity Ratio Calculator",
+  "category": "productivity",
+  "categoryLabel": "Productivity & Daily",
+  "description": "Compares two text documents client-side using Levenshtein distance and Jaccard index similarity %.",
+  "iconName": "FileSearch",
+  "badge": "New",
+  "keywords": [
+    "plagiarism similarity score tool",
+    "text matching & similarity ratio calculator",
+    "productivity & daily",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Text Matching & Similarity Ratio Calculator \u2014 QuickForma",
+  "metaDescription": "Free online Text Matching & Similarity Ratio Calculator. Compares two text documents client-side using Levenshtein distance and Jaccard index similarity %. Fast, private, client-side execution."
+},
+{
+  "id": "homework-time-estimator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "Daily Assignment & Reading Workload Estimator",
+  "category": "productivity",
+  "categoryLabel": "Productivity & Daily",
+  "description": "Estimates total nightly homework completion time based on page counts, problem set difficulty, and reading speed.",
+  "iconName": "Clock",
+  "badge": "New",
+  "keywords": [
+    "homework time estimator",
+    "daily assignment & reading workload estimator",
+    "productivity & daily",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Daily Assignment & Reading Workload Estimator \u2014 QuickForma",
+  "metaDescription": "Free online Daily Assignment & Reading Workload Estimator. Estimates total nightly homework completion time based on page counts, problem set difficulty, and reading speed. Fast, private, client-side execution."
+},
+{
+  "id": "typing-speed-wpm-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "Words Per Minute & Accuracy Test Tool",
+  "category": "productivity",
+  "categoryLabel": "Productivity & Daily",
+  "description": "Tests typing speed in net Words Per Minute (WPM) and accuracy percentage over 1-minute to 5-minute tests.",
+  "iconName": "Keyboard",
+  "badge": "New",
+  "keywords": [
+    "typing speed wpm calculator",
+    "words per minute & accuracy test tool",
+    "productivity & daily",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Words Per Minute & Accuracy Test Tool \u2014 QuickForma",
+  "metaDescription": "Free online Words Per Minute & Accuracy Test Tool. Tests typing speed in net Words Per Minute (WPM) and accuracy percentage over 1-minute to 5-minute tests. Fast, private, client-side execution."
+},
+{
+  "id": "walmart-marketplace-fee-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Walmart Seller Referral Fee & Profit Solver",
+  "category": "ecommerce",
+  "categoryLabel": "Ecommerce & Operations",
+  "description": "Calculates Walmart Marketplace referral fees by product category and net seller payout.",
+  "iconName": "ShoppingBag",
+  "badge": "New",
+  "keywords": [
+    "walmart marketplace fee calculator",
+    "walmart seller referral fee & profit solver",
+    "ecommerce & operations",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Walmart Seller Referral Fee & Profit Solver \u2014 QuickForma",
+  "metaDescription": "Free online Walmart Seller Referral Fee & Profit Solver. Calculates Walmart Marketplace referral fees by product category and net seller payout. Fast, private, client-side execution."
+},
+{
+  "id": "google-shopping-roas-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Google Performance Max ROAS & Margin Solver",
+  "category": "ecommerce",
+  "categoryLabel": "Ecommerce & Operations",
+  "description": "Calculates Google Shopping ad spend, cost per click, product margin, and break-even ROAS.",
+  "iconName": "Target",
+  "badge": "New",
+  "keywords": [
+    "google shopping roas calculator",
+    "google performance max roas & margin solver",
+    "ecommerce & operations",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Google Performance Max ROAS & Margin Solver \u2014 QuickForma",
+  "metaDescription": "Free online Google Performance Max ROAS & Margin Solver. Calculates Google Shopping ad spend, cost per click, product margin, and break-even ROAS. Fast, private, client-side execution."
+},
+{
+  "id": "product-bundle-pricing-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Kit Bundling & Tiered Volume Discount Pricing",
+  "category": "ecommerce",
+  "categoryLabel": "Ecommerce & Operations",
+  "description": "Calculates optimal bundle discount pricing, product kitting margins, and contribution profit.",
+  "iconName": "Package",
+  "badge": "New",
+  "keywords": [
+    "product bundle pricing calculator",
+    "kit bundling & tiered volume discount pricing",
+    "ecommerce & operations",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Kit Bundling & Tiered Volume Discount Pricing \u2014 QuickForma",
+  "metaDescription": "Free online Kit Bundling & Tiered Volume Discount Pricing. Calculates optimal bundle discount pricing, product kitting margins, and contribution profit. Fast, private, client-side execution."
+},
+{
+  "id": "inventory-turnover-ratio-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Inventory Velocity, DSI & GMROI Solver",
+  "category": "ecommerce",
+  "categoryLabel": "Ecommerce & Operations",
+  "description": "Measures Inventory Turnover Ratio, Days Sales of Inventory (DSI), and Gross Margin Return on Inventory (GMROI).",
+  "iconName": "RefreshCw",
+  "badge": "New",
+  "keywords": [
+    "inventory turnover ratio calculator",
+    "inventory velocity, dsi & gmroi solver",
+    "ecommerce & operations",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Inventory Velocity, DSI & GMROI Solver \u2014 QuickForma",
+  "metaDescription": "Free online Inventory Velocity, DSI & GMROI Solver. Measures Inventory Turnover Ratio, Days Sales of Inventory (DSI), and Gross Margin Return on Inventory (GMROI). Fast, private, client-side execution."
+},
+{
+  "id": "free-shipping-threshold-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Free Shipping Order Value Threshold Solver",
+  "category": "ecommerce",
+  "categoryLabel": "Ecommerce & Operations",
+  "description": "Solves optimal minimum order value threshold ($AOV$) to offer free shipping profitably.",
+  "iconName": "Truck",
+  "badge": "New",
+  "keywords": [
+    "free shipping threshold calculator",
+    "free shipping order value threshold solver",
+    "ecommerce & operations",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Free Shipping Order Value Threshold Solver \u2014 QuickForma",
+  "metaDescription": "Free online Free Shipping Order Value Threshold Solver. Solves optimal minimum order value threshold ($AOV$) to offer free shipping profitably. Fast, private, client-side execution."
+},
+{
+  "id": "dropshipping-profit-margin-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "AliExpress/CJDropshipping Net Margin Solver",
+  "category": "ecommerce",
+  "categoryLabel": "Ecommerce & Operations",
+  "description": "Calculates dropshipping net profit after supplier cost, ePacket shipping, ad spend, and gateway fees.",
+  "iconName": "Package",
+  "badge": "New",
+  "keywords": [
+    "dropshipping profit margin calculator",
+    "aliexpress/cjdropshipping net margin solver",
+    "ecommerce & operations",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "AliExpress/CJDropshipping Net Margin Solver \u2014 QuickForma",
+  "metaDescription": "Free online AliExpress/CJDropshipping Net Margin Solver. Calculates dropshipping net profit after supplier cost, ePacket shipping, ad spend, and gateway fees. Fast, private, client-side execution."
+},
+{
+  "id": "abandoned-cart-recovery-roi-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Cart Abandonment Email Recovery Revenue",
+  "category": "ecommerce",
+  "categoryLabel": "Ecommerce & Operations",
+  "description": "Calculates recovered revenue from automated abandoned cart email and SMS recovery sequences.",
+  "iconName": "ShoppingCart",
+  "badge": "New",
+  "keywords": [
+    "abandoned cart recovery roi calculator",
+    "cart abandonment email recovery revenue",
+    "ecommerce & operations",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Cart Abandonment Email Recovery Revenue \u2014 QuickForma",
+  "metaDescription": "Free online Cart Abandonment Email Recovery Revenue. Calculates recovered revenue from automated abandoned cart email and SMS recovery sequences. Fast, private, client-side execution."
+},
+{
+  "id": "sku-profitability-analyzer",
+  "verticals": [
+    "business"
+  ],
+  "name": "SKU ABC Analysis & Contribution Margin Solver",
+  "category": "ecommerce",
+  "categoryLabel": "Ecommerce & Operations",
+  "description": "Classifies product catalog into A (top 80% revenue), B (15%), and C (5%) performance tiers.",
+  "iconName": "BarChart3",
+  "badge": "New",
+  "keywords": [
+    "sku profitability analyzer",
+    "sku abc analysis & contribution margin solver",
+    "ecommerce & operations",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "SKU ABC Analysis & Contribution Margin Solver \u2014 QuickForma",
+  "metaDescription": "Free online SKU ABC Analysis & Contribution Margin Solver. Classifies product catalog into A (top 80% revenue), B (15%), and C (5%) performance tiers. Fast, private, client-side execution."
+},
+{
+  "id": "fulfillment-cost-per-order-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "3PL Pick, Pack, Storage & Shipping Solver",
+  "category": "ecommerce",
+  "categoryLabel": "Ecommerce & Operations",
+  "description": "Calculates total 3PL order fulfillment cost including pick/pack fees, box costs, and carrier postage.",
+  "iconName": "Truck",
+  "badge": "New",
+  "keywords": [
+    "fulfillment cost per order calculator",
+    "3pl pick, pack, storage & shipping solver",
+    "ecommerce & operations",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "3PL Pick, Pack, Storage & Shipping Solver \u2014 QuickForma",
+  "metaDescription": "Free online 3PL Pick, Pack, Storage & Shipping Solver. Calculates total 3PL order fulfillment cost including pick/pack fees, box costs, and carrier postage. Fast, private, client-side execution."
+},
+{
+  "id": "cap-table-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Capitalization Table & Equity Dilution Solver",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Simulates SAFE notes, convertible debt, option pools, and investor round dilution.",
+  "iconName": "PieChart",
+  "badge": "New",
+  "keywords": [
+    "cap table calculator",
+    "capitalization table & equity dilution solver",
+    "financial calculators",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Capitalization Table & Equity Dilution Solver \u2014 QuickForma",
+  "metaDescription": "Free online Capitalization Table & Equity Dilution Solver. Simulates SAFE notes, convertible debt, option pools, and investor round dilution. Fast, private, client-side execution."
+},
+{
+  "id": "business-valuation-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Business Valuation Multiple Calculator",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Estimates enterprise value based on SDE, EBITDA, and industry revenue multiples.",
+  "iconName": "TrendingUp",
+  "badge": "New",
+  "keywords": [
+    "business valuation calculator",
+    "business valuation multiple calculator",
+    "financial calculators",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Business Valuation Multiple Calculator \u2014 QuickForma",
+  "metaDescription": "Free online Business Valuation Multiple Calculator. Estimates enterprise value based on SDE, EBITDA, and industry revenue multiples. Fast, private, client-side execution."
+},
+{
+  "id": "lease-vs-buy-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Commercial Lease vs Buy NPV Calculator",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "NPV decision model for leasing vs purchasing commercial office/warehouse space.",
+  "iconName": "Scale",
+  "badge": "New",
+  "keywords": [
+    "lease vs buy calculator",
+    "commercial lease vs buy npv calculator",
+    "financial calculators",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Commercial Lease vs Buy NPV Calculator \u2014 QuickForma",
+  "metaDescription": "Free online Commercial Lease vs Buy NPV Calculator. NPV decision model for leasing vs purchasing commercial office/warehouse space. Fast, private, client-side execution."
+},
+{
+  "id": "invoice-factoring-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Invoice Factoring & Discount Rate Calculator",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Calculates effective APR and net proceeds from factoring receivables.",
+  "iconName": "FileText",
+  "badge": "New",
+  "keywords": [
+    "invoice factoring calculator",
+    "invoice factoring & discount rate calculator",
+    "financial calculators",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Invoice Factoring & Discount Rate Calculator \u2014 QuickForma",
+  "metaDescription": "Free online Invoice Factoring & Discount Rate Calculator. Calculates effective APR and net proceeds from factoring receivables. Fast, private, client-side execution."
+},
+{
+  "id": "operating-leverage-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Degree of Operating Leverage (DOL) Calculator",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Measures business earnings sensitivity to percentage changes in sales revenue.",
+  "iconName": "Sliders",
+  "badge": "New",
+  "keywords": [
+    "operating leverage calculator",
+    "degree of operating leverage (dol) calculator",
+    "financial calculators",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Degree of Operating Leverage (DOL) Calculator \u2014 QuickForma",
+  "metaDescription": "Free online Degree of Operating Leverage (DOL) Calculator. Measures business earnings sensitivity to percentage changes in sales revenue. Fast, private, client-side execution."
+},
+{
+  "id": "net-promoter-score-roi-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "NPS Impact & Retention Revenue Calculator",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Models financial impact of Net Promoter Score improvements on churn reduction.",
+  "iconName": "Target",
+  "badge": "New",
+  "keywords": [
+    "net promoter score roi calculator",
+    "nps impact & retention revenue calculator",
+    "financial calculators",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "NPS Impact & Retention Revenue Calculator \u2014 QuickForma",
+  "metaDescription": "Free online NPS Impact & Retention Revenue Calculator. Models financial impact of Net Promoter Score improvements on churn reduction. Fast, private, client-side execution."
+},
+{
+  "id": "equipment-lease-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Equipment Lease Payment & Buyout Calculator",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Compares Fair Market Value (FMV) vs $1 Buyout equipment lease financing options.",
+  "iconName": "Building",
+  "badge": "New",
+  "keywords": [
+    "equipment lease calculator",
+    "equipment lease payment & buyout calculator",
+    "financial calculators",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Equipment Lease Payment & Buyout Calculator \u2014 QuickForma",
+  "metaDescription": "Free online Equipment Lease Payment & Buyout Calculator. Compares Fair Market Value (FMV) vs $1 Buyout equipment lease financing options. Fast, private, client-side execution."
+},
+{
+  "id": "franchise-fee-roi-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Franchise Total Investment & Royalty ROI",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Solves total franchise startup costs, ongoing royalty fees, and payback horizon.",
+  "iconName": "Building2",
+  "badge": "New",
+  "keywords": [
+    "franchise fee roi calculator",
+    "franchise total investment & royalty roi",
+    "financial calculators",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Franchise Total Investment & Royalty ROI \u2014 QuickForma",
+  "metaDescription": "Free online Franchise Total Investment & Royalty ROI. Solves total franchise startup costs, ongoing royalty fees, and payback horizon. Fast, private, client-side execution."
+},
+{
+  "id": "deferred-revenue-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "SaaS Deferred Revenue & ASC 606 Schedule",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Generates monthly ratable revenue recognition schedules for annual prepaid plans.",
+  "iconName": "Calendar",
+  "badge": "New",
+  "keywords": [
+    "deferred revenue calculator",
+    "saas deferred revenue & asc 606 schedule",
+    "financial calculators",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "SaaS Deferred Revenue & ASC 606 Schedule \u2014 QuickForma",
+  "metaDescription": "Free online SaaS Deferred Revenue & ASC 606 Schedule. Generates monthly ratable revenue recognition schedules for annual prepaid plans. Fast, private, client-side execution."
+},
+{
+  "id": "bad-debt-allowance-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Allowance for Doubtful Accounts Estimator",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Estimates bad debt reserve using aging schedule percentages.",
+  "iconName": "AlertCircle",
+  "badge": "New",
+  "keywords": [
+    "bad debt allowance calculator",
+    "allowance for doubtful accounts estimator",
+    "financial calculators",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Allowance for Doubtful Accounts Estimator \u2014 QuickForma",
+  "metaDescription": "Free online Allowance for Doubtful Accounts Estimator. Estimates bad debt reserve using aging schedule percentages. Fast, private, client-side execution."
+},
+{
+  "id": "revenue-per-employee-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Labor Productivity & Revenue Per FTE Solver",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Evaluates employee productivity and revenue output per Full-Time Equivalent.",
+  "iconName": "Users",
+  "badge": "New",
+  "keywords": [
+    "revenue per employee calculator",
+    "labor productivity & revenue per fte solver",
+    "financial calculators",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Labor Productivity & Revenue Per FTE Solver \u2014 QuickForma",
+  "metaDescription": "Free online Labor Productivity & Revenue Per FTE Solver. Evaluates employee productivity and revenue output per Full-Time Equivalent. Fast, private, client-side execution."
+},
+{
+  "id": "asset-turnover-ratio-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Total Asset Turnover Ratio Calculator",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Evaluates revenue efficiency generated per dollar of total balance sheet assets.",
+  "iconName": "RotateCw",
+  "badge": "New",
+  "keywords": [
+    "asset turnover ratio calculator",
+    "total asset turnover ratio calculator",
+    "financial calculators",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Total Asset Turnover Ratio Calculator \u2014 QuickForma",
+  "metaDescription": "Free online Total Asset Turnover Ratio Calculator. Evaluates revenue efficiency generated per dollar of total balance sheet assets. Fast, private, client-side execution."
+},
+{
+  "id": "solvency-ratio-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Debt-to-Equity & Interest Coverage Ratio",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Solves long-term financial leverage and EBIT interest coverage capability.",
+  "iconName": "ShieldCheck",
+  "badge": "New",
+  "keywords": [
+    "solvency ratio calculator",
+    "debt-to-equity & interest coverage ratio",
+    "financial calculators",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Debt-to-Equity & Interest Coverage Ratio \u2014 QuickForma",
+  "metaDescription": "Free online Debt-to-Equity & Interest Coverage Ratio. Solves long-term financial leverage and EBIT interest coverage capability. Fast, private, client-side execution."
+},
+{
+  "id": "dupont-analysis-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "DuPont 3-Step & 5-Step ROE Breakdown",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Decomposes Return on Equity into profit margin, asset turnover, and financial leverage.",
+  "iconName": "GitMerge",
+  "badge": "New",
+  "keywords": [
+    "dupont analysis calculator",
+    "dupont 3-step & 5-step roe breakdown",
+    "financial calculators",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "DuPont 3-Step & 5-Step ROE Breakdown \u2014 QuickForma",
+  "metaDescription": "Free online DuPont 3-Step & 5-Step ROE Breakdown. Decomposes Return on Equity into profit margin, asset turnover, and financial leverage. Fast, private, client-side execution."
+},
+{
+  "id": "dividend-yield-payout-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Dividend Yield & Payout Ratio Calculator",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Solves annual dividend yield % and net income payout coverage.",
+  "iconName": "DollarSign",
+  "badge": "New",
+  "keywords": [
+    "dividend yield payout calculator",
+    "dividend yield & payout ratio calculator",
+    "financial calculators",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Dividend Yield & Payout Ratio Calculator \u2014 QuickForma",
+  "metaDescription": "Free online Dividend Yield & Payout Ratio Calculator. Solves annual dividend yield % and net income payout coverage. Fast, private, client-side execution."
+},
+{
+  "id": "economic-value-added-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Economic Value Added (EVA) Calculator",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Measures true economic profit: NOPAT minus capital cost multiplied by capital employed.",
+  "iconName": "TrendingUp",
+  "badge": "New",
+  "keywords": [
+    "economic value added calculator",
+    "economic value added (eva) calculator",
+    "financial calculators",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Economic Value Added (EVA) Calculator \u2014 QuickForma",
+  "metaDescription": "Free online Economic Value Added (EVA) Calculator. Measures true economic profit: NOPAT minus capital cost multiplied by capital employed. Fast, private, client-side execution."
+},
+{
+  "id": "capital-budgeting-payback-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Capital Expenditure (CapEx) ROI Solver",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Evaluates factory equipment and asset replacement capital expenditure decisions.",
+  "iconName": "Clock",
+  "badge": "New",
+  "keywords": [
+    "capital budgeting payback calculator",
+    "capital expenditure (capex) roi solver",
+    "financial calculators",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Capital Expenditure (CapEx) ROI Solver \u2014 QuickForma",
+  "metaDescription": "Free online Capital Expenditure (CapEx) ROI Solver. Evaluates factory equipment and asset replacement capital expenditure decisions. Fast, private, client-side execution."
+},
+{
+  "id": "marginal-cost-revenue-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Marginal Cost vs Marginal Revenue Solver",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Solves profit-maximizing production output where Marginal Cost equals Marginal Revenue.",
+  "iconName": "BarChart3",
+  "badge": "New",
+  "keywords": [
+    "marginal cost revenue calculator",
+    "marginal cost vs marginal revenue solver",
+    "financial calculators",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Marginal Cost vs Marginal Revenue Solver \u2014 QuickForma",
+  "metaDescription": "Free online Marginal Cost vs Marginal Revenue Solver. Solves profit-maximizing production output where Marginal Cost equals Marginal Revenue. Fast, private, client-side execution."
+},
+{
+  "id": "operating-cash-flow-to-sales-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "OCF Margin & Operating Cash Flow Ratio",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Measures cash flow coverage of sales revenue and current liabilities.",
+  "iconName": "Activity",
+  "badge": "New",
+  "keywords": [
+    "operating cash flow to sales calculator",
+    "ocf margin & operating cash flow ratio",
+    "financial calculators",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "OCF Margin & Operating Cash Flow Ratio \u2014 QuickForma",
+  "metaDescription": "Free online OCF Margin & Operating Cash Flow Ratio. Measures cash flow coverage of sales revenue and current liabilities. Fast, private, client-side execution."
+},
+{
+  "id": "rule-of-thumb-valuation-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Small Business SDE Valuation Multiplier Solver",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Estimates small business sale price based on Seller's Discretionary Earnings (SDE).",
+  "iconName": "Calculator",
+  "badge": "New",
+  "keywords": [
+    "rule of thumb valuation calculator",
+    "small business sde valuation multiplier solver",
+    "financial calculators",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Small Business SDE Valuation Multiplier Solver \u2014 QuickForma",
+  "metaDescription": "Free online Small Business SDE Valuation Multiplier Solver. Estimates small business sale price based on Seller's Discretionary Earnings (SDE). Fast, private, client-side execution."
+},
+{
+  "id": "operating-expense-ratio-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Operating Expense Ratio (OER) Solver",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Measures operating expenses as a percentage of total net sales revenue.",
+  "iconName": "Building",
+  "badge": "New",
+  "keywords": [
+    "operating expense ratio calculator",
+    "operating expense ratio (oer) solver",
+    "financial calculators",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Operating Expense Ratio (OER) Solver \u2014 QuickForma",
+  "metaDescription": "Free online Operating Expense Ratio (OER) Solver. Measures operating expenses as a percentage of total net sales revenue. Fast, private, client-side execution."
+},
+{
+  "id": "roce-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Return on Capital Employed (ROCE) Solver",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Measures company profitability and efficiency of capital allocation.",
+  "iconName": "Percent",
+  "badge": "New",
+  "keywords": [
+    "roce calculator",
+    "return on capital employed (roce) solver",
+    "financial calculators",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Return on Capital Employed (ROCE) Solver \u2014 QuickForma",
+  "metaDescription": "Free online Return on Capital Employed (ROCE) Solver. Measures company profitability and efficiency of capital allocation. Fast, private, client-side execution."
+},
+{
+  "id": "statement-of-work-generator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Statement of Work (SOW) Scope Generator",
+  "category": "business",
+  "categoryLabel": "Business & Legal Docs",
+  "description": "Formats agency and consulting SOWs with project deliverables, milestones, and sign-offs.",
+  "iconName": "FileText",
+  "badge": "New",
+  "keywords": [
+    "statement of work generator",
+    "statement of work (sow) scope generator",
+    "business & legal docs",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Statement of Work (SOW) Scope Generator \u2014 QuickForma",
+  "metaDescription": "Free online Statement of Work (SOW) Scope Generator. Formats agency and consulting SOWs with project deliverables, milestones, and sign-offs. Fast, private, client-side execution."
+},
+{
+  "id": "debit-note-generator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Vendor Debit Note Generator",
+  "category": "business",
+  "categoryLabel": "Business & Legal Docs",
+  "description": "Generates vendor debit notes for defective goods, short shipments, or price adjustments.",
+  "iconName": "Receipt",
+  "badge": "New",
+  "keywords": [
+    "debit note generator",
+    "vendor debit note generator",
+    "business & legal docs",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Vendor Debit Note Generator \u2014 QuickForma",
+  "metaDescription": "Free online Vendor Debit Note Generator. Generates vendor debit notes for defective goods, short shipments, or price adjustments. Fast, private, client-side execution."
+},
+{
+  "id": "service-level-agreement-generator",
+  "verticals": [
+    "business"
+  ],
+  "name": "SLA Terms & Uptime SLA Builder",
+  "category": "business",
+  "categoryLabel": "Business & Legal Docs",
+  "description": "B2B SaaS agreement builder for uptime targets, support response times, and service credits.",
+  "iconName": "Shield",
+  "badge": "New",
+  "keywords": [
+    "service level agreement generator",
+    "sla terms & uptime sla builder",
+    "business & legal docs",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "SLA Terms & Uptime SLA Builder \u2014 QuickForma",
+  "metaDescription": "Free online SLA Terms & Uptime SLA Builder. B2B SaaS agreement builder for uptime targets, support response times, and service credits. Fast, private, client-side execution."
+},
+{
+  "id": "termination-letter-generator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Employee Separation & Termination Notice",
+  "category": "business",
+  "categoryLabel": "Business & Legal Docs",
+  "description": "HR letter generator for employment termination, final paycheck details, and benefit continuation.",
+  "iconName": "FileX",
+  "badge": "New",
+  "keywords": [
+    "termination letter generator",
+    "employee separation & termination notice",
+    "business & legal docs",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Employee Separation & Termination Notice \u2014 QuickForma",
+  "metaDescription": "Free online Employee Separation & Termination Notice. HR letter generator for employment termination, final paycheck details, and benefit continuation. Fast, private, client-side execution."
+},
+{
+  "id": "subcontractor-agreement-generator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Subcontractor Service Agreement Generator",
+  "category": "business",
+  "categoryLabel": "Business & Legal Docs",
+  "description": "Construction and IT subcontractor agreement with scope, insurance requirements, and indemnification.",
+  "iconName": "Briefcase",
+  "badge": "New",
+  "keywords": [
+    "subcontractor agreement generator",
+    "subcontractor service agreement generator",
+    "business & legal docs",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Subcontractor Service Agreement Generator \u2014 QuickForma",
+  "metaDescription": "Free online Subcontractor Service Agreement Generator. Construction and IT subcontractor agreement with scope, insurance requirements, and indemnification. Fast, private, client-side execution."
+},
+{
+  "id": "commercial-lease-summary-generator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Commercial Lease Abstract Summary Sheet",
+  "category": "business",
+  "categoryLabel": "Business & Legal Docs",
+  "description": "Summarizes commercial lease terms, escalation clauses, rent schedules, and renewal options.",
+  "iconName": "Building",
+  "badge": "New",
+  "keywords": [
+    "commercial lease summary generator",
+    "commercial lease abstract summary sheet",
+    "business & legal docs",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Commercial Lease Abstract Summary Sheet \u2014 QuickForma",
+  "metaDescription": "Free online Commercial Lease Abstract Summary Sheet. Summarizes commercial lease terms, escalation clauses, rent schedules, and renewal options. Fast, private, client-side execution."
+},
+{
+  "id": "certificate-of-completion-generator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Project Acceptance & Sign-off Certificate",
+  "category": "business",
+  "categoryLabel": "Business & Legal Docs",
+  "description": "Client project sign-off document confirming acceptance of deliverables and final billing release.",
+  "iconName": "Award",
+  "badge": "New",
+  "keywords": [
+    "certificate of completion generator",
+    "project acceptance & sign-off certificate",
+    "business & legal docs",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Project Acceptance & Sign-off Certificate \u2014 QuickForma",
+  "metaDescription": "Free online Project Acceptance & Sign-off Certificate. Client project sign-off document confirming acceptance of deliverables and final billing release. Fast, private, client-side execution."
+},
+{
+  "id": "privacy-policy-template-generator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Basic Business Privacy Notice Generator",
+  "category": "business",
+  "categoryLabel": "Business & Legal Docs",
+  "description": "Client-side privacy policy template generator for small business websites and online stores.",
+  "iconName": "Lock",
+  "badge": "New",
+  "keywords": [
+    "privacy policy template generator",
+    "basic business privacy notice generator",
+    "business & legal docs",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Basic Business Privacy Notice Generator \u2014 QuickForma",
+  "metaDescription": "Free online Basic Business Privacy Notice Generator. Client-side privacy policy template generator for small business websites and online stores. Fast, private, client-side execution."
+},
+{
+  "id": "terms-of-service-generator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Website & SaaS Terms of Service Builder",
+  "category": "business",
+  "categoryLabel": "Business & Legal Docs",
+  "description": "Standard terms of service agreement builder outlining user rules, liability limits, and governing law.",
+  "iconName": "Scale",
+  "badge": "New",
+  "keywords": [
+    "terms of service generator",
+    "website & saas terms of service builder",
+    "business & legal docs",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Website & SaaS Terms of Service Builder \u2014 QuickForma",
+  "metaDescription": "Free online Website & SaaS Terms of Service Builder. Standard terms of service agreement builder outlining user rules, liability limits, and governing law. Fast, private, client-side execution."
+},
+{
+  "id": "incident-report-generator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Workplace Incident & Safety Report PDF",
+  "category": "business",
+  "categoryLabel": "Business & Legal Docs",
+  "description": "HR and OSHA workplace injury/incident documentation builder.",
+  "iconName": "AlertTriangle",
+  "badge": "New",
+  "keywords": [
+    "incident report generator",
+    "workplace incident & safety report pdf",
+    "business & legal docs",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Workplace Incident & Safety Report PDF \u2014 QuickForma",
+  "metaDescription": "Free online Workplace Incident & Safety Report PDF. HR and OSHA workplace injury/incident documentation builder. Fast, private, client-side execution."
+},
+{
+  "id": "memorandum-of-understanding-generator",
+  "verticals": [
+    "business"
+  ],
+  "name": "MOU Partnership Agreement Generator",
+  "category": "business",
+  "categoryLabel": "Business & Legal Docs",
+  "description": "Non-binding Memorandum of Understanding generator for strategic business partnerships.",
+  "iconName": "Handshake",
+  "badge": "New",
+  "keywords": [
+    "memorandum of understanding generator",
+    "mou partnership agreement generator",
+    "business & legal docs",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "MOU Partnership Agreement Generator \u2014 QuickForma",
+  "metaDescription": "Free online MOU Partnership Agreement Generator. Non-binding Memorandum of Understanding generator for strategic business partnerships. Fast, private, client-side execution."
+},
+{
+  "id": "html-entity-encoder",
+  "verticals": [
+    "business"
+  ],
+  "name": "HTML Entity Encoder & Escaper",
+  "category": "developer",
+  "categoryLabel": "Developer & Web Tools",
+  "description": "Encodes special HTML characters into entities and decodes escaped HTML strings.",
+  "iconName": "Code2",
+  "badge": "New",
+  "keywords": [
+    "html entity encoder",
+    "html entity encoder & escaper",
+    "developer & web tools",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "HTML Entity Encoder & Escaper \u2014 QuickForma",
+  "metaDescription": "Free online HTML Entity Encoder & Escaper. Encodes special HTML characters into entities and decodes escaped HTML strings. Fast, private, client-side execution."
+},
+{
+  "id": "hmac-generator",
+  "verticals": [
+    "business"
+  ],
+  "name": "HMAC-SHA256 Signature Generator",
+  "category": "developer",
+  "categoryLabel": "Developer & Web Tools",
+  "description": "Generates HMAC webhooks signatures for testing Stripe, Shopify, GitHub, and API webhooks.",
+  "iconName": "KeyRound",
+  "badge": "New",
+  "keywords": [
+    "hmac generator",
+    "hmac-sha256 signature generator",
+    "developer & web tools",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "HMAC-SHA256 Signature Generator \u2014 QuickForma",
+  "metaDescription": "Free online HMAC-SHA256 Signature Generator. Generates HMAC webhooks signatures for testing Stripe, Shopify, GitHub, and API webhooks. Fast, private, client-side execution."
+},
+{
+  "id": "css-minifier-unminifier",
+  "verticals": [
+    "business"
+  ],
+  "name": "CSS Minifier & Code Formatter",
+  "category": "developer",
+  "categoryLabel": "Developer & Web Tools",
+  "description": "Minifies CSS stylesheets and formats minified CSS into clean, readable code.",
+  "iconName": "Palette",
+  "badge": "New",
+  "keywords": [
+    "css minifier unminifier",
+    "css minifier & code formatter",
+    "developer & web tools",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "CSS Minifier & Code Formatter \u2014 QuickForma",
+  "metaDescription": "Free online CSS Minifier & Code Formatter. Minifies CSS stylesheets and formats minified CSS into clean, readable code. Fast, private, client-side execution."
+},
+{
+  "id": "js-beautifier-minifier",
+  "verticals": [
+    "business"
+  ],
+  "name": "JavaScript Code Beautifier & Formatter",
+  "category": "developer",
+  "categoryLabel": "Developer & Web Tools",
+  "description": "Formats obfuscated or single-line JS code into structured, indented JavaScript.",
+  "iconName": "FileCode2",
+  "badge": "New",
+  "keywords": [
+    "js beautifier minifier",
+    "javascript code beautifier & formatter",
+    "developer & web tools",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "JavaScript Code Beautifier & Formatter \u2014 QuickForma",
+  "metaDescription": "Free online JavaScript Code Beautifier & Formatter. Formats obfuscated or single-line JS code into structured, indented JavaScript. Fast, private, client-side execution."
+},
+{
+  "id": "dns-lookup-tool",
+  "verticals": [
+    "business"
+  ],
+  "name": "DNS Record Syntax Generator",
+  "category": "developer",
+  "categoryLabel": "Developer & Web Tools",
+  "description": "Generates and validates DNS record syntax for A, CNAME, MX, TXT, SPF, and DKIM records.",
+  "iconName": "Globe",
+  "badge": "New",
+  "keywords": [
+    "dns lookup tool",
+    "dns record syntax generator",
+    "developer & web tools",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "DNS Record Syntax Generator \u2014 QuickForma",
+  "metaDescription": "Free online DNS Record Syntax Generator. Generates and validates DNS record syntax for A, CNAME, MX, TXT, SPF, and DKIM records. Fast, private, client-side execution."
+},
+{
+  "id": "ip-range-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "IP Address Range & Network Gateway Solver",
+  "category": "developer",
+  "categoryLabel": "Developer & Web Tools",
+  "description": "Calculates IP address ranges, network IDs, and wildcards for network configuration.",
+  "iconName": "Network",
+  "badge": "New",
+  "keywords": [
+    "ip range calculator",
+    "ip address range & network gateway solver",
+    "developer & web tools",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "IP Address Range & Network Gateway Solver \u2014 QuickForma",
+  "metaDescription": "Free online IP Address Range & Network Gateway Solver. Calculates IP address ranges, network IDs, and wildcards for network configuration. Fast, private, client-side execution."
+},
+{
+  "id": "svg-path-formatter",
+  "verticals": [
+    "business"
+  ],
+  "name": "SVG Path Data Optimizer & Cleaner",
+  "category": "developer",
+  "categoryLabel": "Developer & Web Tools",
+  "description": "Minifies SVG XML code and optimizes SVG path coordinates client-side in browser.",
+  "iconName": "Shapes",
+  "badge": "New",
+  "keywords": [
+    "svg path formatter",
+    "svg path data optimizer & cleaner",
+    "developer & web tools",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "SVG Path Data Optimizer & Cleaner \u2014 QuickForma",
+  "metaDescription": "Free online SVG Path Data Optimizer & Cleaner. Minifies SVG XML code and optimizes SVG path coordinates client-side in browser. Fast, private, client-side execution."
+},
+{
+  "id": "http-header-generator",
+  "verticals": [
+    "business"
+  ],
+  "name": "HTTP Security Headers & CORS Policy Builder",
+  "category": "developer",
+  "categoryLabel": "Developer & Web Tools",
+  "description": "Generates recommended HTTP response headers (CSP, HSTS, X-Frame-Options) for web servers.",
+  "iconName": "ShieldCheck",
+  "badge": "New",
+  "keywords": [
+    "http header generator",
+    "http security headers & cors policy builder",
+    "developer & web tools",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "HTTP Security Headers & CORS Policy Builder \u2014 QuickForma",
+  "metaDescription": "Free online HTTP Security Headers & CORS Policy Builder. Generates recommended HTTP response headers (CSP, HSTS, X-Frame-Options) for web servers. Fast, private, client-side execution."
+},
+{
+  "id": "sitemap-xml-builder",
+  "verticals": [
+    "business"
+  ],
+  "name": "Visual XML Sitemap Path Builder",
+  "category": "content",
+  "categoryLabel": "Text & Content Tools",
+  "description": "Constructs clean XML sitemaps with `<loc>`, `<lastmod>`, `<changefreq>`, and `<priority>` tags.",
+  "iconName": "FileSpreadsheet",
+  "badge": "New",
+  "keywords": [
+    "sitemap xml builder",
+    "visual xml sitemap path builder",
+    "text & content tools",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Visual XML Sitemap Path Builder \u2014 QuickForma",
+  "metaDescription": "Free online Visual XML Sitemap Path Builder. Constructs clean XML sitemaps with `<loc>`, `<lastmod>`, `<changefreq>`, and `<priority>` tags. Fast, private, client-side execution."
+},
+{
+  "id": "text-to-speech-estimator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Script Word Count to Audio Duration Converter",
+  "category": "content",
+  "categoryLabel": "Text & Content Tools",
+  "description": "Estimates speech duration in minutes/seconds based on words per minute (e.",
+  "iconName": "Mic",
+  "badge": "New",
+  "keywords": [
+    "text to speech estimator",
+    "script word count to audio duration converter",
+    "text & content tools",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Script Word Count to Audio Duration Converter \u2014 QuickForma",
+  "metaDescription": "Free online Script Word Count to Audio Duration Converter. Estimates speech duration in minutes/seconds based on words per minute (e. Fast, private, client-side execution."
+},
+{
+  "id": "anchor-text-ratio-planner",
+  "verticals": [
+    "business"
+  ],
+  "name": "SEO Internal Anchor Text Distribution Planner",
+  "category": "content",
+  "categoryLabel": "Text & Content Tools",
+  "description": "Audits internal link anchor text ratios (exact match vs branded vs partial match).",
+  "iconName": "Link2",
+  "badge": "New",
+  "keywords": [
+    "anchor text ratio planner",
+    "seo internal anchor text distribution planner",
+    "text & content tools",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "SEO Internal Anchor Text Distribution Planner \u2014 QuickForma",
+  "metaDescription": "Free online SEO Internal Anchor Text Distribution Planner. Audits internal link anchor text ratios (exact match vs branded vs partial match). Fast, private, client-side execution."
+},
+{
+  "id": "canonical-tag-generator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Canonical URL Tag & Cross-Domain Link Builder",
+  "category": "content",
+  "categoryLabel": "Text & Content Tools",
+  "description": "Generates self-referential and cross-domain `<link rel=\"canonical\">` HTML tags.",
+  "iconName": "Link",
+  "badge": "New",
+  "keywords": [
+    "canonical tag generator",
+    "canonical url tag & cross-domain link builder",
+    "text & content tools",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Canonical URL Tag & Cross-Domain Link Builder \u2014 QuickForma",
+  "metaDescription": "Free online Canonical URL Tag & Cross-Domain Link Builder. Generates self-referential and cross-domain `<link rel=\"canonical\">` HTML tags. Fast, private, client-side execution."
+},
+{
+  "id": "paragraph-counter-analyzer",
+  "verticals": [
+    "business"
+  ],
+  "name": "Paragraph Length & Sentence Complexity Analyzer",
+  "category": "content",
+  "categoryLabel": "Text & Content Tools",
+  "description": "Counts paragraphs, average sentence length, and flags overly complex sentences.",
+  "iconName": "AlignLeft",
+  "badge": "New",
+  "keywords": [
+    "paragraph counter analyzer",
+    "paragraph length & sentence complexity analyzer",
+    "text & content tools",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Paragraph Length & Sentence Complexity Analyzer \u2014 QuickForma",
+  "metaDescription": "Free online Paragraph Length & Sentence Complexity Analyzer. Counts paragraphs, average sentence length, and flags overly complex sentences. Fast, private, client-side execution."
+},
+{
+  "id": "slug-to-title-converter",
+  "verticals": [
+    "business"
+  ],
+  "name": "URL Slug to Clean Headline Title Converter",
+  "category": "content",
+  "categoryLabel": "Text & Content Tools",
+  "description": "Converts URL handles (e.",
+  "iconName": "Type",
+  "badge": "New",
+  "keywords": [
+    "slug to title converter",
+    "url slug to clean headline title converter",
+    "text & content tools",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "URL Slug to Clean Headline Title Converter \u2014 QuickForma",
+  "metaDescription": "Free online URL Slug to Clean Headline Title Converter. Converts URL handles (e. Fast, private, client-side execution."
+},
+{
+  "id": "word-frequency-counter",
+  "verticals": [
+    "business"
+  ],
+  "name": "N-Gram Word Pair & Triplet Frequency Analyzer",
+  "category": "content",
+  "categoryLabel": "Text & Content Tools",
+  "description": "Counts most frequent bi-grams and tri-grams in lengthy content.",
+  "iconName": "BarChart",
+  "badge": "New",
+  "keywords": [
+    "word frequency counter",
+    "n-gram word pair & triplet frequency analyzer",
+    "text & content tools",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "N-Gram Word Pair & Triplet Frequency Analyzer \u2014 QuickForma",
+  "metaDescription": "Free online N-Gram Word Pair & Triplet Frequency Analyzer. Counts most frequent bi-grams and tri-grams in lengthy content. Fast, private, client-side execution."
+},
+{
+  "id": "lorem-markdown-generator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Rich Markdown Placeholder Text & Heading Generator",
+  "category": "content",
+  "categoryLabel": "Text & Content Tools",
+  "description": "Generates dummy Markdown text complete with headings (`#`, `##`), lists, and blockquotes.",
+  "iconName": "FileCode",
+  "badge": "New",
+  "keywords": [
+    "lorem markdown generator",
+    "rich markdown placeholder text & heading generator",
+    "text & content tools",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Rich Markdown Placeholder Text & Heading Generator \u2014 QuickForma",
+  "metaDescription": "Free online Rich Markdown Placeholder Text & Heading Generator. Generates dummy Markdown text complete with headings (`#`, `##`), lists, and blockquotes. Fast, private, client-side execution."
+},
+{
+  "id": "alt-text-accessibility-checker",
+  "verticals": [
+    "business"
+  ],
+  "name": "Image Alt Text Character & Descriptive Audit",
+  "category": "content",
+  "categoryLabel": "Text & Content Tools",
+  "description": "Audits image alt text for accessibility standards, length, and keyword stuffing.",
+  "iconName": "Image",
+  "badge": "New",
+  "keywords": [
+    "alt text accessibility checker",
+    "image alt text character & descriptive audit",
+    "text & content tools",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Image Alt Text Character & Descriptive Audit \u2014 QuickForma",
+  "metaDescription": "Free online Image Alt Text Character & Descriptive Audit. Audits image alt text for accessibility standards, length, and keyword stuffing. Fast, private, client-side execution."
 }
 ];

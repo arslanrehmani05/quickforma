@@ -7069,5 +7069,955 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   ],
   "metaTitle": "Customer Return Rate & Restock Cost Loss \u2014 QuickForma",
   "metaDescription": "Free online Customer Return Rate & Restock Cost Loss. Online client-side Customer Return Rate & Restock Cost Loss tool. Fast, private, client-side execution."
+},
+{
+  "id": "roas-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "ROAS & Blended Marketing Return Calculator",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Calculate and analyze roas & blended marketing return calculator with instant client-side business precision.",
+  "iconName": "Calculator",
+  "keywords": [
+    "roas calculator",
+    "roas & blended marketing return calculator",
+    "finance calculator",
+    "roas calculator"
+  ],
+  "metaTitle": "ROAS & Blended Marketing Return Calculator \u2014 QuickForma",
+  "metaDescription": "Free client-side roas & blended marketing return calculator with zero cloud tracking and instant results."
+},
+{
+  "id": "inventory-turns-days-sales-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Days Inventory Outstanding (DIO) Standalone Solver",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Calculate and analyze days inventory outstanding (dio) standalone solver with instant client-side business precision.",
+  "iconName": "Calculator",
+  "keywords": [
+    "inventory turns days sales calculator",
+    "days inventory outstanding (dio) standalone solver",
+    "finance calculator",
+    "inventory calculator"
+  ],
+  "metaTitle": "Days Inventory Outstanding (DIO) Standalone Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side days inventory outstanding (dio) standalone solver with zero cloud tracking and instant results."
+},
+{
+  "id": "break-even-revenue-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Break-Even Sales Volume Revenue Dollar Solver",
+  "category": "finance",
+  "categoryLabel": "Financial Calculators",
+  "description": "Calculate and analyze break-even sales volume revenue dollar solver with instant client-side business precision.",
+  "iconName": "Calculator",
+  "keywords": [
+    "break even revenue calculator",
+    "break-even sales volume revenue dollar solver",
+    "finance calculator",
+    "break calculator"
+  ],
+  "metaTitle": "Break-Even Sales Volume Revenue Dollar Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side break-even sales volume revenue dollar solver with zero cloud tracking and instant results."
+},
+{
+  "id": "middle-school-grade-calculator",
+  "verticals": [
+    "students"
+  ],
+  "name": "Letter Grade to Percentage Scale Converter",
+  "category": "students",
+  "categoryLabel": "Student & Academic Tools",
+  "description": "Calculate and analyze letter grade to percentage scale converter with instant client-side business precision.",
+  "iconName": "GraduationCap",
+  "keywords": [
+    "middle school grade calculator",
+    "letter grade to percentage scale converter",
+    "students calculator",
+    "middle calculator"
+  ],
+  "metaTitle": "Letter Grade to Percentage Scale Converter \u2014 QuickForma",
+  "metaDescription": "Free client-side letter grade to percentage scale converter with zero cloud tracking and instant results."
+},
+{
+  "id": "shipping-container-load-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "20ft/40ft Container CBM Freight Load Estimator",
+  "category": "ecommerce",
+  "categoryLabel": "Ecommerce & Operations",
+  "description": "Calculate and analyze 20ft/40ft container cbm freight load estimator with instant client-side business precision.",
+  "iconName": "ShoppingCart",
+  "keywords": [
+    "shipping container load calculator",
+    "20ft/40ft container cbm freight load estimator",
+    "ecommerce calculator",
+    "shipping calculator"
+  ],
+  "metaTitle": "20ft/40ft Container CBM Freight Load Estimator \u2014 QuickForma",
+  "metaDescription": "Free client-side 20ft/40ft container cbm freight load estimator with zero cloud tracking and instant results."
+},
+{
+  "id": "minimum-advertised-price-map-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "MAP Pricing & Authorized Reseller Margin",
+  "category": "ecommerce",
+  "categoryLabel": "Ecommerce & Operations",
+  "description": "Calculate and analyze map pricing & authorized reseller margin with instant client-side business precision.",
+  "iconName": "ShoppingCart",
+  "keywords": [
+    "minimum advertised price map calculator",
+    "map pricing & authorized reseller margin",
+    "ecommerce calculator",
+    "minimum calculator"
+  ],
+  "metaTitle": "MAP Pricing & Authorized Reseller Margin \u2014 QuickForma",
+  "metaDescription": "Free client-side map pricing & authorized reseller margin with zero cloud tracking and instant results."
+},
+{
+  "id": "chargeback-fee-loss-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Merchant Chargeback Ratio & Fine Risk Solver",
+  "category": "ecommerce",
+  "categoryLabel": "Ecommerce & Operations",
+  "description": "Calculate and analyze merchant chargeback ratio & fine risk solver with instant client-side business precision.",
+  "iconName": "ShoppingCart",
+  "keywords": [
+    "chargeback fee loss calculator",
+    "merchant chargeback ratio & fine risk solver",
+    "ecommerce calculator",
+    "chargeback calculator"
+  ],
+  "metaTitle": "Merchant Chargeback Ratio & Fine Risk Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side merchant chargeback ratio & fine risk solver with zero cloud tracking and instant results."
+},
+{
+  "id": "klarna-afterpay-fee-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Buy Now Pay Later (BNPL) Merchant Fee Solver",
+  "category": "ecommerce",
+  "categoryLabel": "Ecommerce & Operations",
+  "description": "Calculate and analyze buy now pay later (bnpl) merchant fee solver with instant client-side business precision.",
+  "iconName": "ShoppingCart",
+  "keywords": [
+    "klarna afterpay fee calculator",
+    "buy now pay later (bnpl) merchant fee solver",
+    "ecommerce calculator",
+    "klarna calculator"
+  ],
+  "metaTitle": "Buy Now Pay Later (BNPL) Merchant Fee Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side buy now pay later (bnpl) merchant fee solver with zero cloud tracking and instant results."
+},
+{
+  "id": "square-pos-processing-fee-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Square Point of Sale In-Person vs Online Fee",
+  "category": "ecommerce",
+  "categoryLabel": "Ecommerce & Operations",
+  "description": "Calculate and analyze square point of sale in-person vs online fee with instant client-side business precision.",
+  "iconName": "ShoppingCart",
+  "keywords": [
+    "square pos processing fee calculator",
+    "square point of sale in-person vs online fee",
+    "ecommerce calculator",
+    "square calculator"
+  ],
+  "metaTitle": "Square Point of Sale In-Person vs Online Fee \u2014 QuickForma",
+  "metaDescription": "Free client-side square point of sale in-person vs online fee with zero cloud tracking and instant results."
+},
+{
+  "id": "kickstarter-indiegogo-fee-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Crowdfunding Platform Commission & Profit",
+  "category": "ecommerce",
+  "categoryLabel": "Ecommerce & Operations",
+  "description": "Calculate and analyze crowdfunding platform commission & profit with instant client-side business precision.",
+  "iconName": "ShoppingCart",
+  "keywords": [
+    "kickstarter indiegogo fee calculator",
+    "crowdfunding platform commission & profit",
+    "ecommerce calculator",
+    "kickstarter calculator"
+  ],
+  "metaTitle": "Crowdfunding Platform Commission & Profit \u2014 QuickForma",
+  "metaDescription": "Free client-side crowdfunding platform commission & profit with zero cloud tracking and instant results."
+},
+{
+  "id": "amazon-storage-fee-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Amazon Q4 Peak vs Standard Storage Fee Solver",
+  "category": "ecommerce",
+  "categoryLabel": "Ecommerce & Operations",
+  "description": "Calculate and analyze amazon q4 peak vs standard storage fee solver with instant client-side business precision.",
+  "iconName": "ShoppingCart",
+  "keywords": [
+    "amazon storage fee calculator",
+    "amazon q4 peak vs standard storage fee solver",
+    "ecommerce calculator",
+    "amazon calculator"
+  ],
+  "metaTitle": "Amazon Q4 Peak vs Standard Storage Fee Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side amazon q4 peak vs standard storage fee solver with zero cloud tracking and instant results."
+},
+{
+  "id": "cross-border-currency-conversion-fee",
+  "verticals": [
+    "business"
+  ],
+  "name": "International Merchant FX Fee & Markup",
+  "category": "ecommerce",
+  "categoryLabel": "Ecommerce & Operations",
+  "description": "Calculate and analyze international merchant fx fee & markup with instant client-side business precision.",
+  "iconName": "ShoppingCart",
+  "keywords": [
+    "cross border currency conversion fee",
+    "international merchant fx fee & markup",
+    "ecommerce calculator",
+    "cross calculator"
+  ],
+  "metaTitle": "International Merchant FX Fee & Markup \u2014 QuickForma",
+  "metaDescription": "Free client-side international merchant fx fee & markup with zero cloud tracking and instant results."
+},
+{
+  "id": "product-packaging-dimensional-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Box Size & DIM Freight Cost Solver",
+  "category": "ecommerce",
+  "categoryLabel": "Ecommerce & Operations",
+  "description": "Calculate and analyze box size & dim freight cost solver with instant client-side business precision.",
+  "iconName": "ShoppingCart",
+  "keywords": [
+    "product packaging dimensional calculator",
+    "box size & dim freight cost solver",
+    "ecommerce calculator",
+    "product calculator"
+  ],
+  "metaTitle": "Box Size & DIM Freight Cost Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side box size & dim freight cost solver with zero cloud tracking and instant results."
+},
+{
+  "id": "print-on-demand-pod-margin-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Printify / Printful Merch Profit Margin Solver",
+  "category": "ecommerce",
+  "categoryLabel": "Ecommerce & Operations",
+  "description": "Calculate and analyze printify / printful merch profit margin solver with instant client-side business precision.",
+  "iconName": "ShoppingCart",
+  "keywords": [
+    "print on demand pod margin calculator",
+    "printify / printful merch profit margin solver",
+    "ecommerce calculator",
+    "print calculator"
+  ],
+  "metaTitle": "Printify / Printful Merch Profit Margin Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side printify / printful merch profit margin solver with zero cloud tracking and instant results."
+},
+{
+  "id": "inventory-shrinkage-loss-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Retail Inventory Theft & Spoilage Impact",
+  "category": "ecommerce",
+  "categoryLabel": "Ecommerce & Operations",
+  "description": "Calculate and analyze retail inventory theft & spoilage impact with instant client-side business precision.",
+  "iconName": "ShoppingCart",
+  "keywords": [
+    "inventory shrinkage loss calculator",
+    "retail inventory theft & spoilage impact",
+    "ecommerce calculator",
+    "inventory calculator"
+  ],
+  "metaTitle": "Retail Inventory Theft & Spoilage Impact \u2014 QuickForma",
+  "metaDescription": "Free client-side retail inventory theft & spoilage impact with zero cloud tracking and instant results."
+},
+{
+  "id": "affiliate-commission-payout-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Affiliate Marketing Program Margin Solver",
+  "category": "ecommerce",
+  "categoryLabel": "Ecommerce & Operations",
+  "description": "Calculate and analyze affiliate marketing program margin solver with instant client-side business precision.",
+  "iconName": "ShoppingCart",
+  "keywords": [
+    "affiliate commission payout calculator",
+    "affiliate marketing program margin solver",
+    "ecommerce calculator",
+    "affiliate calculator"
+  ],
+  "metaTitle": "Affiliate Marketing Program Margin Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side affiliate marketing program margin solver with zero cloud tracking and instant results."
+},
+{
+  "id": "retail-markdown-clearance-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Clearance Discount & Liquidation Recovery",
+  "category": "ecommerce",
+  "categoryLabel": "Ecommerce & Operations",
+  "description": "Calculate and analyze clearance discount & liquidation recovery with instant client-side business precision.",
+  "iconName": "ShoppingCart",
+  "keywords": [
+    "retail markdown clearance calculator",
+    "clearance discount & liquidation recovery",
+    "ecommerce calculator",
+    "retail calculator"
+  ],
+  "metaTitle": "Clearance Discount & Liquidation Recovery \u2014 QuickForma",
+  "metaDescription": "Free client-side clearance discount & liquidation recovery with zero cloud tracking and instant results."
+},
+{
+  "id": "warehouse-storage-cbm-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Pallet Racking & Warehouse CBM Storage Cost",
+  "category": "ecommerce",
+  "categoryLabel": "Ecommerce & Operations",
+  "description": "Calculate and analyze pallet racking & warehouse cbm storage cost with instant client-side business precision.",
+  "iconName": "ShoppingCart",
+  "keywords": [
+    "warehouse storage cbm calculator",
+    "pallet racking & warehouse cbm storage cost",
+    "ecommerce calculator",
+    "warehouse calculator"
+  ],
+  "metaTitle": "Pallet Racking & Warehouse CBM Storage Cost \u2014 QuickForma",
+  "metaDescription": "Free client-side pallet racking & warehouse cbm storage cost with zero cloud tracking and instant results."
+},
+{
+  "id": "supplier-volume-discount-break-even",
+  "verticals": [
+    "business"
+  ],
+  "name": "MoQ Supplier Tiered Discount ROI Solver",
+  "category": "ecommerce",
+  "categoryLabel": "Ecommerce & Operations",
+  "description": "Calculate and analyze moq supplier tiered discount roi solver with instant client-side business precision.",
+  "iconName": "ShoppingCart",
+  "keywords": [
+    "supplier volume discount break even",
+    "moq supplier tiered discount roi solver",
+    "ecommerce calculator",
+    "supplier calculator"
+  ],
+  "metaTitle": "MoQ Supplier Tiered Discount ROI Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side moq supplier tiered discount roi solver with zero cloud tracking and instant results."
+},
+{
+  "id": "re-stocking-fee-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Customer Refund Restocking Fee & Net Loss",
+  "category": "ecommerce",
+  "categoryLabel": "Ecommerce & Operations",
+  "description": "Calculate and analyze customer refund restocking fee & net loss with instant client-side business precision.",
+  "iconName": "ShoppingCart",
+  "keywords": [
+    "re stocking fee calculator",
+    "customer refund restocking fee & net loss",
+    "ecommerce calculator",
+    "stocking calculator"
+  ],
+  "metaTitle": "Customer Refund Restocking Fee & Net Loss \u2014 QuickForma",
+  "metaDescription": "Free client-side customer refund restocking fee & net loss with zero cloud tracking and instant results."
+},
+{
+  "id": "ecommerce-customer-retention-revenue",
+  "verticals": [
+    "business"
+  ],
+  "name": "Repeat Purchase Rate & LTV Boost Solver",
+  "category": "ecommerce",
+  "categoryLabel": "Ecommerce & Operations",
+  "description": "Calculate and analyze repeat purchase rate & ltv boost solver with instant client-side business precision.",
+  "iconName": "ShoppingCart",
+  "keywords": [
+    "ecommerce customer retention revenue",
+    "repeat purchase rate & ltv boost solver",
+    "ecommerce calculator",
+    "ecommerce calculator"
+  ],
+  "metaTitle": "Repeat Purchase Rate & LTV Boost Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side repeat purchase rate & ltv boost solver with zero cloud tracking and instant results."
+},
+{
+  "id": "omnichannel-channel-margin-compare",
+  "verticals": [
+    "business"
+  ],
+  "name": "Amazon vs Shopify vs Wholesale Margin Comparison",
+  "category": "ecommerce",
+  "categoryLabel": "Ecommerce & Operations",
+  "description": "Calculate and analyze amazon vs shopify vs wholesale margin comparison with instant client-side business precision.",
+  "iconName": "ShoppingCart",
+  "keywords": [
+    "omnichannel channel margin compare",
+    "amazon vs shopify vs wholesale margin comparison",
+    "ecommerce calculator",
+    "omnichannel calculator"
+  ],
+  "metaTitle": "Amazon vs Shopify vs Wholesale Margin Comparison \u2014 QuickForma",
+  "metaDescription": "Free client-side amazon vs shopify vs wholesale margin comparison with zero cloud tracking and instant results."
+},
+{
+  "id": "amazon-repricing-margin-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Automated Amazon Repricer Minimum Floor Price Solver",
+  "category": "ecommerce",
+  "categoryLabel": "Ecommerce & Operations",
+  "description": "Calculate and analyze automated amazon repricer minimum floor price solver with instant client-side business precision.",
+  "iconName": "ShoppingCart",
+  "keywords": [
+    "amazon repricing margin calculator",
+    "automated amazon repricer minimum floor price solver",
+    "ecommerce calculator",
+    "amazon calculator"
+  ],
+  "metaTitle": "Automated Amazon Repricer Minimum Floor Price Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side automated amazon repricer minimum floor price solver with zero cloud tracking and instant results."
+},
+{
+  "id": "ecommerce-refund-loss-recovery-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Return Logistics & Restocking Net Recovery",
+  "category": "ecommerce",
+  "categoryLabel": "Ecommerce & Operations",
+  "description": "Calculate and analyze return logistics & restocking net recovery with instant client-side business precision.",
+  "iconName": "ShoppingCart",
+  "keywords": [
+    "ecommerce refund loss recovery calculator",
+    "return logistics & restocking net recovery",
+    "ecommerce calculator",
+    "ecommerce calculator"
+  ],
+  "metaTitle": "Return Logistics & Restocking Net Recovery \u2014 QuickForma",
+  "metaDescription": "Free client-side return logistics & restocking net recovery with zero cloud tracking and instant results."
+},
+{
+  "id": "order-cancellation-rate-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Order Defect Rate & Cancellation Risk Solver",
+  "category": "ecommerce",
+  "categoryLabel": "Ecommerce & Operations",
+  "description": "Calculate and analyze order defect rate & cancellation risk solver with instant client-side business precision.",
+  "iconName": "ShoppingCart",
+  "keywords": [
+    "order cancellation rate calculator",
+    "order defect rate & cancellation risk solver",
+    "ecommerce calculator",
+    "order calculator"
+  ],
+  "metaTitle": "Order Defect Rate & Cancellation Risk Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side order defect rate & cancellation risk solver with zero cloud tracking and instant results."
+},
+{
+  "id": "multi-channel-inventory-allocation",
+  "verticals": [
+    "business"
+  ],
+  "name": "Multi-Warehouse Reorder Allocation Solver",
+  "category": "ecommerce",
+  "categoryLabel": "Ecommerce & Operations",
+  "description": "Calculate and analyze multi-warehouse reorder allocation solver with instant client-side business precision.",
+  "iconName": "ShoppingCart",
+  "keywords": [
+    "multi channel inventory allocation",
+    "multi-warehouse reorder allocation solver",
+    "ecommerce calculator",
+    "multi calculator"
+  ],
+  "metaTitle": "Multi-Warehouse Reorder Allocation Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side multi-warehouse reorder allocation solver with zero cloud tracking and instant results."
+},
+{
+  "id": "shopify-pos-fee-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Shopify POS In-Person Card Rate Solver",
+  "category": "ecommerce",
+  "categoryLabel": "Ecommerce & Operations",
+  "description": "Calculate and analyze shopify pos in-person card rate solver with instant client-side business precision.",
+  "iconName": "ShoppingCart",
+  "keywords": [
+    "shopify pos fee calculator",
+    "shopify pos in-person card rate solver",
+    "ecommerce calculator",
+    "shopify calculator"
+  ],
+  "metaTitle": "Shopify POS In-Person Card Rate Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side shopify pos in-person card rate solver with zero cloud tracking and instant results."
+},
+{
+  "id": "etsy-listing-renewal-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Etsy Listing Fee & Auto-Renewal Expense",
+  "category": "ecommerce",
+  "categoryLabel": "Ecommerce & Operations",
+  "description": "Calculate and analyze etsy listing fee & auto-renewal expense with instant client-side business precision.",
+  "iconName": "ShoppingCart",
+  "keywords": [
+    "etsy listing renewal calculator",
+    "etsy listing fee & auto-renewal expense",
+    "ecommerce calculator",
+    "etsy calculator"
+  ],
+  "metaTitle": "Etsy Listing Fee & Auto-Renewal Expense \u2014 QuickForma",
+  "metaDescription": "Free client-side etsy listing fee & auto-renewal expense with zero cloud tracking and instant results."
+},
+{
+  "id": "woocommerce-profit-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "WooCommerce Gateway & Hosting Cost Solver",
+  "category": "ecommerce",
+  "categoryLabel": "Ecommerce & Operations",
+  "description": "Calculate and analyze woocommerce gateway & hosting cost solver with instant client-side business precision.",
+  "iconName": "ShoppingCart",
+  "keywords": [
+    "woocommerce profit calculator",
+    "woocommerce gateway & hosting cost solver",
+    "ecommerce calculator",
+    "woocommerce calculator"
+  ],
+  "metaTitle": "WooCommerce Gateway & Hosting Cost Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side woocommerce gateway & hosting cost solver with zero cloud tracking and instant results."
+},
+{
+  "id": "first-pass-yield-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "First Pass Yield (FPY) & Scrap Loss Solver",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculate and analyze first pass yield (fpy) & scrap loss solver with instant client-side business precision.",
+  "iconName": "Cpu",
+  "keywords": [
+    "first pass yield calculator",
+    "first pass yield (fpy) & scrap loss solver",
+    "operations calculator",
+    "first calculator"
+  ],
+  "metaTitle": "First Pass Yield (FPY) & Scrap Loss Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side first pass yield (fpy) & scrap loss solver with zero cloud tracking and instant results."
+},
+{
+  "id": "cycle-time-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Manufacturing Lead Time & Little's Law WIP Solver",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculate and analyze manufacturing lead time & little's law wip solver with instant client-side business precision.",
+  "iconName": "Cpu",
+  "keywords": [
+    "cycle time calculator",
+    "manufacturing lead time & little's law wip solver",
+    "operations calculator",
+    "cycle calculator"
+  ],
+  "metaTitle": "Manufacturing Lead Time & Little's Law WIP Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side manufacturing lead time & little's law wip solver with zero cloud tracking and instant results."
+},
+{
+  "id": "overall-labor-effectiveness-ole",
+  "verticals": [
+    "business"
+  ],
+  "name": "Overall Labor Effectiveness (OLE) Solver",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculate and analyze overall labor effectiveness (ole) solver with instant client-side business precision.",
+  "iconName": "Cpu",
+  "keywords": [
+    "overall labor effectiveness ole",
+    "overall labor effectiveness (ole) solver",
+    "operations calculator",
+    "overall calculator"
+  ],
+  "metaTitle": "Overall Labor Effectiveness (OLE) Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side overall labor effectiveness (ole) solver with zero cloud tracking and instant results."
+},
+{
+  "id": "kanban-card-quantity-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Kanban Container & Safety Card Quantity Solver",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculate and analyze kanban container & safety card quantity solver with instant client-side business precision.",
+  "iconName": "Cpu",
+  "keywords": [
+    "kanban card quantity calculator",
+    "kanban container & safety card quantity solver",
+    "operations calculator",
+    "kanban calculator"
+  ],
+  "metaTitle": "Kanban Container & Safety Card Quantity Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side kanban container & safety card quantity solver with zero cloud tracking and instant results."
+},
+{
+  "id": "bill-of-materials-cost-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "BOM Component Cost & Raw Material Rollup",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculate and analyze bom component cost & raw material rollup with instant client-side business precision.",
+  "iconName": "Cpu",
+  "keywords": [
+    "bill of materials cost calculator",
+    "bom component cost & raw material rollup",
+    "operations calculator",
+    "bill calculator"
+  ],
+  "metaTitle": "BOM Component Cost & Raw Material Rollup \u2014 QuickForma",
+  "metaDescription": "Free client-side bom component cost & raw material rollup with zero cloud tracking and instant results."
+},
+{
+  "id": "mean-time-between-failures-mtbf",
+  "verticals": [
+    "business"
+  ],
+  "name": "MTBF & MTTR Equipment Reliability Solver",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculate and analyze mtbf & mttr equipment reliability solver with instant client-side business precision.",
+  "iconName": "Cpu",
+  "keywords": [
+    "mean time between failures mtbf",
+    "mtbf & mttr equipment reliability solver",
+    "operations calculator",
+    "mean calculator"
+  ],
+  "metaTitle": "MTBF & MTTR Equipment Reliability Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side mtbf & mttr equipment reliability solver with zero cloud tracking and instant results."
+},
+{
+  "id": "changeover-time-smed-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "SMED Tooling Changeover Setup Loss Solver",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculate and analyze smed tooling changeover setup loss solver with instant client-side business precision.",
+  "iconName": "Cpu",
+  "keywords": [
+    "changeover time smed calculator",
+    "smed tooling changeover setup loss solver",
+    "operations calculator",
+    "changeover calculator"
+  ],
+  "metaTitle": "SMED Tooling Changeover Setup Loss Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side smed tooling changeover setup loss solver with zero cloud tracking and instant results."
+},
+{
+  "id": "work-in-process-wip-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "WIP Inventory Valuation & Production Flow",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculate and analyze wip inventory valuation & production flow with instant client-side business precision.",
+  "iconName": "Cpu",
+  "keywords": [
+    "work in process wip calculator",
+    "wip inventory valuation & production flow",
+    "operations calculator",
+    "work calculator"
+  ],
+  "metaTitle": "WIP Inventory Valuation & Production Flow \u2014 QuickForma",
+  "metaDescription": "Free client-side wip inventory valuation & production flow with zero cloud tracking and instant results."
+},
+{
+  "id": "scrap-rate-percentage-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Material Defect Scrap Rate & Cost Solver",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculate and analyze material defect scrap rate & cost solver with instant client-side business precision.",
+  "iconName": "Cpu",
+  "keywords": [
+    "scrap rate percentage calculator",
+    "material defect scrap rate & cost solver",
+    "operations calculator",
+    "scrap calculator"
+  ],
+  "metaTitle": "Material Defect Scrap Rate & Cost Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side material defect scrap rate & cost solver with zero cloud tracking and instant results."
+},
+{
+  "id": "manufacturing-overhead-allocation",
+  "verticals": [
+    "business"
+  ],
+  "name": "Direct Labor Hours vs Machine Hours Overhead",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculate and analyze direct labor hours vs machine hours overhead with instant client-side business precision.",
+  "iconName": "Cpu",
+  "keywords": [
+    "manufacturing overhead allocation",
+    "direct labor hours vs machine hours overhead",
+    "operations calculator",
+    "manufacturing calculator"
+  ],
+  "metaTitle": "Direct Labor Hours vs Machine Hours Overhead \u2014 QuickForma",
+  "metaDescription": "Free client-side direct labor hours vs machine hours overhead with zero cloud tracking and instant results."
+},
+{
+  "id": "standard-cost-variance-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Direct Material & Labor Variance Solver",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculate and analyze direct material & labor variance solver with instant client-side business precision.",
+  "iconName": "Cpu",
+  "keywords": [
+    "standard cost variance calculator",
+    "direct material & labor variance solver",
+    "operations calculator",
+    "standard calculator"
+  ],
+  "metaTitle": "Direct Material & Labor Variance Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side direct material & labor variance solver with zero cloud tracking and instant results."
+},
+{
+  "id": "tpm-planned-maintenance-scheduler",
+  "verticals": [
+    "business"
+  ],
+  "name": "Total Productive Maintenance Frequency",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculate and analyze total productive maintenance frequency with instant client-side business precision.",
+  "iconName": "Cpu",
+  "keywords": [
+    "tpm planned maintenance scheduler",
+    "total productive maintenance frequency",
+    "operations calculator",
+    "tpm calculator"
+  ],
+  "metaTitle": "Total Productive Maintenance Frequency \u2014 QuickForma",
+  "metaDescription": "Free client-side total productive maintenance frequency with zero cloud tracking and instant results."
+},
+{
+  "id": "process-capability-cp-cpk-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Six Sigma Cp & Cpk Process Capability",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculate and analyze six sigma cp & cpk process capability with instant client-side business precision.",
+  "iconName": "Cpu",
+  "keywords": [
+    "process capability cp cpk calculator",
+    "six sigma cp & cpk process capability",
+    "operations calculator",
+    "process calculator"
+  ],
+  "metaTitle": "Six Sigma Cp & Cpk Process Capability \u2014 QuickForma",
+  "metaDescription": "Free client-side six sigma cp & cpk process capability with zero cloud tracking and instant results."
+},
+{
+  "id": "defect-density-ppm-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Parts Per Million (PPM) Quality Defect Solver",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculate and analyze parts per million (ppm) quality defect solver with instant client-side business precision.",
+  "iconName": "Cpu",
+  "keywords": [
+    "defect density ppm calculator",
+    "parts per million (ppm) quality defect solver",
+    "operations calculator",
+    "defect calculator"
+  ],
+  "metaTitle": "Parts Per Million (PPM) Quality Defect Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side parts per million (ppm) quality defect solver with zero cloud tracking and instant results."
+},
+{
+  "id": "line-balancing-efficiency-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Assembly Line Balancing & Idle Time Solver",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculate and analyze assembly line balancing & idle time solver with instant client-side business precision.",
+  "iconName": "Cpu",
+  "keywords": [
+    "line balancing efficiency calculator",
+    "assembly line balancing & idle time solver",
+    "operations calculator",
+    "line calculator"
+  ],
+  "metaTitle": "Assembly Line Balancing & Idle Time Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side assembly line balancing & idle time solver with zero cloud tracking and instant results."
+},
+{
+  "id": "batch-size-economic-production",
+  "verticals": [
+    "business"
+  ],
+  "name": "Economic Production Quantity (EPQ) Solver",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculate and analyze economic production quantity (epq) solver with instant client-side business precision.",
+  "iconName": "Cpu",
+  "keywords": [
+    "batch size economic production",
+    "economic production quantity (epq) solver",
+    "operations calculator",
+    "batch calculator"
+  ],
+  "metaTitle": "Economic Production Quantity (EPQ) Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side economic production quantity (epq) solver with zero cloud tracking and instant results."
+},
+{
+  "id": "warehouse-bin-utilization-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Cube Utilization & Bin Storage Efficiency",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculate and analyze cube utilization & bin storage efficiency with instant client-side business precision.",
+  "iconName": "Cpu",
+  "keywords": [
+    "warehouse bin utilization calculator",
+    "cube utilization & bin storage efficiency",
+    "operations calculator",
+    "warehouse calculator"
+  ],
+  "metaTitle": "Cube Utilization & Bin Storage Efficiency \u2014 QuickForma",
+  "metaDescription": "Free client-side cube utilization & bin storage efficiency with zero cloud tracking and instant results."
+},
+{
+  "id": "order-picking-route-time-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Warehouse Order Picker Travel Time Solver",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculate and analyze warehouse order picker travel time solver with instant client-side business precision.",
+  "iconName": "Cpu",
+  "keywords": [
+    "order picking route time calculator",
+    "warehouse order picker travel time solver",
+    "operations calculator",
+    "order calculator"
+  ],
+  "metaTitle": "Warehouse Order Picker Travel Time Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side warehouse order picker travel time solver with zero cloud tracking and instant results."
+},
+{
+  "id": "supplier-on-time-in-full-otif",
+  "verticals": [
+    "business"
+  ],
+  "name": "OTIF Supplier Delivery Performance Rating",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculate and analyze otif supplier delivery performance rating with instant client-side business precision.",
+  "iconName": "Cpu",
+  "keywords": [
+    "supplier on time in full otif",
+    "otif supplier delivery performance rating",
+    "operations calculator",
+    "supplier calculator"
+  ],
+  "metaTitle": "OTIF Supplier Delivery Performance Rating \u2014 QuickForma",
+  "metaDescription": "Free client-side otif supplier delivery performance rating with zero cloud tracking and instant results."
+},
+{
+  "id": "yield-loss-percentage-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Chemical / Food Production Yield Loss Solver",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculate and analyze chemical / food production yield loss solver with instant client-side business precision.",
+  "iconName": "Cpu",
+  "keywords": [
+    "yield loss percentage calculator",
+    "chemical / food production yield loss solver",
+    "operations calculator",
+    "yield calculator"
+  ],
+  "metaTitle": "Chemical / Food Production Yield Loss Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side chemical / food production yield loss solver with zero cloud tracking and instant results."
+},
+{
+  "id": "equipment-replacement-capital-expenditure",
+  "verticals": [
+    "business"
+  ],
+  "name": "Asset Equipment Replacement Timing NPV",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculate and analyze asset equipment replacement timing npv with instant client-side business precision.",
+  "iconName": "Cpu",
+  "keywords": [
+    "equipment replacement capital expenditure",
+    "asset equipment replacement timing npv",
+    "operations calculator",
+    "equipment calculator"
+  ],
+  "metaTitle": "Asset Equipment Replacement Timing NPV \u2014 QuickForma",
+  "metaDescription": "Free client-side asset equipment replacement timing npv with zero cloud tracking and instant results."
 }
 ];

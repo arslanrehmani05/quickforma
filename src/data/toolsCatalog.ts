@@ -5972,5 +5972,1102 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   ],
   "metaTitle": "Image Alt Text Character & Descriptive Audit \u2014 QuickForma",
   "metaDescription": "Free online Image Alt Text Character & Descriptive Audit. Audits image alt text for accessibility standards, length, and keyword stuffing. Fast, private, client-side execution."
+},
+{
+  "id": "law-school-gpa-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "LSAC Law School Admission GPA Converter",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Online client-side LSAC Law School Admission GPA Converter tool.",
+  "iconName": "Scale",
+  "badge": "New",
+  "keywords": [
+    "law school gpa calculator",
+    "lsac law school admission gpa converter",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "LSAC Law School Admission GPA Converter \u2014 QuickForma",
+  "metaDescription": "Free online LSAC Law School Admission GPA Converter. Online client-side LSAC Law School Admission GPA Converter tool. Fast, private, client-side execution."
+},
+{
+  "id": "medical-school-gpa-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "AMCAS Science / Non-Science BCPM GPA Solver",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Online client-side AMCAS Science / Non-Science BCPM GPA Solver tool.",
+  "iconName": "Stethoscope",
+  "badge": "New",
+  "keywords": [
+    "medical school gpa calculator",
+    "amcas science / non-science bcpm gpa solver",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "AMCAS Science / Non-Science BCPM GPA Solver \u2014 QuickForma",
+  "metaDescription": "Free online AMCAS Science / Non-Science BCPM GPA Solver. Online client-side AMCAS Science / Non-Science BCPM GPA Solver tool. Fast, private, client-side execution."
+},
+{
+  "id": "ncaa-core-gpa-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "NCAA Student-Athlete Core Course GPA Solver",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Online client-side NCAA Student-Athlete Core Course GPA Solver tool.",
+  "iconName": "Trophy",
+  "badge": "New",
+  "keywords": [
+    "ncaa core gpa calculator",
+    "ncaa student-athlete core course gpa solver",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "NCAA Student-Athlete Core Course GPA Solver \u2014 QuickForma",
+  "metaDescription": "Free online NCAA Student-Athlete Core Course GPA Solver. Online client-side NCAA Student-Athlete Core Course GPA Solver tool. Fast, private, client-side execution."
+},
+{
+  "id": "class-rank-percentile-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "High School & Class Rank Percentile Solver",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Online client-side High School & Class Rank Percentile Solver tool.",
+  "iconName": "Users",
+  "badge": "New",
+  "keywords": [
+    "class rank percentile calculator",
+    "high school & class rank percentile solver",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "High School & Class Rank Percentile Solver \u2014 QuickForma",
+  "metaDescription": "Free online High School & Class Rank Percentile Solver. Online client-side High School & Class Rank Percentile Solver tool. Fast, private, client-side execution."
+},
+{
+  "id": "pass-fail-gpa-impact-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "Pass/Fail Course Selection GPA Impact Solver",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Online client-side Pass/Fail Course Selection GPA Impact Solver tool.",
+  "iconName": "ArrowRightLeft",
+  "badge": "New",
+  "keywords": [
+    "pass fail gpa impact calculator",
+    "pass/fail course selection gpa impact solver",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Pass/Fail Course Selection GPA Impact Solver \u2014 QuickForma",
+  "metaDescription": "Free online Pass/Fail Course Selection GPA Impact Solver. Online client-side Pass/Fail Course Selection GPA Impact Solver tool. Fast, private, client-side execution."
+},
+{
+  "id": "graduate-school-gpa-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "Graduate Master's Program GPA Calculator",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Online client-side Graduate Master's Program GPA Calculator tool.",
+  "iconName": "GraduationCap",
+  "badge": "New",
+  "keywords": [
+    "graduate school gpa calculator",
+    "graduate master's program gpa calculator",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Graduate Master's Program GPA Calculator \u2014 QuickForma",
+  "metaDescription": "Free online Graduate Master's Program GPA Calculator. Online client-side Graduate Master's Program GPA Calculator tool. Fast, private, client-side execution."
+},
+{
+  "id": "academic-standing-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "Dean's List vs Academic Probation GPA Threshold",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Online client-side Dean's List vs Academic Probation GPA Threshold tool.",
+  "iconName": "ShieldAlert",
+  "badge": "New",
+  "keywords": [
+    "academic standing calculator",
+    "dean's list vs academic probation gpa threshold",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Dean's List vs Academic Probation GPA Threshold \u2014 QuickForma",
+  "metaDescription": "Free online Dean's List vs Academic Probation GPA Threshold. Online client-side Dean's List vs Academic Probation GPA Threshold tool. Fast, private, client-side execution."
+},
+{
+  "id": "high-school-credit-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "High School Diploma Credit Completion Tracker",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Online client-side High School Diploma Credit Completion Tracker tool.",
+  "iconName": "BookOpen",
+  "badge": "New",
+  "keywords": [
+    "high school credit calculator",
+    "high school diploma credit completion tracker",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "High School Diploma Credit Completion Tracker \u2014 QuickForma",
+  "metaDescription": "Free online High School Diploma Credit Completion Tracker. Online client-side High School Diploma Credit Completion Tracker tool. Fast, private, client-side execution."
+},
+{
+  "id": "degree-completion-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "Degree Credit Progress & Remaining Semester Estimator",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Online client-side Degree Credit Progress & Remaining Semester Estimator tool.",
+  "iconName": "GraduationCap",
+  "badge": "New",
+  "keywords": [
+    "degree completion calculator",
+    "degree credit progress & remaining semester estimator",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Degree Credit Progress & Remaining Semester Estimator \u2014 QuickForma",
+  "metaDescription": "Free online Degree Credit Progress & Remaining Semester Estimator. Online client-side Degree Credit Progress & Remaining Semester Estimator tool. Fast, private, client-side execution."
+},
+{
+  "id": "prerequisite-course-planner",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "College Course Sequence & Prerequisite Planner",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Online client-side College Course Sequence & Prerequisite Planner tool.",
+  "iconName": "GitBranch",
+  "badge": "New",
+  "keywords": [
+    "prerequisite course planner",
+    "college course sequence & prerequisite planner",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "College Course Sequence & Prerequisite Planner \u2014 QuickForma",
+  "metaDescription": "Free online College Course Sequence & Prerequisite Planner. Online client-side College Course Sequence & Prerequisite Planner tool. Fast, private, client-side execution."
+},
+{
+  "id": "ged-score-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "GED Subject Score Percentile & Passing Status Checker",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Online client-side GED Subject Score Percentile & Passing Status Checker tool.",
+  "iconName": "Award",
+  "badge": "New",
+  "keywords": [
+    "ged score calculator",
+    "ged subject score percentile & passing status checker",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "GED Subject Score Percentile & Passing Status Checker \u2014 QuickForma",
+  "metaDescription": "Free online GED Subject Score Percentile & Passing Status Checker. Online client-side GED Subject Score Percentile & Passing Status Checker tool. Fast, private, client-side execution."
+},
+{
+  "id": "gre-score-percentile-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "GRE Verbal & Quant Percentile Rank Solver",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Online client-side GRE Verbal & Quant Percentile Rank Solver tool.",
+  "iconName": "Target",
+  "badge": "New",
+  "keywords": [
+    "gre score percentile calculator",
+    "gre verbal & quant percentile rank solver",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "GRE Verbal & Quant Percentile Rank Solver \u2014 QuickForma",
+  "metaDescription": "Free online GRE Verbal & Quant Percentile Rank Solver. Online client-side GRE Verbal & Quant Percentile Rank Solver tool. Fast, private, client-side execution."
+},
+{
+  "id": "gmat-score-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "GMAT Focus Edition Section & Percentile Estimator",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Online client-side GMAT Focus Edition Section & Percentile Estimator tool.",
+  "iconName": "BarChart3",
+  "badge": "New",
+  "keywords": [
+    "gmat score calculator",
+    "gmat focus edition section & percentile estimator",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "GMAT Focus Edition Section & Percentile Estimator \u2014 QuickForma",
+  "metaDescription": "Free online GMAT Focus Edition Section & Percentile Estimator. Online client-side GMAT Focus Edition Section & Percentile Estimator tool. Fast, private, client-side execution."
+},
+{
+  "id": "toefl-ielts-score-converter",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "TOEFL iBT to IELTS Band Score Converter",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Online client-side TOEFL iBT to IELTS Band Score Converter tool.",
+  "iconName": "Languages",
+  "badge": "New",
+  "keywords": [
+    "toefl ielts score converter",
+    "toefl ibt to ielts band score converter",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "TOEFL iBT to IELTS Band Score Converter \u2014 QuickForma",
+  "metaDescription": "Free online TOEFL iBT to IELTS Band Score Converter. Online client-side TOEFL iBT to IELTS Band Score Converter tool. Fast, private, client-side execution."
+},
+{
+  "id": "clep-credit-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "CLEP Exam Credit Hour & Tuition Savings Solver",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Online client-side CLEP Exam Credit Hour & Tuition Savings Solver tool.",
+  "iconName": "GraduationCap",
+  "badge": "New",
+  "keywords": [
+    "clep credit calculator",
+    "clep exam credit hour & tuition savings solver",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "CLEP Exam Credit Hour & Tuition Savings Solver \u2014 QuickForma",
+  "metaDescription": "Free online CLEP Exam Credit Hour & Tuition Savings Solver. Online client-side CLEP Exam Credit Hour & Tuition Savings Solver tool. Fast, private, client-side execution."
+},
+{
+  "id": "academic-forgiveness-gpa-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "Course Repeat & Grade Replacement GPA Solver",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Online client-side Course Repeat & Grade Replacement GPA Solver tool.",
+  "iconName": "RefreshCw",
+  "badge": "New",
+  "keywords": [
+    "academic forgiveness gpa calculator",
+    "course repeat & grade replacement gpa solver",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Course Repeat & Grade Replacement GPA Solver \u2014 QuickForma",
+  "metaDescription": "Free online Course Repeat & Grade Replacement GPA Solver. Online client-side Course Repeat & Grade Replacement GPA Solver tool. Fast, private, client-side execution."
+},
+{
+  "id": "stem-major-gpa-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "Engineering & Science Major Core GPA Solver",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Online client-side Engineering & Science Major Core GPA Solver tool.",
+  "iconName": "Cpu",
+  "badge": "New",
+  "keywords": [
+    "stem major gpa calculator",
+    "engineering & science major core gpa solver",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Engineering & Science Major Core GPA Solver \u2014 QuickForma",
+  "metaDescription": "Free online Engineering & Science Major Core GPA Solver. Online client-side Engineering & Science Major Core GPA Solver tool. Fast, private, client-side execution."
+},
+{
+  "id": "business-major-gpa-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "Finance & Accounting Major Core GPA Solver",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Online client-side Finance & Accounting Major Core GPA Solver tool.",
+  "iconName": "Briefcase",
+  "badge": "New",
+  "keywords": [
+    "business major gpa calculator",
+    "finance & accounting major core gpa solver",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Finance & Accounting Major Core GPA Solver \u2014 QuickForma",
+  "metaDescription": "Free online Finance & Accounting Major Core GPA Solver. Online client-side Finance & Accounting Major Core GPA Solver tool. Fast, private, client-side execution."
+},
+{
+  "id": "nursing-school-gpa-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "Nursing Prerequisite & Science GPA Solver",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Online client-side Nursing Prerequisite & Science GPA Solver tool.",
+  "iconName": "HeartPulse",
+  "badge": "New",
+  "keywords": [
+    "nursing school gpa calculator",
+    "nursing prerequisite & science gpa solver",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Nursing Prerequisite & Science GPA Solver \u2014 QuickForma",
+  "metaDescription": "Free online Nursing Prerequisite & Science GPA Solver. Online client-side Nursing Prerequisite & Science GPA Solver tool. Fast, private, client-side execution."
+},
+{
+  "id": "complex-numbers-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "Polar vs Rectangular Complex Number Calculator",
+  "category": "converters",
+  "categoryLabel": "Converters & Formats",
+  "description": "Online client-side Polar vs Rectangular Complex Number Calculator tool.",
+  "iconName": "Compass",
+  "badge": "New",
+  "keywords": [
+    "complex numbers calculator",
+    "polar vs rectangular complex number calculator",
+    "converters & formats",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Polar vs Rectangular Complex Number Calculator \u2014 QuickForma",
+  "metaDescription": "Free online Polar vs Rectangular Complex Number Calculator. Online client-side Polar vs Rectangular Complex Number Calculator tool. Fast, private, client-side execution."
+},
+{
+  "id": "factorial-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "Factorial $n!$ & Permutation Formula Solver",
+  "category": "converters",
+  "categoryLabel": "Converters & Formats",
+  "description": "Online client-side Factorial $n!$ & Permutation Formula Solver tool.",
+  "iconName": "FunctionSquare",
+  "badge": "New",
+  "keywords": [
+    "factorial calculator",
+    "factorial $n!$ & permutation formula solver",
+    "converters & formats",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Factorial $n!$ & Permutation Formula Solver \u2014 QuickForma",
+  "metaDescription": "Free online Factorial $n!$ & Permutation Formula Solver. Online client-side Factorial $n!$ & Permutation Formula Solver tool. Fast, private, client-side execution."
+},
+{
+  "id": "logarithm-change-of-base-tool",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "Logarithm Base-$b$ Conversion Solver",
+  "category": "converters",
+  "categoryLabel": "Converters & Formats",
+  "description": "Online client-side Logarithm Base-$b$ Conversion Solver tool.",
+  "iconName": "Divide",
+  "badge": "New",
+  "keywords": [
+    "logarithm change of base tool",
+    "logarithm base-$b$ conversion solver",
+    "converters & formats",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Logarithm Base-$b$ Conversion Solver \u2014 QuickForma",
+  "metaDescription": "Free online Logarithm Base-$b$ Conversion Solver. Online client-side Logarithm Base-$b$ Conversion Solver tool. Fast, private, client-side execution."
+},
+{
+  "id": "ellipse-hyperbola-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "Conic Sections: Ellipse & Hyperbola Solver",
+  "category": "converters",
+  "categoryLabel": "Converters & Formats",
+  "description": "Online client-side Conic Sections: Ellipse & Hyperbola Solver tool.",
+  "iconName": "Orbit",
+  "badge": "New",
+  "keywords": [
+    "ellipse hyperbola calculator",
+    "conic sections: ellipse & hyperbola solver",
+    "converters & formats",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Conic Sections: Ellipse & Hyperbola Solver \u2014 QuickForma",
+  "metaDescription": "Free online Conic Sections: Ellipse & Hyperbola Solver. Online client-side Conic Sections: Ellipse & Hyperbola Solver tool. Fast, private, client-side execution."
+},
+{
+  "id": "partial-fraction-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "Partial Fraction Decomposition Solver",
+  "category": "converters",
+  "categoryLabel": "Converters & Formats",
+  "description": "Online client-side Partial Fraction Decomposition Solver tool.",
+  "iconName": "FunctionSquare",
+  "badge": "New",
+  "keywords": [
+    "partial fraction calculator",
+    "partial fraction decomposition solver",
+    "converters & formats",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Partial Fraction Decomposition Solver \u2014 QuickForma",
+  "metaDescription": "Free online Partial Fraction Decomposition Solver. Online client-side Partial Fraction Decomposition Solver tool. Fast, private, client-side execution."
+},
+{
+  "id": "poisson-distribution-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "Poisson Event Probability & Rate Solver",
+  "category": "productivity",
+  "categoryLabel": "Productivity & Daily",
+  "description": "Online client-side Poisson Event Probability & Rate Solver tool.",
+  "iconName": "BarChart",
+  "badge": "New",
+  "keywords": [
+    "poisson distribution calculator",
+    "poisson event probability & rate solver",
+    "productivity & daily",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Poisson Event Probability & Rate Solver \u2014 QuickForma",
+  "metaDescription": "Free online Poisson Event Probability & Rate Solver. Online client-side Poisson Event Probability & Rate Solver tool. Fast, private, client-side execution."
+},
+{
+  "id": "exponential-distribution-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "Continuous Exponential Decay & Reliability",
+  "category": "productivity",
+  "categoryLabel": "Productivity & Daily",
+  "description": "Online client-side Continuous Exponential Decay & Reliability tool.",
+  "iconName": "TrendingDown",
+  "badge": "New",
+  "keywords": [
+    "exponential distribution calculator",
+    "continuous exponential decay & reliability",
+    "productivity & daily",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Continuous Exponential Decay & Reliability \u2014 QuickForma",
+  "metaDescription": "Free online Continuous Exponential Decay & Reliability. Online client-side Continuous Exponential Decay & Reliability tool. Fast, private, client-side execution."
+},
+{
+  "id": "bayes-theorem-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "Bayesian Conditional Probability & Prior Solver",
+  "category": "productivity",
+  "categoryLabel": "Productivity & Daily",
+  "description": "Online client-side Bayesian Conditional Probability & Prior Solver tool.",
+  "iconName": "GitCommit",
+  "badge": "New",
+  "keywords": [
+    "bayes theorem calculator",
+    "bayesian conditional probability & prior solver",
+    "productivity & daily",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Bayesian Conditional Probability & Prior Solver \u2014 QuickForma",
+  "metaDescription": "Free online Bayesian Conditional Probability & Prior Solver. Online client-side Bayesian Conditional Probability & Prior Solver tool. Fast, private, client-side execution."
+},
+{
+  "id": "buffer-solution-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "Henderson-Hasselbalch Buffer pH Solver",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Online client-side Henderson-Hasselbalch Buffer pH Solver tool.",
+  "iconName": "FlaskConical",
+  "badge": "New",
+  "keywords": [
+    "buffer solution calculator",
+    "henderson-hasselbalch buffer ph solver",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Henderson-Hasselbalch Buffer pH Solver \u2014 QuickForma",
+  "metaDescription": "Free online Henderson-Hasselbalch Buffer pH Solver. Online client-side Henderson-Hasselbalch Buffer pH Solver tool. Fast, private, client-side execution."
+},
+{
+  "id": "boiling-point-elevation-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "Colligative Properties & Freezing Point Depression",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Online client-side Colligative Properties & Freezing Point Depression tool.",
+  "iconName": "Flame",
+  "badge": "New",
+  "keywords": [
+    "boiling point elevation calculator",
+    "colligative properties & freezing point depression",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Colligative Properties & Freezing Point Depression \u2014 QuickForma",
+  "metaDescription": "Free online Colligative Properties & Freezing Point Depression. Online client-side Colligative Properties & Freezing Point Depression tool. Fast, private, client-side execution."
+},
+{
+  "id": "activation-energy-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "Arrhenius Equation & Activation Energy Solver",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Online client-side Arrhenius Equation & Activation Energy Solver tool.",
+  "iconName": "Zap",
+  "badge": "New",
+  "keywords": [
+    "activation energy calculator",
+    "arrhenius equation & activation energy solver",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Arrhenius Equation & Activation Energy Solver \u2014 QuickForma",
+  "metaDescription": "Free online Arrhenius Equation & Activation Energy Solver. Online client-side Arrhenius Equation & Activation Energy Solver tool. Fast, private, client-side execution."
+},
+{
+  "id": "combustion-analysis-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "Hydrocarbon Combustion Formula Solver",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Online client-side Hydrocarbon Combustion Formula Solver tool.",
+  "iconName": "Flame",
+  "badge": "New",
+  "keywords": [
+    "combustion analysis calculator",
+    "hydrocarbon combustion formula solver",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Hydrocarbon Combustion Formula Solver \u2014 QuickForma",
+  "metaDescription": "Free online Hydrocarbon Combustion Formula Solver. Online client-side Hydrocarbon Combustion Formula Solver tool. Fast, private, client-side execution."
+},
+{
+  "id": "oxidation-number-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "Redox Reaction Oxidation State Solver",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Online client-side Redox Reaction Oxidation State Solver tool.",
+  "iconName": "Atom",
+  "badge": "New",
+  "keywords": [
+    "oxidation number calculator",
+    "redox reaction oxidation state solver",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Redox Reaction Oxidation State Solver \u2014 QuickForma",
+  "metaDescription": "Free online Redox Reaction Oxidation State Solver. Online client-side Redox Reaction Oxidation State Solver tool. Fast, private, client-side execution."
+},
+{
+  "id": "equilibrium-constant-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "Chemical Equilibrium $K_c$ and $K_p$ Solver",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Online client-side Chemical Equilibrium $K_c$ and $K_p$ Solver tool.",
+  "iconName": "ArrowLeftRight",
+  "badge": "New",
+  "keywords": [
+    "equilibrium constant calculator",
+    "chemical equilibrium $k_c$ and $k_p$ solver",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Chemical Equilibrium $K_c$ and $K_p$ Solver \u2014 QuickForma",
+  "metaDescription": "Free online Chemical Equilibrium $K_c$ and $K_p$ Solver. Online client-side Chemical Equilibrium $K_c$ and $K_p$ Solver tool. Fast, private, client-side execution."
+},
+{
+  "id": "electrolysis-faraday-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "Faraday's Law of Electrolysis Mass Solver",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Online client-side Faraday's Law of Electrolysis Mass Solver tool.",
+  "iconName": "Zap",
+  "badge": "New",
+  "keywords": [
+    "electrolysis faraday calculator",
+    "faraday's law of electrolysis mass solver",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Faraday's Law of Electrolysis Mass Solver \u2014 QuickForma",
+  "metaDescription": "Free online Faraday's Law of Electrolysis Mass Solver. Online client-side Faraday's Law of Electrolysis Mass Solver tool. Fast, private, client-side execution."
+},
+{
+  "id": "torque-rotational-motion-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "Torque, Moment of Inertia & Rotational Kinematics",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Online client-side Torque, Moment of Inertia & Rotational Kinematics tool.",
+  "iconName": "RotateCw",
+  "badge": "New",
+  "keywords": [
+    "torque rotational motion calculator",
+    "torque, moment of inertia & rotational kinematics",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Torque, Moment of Inertia & Rotational Kinematics \u2014 QuickForma",
+  "metaDescription": "Free online Torque, Moment of Inertia & Rotational Kinematics. Online client-side Torque, Moment of Inertia & Rotational Kinematics tool. Fast, private, client-side execution."
+},
+{
+  "id": "pendulum-harmonic-motion-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "Simple Harmonic Motion & Oscillation Period",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Online client-side Simple Harmonic Motion & Oscillation Period tool.",
+  "iconName": "Clock",
+  "badge": "New",
+  "keywords": [
+    "pendulum harmonic motion calculator",
+    "simple harmonic motion & oscillation period",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Simple Harmonic Motion & Oscillation Period \u2014 QuickForma",
+  "metaDescription": "Free online Simple Harmonic Motion & Oscillation Period. Online client-side Simple Harmonic Motion & Oscillation Period tool. Fast, private, client-side execution."
+},
+{
+  "id": "doppler-effect-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "Sound & Light Wave Frequency Doppler Shift",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Online client-side Sound & Light Wave Frequency Doppler Shift tool.",
+  "iconName": "Volume2",
+  "badge": "New",
+  "keywords": [
+    "doppler effect calculator",
+    "sound & light wave frequency doppler shift",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Sound & Light Wave Frequency Doppler Shift \u2014 QuickForma",
+  "metaDescription": "Free online Sound & Light Wave Frequency Doppler Shift. Online client-side Sound & Light Wave Frequency Doppler Shift tool. Fast, private, client-side execution."
+},
+{
+  "id": "refraction-snells-law-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "Snell's Law of Refraction & Critical Angle",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Online client-side Snell's Law of Refraction & Critical Angle tool.",
+  "iconName": "Compass",
+  "badge": "New",
+  "keywords": [
+    "refraction snells law calculator",
+    "snell's law of refraction & critical angle",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Snell's Law of Refraction & Critical Angle \u2014 QuickForma",
+  "metaDescription": "Free online Snell's Law of Refraction & Critical Angle. Online client-side Snell's Law of Refraction & Critical Angle tool. Fast, private, client-side execution."
+},
+{
+  "id": "capacitance-rc-circuit-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "Capacitor Charge & RC Time Constant Solver",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Online client-side Capacitor Charge & RC Time Constant Solver tool.",
+  "iconName": "Zap",
+  "badge": "New",
+  "keywords": [
+    "capacitance rc circuit calculator",
+    "capacitor charge & rc time constant solver",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Capacitor Charge & RC Time Constant Solver \u2014 QuickForma",
+  "metaDescription": "Free online Capacitor Charge & RC Time Constant Solver. Online client-side Capacitor Charge & RC Time Constant Solver tool. Fast, private, client-side execution."
+},
+{
+  "id": "transformer-voltage-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "Electrical Transformer Turns Ratio & Voltage Solver",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Online client-side Electrical Transformer Turns Ratio & Voltage Solver tool.",
+  "iconName": "Zap",
+  "badge": "New",
+  "keywords": [
+    "transformer voltage calculator",
+    "electrical transformer turns ratio & voltage solver",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Electrical Transformer Turns Ratio & Voltage Solver \u2014 QuickForma",
+  "metaDescription": "Free online Electrical Transformer Turns Ratio & Voltage Solver. Online client-side Electrical Transformer Turns Ratio & Voltage Solver tool. Fast, private, client-side execution."
+},
+{
+  "id": "fluid-buoyancy-archimedes-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "Archimedes' Principle & Buoyant Force Solver",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Online client-side Archimedes' Principle & Buoyant Force Solver tool.",
+  "iconName": "Waves",
+  "badge": "New",
+  "keywords": [
+    "fluid buoyancy archimedes calculator",
+    "archimedes' principle & buoyant force solver",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Archimedes' Principle & Buoyant Force Solver \u2014 QuickForma",
+  "metaDescription": "Free online Archimedes' Principle & Buoyant Force Solver. Online client-side Archimedes' Principle & Buoyant Force Solver tool. Fast, private, client-side execution."
+},
+{
+  "id": "bernoullis-equation-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "Fluid Dynamics Pressure & Flow Velocity Solver",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Online client-side Fluid Dynamics Pressure & Flow Velocity Solver tool.",
+  "iconName": "Wind",
+  "badge": "New",
+  "keywords": [
+    "bernoullis equation calculator",
+    "fluid dynamics pressure & flow velocity solver",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Fluid Dynamics Pressure & Flow Velocity Solver \u2014 QuickForma",
+  "metaDescription": "Free online Fluid Dynamics Pressure & Flow Velocity Solver. Online client-side Fluid Dynamics Pressure & Flow Velocity Solver tool. Fast, private, client-side execution."
+},
+{
+  "id": "special-relativity-time-dilation-calculator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "Lorentz Factor & Time Dilation Solver",
+  "category": "students",
+  "categoryLabel": "Students & Education",
+  "description": "Online client-side Lorentz Factor & Time Dilation Solver tool.",
+  "iconName": "Rocket",
+  "badge": "New",
+  "keywords": [
+    "special relativity time dilation calculator",
+    "lorentz factor & time dilation solver",
+    "students & education",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Lorentz Factor & Time Dilation Solver \u2014 QuickForma",
+  "metaDescription": "Free online Lorentz Factor & Time Dilation Solver. Online client-side Lorentz Factor & Time Dilation Solver tool. Fast, private, client-side execution."
+},
+{
+  "id": "cornell-notes-template-generator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "Printable & Interactive Cornell Notes Sheet",
+  "category": "productivity",
+  "categoryLabel": "Productivity & Daily",
+  "description": "Online client-side Printable & Interactive Cornell Notes Sheet tool.",
+  "iconName": "BookOpen",
+  "badge": "New",
+  "keywords": [
+    "cornell notes template generator",
+    "printable & interactive cornell notes sheet",
+    "productivity & daily",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Printable & Interactive Cornell Notes Sheet \u2014 QuickForma",
+  "metaDescription": "Free online Printable & Interactive Cornell Notes Sheet. Online client-side Printable & Interactive Cornell Notes Sheet tool. Fast, private, client-side execution."
+},
+{
+  "id": "thesis-statement-generator",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "Academic Essay Thesis Statement Builder",
+  "category": "productivity",
+  "categoryLabel": "Productivity & Daily",
+  "description": "Online client-side Academic Essay Thesis Statement Builder tool.",
+  "iconName": "Feather",
+  "badge": "New",
+  "keywords": [
+    "thesis statement generator",
+    "academic essay thesis statement builder",
+    "productivity & daily",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Academic Essay Thesis Statement Builder \u2014 QuickForma",
+  "metaDescription": "Free online Academic Essay Thesis Statement Builder. Online client-side Academic Essay Thesis Statement Builder tool. Fast, private, client-side execution."
+},
+{
+  "id": "study-group-expense-splitter",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "Student Project & Shared Supplies Cost Splitter",
+  "category": "productivity",
+  "categoryLabel": "Productivity & Daily",
+  "description": "Online client-side Student Project & Shared Supplies Cost Splitter tool.",
+  "iconName": "Users",
+  "badge": "New",
+  "keywords": [
+    "study group expense splitter",
+    "student project & shared supplies cost splitter",
+    "productivity & daily",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Student Project & Shared Supplies Cost Splitter \u2014 QuickForma",
+  "metaDescription": "Free online Student Project & Shared Supplies Cost Splitter. Online client-side Student Project & Shared Supplies Cost Splitter tool. Fast, private, client-side execution."
+},
+{
+  "id": "exam-prep-score-predictor",
+  "verticals": [
+    "students",
+    "business"
+  ],
+  "name": "Mock Test Score to Final Exam Grade Predictor",
+  "category": "productivity",
+  "categoryLabel": "Productivity & Daily",
+  "description": "Online client-side Mock Test Score to Final Exam Grade Predictor tool.",
+  "iconName": "Target",
+  "badge": "New",
+  "keywords": [
+    "exam prep score predictor",
+    "mock test score to final exam grade predictor",
+    "productivity & daily",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Mock Test Score to Final Exam Grade Predictor \u2014 QuickForma",
+  "metaDescription": "Free online Mock Test Score to Final Exam Grade Predictor. Online client-side Mock Test Score to Final Exam Grade Predictor tool. Fast, private, client-side execution."
+},
+{
+  "id": "mercari-seller-fee-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Mercari Selling & Direct Deposit Fee Solver",
+  "category": "ecommerce",
+  "categoryLabel": "Ecommerce & Operations",
+  "description": "Online client-side Mercari Selling & Direct Deposit Fee Solver tool.",
+  "iconName": "ShoppingBag",
+  "badge": "New",
+  "keywords": [
+    "mercari seller fee calculator",
+    "mercari selling & direct deposit fee solver",
+    "ecommerce & operations",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Mercari Selling & Direct Deposit Fee Solver \u2014 QuickForma",
+  "metaDescription": "Free online Mercari Selling & Direct Deposit Fee Solver. Online client-side Mercari Selling & Direct Deposit Fee Solver tool. Fast, private, client-side execution."
+},
+{
+  "id": "poshmark-fee-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Poshmark Flat vs 20% Seller Commission Calculator",
+  "category": "ecommerce",
+  "categoryLabel": "Ecommerce & Operations",
+  "description": "Online client-side Poshmark Flat vs 20% Seller Commission Calculator tool.",
+  "iconName": "Tag",
+  "badge": "New",
+  "keywords": [
+    "poshmark fee calculator",
+    "poshmark flat vs 20% seller commission calculator",
+    "ecommerce & operations",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Poshmark Flat vs 20% Seller Commission Calculator \u2014 QuickForma",
+  "metaDescription": "Free online Poshmark Flat vs 20% Seller Commission Calculator. Online client-side Poshmark Flat vs 20% Seller Commission Calculator tool. Fast, private, client-side execution."
+},
+{
+  "id": "return-rate-profit-impact-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Customer Return Rate & Restock Cost Loss",
+  "category": "ecommerce",
+  "categoryLabel": "Ecommerce & Operations",
+  "description": "Online client-side Customer Return Rate & Restock Cost Loss tool.",
+  "iconName": "RotateCcw",
+  "badge": "New",
+  "keywords": [
+    "return rate profit impact calculator",
+    "customer return rate & restock cost loss",
+    "ecommerce & operations",
+    "business tool",
+    "online calculator"
+  ],
+  "metaTitle": "Customer Return Rate & Restock Cost Loss \u2014 QuickForma",
+  "metaDescription": "Free online Customer Return Rate & Restock Cost Loss. Online client-side Customer Return Rate & Restock Cost Loss tool. Fast, private, client-side execution."
 }
 ];

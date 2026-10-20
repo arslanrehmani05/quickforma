@@ -8969,5 +8969,917 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   ],
   "metaTitle": "Promoters vs Detractors NPS Score Solver \u2014 QuickForma",
   "metaDescription": "Free client-side promoters vs detractors nps score solver with zero cloud tracking and instant results."
+},
+{
+  "id": "marketing-qualified-lead-mql-conversion",
+  "verticals": [
+    "business"
+  ],
+  "name": "MQL to SQL to Customer Pipeline Rate",
+  "category": "marketing",
+  "categoryLabel": "Marketing & Growth",
+  "description": "Calculate and analyze mql to sql to customer pipeline rate with instant client-side business precision.",
+  "iconName": "TrendingUp",
+  "keywords": [
+    "marketing qualified lead mql conversion",
+    "mql to sql to customer pipeline rate",
+    "marketing calculator",
+    "marketing calculator"
+  ],
+  "metaTitle": "MQL to SQL to Customer Pipeline Rate \u2014 QuickForma",
+  "metaDescription": "Free client-side mql to sql to customer pipeline rate with zero cloud tracking and instant results."
+},
+{
+  "id": "content-marketing-roi-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Blog & SEO Content Creation ROI Solver",
+  "category": "marketing",
+  "categoryLabel": "Marketing & Growth",
+  "description": "Calculate and analyze blog & seo content creation roi solver with instant client-side business precision.",
+  "iconName": "BarChart3",
+  "keywords": [
+    "content marketing roi calculator",
+    "blog & seo content creation roi solver",
+    "marketing calculator",
+    "content calculator"
+  ],
+  "metaTitle": "Blog & SEO Content Creation ROI Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side blog & seo content creation roi solver with zero cloud tracking and instant results."
+},
+{
+  "id": "event-sponsorship-roi-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Trade Show & Conference Lead ROI Solver",
+  "category": "marketing",
+  "categoryLabel": "Marketing & Growth",
+  "description": "Calculate and analyze trade show & conference lead roi solver with instant client-side business precision.",
+  "iconName": "Target",
+  "keywords": [
+    "event sponsorship roi calculator",
+    "trade show & conference lead roi solver",
+    "marketing calculator",
+    "event calculator"
+  ],
+  "metaTitle": "Trade Show & Conference Lead ROI Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side trade show & conference lead roi solver with zero cloud tracking and instant results."
+},
+{
+  "id": "social-media-engagement-rate-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Social Media Engagement Rate Solver",
+  "category": "marketing",
+  "categoryLabel": "Marketing & Growth",
+  "description": "Calculate and analyze social media engagement rate solver with instant client-side business precision.",
+  "iconName": "Activity",
+  "keywords": [
+    "social media engagement rate calculator",
+    "social media engagement rate solver",
+    "marketing calculator",
+    "social calculator"
+  ],
+  "metaTitle": "Social Media Engagement Rate Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side social media engagement rate solver with zero cloud tracking and instant results."
+},
+{
+  "id": "pay-per-click-ppc-budget-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Target Clicks & Monthly PPC Budget Solver",
+  "category": "marketing",
+  "categoryLabel": "Marketing & Growth",
+  "description": "Calculate and analyze target clicks & monthly ppc budget solver with instant client-side business precision.",
+  "iconName": "DollarSign",
+  "keywords": [
+    "pay per click ppc budget calculator",
+    "target clicks & monthly ppc budget solver",
+    "marketing calculator",
+    "pay calculator"
+  ],
+  "metaTitle": "Target Clicks & Monthly PPC Budget Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side target clicks & monthly ppc budget solver with zero cloud tracking and instant results."
+},
+{
+  "id": "customer-retention-rate-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Cohort Customer Retention Rate Solver",
+  "category": "marketing",
+  "categoryLabel": "Marketing & Growth",
+  "description": "Calculate and analyze cohort customer retention rate solver with instant client-side business precision.",
+  "iconName": "Users",
+  "keywords": [
+    "customer retention rate calculator",
+    "cohort customer retention rate solver",
+    "marketing calculator",
+    "customer calculator"
+  ],
+  "metaTitle": "Cohort Customer Retention Rate Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side cohort customer retention rate solver with zero cloud tracking and instant results."
+},
+{
+  "id": "affiliate-marketing-commission-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Affiliate Partner Payout & Net Profit",
+  "category": "marketing",
+  "categoryLabel": "Marketing & Growth",
+  "description": "Calculate and analyze affiliate partner payout & net profit with instant client-side business precision.",
+  "iconName": "Percent",
+  "keywords": [
+    "affiliate marketing commission calculator",
+    "affiliate partner payout & net profit",
+    "marketing calculator",
+    "affiliate calculator"
+  ],
+  "metaTitle": "Affiliate Partner Payout & Net Profit \u2014 QuickForma",
+  "metaDescription": "Free client-side affiliate partner payout & net profit with zero cloud tracking and instant results."
+},
+{
+  "id": "app-store-conversion-rate-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "ASO App Store Impression to Install Rate",
+  "category": "marketing",
+  "categoryLabel": "Marketing & Growth",
+  "description": "Calculate and analyze aso app store impression to install rate with instant client-side business precision.",
+  "iconName": "Smartphone",
+  "keywords": [
+    "app store conversion rate calculator",
+    "aso app store impression to install rate",
+    "marketing calculator",
+    "app calculator"
+  ],
+  "metaTitle": "ASO App Store Impression to Install Rate \u2014 QuickForma",
+  "metaDescription": "Free client-side aso app store impression to install rate with zero cloud tracking and instant results."
+},
+{
+  "id": "cost-per-acquisition-target-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Maximum Allowable CPA based on LTV",
+  "category": "marketing",
+  "categoryLabel": "Marketing & Growth",
+  "description": "Calculate and analyze maximum allowable cpa based on ltv with instant client-side business precision.",
+  "iconName": "Crosshair",
+  "keywords": [
+    "cost per acquisition target calculator",
+    "maximum allowable cpa based on ltv",
+    "marketing calculator",
+    "cost calculator"
+  ],
+  "metaTitle": "Maximum Allowable CPA based on LTV \u2014 QuickForma",
+  "metaDescription": "Free client-side maximum allowable cpa based on ltv with zero cloud tracking and instant results."
+},
+{
+  "id": "podcast-ad-cpm-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Podcast Episode Downloads & Spot CPM Rate",
+  "category": "marketing",
+  "categoryLabel": "Marketing & Growth",
+  "description": "Calculate and analyze podcast episode downloads & spot cpm rate with instant client-side business precision.",
+  "iconName": "Radio",
+  "keywords": [
+    "podcast ad cpm calculator",
+    "podcast episode downloads & spot cpm rate",
+    "marketing calculator",
+    "podcast calculator"
+  ],
+  "metaTitle": "Podcast Episode Downloads & Spot CPM Rate \u2014 QuickForma",
+  "metaDescription": "Free client-side podcast episode downloads & spot cpm rate with zero cloud tracking and instant results."
+},
+{
+  "id": "lead-scoring-threshold-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Sales Readiness Behavioral Lead Score",
+  "category": "marketing",
+  "categoryLabel": "Marketing & Growth",
+  "description": "Calculate and analyze sales readiness behavioral lead score with instant client-side business precision.",
+  "iconName": "CheckSquare",
+  "keywords": [
+    "lead scoring threshold calculator",
+    "sales readiness behavioral lead score",
+    "marketing calculator",
+    "lead calculator"
+  ],
+  "metaTitle": "Sales Readiness Behavioral Lead Score \u2014 QuickForma",
+  "metaDescription": "Free client-side sales readiness behavioral lead score with zero cloud tracking and instant results."
+},
+{
+  "id": "expansion-mrr-rate-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Customer Expansion MRR & Upsell Solver",
+  "category": "marketing",
+  "categoryLabel": "Marketing & Growth",
+  "description": "Calculate and analyze customer expansion mrr & upsell solver with instant client-side business precision.",
+  "iconName": "TrendingUp",
+  "keywords": [
+    "expansion mrr rate calculator",
+    "customer expansion mrr & upsell solver",
+    "marketing calculator",
+    "expansion calculator"
+  ],
+  "metaTitle": "Customer Expansion MRR & Upsell Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side customer expansion mrr & upsell solver with zero cloud tracking and instant results."
+},
+{
+  "id": "hourly-to-salary-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Hourly Wage to Equivalent Annual Salary Solver",
+  "category": "hr",
+  "categoryLabel": "Career & HR",
+  "description": "Calculate and analyze hourly wage to equivalent annual salary solver with instant client-side business precision.",
+  "iconName": "Clock",
+  "keywords": [
+    "hourly to salary calculator",
+    "hourly wage to equivalent annual salary solver",
+    "hr calculator",
+    "hourly calculator"
+  ],
+  "metaTitle": "Hourly Wage to Equivalent Annual Salary Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side hourly wage to equivalent annual salary solver with zero cloud tracking and instant results."
+},
+{
+  "id": "fmla-leave-hours-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "12-Week FMLA Entitlement Hours & Balance Solver",
+  "category": "hr",
+  "categoryLabel": "Career & HR",
+  "description": "Calculate and analyze 12-week fmla entitlement hours & balance solver with instant client-side business precision.",
+  "iconName": "Calendar",
+  "keywords": [
+    "fmla leave hours calculator",
+    "12-week fmla entitlement hours & balance solver",
+    "hr calculator",
+    "fmla calculator"
+  ],
+  "metaTitle": "12-Week FMLA Entitlement Hours & Balance Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side 12-week fmla entitlement hours & balance solver with zero cloud tracking and instant results."
+},
+{
+  "id": "severance-pay-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Years of Service Severance Pay & Tax Withholding",
+  "category": "hr",
+  "categoryLabel": "Career & HR",
+  "description": "Calculate and analyze years of service severance pay & tax withholding with instant client-side business precision.",
+  "iconName": "Briefcase",
+  "keywords": [
+    "severance pay calculator",
+    "years of service severance pay & tax withholding",
+    "hr calculator",
+    "severance calculator"
+  ],
+  "metaTitle": "Years of Service Severance Pay & Tax Withholding \u2014 QuickForma",
+  "metaDescription": "Free client-side years of service severance pay & tax withholding with zero cloud tracking and instant results."
+},
+{
+  "id": "overtime-pay-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Fair Labor Standards Act FLSA 1.5x Overtime Solver",
+  "category": "hr",
+  "categoryLabel": "Career & HR",
+  "description": "Calculate and analyze fair labor standards act flsa 1.5x overtime solver with instant client-side business precision.",
+  "iconName": "Clock",
+  "keywords": [
+    "overtime pay calculator",
+    "fair labor standards act flsa 1.5x overtime solver",
+    "hr calculator",
+    "overtime calculator"
+  ],
+  "metaTitle": "Fair Labor Standards Act FLSA 1.5x Overtime Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side fair labor standards act flsa 1.5x overtime solver with zero cloud tracking and instant results."
+},
+{
+  "id": "commission-payout-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Sales Rep Commission Split & Bonus Tier Solver",
+  "category": "hr",
+  "categoryLabel": "Career & HR",
+  "description": "Calculate and analyze sales rep commission split & bonus tier solver with instant client-side business precision.",
+  "iconName": "Award",
+  "keywords": [
+    "commission payout calculator",
+    "sales rep commission split & bonus tier solver",
+    "hr calculator",
+    "commission calculator"
+  ],
+  "metaTitle": "Sales Rep Commission Split & Bonus Tier Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side sales rep commission split & bonus tier solver with zero cloud tracking and instant results."
+},
+{
+  "id": "full-time-equivalent-fte-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Part-Time Hours to Full-Time Equivalent FTE",
+  "category": "hr",
+  "categoryLabel": "Career & HR",
+  "description": "Calculate and analyze part-time hours to full-time equivalent fte with instant client-side business precision.",
+  "iconName": "Users",
+  "keywords": [
+    "full time equivalent fte calculator",
+    "part-time hours to full-time equivalent fte",
+    "hr calculator",
+    "full calculator"
+  ],
+  "metaTitle": "Part-Time Hours to Full-Time Equivalent FTE \u2014 QuickForma",
+  "metaDescription": "Free client-side part-time hours to full-time equivalent fte with zero cloud tracking and instant results."
+},
+{
+  "id": "relocation-cost-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Employee Job Relocation Expense Allowance Solver",
+  "category": "hr",
+  "categoryLabel": "Career & HR",
+  "description": "Calculate and analyze employee job relocation expense allowance solver with instant client-side business precision.",
+  "iconName": "Truck",
+  "keywords": [
+    "relocation cost calculator",
+    "employee job relocation expense allowance solver",
+    "hr calculator",
+    "relocation calculator"
+  ],
+  "metaTitle": "Employee Job Relocation Expense Allowance Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side employee job relocation expense allowance solver with zero cloud tracking and instant results."
+},
+{
+  "id": "401k-employer-match-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Employer 401k Match Contribution & Max Limit",
+  "category": "hr",
+  "categoryLabel": "Career & HR",
+  "description": "Calculate and analyze employer 401k match contribution & max limit with instant client-side business precision.",
+  "iconName": "Shield",
+  "keywords": [
+    "401k employer match calculator",
+    "employer 401k match contribution & max limit",
+    "hr calculator",
+    "401k calculator"
+  ],
+  "metaTitle": "Employer 401k Match Contribution & Max Limit \u2014 QuickForma",
+  "metaDescription": "Free client-side employer 401k match contribution & max limit with zero cloud tracking and instant results."
+},
+{
+  "id": "pto-payout-upon-termination",
+  "verticals": [
+    "business"
+  ],
+  "name": "Accrued Unused Vacation PTO Payout Estimator",
+  "category": "hr",
+  "categoryLabel": "Career & HR",
+  "description": "Calculate and analyze accrued unused vacation pto payout estimator with instant client-side business precision.",
+  "iconName": "Calendar",
+  "keywords": [
+    "pto payout upon termination",
+    "accrued unused vacation pto payout estimator",
+    "hr calculator",
+    "pto calculator"
+  ],
+  "metaTitle": "Accrued Unused Vacation PTO Payout Estimator \u2014 QuickForma",
+  "metaDescription": "Free client-side accrued unused vacation pto payout estimator with zero cloud tracking and instant results."
+},
+{
+  "id": "employee-absence-rate-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Bradford Factor & Absenteeism Rate Solver",
+  "category": "hr",
+  "categoryLabel": "Career & HR",
+  "description": "Calculate and analyze bradford factor & absenteeism rate solver with instant client-side business precision.",
+  "iconName": "UserX",
+  "keywords": [
+    "employee absence rate calculator",
+    "bradford factor & absenteeism rate solver",
+    "hr calculator",
+    "employee calculator"
+  ],
+  "metaTitle": "Bradford Factor & Absenteeism Rate Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side bradford factor & absenteeism rate solver with zero cloud tracking and instant results."
+},
+{
+  "id": "stock-option-exercise-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "ISO / NSO Stock Option Strike Price & Tax",
+  "category": "hr",
+  "categoryLabel": "Career & HR",
+  "description": "Calculate and analyze iso / nso stock option strike price & tax with instant client-side business precision.",
+  "iconName": "TrendingUp",
+  "keywords": [
+    "stock option exercise calculator",
+    "iso / nso stock option strike price & tax",
+    "hr calculator",
+    "stock calculator"
+  ],
+  "metaTitle": "ISO / NSO Stock Option Strike Price & Tax \u2014 QuickForma",
+  "metaDescription": "Free client-side iso / nso stock option strike price & tax with zero cloud tracking and instant results."
+},
+{
+  "id": "annual-bonus-tax-withholding-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Supplemental Wage Flat 22% Tax Solver",
+  "category": "hr",
+  "categoryLabel": "Career & HR",
+  "description": "Calculate and analyze supplemental wage flat 22% tax solver with instant client-side business precision.",
+  "iconName": "FileText",
+  "keywords": [
+    "annual bonus tax withholding calculator",
+    "supplemental wage flat 22% tax solver",
+    "hr calculator",
+    "annual calculator"
+  ],
+  "metaTitle": "Supplemental Wage Flat 22% Tax Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side supplemental wage flat 22% tax solver with zero cloud tracking and instant results."
+},
+{
+  "id": "shift-differential-pay-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Night & Weekend Shift Premium Pay Solver",
+  "category": "hr",
+  "categoryLabel": "Career & HR",
+  "description": "Calculate and analyze night & weekend shift premium pay solver with instant client-side business precision.",
+  "iconName": "Moon",
+  "keywords": [
+    "shift differential pay calculator",
+    "night & weekend shift premium pay solver",
+    "hr calculator",
+    "shift calculator"
+  ],
+  "metaTitle": "Night & Weekend Shift Premium Pay Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side night & weekend shift premium pay solver with zero cloud tracking and instant results."
+},
+{
+  "id": "remote-work-stipend-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Remote Work Home Office Expense Allowance",
+  "category": "hr",
+  "categoryLabel": "Career & HR",
+  "description": "Calculate and analyze remote work home office expense allowance with instant client-side business precision.",
+  "iconName": "Home",
+  "keywords": [
+    "remote work stipend calculator",
+    "remote work home office expense allowance",
+    "hr calculator",
+    "remote calculator"
+  ],
+  "metaTitle": "Remote Work Home Office Expense Allowance \u2014 QuickForma",
+  "metaDescription": "Free client-side remote work home office expense allowance with zero cloud tracking and instant results."
+},
+{
+  "id": "training-roi-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Employee Upskilling & Training Return on Investment",
+  "category": "hr",
+  "categoryLabel": "Career & HR",
+  "description": "Calculate and analyze employee upskilling & training return on investment with instant client-side business precision.",
+  "iconName": "GraduationCap",
+  "keywords": [
+    "training roi calculator",
+    "employee upskilling & training return on investment",
+    "hr calculator",
+    "training calculator"
+  ],
+  "metaTitle": "Employee Upskilling & Training Return on Investment \u2014 QuickForma",
+  "metaDescription": "Free client-side employee upskilling & training return on investment with zero cloud tracking and instant results."
+},
+{
+  "id": "glassdoor-salary-benchmark-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Industry Percentile Salary Benchmark Solver",
+  "category": "hr",
+  "categoryLabel": "Career & HR",
+  "description": "Calculate and analyze industry percentile salary benchmark solver with instant client-side business precision.",
+  "iconName": "BarChart",
+  "keywords": [
+    "glassdoor salary benchmark calculator",
+    "industry percentile salary benchmark solver",
+    "hr calculator",
+    "glassdoor calculator"
+  ],
+  "metaTitle": "Industry Percentile Salary Benchmark Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side industry percentile salary benchmark solver with zero cloud tracking and instant results."
+},
+{
+  "id": "internal-pay-equity-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Internal Job Transfer Pay Equity Solver",
+  "category": "hr",
+  "categoryLabel": "Career & HR",
+  "description": "Calculate and analyze internal job transfer pay equity solver with instant client-side business precision.",
+  "iconName": "Scale",
+  "keywords": [
+    "internal pay equity calculator",
+    "internal job transfer pay equity solver",
+    "hr calculator",
+    "internal calculator"
+  ],
+  "metaTitle": "Internal Job Transfer Pay Equity Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side internal job transfer pay equity solver with zero cloud tracking and instant results."
+},
+{
+  "id": "employee-retention-rate-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Employee Retention Rate & Average Tenure Solver",
+  "category": "hr",
+  "categoryLabel": "Career & HR",
+  "description": "Calculate and analyze employee retention rate & average tenure solver with instant client-side business precision.",
+  "iconName": "Heart",
+  "keywords": [
+    "employee retention rate calculator",
+    "employee retention rate & average tenure solver",
+    "hr calculator",
+    "employee calculator"
+  ],
+  "metaTitle": "Employee Retention Rate & Average Tenure Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side employee retention rate & average tenure solver with zero cloud tracking and instant results."
+},
+{
+  "id": "roth-ira-growth-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Tax-Free Roth IRA Compound Interest Growth",
+  "category": "finance",
+  "categoryLabel": "Business Finance",
+  "description": "Calculate and analyze tax-free roth ira compound interest growth with instant client-side business precision.",
+  "iconName": "DollarSign",
+  "keywords": [
+    "roth ira growth calculator",
+    "tax-free roth ira compound interest growth",
+    "finance calculator",
+    "roth calculator"
+  ],
+  "metaTitle": "Tax-Free Roth IRA Compound Interest Growth \u2014 QuickForma",
+  "metaDescription": "Free client-side tax-free roth ira compound interest growth with zero cloud tracking and instant results."
+},
+{
+  "id": "simple-savings-goal-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Target Savings Goal & Monthly Deposit Required",
+  "category": "finance",
+  "categoryLabel": "Business Finance",
+  "description": "Calculate and analyze target savings goal & monthly deposit required with instant client-side business precision.",
+  "iconName": "PiggyBank",
+  "keywords": [
+    "simple savings goal calculator",
+    "target savings goal & monthly deposit required",
+    "finance calculator",
+    "simple calculator"
+  ],
+  "metaTitle": "Target Savings Goal & Monthly Deposit Required \u2014 QuickForma",
+  "metaDescription": "Free client-side target savings goal & monthly deposit required with zero cloud tracking and instant results."
+},
+{
+  "id": "credit-card-minimum-payment-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Credit Card Payoff & Interest Cost Solver",
+  "category": "finance",
+  "categoryLabel": "Business Finance",
+  "description": "Calculate and analyze credit card payoff & interest cost solver with instant client-side business precision.",
+  "iconName": "CreditCard",
+  "keywords": [
+    "credit card minimum payment calculator",
+    "credit card payoff & interest cost solver",
+    "finance calculator",
+    "credit calculator"
+  ],
+  "metaTitle": "Credit Card Payoff & Interest Cost Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side credit card payoff & interest cost solver with zero cloud tracking and instant results."
+},
+{
+  "id": "inflation-purchasing-power-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Inflation Purchasing Power Loss Solver",
+  "category": "finance",
+  "categoryLabel": "Business Finance",
+  "description": "Calculate and analyze inflation purchasing power loss solver with instant client-side business precision.",
+  "iconName": "TrendingDown",
+  "keywords": [
+    "inflation purchasing power calculator",
+    "inflation purchasing power loss solver",
+    "finance calculator",
+    "inflation calculator"
+  ],
+  "metaTitle": "Inflation Purchasing Power Loss Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side inflation purchasing power loss solver with zero cloud tracking and instant results."
+},
+{
+  "id": "fire-financial-independence-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "FIRE Number & Safe Withdrawal Rate Solver",
+  "category": "finance",
+  "categoryLabel": "Business Finance",
+  "description": "Calculate and analyze fire number & safe withdrawal rate solver with instant client-side business precision.",
+  "iconName": "Compass",
+  "keywords": [
+    "fire financial independence calculator",
+    "fire number & safe withdrawal rate solver",
+    "finance calculator",
+    "fire calculator"
+  ],
+  "metaTitle": "FIRE Number & Safe Withdrawal Rate Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side fire number & safe withdrawal rate solver with zero cloud tracking and instant results."
+},
+{
+  "id": "college-savings-529-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "529 College Savings Plan Future Growth Solver",
+  "category": "finance",
+  "categoryLabel": "Business Finance",
+  "description": "Calculate and analyze 529 college savings plan future growth solver with instant client-side business precision.",
+  "iconName": "BookOpen",
+  "keywords": [
+    "college savings 529 calculator",
+    "529 college savings plan future growth solver",
+    "finance calculator",
+    "college calculator"
+  ],
+  "metaTitle": "529 College Savings Plan Future Growth Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side 529 college savings plan future growth solver with zero cloud tracking and instant results."
+},
+{
+  "id": "life-insurance-needs-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "DIME Method Life Insurance Coverage Solver",
+  "category": "finance",
+  "categoryLabel": "Business Finance",
+  "description": "Calculate and analyze dime method life insurance coverage solver with instant client-side business precision.",
+  "iconName": "Umbrella",
+  "keywords": [
+    "life insurance needs calculator",
+    "dime method life insurance coverage solver",
+    "finance calculator",
+    "life calculator"
+  ],
+  "metaTitle": "DIME Method Life Insurance Coverage Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side dime method life insurance coverage solver with zero cloud tracking and instant results."
+},
+{
+  "id": "subscription-cost-analyzer",
+  "verticals": [
+    "business"
+  ],
+  "name": "Monthly & Annual Recurring Subscription Tracker",
+  "category": "finance",
+  "categoryLabel": "Business Finance",
+  "description": "Calculate and analyze monthly & annual recurring subscription tracker with instant client-side business precision.",
+  "iconName": "Repeat",
+  "keywords": [
+    "subscription cost analyzer",
+    "monthly & annual recurring subscription tracker",
+    "finance calculator",
+    "subscription calculator"
+  ],
+  "metaTitle": "Monthly & Annual Recurring Subscription Tracker \u2014 QuickForma",
+  "metaDescription": "Free client-side monthly & annual recurring subscription tracker with zero cloud tracking and instant results."
+},
+{
+  "id": "hsa-triple-tax-advantage-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "HSA Investment Growth & Tax Savings Solver",
+  "category": "finance",
+  "categoryLabel": "Business Finance",
+  "description": "Calculate and analyze hsa investment growth & tax savings solver with instant client-side business precision.",
+  "iconName": "ShieldCheck",
+  "keywords": [
+    "hsa triple tax advantage calculator",
+    "hsa investment growth & tax savings solver",
+    "finance calculator",
+    "hsa calculator"
+  ],
+  "metaTitle": "HSA Investment Growth & Tax Savings Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side hsa investment growth & tax savings solver with zero cloud tracking and instant results."
+},
+{
+  "id": "side-hustle-tax-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Self-Employment Schedule C Tax Estimator",
+  "category": "finance",
+  "categoryLabel": "Business Finance",
+  "description": "Calculate and analyze self-employment schedule c tax estimator with instant client-side business precision.",
+  "iconName": "Briefcase",
+  "keywords": [
+    "side hustle tax calculator",
+    "self-employment schedule c tax estimator",
+    "finance calculator",
+    "side calculator"
+  ],
+  "metaTitle": "Self-Employment Schedule C Tax Estimator \u2014 QuickForma",
+  "metaDescription": "Free client-side self-employment schedule c tax estimator with zero cloud tracking and instant results."
+},
+{
+  "id": "saas-quick-ratio-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "SaaS Quick Ratio Growth vs Churn Solver",
+  "category": "finance",
+  "categoryLabel": "Business Finance",
+  "description": "Calculate and analyze saas quick ratio growth vs churn solver with instant client-side business precision.",
+  "iconName": "Zap",
+  "keywords": [
+    "saas quick ratio calculator",
+    "saas quick ratio growth vs churn solver",
+    "finance calculator",
+    "saas calculator"
+  ],
+  "metaTitle": "SaaS Quick Ratio Growth vs Churn Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side saas quick ratio growth vs churn solver with zero cloud tracking and instant results."
+},
+{
+  "id": "burn-multiple-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Startup Capital Efficiency Burn Multiple Solver",
+  "category": "finance",
+  "categoryLabel": "Business Finance",
+  "description": "Calculate and analyze startup capital efficiency burn multiple solver with instant client-side business precision.",
+  "iconName": "Flame",
+  "keywords": [
+    "burn multiple calculator",
+    "startup capital efficiency burn multiple solver",
+    "finance calculator",
+    "burn calculator"
+  ],
+  "metaTitle": "Startup Capital Efficiency Burn Multiple Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side startup capital efficiency burn multiple solver with zero cloud tracking and instant results."
+},
+{
+  "id": "gross-margin-return-on-investment-gmroi",
+  "verticals": [
+    "business"
+  ],
+  "name": "Retail Inventory GMROI Profitability Solver",
+  "category": "ecommerce",
+  "categoryLabel": "Ecommerce Operations",
+  "description": "Calculate and analyze retail inventory gmroi profitability solver with instant client-side business precision.",
+  "iconName": "ShoppingBag",
+  "keywords": [
+    "gross margin return on investment gmroi",
+    "retail inventory gmroi profitability solver",
+    "ecommerce calculator",
+    "gross calculator"
+  ],
+  "metaTitle": "Retail Inventory GMROI Profitability Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side retail inventory gmroi profitability solver with zero cloud tracking and instant results."
+},
+{
+  "id": "accounts-payable-turnover-ratio",
+  "verticals": [
+    "business"
+  ],
+  "name": "Accounts Payable Turnover & DPO Solver",
+  "category": "finance",
+  "categoryLabel": "Business Finance",
+  "description": "Calculate and analyze accounts payable turnover & dpo solver with instant client-side business precision.",
+  "iconName": "ArrowDownLeft",
+  "keywords": [
+    "accounts payable turnover ratio",
+    "accounts payable turnover & dpo solver",
+    "finance calculator",
+    "accounts calculator"
+  ],
+  "metaTitle": "Accounts Payable Turnover & DPO Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side accounts payable turnover & dpo solver with zero cloud tracking and instant results."
+},
+{
+  "id": "accounts-receivable-aging-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Accounts Receivable Aging & Bad Debt Reserve",
+  "category": "finance",
+  "categoryLabel": "Business Finance",
+  "description": "Calculate and analyze accounts receivable aging & bad debt reserve with instant client-side business precision.",
+  "iconName": "ArrowUpRight",
+  "keywords": [
+    "accounts receivable aging calculator",
+    "accounts receivable aging & bad debt reserve",
+    "finance calculator",
+    "accounts calculator"
+  ],
+  "metaTitle": "Accounts Receivable Aging & Bad Debt Reserve \u2014 QuickForma",
+  "metaDescription": "Free client-side accounts receivable aging & bad debt reserve with zero cloud tracking and instant results."
+},
+{
+  "id": "customer-acquisition-payback-months",
+  "verticals": [
+    "business"
+  ],
+  "name": "CAC Payback Period in Months Solver",
+  "category": "finance",
+  "categoryLabel": "Business Finance",
+  "description": "Calculate and analyze cac payback period in months solver with instant client-side business precision.",
+  "iconName": "Clock",
+  "keywords": [
+    "customer acquisition payback months",
+    "cac payback period in months solver",
+    "finance calculator",
+    "customer calculator"
+  ],
+  "metaTitle": "CAC Payback Period in Months Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side cac payback period in months solver with zero cloud tracking and instant results."
+},
+{
+  "id": "compound-annual-growth-rate-cagr",
+  "verticals": [
+    "business"
+  ],
+  "name": "Compound Annual Growth Rate CAGR Solver",
+  "category": "finance",
+  "categoryLabel": "Business Finance",
+  "description": "Calculate and analyze compound annual growth rate cagr solver with instant client-side business precision.",
+  "iconName": "TrendingUp",
+  "keywords": [
+    "compound annual growth rate cagr",
+    "compound annual growth rate cagr solver",
+    "finance calculator",
+    "compound calculator"
+  ],
+  "metaTitle": "Compound Annual Growth Rate CAGR Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side compound annual growth rate cagr solver with zero cloud tracking and instant results."
+},
+{
+  "id": "working-capital-cycle-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Operating Working Capital Cycle Days Solver",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculate and analyze operating working capital cycle days solver with instant client-side business precision.",
+  "iconName": "RefreshCw",
+  "keywords": [
+    "working capital cycle calculator",
+    "operating working capital cycle days solver",
+    "operations calculator",
+    "working calculator"
+  ],
+  "metaTitle": "Operating Working Capital Cycle Days Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side operating working capital cycle days solver with zero cloud tracking and instant results."
 }
 ];

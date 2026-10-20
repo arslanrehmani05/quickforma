@@ -8019,5 +8019,955 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
   ],
   "metaTitle": "Asset Equipment Replacement Timing NPV \u2014 QuickForma",
   "metaDescription": "Free client-side asset equipment replacement timing npv with zero cloud tracking and instant results."
+},
+{
+  "id": "labor-efficiency-variance-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Standard vs Actual Labor Hours Variance",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculate and analyze standard vs actual labor hours variance with instant client-side business precision.",
+  "iconName": "Cpu",
+  "keywords": [
+    "labor efficiency variance calculator",
+    "standard vs actual labor hours variance",
+    "operations calculator",
+    "labor calculator"
+  ],
+  "metaTitle": "Standard vs Actual Labor Hours Variance \u2014 QuickForma",
+  "metaDescription": "Free client-side standard vs actual labor hours variance with zero cloud tracking and instant results."
+},
+{
+  "id": "material-requirements-planning-mrp",
+  "verticals": [
+    "business"
+  ],
+  "name": "Net Material Requirements & Lead Time Solver",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculate and analyze net material requirements & lead time solver with instant client-side business precision.",
+  "iconName": "Cpu",
+  "keywords": [
+    "material requirements planning mrp",
+    "net material requirements & lead time solver",
+    "operations calculator",
+    "material calculator"
+  ],
+  "metaTitle": "Net Material Requirements & Lead Time Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side net material requirements & lead time solver with zero cloud tracking and instant results."
+},
+{
+  "id": "lean-5s-audit-score-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Lean Workplace 5S Inspection Score Sheet",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculate and analyze lean workplace 5s inspection score sheet with instant client-side business precision.",
+  "iconName": "Cpu",
+  "keywords": [
+    "lean 5s audit score calculator",
+    "lean workplace 5s inspection score sheet",
+    "operations calculator",
+    "lean calculator"
+  ],
+  "metaTitle": "Lean Workplace 5S Inspection Score Sheet \u2014 QuickForma",
+  "metaDescription": "Free client-side lean workplace 5s inspection score sheet with zero cloud tracking and instant results."
+},
+{
+  "id": "value-stream-mapping-lead-time",
+  "verticals": [
+    "business"
+  ],
+  "name": "Process Value-Add Ratio vs Waste Lead Time",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculate and analyze process value-add ratio vs waste lead time with instant client-side business precision.",
+  "iconName": "Cpu",
+  "keywords": [
+    "value stream mapping lead time",
+    "process value-add ratio vs waste lead time",
+    "operations calculator",
+    "value calculator"
+  ],
+  "metaTitle": "Process Value-Add Ratio vs Waste Lead Time \u2014 QuickForma",
+  "metaDescription": "Free client-side process value-add ratio vs waste lead time with zero cloud tracking and instant results."
+},
+{
+  "id": "production-throughput-rate-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Units Per Hour Throughput Rate Solver",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculate and analyze units per hour throughput rate solver with instant client-side business precision.",
+  "iconName": "Cpu",
+  "keywords": [
+    "production throughput rate calculator",
+    "units per hour throughput rate solver",
+    "operations calculator",
+    "production calculator"
+  ],
+  "metaTitle": "Units Per Hour Throughput Rate Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side units per hour throughput rate solver with zero cloud tracking and instant results."
+},
+{
+  "id": "maintenance-labor-cost-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Preventive vs Corrective Maintenance Cost",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculate and analyze preventive vs corrective maintenance cost with instant client-side business precision.",
+  "iconName": "Cpu",
+  "keywords": [
+    "maintenance labor cost calculator",
+    "preventive vs corrective maintenance cost",
+    "operations calculator",
+    "maintenance calculator"
+  ],
+  "metaTitle": "Preventive vs Corrective Maintenance Cost \u2014 QuickForma",
+  "metaDescription": "Free client-side preventive vs corrective maintenance cost with zero cloud tracking and instant results."
+},
+{
+  "id": "spare-parts-inventory-safety-stock",
+  "verticals": [
+    "business"
+  ],
+  "name": "Critical MRO Spare Parts Safety Stock Solver",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculate and analyze critical mro spare parts safety stock solver with instant client-side business precision.",
+  "iconName": "Cpu",
+  "keywords": [
+    "spare parts inventory safety stock",
+    "critical mro spare parts safety stock solver",
+    "operations calculator",
+    "spare calculator"
+  ],
+  "metaTitle": "Critical MRO Spare Parts Safety Stock Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side critical mro spare parts safety stock solver with zero cloud tracking and instant results."
+},
+{
+  "id": "warehouse-forklift-fleet-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Warehouse Fleet Size & Operating Cost",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculate and analyze warehouse fleet size & operating cost with instant client-side business precision.",
+  "iconName": "Cpu",
+  "keywords": [
+    "warehouse forklift fleet calculator",
+    "warehouse fleet size & operating cost",
+    "operations calculator",
+    "warehouse calculator"
+  ],
+  "metaTitle": "Warehouse Fleet Size & Operating Cost \u2014 QuickForma",
+  "metaDescription": "Free client-side warehouse fleet size & operating cost with zero cloud tracking and instant results."
+},
+{
+  "id": "cross-docking-cost-savings-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Direct Transshipment vs Storage Cost",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculate and analyze direct transshipment vs storage cost with instant client-side business precision.",
+  "iconName": "Cpu",
+  "keywords": [
+    "cross docking cost savings calculator",
+    "direct transshipment vs storage cost",
+    "operations calculator",
+    "cross calculator"
+  ],
+  "metaTitle": "Direct Transshipment vs Storage Cost \u2014 QuickForma",
+  "metaDescription": "Free client-side direct transshipment vs storage cost with zero cloud tracking and instant results."
+},
+{
+  "id": "packaging-tare-weight-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Gross vs Net Freight Shipping Tare Weight",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculate and analyze gross vs net freight shipping tare weight with instant client-side business precision.",
+  "iconName": "Cpu",
+  "keywords": [
+    "packaging tare weight calculator",
+    "gross vs net freight shipping tare weight",
+    "operations calculator",
+    "packaging calculator"
+  ],
+  "metaTitle": "Gross vs Net Freight Shipping Tare Weight \u2014 QuickForma",
+  "metaDescription": "Free client-side gross vs net freight shipping tare weight with zero cloud tracking and instant results."
+},
+{
+  "id": "factory-floor-space-productivity",
+  "verticals": [
+    "business"
+  ],
+  "name": "Revenue & Output Per Square Foot Factory Floor",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculate and analyze revenue & output per square foot factory floor with instant client-side business precision.",
+  "iconName": "Cpu",
+  "keywords": [
+    "factory floor space productivity",
+    "revenue & output per square foot factory floor",
+    "operations calculator",
+    "factory calculator"
+  ],
+  "metaTitle": "Revenue & Output Per Square Foot Factory Floor \u2014 QuickForma",
+  "metaDescription": "Free client-side revenue & output per square foot factory floor with zero cloud tracking and instant results."
+},
+{
+  "id": "energy-consumption-cost-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Industrial Machine Kilowatt-Hour Cost",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculate and analyze industrial machine kilowatt-hour cost with instant client-side business precision.",
+  "iconName": "Cpu",
+  "keywords": [
+    "energy consumption cost calculator",
+    "industrial machine kilowatt-hour cost",
+    "operations calculator",
+    "energy calculator"
+  ],
+  "metaTitle": "Industrial Machine Kilowatt-Hour Cost \u2014 QuickForma",
+  "metaDescription": "Free client-side industrial machine kilowatt-hour cost with zero cloud tracking and instant results."
+},
+{
+  "id": "manufacturing-labor-rate-burden",
+  "verticals": [
+    "business"
+  ],
+  "name": "Fringe Benefit & Overhead Labor Rate Burden",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculate and analyze fringe benefit & overhead labor rate burden with instant client-side business precision.",
+  "iconName": "Cpu",
+  "keywords": [
+    "manufacturing labor rate burden",
+    "fringe benefit & overhead labor rate burden",
+    "operations calculator",
+    "manufacturing calculator"
+  ],
+  "metaTitle": "Fringe Benefit & Overhead Labor Rate Burden \u2014 QuickForma",
+  "metaDescription": "Free client-side fringe benefit & overhead labor rate burden with zero cloud tracking and instant results."
+},
+{
+  "id": "manufacturing-takt-vs-cycle-time",
+  "verticals": [
+    "business"
+  ],
+  "name": "Takt Time vs Cycle Time Line Efficiency Solver",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculate and analyze takt time vs cycle time line efficiency solver with instant client-side business precision.",
+  "iconName": "Cpu",
+  "keywords": [
+    "manufacturing takt vs cycle time",
+    "takt time vs cycle time line efficiency solver",
+    "operations calculator",
+    "manufacturing calculator"
+  ],
+  "metaTitle": "Takt Time vs Cycle Time Line Efficiency Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side takt time vs cycle time line efficiency solver with zero cloud tracking and instant results."
+},
+{
+  "id": "industrial-electricity-peak-demand-cost",
+  "verticals": [
+    "business"
+  ],
+  "name": "Industrial Utility Peak Demand Charge kW Loss Solver",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculate and analyze industrial utility peak demand charge kw loss solver with instant client-side business precision.",
+  "iconName": "Cpu",
+  "keywords": [
+    "industrial electricity peak demand cost",
+    "industrial utility peak demand charge kw loss solver",
+    "operations calculator",
+    "industrial calculator"
+  ],
+  "metaTitle": "Industrial Utility Peak Demand Charge kW Loss Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side industrial utility peak demand charge kw loss solver with zero cloud tracking and instant results."
+},
+{
+  "id": "work-center-capacity-planner",
+  "verticals": [
+    "business"
+  ],
+  "name": "Work Center Available Hours & Load Factor Solver",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculate and analyze work center available hours & load factor solver with instant client-side business precision.",
+  "iconName": "Cpu",
+  "keywords": [
+    "work center capacity planner",
+    "work center available hours & load factor solver",
+    "operations calculator",
+    "work calculator"
+  ],
+  "metaTitle": "Work Center Available Hours & Load Factor Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side work center available hours & load factor solver with zero cloud tracking and instant results."
+},
+{
+  "id": "changeover-downtime-cost-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Setup Time Changeover Productivity Financial Loss",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculate and analyze setup time changeover productivity financial loss with instant client-side business precision.",
+  "iconName": "Cpu",
+  "keywords": [
+    "changeover downtime cost calculator",
+    "setup time changeover productivity financial loss",
+    "operations calculator",
+    "changeover calculator"
+  ],
+  "metaTitle": "Setup Time Changeover Productivity Financial Loss \u2014 QuickForma",
+  "metaDescription": "Free client-side setup time changeover productivity financial loss with zero cloud tracking and instant results."
+},
+{
+  "id": "manufacturing-yield-variance-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Standard Yield vs Actual Output Material Variance",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculate and analyze standard yield vs actual output material variance with instant client-side business precision.",
+  "iconName": "Cpu",
+  "keywords": [
+    "manufacturing yield variance calculator",
+    "standard yield vs actual output material variance",
+    "operations calculator",
+    "manufacturing calculator"
+  ],
+  "metaTitle": "Standard Yield vs Actual Output Material Variance \u2014 QuickForma",
+  "metaDescription": "Free client-side standard yield vs actual output material variance with zero cloud tracking and instant results."
+},
+{
+  "id": "sqc-x-bar-r-control-chart",
+  "verticals": [
+    "business"
+  ],
+  "name": "Statistical Quality Control X-Bar & R Chart Solver",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculate and analyze statistical quality control x-bar & r chart solver with instant client-side business precision.",
+  "iconName": "Cpu",
+  "keywords": [
+    "sqc x bar r control chart",
+    "statistical quality control x-bar & r chart solver",
+    "operations calculator",
+    "sqc calculator"
+  ],
+  "metaTitle": "Statistical Quality Control X-Bar & R Chart Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side statistical quality control x-bar & r chart solver with zero cloud tracking and instant results."
+},
+{
+  "id": "niosh-lifting-equation-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Factory Worker Ergonomic Lifting Limit Solver",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculate and analyze factory worker ergonomic lifting limit solver with instant client-side business precision.",
+  "iconName": "Cpu",
+  "keywords": [
+    "niosh lifting equation calculator",
+    "factory worker ergonomic lifting limit solver",
+    "operations calculator",
+    "niosh calculator"
+  ],
+  "metaTitle": "Factory Worker Ergonomic Lifting Limit Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side factory worker ergonomic lifting limit solver with zero cloud tracking and instant results."
+},
+{
+  "id": "overdue-maintenance-risk-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Preventive Maintenance Overdue Risk Index Solver",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculate and analyze preventive maintenance overdue risk index solver with instant client-side business precision.",
+  "iconName": "Cpu",
+  "keywords": [
+    "overdue maintenance risk calculator",
+    "preventive maintenance overdue risk index solver",
+    "operations calculator",
+    "overdue calculator"
+  ],
+  "metaTitle": "Preventive Maintenance Overdue Risk Index Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side preventive maintenance overdue risk index solver with zero cloud tracking and instant results."
+},
+{
+  "id": "scrap-recycling-salvage-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Plant Floor Scrap Recovery & Recycling Value",
+  "category": "operations",
+  "categoryLabel": "Operations & Manufacturing",
+  "description": "Calculate and analyze plant floor scrap recovery & recycling value with instant client-side business precision.",
+  "iconName": "Cpu",
+  "keywords": [
+    "scrap recycling salvage calculator",
+    "plant floor scrap recovery & recycling value",
+    "operations calculator",
+    "scrap calculator"
+  ],
+  "metaTitle": "Plant Floor Scrap Recovery & Recycling Value \u2014 QuickForma",
+  "metaDescription": "Free client-side plant floor scrap recovery & recycling value with zero cloud tracking and instant results."
+},
+{
+  "id": "gross-rent-multiplier-grm",
+  "verticals": [
+    "business"
+  ],
+  "name": "Gross Rent Multiplier & Property Valuation Solver",
+  "category": "finance",
+  "categoryLabel": "Real Estate & Finance",
+  "description": "Calculate and analyze gross rent multiplier & property valuation solver with instant client-side business precision.",
+  "iconName": "Building",
+  "keywords": [
+    "gross rent multiplier grm",
+    "gross rent multiplier & property valuation solver",
+    "finance calculator",
+    "gross calculator"
+  ],
+  "metaTitle": "Gross Rent Multiplier & Property Valuation Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side gross rent multiplier & property valuation solver with zero cloud tracking and instant results."
+},
+{
+  "id": "debt-service-coverage-ratio-real-estate",
+  "verticals": [
+    "business"
+  ],
+  "name": "DSCR Commercial Mortgage Qualification",
+  "category": "finance",
+  "categoryLabel": "Real Estate & Finance",
+  "description": "Calculate and analyze dscr commercial mortgage qualification with instant client-side business precision.",
+  "iconName": "Building",
+  "keywords": [
+    "debt service coverage ratio real estate",
+    "dscr commercial mortgage qualification",
+    "finance calculator",
+    "debt calculator"
+  ],
+  "metaTitle": "DSCR Commercial Mortgage Qualification \u2014 QuickForma",
+  "metaDescription": "Free client-side dscr commercial mortgage qualification with zero cloud tracking and instant results."
+},
+{
+  "id": "real-estate-appreciation-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Compound Property Value Growth & Equity",
+  "category": "finance",
+  "categoryLabel": "Real Estate & Finance",
+  "description": "Calculate and analyze compound property value growth & equity with instant client-side business precision.",
+  "iconName": "Building",
+  "keywords": [
+    "real estate appreciation calculator",
+    "compound property value growth & equity",
+    "finance calculator",
+    "real calculator"
+  ],
+  "metaTitle": "Compound Property Value Growth & Equity \u2014 QuickForma",
+  "metaDescription": "Free client-side compound property value growth & equity with zero cloud tracking and instant results."
+},
+{
+  "id": "mortgage-refinance-break-even-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Refinance Closing Cost Break-Even Months",
+  "category": "finance",
+  "categoryLabel": "Real Estate & Finance",
+  "description": "Calculate and analyze refinance closing cost break-even months with instant client-side business precision.",
+  "iconName": "Building",
+  "keywords": [
+    "mortgage refinance break even calculator",
+    "refinance closing cost break-even months",
+    "finance calculator",
+    "mortgage calculator"
+  ],
+  "metaTitle": "Refinance Closing Cost Break-Even Months \u2014 QuickForma",
+  "metaDescription": "Free client-side refinance closing cost break-even months with zero cloud tracking and instant results."
+},
+{
+  "id": "house-flipping-profit-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "70% Rule Flip Purchase & ARV Profit Solver",
+  "category": "finance",
+  "categoryLabel": "Real Estate & Finance",
+  "description": "Calculate and analyze 70% rule flip purchase & arv profit solver with instant client-side business precision.",
+  "iconName": "Building",
+  "keywords": [
+    "house flipping profit calculator",
+    "70% rule flip purchase & arv profit solver",
+    "finance calculator",
+    "house calculator"
+  ],
+  "metaTitle": "70% Rule Flip Purchase & ARV Profit Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side 70% rule flip purchase & arv profit solver with zero cloud tracking and instant results."
+},
+{
+  "id": "brrrr-strategy-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Buy, Rehab, Rent, Refinance, Repeat Profit Solver",
+  "category": "finance",
+  "categoryLabel": "Real Estate & Finance",
+  "description": "Calculate and analyze buy, rehab, rent, refinance, repeat profit solver with instant client-side business precision.",
+  "iconName": "Building",
+  "keywords": [
+    "brrrr strategy calculator",
+    "buy, rehab, rent, refinance, repeat profit solver",
+    "finance calculator",
+    "brrrr calculator"
+  ],
+  "metaTitle": "Buy, Rehab, Rent, Refinance, Repeat Profit Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side buy, rehab, rent, refinance, repeat profit solver with zero cloud tracking and instant results."
+},
+{
+  "id": "property-management-fee-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Monthly Property Manager Fee & Net Payout",
+  "category": "finance",
+  "categoryLabel": "Real Estate & Finance",
+  "description": "Calculate and analyze monthly property manager fee & net payout with instant client-side business precision.",
+  "iconName": "Building",
+  "keywords": [
+    "property management fee calculator",
+    "monthly property manager fee & net payout",
+    "finance calculator",
+    "property calculator"
+  ],
+  "metaTitle": "Monthly Property Manager Fee & Net Payout \u2014 QuickForma",
+  "metaDescription": "Free client-side monthly property manager fee & net payout with zero cloud tracking and instant results."
+},
+{
+  "id": "tenant-turnover-cost-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Vacancy Loss, Cleaning & Lease Up Cost Solver",
+  "category": "finance",
+  "categoryLabel": "Real Estate & Finance",
+  "description": "Calculate and analyze vacancy loss, cleaning & lease up cost solver with instant client-side business precision.",
+  "iconName": "Building",
+  "keywords": [
+    "tenant turnover cost calculator",
+    "vacancy loss, cleaning & lease up cost solver",
+    "finance calculator",
+    "tenant calculator"
+  ],
+  "metaTitle": "Vacancy Loss, Cleaning & Lease Up Cost Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side vacancy loss, cleaning & lease up cost solver with zero cloud tracking and instant results."
+},
+{
+  "id": "commercial-real-estate-lease-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Triple Net NNN vs Modified Gross Lease",
+  "category": "finance",
+  "categoryLabel": "Real Estate & Finance",
+  "description": "Calculate and analyze triple net nnn vs modified gross lease with instant client-side business precision.",
+  "iconName": "Building",
+  "keywords": [
+    "commercial real estate lease calculator",
+    "triple net nnn vs modified gross lease",
+    "finance calculator",
+    "commercial calculator"
+  ],
+  "metaTitle": "Triple Net NNN vs Modified Gross Lease \u2014 QuickForma",
+  "metaDescription": "Free client-side triple net nnn vs modified gross lease with zero cloud tracking and instant results."
+},
+{
+  "id": "home-equity-line-of-credit-heloc",
+  "verticals": [
+    "business"
+  ],
+  "name": "HELOC Monthly Interest-Only & Repayment",
+  "category": "finance",
+  "categoryLabel": "Real Estate & Finance",
+  "description": "Calculate and analyze heloc monthly interest-only & repayment with instant client-side business precision.",
+  "iconName": "Building",
+  "keywords": [
+    "home equity line of credit heloc",
+    "heloc monthly interest-only & repayment",
+    "finance calculator",
+    "home calculator"
+  ],
+  "metaTitle": "HELOC Monthly Interest-Only & Repayment \u2014 QuickForma",
+  "metaDescription": "Free client-side heloc monthly interest-only & repayment with zero cloud tracking and instant results."
+},
+{
+  "id": "price-to-rent-ratio-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Buy vs Rent Price-to-Rent Ratio Metric Solver",
+  "category": "finance",
+  "categoryLabel": "Real Estate & Finance",
+  "description": "Calculate and analyze buy vs rent price-to-rent ratio metric solver with instant client-side business precision.",
+  "iconName": "Building",
+  "keywords": [
+    "price to rent ratio calculator",
+    "buy vs rent price-to-rent ratio metric solver",
+    "finance calculator",
+    "price calculator"
+  ],
+  "metaTitle": "Buy vs Rent Price-to-Rent Ratio Metric Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side buy vs rent price-to-rent ratio metric solver with zero cloud tracking and instant results."
+},
+{
+  "id": "real-estate-commission-split-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Agent vs Brokerage Commission Split Solver",
+  "category": "finance",
+  "categoryLabel": "Real Estate & Finance",
+  "description": "Calculate and analyze agent vs brokerage commission split solver with instant client-side business precision.",
+  "iconName": "Building",
+  "keywords": [
+    "real estate commission split calculator",
+    "agent vs brokerage commission split solver",
+    "finance calculator",
+    "real calculator"
+  ],
+  "metaTitle": "Agent vs Brokerage Commission Split Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side agent vs brokerage commission split solver with zero cloud tracking and instant results."
+},
+{
+  "id": "title-insurance-closing-cost-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Buyer & Seller Closing Cost Breakdown",
+  "category": "finance",
+  "categoryLabel": "Real Estate & Finance",
+  "description": "Calculate and analyze buyer & seller closing cost breakdown with instant client-side business precision.",
+  "iconName": "Building",
+  "keywords": [
+    "title insurance closing cost calculator",
+    "buyer & seller closing cost breakdown",
+    "finance calculator",
+    "title calculator"
+  ],
+  "metaTitle": "Buyer & Seller Closing Cost Breakdown \u2014 QuickForma",
+  "metaDescription": "Free client-side buyer & seller closing cost breakdown with zero cloud tracking and instant results."
+},
+{
+  "id": "vacancy-rate-loss-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Annual Vacancy Allowance & Income Loss Solver",
+  "category": "finance",
+  "categoryLabel": "Real Estate & Finance",
+  "description": "Calculate and analyze annual vacancy allowance & income loss solver with instant client-side business precision.",
+  "iconName": "Building",
+  "keywords": [
+    "vacancy rate loss calculator",
+    "annual vacancy allowance & income loss solver",
+    "finance calculator",
+    "vacancy calculator"
+  ],
+  "metaTitle": "Annual Vacancy Allowance & Income Loss Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side annual vacancy allowance & income loss solver with zero cloud tracking and instant results."
+},
+{
+  "id": "seller-net-sheet-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Real Estate Home Seller Net Proceeds Solver",
+  "category": "finance",
+  "categoryLabel": "Real Estate & Finance",
+  "description": "Calculate and analyze real estate home seller net proceeds solver with instant client-side business precision.",
+  "iconName": "Building",
+  "keywords": [
+    "seller net sheet calculator",
+    "real estate home seller net proceeds solver",
+    "finance calculator",
+    "seller calculator"
+  ],
+  "metaTitle": "Real Estate Home Seller Net Proceeds Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side real estate home seller net proceeds solver with zero cloud tracking and instant results."
+},
+{
+  "id": "real-estate-equity-multiple-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Total Equity Multiple & LP Return Solver",
+  "category": "finance",
+  "categoryLabel": "Real Estate & Finance",
+  "description": "Calculate and analyze total equity multiple & lp return solver with instant client-side business precision.",
+  "iconName": "Building",
+  "keywords": [
+    "real estate equity multiple calculator",
+    "total equity multiple & lp return solver",
+    "finance calculator",
+    "real calculator"
+  ],
+  "metaTitle": "Total Equity Multiple & LP Return Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side total equity multiple & lp return solver with zero cloud tracking and instant results."
+},
+{
+  "id": "property-cap-rate-sensitivity-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Cap Rate Sensitivity & Exit Price Valuation Matrix",
+  "category": "finance",
+  "categoryLabel": "Real Estate & Finance",
+  "description": "Calculate and analyze cap rate sensitivity & exit price valuation matrix with instant client-side business precision.",
+  "iconName": "Building",
+  "keywords": [
+    "property cap rate sensitivity calculator",
+    "cap rate sensitivity & exit price valuation matrix",
+    "finance calculator",
+    "property calculator"
+  ],
+  "metaTitle": "Cap Rate Sensitivity & Exit Price Valuation Matrix \u2014 QuickForma",
+  "metaDescription": "Free client-side cap rate sensitivity & exit price valuation matrix with zero cloud tracking and instant results."
+},
+{
+  "id": "vacation-rental-short-term-occupancy",
+  "verticals": [
+    "business"
+  ],
+  "name": "STR Seasonal Occupancy & Revenue Per Available Night",
+  "category": "finance",
+  "categoryLabel": "Real Estate & Finance",
+  "description": "Calculate and analyze str seasonal occupancy & revenue per available night with instant client-side business precision.",
+  "iconName": "Building",
+  "keywords": [
+    "vacation rental short term occupancy",
+    "str seasonal occupancy & revenue per available night",
+    "finance calculator",
+    "vacation calculator"
+  ],
+  "metaTitle": "STR Seasonal Occupancy & Revenue Per Available Night \u2014 QuickForma",
+  "metaDescription": "Free client-side str seasonal occupancy & revenue per available night with zero cloud tracking and instant results."
+},
+{
+  "id": "real-estate-debt-yield-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Lender Commercial Debt Yield Ratio Solver",
+  "category": "finance",
+  "categoryLabel": "Real Estate & Finance",
+  "description": "Calculate and analyze lender commercial debt yield ratio solver with instant client-side business precision.",
+  "iconName": "Building",
+  "keywords": [
+    "real estate debt yield calculator",
+    "lender commercial debt yield ratio solver",
+    "finance calculator",
+    "real calculator"
+  ],
+  "metaTitle": "Lender Commercial Debt Yield Ratio Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side lender commercial debt yield ratio solver with zero cloud tracking and instant results."
+},
+{
+  "id": "real-estate-irr-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Real Estate Internal Rate of Return (IRR) Solver",
+  "category": "finance",
+  "categoryLabel": "Real Estate & Finance",
+  "description": "Calculate and analyze real estate internal rate of return (irr) solver with instant client-side business precision.",
+  "iconName": "Building",
+  "keywords": [
+    "real estate irr calculator",
+    "real estate internal rate of return (irr) solver",
+    "finance calculator",
+    "real calculator"
+  ],
+  "metaTitle": "Real Estate Internal Rate of Return (IRR) Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side real estate internal rate of return (irr) solver with zero cloud tracking and instant results."
+},
+{
+  "id": "cost-per-click-cpc-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Ad Budget & Clicks CPC Target Solver",
+  "category": "marketing",
+  "categoryLabel": "Marketing & Analytics",
+  "description": "Calculate and analyze ad budget & clicks cpc target solver with instant client-side business precision.",
+  "iconName": "TrendingUp",
+  "keywords": [
+    "cost per click cpc calculator",
+    "ad budget & clicks cpc target solver",
+    "marketing calculator",
+    "cost calculator"
+  ],
+  "metaTitle": "Ad Budget & Clicks CPC Target Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side ad budget & clicks cpc target solver with zero cloud tracking and instant results."
+},
+{
+  "id": "cost-per-lead-cpl-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Lead Generation Campaign Cost Per Lead Solver",
+  "category": "marketing",
+  "categoryLabel": "Marketing & Analytics",
+  "description": "Calculate and analyze lead generation campaign cost per lead solver with instant client-side business precision.",
+  "iconName": "TrendingUp",
+  "keywords": [
+    "cost per lead cpl calculator",
+    "lead generation campaign cost per lead solver",
+    "marketing calculator",
+    "cost calculator"
+  ],
+  "metaTitle": "Lead Generation Campaign Cost Per Lead Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side lead generation campaign cost per lead solver with zero cloud tracking and instant results."
+},
+{
+  "id": "email-marketing-roi-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Email Campaign Revenue & Subscriber LTV Solver",
+  "category": "marketing",
+  "categoryLabel": "Marketing & Analytics",
+  "description": "Calculate and analyze email campaign revenue & subscriber ltv solver with instant client-side business precision.",
+  "iconName": "TrendingUp",
+  "keywords": [
+    "email marketing roi calculator",
+    "email campaign revenue & subscriber ltv solver",
+    "marketing calculator",
+    "email calculator"
+  ],
+  "metaTitle": "Email Campaign Revenue & Subscriber LTV Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side email campaign revenue & subscriber ltv solver with zero cloud tracking and instant results."
+},
+{
+  "id": "viral-k-factor-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Viral Coefficient K-Factor & Referral Loop Solver",
+  "category": "marketing",
+  "categoryLabel": "Marketing & Analytics",
+  "description": "Calculate and analyze viral coefficient k-factor & referral loop solver with instant client-side business precision.",
+  "iconName": "TrendingUp",
+  "keywords": [
+    "viral k factor calculator",
+    "viral coefficient k-factor & referral loop solver",
+    "marketing calculator",
+    "viral calculator"
+  ],
+  "metaTitle": "Viral Coefficient K-Factor & Referral Loop Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side viral coefficient k-factor & referral loop solver with zero cloud tracking and instant results."
+},
+{
+  "id": "conversion-rate-optimization-cro",
+  "verticals": [
+    "business"
+  ],
+  "name": "CRO Revenue Impact & Lift Solver",
+  "category": "marketing",
+  "categoryLabel": "Marketing & Analytics",
+  "description": "Calculate and analyze cro revenue impact & lift solver with instant client-side business precision.",
+  "iconName": "TrendingUp",
+  "keywords": [
+    "conversion rate optimization cro",
+    "cro revenue impact & lift solver",
+    "marketing calculator",
+    "conversion calculator"
+  ],
+  "metaTitle": "CRO Revenue Impact & Lift Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side cro revenue impact & lift solver with zero cloud tracking and instant results."
+},
+{
+  "id": "influencer-marketing-roi-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Sponsored Post Engagement Rate & ROI Solver",
+  "category": "marketing",
+  "categoryLabel": "Marketing & Analytics",
+  "description": "Calculate and analyze sponsored post engagement rate & roi solver with instant client-side business precision.",
+  "iconName": "TrendingUp",
+  "keywords": [
+    "influencer marketing roi calculator",
+    "sponsored post engagement rate & roi solver",
+    "marketing calculator",
+    "influencer calculator"
+  ],
+  "metaTitle": "Sponsored Post Engagement Rate & ROI Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side sponsored post engagement rate & roi solver with zero cloud tracking and instant results."
+},
+{
+  "id": "customer-churn-rate-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Monthly & Annual Customer Churn Rate Solver",
+  "category": "marketing",
+  "categoryLabel": "Marketing & Analytics",
+  "description": "Calculate and analyze monthly & annual customer churn rate solver with instant client-side business precision.",
+  "iconName": "TrendingUp",
+  "keywords": [
+    "customer churn rate calculator",
+    "monthly & annual customer churn rate solver",
+    "marketing calculator",
+    "customer calculator"
+  ],
+  "metaTitle": "Monthly & Annual Customer Churn Rate Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side monthly & annual customer churn rate solver with zero cloud tracking and instant results."
+},
+{
+  "id": "net-promoter-score-nps-calculator",
+  "verticals": [
+    "business"
+  ],
+  "name": "Promoters vs Detractors NPS Score Solver",
+  "category": "marketing",
+  "categoryLabel": "Marketing & Analytics",
+  "description": "Calculate and analyze promoters vs detractors nps score solver with instant client-side business precision.",
+  "iconName": "TrendingUp",
+  "keywords": [
+    "net promoter score nps calculator",
+    "promoters vs detractors nps score solver",
+    "marketing calculator",
+    "net calculator"
+  ],
+  "metaTitle": "Promoters vs Detractors NPS Score Solver \u2014 QuickForma",
+  "metaDescription": "Free client-side promoters vs detractors nps score solver with zero cloud tracking and instant results."
 }
 ];

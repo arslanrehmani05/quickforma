@@ -1,19 +1,22 @@
-export type VerticalId = 'business' | 'students';
+export type VerticalId = 'business' | 'students' | 'developers';
 
-export type ToolCategory = 
+export type FunctionalCategoryId =
   | 'finance'
-  | 'business'
-  | 'converters'
-  | 'developer'
-  | 'content'
-  | 'productivity'
   | 'ecommerce'
-  | 'operations'
-  | 'hr'
   | 'marketing'
-  | 'healthcare'
+  | 'hr'
+  | 'operations'
   | 'real-estate'
-  | string;
+  | 'documents'
+  | 'academic'
+  | 'math-stats'
+  | 'science'
+  | 'developer'
+  | 'writing'
+  | 'productivity'
+  | 'converters';
+
+export type ToolCategory = FunctionalCategoryId | string;
 
 export interface FAQItem {
   question: string;
@@ -24,8 +27,9 @@ export interface ToolMetadata {
   id: string;
   name: string;
   verticals: VerticalId[];
-  category: string;
+  category: FunctionalCategoryId | string;
   categoryLabel: string;
+  secondaryCategories?: (FunctionalCategoryId | string)[];
   description: string;
   iconName: string;
   popular?: boolean;

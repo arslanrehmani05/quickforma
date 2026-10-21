@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { ToolMetadata } from '../types';
 import { getVerticalTools } from '../data/toolsCatalog';
-import { STUDENT_CATEGORIES } from '../data/categories';
+import { getCategoriesForVertical } from '../data/categories';
 import { CategoryPills } from '../components/layout/CategoryPills';
+import { TrustBadges } from '../components/layout/TrustBadges';
 import { ToolCard } from '../components/layout/ToolCard';
 import { ShareSection } from '../components/social/ShareSection';
 import { GraduationCap, Search, Shield, Lock, Cpu, Sparkles, X } from 'lucide-react';
@@ -12,12 +13,13 @@ interface StudentsPageProps {
   onSelectTool: (id: string) => void;
 }
 
-export const StudentsPage: React.FC<StudentsPageProps> = ({ onSelectTool }) => {
+export const StudentsPage: React.FC<StudentsPageProps> = ({ tools, onSelectTool }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
 
   // Dynamically query catalog for students vertical tools
   const studentTools = getVerticalTools('students');
+  const categories = getCategoriesForVertical('students', tools);
 
   // Filter tools by category and search query
   const filteredTools = studentTools.filter((tool) => {
@@ -48,18 +50,8 @@ export const StudentsPage: React.FC<StudentsPageProps> = ({ onSelectTool }) => {
           Zero sign-ups, zero email paywalls, and zero cloud tracking. Every GPA calculation, chemistry formula, physics equation, and citation formatter executes 100% locally inside your browser memory.
         </p>
 
-        {/* Trust Badges */}
-        <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-slate-700 pt-2 font-medium">
-          <div className="flex items-center gap-1.5 bg-white px-3.5 py-1.5 rounded-xl border border-slate-200 shadow-xs">
-            <Shield className="w-3.5 h-3.5 text-emerald-600" /> 100% Private Client-Side Engine
-          </div>
-          <div className="flex items-center gap-1.5 bg-white px-3.5 py-1.5 rounded-xl border border-slate-200 shadow-xs">
-            <Lock className="w-3.5 h-3.5 text-indigo-600" /> Zero File Server Uploads
-          </div>
-          <div className="flex items-center gap-1.5 bg-white px-3.5 py-1.5 rounded-xl border border-slate-200 shadow-xs">
-            <Cpu className="w-3.5 h-3.5 text-amber-600" /> Sub-50ms Calculation
-          </div>
-        </div>
+        {/* Trust Badges with Interactive Tooltips */}
+        <TrustBadges />
 
         <ShareSection align="center" className="pt-2 max-w-xl mx-auto border-t-0" />
       </section>
@@ -89,7 +81,7 @@ export const StudentsPage: React.FC<StudentsPageProps> = ({ onSelectTool }) => {
 
         {/* Shared Horizontal Scroll Category Pills */}
         <CategoryPills
-          categories={STUDENT_CATEGORIES}
+          categories={categories}
           selectedCategory={selectedCategory}
           onSelectCategory={setSelectedCategory}
         />

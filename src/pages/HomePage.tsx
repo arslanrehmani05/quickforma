@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { ToolMetadata, VerticalId } from '../types';
 import { getCategoriesForVertical } from '../data/categories';
 import { CategoryPills } from '../components/layout/CategoryPills';
+import { TrustBadges } from '../components/layout/TrustBadges';
 import { ToolCard } from '../components/layout/ToolCard';
 import { ShareSection } from '../components/social/ShareSection';
-import { Zap, Search, Shield, Lock, Cpu, Sparkles, X, Briefcase, GraduationCap } from 'lucide-react';
+import { Zap, Search, Shield, Lock, Cpu, Sparkles, X, Briefcase, GraduationCap, Code } from 'lucide-react';
 
 interface HomePageProps {
   tools: ToolMetadata[];
@@ -16,13 +17,18 @@ export const HomePage: React.FC<HomePageProps> = ({ tools, onSelectTool }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
 
+  // Dynamically compute exact hub counts from catalog
+  const businessCount = tools.filter((t) => t.verticals.includes('business')).length;
+  const studentsCount = tools.filter((t) => t.verticals.includes('students')).length;
+  const developersCount = tools.filter((t) => t.verticals.includes('developers')).length;
+
   const handleSelectVertical = (vertical: 'all' | VerticalId) => {
     setSelectedVertical(vertical);
     setSelectedCategory('all'); // Reset category selection when vertical changes
   };
 
-  // Get single source of truth category list for active vertical
-  const activeCategories = getCategoriesForVertical(selectedVertical);
+  // Get single source of truth category list for active vertical with dynamic counts
+  const activeCategories = getCategoriesForVertical(selectedVertical, tools);
 
   // Filter tools by active vertical tab, category pill, and search query
   const filteredTools = tools.filter((tool) => {
@@ -45,7 +51,8 @@ export const HomePage: React.FC<HomePageProps> = ({ tools, onSelectTool }) => {
   const getSearchPlaceholder = () => {
     if (selectedVertical === 'business') return 'Search business tools (e.g. invoice, ROI, tax, Stripe)...';
     if (selectedVertical === 'students') return 'Search academic tools (e.g. GPA, fraction, molar mass, z-score)...';
-    return 'Search all 113+ tools (e.g. invoice, GPA, fraction, Stripe)...';
+    if (selectedVertical === 'developers') return 'Search developer tools (e.g. JSON, regex, hash, UUID, subnet)...';
+    return `Search all ${tools.length} tools (e.g. invoice, GPA, JSON, fraction, Stripe)...`;
   };
 
   return (
@@ -58,25 +65,15 @@ export const HomePage: React.FC<HomePageProps> = ({ tools, onSelectTool }) => {
         </div>
 
         <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
-          Instant Utilities for Business & Students
+          Instant Utilities for Business, Students & Developers
         </h1>
 
         <p className="text-slate-600 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-          Zero sign-ups, zero email paywalls, and zero server uploads. Every invoice generator, GPA calculator, chemistry parser, and financial estimator executes 100% locally in browser RAM.
+          Zero sign-ups, zero email paywalls, and zero server uploads. Every invoice generator, GPA calculator, code formatter, and financial estimator executes 100% locally in browser RAM.
         </p>
 
-        {/* Trust Badges */}
-        <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-slate-700 pt-2 font-medium">
-          <div className="flex items-center gap-1.5 bg-white px-3.5 py-1.5 rounded-xl border border-slate-200 shadow-xs">
-            <Shield className="w-3.5 h-3.5 text-emerald-600" /> 100% Private Client-Side Engine
-          </div>
-          <div className="flex items-center gap-1.5 bg-white px-3.5 py-1.5 rounded-xl border border-slate-200 shadow-xs">
-            <Lock className="w-3.5 h-3.5 text-indigo-600" /> Zero File Server Uploads
-          </div>
-          <div className="flex items-center gap-1.5 bg-white px-3.5 py-1.5 rounded-xl border border-slate-200 shadow-xs">
-            <Cpu className="w-3.5 h-3.5 text-amber-600" /> Sub-50ms Calculation
-          </div>
-        </div>
+        {/* Trust Badges with Interactive Tooltips */}
+        <TrustBadges />
 
         <ShareSection align="center" className="pt-2 max-w-xl mx-auto border-t-0" />
       </section>
@@ -105,7 +102,7 @@ export const HomePage: React.FC<HomePageProps> = ({ tools, onSelectTool }) => {
         </div>
 
         {/* Primary Vertical Switcher Tabs */}
-        <div className="flex items-center justify-center gap-2 border-b border-slate-200 pb-4">
+        <div className="flex flex-wrap items-center justify-center gap-2 border-b border-slate-200 pb-4">
           <button
             onClick={() => handleSelectVertical('all')}
             className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-1.5 ${
@@ -124,7 +121,7 @@ export const HomePage: React.FC<HomePageProps> = ({ tools, onSelectTool }) => {
                 : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200 hover:bg-slate-50'
             }`}
           >
-            <Briefcase className="w-4 h-4" /> Business Hub (60)
+            <Briefcase className="w-4 h-4" /> Business Hub ({businessCount})
           </button>
           <button
             onClick={() => handleSelectVertical('students')}
@@ -134,7 +131,17 @@ export const HomePage: React.FC<HomePageProps> = ({ tools, onSelectTool }) => {
                 : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200 hover:bg-slate-50'
             }`}
           >
-            <GraduationCap className="w-4 h-4" /> Students Hub (61)
+            <GraduationCap className="w-4 h-4" /> Students Hub ({studentsCount})
+          </button>
+          <button
+            onClick={() => handleSelectVertical('developers')}
+            className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-1.5 ${
+              selectedVertical === 'developers'
+                ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/20'
+                : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200 hover:bg-slate-50'
+            }`}
+          >
+            <Code className="w-4 h-4" /> Developer Hub ({developersCount})
           </button>
         </div>
 

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { ToolMetadata } from '../types';
 import { getVerticalTools } from '../data/toolsCatalog';
-import { BUSINESS_CATEGORIES } from '../data/categories';
+import { getCategoriesForVertical } from '../data/categories';
 import { CategoryPills } from '../components/layout/CategoryPills';
+import { TrustBadges } from '../components/layout/TrustBadges';
 import { ToolCard } from '../components/layout/ToolCard';
 import { ShareSection } from '../components/social/ShareSection';
 import { Briefcase, Search, Shield, Lock, Cpu, Sparkles, X } from 'lucide-react';
@@ -12,12 +13,13 @@ interface BusinessPageProps {
   onSelectTool: (id: string) => void;
 }
 
-export const BusinessPage: React.FC<BusinessPageProps> = ({ onSelectTool }) => {
+export const BusinessPage: React.FC<BusinessPageProps> = ({ tools, onSelectTool }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
 
   // Dynamically query catalog for business vertical tools
   const businessTools = getVerticalTools('business');
+  const categories = getCategoriesForVertical('business', tools);
 
   // Filter tools by category and search query
   const filteredTools = businessTools.filter((tool) => {
@@ -48,18 +50,8 @@ export const BusinessPage: React.FC<BusinessPageProps> = ({ onSelectTool }) => {
           Financial estimators, legal contract generators, e-commerce fee calculators, and developer tools. Process 100% of calculations locally inside browser RAM with zero server tracking.
         </p>
 
-        {/* Trust Badges */}
-        <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-slate-700 pt-2 font-medium">
-          <div className="flex items-center gap-1.5 bg-white px-3.5 py-1.5 rounded-xl border border-slate-200 shadow-xs">
-            <Shield className="w-3.5 h-3.5 text-emerald-600" /> 100% Private Client-Side Engine
-          </div>
-          <div className="flex items-center gap-1.5 bg-white px-3.5 py-1.5 rounded-xl border border-slate-200 shadow-xs">
-            <Lock className="w-3.5 h-3.5 text-indigo-600" /> Zero File Server Uploads
-          </div>
-          <div className="flex items-center gap-1.5 bg-white px-3.5 py-1.5 rounded-xl border border-slate-200 shadow-xs">
-            <Cpu className="w-3.5 h-3.5 text-amber-600" /> Sub-50ms Calculation
-          </div>
-        </div>
+        {/* Trust Badges with Interactive Tooltips */}
+        <TrustBadges />
 
         <ShareSection align="center" className="pt-2 max-w-xl mx-auto border-t-0" />
       </section>
@@ -89,7 +81,7 @@ export const BusinessPage: React.FC<BusinessPageProps> = ({ onSelectTool }) => {
 
         {/* Shared Horizontal Scroll Category Pills */}
         <CategoryPills
-          categories={BUSINESS_CATEGORIES}
+          categories={categories}
           selectedCategory={selectedCategory}
           onSelectCategory={setSelectedCategory}
         />

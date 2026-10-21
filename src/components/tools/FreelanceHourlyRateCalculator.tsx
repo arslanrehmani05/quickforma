@@ -1,12 +1,8 @@
-import React, { useState } from 'react';
-import { DollarSign, Clock, Calendar, Percent } from 'lucide-react';
+import React, { useState, useMemo } from 'react';
+import { DollarSign, ShieldAlert } from 'lucide-react';
 import { CopyButton } from '../common/CopyButton';
 import { ResetButton } from '../common/ResetButton';
-import { ToolSeoWrapper } from '../seo/ToolSeoWrapper';
-import { FREELANCE_HOURLY_RATE_SEO } from '../../data/sampleToolSeoData';
-import { ToolHeader } from '../ui/ToolHeader';
-import { InputField } from '../ui/InputField';
-import { ResultCard } from '../ui/ResultCard';
+import { calculateFreelanceRate } from '../../utils/calculators/freelanceRate';
 
 export const FreelanceHourlyRateCalculator: React.FC = () => {
   const [targetSalary, setTargetSalary] = useState(80000);
@@ -16,16 +12,28 @@ export const FreelanceHourlyRateCalculator: React.FC = () => {
   const [unbillablePercent, setUnbillablePercent] = useState(20);
   const [vacationWeeks, setVacationWeeks] = useState(4);
 
-  // Calculations
-  const workingWeeksPerYear = Math.max(1, 52 - vacationWeeks);
-  const totalHoursPerYear = workingWeeksPerYear * workHoursPerWeek;
-  const billableHoursPerYear = totalHoursPerYear * (1 - unbillablePercent / 100);
-  
-  const totalRevenueNeededPreTax = targetSalary + expenses;
-  const grossRevenueNeeded = taxRate < 100 ? totalRevenueNeededPreTax / (1 - taxRate / 100) : totalRevenueNeededPreTax;
-  
-  const requiredHourlyRate = billableHoursPerYear > 0 ? grossRevenueNeeded / billableHoursPerYear : 0;
-  const requiredDailyRate = requiredHourlyRate * (workHoursPerWeek / 5);
+  // Pure Calculation Engine
+  const calcResult = useMemo(() => {
+    return calculateFreelanceRate({
+      targetAnnualSalary: targetSalary,
+      annualExpenses: expenses,
+      taxRatePercent: taxRate,
+      workHoursPerWeek,
+      unbillablePercent,
+      vacationWeeks,
+    });
+  }, [targetSalary, expenses, taxRate, workHoursPerWeek, unbillablePercent, vacationWeeks]);
+
+  const {
+    requiredHourlyRate,
+    requiredDailyRate,
+    grossRevenueNeeded,
+    taxableProfitNeeded,
+    annualBillableHours,
+    workingWeeksPerYear,
+    isValid,
+    errorMessage,
+  } = calcResult;
 
   const resetFields = () => {
     setTargetSalary(80000);
@@ -141,11 +149,22 @@ export const FreelanceHourlyRateCalculator: React.FC = () => {
                   <span className="text-slate-900 font-bold text-sm">${Math.round(grossRevenueNeeded).toLocaleString()}</span>
                 </div>
               </div>
+
+              {!isValid && errorMessage && (
+                <div className="p-3 bg-rose-50 border border-rose-200 rounded-xl text-rose-700 text-xs flex items-center gap-2">
+                  <ShieldAlert className="w-4 h-4 shrink-0 text-rose-600" />
+                  <span>{errorMessage}</span>
+                </div>
+              )}
             </div>
 
             <div className="space-y-1.5 text-xs text-slate-600 border-t border-slate-200 pt-4">
-              <div className="flex justify-between"><span>Annual Billable Hours:</span><span className="font-bold text-slate-900">{Math.round(billableHoursPerYear)} hrs</span></div>
+              <div className="flex justify-between"><span>Annual Billable Hours:</span><span className="font-bold text-slate-900">{Math.round(annualBillableHours)} hrs</span></div>
               <div className="flex justify-between"><span>Working Weeks / Year:</span><span className="font-bold text-slate-900">{workingWeeksPerYear} weeks</span></div>
+              <div className="flex justify-between"><span>Taxable Profit Needed:</span><span className="font-bold text-slate-900">${Math.round(taxableProfitNeeded).toLocaleString()}</span></div>
+              <p className="text-[11px] text-slate-400 pt-2 leading-relaxed">
+                * Business expenses ($5,000) are deductible pre-tax under US tax rules, so tax is applied only to net business profit, not gross revenue.
+              </p>
             </div>
           </div>
         </div>

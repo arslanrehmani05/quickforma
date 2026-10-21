@@ -5,6 +5,7 @@ import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
 import { HomePage } from './pages/HomePage';
 import { StudentsPage } from './pages/StudentsPage';
+import { DeveloperPage } from './pages/DeveloperPage';
 
 // Legal Pages
 import { PrivacyPolicy } from './components/legal/PrivacyPolicy';
@@ -582,6 +583,9 @@ const getRouteFromPathname = (pathname: string): string => {
   if (cleanPath === '/students') {
     return 'students';
   }
+  if (cleanPath === '/developers' || cleanPath === '/developer') {
+    return 'developers';
+  }
   if (cleanPath === '/business') {
     return 'business';
   }
@@ -602,6 +606,7 @@ const getPathnameFromView = (view: string): string => {
   if (!view || view === 'home') return '/';
   if (view === 'mind') return '/mind';
   if (view === 'students') return '/students';
+  if (view === 'developers' || view === 'developer') return '/developers';
   if (view === 'business') return '/business';
   if (LEGAL_PAGES.includes(view)) return `/${view}`;
   if (view === 'encyclopedia:index' || view === 'encyclopedia') return '/encyclopedia';
@@ -651,6 +656,12 @@ export function App() {
       if (metaDesc) {
         metaDesc.setAttribute('content', 'Free tools for students to calculate grades, solve math and science problems, analyze statistics, plan study time, and handle everyday academic work.');
       }
+    } else if (activeView === 'developers' || activeView === 'developer') {
+      document.title = 'Free Developer Tools & Code Utilities | QuickForma';
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) {
+        metaDesc.setAttribute('content', 'Free client-side developer utilities for formatting JSON, testing regex, encoding hashes, decoding JWTs, calculating subnets, and converting data with 100% browser privacy.');
+      }
     } else if (activeView === 'mind') {
       document.title = 'QuickForma Mind — Mental Math Challenge';
       const metaDesc = document.querySelector('meta[name="description"]');
@@ -688,6 +699,8 @@ export function App() {
       // Hub & Legal Pages
       case 'business': return <BusinessPage tools={TOOLS_CATALOG} onSelectTool={handleSelectView} />;
       case 'students': return <StudentsPage tools={TOOLS_CATALOG} onSelectTool={handleSelectView} />;
+      case 'developers':
+      case 'developer': return <DeveloperPage tools={TOOLS_CATALOG} onSelectTool={handleSelectView} />;
       case 'privacy': return <PrivacyPolicy />;
       case 'terms': return <TermsOfService />;
       case 'about': return <AboutUs />;

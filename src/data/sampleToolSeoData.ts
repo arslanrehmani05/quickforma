@@ -50,19 +50,20 @@ export const FREELANCE_HOURLY_RATE_SEO: ToolSeoData = {
       { label: "Unpaid Vacation", value: "4 Weeks (48 Working weeks/yr)" }
     ],
     stepsExplanation: [
-      "Gross Annual Revenue Needed = ($100,000 Target + $6,000 Expenses) ÷ (1 - 0.25 Tax Rate) = $141,333",
+      "Taxable Business Profit Needed = $100,000 Target ÷ (1 - 0.25 Tax Rate) = $133,333.33",
+      "Gross Annual Revenue Needed = $6,000 Overhead Expenses + $133,333.33 Profit = $139,333.33 (expenses are deductible pre-tax)",
       "Total Annual Working Weeks = 52 - 4 Vacation Weeks = 48 Weeks",
       "Total Annual Billable Hours = 48 Weeks × 30 Billable Hours/Week = 1,440 Billable Hours",
-      "Required Hourly Rate = $141,333 ÷ 1,440 Hours = $98.15 / hour"
+      "Required Hourly Rate = $139,333.33 ÷ 1,440 Hours = $96.76 / hour"
     ],
-    finalOutput: { label: "Minimum Recommended Billable Rate", value: "$98.15 / hr" },
-    summary: "To take home $100,000 clean profit after taxes and software expenses while working 30 billable hours/week, the designer must bill clients at least $98.15/hr (or $785/day)."
+    finalOutput: { label: "Minimum Recommended Billable Rate", value: "$96.76 / hr" },
+    summary: "To take home $100,000 clean profit after taxes and software expenses while working 30 billable hours/week, the designer must bill clients at least $96.76/hr (or $774/day).",
   },
   howItWorks: {
     heading: "How It Works (Math & Calculation Logic)",
     type: "math",
-    explanation: "The minimum billable hourly rate is calculated by dividing total gross revenue requirements (net target income plus annual business overhead adjusted for tax burden) by total annual billable hours.",
-    formulaText: "Hourly Rate = [(Net Target Salary + Annual Overhead) / (1 - Tax Rate)] / [(52 - Vacation Weeks) * Weekly Hours * (1 - Admin Overhead %)]",
+    explanation: "The minimum billable hourly rate is calculated by adding annual deductible business expenses to the pre-tax profit required to yield your target take-home salary, then dividing by total annual billable hours. Business expenses are deductible pre-tax write-offs under US tax regulations, so tax is applied only to net business earnings.",
+    formulaText: "Hourly Rate = [Annual Overhead + (Net Target Salary / (1 - Tax Rate))] / [(52 - Vacation Weeks) * Weekly Hours * (1 - Admin Overhead %)]",
     variables: [
       { symbol: "Net Target Salary", description: "Desired annual take-home salary after taxes and expenses" },
       { symbol: "Annual Overhead", description: "Yearly sum of software, insurance, equipment, and office expenses" },
@@ -1424,8 +1425,240 @@ export const FRACTION_CALCULATOR_SEO: ToolSeoData = {
   relatedToolIds: ['percentage-calculator', 'gpa-calculator', 'final-grade-calculator']
 };
 
+export const GPA_SCALE_CONVERTER_SEO: ToolSeoData = {
+  atAGlance: {
+    heading: "At a Glance",
+    categoryLabel: "Academic & Education Utility",
+    bestFor: "High School, College & Graduate Students",
+    privacy: "100% Client-Side RAM",
+    timeRequired: "Instant (< 10ms)",
+    cost: "Free Forever",
+    lastUpdated: "October 2026"
+  },
+  overview: {
+    heading: "Quick Overview",
+    whatItDoes: "Converts grade point averages between US standard 4.0, 4.33 (A+), and 5.0 (weighted Honors/AP) scales, providing authentic letter grades and College Board academic curve equivalencies.",
+    whoShouldUseIt: "High school students preparing college applications, undergraduate students applying to graduate programs, and transfer students comparing grading scales.",
+    whenToUseIt: "Use this converter when comparing transcripts across institutions using different scale standards or recalculating weighted high school GPAs to unweighted 4.0 standards.",
+    whyItIsUseful: "Linear mathematical scaling (e.g. 3.0 / 4.0 = 75%) misrepresents academic standing. In US higher education, a 3.0 is a B average (83–86%), whereas 75% represents a C. This tool provides defensible letter grades and non-linear academic percentage curve intervals."
+  },
+  keyFeatures: {
+    heading: "Key Converter Features",
+    features: [
+      { title: "Standard 4.0 & 4.33 Normalization", description: "Accurately maps between standard 4.0 unweighted and 4.33 (A+ bonus) collegiate grading scales." },
+      { title: "Weighted 5.0 AP/IB Support", description: "Unweights 5.0 secondary school honors/AP coursework back to standardized 4.0 college admissions standards." },
+      { title: "Authentic College Board Curve", description: "Provides realistic letter grades and non-linear US percentage intervals rather than crude linear ratios." },
+      { title: "Institutional Guidance Notes", description: "Provides transparent context on course-by-course credential evaluation policies (such as WES)." },
+      { title: "100% Client-Side Privacy", description: "Your academic transcript numbers stay strictly in your local browser memory." },
+      { title: "Zero Ads or Paywalls", description: "Instant access with no forced account signups or software downloads." }
+    ]
+  },
+  howToUse: {
+    heading: "How to Convert Your GPA Scale",
+    steps: [
+      { stepNumber: 1, title: "Enter Current GPA", description: "Input your current cumulative grade point average (e.g., 3.60)." },
+      { stepNumber: 2, title: "Select Source Scale", description: "Choose your institution's active grading scale: 4.0, 4.33, or 5.0 (Weighted)." },
+      { stepNumber: 3, title: "Review Letter & Curve", description: "Examine your official US letter grade equivalent and College Board academic percentage range." },
+      { stepNumber: 4, title: "Compare Normalized Scales", description: "View normalized conversions across all other grading scales simultaneously." }
+    ]
+  },
+  workedExample: {
+    heading: "Worked Real-World Example",
+    title: "Scenario: Converting a 3.60 GPA on a 4.0 Scale",
+    scenarioDescription: "A college student with a 3.60 cumulative GPA wants to know their equivalent letter grade, College Board curve range, and standing on 4.33 and 5.0 scales.",
+    sampleInputs: [
+      { label: "Current GPA", value: "3.60" },
+      { label: "Grading Scale", value: "4.0 Scale (Unweighted)" }
+    ],
+    stepsExplanation: [
+      "Unweighted Baseline = 3.60 / 4.0 = 3.60 GPA",
+      "US Letter Grade Mapping: 3.60 falls in the A- interval (3.65 - 3.84 threshold boundary = A- / Very Good)",
+      "College Board Percentage Curve Interval: 90% – 92% (compared to crude linear ratio of 90.0%)",
+      "4.33 Scale Normalization = (3.60 ÷ 4.0) × 4.33 = 3.90",
+      "5.0 Scale Normalization = (3.60 ÷ 4.0) × 5.0 = 4.50"
+    ],
+    finalOutput: { label: "Equivalent Grade & Range", value: "A- (90% – 92%)" },
+    summary: "A 3.60 GPA on a standard 4.0 scale corresponds to an A- letter grade (90%–92% academic curve range) and normalizes to a 3.90 on a 4.33 scale."
+  },
+  howItWorks: {
+    heading: "How It Works (Academic Logic vs Mathematical Ratio)",
+    type: "math",
+    explanation: "This converter separates arithmetic scale normalization from academic grade equivalency. Academic letter grades are mapped using standard US College Board grade-point boundaries, reflecting the non-linear reality that failing grades span 0% to 64% while passing grades span 65% to 100%.",
+    formulaText: "Unweighted 4.0 = min(4.0, (GPA / Scale Max) * 4.0); Academic Grade = PiecewiseLookup(Unweighted 4.0)",
+    variables: [
+      { symbol: "GPA", description: "Cumulative grade point average entered by the student" },
+      { symbol: "Scale Max", description: "Maximum potential grade points on the source scale (4.0, 4.33, or 5.0)" },
+      { symbol: "Academic Grade", description: "Piecewise letter grade assigned based on US university grade-point intervals" }
+    ]
+  },
+  interpretResults: {
+    heading: "Interpreting Your Converted GPA",
+    typicalRanges: "A 3.8–4.0 GPA represents Summa/Magna Cum Laude honors. A 3.5–3.7 represents Dean's List standing (Cum Laude). A 3.0–3.4 represents solid academic standing required for most graduate programs.",
+    goodVsBadOutput: "If an arithmetic ratio displays 75% for a 3.0 GPA, recognize that this is purely mathematical. In US grading conventions, a 3.0 is a B average (83–86%), not a C.",
+    nextStepsGuidance: "When applying to US graduate schools or jobs, list your official unweighted GPA as recorded on your institutional transcript unless explicitly asked to normalize."
+  },
+  bestPractices: {
+    heading: "Best Practices for Transcripts & Applications",
+    practices: [
+      { title: "Do Not Self-Inflate", description: "Never convert a weighted 5.0 GPA to a 4.0 without explicitly labeling it as an unweighted recalculation." },
+      { title: "Check Evaluator Rules", description: "Credential evaluation agencies like WES or ECE recalculate GPAs course-by-course using credit hour weightings." },
+      { title: "State Source Scale", description: "Always note your grading scale on resumes (e.g. '3.75 / 4.00' or '4.20 / 5.00 Weighted')." }
+    ]
+  },
+  commonMistakes: {
+    heading: "Common GPA Conversion Mistakes",
+    mistakes: [
+      { mistake: "Using Linear Multiplication", whyItHappens: "Multiplying (GPA / 4.0) * 100 turns a 2.0 GPA into 50%, which is failing in US grading systems despite 2.0 being a passing C grade.", howToAvoid: "Use non-linear academic curve tables rather than linear percentages." },
+      { mistake: "Mixing Weighted & Unweighted", whyItHappens: "Students compare weighted high school GPAs (above 4.0) directly with standard 4.0 college admission criteria.", howToAvoid: "Strip course bonuses (+0.5 or +1.0) to find the true unweighted 4.0 baseline." }
+    ]
+  },
+  industryUseCases: {
+    heading: "Common Academic Use Cases",
+    useCases: [
+      { industry: "College Admissions", description: "Admissions officers normalize high school transcripts across public, private, and international schools.", benefit: "Enables fair side-by-side candidate comparison." },
+      { industry: "Graduate School Applications", description: "Prospective master's and PhD candidates verify eligibility for minimum 3.0 GPA requirements.", benefit: "Confirms program prerequisites before submitting application fees." }
+    ]
+  },
+  faqs: {
+    heading: "Frequently Asked Questions",
+    faqs: [
+      { question: "Is a 3.0 GPA equal to 75%?", answer: "No. Mathematically, 3.0 ÷ 4.0 = 75%, but academically, a 3.0 is a B average (83%–86%). A 75% is a C. Academic curves are non-linear because 0% to 64% is failing (F = 0.0)." },
+      { question: "What is the difference between a 4.0 and 4.33 scale?", answer: "A standard 4.0 scale awards 4.0 for both an A and an A+. A 4.33 scale awards 4.33 for an A+, giving students extra recognition for perfect grades." },
+      { question: "Will US colleges accept this converted GPA?", answer: "This converter provides standard equivalencies based on College Board models. However, university admissions offices and credential services (WES) recalculate transcripts course-by-course from official records." }
+    ]
+  },
+  relatedQuestions: {
+    heading: "Related Academic Questions",
+    questions: [
+      { question: "How do you convert a 5.0 scale to 4.0?", answer: "On high school transcripts, a 5.0 scale reflects weighted AP/IB courses (+1.0 point). To convert to 4.0 unweighted, subtract the course bonus or normalize proportionately: (GPA ÷ 5.0) × 4.0." },
+      { question: "What letter grade is a 3.5 GPA?", answer: "A 3.5 GPA on a 4.0 scale is right between a B+ (3.3) and an A- (3.7), representing an honors-level average of approximately 88%–90%." }
+    ]
+  },
+  relatedToolIds: ['gpa-calculator', 'final-grade-calculator', 'percentage-calculator']
+};
+
+export const PAYROLL_TAX_ESTIMATOR_SEO: ToolSeoData = {
+  atAGlance: {
+    heading: "At a Glance",
+    categoryLabel: "Payroll & Tax Calculator",
+    bestFor: "US Employers, Employees & HR Managers",
+    privacy: "100% Client-Side RAM",
+    timeRequired: "Under 1 Minute",
+    cost: "Free Forever",
+    lastUpdated: "October 2026"
+  },
+  overview: {
+    heading: "Quick Overview",
+    whatItDoes: "Calculates US Federal payroll tax withholdings—including Social Security (6.2% up to the $168,600 wage base limit), Medicare (1.45% plus 0.9% Additional Medicare), and progressive 2024 Federal Income Tax brackets after the standard deduction.",
+    whoShouldUseIt: "W-2 salaried and hourly employees, business owners running payroll, and HR specialists estimating paycheck deductions.",
+    whenToUseIt: "Use this estimator when evaluating job offers, verifying paystub withholdings, planning budget take-home pay, or updating Form W-4 elections.",
+    whyItIsUseful: "Many simple online calculators approximate federal tax as a flat 12%, causing major estimation errors. This calculator implements progressive 2024 IRS tax brackets (10% to 37%), official standard deductions ($14,600 Single / $29,200 Married), and Social Security wage base caps."
+  },
+  keyFeatures: {
+    heading: "Key Payroll Features",
+    features: [
+      { title: "2024 IRS Progressive Brackets", description: "Models 10%, 12%, 22%, 24%, 32%, 35%, and 37% federal income tax brackets from IRS Rev. Proc. 2023-34." },
+      { title: "FICA Social Security Cap", description: "Accurately caps 6.2% Social Security tax at the official 2024 wage base limit of $168,600." },
+      { title: "Medicare & Surtax Calculation", description: "Includes standard 1.45% Medicare plus the 0.9% Additional Medicare Tax on high earners." },
+      { title: "Multiple Pay Frequencies", description: "Supports monthly, semi-monthly, bi-weekly, weekly, and annual paycheck calculations." },
+      { title: "100% Client-Side Privacy", description: "Salary numbers are calculated locally in your browser with zero server storage." },
+      { title: "Filing Status Customization", description: "Select Single, Married Filing Jointly, or Head of Household for accurate standard deductions." }
+    ]
+  },
+  howToUse: {
+    heading: "How to Estimate Your Paycheck",
+    steps: [
+      { stepNumber: 1, title: "Enter Gross Pay", description: "Input your gross earnings for the pay period (e.g., $5,000)." },
+      { stepNumber: 2, title: "Select Pay Frequency", description: "Choose monthly (12/yr), bi-weekly (26/yr), weekly (52/yr), or annual." },
+      { stepNumber: 3, title: "Choose Filing Status", description: "Select Single, Married Filing Jointly, or Head of Household to apply standard deduction rules." },
+      { stepNumber: 4, title: "Review Deductions & Net Pay", description: "Instantly see your net take-home paycheck and itemized Social Security, Medicare, and Federal tax withholdings." }
+    ]
+  },
+  workedExample: {
+    heading: "Worked Real-World Example",
+    title: "Scenario: $5,000 Monthly Gross Pay (Single Filer, 2024 Tax Year)",
+    scenarioDescription: "A single employee earns $5,000 per month ($60,000 annualized). They want to know their net paycheck after mandatory federal withholdings.",
+    sampleInputs: [
+      { label: "Gross Pay Per Period", value: "$5,000.00" },
+      { label: "Pay Frequency", value: "Monthly (12 periods/yr)" },
+      { label: "Filing Status", value: "Single" },
+      { label: "Tax Year", value: "2024" }
+    ],
+    stepsExplanation: [
+      "Annualized Gross Pay = $5,000 × 12 = $60,000.00",
+      "Social Security (6.2%) = $60,000 × 0.062 = $3,720.00/yr ÷ 12 = $310.00 / month",
+      "Medicare (1.45%) = $60,000 × 0.0145 = $870.00/yr ÷ 12 = $72.50 / month",
+      "Standard Deduction (2024 Single) = $14,600.00; Taxable Income = $60,000 - $14,600 = $45,400.00",
+      "Federal Income Tax: 10% on first $11,600 ($1,160) + 12% on remaining $33,800 ($4,056) = $5,216.00/yr ÷ 12 = $434.67 / month",
+      "Total Monthly Withholding = $310.00 (SS) + $72.50 (Med) + $434.67 (Fed) = $817.17 / month",
+      "Net Paycheck = $5,000.00 - $817.17 = $4,182.83 / month"
+    ],
+    finalOutput: { label: "Estimated Net Monthly Paycheck", value: "$4,182.83" },
+    summary: "On a $5,000 monthly gross salary, mandatory federal taxes total $817.17/mo (effective total rate: 16.3%), leaving an estimated net paycheck of $4,182.83."
+  },
+  howItWorks: {
+    heading: "How It Works (2024 IRS Methodology)",
+    type: "math",
+    explanation: "This tool calculates federal payroll taxes using official 2024 IRS tax parameters. Gross pay is annualized, reduced by the applicable standard deduction, and passed through marginal tax brackets. FICA taxes (Social Security and Medicare) are applied to gross wages subject to the $168,600 Social Security cap.",
+    formulaText: "Net Pay = Gross Pay - [Social Security (6.2%, max $168.6k) + Medicare (1.45%) + Progressive Federal Income Tax(Gross - Standard Deduction)]",
+    variables: [
+      { symbol: "Gross Pay", description: "Total wages earned during the pay period before deductions" },
+      { symbol: "Social Security", description: "6.2% FICA tax capped at $168,600 of annual earnings ($10,453.20 maximum for 2024)" },
+      { symbol: "Medicare", description: "1.45% FICA tax on all wages, plus 0.9% Additional Medicare on wages exceeding $200k/$250k" },
+      { symbol: "Standard Deduction", description: "2024 baseline tax-free income: $14,600 (Single), $29,200 (Married), $21,900 (HoH)" }
+    ]
+  },
+  interpretResults: {
+    heading: "Interpreting Your Paycheck Results",
+    typicalRanges: "Most US employees experience an effective total federal payroll tax rate between 12% and 24% depending on income bracket and filing status.",
+    goodVsBadOutput: "Remember that this estimate covers Federal Income Tax and FICA. State income taxes (0% to 13.3%) and pre-tax retirement or health benefits (401k/HSA) will further adjust your net pay.",
+    nextStepsGuidance: "To adjust your actual paystub federal withholding, submit an updated IRS Form W-4 to your employer's payroll department."
+  },
+  bestPractices: {
+    heading: "Payroll & Withholding Best Practices",
+    practices: [
+      { title: "Review Form W-4 Annually", description: "Update your withholding when experiencing life changes such as marriage, children, or a second job." },
+      { title: "Utilize Pre-Tax Deductions", description: "Contributing to a traditional 401(k) or HSA reduces your taxable income, lowering your federal income tax withholding." },
+      { title: "Account for State Taxes", description: "Nine US states (AK, FL, NV, NH, SD, TN, TX, WA, WY) have no personal wage income tax, while other states levy 3% to 13%." }
+    ]
+  },
+  commonMistakes: {
+    heading: "Common Payroll Estimator Mistakes",
+    mistakes: [
+      { mistake: "Assuming Flat Tax Rates", whyItHappens: "Assuming federal tax is flat (e.g. 15% or 20%) ignores the standard deduction and progressive brackets, distorting lower-income estimates.", howToAvoid: "Use progressive bracket calculations that factor in the standard deduction." },
+      { mistake: "Continuing Social Security Past the Cap", whyItHappens: "High earners continue having 6.2% deducted even after surpassing $168,600 in annual earnings.", howToAvoid: "Ensure payroll software stops deducting Social Security tax once the annual wage base limit is reached." }
+    ]
+  },
+  industryUseCases: {
+    heading: "Common Payroll Applications",
+    useCases: [
+      { industry: "Small Business Employers", description: "Estimate payroll costs and employer FICA matching obligations for new hires.", benefit: "Ensures accurate cash flow budgeting." },
+      { industry: "Salaried Job Seekers", description: "Compare net take-home pay between competing salary offers across different pay schedules.", benefit: "Reveals actual post-tax disposable income." }
+    ]
+  },
+  faqs: {
+    heading: "Frequently Asked Questions",
+    faqs: [
+      { question: "What is FICA tax?", answer: "FICA stands for the Federal Insurance Contributions Act. It consists of a 6.2% Social Security tax (capped at $168,600 in 2024) and a 1.45% Medicare tax (uncapped)." },
+      { question: "Does this calculator include state income taxes?", answer: "No. This tool models US Federal Income Tax and federal FICA taxes. State income tax varies by state (from 0% in TX/FL to 13.3% in CA) and must be calculated separately based on your location." },
+      { question: "What is the 2024 Social Security wage base limit?", answer: "For 2024, the Social Security wage cap is $168,600. Earnings above this amount are exempt from the 6.2% Social Security tax, capping annual employee contributions at $10,453.20." },
+      { question: "How does the standard deduction affect my paycheck?", answer: "The IRS standard deduction ($14,600 for Single, $29,200 for Married in 2024) is subtracted from your annualized gross pay before applying federal income tax brackets, meaning your first dollars of income are tax-free." }
+    ]
+  },
+  relatedQuestions: {
+    heading: "Related Payroll Questions",
+    questions: [
+      { question: "What is the difference between gross pay and net pay?", answer: "Gross pay is your total earned salary or wages before any deductions. Net pay (take-home pay) is the remaining amount deposited into your bank account after mandatory taxes (FICA, federal, state) and voluntary deductions (401k, health insurance)." },
+      { question: "What is the Additional Medicare Tax?", answer: "The Affordable Care Act levies an additional 0.9% Medicare tax on individual wage earnings exceeding $200,000 for single filers or $250,000 for married couples filing jointly." }
+    ]
+  },
+  relatedToolIds: ['hourly-to-salary-calculator', 'freelance-hourly-rate-calculator', 'roi-calculator']
+};
+
 export const RAW_TOOL_SEO_DATA_MAP: Record<string, ToolSeoData> = {
   'freelance-hourly-rate-calculator': FREELANCE_HOURLY_RATE_SEO,
+  'gpa-scale-converter': GPA_SCALE_CONVERTER_SEO,
+  'payroll-tax-estimator': PAYROLL_TAX_ESTIMATOR_SEO,
   'invoice-generator': INVOICE_GENERATOR_SEO,
   'password-generator': PASSWORD_GENERATOR_SEO,
   'word-counter': WORD_COUNTER_SEO,

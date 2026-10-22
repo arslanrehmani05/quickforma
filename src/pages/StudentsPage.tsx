@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { ToolMetadata } from '../types';
 import { getVerticalTools } from '../data/toolsCatalog';
-import { getCategoriesForVertical } from '../data/categories';
+import { getCategoriesForVertical, getSubcategoriesForCategory } from '../data/categories';
 import { CategoryPills } from '../components/layout/CategoryPills';
+import { SubcategoryPills } from '../components/layout/SubcategoryPills';
 import { TrustBadges } from '../components/layout/TrustBadges';
 import { ToolCard } from '../components/layout/ToolCard';
 import { ShareSection } from '../components/social/ShareSection';
@@ -15,22 +16,31 @@ interface StudentsPageProps {
 
 export const StudentsPage: React.FC<StudentsPageProps> = ({ tools, onSelectTool }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [selectedSubcategory, setSelectedSubcategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
 
   // Dynamically query catalog for students vertical tools
   const studentTools = getVerticalTools('students');
   const categories = getCategoriesForVertical('students', tools);
+  const activeSubcategories = getSubcategoriesForCategory(selectedCategory, tools, 'students');
 
-  // Filter tools by category and search query
+  const handleSelectCategory = (catId: string) => {
+    setSelectedCategory(catId);
+    setSelectedSubcategory('all');
+  };
+
+  // Filter tools by category, subcategory, and search query
   const filteredTools = studentTools.filter((tool) => {
     const matchesCategory = selectedCategory === 'all' || tool.category === selectedCategory;
+    const matchesSubcategory = selectedSubcategory === 'all' || tool.subcategory === selectedSubcategory;
     const q = searchQuery.toLowerCase();
     const matchesSearch =
+      !q ||
       tool.name.toLowerCase().includes(q) ||
       tool.description.toLowerCase().includes(q) ||
       tool.keywords.some((k) => k.toLowerCase().includes(q));
 
-    return matchesCategory && matchesSearch;
+    return matchesCategory && matchesSubcategory && matchesSearch;
   });
 
   return (
@@ -83,8 +93,36 @@ export const StudentsPage: React.FC<StudentsPageProps> = ({ tools, onSelectTool 
         <CategoryPills
           categories={categories}
           selectedCategory={selectedCategory}
-          onSelectCategory={setSelectedCategory}
+          onSelectCategory={handleSelectCategory}
         />
+
+        {/* Task-Level Subcategory Filter Pills */}
+        {selectedCategory !== 'all' && activeSubcategories.length > 1 && (
+          <SubcategoryPills
+            subcategories={activeSubcategories}
+            selectedSubcategory={selectedSubcategory}
+            onSelectSubcategory={setSelectedSubcategory}
+          />
+        )}
+
+        {/* Active Filter Summary if filtered */}
+        {(selectedCategory !== 'all' || selectedSubcategory !== 'all' || searchQuery) && (
+          <div className="flex items-center justify-between px-1 text-xs text-slate-500 font-medium">
+            <span>
+              Showing <strong className="text-slate-800">{filteredTools.length}</strong> matching tools
+            </span>
+            <button
+              onClick={() => {
+                setSelectedCategory('all');
+                setSelectedSubcategory('all');
+                setSearchQuery('');
+              }}
+              className="text-indigo-600 hover:text-indigo-800 font-semibold transition-colors"
+            >
+              Clear filters
+            </button>
+          </div>
+        )}
 
         {/* Tools Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -97,7 +135,19 @@ export const StudentsPage: React.FC<StudentsPageProps> = ({ tools, onSelectTool 
           <div className="text-center py-16 bg-white rounded-3xl border border-slate-200 shadow-xs">
             <Sparkles className="w-8 h-8 text-slate-400 mx-auto mb-3" />
             <h3 className="text-slate-800 font-bold text-base mb-1">No Student Tools Found</h3>
-            <p className="text-slate-500 text-xs">Try searching for terms like "GPA", "fraction", "derivative", or "molar mass".</p>
+            <p className="text-slate-500 text-xs max-w-sm mx-auto">
+              No academic tools matched your current filter. Try selecting another subcategory or clear filters.
+            </p>
+            <button
+              onClick={() => {
+                setSelectedCategory('all');
+                setSelectedSubcategory('all');
+                setSearchQuery('');
+              }}
+              className="mt-4 px-4 py-2 rounded-xl bg-indigo-50 text-indigo-700 hover:bg-indigo-100 text-xs font-bold transition-colors"
+            >
+              Reset All Filters
+            </button>
           </div>
         )}
       </section>

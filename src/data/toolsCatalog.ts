@@ -2,9 +2,13 @@ import { ToolMetadata, VerticalId } from '../types';
 import { CANONICAL_CATEGORIES } from './categories';
 
 export const VERTICALS = [
-  { id: 'business', name: 'Business Hub', description: 'Financial, legal, ecommerce, operations, HR & marketing tools' },
-  { id: 'students', name: 'Students Hub', description: 'GPA, math, statistics, science, writing & academic utilities' },
-  { id: 'developers', name: 'Developer Hub', description: 'JSON, XML, regex, code, network, hashing & technical utilities' },
+  { id: 'business', name: 'Business Hub', description: 'Financial statements, accounting, loans, valuation & corporate legal' },
+  { id: 'ecommerce', name: 'Ecommerce Hub', description: 'Shopify, Amazon, Etsy, marketplace fees, retail margins & stock' },
+  { id: 'marketing', name: 'Marketing Hub', description: 'Paid ad spend, ROAS, CAC, LTV, conversion, SEO & growth' },
+  { id: 'operations', name: 'Operations Hub', description: 'OEE, capacity, takt time, supply chain, Six Sigma & logistics' },
+  { id: 'students', name: 'Students Hub', description: 'GPA, grading scales, exams, coursework planning & academic tools' },
+  { id: 'science', name: 'Science & STEM Hub', description: 'Physics, chemistry, calculus, circuits, thermodynamics & math' },
+  { id: 'developers', name: 'Developer Hub', description: 'JSON, XML, regex, code formatting, hashing, CIDR & DevOps' },
 ] as const;
 
 export const getVerticalTools = (vertical: VerticalId): ToolMetadata[] => {
@@ -40,7 +44,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "billable rate"
     ],
     "metaTitle": "Freelance Hourly Rate Calculator \u2014 QuickForma",
-    "metaDescription": "Calculate the target hourly rate required to hit your income goals as a freelancer or consultant."
+    "metaDescription": "Calculate the target hourly rate required to hit your income goals as a freelancer or consultant.",
+    "subcategory": "hr:wages-salary",
+    "subcategoryLabel": "Wages & Salary Conversion"
   },
   {
     "id": "break-even-calculator",
@@ -60,7 +66,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "business breakeven"
     ],
     "metaTitle": "Break-Even Point Calculator \u2014 QuickForma",
-    "metaDescription": "Find your break-even point in units and revenue instantly."
+    "metaDescription": "Find your break-even point in units and revenue instantly.",
+    "subcategory": "finance:profitability-margins",
+    "subcategoryLabel": "Profitability & Margins"
   },
   {
     "id": "payroll-tax-estimator",
@@ -79,7 +87,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "tax withholding"
     ],
     "metaTitle": "US Payroll Tax & Paycheck Estimator \u2014 QuickForma",
-    "metaDescription": "Estimate federal payroll tax withholding and net take-home pay."
+    "metaDescription": "Estimate federal payroll tax withholding and net take-home pay.",
+    "subcategory": "hr:payroll-taxes",
+    "subcategoryLabel": "Payroll & Paycheck Taxes"
   },
   {
     "id": "roi-calculator",
@@ -99,7 +109,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "annualized return"
     ],
     "metaTitle": "ROI Calculator \u2014 Calculate Return on Investment \u2014 QuickForma",
-    "metaDescription": "Calculate ROI percentage and annualized returns instantly."
+    "metaDescription": "Calculate ROI percentage and annualized returns instantly.",
+    "subcategory": "finance:valuation-investment",
+    "subcategoryLabel": "Investment & Valuation"
   },
   {
     "id": "mortgage-loan-calculator",
@@ -118,7 +130,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "home loan"
     ],
     "metaTitle": "Mortgage & Loan Payment Calculator \u2014 QuickForma",
-    "metaDescription": "Calculate monthly mortgage and loan payments with principal and interest breakdowns."
+    "metaDescription": "Calculate monthly mortgage and loan payments with principal and interest breakdowns.",
+    "subcategory": "real-estate:mortgage-financing",
+    "subcategoryLabel": "Mortgages & Financing"
   },
   {
     "id": "markup-margin-calculator",
@@ -137,7 +151,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "retail markup"
     ],
     "metaTitle": "Profit Margin & Markup Calculator \u2014 QuickForma",
-    "metaDescription": "Calculate profit margin, markup percentage, cost, and retail price instantly."
+    "metaDescription": "Calculate profit margin, markup percentage, cost, and retail price instantly.",
+    "subcategory": "finance:profitability-margins",
+    "subcategoryLabel": "Profitability & Margins"
   },
   {
     "id": "salary-hourly-converter",
@@ -156,7 +172,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "annual income rate"
     ],
     "metaTitle": "Salary to Hourly Rate Converter \u2014 QuickForma",
-    "metaDescription": "Convert annual salary to hourly, weekly, and monthly pay rates."
+    "metaDescription": "Convert annual salary to hourly, weekly, and monthly pay rates.",
+    "subcategory": "hr:wages-salary",
+    "subcategoryLabel": "Wages & Salary Conversion"
   },
   {
     "id": "sales-tax-calculator",
@@ -175,7 +193,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "total price tax"
     ],
     "metaTitle": "Sales Tax Calculator \u2014 QuickForma",
-    "metaDescription": "Calculate sales tax and total price with custom tax percentages."
+    "metaDescription": "Calculate sales tax and total price with custom tax percentages.",
+    "subcategory": "finance:taxes-accounting",
+    "subcategoryLabel": "Taxes & Accounting"
   },
   {
     "id": "discount-calculator",
@@ -194,7 +214,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "savings calculator"
     ],
     "metaTitle": "Discount & Percentage Off Calculator \u2014 QuickForma",
-    "metaDescription": "Calculate sale prices and total savings from percentage discounts."
+    "metaDescription": "Calculate sale prices and total savings from percentage discounts.",
+    "subcategory": "finance:taxes-accounting",
+    "subcategoryLabel": "Taxes & Accounting"
   },
   {
     "id": "compound-interest-calculator",
@@ -214,7 +236,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "interest compounding"
     ],
     "metaTitle": "Compound Interest Calculator \u2014 QuickForma",
-    "metaDescription": "Calculate compound interest growth and investment value over time."
+    "metaDescription": "Calculate compound interest growth and investment value over time.",
+    "subcategory": "finance:loans-debt",
+    "subcategoryLabel": "Loans, Debt & Payoff"
   },
   {
     "id": "loan-payoff-calculator",
@@ -233,12 +257,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "interest savings"
     ],
     "metaTitle": "Loan Payoff & Extra Payment Calculator \u2014 QuickForma",
-    "metaDescription": "Calculate how extra monthly payments reduce loan payoff time and save interest."
+    "metaDescription": "Calculate how extra monthly payments reduce loan payoff time and save interest.",
+    "subcategory": "finance:loans-debt",
+    "subcategoryLabel": "Loans, Debt & Payoff"
   },
   {
     "id": "cpm-ad-cost-calculator",
     "verticals": [
-      "business"
+      "business",
+      "marketing"
     ],
     "name": "CPM & Ad Cost Calculator",
     "category": "marketing",
@@ -252,12 +279,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "ad impressions"
     ],
     "metaTitle": "CPM & Ad Cost Calculator \u2014 QuickForma",
-    "metaDescription": "Calculate CPM, total advertising budget, and required impressions."
+    "metaDescription": "Calculate CPM, total advertising budget, and required impressions.",
+    "subcategory": "marketing:advertising-media",
+    "subcategoryLabel": "Paid Ads & Media Spend"
   },
   {
     "id": "customer-ltv-calculator",
     "verticals": [
-      "business"
+      "business",
+      "marketing"
     ],
     "name": "Customer Lifetime Value (LTV) Calculator",
     "category": "marketing",
@@ -271,7 +301,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "saas metric"
     ],
     "metaTitle": "Customer Lifetime Value (LTV) Calculator \u2014 QuickForma",
-    "metaDescription": "Calculate Customer Lifetime Value (LTV) and average customer worth."
+    "metaDescription": "Calculate Customer Lifetime Value (LTV) and average customer worth.",
+    "subcategory": "marketing:customer-retention",
+    "subcategoryLabel": "Customer Lifetime & Retention"
   },
   {
     "id": "invoice-generator",
@@ -292,7 +324,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "freelance invoice"
     ],
     "metaTitle": "Free PDF Invoice Generator \u2014 QuickForma",
-    "metaDescription": "Generate clean PDF invoices with logo, tax, and discount support. 100% free and client-side."
+    "metaDescription": "Generate clean PDF invoices with logo, tax, and discount support. 100% free and client-side.",
+    "subcategory": "documents:invoices-billing",
+    "subcategoryLabel": "Invoices, Receipts & POs"
   },
   {
     "id": "receipt-generator",
@@ -312,7 +346,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "sales receipt pdf"
     ],
     "metaTitle": "Free Sales Receipt Generator \u2014 QuickForma",
-    "metaDescription": "Create clean, downloadable payment receipts for business transactions."
+    "metaDescription": "Create clean, downloadable payment receipts for business transactions.",
+    "subcategory": "documents:invoices-billing",
+    "subcategoryLabel": "Invoices, Receipts & POs"
   },
   {
     "id": "nda-template-generator",
@@ -331,7 +367,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "legal template"
     ],
     "metaTitle": "Free NDA Template Generator \u2014 QuickForma",
-    "metaDescription": "Generate mutual or one-way Non-Disclosure Agreements for instant download."
+    "metaDescription": "Generate mutual or one-way Non-Disclosure Agreements for instant download.",
+    "subcategory": "documents:contracts-agreements",
+    "subcategoryLabel": "Contracts & Legal Agreements"
   },
   {
     "id": "bill-of-sale-generator",
@@ -350,7 +388,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "sales agreement"
     ],
     "metaTitle": "Free Bill of Sale Generator \u2014 QuickForma",
-    "metaDescription": "Create printable Bill of Sale documents for vehicle and property sales."
+    "metaDescription": "Create printable Bill of Sale documents for vehicle and property sales.",
+    "subcategory": "documents:contracts-agreements",
+    "subcategoryLabel": "Contracts & Legal Agreements"
   },
   {
     "id": "freelance-contract-generator",
@@ -369,7 +409,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "freelance agreement"
     ],
     "metaTitle": "Free Freelance Contract Generator \u2014 QuickForma",
-    "metaDescription": "Build clean freelance client agreements and scope contracts."
+    "metaDescription": "Build clean freelance client agreements and scope contracts.",
+    "subcategory": "documents:contracts-agreements",
+    "subcategoryLabel": "Contracts & Legal Agreements"
   },
   {
     "id": "meeting-minutes-generator",
@@ -388,7 +430,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "board minutes"
     ],
     "metaTitle": "Meeting Minutes Generator \u2014 QuickForma",
-    "metaDescription": "Format structured corporate meeting minutes and action items."
+    "metaDescription": "Format structured corporate meeting minutes and action items.",
+    "subcategory": "documents:corporate-policies",
+    "subcategoryLabel": "Scopes, Policies & Minutes"
   },
   {
     "id": "rent-receipt-generator",
@@ -407,7 +451,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "rental proof"
     ],
     "metaTitle": "Free Rent Receipt Generator \u2014 QuickForma",
-    "metaDescription": "Generate printable rent payment receipts for landlords and tenants."
+    "metaDescription": "Generate printable rent payment receipts for landlords and tenants.",
+    "subcategory": "documents:invoices-billing",
+    "subcategoryLabel": "Invoices, Receipts & POs"
   },
   {
     "id": "promissory-note-generator",
@@ -426,7 +472,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "personal loan note"
     ],
     "metaTitle": "Free Promissory Note Generator \u2014 QuickForma",
-    "metaDescription": "Create simple promissory notes and loan repayment agreements."
+    "metaDescription": "Create simple promissory notes and loan repayment agreements.",
+    "subcategory": "documents:contracts-agreements",
+    "subcategoryLabel": "Contracts & Legal Agreements"
   },
   {
     "id": "bill-of-lading-generator",
@@ -445,12 +493,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "freight manifest"
     ],
     "metaTitle": "Free Bill of Lading (BOL) Generator \u2014 QuickForma",
-    "metaDescription": "Generate printable Bill of Lading forms for shipping and freight."
+    "metaDescription": "Generate printable Bill of Lading forms for shipping and freight.",
+    "subcategory": "documents:invoices-billing",
+    "subcategoryLabel": "Invoices, Receipts & POs"
   },
   {
     "id": "unit-converter",
     "verticals": [
       "business",
+      "science",
       "students"
     ],
     "name": "Multi-Unit Converter",
@@ -466,13 +517,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "weight converter"
     ],
     "metaTitle": "Multi-Unit Converter \u2014 QuickForma",
-    "metaDescription": "Convert length, weight, volume, and temperature units instantly."
+    "metaDescription": "Convert length, weight, volume, and temperature units instantly.",
+    "subcategory": "converters:measurement-units",
+    "subcategoryLabel": "Unit & Metric Measurements"
   },
   {
     "id": "currency-converter",
     "verticals": [
-      "business",
-      "students"
+      "business"
     ],
     "name": "Currency Converter",
     "category": "converters",
@@ -486,13 +538,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "gbp converter"
     ],
     "metaTitle": "Free Currency Converter \u2014 QuickForma",
-    "metaDescription": "Convert major global currencies with instant calculation."
+    "metaDescription": "Convert major global currencies with instant calculation.",
+    "subcategory": "converters:measurement-units",
+    "subcategoryLabel": "Unit & Metric Measurements"
   },
   {
     "id": "date-difference-calculator",
     "verticals": [
-      "business",
-      "students"
+      "business"
     ],
     "name": "Days Between Dates Calculator",
     "category": "converters",
@@ -506,13 +559,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "working days calculator"
     ],
     "metaTitle": "Days Between Dates Calculator \u2014 QuickForma",
-    "metaDescription": "Calculate the exact number of days, weeks, and months between two dates."
+    "metaDescription": "Calculate the exact number of days, weeks, and months between two dates.",
+    "subcategory": "converters:date-time",
+    "subcategoryLabel": "Dates & Time Zones"
   },
   {
     "id": "time-zone-converter",
     "verticals": [
-      "business",
-      "students"
+      "business"
     ],
     "name": "Time Zone Converter",
     "category": "converters",
@@ -526,13 +580,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "world clock converter"
     ],
     "metaTitle": "Time Zone Converter \u2014 QuickForma",
-    "metaDescription": "Convert meeting times across major world time zones easily."
+    "metaDescription": "Convert meeting times across major world time zones easily.",
+    "subcategory": "converters:date-time",
+    "subcategoryLabel": "Dates & Time Zones"
   },
   {
     "id": "pdf-page-counter",
     "verticals": [
-      "business",
-      "students"
+      "business"
     ],
     "name": "PDF Page Counter",
     "category": "converters",
@@ -546,13 +601,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "browser pdf reader"
     ],
     "metaTitle": "Client-Side PDF Page Counter \u2014 QuickForma",
-    "metaDescription": "Count pages in PDF documents instantly inside your browser with 100% privacy."
+    "metaDescription": "Count pages in PDF documents instantly inside your browser with 100% privacy.",
+    "subcategory": "converters:media-digital",
+    "subcategoryLabel": "Media, Color & File Formats"
   },
   {
     "id": "aspect-ratio-calculator",
     "verticals": [
       "business",
-      "students",
       "developers"
     ],
     "name": "Aspect Ratio Calculator",
@@ -567,13 +623,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "video resolution"
     ],
     "metaTitle": "Aspect Ratio Calculator \u2014 QuickForma",
-    "metaDescription": "Calculate image and video resolution dimensions for 16:9, 4:3, and custom ratios."
+    "metaDescription": "Calculate image and video resolution dimensions for 16:9, 4:3, and custom ratios.",
+    "subcategory": "converters:media-digital",
+    "subcategoryLabel": "Media, Color & File Formats"
   },
   {
     "id": "color-picker-converter",
     "verticals": [
       "business",
-      "students",
       "developers"
     ],
     "name": "Color Picker & HEX/RGB/HSL Converter",
@@ -588,14 +645,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "contrast checker"
     ],
     "metaTitle": "Color Picker & HEX/RGB/HSL Converter \u2014 QuickForma",
-    "metaDescription": "Convert colors between HEX, RGB, and HSL values with visual color picker."
+    "metaDescription": "Convert colors between HEX, RGB, and HSL values with visual color picker.",
+    "subcategory": "converters:media-digital",
+    "subcategoryLabel": "Media, Color & File Formats"
   },
   {
     "id": "image-resizer-converter",
     "verticals": [
-      "business",
-      "students",
-      "developers"
+      "business"
     ],
     "name": "Image Resizer & Format Converter",
     "category": "converters",
@@ -610,12 +667,13 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "client side image converter"
     ],
     "metaTitle": "Client-Side Image Resizer & Converter \u2014 QuickForma",
-    "metaDescription": "Resize images and convert formats (PNG, JPG, WebP) 100% locally in your browser."
+    "metaDescription": "Resize images and convert formats (PNG, JPG, WebP) 100% locally in your browser.",
+    "subcategory": "converters:media-digital",
+    "subcategoryLabel": "Media, Color & File Formats"
   },
   {
     "id": "json-formatter-validator",
     "verticals": [
-      "business",
       "developers"
     ],
     "name": "JSON Formatter & Validator",
@@ -631,12 +689,13 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "json tree view"
     ],
     "metaTitle": "JSON Formatter & Validator \u2014 QuickForma",
-    "metaDescription": "Format, beautify, and validate JSON code with interactive tree viewer."
+    "metaDescription": "Format, beautify, and validate JSON code with interactive tree viewer.",
+    "subcategory": "developer:data-formats",
+    "subcategoryLabel": "Data Formats (JSON, XML, SQL)"
   },
   {
     "id": "base64-encoder-decoder",
     "verticals": [
-      "business",
       "developers"
     ],
     "name": "Base64 Encoder & Decoder",
@@ -651,12 +710,13 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "string base64"
     ],
     "metaTitle": "Base64 Encoder & Decoder \u2014 QuickForma",
-    "metaDescription": "Encode and decode Base64 text data instantly in your browser."
+    "metaDescription": "Encode and decode Base64 text data instantly in your browser.",
+    "subcategory": "developer:encoders-decoders",
+    "subcategoryLabel": "Encoders & Decoders"
   },
   {
     "id": "hash-generator",
     "verticals": [
-      "business",
       "developers"
     ],
     "name": "Cryptographic Hash Generator",
@@ -671,12 +731,13 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "md5 hash"
     ],
     "metaTitle": "Cryptographic Hash Generator (SHA-256 / SHA-512) \u2014 QuickForma",
-    "metaDescription": "Generate SHA-256, SHA-512, and MD5 hashes using secure browser Web Crypto API."
+    "metaDescription": "Generate SHA-256, SHA-512, and MD5 hashes using secure browser Web Crypto API.",
+    "subcategory": "developer:cryptography-security",
+    "subcategoryLabel": "Cryptography & Hashing"
   },
   {
     "id": "url-encoder-decoder",
     "verticals": [
-      "business",
       "developers"
     ],
     "name": "URL Encoder & Decoder",
@@ -691,12 +752,13 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "url decode online"
     ],
     "metaTitle": "URL Encoder & Decoder \u2014 QuickForma",
-    "metaDescription": "Encode or decode URL strings and query parameters instantly."
+    "metaDescription": "Encode or decode URL strings and query parameters instantly.",
+    "subcategory": "developer:encoders-decoders",
+    "subcategoryLabel": "Encoders & Decoders"
   },
   {
     "id": "css-glassmorphism-generator",
     "verticals": [
-      "business",
       "developers"
     ],
     "name": "CSS Box Shadow & Glass Generator",
@@ -711,12 +773,13 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "glass css"
     ],
     "metaTitle": "CSS Box Shadow & Glassmorphism Generator \u2014 QuickForma",
-    "metaDescription": "Generate modern CSS box shadows and glassmorphism backdrop styles."
+    "metaDescription": "Generate modern CSS box shadows and glassmorphism backdrop styles.",
+    "subcategory": "developer:code-formatting",
+    "subcategoryLabel": "CSS, Formatting & Minifiers"
   },
   {
     "id": "barcode-generator",
     "verticals": [
-      "business",
       "developers"
     ],
     "name": "Barcode Generator",
@@ -731,12 +794,13 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "free barcode maker"
     ],
     "metaTitle": "Free Barcode Generator \u2014 QuickForma",
-    "metaDescription": "Generate CODE128 barcodes from text or numbers with PNG image download."
+    "metaDescription": "Generate CODE128 barcodes from text or numbers with PNG image download.",
+    "subcategory": "developer:networking-devops",
+    "subcategoryLabel": "Networking, CIDR & DevOps"
   },
   {
     "id": "qr-code-generator",
     "verticals": [
-      "business",
       "developers"
     ],
     "name": "QR Code Maker",
@@ -753,12 +817,13 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "free qr code maker"
     ],
     "metaTitle": "Free QR Code Generator \u2014 QuickForma",
-    "metaDescription": "Create custom QR codes for websites, text, and Wi-Fi networks. Download high-res PNGs."
+    "metaDescription": "Create custom QR codes for websites, text, and Wi-Fi networks. Download high-res PNGs.",
+    "subcategory": "developer:networking-devops",
+    "subcategoryLabel": "Networking, CIDR & DevOps"
   },
   {
     "id": "password-generator",
     "verticals": [
-      "business",
       "developers"
     ],
     "name": "Secure Password Generator",
@@ -775,7 +840,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "secure password"
     ],
     "metaTitle": "Cryptographic Secure Password Generator \u2014 QuickForma",
-    "metaDescription": "Generate strong, random, cryptographically secure passwords instantly."
+    "metaDescription": "Generate strong, random, cryptographically secure passwords instantly.",
+    "subcategory": "developer:cryptography-security",
+    "subcategoryLabel": "Cryptography & Hashing"
   },
   {
     "id": "word-counter",
@@ -797,13 +864,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "text statistics"
     ],
     "metaTitle": "Word Counter & Character Counter \u2014 QuickForma",
-    "metaDescription": "Real-time word count, character count, sentence count, and reading time estimator."
+    "metaDescription": "Real-time word count, character count, sentence count, and reading time estimator.",
+    "subcategory": "writing:text-analysis",
+    "subcategoryLabel": "Readability & Text Analysis"
   },
   {
     "id": "case-converter",
     "verticals": [
       "business",
-      "students"
+      "developers"
     ],
     "name": "Text Case Converter",
     "category": "writing",
@@ -817,13 +886,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "text format"
     ],
     "metaTitle": "Text Case Converter \u2014 QuickForma",
-    "metaDescription": "Convert text between UPPERCASE, lowercase, Title Case, and Sentence case."
+    "metaDescription": "Convert text between UPPERCASE, lowercase, Title Case, and Sentence case.",
+    "subcategory": "writing:text-transformation",
+    "subcategoryLabel": "Case & Text Cleaners"
   },
   {
     "id": "text-diff-checker",
     "verticals": [
       "business",
-      "students",
       "developers"
     ],
     "name": "Text Diff & Compare Tool",
@@ -838,13 +908,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "line diff tool"
     ],
     "metaTitle": "Text Diff & Compare Tool \u2014 QuickForma",
-    "metaDescription": "Compare two text blocks line-by-line with color-coded diff highlighting."
+    "metaDescription": "Compare two text blocks line-by-line with color-coded diff highlighting.",
+    "subcategory": "writing:editorial-utilities",
+    "subcategoryLabel": "Diffs & Editorial Tools"
   },
   {
     "id": "lorem-ipsum-generator",
     "verticals": [
-      "business",
-      "students"
+      "business"
     ],
     "name": "Lorem Ipsum Placeholder Generator",
     "category": "writing",
@@ -858,12 +929,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "lorem text maker"
     ],
     "metaTitle": "Lorem Ipsum Generator \u2014 QuickForma",
-    "metaDescription": "Generate customized paragraphs and sentences of Lorem Ipsum placeholder text."
+    "metaDescription": "Generate customized paragraphs and sentences of Lorem Ipsum placeholder text.",
+    "subcategory": "writing:editorial-utilities",
+    "subcategoryLabel": "Diffs & Editorial Tools"
   },
   {
     "id": "business-name-generator",
     "verticals": [
-      "business"
+      "business",
+      "marketing"
     ],
     "name": "Business Name Generator",
     "category": "marketing",
@@ -877,13 +951,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "brand brainstorm"
     ],
     "metaTitle": "Business Name Generator \u2014 QuickForma",
-    "metaDescription": "Brainstorm business and brand name ideas with smart keyword combinations."
+    "metaDescription": "Brainstorm business and brand name ideas with smart keyword combinations.",
+    "subcategory": "marketing:seo-analytics",
+    "subcategoryLabel": "SEO & Marketing Analytics"
   },
   {
     "id": "slug-generator",
     "verticals": [
-      "business",
-      "developers"
+      "developers",
+      "marketing"
     ],
     "name": "SEO URL Slug Sanitizer",
     "category": "developer",
@@ -897,13 +973,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "title to slug"
     ],
     "metaTitle": "SEO URL Slug Generator \u2014 QuickForma",
-    "metaDescription": "Convert page titles into clean, lowercase, hyphenated SEO URL slugs."
+    "metaDescription": "Convert page titles into clean, lowercase, hyphenated SEO URL slugs.",
+    "subcategory": "developer:networking-devops",
+    "subcategoryLabel": "Networking, CIDR & DevOps"
   },
   {
     "id": "pomodoro-timer",
     "verticals": [
-      "business",
-      "students"
+      "business"
     ],
     "name": "Pomodoro Focus Timer",
     "category": "productivity",
@@ -918,12 +995,13 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "productivity countdown"
     ],
     "metaTitle": "Pomodoro Focus Timer \u2014 QuickForma",
-    "metaDescription": "Minimalist 25/5 minute Pomodoro countdown timer with audio chime."
+    "metaDescription": "Minimalist 25/5 minute Pomodoro countdown timer with audio chime.",
+    "subcategory": "productivity:time-management",
+    "subcategoryLabel": "Focus Timers & Intervals"
   },
   {
     "id": "uuid-generator",
     "verticals": [
-      "business",
       "developers"
     ],
     "name": "UUID v4 Generator",
@@ -940,12 +1018,13 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "bulk uuid"
     ],
     "metaTitle": "Free Bulk UUID v4 Generator \u2014 QuickForma",
-    "metaDescription": "Generate RFC 4122 compliant UUID v4 identifiers instantly. 100% free & client-side."
+    "metaDescription": "Generate RFC 4122 compliant UUID v4 identifiers instantly. 100% free & client-side.",
+    "subcategory": "developer:cryptography-security",
+    "subcategoryLabel": "Cryptography & Hashing"
   },
   {
     "id": "jwt-decoder",
     "verticals": [
-      "business",
       "developers"
     ],
     "name": "JWT Decoder",
@@ -962,12 +1041,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "json web token"
     ],
     "metaTitle": "Client-Side JWT Decoder & Parser \u2014 QuickForma",
-    "metaDescription": "Decode JSON Web Tokens locally in your browser. Inspect header and payload claims privately."
+    "metaDescription": "Decode JSON Web Tokens locally in your browser. Inspect header and payload claims privately.",
+    "subcategory": "developer:cryptography-security",
+    "subcategoryLabel": "Cryptography & Hashing"
   },
   {
     "id": "shopify-fee-calculator",
     "verticals": [
-      "business"
+      "business",
+      "ecommerce"
     ],
     "name": "Shopify Fee & Margin Calculator",
     "category": "ecommerce",
@@ -983,12 +1065,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "ecommerce margin"
     ],
     "metaTitle": "Shopify Fee & Payout Calculator \u2014 QuickForma",
-    "metaDescription": "Calculate monthly Shopify plan costs and credit card processing fees to see net profit."
+    "metaDescription": "Calculate monthly Shopify plan costs and credit card processing fees to see net profit.",
+    "subcategory": "ecommerce:marketplace-fees",
+    "subcategoryLabel": "Marketplace & Platform Fees"
   },
   {
     "id": "stripe-fee-calculator",
     "verticals": [
-      "business"
+      "business",
+      "ecommerce"
     ],
     "name": "Stripe Fee Calculator",
     "category": "ecommerce",
@@ -1004,12 +1089,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "stripe payout"
     ],
     "metaTitle": "Stripe Fee & Net Invoice Calculator \u2014 QuickForma",
-    "metaDescription": "Calculate standard Stripe payment fees or exact invoice amount needed for target payout."
+    "metaDescription": "Calculate standard Stripe payment fees or exact invoice amount needed for target payout.",
+    "subcategory": "ecommerce:marketplace-fees",
+    "subcategoryLabel": "Marketplace & Platform Fees"
   },
   {
     "id": "eoq-calculator",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Economic Order Quantity (EOQ) Calculator",
     "category": "operations",
@@ -1025,12 +1113,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "supply chain eoq"
     ],
     "metaTitle": "Economic Order Quantity (EOQ) Calculator \u2014 QuickForma",
-    "metaDescription": "Calculate optimal inventory reorder batch size to minimize holding and ordering costs."
+    "metaDescription": "Calculate optimal inventory reorder batch size to minimize holding and ordering costs.",
+    "subcategory": "operations:inventory-supply-chain",
+    "subcategoryLabel": "Supply Chain & Inventory"
   },
   {
     "id": "reorder-point-calculator",
     "verticals": [
-      "business"
+      "business",
+      "ecommerce"
     ],
     "name": "Reorder Point (ROP) Calculator",
     "category": "ecommerce",
@@ -1045,12 +1136,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "inventory lead time"
     ],
     "metaTitle": "Reorder Point (ROP) Calculator \u2014 QuickForma",
-    "metaDescription": "Determine exact inventory reorder level to prevent stockouts during lead times."
+    "metaDescription": "Determine exact inventory reorder level to prevent stockouts during lead times.",
+    "subcategory": "ecommerce:inventory-fulfillment",
+    "subcategoryLabel": "Inventory & Fulfillment"
   },
   {
     "id": "oee-calculator",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "OEE Manufacturing Calculator",
     "category": "operations",
@@ -1065,7 +1159,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "takt time"
     ],
     "metaTitle": "OEE Manufacturing Efficiency Calculator \u2014 QuickForma",
-    "metaDescription": "Calculate OEE manufacturing score based on Availability, Performance speed, and Quality."
+    "metaDescription": "Calculate OEE manufacturing score based on Availability, Performance speed, and Quality.",
+    "subcategory": "operations:production-capacity",
+    "subcategoryLabel": "Production & Capacity"
   },
   {
     "id": "pto-calculator",
@@ -1085,13 +1181,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "hr pto"
     ],
     "metaTitle": "PTO Accrual & Vacation Balance Calculator \u2014 QuickForma",
-    "metaDescription": "Project future Paid Time Off vacation balances based on pay period accrual rate."
+    "metaDescription": "Project future Paid Time Off vacation balances based on pay period accrual rate.",
+    "subcategory": "hr:benefits-leave",
+    "subcategoryLabel": "Benefits, Leave & Retirement"
   },
   {
     "id": "utm-builder",
     "verticals": [
-      "business",
-      "developers"
+      "developers",
+      "marketing"
     ],
     "name": "Campaign UTM URL Builder",
     "category": "developer",
@@ -1106,12 +1204,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "utm generator"
     ],
     "metaTitle": "Campaign UTM URL Builder \u2014 QuickForma",
-    "metaDescription": "Create Google Analytics campaign tracking URLs with custom UTM parameters."
+    "metaDescription": "Create Google Analytics campaign tracking URLs with custom UTM parameters.",
+    "subcategory": "developer:networking-devops",
+    "subcategoryLabel": "Networking, CIDR & DevOps"
   },
   {
     "id": "paypal-fee-calculator",
     "verticals": [
-      "business"
+      "business",
+      "ecommerce"
     ],
     "name": "PayPal Merchant Fee Calculator",
     "category": "ecommerce",
@@ -1126,12 +1227,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "paypal invoice calculator"
     ],
     "metaTitle": "PayPal Merchant Fee & Net Invoice Calculator \u2014 QuickForma",
-    "metaDescription": "Calculate PayPal seller transaction fees and exact invoice amount needed for target net payout."
+    "metaDescription": "Calculate PayPal seller transaction fees and exact invoice amount needed for target net payout.",
+    "subcategory": "ecommerce:marketplace-fees",
+    "subcategoryLabel": "Marketplace & Platform Fees"
   },
   {
     "id": "etsy-fee-calculator",
     "verticals": [
-      "business"
+      "business",
+      "ecommerce"
     ],
     "name": "Etsy Fee & Profit Calculator",
     "category": "ecommerce",
@@ -1146,12 +1250,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "etsy offsite ads"
     ],
     "metaTitle": "Etsy Fee & Seller Profit Calculator \u2014 QuickForma",
-    "metaDescription": "Calculate total Etsy shop fees and net profit margin per sale."
+    "metaDescription": "Calculate total Etsy shop fees and net profit margin per sale.",
+    "subcategory": "ecommerce:marketplace-fees",
+    "subcategoryLabel": "Marketplace & Platform Fees"
   },
   {
     "id": "volumetric-weight-calculator",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Volumetric Weight Freight Calculator",
     "category": "operations",
@@ -1166,7 +1273,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "iata dim weight"
     ],
     "metaTitle": "Volumetric Freight & Dimensional Weight Calculator \u2014 QuickForma",
-    "metaDescription": "Calculate dimensional volumetric shipping weight and carrier billable freight weight."
+    "metaDescription": "Calculate dimensional volumetric shipping weight and carrier billable freight weight.",
+    "subcategory": "operations:logistics-freight",
+    "subcategoryLabel": "Freight & Shipping Logistics"
   },
   {
     "id": "depreciation-calculator",
@@ -1186,7 +1295,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "tax write off"
     ],
     "metaTitle": "Straight-Line Asset Depreciation Calculator \u2014 QuickForma",
-    "metaDescription": "Calculate annual asset straight-line depreciation expense and generate depreciation schedules."
+    "metaDescription": "Calculate annual asset straight-line depreciation expense and generate depreciation schedules.",
+    "subcategory": "finance:taxes-accounting",
+    "subcategoryLabel": "Taxes & Accounting"
   },
   {
     "id": "gpa-calculator",
@@ -1209,7 +1320,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "high school gpa"
     ],
     "metaTitle": "GPA Calculator | Calculate Semester & Cumulative GPA \u2014 QuickForma",
-    "metaDescription": "Calculate your GPA by course, credits, and grades. Find your semester or cumulative GPA and explore target and what-if GPA scenarios with QuickForma."
+    "metaDescription": "Calculate your GPA by course, credits, and grades. Find your semester or cumulative GPA and explore target and what-if GPA scenarios with QuickForma.",
+    "subcategory": "academic:gpa-grading",
+    "subcategoryLabel": "GPA & Grade Calculators"
   },
   {
     "id": "final-grade-calculator",
@@ -1232,12 +1345,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "weighted grade calculator"
     ],
     "metaTitle": "Final Grade Calculator | Calculate Your Course Grade \u2014 QuickForma",
-    "metaDescription": "Calculate your current or projected course grade and find the score you need on remaining coursework to reach your target grade."
+    "metaDescription": "Calculate your current or projected course grade and find the score you need on remaining coursework to reach your target grade.",
+    "subcategory": "academic:gpa-grading",
+    "subcategoryLabel": "GPA & Grade Calculators"
   },
   {
     "id": "percentage-calculator",
     "verticals": [
-      "business",
+      "science",
       "students"
     ],
     "name": "Percentage Calculator",
@@ -1256,12 +1371,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "percentage increase"
     ],
     "metaTitle": "Percentage Calculator | Calculate Percentages Easily \u2014 QuickForma",
-    "metaDescription": "Calculate percentages, percentage changes, increases, decreases, and differences quickly with QuickForma's free percentage calculator."
+    "metaDescription": "Calculate percentages, percentage changes, increases, decreases, and differences quickly with QuickForma's free percentage calculator.",
+    "subcategory": "math-stats:basic-arithmetic",
+    "subcategoryLabel": "Arithmetic & Percentages"
   },
   {
     "id": "fraction-calculator",
     "verticals": [
-      "business",
+      "science",
       "students"
     ],
     "name": "Fraction Calculator",
@@ -1281,7 +1398,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "compare fractions"
     ],
     "metaTitle": "Fraction Calculator | Calculate, Simplify & Convert Fractions \u2014 QuickForma",
-    "metaDescription": "Free online fraction calculator. Add, subtract, multiply, divide, simplify, and convert fractions, mixed numbers, decimals, and percentages."
+    "metaDescription": "Free online fraction calculator. Add, subtract, multiply, divide, simplify, and convert fractions, mixed numbers, decimals, and percentages.",
+    "subcategory": "math-stats:basic-arithmetic",
+    "subcategoryLabel": "Arithmetic & Percentages"
   },
   {
     "id": "cumulative-gpa-calculator",
@@ -1301,7 +1420,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "semester cumulative gpa"
     ],
     "metaTitle": "Cumulative GPA Calculator \u2014 QuickForma",
-    "metaDescription": "Calculate your cumulative GPA by combining past course credits and new semester grades."
+    "metaDescription": "Calculate your cumulative GPA by combining past course credits and new semester grades.",
+    "subcategory": "academic:gpa-grading",
+    "subcategoryLabel": "GPA & Grade Calculators"
   },
   {
     "id": "weighted-grade-calculator",
@@ -1321,7 +1442,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "weighted average"
     ],
     "metaTitle": "Weighted Grade Calculator \u2014 QuickForma",
-    "metaDescription": "Calculate weighted course grades with custom category percentages and score inputs."
+    "metaDescription": "Calculate weighted course grades with custom category percentages and score inputs.",
+    "subcategory": "academic:gpa-grading",
+    "subcategoryLabel": "GPA & Grade Calculators"
   },
   {
     "id": "target-gpa-planner-calculator",
@@ -1341,16 +1464,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "required gpa"
     ],
     "metaTitle": "Target GPA & Course Planner \u2014 QuickForma",
-    "metaDescription": "Determine what average GPA you need in future credit hours to achieve your target GPA."
+    "metaDescription": "Determine what average GPA you need in future credit hours to achieve your target GPA.",
+    "subcategory": "academic:gpa-grading",
+    "subcategoryLabel": "GPA & Grade Calculators"
   },
   {
     "id": "attendance-calculator",
     "verticals": [
-      "business"
+      "business",
+      "students"
     ],
     "name": "Attendance & Absence Calculator",
-    "category": "documents",
-    "categoryLabel": "Business & Legal Documents",
+    "category": "academic",
+    "categoryLabel": "Education & Academic Tools",
     "description": "Calculate current attendance percentage, how many classes you can skip, or how many you must attend to reach target %.",
     "iconName": "Clock",
     "badge": "New",
@@ -1361,12 +1487,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "attendance percentage"
     ],
     "metaTitle": "Attendance & Absence Calculator \u2014 QuickForma",
-    "metaDescription": "Calculate class attendance percentage and find out how many classes you can skip or need to attend."
+    "metaDescription": "Calculate class attendance percentage and find out how many classes you can skip or need to attend.",
+    "subcategory": "academic:study-research",
+    "subcategoryLabel": "Study & Research Utilities"
   },
   {
     "id": "marks-percentage-converter",
     "verticals": [
-      "business",
+      "science",
       "students"
     ],
     "name": "Marks & Percentage Converter",
@@ -1382,12 +1510,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "percentage calculator"
     ],
     "metaTitle": "Marks & Percentage Converter \u2014 QuickForma",
-    "metaDescription": "Convert exam marks to percentage scores, letter grades, and 4.0 grade point equivalents."
+    "metaDescription": "Convert exam marks to percentage scores, letter grades, and 4.0 grade point equivalents.",
+    "subcategory": "math-stats:basic-arithmetic",
+    "subcategoryLabel": "Arithmetic & Percentages"
   },
   {
     "id": "ratio-proportion-calculator",
     "verticals": [
-      "business",
+      "science",
       "students"
     ],
     "name": "Ratio & Proportion Calculator",
@@ -1403,12 +1533,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "simplify ratio"
     ],
     "metaTitle": "Ratio & Proportion Calculator \u2014 QuickForma",
-    "metaDescription": "Solve proportion equations A:B = C:X and simplify integer ratios instantly."
+    "metaDescription": "Solve proportion equations A:B = C:X and simplify integer ratios instantly.",
+    "subcategory": "math-stats:basic-arithmetic",
+    "subcategoryLabel": "Arithmetic & Percentages"
   },
   {
     "id": "average-calculator",
     "verticals": [
-      "business",
+      "science",
       "students"
     ],
     "name": "Average Calculator",
@@ -1424,12 +1556,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "numeric average"
     ],
     "metaTitle": "Average Calculator \u2014 QuickForma",
-    "metaDescription": "Calculate the average (mean), sum, and count of any list of numbers."
+    "metaDescription": "Calculate the average (mean), sum, and count of any list of numbers.",
+    "subcategory": "math-stats:basic-arithmetic",
+    "subcategoryLabel": "Arithmetic & Percentages"
   },
   {
     "id": "scientific-notation-calculator",
     "verticals": [
-      "business",
+      "science",
       "students"
     ],
     "name": "Scientific Notation Calculator",
@@ -1445,12 +1579,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "exponents"
     ],
     "metaTitle": "Scientific Notation Calculator \u2014 QuickForma",
-    "metaDescription": "Convert numbers to scientific notation and engineering notation instantly."
+    "metaDescription": "Convert numbers to scientific notation and engineering notation instantly.",
+    "subcategory": "converters:measurement-units",
+    "subcategoryLabel": "Unit & Metric Measurements"
   },
   {
     "id": "exponent-logarithm-calculator",
     "verticals": [
-      "business",
+      "science",
       "students"
     ],
     "name": "Exponent & Logarithm Calculator",
@@ -1466,12 +1602,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "base 10 log"
     ],
     "metaTitle": "Exponent & Logarithm Calculator \u2014 QuickForma",
-    "metaDescription": "Calculate logarithms (log, ln, log_b) and powers with mathematical precision."
+    "metaDescription": "Calculate logarithms (log, ln, log_b) and powers with mathematical precision.",
+    "subcategory": "math-stats:algebra-calculus",
+    "subcategoryLabel": "Algebra & Calculus"
   },
   {
     "id": "linear-equation-calculator",
     "verticals": [
-      "business",
+      "science",
       "students"
     ],
     "name": "Linear Equation Solver",
@@ -1487,12 +1625,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "linear equation"
     ],
     "metaTitle": "Linear Equation Solver \u2014 QuickForma",
-    "metaDescription": "Solve linear equations ax + b = c for variable x with exact solutions."
+    "metaDescription": "Solve linear equations ax + b = c for variable x with exact solutions.",
+    "subcategory": "math-stats:algebra-calculus",
+    "subcategoryLabel": "Algebra & Calculus"
   },
   {
     "id": "quadratic-formula-calculator",
     "verticals": [
-      "business",
+      "science",
       "students"
     ],
     "name": "Quadratic Formula Calculator",
@@ -1508,12 +1648,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "parabola vertex"
     ],
     "metaTitle": "Quadratic Formula Calculator \u2014 QuickForma",
-    "metaDescription": "Find real and complex roots of quadratic equations with discriminant and vertex coordinates."
+    "metaDescription": "Find real and complex roots of quadratic equations with discriminant and vertex coordinates.",
+    "subcategory": "math-stats:algebra-calculus",
+    "subcategoryLabel": "Algebra & Calculus"
   },
   {
     "id": "distance-midpoint-calculator",
     "verticals": [
-      "business",
+      "science",
       "students"
     ],
     "name": "Distance & Midpoint Calculator",
@@ -1529,12 +1671,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "coordinate geometry"
     ],
     "metaTitle": "Distance & Midpoint Calculator \u2014 QuickForma",
-    "metaDescription": "Calculate distance, midpoint, and slope between two coordinate points."
+    "metaDescription": "Calculate distance, midpoint, and slope between two coordinate points.",
+    "subcategory": "math-stats:geometry-conics",
+    "subcategoryLabel": "Geometry & Conics"
   },
   {
     "id": "sequence-series-calculator",
     "verticals": [
-      "business",
+      "science",
       "students"
     ],
     "name": "Sequence & Series Calculator",
@@ -1550,12 +1694,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "nth term"
     ],
     "metaTitle": "Sequence & Series Calculator \u2014 QuickForma",
-    "metaDescription": "Calculate nth terms and partial sums for arithmetic and geometric series."
+    "metaDescription": "Calculate nth terms and partial sums for arithmetic and geometric series.",
+    "subcategory": "math-stats:geometry-conics",
+    "subcategoryLabel": "Geometry & Conics"
   },
   {
     "id": "pythagorean-theorem-calculator",
     "verticals": [
-      "business",
+      "science",
       "students"
     ],
     "name": "Pythagorean Theorem Calculator",
@@ -1571,12 +1717,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "a2+b2=c2"
     ],
     "metaTitle": "Pythagorean Theorem Calculator \u2014 QuickForma",
-    "metaDescription": "Solve right triangle side lengths, hypotenuse, area, and perimeter."
+    "metaDescription": "Solve right triangle side lengths, hypotenuse, area, and perimeter.",
+    "subcategory": "math-stats:geometry-conics",
+    "subcategoryLabel": "Geometry & Conics"
   },
   {
     "id": "triangle-area-solver",
     "verticals": [
-      "business",
+      "science",
       "students"
     ],
     "name": "Triangle Area & Solver",
@@ -1592,12 +1740,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "geometry area"
     ],
     "metaTitle": "Triangle Area Calculator \u2014 QuickForma",
-    "metaDescription": "Calculate triangle area instantly from base and height inputs."
+    "metaDescription": "Calculate triangle area instantly from base and height inputs.",
+    "subcategory": "math-stats:geometry-conics",
+    "subcategoryLabel": "Geometry & Conics"
   },
   {
     "id": "circle-calculator",
     "verticals": [
-      "business",
+      "science",
       "students"
     ],
     "name": "Circle & Geometry Calculator",
@@ -1613,12 +1763,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "radius to diameter"
     ],
     "metaTitle": "Circle Calculator \u2014 Area & Circumference \u2014 QuickForma",
-    "metaDescription": "Calculate circle diameter, circumference, and area from radius."
+    "metaDescription": "Calculate circle diameter, circumference, and area from radius.",
+    "subcategory": "math-stats:geometry-conics",
+    "subcategoryLabel": "Geometry & Conics"
   },
   {
     "id": "geometry-area-volume-calculator",
     "verticals": [
-      "business",
+      "science",
       "students"
     ],
     "name": "2D & 3D Geometry Calculator",
@@ -1634,12 +1786,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "sphere volume"
     ],
     "metaTitle": "2D & 3D Geometry Calculator \u2014 QuickForma",
-    "metaDescription": "Calculate 3D volume and surface area for spheres, cylinders, cones, and cubes."
+    "metaDescription": "Calculate 3D volume and surface area for spheres, cylinders, cones, and cubes.",
+    "subcategory": "math-stats:geometry-conics",
+    "subcategoryLabel": "Geometry & Conics"
   },
   {
     "id": "trigonometry-calculator",
     "verticals": [
-      "business",
+      "science",
       "students"
     ],
     "name": "Trigonometry Calculator",
@@ -1655,12 +1809,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "trig functions"
     ],
     "metaTitle": "Trigonometry Calculator \u2014 Sin, Cos, Tan \u2014 QuickForma",
-    "metaDescription": "Calculate sine, cosine, and tangent in degrees or radians."
+    "metaDescription": "Calculate sine, cosine, and tangent in degrees or radians.",
+    "subcategory": "math-stats:geometry-conics",
+    "subcategoryLabel": "Geometry & Conics"
   },
   {
     "id": "law-of-sines-cosines-calculator",
     "verticals": [
-      "business",
+      "science",
       "students"
     ],
     "name": "Law of Sines & Cosines Calculator",
@@ -1676,12 +1832,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "non right triangle"
     ],
     "metaTitle": "Law of Sines & Cosines Calculator \u2014 QuickForma",
-    "metaDescription": "Solve non-right oblique triangles using the Law of Sines and Law of Cosines."
+    "metaDescription": "Solve non-right oblique triangles using the Law of Sines and Law of Cosines.",
+    "subcategory": "math-stats:geometry-conics",
+    "subcategoryLabel": "Geometry & Conics"
   },
   {
     "id": "derivative-limit-calculator",
     "verticals": [
-      "business",
+      "science",
       "students"
     ],
     "name": "Derivative & Limit Calculator",
@@ -1697,12 +1855,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "tangent slope"
     ],
     "metaTitle": "Derivative & Limit Calculator \u2014 QuickForma",
-    "metaDescription": "Calculate polynomial derivatives and tangent line slopes with power rule precision."
+    "metaDescription": "Calculate polynomial derivatives and tangent line slopes with power rule precision.",
+    "subcategory": "math-stats:algebra-calculus",
+    "subcategoryLabel": "Algebra & Calculus"
   },
   {
     "id": "descriptive-statistics-calculator",
     "verticals": [
-      "business",
+      "science",
       "students"
     ],
     "name": "Descriptive Statistics Calculator",
@@ -1719,12 +1879,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "iqr"
     ],
     "metaTitle": "Descriptive Statistics Calculator \u2014 QuickForma",
-    "metaDescription": "Calculate mean, median, mode, standard deviation, variance, quartiles, and IQR."
+    "metaDescription": "Calculate mean, median, mode, standard deviation, variance, quartiles, and IQR.",
+    "subcategory": "math-stats:inferential-statistics",
+    "subcategoryLabel": "Inferential Statistics"
   },
   {
     "id": "z-score-calculator",
     "verticals": [
-      "business",
+      "science",
       "students"
     ],
     "name": "Z-Score Calculator",
@@ -1740,12 +1902,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "percentile rank"
     ],
     "metaTitle": "Z-Score & Percentile Calculator \u2014 QuickForma",
-    "metaDescription": "Calculate Z-scores and percentile ranks under the standard normal distribution."
+    "metaDescription": "Calculate Z-scores and percentile ranks under the standard normal distribution.",
+    "subcategory": "math-stats:inferential-statistics",
+    "subcategoryLabel": "Inferential Statistics"
   },
   {
     "id": "probability-calculator",
     "verticals": [
-      "business",
+      "science",
       "students"
     ],
     "name": "Probability Calculator",
@@ -1761,12 +1925,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "stats probability"
     ],
     "metaTitle": "Probability Calculator \u2014 QuickForma",
-    "metaDescription": "Calculate single event, union, intersection, and complement probabilities."
+    "metaDescription": "Calculate single event, union, intersection, and complement probabilities.",
+    "subcategory": "math-stats:probability-distributions",
+    "subcategoryLabel": "Probability & Distributions"
   },
   {
     "id": "permutation-combination-calculator",
     "verticals": [
-      "business",
+      "science",
       "students"
     ],
     "name": "Permutation & Combination Calculator",
@@ -1782,12 +1948,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "combinatorics"
     ],
     "metaTitle": "Permutation & Combination Calculator (nPr / nCr) \u2014 QuickForma",
-    "metaDescription": "Calculate nPr permutations, nCr combinations, and factorials."
+    "metaDescription": "Calculate nPr permutations, nCr combinations, and factorials.",
+    "subcategory": "math-stats:probability-distributions",
+    "subcategoryLabel": "Probability & Distributions"
   },
   {
     "id": "probability-distributions-calculator",
     "verticals": [
-      "business",
+      "science",
       "students"
     ],
     "name": "Binomial Probability Calculator",
@@ -1803,12 +1971,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "stats distribution"
     ],
     "metaTitle": "Binomial Probability Calculator \u2014 QuickForma",
-    "metaDescription": "Calculate exact and cumulative binomial probabilities."
+    "metaDescription": "Calculate exact and cumulative binomial probabilities.",
+    "subcategory": "math-stats:probability-distributions",
+    "subcategoryLabel": "Probability & Distributions"
   },
   {
     "id": "confidence-interval-calculator",
     "verticals": [
-      "business",
+      "science",
       "students"
     ],
     "name": "Confidence Interval Calculator",
@@ -1824,12 +1994,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "stats mean interval"
     ],
     "metaTitle": "Confidence Interval Calculator \u2014 QuickForma",
-    "metaDescription": "Calculate confidence intervals and margin of error for sample means."
+    "metaDescription": "Calculate confidence intervals and margin of error for sample means.",
+    "subcategory": "math-stats:inferential-statistics",
+    "subcategoryLabel": "Inferential Statistics"
   },
   {
     "id": "hypothesis-test-calculator",
     "verticals": [
-      "business",
+      "science",
       "students"
     ],
     "name": "Hypothesis Test Calculator",
@@ -1845,16 +2017,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "t test stats"
     ],
     "metaTitle": "Hypothesis Test Calculator (Z-Test / p-value) \u2014 QuickForma",
-    "metaDescription": "Calculate Z-test statistics, two-tailed p-values, and hypothesis testing decisions."
+    "metaDescription": "Calculate Z-test statistics, two-tailed p-values, and hypothesis testing decisions.",
+    "subcategory": "math-stats:inferential-statistics",
+    "subcategoryLabel": "Inferential Statistics"
   },
   {
     "id": "molar-mass-calculator",
     "verticals": [
-      "business"
+      "science",
+      "students"
     ],
     "name": "Molar Mass & Composition Calculator",
-    "category": "ecommerce",
-    "categoryLabel": "Ecommerce & Retail",
+    "category": "science",
+    "categoryLabel": "Science & Engineering",
     "description": "Parse chemical formulas (e.g. H2SO4, Ca(NO3)2) to compute total molecular weight and element mass %.",
     "iconName": "Atom",
     "badge": "New",
@@ -1865,11 +2040,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "mass percent composition"
     ],
     "metaTitle": "Molar Mass & Chemical Formula Calculator \u2014 QuickForma",
-    "metaDescription": "Calculate molar mass and element mass percentages from any chemical formula."
+    "metaDescription": "Calculate molar mass and element mass percentages from any chemical formula.",
+    "subcategory": "science:chemistry-solutions",
+    "subcategoryLabel": "Chemistry & Solutions"
   },
   {
     "id": "moles-molarity-calculator",
     "verticals": [
+      "science",
       "students"
     ],
     "name": "Moles & Molarity Calculator",
@@ -1885,11 +2063,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "chem solution"
     ],
     "metaTitle": "Moles & Molarity Calculator \u2014 QuickForma",
-    "metaDescription": "Calculate moles and molar concentration for chemical solutions."
+    "metaDescription": "Calculate moles and molar concentration for chemical solutions.",
+    "subcategory": "science:chemistry-solutions",
+    "subcategoryLabel": "Chemistry & Solutions"
   },
   {
     "id": "dilution-calculator",
     "verticals": [
+      "science",
       "students"
     ],
     "name": "Solution Dilution Calculator",
@@ -1905,11 +2086,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "chem concentration"
     ],
     "metaTitle": "Solution Dilution Calculator (C1V1 = C2V2) \u2014 QuickForma",
-    "metaDescription": "Calculate solution dilution using C1V1 = C2V2 and required solvent volume."
+    "metaDescription": "Calculate solution dilution using C1V1 = C2V2 and required solvent volume.",
+    "subcategory": "science:chemistry-solutions",
+    "subcategoryLabel": "Chemistry & Solutions"
   },
   {
     "id": "ph-poh-calculator",
     "verticals": [
+      "science",
       "students"
     ],
     "name": "pH & pOH Calculator",
@@ -1925,11 +2109,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "acid base ph"
     ],
     "metaTitle": "pH & pOH Calculator \u2014 QuickForma",
-    "metaDescription": "Calculate pH, pOH, and hydrogen ion concentration."
+    "metaDescription": "Calculate pH, pOH, and hydrogen ion concentration.",
+    "subcategory": "science:chemistry-solutions",
+    "subcategoryLabel": "Chemistry & Solutions"
   },
   {
     "id": "stoichiometry-percent-yield-calculator",
     "verticals": [
+      "science",
       "students"
     ],
     "name": "Stoichiometry & Percent Yield Calculator",
@@ -1945,11 +2132,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "chem yield"
     ],
     "metaTitle": "Stoichiometry & Percent Yield Calculator \u2014 QuickForma",
-    "metaDescription": "Calculate percent yield and reaction stoichiometry efficiency."
+    "metaDescription": "Calculate percent yield and reaction stoichiometry efficiency.",
+    "subcategory": "science:chemistry-solutions",
+    "subcategoryLabel": "Chemistry & Solutions"
   },
   {
     "id": "gas-laws-calculator",
     "verticals": [
+      "science",
       "students"
     ],
     "name": "Gas Laws Calculator (PV = nRT)",
@@ -1965,12 +2155,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "pressure volume temp"
     ],
     "metaTitle": "Ideal Gas Law Calculator (PV = nRT) \u2014 QuickForma",
-    "metaDescription": "Solve Ideal Gas Law equations PV = nRT for P, V, n, or T."
+    "metaDescription": "Solve Ideal Gas Law equations PV = nRT for P, V, n, or T.",
+    "subcategory": "science:thermodynamics-equilibrium",
+    "subcategoryLabel": "Thermodynamics & Reactions"
   },
   {
     "id": "significant-figures-calculator",
     "verticals": [
-      "business",
+      "science",
       "students"
     ],
     "name": "Significant Figures Calculator",
@@ -1986,11 +2178,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "scientific figures"
     ],
     "metaTitle": "Significant Figures Calculator \u2014 QuickForma",
-    "metaDescription": "Count significant figures and apply scientific rounding rules."
+    "metaDescription": "Count significant figures and apply scientific rounding rules.",
+    "subcategory": "converters:measurement-units",
+    "subcategoryLabel": "Unit & Metric Measurements"
   },
   {
     "id": "kinematics-motion-calculator",
     "verticals": [
+      "science",
       "students"
     ],
     "name": "Kinematics & SUVAT Motion Calculator",
@@ -2006,11 +2201,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "displacement velocity"
     ],
     "metaTitle": "Kinematics & SUVAT Motion Calculator \u2014 QuickForma",
-    "metaDescription": "Solve 1D kinematic motion equations and SUVAT variables."
+    "metaDescription": "Solve 1D kinematic motion equations and SUVAT variables.",
+    "subcategory": "science:classical-mechanics",
+    "subcategoryLabel": "Classical Mechanics & Motion"
   },
   {
     "id": "force-friction-momentum-calculator",
     "verticals": [
+      "science",
       "students"
     ],
     "name": "Force, Friction & Momentum Calculator",
@@ -2026,11 +2224,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "physics force"
     ],
     "metaTitle": "Force, Friction & Momentum Calculator \u2014 QuickForma",
-    "metaDescription": "Calculate net force F = ma, momentum p = mv, and gravitational weight."
+    "metaDescription": "Calculate net force F = ma, momentum p = mv, and gravitational weight.",
+    "subcategory": "science:classical-mechanics",
+    "subcategoryLabel": "Classical Mechanics & Motion"
   },
   {
     "id": "work-energy-power-calculator",
     "verticals": [
+      "science",
       "students"
     ],
     "name": "Work, Energy & Power Calculator",
@@ -2046,13 +2247,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "physics work energy"
     ],
     "metaTitle": "Work, Energy & Power Calculator \u2014 QuickForma",
-    "metaDescription": "Calculate kinetic energy, potential energy, mechanical energy, and power."
+    "metaDescription": "Calculate kinetic energy, potential energy, mechanical energy, and power.",
+    "subcategory": "science:classical-mechanics",
+    "subcategoryLabel": "Classical Mechanics & Motion"
   },
   {
     "id": "ohms-law-electrical-calculator",
     "verticals": [
-      "students",
-      "developers"
+      "science",
+      "students"
     ],
     "name": "Ohm's Law & Circuit Calculator",
     "category": "science",
@@ -2067,11 +2270,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "electrical power"
     ],
     "metaTitle": "Ohm's Law & Circuit Calculator \u2014 QuickForma",
-    "metaDescription": "Solve Ohm's Law V = IR, current, resistance, and electrical power."
+    "metaDescription": "Solve Ohm's Law V = IR, current, resistance, and electrical power.",
+    "subcategory": "science:physics-waves-fields",
+    "subcategoryLabel": "Circuits, Waves & Fields"
   },
   {
     "id": "wave-frequency-speed-calculator",
     "verticals": [
+      "science",
       "students"
     ],
     "name": "Wave, Frequency & Light Calculator",
@@ -2087,13 +2293,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "photon energy"
     ],
     "metaTitle": "Wave, Frequency & Light Calculator \u2014 QuickForma",
-    "metaDescription": "Calculate wave speed v = f * lambda, period, and photon energy."
+    "metaDescription": "Calculate wave speed v = f * lambda, period, and photon energy.",
+    "subcategory": "science:physics-waves-fields",
+    "subcategoryLabel": "Circuits, Waves & Fields"
   },
   {
     "id": "reading-presentation-time-calculator",
     "verticals": [
-      "business",
-      "students"
+      "business"
     ],
     "name": "Reading & Presentation Time Calculator",
     "category": "writing",
@@ -2108,12 +2315,13 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "words to minutes"
     ],
     "metaTitle": "Reading & Presentation Time Calculator \u2014 QuickForma",
-    "metaDescription": "Calculate reading time and presentation speech duration from word count."
+    "metaDescription": "Calculate reading time and presentation speech duration from word count.",
+    "subcategory": "writing:editorial-utilities",
+    "subcategoryLabel": "Diffs & Editorial Tools"
   },
   {
     "id": "essay-page-count-calculator",
     "verticals": [
-      "business",
       "students"
     ],
     "name": "Essay Page Count Calculator",
@@ -2129,12 +2337,13 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "printed pages"
     ],
     "metaTitle": "Essay Page Count Calculator \u2014 QuickForma",
-    "metaDescription": "Convert word counts to printed essay pages based on font size and line spacing."
+    "metaDescription": "Convert word counts to printed essay pages based on font size and line spacing.",
+    "subcategory": "writing:editorial-utilities",
+    "subcategoryLabel": "Diffs & Editorial Tools"
   },
   {
     "id": "academic-readability-analyzer",
     "verticals": [
-      "business",
       "students"
     ],
     "name": "Academic Readability Analyzer",
@@ -2150,7 +2359,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "text grade level"
     ],
     "metaTitle": "Academic Readability Analyzer \u2014 QuickForma",
-    "metaDescription": "Analyze academic text readability scores and grade levels."
+    "metaDescription": "Analyze academic text readability scores and grade levels.",
+    "subcategory": "writing:text-analysis",
+    "subcategoryLabel": "Readability & Text Analysis"
   },
   {
     "id": "citation-formatter",
@@ -2170,7 +2381,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "chicago ieee bibliography"
     ],
     "metaTitle": "Academic Citation Formatter (APA, MLA, IEEE) \u2014 QuickForma",
-    "metaDescription": "Format APA, MLA, Chicago, and IEEE citations for books, journals, and websites."
+    "metaDescription": "Format APA, MLA, Chicago, and IEEE citations for books, journals, and websites.",
+    "subcategory": "academic:study-research",
+    "subcategoryLabel": "Study & Research Utilities"
   },
   {
     "id": "study-schedule-time-calculator",
@@ -2190,7 +2403,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "study planner"
     ],
     "metaTitle": "Study Time & Schedule Calculator \u2014 QuickForma",
-    "metaDescription": "Calculate recommended weekly study hours based on course credit load."
+    "metaDescription": "Calculate recommended weekly study hours based on course credit load.",
+    "subcategory": "academic:study-research",
+    "subcategoryLabel": "Study & Research Utilities"
   },
   {
     "id": "exam-assignment-countdown",
@@ -2210,7 +2425,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "study pacing"
     ],
     "metaTitle": "Exam & Assignment Countdown Calculator \u2014 QuickForma",
-    "metaDescription": "Track days remaining until exam dates and calculate required daily study pacing."
+    "metaDescription": "Track days remaining until exam dates and calculate required daily study pacing.",
+    "subcategory": "academic:exam-test-prep",
+    "subcategoryLabel": "Exams & Standardized Tests"
   },
   {
     "id": "student-budget-planner",
@@ -2230,16 +2447,18 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "student income"
     ],
     "metaTitle": "Student Budget Planner \u2014 QuickForma",
-    "metaDescription": "Plan and manage monthly college student income and expenses."
+    "metaDescription": "Plan and manage monthly college student income and expenses.",
+    "subcategory": "academic:planning-records",
+    "subcategoryLabel": "Academic Planning & Credits"
   },
   {
     "id": "cost-per-credit-hour-calculator",
     "verticals": [
-      "business"
+      "students"
     ],
     "name": "Cost Per Credit Hour Calculator",
-    "category": "finance",
-    "categoryLabel": "Business Finance & Accounting",
+    "category": "academic",
+    "categoryLabel": "Education & Academic Tools",
     "description": "Calculate cost per credit hour and exact monetary value per individual class session.",
     "iconName": "DollarSign",
     "badge": "New",
@@ -2250,11 +2469,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "college tuition per credit"
     ],
     "metaTitle": "Cost Per Credit Hour Calculator \u2014 QuickForma",
-    "metaDescription": "Calculate tuition cost per credit hour and cost per individual class session."
+    "metaDescription": "Calculate tuition cost per credit hour and cost per individual class session.",
+    "subcategory": "academic:planning-records",
+    "subcategoryLabel": "Academic Planning & Credits"
   },
   {
     "id": "student-loan-payoff-calculator",
     "verticals": [
+      "business",
       "students"
     ],
     "name": "Student Loan Payoff Calculator",
@@ -2270,7 +2492,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "student debt timeline"
     ],
     "metaTitle": "Student Loan Payoff Calculator \u2014 QuickForma",
-    "metaDescription": "Calculate student loan payoff schedules and interest savings from extra monthly payments."
+    "metaDescription": "Calculate student loan payoff schedules and interest savings from extra monthly payments.",
+    "subcategory": "academic:planning-records",
+    "subcategoryLabel": "Academic Planning & Credits"
   },
   {
     "id": "roommate-rent-split-calculator",
@@ -2290,7 +2514,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "split apartment rent"
     ],
     "metaTitle": "Roommate Rent & Expense Splitter \u2014 QuickForma",
-    "metaDescription": "Split apartment rent fairly based on bedroom square footage and bathroom amenities."
+    "metaDescription": "Split apartment rent fairly based on bedroom square footage and bathroom amenities.",
+    "subcategory": "finance:cash-flow-budgeting",
+    "subcategoryLabel": "Cash Flow & Working Capital"
   },
   {
     "id": "gpa-scale-converter",
@@ -2310,7 +2536,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "ects gpa conversion"
     ],
     "metaTitle": "GPA Scale Converter (4.0, 4.33, 5.0, ECTS) \u2014 QuickForma",
-    "metaDescription": "Convert GPAs between 4.0, 4.33, 5.0, percentage, and ECTS scales."
+    "metaDescription": "Convert GPAs between 4.0, 4.33, 5.0, percentage, and ECTS scales.",
+    "subcategory": "academic:gpa-grading",
+    "subcategoryLabel": "GPA & Grade Calculators"
   },
   {
     "id": "marks-to-gpa-converter",
@@ -2330,7 +2558,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "exam mark grade"
     ],
     "metaTitle": "Marks to GPA Converter \u2014 QuickForma",
-    "metaDescription": "Convert raw exam marks and percentages directly into 4.0 GPA points."
+    "metaDescription": "Convert raw exam marks and percentages directly into 4.0 GPA points.",
+    "subcategory": "academic:gpa-grading",
+    "subcategoryLabel": "GPA & Grade Calculators"
   },
   {
     "id": "cash-flow-runway-calculator",
@@ -2350,7 +2580,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Cash Flow Runway & Burn Rate Calculator \u2014 QuickForma",
-    "metaDescription": "Free online Cash Flow Runway & Burn Rate Calculator. Calculates net burn rate, cash zero date, and runway under revenue drop scenarios. Fast, private, client-side execution."
+    "metaDescription": "Free online Cash Flow Runway & Burn Rate Calculator. Calculates net burn rate, cash zero date, and runway under revenue drop scenarios. Fast, private, client-side execution.",
+    "subcategory": "finance:cash-flow-budgeting",
+    "subcategoryLabel": "Cash Flow & Working Capital"
   },
   {
     "id": "ebitda-calculator",
@@ -2370,7 +2602,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "EBITDA & Operating Margin Calculator \u2014 QuickForma",
-    "metaDescription": "Free online EBITDA & Operating Margin Calculator. Calculates EBITDA, EBITDA margin %, and adjusted operating cash flow. Fast, private, client-side execution."
+    "metaDescription": "Free online EBITDA & Operating Margin Calculator. Calculates EBITDA, EBITDA margin %, and adjusted operating cash flow. Fast, private, client-side execution.",
+    "subcategory": "finance:financial-ratios",
+    "subcategoryLabel": "Financial Ratios & Analysis"
   },
   {
     "id": "working-capital-calculator",
@@ -2390,7 +2624,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Working Capital & Current Ratio Calculator \u2014 QuickForma",
-    "metaDescription": "Free online Working Capital & Current Ratio Calculator. Computes working capital, current ratio, and quick ratio for credit analysis. Fast, private, client-side execution."
+    "metaDescription": "Free online Working Capital & Current Ratio Calculator. Computes working capital, current ratio, and quick ratio for credit analysis. Fast, private, client-side execution.",
+    "subcategory": "finance:cash-flow-budgeting",
+    "subcategoryLabel": "Cash Flow & Working Capital"
   },
   {
     "id": "npv-irr-calculator",
@@ -2410,7 +2646,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Net Present Value (NPV) & IRR Calculator \u2014 QuickForma",
-    "metaDescription": "Free online Net Present Value (NPV) & IRR Calculator. Capital budgeting solver for project NPV, Internal Rate of Return (IRR), and cash flows. Fast, private, client-side execution."
+    "metaDescription": "Free online Net Present Value (NPV) & IRR Calculator. Capital budgeting solver for project NPV, Internal Rate of Return (IRR), and cash flows. Fast, private, client-side execution.",
+    "subcategory": "finance:valuation-investment",
+    "subcategoryLabel": "Investment & Valuation"
   },
   {
     "id": "cash-conversion-cycle-calculator",
@@ -2430,7 +2668,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Cash Conversion Cycle (CCC) Solver \u2014 QuickForma",
-    "metaDescription": "Free online Cash Conversion Cycle (CCC) Solver. Combines DIO + DSO - DPO to calculate total days capital is tied up in operations. Fast, private, client-side execution."
+    "metaDescription": "Free online Cash Conversion Cycle (CCC) Solver. Combines DIO + DSO - DPO to calculate total days capital is tied up in operations. Fast, private, client-side execution.",
+    "subcategory": "finance:cash-flow-budgeting",
+    "subcategoryLabel": "Cash Flow & Working Capital"
   },
   {
     "id": "cost-of-goods-sold-calculator",
@@ -2450,16 +2690,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "COGS & Ending Inventory Cost Estimator \u2014 QuickForma",
-    "metaDescription": "Free online COGS & Ending Inventory Cost Estimator. Calculates Beginning Inventory + Purchases - Ending Inventory under FIFO/LIFO. Fast, private, client-side execution."
+    "metaDescription": "Free online COGS & Ending Inventory Cost Estimator. Calculates Beginning Inventory + Purchases - Ending Inventory under FIFO/LIFO. Fast, private, client-side execution.",
+    "subcategory": "finance:taxes-accounting",
+    "subcategoryLabel": "Taxes & Accounting"
   },
   {
     "id": "saas-net-retention-rate-calculator",
     "verticals": [
-      "business"
+      "business",
+      "marketing"
     ],
     "name": "Net Revenue Retention (NRR) & Expansion ARR Solver",
-    "category": "hr",
-    "categoryLabel": "HR, Payroll & Compensation",
+    "category": "marketing",
+    "categoryLabel": "Sales & Growth Marketing",
     "description": "Solves SaaS Net Revenue Retention (NRR %) and expansion MRR growth efficiency.",
     "iconName": "Percent",
     "badge": "New",
@@ -2470,7 +2713,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Net Revenue Retention (NRR) & Expansion ARR Solver \u2014 QuickForma",
-    "metaDescription": "Free online Net Revenue Retention (NRR) & Expansion ARR Solver. Solves SaaS Net Revenue Retention (NRR %) and expansion MRR growth efficiency. Fast, private, client-side execution."
+    "metaDescription": "Free online Net Revenue Retention (NRR) & Expansion ARR Solver. Solves SaaS Net Revenue Retention (NRR %) and expansion MRR growth efficiency. Fast, private, client-side execution.",
+    "subcategory": "marketing:customer-retention",
+    "subcategoryLabel": "Customer Lifetime & Retention"
   },
   {
     "id": "purchase-order-generator",
@@ -2490,7 +2735,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Purchase Order (PO) PDF Generator \u2014 QuickForma",
-    "metaDescription": "Free online Purchase Order (PO) PDF Generator. Generates downloadable PDF purchase orders with line items, vendor terms, and shipping instructions. Fast, private, client-side execution."
+    "metaDescription": "Free online Purchase Order (PO) PDF Generator. Generates downloadable PDF purchase orders with line items, vendor terms, and shipping instructions. Fast, private, client-side execution.",
+    "subcategory": "documents:invoices-billing",
+    "subcategoryLabel": "Invoices, Receipts & POs"
   },
   {
     "id": "quote-generator",
@@ -2510,7 +2757,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Client Price Quote & Estimate Generator \u2014 QuickForma",
-    "metaDescription": "Free online Client Price Quote & Estimate Generator. Creates formal client price quotes with itemized pricing, expiration date, and acceptance terms. Fast, private, client-side execution."
+    "metaDescription": "Free online Client Price Quote & Estimate Generator. Creates formal client price quotes with itemized pricing, expiration date, and acceptance terms. Fast, private, client-side execution.",
+    "subcategory": "documents:corporate-policies",
+    "subcategoryLabel": "Scopes, Policies & Minutes"
   },
   {
     "id": "packing-slip-generator",
@@ -2518,8 +2767,8 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "business"
     ],
     "name": "Warehouse Shipping Packing Slip Generator",
-    "category": "operations",
-    "categoryLabel": "Operations, Logistics & Manufacturing",
+    "category": "documents",
+    "categoryLabel": "Business & Legal Documents",
     "description": "Generates order packing slips for ecommerce fulfillment and B2B order shipments.",
     "iconName": "FileText",
     "badge": "New",
@@ -2530,12 +2779,13 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Warehouse Shipping Packing Slip Generator \u2014 QuickForma",
-    "metaDescription": "Free online Warehouse Shipping Packing Slip Generator. Generates order packing slips for ecommerce fulfillment and B2B order shipments. Fast, private, client-side execution."
+    "metaDescription": "Free online Warehouse Shipping Packing Slip Generator. Generates order packing slips for ecommerce fulfillment and B2B order shipments. Fast, private, client-side execution.",
+    "subcategory": "documents:invoices-billing",
+    "subcategoryLabel": "Invoices, Receipts & POs"
   },
   {
     "id": "regex-tester",
     "verticals": [
-      "business",
       "developers"
     ],
     "name": "Regex Matcher, Visualizer & Cheatsheet",
@@ -2551,12 +2801,13 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Regex Matcher, Visualizer & Cheatsheet \u2014 QuickForma",
-    "metaDescription": "Free online Regex Matcher, Visualizer & Cheatsheet. Client-side regular expression tester with live match highlighting, group extraction, and regex cheatsheet. Fast, private, client-side execution."
+    "metaDescription": "Free online Regex Matcher, Visualizer & Cheatsheet. Client-side regular expression tester with live match highlighting, group extraction, and regex cheatsheet. Fast, private, client-side execution.",
+    "subcategory": "developer:networking-devops",
+    "subcategoryLabel": "Networking, CIDR & DevOps"
   },
   {
     "id": "subnet-calculator",
     "verticals": [
-      "business",
       "developers"
     ],
     "name": "IPv4 Subnet Mask & CIDR Notation Calculator",
@@ -2572,13 +2823,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "IPv4 Subnet Mask & CIDR Notation Calculator \u2014 QuickForma",
-    "metaDescription": "Free online IPv4 Subnet Mask & CIDR Notation Calculator. Solves CIDR notation (e.g. `/24`), subnet mask, usable host range, broadcast address, and total IPs. Fast, private, client-side execution."
+    "metaDescription": "Free online IPv4 Subnet Mask & CIDR Notation Calculator. Solves CIDR notation (e.g. `/24`), subnet mask, usable host range, broadcast address, and total IPs. Fast, private, client-side execution.",
+    "subcategory": "developer:networking-devops",
+    "subcategoryLabel": "Networking, CIDR & DevOps"
   },
   {
     "id": "meta-tag-generator",
     "verticals": [
-      "business",
-      "students"
+      "marketing"
     ],
     "name": "SEO Meta Title & Open Graph Tag Generator",
     "category": "writing",
@@ -2593,13 +2845,16 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "SEO Meta Title & Open Graph Tag Generator \u2014 QuickForma",
-    "metaDescription": "Free online SEO Meta Title & Open Graph Tag Generator. Generates Google search meta tags and Open Graph (OG) Facebook/Twitter social card tags. Fast, private, client-side execution."
+    "metaDescription": "Free online SEO Meta Title & Open Graph Tag Generator. Generates Google search meta tags and Open Graph (OG) Facebook/Twitter social card tags. Fast, private, client-side execution.",
+    "subcategory": "writing:content-optimization",
+    "subcategoryLabel": "SEO Snippets & Meta Tags"
   },
   {
     "id": "schema-markup-generator",
     "verticals": [
       "business",
-      "students"
+      "developers",
+      "marketing"
     ],
     "name": "JSON-LD Schema.org Generator for Local Business & FAQ",
     "category": "writing",
@@ -2614,13 +2869,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "JSON-LD Schema.org Generator for Local Business & FAQ \u2014 QuickForma",
-    "metaDescription": "Free online JSON-LD Schema.org Generator for Local Business & FAQ. Visual builder for Schema.org JSON-LD code (FAQPage, Article, LocalBusiness, Product). Fast, private, client-side execution."
+    "metaDescription": "Free online JSON-LD Schema.org Generator for Local Business & FAQ. Visual builder for Schema.org JSON-LD code (FAQPage, Article, LocalBusiness, Product). Fast, private, client-side execution.",
+    "subcategory": "writing:content-optimization",
+    "subcategoryLabel": "SEO Snippets & Meta Tags"
   },
   {
     "id": "google-serp-preview-tool",
     "verticals": [
-      "business",
-      "students"
+      "marketing"
     ],
     "name": "Google Desktop & Mobile SERP Snippet Preview",
     "category": "writing",
@@ -2635,7 +2891,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Google Desktop & Mobile SERP Snippet Preview \u2014 QuickForma",
-    "metaDescription": "Free online Google Desktop & Mobile SERP Snippet Preview. Simulates exact pixel width truncation of titles (600px) and meta descriptions (960px) on Google. Fast, private, client-side execution."
+    "metaDescription": "Free online Google Desktop & Mobile SERP Snippet Preview. Simulates exact pixel width truncation of titles (600px) and meta descriptions (960px) on Google. Fast, private, client-side execution.",
+    "subcategory": "writing:content-optimization",
+    "subcategoryLabel": "SEO Snippets & Meta Tags"
   },
   {
     "id": "high-school-gpa-calculator",
@@ -2655,7 +2913,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Weighted 5.0 vs Unweighted 4.0 High School GPA \u2014 QuickForma",
-    "metaDescription": "Free online Weighted 5.0 vs Unweighted 4.0 High School GPA. Calculates high school GPA accounting for AP/Honors (+1.0) and IB (+0.5) course weights. Fast, private, client-side execution."
+    "metaDescription": "Free online Weighted 5.0 vs Unweighted 4.0 High School GPA. Calculates high school GPA accounting for AP/Honors (+1.0) and IB (+0.5) course weights. Fast, private, client-side execution.",
+    "subcategory": "academic:gpa-grading",
+    "subcategoryLabel": "GPA & Grade Calculators"
   },
   {
     "id": "college-gpa-calculator",
@@ -2675,7 +2935,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "University Credit Hour GPA Calculator \u2014 QuickForma",
-    "metaDescription": "Free online University Credit Hour GPA Calculator. Standard college GPA calculator supporting 3-credit, 4-credit, and lab courses. Fast, private, client-side execution."
+    "metaDescription": "Free online University Credit Hour GPA Calculator. Standard college GPA calculator supporting 3-credit, 4-credit, and lab courses. Fast, private, client-side execution.",
+    "subcategory": "academic:gpa-grading",
+    "subcategoryLabel": "GPA & Grade Calculators"
   },
   {
     "id": "semester-grade-calculator",
@@ -2695,12 +2957,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Midterm, Final Exam & Assignment Weight Solver \u2014 QuickForma",
-    "metaDescription": "Free online Midterm, Final Exam & Assignment Weight Solver. Calculates overall semester course grade from weighted midterms, homework, labs, and final exam. Fast, private, client-side execution."
+    "metaDescription": "Free online Midterm, Final Exam & Assignment Weight Solver. Calculates overall semester course grade from weighted midterms, homework, labs, and final exam. Fast, private, client-side execution.",
+    "subcategory": "academic:gpa-grading",
+    "subcategoryLabel": "GPA & Grade Calculators"
   },
   {
     "id": "prime-factorization-calculator",
     "verticals": [
-      "business",
+      "science",
       "students"
     ],
     "name": "Prime Factors, GCF & LCM Calculator",
@@ -2716,12 +2980,13 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Prime Factors, GCF & LCM Calculator \u2014 QuickForma",
-    "metaDescription": "Free online Prime Factors, GCF & LCM Calculator. Solves prime factor trees, Greatest Common Factor (GCF), and Least Common Multiple (LCM) for integer sets. Fast, private, client-side execution."
+    "metaDescription": "Free online Prime Factors, GCF & LCM Calculator. Solves prime factor trees, Greatest Common Factor (GCF), and Least Common Multiple (LCM) for integer sets. Fast, private, client-side execution.",
+    "subcategory": "math-stats:basic-arithmetic",
+    "subcategoryLabel": "Arithmetic & Percentages"
   },
   {
     "id": "base-converter",
     "verticals": [
-      "business",
       "developers"
     ],
     "name": "Binary, Octal, Decimal & Hexadecimal Converter",
@@ -2737,12 +3002,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Binary, Octal, Decimal & Hexadecimal Converter \u2014 QuickForma",
-    "metaDescription": "Free online Binary, Octal, Decimal & Hexadecimal Converter. Converts numbers between Base-2 (Binary), Base-8 (Octal), Base-10 (Decimal), and Base-16 (Hexadecimal). Fast, private, client-side execution."
+    "metaDescription": "Free online Binary, Octal, Decimal & Hexadecimal Converter. Converts numbers between Base-2 (Binary), Base-8 (Octal), Base-10 (Decimal), and Base-16 (Hexadecimal). Fast, private, client-side execution.",
+    "subcategory": "developer:encoders-decoders",
+    "subcategoryLabel": "Encoders & Decoders"
   },
   {
     "id": "linear-regression-calculator",
     "verticals": [
-      "business",
+      "science",
       "students"
     ],
     "name": "Simple Linear Regression & $R^2$ Line of Best Fit",
@@ -2758,12 +3025,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Simple Linear Regression & $R^2$ Line of Best Fit \u2014 QuickForma",
-    "metaDescription": "Free online Simple Linear Regression & $R^2$ Line of Best Fit. Calculates regression line equation $\\hat{y} = \\beta_0 + \\beta_1 x$, correlation $r$, and coefficient of determination $R^2$. Fast, private, client-side execution."
+    "metaDescription": "Free online Simple Linear Regression & $R^2$ Line of Best Fit. Calculates regression line equation $\\hat{y} = \\beta_0 + \\beta_1 x$, correlation $r$, and coefficient of determination $R^2$. Fast, private, client-side execution.",
+    "subcategory": "math-stats:algebra-calculus",
+    "subcategoryLabel": "Algebra & Calculus"
   },
   {
     "id": "standard-deviation-calculator",
     "verticals": [
       "business",
+      "science",
       "students"
     ],
     "name": "Sample & Population Standard Deviation Solver",
@@ -2779,12 +3049,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Sample & Population Standard Deviation Solver \u2014 QuickForma",
-    "metaDescription": "Free online Sample & Population Standard Deviation Solver. Solves sample ($s$) and population ($\\sigma$) standard deviation with variance steps. Fast, private, client-side execution."
+    "metaDescription": "Free online Sample & Population Standard Deviation Solver. Solves sample ($s$) and population ($\\sigma$) standard deviation with variance steps. Fast, private, client-side execution.",
+    "subcategory": "math-stats:inferential-statistics",
+    "subcategoryLabel": "Inferential Statistics"
   },
   {
     "id": "sample-size-calculator",
     "verticals": [
-      "business",
+      "science",
       "students"
     ],
     "name": "Margin of Error & Survey Sample Size Solver",
@@ -2800,11 +3072,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Margin of Error & Survey Sample Size Solver \u2014 QuickForma",
-    "metaDescription": "Free online Margin of Error & Survey Sample Size Solver. Calculates minimum required survey sample size based on confidence level (95%, 99%) and margin of error. Fast, private, client-side execution."
+    "metaDescription": "Free online Margin of Error & Survey Sample Size Solver. Calculates minimum required survey sample size based on confidence level (95%, 99%) and margin of error. Fast, private, client-side execution.",
+    "subcategory": "math-stats:inferential-statistics",
+    "subcategoryLabel": "Inferential Statistics"
   },
   {
     "id": "density-mass-volume-calculator",
     "verticals": [
+      "science",
       "students"
     ],
     "name": "Density, Mass & Volume Chemistry Solver",
@@ -2820,11 +3095,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Density, Mass & Volume Chemistry Solver \u2014 QuickForma",
-    "metaDescription": "Free online Density, Mass & Volume Chemistry Solver. Solves $\\text{Density} = \\frac{\\text{Mass}}{\\text{Volume}}$ with automatic unit conversions ($\\text{g/cm}^3, \\text{kg/m}^3, \\text{g/mL}$). Fast, private, client-side execution."
+    "metaDescription": "Free online Density, Mass & Volume Chemistry Solver. Solves $\\text{Density} = \\frac{\\text{Mass}}{\\text{Volume}}$ with automatic unit conversions ($\\text{g/cm}^3, \\text{kg/m}^3, \\text{g/mL}$). Fast, private, client-side execution.",
+    "subcategory": "science:chemistry-solutions",
+    "subcategoryLabel": "Chemistry & Solutions"
   },
   {
     "id": "projectile-motion-calculator",
     "verticals": [
+      "science",
       "students"
     ],
     "name": "2D Trajectory, Range & Max Height Solver",
@@ -2840,12 +3118,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "2D Trajectory, Range & Max Height Solver \u2014 QuickForma",
-    "metaDescription": "Free online 2D Trajectory, Range & Max Height Solver. Solves 2D projectile motion: launching angle $\\theta$, velocity $v_0$, flight time, maximum height, and horizontal range. Fast, private, client-side execution."
+    "metaDescription": "Free online 2D Trajectory, Range & Max Height Solver. Solves 2D projectile motion: launching angle $\\theta$, velocity $v_0$, flight time, maximum height, and horizontal range. Fast, private, client-side execution.",
+    "subcategory": "science:classical-mechanics",
+    "subcategoryLabel": "Classical Mechanics & Motion"
   },
   {
     "id": "ebay-final-value-fee-calculator",
     "verticals": [
-      "business"
+      "business",
+      "ecommerce"
     ],
     "name": "eBay Seller Fee & Store Subscription Profit",
     "category": "ecommerce",
@@ -2860,16 +3141,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "eBay Seller Fee & Store Subscription Profit \u2014 QuickForma",
-    "metaDescription": "Free online eBay Seller Fee & Store Subscription Profit. Calculates eBay final value fees, insertion fees, store subscription discount tiers, and profit. Fast, private, client-side execution."
+    "metaDescription": "Free online eBay Seller Fee & Store Subscription Profit. Calculates eBay final value fees, insertion fees, store subscription discount tiers, and profit. Fast, private, client-side execution.",
+    "subcategory": "ecommerce:marketplace-fees",
+    "subcategoryLabel": "Marketplace & Platform Fees"
   },
   {
     "id": "tiktok-shop-fee-calculator",
     "verticals": [
-      "business"
+      "business",
+      "ecommerce"
     ],
     "name": "TikTok Shop Commission & Creator Affiliate Margin",
-    "category": "marketing",
-    "categoryLabel": "Sales & Growth Marketing",
+    "category": "ecommerce",
+    "categoryLabel": "Ecommerce & Retail",
     "description": "Solves TikTok Shop referral commissions, payment processing fees, and creator affiliate payouts.",
     "iconName": "ShoppingBag",
     "badge": "New",
@@ -2880,12 +3164,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "TikTok Shop Commission & Creator Affiliate Margin \u2014 QuickForma",
-    "metaDescription": "Free online TikTok Shop Commission & Creator Affiliate Margin. Solves TikTok Shop referral commissions, payment processing fees, and creator affiliate payouts. Fast, private, client-side execution."
+    "metaDescription": "Free online TikTok Shop Commission & Creator Affiliate Margin. Solves TikTok Shop referral commissions, payment processing fees, and creator affiliate payouts. Fast, private, client-side execution.",
+    "subcategory": "ecommerce:marketplace-fees",
+    "subcategoryLabel": "Marketplace & Platform Fees"
   },
   {
     "id": "cost-per-acquisition-cpa-calculator",
     "verticals": [
-      "business"
+      "business",
+      "ecommerce"
     ],
     "name": "Ecommerce Customer CPA & LTV:CAC Ratio",
     "category": "ecommerce",
@@ -2900,12 +3187,16 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Ecommerce Customer CPA & LTV:CAC Ratio \u2014 QuickForma",
-    "metaDescription": "Free online Ecommerce Customer CPA & LTV:CAC Ratio. Calculates Cost Per Acquisition (CPA) across ad channels and compares against 3:1 LTV:CAC benchmark. Fast, private, client-side execution."
+    "metaDescription": "Free online Ecommerce Customer CPA & LTV:CAC Ratio. Calculates Cost Per Acquisition (CPA) across ad channels and compares against 3:1 LTV:CAC benchmark. Fast, private, client-side execution.",
+    "subcategory": "ecommerce:discounts-returns",
+    "subcategoryLabel": "Discounts & Returns"
   },
   {
     "id": "ecommerce-conversion-rate-calculator",
     "verticals": [
-      "business"
+      "business",
+      "ecommerce",
+      "marketing"
     ],
     "name": "Store Visitor to Purchase Conversion Solver",
     "category": "ecommerce",
@@ -2920,12 +3211,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Store Visitor to Purchase Conversion Solver \u2014 QuickForma",
-    "metaDescription": "Free online Store Visitor to Purchase Conversion Solver. Calculates store conversion rate % and models revenue impact of 0.5% conversion rate improvements. Fast, private, client-side execution."
+    "metaDescription": "Free online Store Visitor to Purchase Conversion Solver. Calculates store conversion rate % and models revenue impact of 0.5% conversion rate improvements. Fast, private, client-side execution.",
+    "subcategory": "ecommerce:discounts-returns",
+    "subcategoryLabel": "Discounts & Returns"
   },
   {
     "id": "ecommerce-net-profit-margin-calculator",
     "verticals": [
-      "business"
+      "business",
+      "ecommerce"
     ],
     "name": "All-in Ecommerce Store P&L Profit Solver",
     "category": "ecommerce",
@@ -2940,12 +3234,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "All-in Ecommerce Store P&L Profit Solver \u2014 QuickForma",
-    "metaDescription": "Free online All-in Ecommerce Store P&L Profit Solver. Comprehensive P&L solver subtracting COGS, ad spend, merchant fees, shipping, and software costs. Fast, private, client-side execution."
+    "metaDescription": "Free online All-in Ecommerce Store P&L Profit Solver. Comprehensive P&L solver subtracting COGS, ad spend, merchant fees, shipping, and software costs. Fast, private, client-side execution.",
+    "subcategory": "ecommerce:pricing-profitability",
+    "subcategoryLabel": "Retail Pricing & Margins"
   },
   {
     "id": "safety-stock-calculator",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Safety Stock & Desired Service Level Solver",
     "category": "operations",
@@ -2960,12 +3257,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Safety Stock & Desired Service Level Solver \u2014 QuickForma",
-    "metaDescription": "Free online Safety Stock & Desired Service Level Solver. Solves required safety stock $SS = Z \\times \\sigma_{LT}$ based on lead time variability and service level targets (95%, 99%). Fast, private, client-side execution."
+    "metaDescription": "Free online Safety Stock & Desired Service Level Solver. Solves required safety stock $SS = Z \\times \\sigma_{LT}$ based on lead time variability and service level targets (95%, 99%). Fast, private, client-side execution.",
+    "subcategory": "operations:inventory-supply-chain",
+    "subcategoryLabel": "Supply Chain & Inventory"
   },
   {
     "id": "machine-downtime-cost-calculator",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Unplanned Equipment Downtime Financial Loss",
     "category": "operations",
@@ -2980,12 +3280,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Unplanned Equipment Downtime Financial Loss \u2014 QuickForma",
-    "metaDescription": "Free online Unplanned Equipment Downtime Financial Loss. Calculates hourly financial cost of factory downtime including lost throughput and idle labor. Fast, private, client-side execution."
+    "metaDescription": "Free online Unplanned Equipment Downtime Financial Loss. Calculates hourly financial cost of factory downtime including lost throughput and idle labor. Fast, private, client-side execution.",
+    "subcategory": "operations:maintenance-facilities",
+    "subcategoryLabel": "Maintenance & Facilities"
   },
   {
     "id": "capacity-utilization-calculator",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Machine Hours Available vs Actual Run Time",
     "category": "operations",
@@ -3000,12 +3303,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Machine Hours Available vs Actual Run Time \u2014 QuickForma",
-    "metaDescription": "Free online Machine Hours Available vs Actual Run Time. Calculates machine capacity utilization %, available capacity hours, and bottleneck constraints. Fast, private, client-side execution."
+    "metaDescription": "Free online Machine Hours Available vs Actual Run Time. Calculates machine capacity utilization %, available capacity hours, and bottleneck constraints. Fast, private, client-side execution.",
+    "subcategory": "operations:production-capacity",
+    "subcategoryLabel": "Production & Capacity"
   },
   {
     "id": "takt-time-calculator",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Production Pace & Customer Demand Rate Solver",
     "category": "operations",
@@ -3020,7 +3326,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Production Pace & Customer Demand Rate Solver \u2014 QuickForma",
-    "metaDescription": "Free online Production Pace & Customer Demand Rate Solver. Solves Takt Time $T = \\frac{\\text{Available Production Time}}{\\text{Customer Demand Quantity}}$ in seconds per unit. Fast, private, client-side execution."
+    "metaDescription": "Free online Production Pace & Customer Demand Rate Solver. Solves Takt Time $T = \\frac{\\text{Available Production Time}}{\\text{Customer Demand Quantity}}$ in seconds per unit. Fast, private, client-side execution.",
+    "subcategory": "operations:production-capacity",
+    "subcategoryLabel": "Production & Capacity"
   },
   {
     "id": "cap-rate-calculator",
@@ -3040,7 +3348,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Real Estate Capitalization Rate & Net Operating Income \u2014 QuickForma",
-    "metaDescription": "Free online Real Estate Capitalization Rate & Net Operating Income. Calculates Cap Rate $\\text{Cap Rate} = \\frac{\\text{NOI}}{\\text{Property Price}}$ and Net Operating Income (NOI). Fast, private, client-side execution."
+    "metaDescription": "Free online Real Estate Capitalization Rate & Net Operating Income. Calculates Cap Rate $\\text{Cap Rate} = \\frac{\\text{NOI}}{\\text{Property Price}}$ and Net Operating Income (NOI). Fast, private, client-side execution.",
+    "subcategory": "real-estate:investment-returns",
+    "subcategoryLabel": "Investment ROI & Cash Flow"
   },
   {
     "id": "cash-on-cash-return-calculator",
@@ -3060,7 +3370,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Cash-on-Cash Return & Initial Outlay Solver \u2014 QuickForma",
-    "metaDescription": "Free online Cash-on-Cash Return & Initial Outlay Solver. Solves annual pre-tax cash flow divided by total cash invested ($\\text{Down Payment} + \\text{Closing Costs}$). Fast, private, client-side execution."
+    "metaDescription": "Free online Cash-on-Cash Return & Initial Outlay Solver. Solves annual pre-tax cash flow divided by total cash invested ($\\text{Down Payment} + \\text{Closing Costs}$). Fast, private, client-side execution.",
+    "subcategory": "finance:taxes-accounting",
+    "subcategoryLabel": "Taxes & Accounting"
   },
   {
     "id": "rental-property-roi-calculator",
@@ -3080,7 +3392,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "All-In Rental Property Monthly Cash Flow & ROI \u2014 QuickForma",
-    "metaDescription": "Free online All-In Rental Property Monthly Cash Flow & ROI. Solves net rental cash flow after mortgage, taxes, insurance, vacancy allowance, and maintenance. Fast, private, client-side execution."
+    "metaDescription": "Free online All-In Rental Property Monthly Cash Flow & ROI. Solves net rental cash flow after mortgage, taxes, insurance, vacancy allowance, and maintenance. Fast, private, client-side execution.",
+    "subcategory": "real-estate:investment-returns",
+    "subcategoryLabel": "Investment ROI & Cash Flow"
   },
   {
     "id": "amortization-schedule-extra-payments",
@@ -3100,7 +3414,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Mortgage Payoff Acceleration & Interest Saved \u2014 QuickForma",
-    "metaDescription": "Free online Mortgage Payoff Acceleration & Interest Saved. Calculates loan payoff date acceleration and total interest saved by making extra monthly principal payments. Fast, private, client-side execution."
+    "metaDescription": "Free online Mortgage Payoff Acceleration & Interest Saved. Calculates loan payoff date acceleration and total interest saved by making extra monthly principal payments. Fast, private, client-side execution.",
+    "subcategory": "real-estate:mortgage-financing",
+    "subcategoryLabel": "Mortgages & Financing"
   },
   {
     "id": "short-term-rental-airbnb-calculator",
@@ -3120,12 +3436,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Airbnb Occupancy Rate & ADR Revenue Solver \u2014 QuickForma",
-    "metaDescription": "Free online Airbnb Occupancy Rate & ADR Revenue Solver. Estimates short-term rental monthly revenue based on Average Daily Rate (ADR) and Occupancy Rate %. Fast, private, client-side execution."
+    "metaDescription": "Free online Airbnb Occupancy Rate & ADR Revenue Solver. Estimates short-term rental monthly revenue based on Average Daily Rate (ADR) and Occupancy Rate %. Fast, private, client-side execution.",
+    "subcategory": "real-estate:property-management",
+    "subcategoryLabel": "Property Operations & ADR"
   },
   {
     "id": "customer-acquisition-cost-cac",
     "verticals": [
-      "business"
+      "business",
+      "marketing"
     ],
     "name": "Blended vs Paid CAC & Channel Efficiency Solver",
     "category": "marketing",
@@ -3140,12 +3459,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Blended vs Paid CAC & Channel Efficiency Solver \u2014 QuickForma",
-    "metaDescription": "Free online Blended vs Paid CAC & Channel Efficiency Solver. Solves Customer Acquisition Cost (CAC = $\\text{Total S&M Spend} / \\text{New Customers}$) by channel. Fast, private, client-side execution."
+    "metaDescription": "Free online Blended vs Paid CAC & Channel Efficiency Solver. Solves Customer Acquisition Cost (CAC = $\\text{Total S&M Spend} / \\text{New Customers}$) by channel. Fast, private, client-side execution.",
+    "subcategory": "marketing:customer-retention",
+    "subcategoryLabel": "Customer Lifetime & Retention"
   },
   {
     "id": "return-on-ad-spend-roas",
     "verticals": [
-      "business"
+      "business",
+      "marketing"
     ],
     "name": "Google, Meta, TikTok Ad Spend ROAS & Break-Even",
     "category": "marketing",
@@ -3160,12 +3482,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Google, Meta, TikTok Ad Spend ROAS & Break-Even \u2014 QuickForma",
-    "metaDescription": "Free online Google, Meta, TikTok Ad Spend ROAS & Break-Even. Solves Return on Ad Spend ($ROAS = \\text{Ad Revenue} / \\text{Ad Cost}$) and break-even target. Fast, private, client-side execution."
+    "metaDescription": "Free online Google, Meta, TikTok Ad Spend ROAS & Break-Even. Solves Return on Ad Spend ($ROAS = \\text{Ad Revenue} / \\text{Ad Cost}$) and break-even target. Fast, private, client-side execution.",
+    "subcategory": "marketing:advertising-media",
+    "subcategoryLabel": "Paid Ads & Media Spend"
   },
   {
     "id": "click-through-rate-ctr-calculator",
     "verticals": [
-      "business"
+      "business",
+      "marketing"
     ],
     "name": "Impressions & Clicks CTR Percentage Solver",
     "category": "marketing",
@@ -3180,12 +3505,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Impressions & Clicks CTR Percentage Solver \u2014 QuickForma",
-    "metaDescription": "Free online Impressions & Clicks CTR Percentage Solver. Solves Click-Through Rate ($CTR = \\frac{\\text{Clicks}}{\\text{Impressions}} \\times 100\\%$) for ads and organic search. Fast, private, client-side execution."
+    "metaDescription": "Free online Impressions & Clicks CTR Percentage Solver. Solves Click-Through Rate ($CTR = \\frac{\\text{Clicks}}{\\text{Impressions}} \\times 100\\%$) for ads and organic search. Fast, private, client-side execution.",
+    "subcategory": "marketing:seo-analytics",
+    "subcategoryLabel": "SEO & Marketing Analytics"
   },
   {
     "id": "ab-test-significance-calculator",
     "verticals": [
-      "business"
+      "business",
+      "marketing"
     ],
     "name": "Statistical Significance & Confidence Level Solver",
     "category": "marketing",
@@ -3200,7 +3528,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Statistical Significance & Confidence Level Solver \u2014 QuickForma",
-    "metaDescription": "Free online Statistical Significance & Confidence Level Solver. Evaluates A/B test conversion rate results for statistical significance ($p < 0.05$). Fast, private, client-side execution."
+    "metaDescription": "Free online Statistical Significance & Confidence Level Solver. Evaluates A/B test conversion rate results for statistical significance ($p < 0.05$). Fast, private, client-side execution.",
+    "subcategory": "marketing:seo-analytics",
+    "subcategoryLabel": "SEO & Marketing Analytics"
   },
   {
     "id": "employee-turnover-cost-calculator",
@@ -3220,7 +3550,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Cost of Replacing an Employee & Departure Loss \u2014 QuickForma",
-    "metaDescription": "Free online Cost of Replacing an Employee & Departure Loss. Quantifies financial cost of employee turnover (typically 0.5x to 2x annual salary in recruiting & lost productivity). Fast, private, client-side execution."
+    "metaDescription": "Free online Cost of Replacing an Employee & Departure Loss. Quantifies financial cost of employee turnover (typically 0.5x to 2x annual salary in recruiting & lost productivity). Fast, private, client-side execution.",
+    "subcategory": "hr:compensation-retention",
+    "subcategoryLabel": "Compensation & Retention"
   },
   {
     "id": "total-compensation-calculator",
@@ -3240,7 +3572,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Base Salary + Health + 401k + Bonus Total Value \u2014 QuickForma",
-    "metaDescription": "Free online Base Salary + Health + 401k + Bonus Total Value. Calculates total employee compensation package value including benefits, employer 401k match, and bonuses. Fast, private, client-side execution."
+    "metaDescription": "Free online Base Salary + Health + 401k + Bonus Total Value. Calculates total employee compensation package value including benefits, employer 401k match, and bonuses. Fast, private, client-side execution.",
+    "subcategory": "hr:compensation-retention",
+    "subcategoryLabel": "Compensation & Retention"
   },
   {
     "id": "employee-cost-to-employer-calculator",
@@ -3260,7 +3594,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "FUTA, SUTA, FICA & Benefits Full Burden Rate \u2014 QuickForma",
-    "metaDescription": "Free online FUTA, SUTA, FICA & Benefits Full Burden Rate. Calculates full employer labor burden (typically 1.25x to 1.4x base salary) including payroll taxes and insurance. Fast, private, client-side execution."
+    "metaDescription": "Free online FUTA, SUTA, FICA & Benefits Full Burden Rate. Calculates full employer labor burden (typically 1.25x to 1.4x base salary) including payroll taxes and insurance. Fast, private, client-side execution.",
+    "subcategory": "hr:compensation-retention",
+    "subcategoryLabel": "Compensation & Retention"
   },
   {
     "id": "contractor-vs-employee-cost-calculator",
@@ -3280,7 +3616,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "1099 Contractor vs W-2 Employee Cost \u2014 QuickForma",
-    "metaDescription": "Free online 1099 Contractor vs W-2 Employee Cost. Side-by-side cost comparison between hiring a 1099 independent contractor vs a full-time W-2 employee. Fast, private, client-side execution."
+    "metaDescription": "Free online 1099 Contractor vs W-2 Employee Cost. Side-by-side cost comparison between hiring a 1099 independent contractor vs a full-time W-2 employee. Fast, private, client-side execution.",
+    "subcategory": "hr:payroll-taxes",
+    "subcategoryLabel": "Payroll & Paycheck Taxes"
   },
   {
     "id": "emergency-fund-calculator",
@@ -3300,7 +3638,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "3-to-6 Month Household Expense Reserve Solver \u2014 QuickForma",
-    "metaDescription": "Free online 3-to-6 Month Household Expense Reserve Solver. Calculates recommended emergency fund cash reserve based on monthly essential living expenses. Fast, private, client-side execution."
+    "metaDescription": "Free online 3-to-6 Month Household Expense Reserve Solver. Calculates recommended emergency fund cash reserve based on monthly essential living expenses. Fast, private, client-side execution.",
+    "subcategory": "finance:cash-flow-budgeting",
+    "subcategoryLabel": "Cash Flow & Working Capital"
   },
   {
     "id": "debt-snowball-avalanche-calculator",
@@ -3320,7 +3660,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Credit Card & Debt Acceleration Payoff \u2014 QuickForma",
-    "metaDescription": "Free online Credit Card & Debt Acceleration Payoff. Compares Debt Snowball (lowest balance first) vs Debt Avalanche (highest interest first) payoff schedules. Fast, private, client-side execution."
+    "metaDescription": "Free online Credit Card & Debt Acceleration Payoff. Compares Debt Snowball (lowest balance first) vs Debt Avalanche (highest interest first) payoff schedules. Fast, private, client-side execution.",
+    "subcategory": "finance:loans-debt",
+    "subcategoryLabel": "Loans, Debt & Payoff"
   },
   {
     "id": "net-worth-calculator",
@@ -3340,7 +3682,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Assets minus Liabilities Household Net Worth Solver \u2014 QuickForma",
-    "metaDescription": "Free online Assets minus Liabilities Household Net Worth Solver. Solves total personal net worth by summing liquid cash, investments, home equity minus total debts. Fast, private, client-side execution."
+    "metaDescription": "Free online Assets minus Liabilities Household Net Worth Solver. Solves total personal net worth by summing liquid cash, investments, home equity minus total debts. Fast, private, client-side execution.",
+    "subcategory": "finance:taxes-accounting",
+    "subcategoryLabel": "Taxes & Accounting"
   },
   {
     "id": "contribution-margin-calculator",
@@ -3361,7 +3705,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Contribution Margin Ratio Calculator \u2014 QuickForma",
-    "metaDescription": "Free online Contribution Margin Ratio Calculator. Solves sales minus variable costs and contribution margin per unit. Fast, private, client-side execution."
+    "metaDescription": "Free online Contribution Margin Ratio Calculator. Solves sales minus variable costs and contribution margin per unit. Fast, private, client-side execution.",
+    "subcategory": "finance:profitability-margins",
+    "subcategoryLabel": "Profitability & Margins"
   },
   {
     "id": "bibliography-generator",
@@ -3382,12 +3728,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "APA 7, MLA 9, Chicago Manual Style Builder \u2014 QuickForma",
-    "metaDescription": "Free online APA 7, MLA 9, Chicago Manual Style Builder. Generates formatted academic citations and full bibliography entries for books, journals, and websites. Fast, private, client-side execution."
+    "metaDescription": "Free online APA 7, MLA 9, Chicago Manual Style Builder. Generates formatted academic citations and full bibliography entries for books, journals, and websites. Fast, private, client-side execution.",
+    "subcategory": "academic:study-research",
+    "subcategoryLabel": "Study & Research Utilities"
   },
   {
     "id": "amazon-fba-calculator",
     "verticals": [
-      "business"
+      "business",
+      "ecommerce"
     ],
     "name": "Amazon FBA Fee & Net Profit Margin per ASIN",
     "category": "ecommerce",
@@ -3403,7 +3752,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Amazon FBA Fee & Net Profit Margin per ASIN \u2014 QuickForma",
-    "metaDescription": "Free online Amazon FBA Fee & Net Profit Margin per ASIN. Calculates Amazon referral fees, FBA fulfillment fees, monthly storage, and net margin per product ASIN. Fast, private, client-side execution."
+    "metaDescription": "Free online Amazon FBA Fee & Net Profit Margin per ASIN. Calculates Amazon referral fees, FBA fulfillment fees, monthly storage, and net margin per product ASIN. Fast, private, client-side execution.",
+    "subcategory": "ecommerce:marketplace-fees",
+    "subcategoryLabel": "Marketplace & Platform Fees"
   },
   {
     "id": "take-home-pay-paycheck-calculator",
@@ -3424,7 +3775,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "US Gross to Net Paycheck Tax Estimator \u2014 QuickForma",
-    "metaDescription": "Free online US Gross to Net Paycheck Tax Estimator. Calculates net take-home pay after Federal income tax, FICA (Social Security & Medicare), and state withholding. Fast, private, client-side execution."
+    "metaDescription": "Free online US Gross to Net Paycheck Tax Estimator. Calculates net take-home pay after Federal income tax, FICA (Social Security & Medicare), and state withholding. Fast, private, client-side execution.",
+    "subcategory": "hr:payroll-taxes",
+    "subcategoryLabel": "Payroll & Paycheck Taxes"
   },
   {
     "id": "time-card-hours-calculator",
@@ -3445,7 +3798,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Weekly Time Card Clock-In / Clock-Out Total Hours \u2014 QuickForma",
-    "metaDescription": "Free online Weekly Time Card Clock-In / Clock-Out Total Hours. Solves weekly time card total hours, subtracting unpaid lunch breaks across 7 days. Fast, private, client-side execution."
+    "metaDescription": "Free online Weekly Time Card Clock-In / Clock-Out Total Hours. Solves weekly time card total hours, subtracting unpaid lunch breaks across 7 days. Fast, private, client-side execution.",
+    "subcategory": "hr:overtime-shifts",
+    "subcategoryLabel": "Overtime, Shifts & Hours"
   },
   {
     "id": "budget-50-30-20-calculator",
@@ -3466,7 +3821,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "50/30/20 Rule Needs, Wants & Savings Budget Solver \u2014 QuickForma",
-    "metaDescription": "Free online 50/30/20 Rule Needs, Wants & Savings Budget Solver. Divides net take-home income into 50% Needs, 30% Wants, and 20% Savings & Debt Repayment. Fast, private, client-side execution."
+    "metaDescription": "Free online 50/30/20 Rule Needs, Wants & Savings Budget Solver. Divides net take-home income into 50% Needs, 30% Wants, and 20% Savings & Debt Repayment. Fast, private, client-side execution.",
+    "subcategory": "finance:cash-flow-budgeting",
+    "subcategoryLabel": "Cash Flow & Working Capital"
   },
   {
     "id": "car-loan-payment-calculator",
@@ -3487,7 +3844,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Auto Loan Monthly Payment & Trade-In Interest \u2014 QuickForma",
-    "metaDescription": "Free online Auto Loan Monthly Payment & Trade-In Interest. Calculates monthly auto loan payments, total interest paid, trade-in equity, and sales tax. Fast, private, client-side execution."
+    "metaDescription": "Free online Auto Loan Monthly Payment & Trade-In Interest. Calculates monthly auto loan payments, total interest paid, trade-in equity, and sales tax. Fast, private, client-side execution.",
+    "subcategory": "finance:loans-debt",
+    "subcategoryLabel": "Loans, Debt & Payoff"
   },
   {
     "id": "retirement-nest-egg-calculator",
@@ -3508,7 +3867,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "401k / IRA Compound Growth & Safe Withdrawal \u2014 QuickForma",
-    "metaDescription": "Free online 401k / IRA Compound Growth & Safe Withdrawal. Projects retirement portfolio growth and safe annual withdrawal amounts based on the 4% rule. Fast, private, client-side execution."
+    "metaDescription": "Free online 401k / IRA Compound Growth & Safe Withdrawal. Projects retirement portfolio growth and safe annual withdrawal amounts based on the 4% rule. Fast, private, client-side execution.",
+    "subcategory": "hr:compensation-retention",
+    "subcategoryLabel": "Compensation & Retention"
   },
   {
     "id": "personal-cash-flow-savings-rate",
@@ -3529,7 +3890,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Monthly Household Savings Rate & Surplus Solver \u2014 QuickForma",
-    "metaDescription": "Free online Monthly Household Savings Rate & Surplus Solver. Solves household net savings rate % ($\\frac{\\text{Income} - \\text{Expenses}}{\\text{Income}} \\times 100\\%$). Fast, private, client-side execution."
+    "metaDescription": "Free online Monthly Household Savings Rate & Surplus Solver. Solves household net savings rate % ($\\frac{\\text{Income} - \\text{Expenses}}{\\text{Income}} \\times 100\\%$). Fast, private, client-side execution.",
+    "subcategory": "finance:cash-flow-budgeting",
+    "subcategoryLabel": "Cash Flow & Working Capital"
   },
   {
     "id": "debt-to-income-dti-ratio-calculator",
@@ -3550,7 +3913,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Front-End & Back-End DTI Ratio Mortgage Solver \u2014 QuickForma",
-    "metaDescription": "Free online Front-End & Back-End DTI Ratio Mortgage Solver. Solves front-end housing DTI (28% max) and back-end total debt DTI (36\u201343% max) for mortgage qualification. Fast, private, client-side execution."
+    "metaDescription": "Free online Front-End & Back-End DTI Ratio Mortgage Solver. Solves front-end housing DTI (28% max) and back-end total debt DTI (36\u201343% max) for mortgage qualification. Fast, private, client-side execution.",
+    "subcategory": "real-estate:mortgage-financing",
+    "subcategoryLabel": "Mortgages & Financing"
   },
   {
     "id": "dscr-calculator",
@@ -3571,12 +3936,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Debt Service Coverage Ratio (DSCR) Calculator \u2014 QuickForma",
-    "metaDescription": "Free online Debt Service Coverage Ratio (DSCR) Calculator. Commercial loan qualification metric used by banks and SBA lenders. Fast, private, client-side execution."
+    "metaDescription": "Free online Debt Service Coverage Ratio (DSCR) Calculator. Commercial loan qualification metric used by banks and SBA lenders. Fast, private, client-side execution.",
+    "subcategory": "real-estate:commercial-underwriting",
+    "subcategoryLabel": "Commercial Underwriting"
   },
   {
     "id": "cac-payback-calculator",
     "verticals": [
-      "business"
+      "business",
+      "marketing"
     ],
     "name": "Customer Acquisition Cost (CAC) & Payback",
     "category": "marketing",
@@ -3592,7 +3960,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Customer Acquisition Cost (CAC) & Payback \u2014 QuickForma",
-    "metaDescription": "Free online Customer Acquisition Cost (CAC) & Payback. Calculates CAC across marketing channels and months to recover acquisition costs. Fast, private, client-side execution."
+    "metaDescription": "Free online Customer Acquisition Cost (CAC) & Payback. Calculates CAC across marketing channels and months to recover acquisition costs. Fast, private, client-side execution.",
+    "subcategory": "marketing:customer-retention",
+    "subcategoryLabel": "Customer Lifetime & Retention"
   },
   {
     "id": "wacc-calculator",
@@ -3613,7 +3983,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Weighted Average Cost of Capital (WACC) Solver \u2014 QuickForma",
-    "metaDescription": "Free online Weighted Average Cost of Capital (WACC) Solver. Calculates corporate cost of capital using cost of equity and post-tax cost of debt. Fast, private, client-side execution."
+    "metaDescription": "Free online Weighted Average Cost of Capital (WACC) Solver. Calculates corporate cost of capital using cost of equity and post-tax cost of debt. Fast, private, client-side execution.",
+    "subcategory": "finance:valuation-investment",
+    "subcategoryLabel": "Investment & Valuation"
   },
   {
     "id": "free-cash-flow-calculator",
@@ -3634,12 +4006,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Free Cash Flow (FCF) & Unlevered FCF Calculator \u2014 QuickForma",
-    "metaDescription": "Free online Free Cash Flow (FCF) & Unlevered FCF Calculator. Computes FCF to Firm (FCFF) and FCF to Equity (FCFE) for valuation. Fast, private, client-side execution."
+    "metaDescription": "Free online Free Cash Flow (FCF) & Unlevered FCF Calculator. Computes FCF to Firm (FCFF) and FCF to Equity (FCFE) for valuation. Fast, private, client-side execution.",
+    "subcategory": "finance:cash-flow-budgeting",
+    "subcategoryLabel": "Cash Flow & Working Capital"
   },
   {
     "id": "inventory-holding-cost-calculator",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Inventory Carrying & Holding Cost Calculator",
     "category": "operations",
@@ -3655,7 +4030,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Inventory Carrying & Holding Cost Calculator \u2014 QuickForma",
-    "metaDescription": "Free online Inventory Carrying & Holding Cost Calculator. Calculates annual holding cost %, storage fees, capital cost, and insurance. Fast, private, client-side execution."
+    "metaDescription": "Free online Inventory Carrying & Holding Cost Calculator. Calculates annual holding cost %, storage fees, capital cost, and insurance. Fast, private, client-side execution.",
+    "subcategory": "operations:inventory-supply-chain",
+    "subcategoryLabel": "Supply Chain & Inventory"
   },
   {
     "id": "payback-period-calculator",
@@ -3676,7 +4053,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Discounted Payback Period Calculator \u2014 QuickForma",
-    "metaDescription": "Free online Discounted Payback Period Calculator. Time required to recover initial investment taking time value of money into account. Fast, private, client-side execution."
+    "metaDescription": "Free online Discounted Payback Period Calculator. Time required to recover initial investment taking time value of money into account. Fast, private, client-side execution.",
+    "subcategory": "finance:valuation-investment",
+    "subcategoryLabel": "Investment & Valuation"
   },
   {
     "id": "saas-magic-number-calculator",
@@ -3697,12 +4076,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "SaaS Magic Number & Efficiency Calculator \u2014 QuickForma",
-    "metaDescription": "Free online SaaS Magic Number & Efficiency Calculator. Evaluates sales efficiency by measuring net new ARR generated per dollar of S&M spend. Fast, private, client-side execution."
+    "metaDescription": "Free online SaaS Magic Number & Efficiency Calculator. Evaluates sales efficiency by measuring net new ARR generated per dollar of S&M spend. Fast, private, client-side execution.",
+    "subcategory": "finance:financial-ratios",
+    "subcategoryLabel": "Financial Ratios & Analysis"
   },
   {
     "id": "churn-rate-impact-calculator",
     "verticals": [
-      "business"
+      "business",
+      "marketing"
     ],
     "name": "Customer Churn Revenue Loss Calculator",
     "category": "marketing",
@@ -3718,7 +4100,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Customer Churn Revenue Loss Calculator \u2014 QuickForma",
-    "metaDescription": "Free online Customer Churn Revenue Loss Calculator. Quantifies annual recurring revenue (ARR) lost to monthly customer churn. Fast, private, client-side execution."
+    "metaDescription": "Free online Customer Churn Revenue Loss Calculator. Quantifies annual recurring revenue (ARR) lost to monthly customer churn. Fast, private, client-side execution.",
+    "subcategory": "marketing:customer-retention",
+    "subcategoryLabel": "Customer Lifetime & Retention"
   },
   {
     "id": "sba-7a-loan-calculator",
@@ -3739,7 +4123,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "SBA 7(a) Loan Amortization Calculator \u2014 QuickForma",
-    "metaDescription": "Free online SBA 7(a) Loan Amortization Calculator. Calculates SBA guarantee fees, interest caps, and monthly principal/interest payments. Fast, private, client-side execution."
+    "metaDescription": "Free online SBA 7(a) Loan Amortization Calculator. Calculates SBA guarantee fees, interest caps, and monthly principal/interest payments. Fast, private, client-side execution.",
+    "subcategory": "finance:loans-debt",
+    "subcategoryLabel": "Loans, Debt & Payoff"
   },
   {
     "id": "saas-rule-of-40-calculator",
@@ -3760,7 +4146,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "SaaS Rule of 40 Benchmark Calculator \u2014 QuickForma",
-    "metaDescription": "Free online SaaS Rule of 40 Benchmark Calculator. Combines YoY revenue growth rate and EBITDA margin to measure software health. Fast, private, client-side execution."
+    "metaDescription": "Free online SaaS Rule of 40 Benchmark Calculator. Combines YoY revenue growth rate and EBITDA margin to measure software health. Fast, private, client-side execution.",
+    "subcategory": "finance:financial-ratios",
+    "subcategoryLabel": "Financial Ratios & Analysis"
   },
   {
     "id": "accounts-receivable-turnover-calculator",
@@ -3781,7 +4169,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Days Sales Outstanding (DSO) Calculator \u2014 QuickForma",
-    "metaDescription": "Free online Days Sales Outstanding (DSO) Calculator. Measures average number of days required to collect payment after a sale. Fast, private, client-side execution."
+    "metaDescription": "Free online Days Sales Outstanding (DSO) Calculator. Measures average number of days required to collect payment after a sale. Fast, private, client-side execution.",
+    "subcategory": "finance:financial-ratios",
+    "subcategoryLabel": "Financial Ratios & Analysis"
   },
   {
     "id": "accounts-payable-turnover-calculator",
@@ -3802,12 +4192,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Days Payable Outstanding (DPO) Calculator \u2014 QuickForma",
-    "metaDescription": "Free online Days Payable Outstanding (DPO) Calculator. Measures average time a company takes to pay vendor bills and invoices. Fast, private, client-side execution."
+    "metaDescription": "Free online Days Payable Outstanding (DPO) Calculator. Measures average time a company takes to pay vendor bills and invoices. Fast, private, client-side execution.",
+    "subcategory": "finance:financial-ratios",
+    "subcategoryLabel": "Financial Ratios & Analysis"
   },
   {
     "id": "credit-card-processing-savings-calculator",
     "verticals": [
-      "business"
+      "business",
+      "ecommerce"
     ],
     "name": "Interchange Plus vs Flat Rate Savings Calculator",
     "category": "ecommerce",
@@ -3823,12 +4216,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Interchange Plus vs Flat Rate Savings Calculator \u2014 QuickForma",
-    "metaDescription": "Free online Interchange Plus vs Flat Rate Savings Calculator. Audits credit card processor statements to calculate true interchange savings. Fast, private, client-side execution."
+    "metaDescription": "Free online Interchange Plus vs Flat Rate Savings Calculator. Audits credit card processor statements to calculate true interchange savings. Fast, private, client-side execution.",
+    "subcategory": "ecommerce:marketplace-fees",
+    "subcategoryLabel": "Marketplace & Platform Fees"
   },
   {
     "id": "merchant-cash-advance-calculator",
     "verticals": [
-      "business"
+      "business",
+      "ecommerce"
     ],
     "name": "Merchant Cash Advance Factor Rate & APR Solver",
     "category": "ecommerce",
@@ -3844,7 +4240,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Merchant Cash Advance Factor Rate & APR Solver \u2014 QuickForma",
-    "metaDescription": "Free online Merchant Cash Advance Factor Rate & APR Solver. Converts MCA factor rates (e.g. 1.35x) into effective annual percentage rate (APR). Fast, private, client-side execution."
+    "metaDescription": "Free online Merchant Cash Advance Factor Rate & APR Solver. Converts MCA factor rates (e.g. 1.35x) into effective annual percentage rate (APR). Fast, private, client-side execution.",
+    "subcategory": "ecommerce:discounts-returns",
+    "subcategoryLabel": "Discounts & Returns"
   },
   {
     "id": "startup-seed-runway-planner",
@@ -3865,7 +4263,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Pre-Seed/Seed Round Funding Runway Planner \u2014 QuickForma",
-    "metaDescription": "Free online Pre-Seed/Seed Round Funding Runway Planner. Plans hiring roadmap, burn rate expansion, and milestone dates for tech startups. Fast, private, client-side execution."
+    "metaDescription": "Free online Pre-Seed/Seed Round Funding Runway Planner. Plans hiring roadmap, burn rate expansion, and milestone dates for tech startups. Fast, private, client-side execution.",
+    "subcategory": "finance:cash-flow-budgeting",
+    "subcategoryLabel": "Cash Flow & Working Capital"
   },
   {
     "id": "sales-commission-calculator",
@@ -3873,8 +4273,8 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "business"
     ],
     "name": "Tiered Sales Commission & Split Calculator",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "hr",
+    "categoryLabel": "HR, Payroll & Compensation",
     "description": "Calculates quota achievement tiers, commission accelerators, and split payments.",
     "iconName": "Percent",
     "badge": "New",
@@ -3886,7 +4286,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Tiered Sales Commission & Split Calculator \u2014 QuickForma",
-    "metaDescription": "Free online Tiered Sales Commission & Split Calculator. Calculates quota achievement tiers, commission accelerators, and split payments. Fast, private, client-side execution."
+    "metaDescription": "Free online Tiered Sales Commission & Split Calculator. Calculates quota achievement tiers, commission accelerators, and split payments. Fast, private, client-side execution.",
+    "subcategory": "hr:compensation-retention",
+    "subcategoryLabel": "Compensation & Retention"
   },
   {
     "id": "overhead-rate-calculator",
@@ -3907,7 +4309,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Manufacturing & Service Overhead Rate Solver \u2014 QuickForma",
-    "metaDescription": "Free online Manufacturing & Service Overhead Rate Solver. Solves predetermined overhead rate per direct labor hour or machine hour. Fast, private, client-side execution."
+    "metaDescription": "Free online Manufacturing & Service Overhead Rate Solver. Solves predetermined overhead rate per direct labor hour or machine hour. Fast, private, client-side execution.",
+    "subcategory": "finance:taxes-accounting",
+    "subcategoryLabel": "Taxes & Accounting"
   },
   {
     "id": "quick-ratio-acid-test-calculator",
@@ -3928,7 +4332,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Acid-Test / Quick Ratio Liquidity Solver \u2014 QuickForma",
-    "metaDescription": "Free online Acid-Test / Quick Ratio Liquidity Solver. Measures instant liquidity excluding inventory from current assets. Fast, private, client-side execution."
+    "metaDescription": "Free online Acid-Test / Quick Ratio Liquidity Solver. Measures instant liquidity excluding inventory from current assets. Fast, private, client-side execution.",
+    "subcategory": "finance:cash-flow-budgeting",
+    "subcategoryLabel": "Cash Flow & Working Capital"
   },
   {
     "id": "retained-earnings-calculator",
@@ -3949,12 +4355,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Beginning vs Ending Retained Earnings Solver \u2014 QuickForma",
-    "metaDescription": "Free online Beginning vs Ending Retained Earnings Solver. Solves Retained Earnings = Prior Balance + Net Income - Dividends Paid. Fast, private, client-side execution."
+    "metaDescription": "Free online Beginning vs Ending Retained Earnings Solver. Solves Retained Earnings = Prior Balance + Net Income - Dividends Paid. Fast, private, client-side execution.",
+    "subcategory": "finance:taxes-accounting",
+    "subcategoryLabel": "Taxes & Accounting"
   },
   {
     "id": "altman-z-score-calculator",
     "verticals": [
       "business",
+      "science",
       "students"
     ],
     "name": "Altman Z-Score Business Bankruptcy Predictor",
@@ -3971,7 +4380,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Altman Z-Score Business Bankruptcy Predictor \u2014 QuickForma",
-    "metaDescription": "Free online Altman Z-Score Business Bankruptcy Predictor. Uses 5 financial ratios to predict public and private business insolvency risk. Fast, private, client-side execution."
+    "metaDescription": "Free online Altman Z-Score Business Bankruptcy Predictor. Uses 5 financial ratios to predict public and private business insolvency risk. Fast, private, client-side execution.",
+    "subcategory": "math-stats:inferential-statistics",
+    "subcategoryLabel": "Inferential Statistics"
   },
   {
     "id": "cost-benefit-analysis-calculator",
@@ -3992,7 +4403,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Cost-Benefit Ratio & Net Benefit Solver \u2014 QuickForma",
-    "metaDescription": "Free online Cost-Benefit Ratio & Net Benefit Solver. Evaluates commercial project viability using Benefit-Cost Ratio (BCR). Fast, private, client-side execution."
+    "metaDescription": "Free online Cost-Benefit Ratio & Net Benefit Solver. Evaluates commercial project viability using Benefit-Cost Ratio (BCR). Fast, private, client-side execution.",
+    "subcategory": "finance:valuation-investment",
+    "subcategoryLabel": "Investment & Valuation"
   },
   {
     "id": "gross-margin-standalone-calculator",
@@ -4000,8 +4413,8 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "business"
     ],
     "name": "Gross Margin Percentage Standalone Calculator",
-    "category": "documents",
-    "categoryLabel": "Business & Legal Documents",
+    "category": "finance",
+    "categoryLabel": "Business Finance & Accounting",
     "description": "Dedicated gross margin percentage solver for quick financial checks.",
     "iconName": "Percent",
     "badge": "New",
@@ -4013,7 +4426,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Gross Margin Percentage Standalone Calculator \u2014 QuickForma",
-    "metaDescription": "Free online Gross Margin Percentage Standalone Calculator. Dedicated gross margin percentage solver for quick financial checks. Fast, private, client-side execution."
+    "metaDescription": "Free online Gross Margin Percentage Standalone Calculator. Dedicated gross margin percentage solver for quick financial checks. Fast, private, client-side execution.",
+    "subcategory": "finance:profitability-margins",
+    "subcategoryLabel": "Profitability & Margins"
   },
   {
     "id": "credit-note-generator",
@@ -4034,7 +4449,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Credit Note & Adjustment Note Generator \u2014 QuickForma",
-    "metaDescription": "Free online Credit Note & Adjustment Note Generator. Accounting document generator for client invoice credits, billing adjustments, and returns. Fast, private, client-side execution."
+    "metaDescription": "Free online Credit Note & Adjustment Note Generator. Accounting document generator for client invoice credits, billing adjustments, and returns. Fast, private, client-side execution.",
+    "subcategory": "documents:invoices-billing",
+    "subcategoryLabel": "Invoices, Receipts & POs"
   },
   {
     "id": "contractor-agreement-generator",
@@ -4055,7 +4472,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Independent Contractor Agreement PDF \u2014 QuickForma",
-    "metaDescription": "Free online Independent Contractor Agreement PDF. B2B contractor agreement generator with IP assignment, payment terms, and non-solicit clauses. Fast, private, client-side execution."
+    "metaDescription": "Free online Independent Contractor Agreement PDF. B2B contractor agreement generator with IP assignment, payment terms, and non-solicit clauses. Fast, private, client-side execution.",
+    "subcategory": "documents:contracts-agreements",
+    "subcategoryLabel": "Contracts & Legal Agreements"
   },
   {
     "id": "offer-letter-generator",
@@ -4063,8 +4482,8 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "business"
     ],
     "name": "Employee Job Offer Letter Generator",
-    "category": "hr",
-    "categoryLabel": "HR, Payroll & Compensation",
+    "category": "documents",
+    "categoryLabel": "Business & Legal Documents",
     "description": "HR offer letter generator with salary, benefits, start date, and at-will employment terms.",
     "iconName": "FileText",
     "badge": "New",
@@ -4076,7 +4495,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Employee Job Offer Letter Generator \u2014 QuickForma",
-    "metaDescription": "Free online Employee Job Offer Letter Generator. HR offer letter generator with salary, benefits, start date, and at-will employment terms. Fast, private, client-side execution."
+    "metaDescription": "Free online Employee Job Offer Letter Generator. HR offer letter generator with salary, benefits, start date, and at-will employment terms. Fast, private, client-side execution.",
+    "subcategory": "documents:contracts-agreements",
+    "subcategoryLabel": "Contracts & Legal Agreements"
   },
   {
     "id": "expense-report-generator",
@@ -4084,8 +4505,8 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "business"
     ],
     "name": "Employee Expense Reimbursement Sheet",
-    "category": "hr",
-    "categoryLabel": "HR, Payroll & Compensation",
+    "category": "documents",
+    "categoryLabel": "Business & Legal Documents",
     "description": "Employee expense report generator with category totals, mileage log, and receipt attach options.",
     "iconName": "FileText",
     "badge": "New",
@@ -4097,7 +4518,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Employee Expense Reimbursement Sheet \u2014 QuickForma",
-    "metaDescription": "Free online Employee Expense Reimbursement Sheet. Employee expense report generator with category totals, mileage log, and receipt attach options. Fast, private, client-side execution."
+    "metaDescription": "Free online Employee Expense Reimbursement Sheet. Employee expense report generator with category totals, mileage log, and receipt attach options. Fast, private, client-side execution.",
+    "subcategory": "documents:corporate-policies",
+    "subcategoryLabel": "Scopes, Policies & Minutes"
   },
   {
     "id": "consulting-proposal-generator",
@@ -4105,8 +4528,8 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "business"
     ],
     "name": "Consulting Proposal & Scope Builder",
-    "category": "ecommerce",
-    "categoryLabel": "Ecommerce & Retail",
+    "category": "documents",
+    "categoryLabel": "Business & Legal Documents",
     "description": "Professional service proposal builder with problem statement, methodology, and pricing options.",
     "iconName": "FileText",
     "badge": "New",
@@ -4118,12 +4541,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Consulting Proposal & Scope Builder \u2014 QuickForma",
-    "metaDescription": "Free online Consulting Proposal & Scope Builder. Professional service proposal builder with problem statement, methodology, and pricing options. Fast, private, client-side execution."
+    "metaDescription": "Free online Consulting Proposal & Scope Builder. Professional service proposal builder with problem statement, methodology, and pricing options. Fast, private, client-side execution.",
+    "subcategory": "documents:contracts-agreements",
+    "subcategoryLabel": "Contracts & Legal Agreements"
   },
   {
     "id": "bill-of-materials-generator",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Manufacturing Bill of Materials (BOM) Sheet",
     "category": "operations",
@@ -4139,16 +4565,18 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Manufacturing Bill of Materials (BOM) Sheet \u2014 QuickForma",
-    "metaDescription": "Free online Manufacturing Bill of Materials (BOM) Sheet. Generates multi-level manufacturing BOM sheets with component part numbers and unit quantities. Fast, private, client-side execution."
+    "metaDescription": "Free online Manufacturing Bill of Materials (BOM) Sheet. Generates multi-level manufacturing BOM sheets with component part numbers and unit quantities. Fast, private, client-side execution.",
+    "subcategory": "operations:production-capacity",
+    "subcategoryLabel": "Production & Capacity"
   },
   {
     "id": "sql-formatter",
     "verticals": [
-      "business"
+      "developers"
     ],
     "name": "SQL Query Formatter & Minifier",
-    "category": "marketing",
-    "categoryLabel": "Sales & Growth Marketing",
+    "category": "developer",
+    "categoryLabel": "Developer & Technical Utilities",
     "description": "Cleans, formats, and minifies SQL queries client-side across MySQL, PostgreSQL, and T-SQL dialects.",
     "iconName": "Code",
     "badge": "New",
@@ -4160,12 +4588,13 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "SQL Query Formatter & Minifier \u2014 QuickForma",
-    "metaDescription": "Free online SQL Query Formatter & Minifier. Cleans, formats, and minifies SQL queries client-side across MySQL, PostgreSQL, and T-SQL dialects. Fast, private, client-side execution."
+    "metaDescription": "Free online SQL Query Formatter & Minifier. Cleans, formats, and minifies SQL queries client-side across MySQL, PostgreSQL, and T-SQL dialects. Fast, private, client-side execution.",
+    "subcategory": "developer:data-formats",
+    "subcategoryLabel": "Data Formats (JSON, XML, SQL)"
   },
   {
     "id": "xml-json-converter",
     "verticals": [
-      "business",
       "developers"
     ],
     "name": "XML to JSON & JSON to XML Converter",
@@ -4182,12 +4611,13 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "XML to JSON & JSON to XML Converter \u2014 QuickForma",
-    "metaDescription": "Free online XML to JSON & JSON to XML Converter. Bi-directional client-side converter between XML documents and JSON data objects. Fast, private, client-side execution."
+    "metaDescription": "Free online XML to JSON & JSON to XML Converter. Bi-directional client-side converter between XML documents and JSON data objects. Fast, private, client-side execution.",
+    "subcategory": "developer:data-formats",
+    "subcategoryLabel": "Data Formats (JSON, XML, SQL)"
   },
   {
     "id": "yaml-json-converter",
     "verticals": [
-      "business",
       "developers"
     ],
     "name": "YAML to JSON & JSON to YAML Converter",
@@ -4204,16 +4634,18 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "YAML to JSON & JSON to YAML Converter \u2014 QuickForma",
-    "metaDescription": "Free online YAML to JSON & JSON to YAML Converter. Converts Kubernetes, Docker, and CI/CD YAML configuration files to JSON and back. Fast, private, client-side execution."
+    "metaDescription": "Free online YAML to JSON & JSON to YAML Converter. Converts Kubernetes, Docker, and CI/CD YAML configuration files to JSON and back. Fast, private, client-side execution.",
+    "subcategory": "developer:data-formats",
+    "subcategoryLabel": "Data Formats (JSON, XML, SQL)"
   },
   {
     "id": "cron-expression-generator",
     "verticals": [
-      "business"
+      "developers"
     ],
     "name": "Cron Schedule Expression Builder & Visualizer",
-    "category": "marketing",
-    "categoryLabel": "Sales & Growth Marketing",
+    "category": "developer",
+    "categoryLabel": "Developer & Technical Utilities",
     "description": "Visual GUI cron builder with human-readable schedule explanations and next 10 execution dates.",
     "iconName": "Clock",
     "badge": "New",
@@ -4225,12 +4657,13 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Cron Schedule Expression Builder & Visualizer \u2014 QuickForma",
-    "metaDescription": "Free online Cron Schedule Expression Builder & Visualizer. Visual GUI cron builder with human-readable schedule explanations and next 10 execution dates. Fast, private, client-side execution."
+    "metaDescription": "Free online Cron Schedule Expression Builder & Visualizer. Visual GUI cron builder with human-readable schedule explanations and next 10 execution dates. Fast, private, client-side execution.",
+    "subcategory": "developer:networking-devops",
+    "subcategoryLabel": "Networking, CIDR & DevOps"
   },
   {
     "id": "unix-timestamp-converter",
     "verticals": [
-      "business",
       "developers"
     ],
     "name": "Unix Epoch Timestamp to ISO Date Converter",
@@ -4247,12 +4680,13 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Unix Epoch Timestamp to ISO Date Converter \u2014 QuickForma",
-    "metaDescription": "Free online Unix Epoch Timestamp to ISO Date Converter. Converts Unix timestamps (seconds & milliseconds) to UTC/Local ISO dates and vice versa. Fast, private, client-side execution."
+    "metaDescription": "Free online Unix Epoch Timestamp to ISO Date Converter. Converts Unix timestamps (seconds & milliseconds) to UTC/Local ISO dates and vice versa. Fast, private, client-side execution.",
+    "subcategory": "developer:networking-devops",
+    "subcategoryLabel": "Networking, CIDR & DevOps"
   },
   {
     "id": "markdown-to-html-converter",
     "verticals": [
-      "business",
       "developers"
     ],
     "name": "Markdown to Clean HTML Live Converter",
@@ -4269,12 +4703,13 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Markdown to Clean HTML Live Converter \u2014 QuickForma",
-    "metaDescription": "Free online Markdown to Clean HTML Live Converter. Converts raw Markdown text into clean HTML code with live split-screen preview. Fast, private, client-side execution."
+    "metaDescription": "Free online Markdown to Clean HTML Live Converter. Converts raw Markdown text into clean HTML code with live split-screen preview. Fast, private, client-side execution.",
+    "subcategory": "developer:code-formatting",
+    "subcategoryLabel": "CSS, Formatting & Minifiers"
   },
   {
     "id": "chmod-calculator",
     "verticals": [
-      "business",
       "developers"
     ],
     "name": "Linux File Permission Chmod Octal Calculator",
@@ -4291,13 +4726,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Linux File Permission Chmod Octal Calculator \u2014 QuickForma",
-    "metaDescription": "Free online Linux File Permission Chmod Octal Calculator. Interactive Linux permission grid generating octal codes (e.g. `755`, `644`) and `chmod` commands. Fast, private, client-side execution."
+    "metaDescription": "Free online Linux File Permission Chmod Octal Calculator. Interactive Linux permission grid generating octal codes (e.g. `755`, `644`) and `chmod` commands. Fast, private, client-side execution.",
+    "subcategory": "developer:networking-devops",
+    "subcategoryLabel": "Networking, CIDR & DevOps"
   },
   {
     "id": "keyword-density-analyzer",
     "verticals": [
-      "business",
-      "students"
+      "marketing"
     ],
     "name": "Keyword Density & Frequency Counter",
     "category": "writing",
@@ -4313,12 +4749,13 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Keyword Density & Frequency Counter \u2014 QuickForma",
-    "metaDescription": "Free online Keyword Density & Frequency Counter. Analyzes text to extract 1-word, 2-word, and 3-word keyword density percentages. Fast, private, client-side execution."
+    "metaDescription": "Free online Keyword Density & Frequency Counter. Analyzes text to extract 1-word, 2-word, and 3-word keyword density percentages. Fast, private, client-side execution.",
+    "subcategory": "writing:content-optimization",
+    "subcategoryLabel": "SEO Snippets & Meta Tags"
   },
   {
     "id": "robots-txt-generator",
     "verticals": [
-      "business",
       "developers"
     ],
     "name": "Robots.txt File Generator & Validator",
@@ -4335,12 +4772,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Robots.txt File Generator & Validator \u2014 QuickForma",
-    "metaDescription": "Free online Robots.txt File Generator & Validator. Builds custom `robots.txt` files with User-agent rules, Disallow paths, and Sitemap URLs. Fast, private, client-side execution."
+    "metaDescription": "Free online Robots.txt File Generator & Validator. Builds custom `robots.txt` files with User-agent rules, Disallow paths, and Sitemap URLs. Fast, private, client-side execution.",
+    "subcategory": "developer:networking-devops",
+    "subcategoryLabel": "Networking, CIDR & DevOps"
   },
   {
     "id": "headline-analyzer",
     "verticals": [
-      "business"
+      "business",
+      "marketing"
     ],
     "name": "Click-Through Rate Headline Quality Analyzer",
     "category": "marketing",
@@ -4356,16 +4796,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Click-Through Rate Headline Quality Analyzer \u2014 QuickForma",
-    "metaDescription": "Free online Click-Through Rate Headline Quality Analyzer. Evaluates article titles based on emotional word count, length, clarity, and SEO power words. Fast, private, client-side execution."
+    "metaDescription": "Free online Click-Through Rate Headline Quality Analyzer. Evaluates article titles based on emotional word count, length, clarity, and SEO power words. Fast, private, client-side execution.",
+    "subcategory": "marketing:seo-analytics",
+    "subcategoryLabel": "SEO & Marketing Analytics"
   },
   {
     "id": "character-count-limit-tool",
     "verticals": [
-      "business"
+      "business",
+      "marketing"
     ],
     "name": "Social Media Post Length Checker",
-    "category": "ecommerce",
-    "categoryLabel": "Ecommerce & Retail",
+    "category": "writing",
+    "categoryLabel": "Writing, Text & Content",
     "description": "Character counter showing real-time limits for Twitter/X (280), LinkedIn (3000), Meta, and Instagram.",
     "iconName": "AlignLeft",
     "badge": "New",
@@ -4377,13 +4820,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Social Media Post Length Checker \u2014 QuickForma",
-    "metaDescription": "Free online Social Media Post Length Checker. Character counter showing real-time limits for Twitter/X (280), LinkedIn (3000), Meta, and Instagram. Fast, private, client-side execution."
+    "metaDescription": "Free online Social Media Post Length Checker. Character counter showing real-time limits for Twitter/X (280), LinkedIn (3000), Meta, and Instagram. Fast, private, client-side execution.",
+    "subcategory": "writing:text-analysis",
+    "subcategoryLabel": "Readability & Text Analysis"
   },
   {
     "id": "duplicate-line-remover",
     "verticals": [
       "business",
-      "students"
+      "developers"
     ],
     "name": "Text Deduplication & Line Sorter Tool",
     "category": "writing",
@@ -4399,13 +4844,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Text Deduplication & Line Sorter Tool \u2014 QuickForma",
-    "metaDescription": "Free online Text Deduplication & Line Sorter Tool. Removes duplicate text lines, sorts lists alphabetically, and strips blank lines. Fast, private, client-side execution."
+    "metaDescription": "Free online Text Deduplication & Line Sorter Tool. Removes duplicate text lines, sorts lists alphabetically, and strips blank lines. Fast, private, client-side execution.",
+    "subcategory": "writing:text-transformation",
+    "subcategoryLabel": "Case & Text Cleaners"
   },
   {
     "id": "markdown-table-generator",
     "verticals": [
       "business",
-      "students"
+      "developers"
     ],
     "name": "Visual GUI Markdown Table Builder",
     "category": "writing",
@@ -4421,12 +4868,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Visual GUI Markdown Table Builder \u2014 QuickForma",
-    "metaDescription": "Free online Visual GUI Markdown Table Builder. Interactive GUI table editor that exports clean Markdown table syntax. Fast, private, client-side execution."
+    "metaDescription": "Free online Visual GUI Markdown Table Builder. Interactive GUI table editor that exports clean Markdown table syntax. Fast, private, client-side execution.",
+    "subcategory": "writing:editorial-utilities",
+    "subcategoryLabel": "Diffs & Editorial Tools"
   },
   {
     "id": "email-subject-line-tester",
     "verticals": [
-      "business"
+      "business",
+      "marketing"
     ],
     "name": "Email Subject Line Character & Spam Word Checker",
     "category": "marketing",
@@ -4442,13 +4892,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Email Subject Line Character & Spam Word Checker \u2014 QuickForma",
-    "metaDescription": "Free online Email Subject Line Character & Spam Word Checker. Tests subject lines for mobile truncation (under 50 chars) and flags email spam trigger words. Fast, private, client-side execution."
+    "metaDescription": "Free online Email Subject Line Character & Spam Word Checker. Tests subject lines for mobile truncation (under 50 chars) and flags email spam trigger words. Fast, private, client-side execution.",
+    "subcategory": "marketing:seo-analytics",
+    "subcategoryLabel": "SEO & Marketing Analytics"
   },
   {
     "id": "text-cleaner-sanitizer",
     "verticals": [
       "business",
-      "students"
+      "developers"
     ],
     "name": "HTML Strip, Non-ASCII Remove & White Space Cleaner",
     "category": "writing",
@@ -4464,13 +4916,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "HTML Strip, Non-ASCII Remove & White Space Cleaner \u2014 QuickForma",
-    "metaDescription": "Free online HTML Strip, Non-ASCII Remove & White Space Cleaner. Cleans raw text by stripping HTML tags, removing non-ASCII characters, and normalizing spacing. Fast, private, client-side execution."
+    "metaDescription": "Free online HTML Strip, Non-ASCII Remove & White Space Cleaner. Cleans raw text by stripping HTML tags, removing non-ASCII characters, and normalizing spacing. Fast, private, client-side execution.",
+    "subcategory": "writing:text-transformation",
+    "subcategoryLabel": "Case & Text Cleaners"
   },
   {
     "id": "camel-snake-kebab-converter",
     "verticals": [
-      "business",
-      "students"
+      "developers"
     ],
     "name": "Developer Naming Convention Converter",
     "category": "writing",
@@ -4486,7 +4939,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Developer Naming Convention Converter \u2014 QuickForma",
-    "metaDescription": "Free online Developer Naming Convention Converter. Converts strings between camelCase, PascalCase, snake_case, kebab-case, and CONSTANT_CASE. Fast, private, client-side execution."
+    "metaDescription": "Free online Developer Naming Convention Converter. Converts strings between camelCase, PascalCase, snake_case, kebab-case, and CONSTANT_CASE. Fast, private, client-side execution.",
+    "subcategory": "writing:text-transformation",
+    "subcategoryLabel": "Case & Text Cleaners"
   },
   {
     "id": "reading-ease-score-calculator",
@@ -4508,13 +4963,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Flesch-Kincaid & Gunning Fog Score Calculator \u2014 QuickForma",
-    "metaDescription": "Free online Flesch-Kincaid & Gunning Fog Score Calculator. Calculates readability ease score and grade level reading difficulty. Fast, private, client-side execution."
+    "metaDescription": "Free online Flesch-Kincaid & Gunning Fog Score Calculator. Calculates readability ease score and grade level reading difficulty. Fast, private, client-side execution.",
+    "subcategory": "writing:text-analysis",
+    "subcategoryLabel": "Readability & Text Analysis"
   },
   {
     "id": "meta-description-length-tool",
     "verticals": [
       "business",
-      "students"
+      "marketing"
     ],
     "name": "Pixel-Width Search Snippet Truncation Tester",
     "category": "writing",
@@ -4530,7 +4987,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Pixel-Width Search Snippet Truncation Tester \u2014 QuickForma",
-    "metaDescription": "Free online Pixel-Width Search Snippet Truncation Tester. Measures exact font pixel width for Google title and meta description snippets. Fast, private, client-side execution."
+    "metaDescription": "Free online Pixel-Width Search Snippet Truncation Tester. Measures exact font pixel width for Google title and meta description snippets. Fast, private, client-side execution.",
+    "subcategory": "writing:content-optimization",
+    "subcategoryLabel": "SEO Snippets & Meta Tags"
   },
   {
     "id": "quarter-to-semester-gpa-calculator",
@@ -4551,7 +5010,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Quarter Unit to Semester Credit GPA Converter \u2014 QuickForma",
-    "metaDescription": "Free online Quarter Unit to Semester Credit GPA Converter. Converts academic credits and GPAs between quarter hour and semester hour systems. Fast, private, client-side execution."
+    "metaDescription": "Free online Quarter Unit to Semester Credit GPA Converter. Converts academic credits and GPAs between quarter hour and semester hour systems. Fast, private, client-side execution.",
+    "subcategory": "academic:gpa-grading",
+    "subcategoryLabel": "GPA & Grade Calculators"
   },
   {
     "id": "gpa-boost-calculator",
@@ -4572,7 +5033,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Minimum Grade Needed to Raise GPA to Target \u2014 QuickForma",
-    "metaDescription": "Free online Minimum Grade Needed to Raise GPA to Target. Calculates the exact GPA and course grades required in future terms to hit a target cumulative GPA. Fast, private, client-side execution."
+    "metaDescription": "Free online Minimum Grade Needed to Raise GPA to Target. Calculates the exact GPA and course grades required in future terms to hit a target cumulative GPA. Fast, private, client-side execution.",
+    "subcategory": "academic:gpa-grading",
+    "subcategoryLabel": "GPA & Grade Calculators"
   },
   {
     "id": "grade-point-average-scale-converter",
@@ -4593,7 +5056,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "International 10-Point to 4.0 GPA Converter \u2014 QuickForma",
-    "metaDescription": "Free online International 10-Point to 4.0 GPA Converter. Converts international grading systems (India 10-point CGPA, UK First Class, ECTS) to US 4.0 scale. Fast, private, client-side execution."
+    "metaDescription": "Free online International 10-Point to 4.0 GPA Converter. Converts international grading systems (India 10-point CGPA, UK First Class, ECTS) to US 4.0 scale. Fast, private, client-side execution.",
+    "subcategory": "academic:gpa-grading",
+    "subcategoryLabel": "GPA & Grade Calculators"
   },
   {
     "id": "honors-ap-ib-gpa-calculator",
@@ -4614,12 +5079,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "AP / IB / Honors Course Grade Weighting Solver \u2014 QuickForma",
-    "metaDescription": "Free online AP / IB / Honors Course Grade Weighting Solver. Calculates custom GPA impact of Advanced Placement (AP), International Baccalaureate (IB), and Honors courses. Fast, private, client-side execution."
+    "metaDescription": "Free online AP / IB / Honors Course Grade Weighting Solver. Calculates custom GPA impact of Advanced Placement (AP), International Baccalaureate (IB), and Honors courses. Fast, private, client-side execution.",
+    "subcategory": "academic:gpa-grading",
+    "subcategoryLabel": "GPA & Grade Calculators"
   },
   {
     "id": "test-score-percentage-calculator",
     "verticals": [
-      "business",
+      "science",
       "students"
     ],
     "name": "Raw Quiz / Exam Test Score Percentage Solver",
@@ -4636,7 +5103,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Raw Quiz / Exam Test Score Percentage Solver \u2014 QuickForma",
-    "metaDescription": "Free online Raw Quiz / Exam Test Score Percentage Solver. Converts raw exam points (e.g. 47 out of 58) into percentage, letter grade, and grade points. Fast, private, client-side execution."
+    "metaDescription": "Free online Raw Quiz / Exam Test Score Percentage Solver. Converts raw exam points (e.g. 47 out of 58) into percentage, letter grade, and grade points. Fast, private, client-side execution.",
+    "subcategory": "math-stats:basic-arithmetic",
+    "subcategoryLabel": "Arithmetic & Percentages"
   },
   {
     "id": "curved-grade-calculator",
@@ -4657,7 +5126,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Standard Bell Curve & Root Grade Curve Solver \u2014 QuickForma",
-    "metaDescription": "Free online Standard Bell Curve & Root Grade Curve Solver. Calculates curved exam grades using Flat Addition, Root Curve ($\\sqrt{\\text{score}} \\times 10$), or Bell Curve ($Z$-score). Fast, private, client-side execution."
+    "metaDescription": "Free online Standard Bell Curve & Root Grade Curve Solver. Calculates curved exam grades using Flat Addition, Root Curve ($\\sqrt{\\text{score}} \\times 10$), or Bell Curve ($Z$-score). Fast, private, client-side execution.",
+    "subcategory": "academic:gpa-grading",
+    "subcategoryLabel": "GPA & Grade Calculators"
   },
   {
     "id": "assignment-weight-calculator",
@@ -4678,7 +5149,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Individual Category Assignment Grade Weight Solver \u2014 QuickForma",
-    "metaDescription": "Free online Individual Category Assignment Grade Weight Solver. Solves total category contribution when assignments within a category have varying point totals. Fast, private, client-side execution."
+    "metaDescription": "Free online Individual Category Assignment Grade Weight Solver. Solves total category contribution when assignments within a category have varying point totals. Fast, private, client-side execution.",
+    "subcategory": "academic:gpa-grading",
+    "subcategoryLabel": "GPA & Grade Calculators"
   },
   {
     "id": "study-hours-per-credit-calculator",
@@ -4699,7 +5172,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Credit Hour Workload & Study Hour Estimator \u2014 QuickForma",
-    "metaDescription": "Free online Credit Hour Workload & Study Hour Estimator. Calculates recommended weekly out-of-class study hours based on course credit load (2:1 rule). Fast, private, client-side execution."
+    "metaDescription": "Free online Credit Hour Workload & Study Hour Estimator. Calculates recommended weekly out-of-class study hours based on course credit load (2:1 rule). Fast, private, client-side execution.",
+    "subcategory": "academic:planning-records",
+    "subcategoryLabel": "Academic Planning & Credits"
   },
   {
     "id": "sat-act-concordance-calculator",
@@ -4720,7 +5195,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "SAT to ACT Score Equivalence Converter \u2014 QuickForma",
-    "metaDescription": "Free online SAT to ACT Score Equivalence Converter. Converts SAT total scores (400\u20131600) to ACT composite scores (1\u201336) using official concordance tables. Fast, private, client-side execution."
+    "metaDescription": "Free online SAT to ACT Score Equivalence Converter. Converts SAT total scores (400\u20131600) to ACT composite scores (1\u201336) using official concordance tables. Fast, private, client-side execution.",
+    "subcategory": "academic:exam-test-prep",
+    "subcategoryLabel": "Exams & Standardized Tests"
   },
   {
     "id": "transfer-credit-gpa-calculator",
@@ -4741,16 +5218,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Community College Transfer Credit GPA Solver \u2014 QuickForma",
-    "metaDescription": "Free online Community College Transfer Credit GPA Solver. Calculates combined transfer GPA when moving credits from community college to a 4-year university. Fast, private, client-side execution."
+    "metaDescription": "Free online Community College Transfer Credit GPA Solver. Calculates combined transfer GPA when moving credits from community college to a 4-year university. Fast, private, client-side execution.",
+    "subcategory": "academic:gpa-grading",
+    "subcategoryLabel": "GPA & Grade Calculators"
   },
   {
     "id": "integral-calculus-calculator",
     "verticals": [
-      "business"
+      "science",
+      "students"
     ],
     "name": "Definite & Indefinite Integration Solver",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "math-stats",
+    "categoryLabel": "Mathematics & Statistics",
     "description": "Calculates polynomial, exponential, and trigonometric definite/indefinite integrals with step-by-step logic.",
     "iconName": "FunctionSquare",
     "badge": "New",
@@ -4762,12 +5242,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Definite & Indefinite Integration Solver \u2014 QuickForma",
-    "metaDescription": "Free online Definite & Indefinite Integration Solver. Calculates polynomial, exponential, and trigonometric definite/indefinite integrals with step-by-step logic. Fast, private, client-side execution."
+    "metaDescription": "Free online Definite & Indefinite Integration Solver. Calculates polynomial, exponential, and trigonometric definite/indefinite integrals with step-by-step logic. Fast, private, client-side execution.",
+    "subcategory": "math-stats:algebra-calculus",
+    "subcategoryLabel": "Algebra & Calculus"
   },
   {
     "id": "matrix-algebra-calculator",
     "verticals": [
-      "business",
+      "science",
       "students"
     ],
     "name": "Matrix Addition, Multiplication & Determinant Solver",
@@ -4784,16 +5266,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Matrix Addition, Multiplication & Determinant Solver \u2014 QuickForma",
-    "metaDescription": "Free online Matrix Addition, Multiplication & Determinant Solver. Performs $2\\times 2$ and $3\\times 3$ matrix operations, determinant calculation, and matrix inversion. Fast, private, client-side execution."
+    "metaDescription": "Free online Matrix Addition, Multiplication & Determinant Solver. Performs $2\\times 2$ and $3\\times 3$ matrix operations, determinant calculation, and matrix inversion. Fast, private, client-side execution.",
+    "subcategory": "math-stats:algebra-calculus",
+    "subcategoryLabel": "Algebra & Calculus"
   },
   {
     "id": "vector-math-calculator",
     "verticals": [
-      "business"
+      "science",
+      "students"
     ],
     "name": "Dot Product, Cross Product & Vector Magnitude Solver",
-    "category": "marketing",
-    "categoryLabel": "Sales & Growth Marketing",
+    "category": "math-stats",
+    "categoryLabel": "Mathematics & Statistics",
     "description": "Solves 2D/3D vector addition, magnitude $|\\vec{v}|$, dot product $\\vec{a}\\cdot\\vec{b}$, and cross product $\\vec{a}\\times\\vec{b}$.",
     "iconName": "Compass",
     "badge": "New",
@@ -4805,16 +5290,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Dot Product, Cross Product & Vector Magnitude Solver \u2014 QuickForma",
-    "metaDescription": "Free online Dot Product, Cross Product & Vector Magnitude Solver. Solves 2D/3D vector addition, magnitude $|\\vec{v}|$, dot product $\\vec{a}\\cdot\\vec{b}$, and cross product $\\vec{a}\\times\\vec{b}$. Fast, private, client-side execution."
+    "metaDescription": "Free online Dot Product, Cross Product & Vector Magnitude Solver. Solves 2D/3D vector addition, magnitude $|\\vec{v}|$, dot product $\\vec{a}\\cdot\\vec{b}$, and cross product $\\vec{a}\\times\\vec{b}$. Fast, private, client-side execution.",
+    "subcategory": "math-stats:geometry-conics",
+    "subcategoryLabel": "Geometry & Conics"
   },
   {
     "id": "polynomial-roots-calculator",
     "verticals": [
-      "business"
+      "science",
+      "students"
     ],
     "name": "Polynomial Factoring & Synthetic Division Solver",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "math-stats",
+    "categoryLabel": "Mathematics & Statistics",
     "description": "Solves polynomial roots, synthetic division, and factors quadratic/cubic expressions.",
     "iconName": "FunctionSquare",
     "badge": "New",
@@ -4826,16 +5314,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Polynomial Factoring & Synthetic Division Solver \u2014 QuickForma",
-    "metaDescription": "Free online Polynomial Factoring & Synthetic Division Solver. Solves polynomial roots, synthetic division, and factors quadratic/cubic expressions. Fast, private, client-side execution."
+    "metaDescription": "Free online Polynomial Factoring & Synthetic Division Solver. Solves polynomial roots, synthetic division, and factors quadratic/cubic expressions. Fast, private, client-side execution.",
+    "subcategory": "math-stats:algebra-calculus",
+    "subcategoryLabel": "Algebra & Calculus"
   },
   {
     "id": "system-of-equations-solver",
     "verticals": [
-      "business"
+      "science",
+      "students"
     ],
     "name": "3x3 Systems of Linear Equations Solver",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "math-stats",
+    "categoryLabel": "Mathematics & Statistics",
     "description": "Solves 2-variable and 3-variable systems of linear equations using Cramer's Rule / Gaussian elimination.",
     "iconName": "GitMerge",
     "badge": "New",
@@ -4847,16 +5338,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "3x3 Systems of Linear Equations Solver \u2014 QuickForma",
-    "metaDescription": "Free online 3x3 Systems of Linear Equations Solver. Solves 2-variable and 3-variable systems of linear equations using Cramer's Rule / Gaussian elimination. Fast, private, client-side execution."
+    "metaDescription": "Free online 3x3 Systems of Linear Equations Solver. Solves 2-variable and 3-variable systems of linear equations using Cramer's Rule / Gaussian elimination. Fast, private, client-side execution.",
+    "subcategory": "math-stats:algebra-calculus",
+    "subcategoryLabel": "Algebra & Calculus"
   },
   {
     "id": "slope-intercept-calculator",
     "verticals": [
-      "business"
+      "science",
+      "students"
     ],
     "name": "Line Slope, Y-Intercept & Equation Solver",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "math-stats",
+    "categoryLabel": "Mathematics & Statistics",
     "description": "Solves line slope $m = \\frac{y_2-y_1}{x_2-x_1}$, point-slope form, and slope-intercept equation $y=mx+b$.",
     "iconName": "TrendingUp",
     "badge": "New",
@@ -4868,12 +5362,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Line Slope, Y-Intercept & Equation Solver \u2014 QuickForma",
-    "metaDescription": "Free online Line Slope, Y-Intercept & Equation Solver. Solves line slope $m = \\frac{y_2-y_1}{x_2-x_1}$, point-slope form, and slope-intercept equation $y=mx+b$. Fast, private, client-side execution."
+    "metaDescription": "Free online Line Slope, Y-Intercept & Equation Solver. Solves line slope $m = \\frac{y_2-y_1}{x_2-x_1}$, point-slope form, and slope-intercept equation $y=mx+b$. Fast, private, client-side execution.",
+    "subcategory": "math-stats:algebra-calculus",
+    "subcategoryLabel": "Algebra & Calculus"
   },
   {
     "id": "percentage-change-standalone-calculator",
     "verticals": [
       "business",
+      "science",
       "students"
     ],
     "name": "Percentage Change & Percentage Difference Solver",
@@ -4890,12 +5387,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Percentage Change & Percentage Difference Solver \u2014 QuickForma",
-    "metaDescription": "Free online Percentage Change & Percentage Difference Solver. Dedicated standalone solver for percentage change vs percentage difference calculations. Fast, private, client-side execution."
+    "metaDescription": "Free online Percentage Change & Percentage Difference Solver. Dedicated standalone solver for percentage change vs percentage difference calculations. Fast, private, client-side execution.",
+    "subcategory": "math-stats:basic-arithmetic",
+    "subcategoryLabel": "Arithmetic & Percentages"
   },
   {
     "id": "chi-square-calculator",
     "verticals": [
-      "business",
+      "science",
       "students"
     ],
     "name": "Chi-Square Goodness-of-Fit & Independence Test",
@@ -4912,14 +5411,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Chi-Square Goodness-of-Fit & Independence Test \u2014 QuickForma",
-    "metaDescription": "Free online Chi-Square Goodness-of-Fit & Independence Test. Calculates Chi-Square statistic ($\\chi^2$), degrees of freedom, and $p$-value for contingency tables. Fast, private, client-side execution."
+    "metaDescription": "Free online Chi-Square Goodness-of-Fit & Independence Test. Calculates Chi-Square statistic ($\\chi^2$), degrees of freedom, and $p$-value for contingency tables. Fast, private, client-side execution.",
+    "subcategory": "math-stats:inferential-statistics",
+    "subcategoryLabel": "Inferential Statistics"
   },
   {
     "id": "anova-calculator",
     "verticals": [
-      "business",
-      "students",
-      "developers"
+      "science",
+      "students"
     ],
     "name": "One-Way & Two-Way ANOVA F-Test Calculator",
     "category": "math-stats",
@@ -4935,14 +5435,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "One-Way & Two-Way ANOVA F-Test Calculator \u2014 QuickForma",
-    "metaDescription": "Free online One-Way & Two-Way ANOVA F-Test Calculator. Computes Analysis of Variance (ANOVA) table, Sum of Squares, Mean Squares, and $F$-statistic. Fast, private, client-side execution."
+    "metaDescription": "Free online One-Way & Two-Way ANOVA F-Test Calculator. Computes Analysis of Variance (ANOVA) table, Sum of Squares, Mean Squares, and $F$-statistic. Fast, private, client-side execution.",
+    "subcategory": "math-stats:inferential-statistics",
+    "subcategoryLabel": "Inferential Statistics"
   },
   {
     "id": "variance-calculator",
     "verticals": [
-      "business",
-      "students",
-      "developers"
+      "science",
+      "students"
     ],
     "name": "Sample & Population Variance Standalone Solver",
     "category": "math-stats",
@@ -4958,14 +5459,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Sample & Population Variance Standalone Solver \u2014 QuickForma",
-    "metaDescription": "Free online Sample & Population Variance Standalone Solver. Calculates sample variance ($s^2$) and population variance ($\\sigma^2$) with step-by-step deviation sums. Fast, private, client-side execution."
+    "metaDescription": "Free online Sample & Population Variance Standalone Solver. Calculates sample variance ($s^2$) and population variance ($\\sigma^2$) with step-by-step deviation sums. Fast, private, client-side execution.",
+    "subcategory": "math-stats:inferential-statistics",
+    "subcategoryLabel": "Inferential Statistics"
   },
   {
     "id": "t-test-calculator",
     "verticals": [
-      "business",
-      "students",
-      "developers"
+      "science",
+      "students"
     ],
     "name": "Paired & Unpaired Two-Sample Student's t-Test",
     "category": "math-stats",
@@ -4981,12 +5483,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Paired & Unpaired Two-Sample Student's t-Test \u2014 QuickForma",
-    "metaDescription": "Free online Paired & Unpaired Two-Sample Student's t-Test. Calculates 1-sample, 2-sample independent, and paired $t$-test statistics and $p$-values. Fast, private, client-side execution."
+    "metaDescription": "Free online Paired & Unpaired Two-Sample Student's t-Test. Calculates 1-sample, 2-sample independent, and paired $t$-test statistics and $p$-values. Fast, private, client-side execution.",
+    "subcategory": "math-stats:inferential-statistics",
+    "subcategoryLabel": "Inferential Statistics"
   },
   {
     "id": "p-value-calculator",
     "verticals": [
-      "business",
+      "science",
       "students"
     ],
     "name": "p-Value Calculator from Z, t, F & Chi-Square Statistics",
@@ -5003,14 +5507,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "p-Value Calculator from Z, t, F & Chi-Square Statistics \u2014 QuickForma",
-    "metaDescription": "Free online p-Value Calculator from Z, t, F & Chi-Square Statistics. Converts test statistics ($Z, t, F, \\chi^2$) into one-tailed and two-tailed $p$-values. Fast, private, client-side execution."
+    "metaDescription": "Free online p-Value Calculator from Z, t, F & Chi-Square Statistics. Converts test statistics ($Z, t, F, \\chi^2$) into one-tailed and two-tailed $p$-values. Fast, private, client-side execution.",
+    "subcategory": "math-stats:inferential-statistics",
+    "subcategoryLabel": "Inferential Statistics"
   },
   {
     "id": "correlation-coefficient-calculator",
     "verticals": [
-      "business",
-      "students",
-      "developers"
+      "science",
+      "students"
     ],
     "name": "Pearson r & Spearman Rank Correlation",
     "category": "math-stats",
@@ -5026,14 +5531,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Pearson r & Spearman Rank Correlation \u2014 QuickForma",
-    "metaDescription": "Free online Pearson r & Spearman Rank Correlation. Computes Pearson product-moment correlation coefficient $r$ and Spearman rank correlation. Fast, private, client-side execution."
+    "metaDescription": "Free online Pearson r & Spearman Rank Correlation. Computes Pearson product-moment correlation coefficient $r$ and Spearman rank correlation. Fast, private, client-side execution.",
+    "subcategory": "math-stats:inferential-statistics",
+    "subcategoryLabel": "Inferential Statistics"
   },
   {
     "id": "interquartile-range-calculator",
     "verticals": [
-      "business",
-      "students",
-      "developers"
+      "science",
+      "students"
     ],
     "name": "IQR, Box Plot Quartiles & Outlier Detector",
     "category": "math-stats",
@@ -5049,11 +5555,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "IQR, Box Plot Quartiles & Outlier Detector \u2014 QuickForma",
-    "metaDescription": "Free online IQR, Box Plot Quartiles & Outlier Detector. Solves Q1, Q2 (Median), Q3, Interquartile Range (IQR), and identifies mild/extreme outliers ($1.5 \\times \\text{IQR}$). Fast, private, client-side execution."
+    "metaDescription": "Free online IQR, Box Plot Quartiles & Outlier Detector. Solves Q1, Q2 (Median), Q3, Interquartile Range (IQR), and identifies mild/extreme outliers ($1.5 \\times \\text{IQR}$). Fast, private, client-side execution.",
+    "subcategory": "math-stats:inferential-statistics",
+    "subcategoryLabel": "Inferential Statistics"
   },
   {
     "id": "half-life-calculator",
     "verticals": [
+      "science",
       "students"
     ],
     "name": "Radioactive & Chemical Half-Life Decay Solver",
@@ -5070,16 +5579,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Radioactive & Chemical Half-Life Decay Solver \u2014 QuickForma",
-    "metaDescription": "Free online Radioactive & Chemical Half-Life Decay Solver. Solves remaining quantity $N(t) = N_0 (\\frac{1}{2})^{t/t_{1/2}}$, decay constant $\\lambda$, and elapsed time. Fast, private, client-side execution."
+    "metaDescription": "Free online Radioactive & Chemical Half-Life Decay Solver. Solves remaining quantity $N(t) = N_0 (\\frac{1}{2})^{t/t_{1/2}}$, decay constant $\\lambda$, and elapsed time. Fast, private, client-side execution.",
+    "subcategory": "science:thermodynamics-equilibrium",
+    "subcategoryLabel": "Thermodynamics & Reactions"
   },
   {
     "id": "empirical-formula-calculator",
     "verticals": [
-      "business"
+      "science",
+      "students"
     ],
     "name": "Empirical & Molecular Formula Solver",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "science",
+    "categoryLabel": "Science & Engineering",
     "description": "Converts percent element composition by mass into simplest empirical formula and molecular formula.",
     "iconName": "FlaskConical",
     "badge": "New",
@@ -5091,16 +5603,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Empirical & Molecular Formula Solver \u2014 QuickForma",
-    "metaDescription": "Free online Empirical & Molecular Formula Solver. Converts percent element composition by mass into simplest empirical formula and molecular formula. Fast, private, client-side execution."
+    "metaDescription": "Free online Empirical & Molecular Formula Solver. Converts percent element composition by mass into simplest empirical formula and molecular formula. Fast, private, client-side execution.",
+    "subcategory": "science:chemistry-solutions",
+    "subcategoryLabel": "Chemistry & Solutions"
   },
   {
     "id": "thermodynamics-gibbs-calculator",
     "verticals": [
-      "business"
+      "science",
+      "students"
     ],
     "name": "Gibbs Free Energy $\\Delta G = \\Delta H - T\\Delta S$",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "science",
+    "categoryLabel": "Science & Engineering",
     "description": "Solves enthalpy, entropy, temperature, and reaction spontaneity ($\\Delta G < 0$).",
     "iconName": "Flame",
     "badge": "New",
@@ -5112,16 +5627,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Gibbs Free Energy $\\Delta G = \\Delta H - T\\Delta S$ \u2014 QuickForma",
-    "metaDescription": "Free online Gibbs Free Energy $\\Delta G = \\Delta H - T\\Delta S$. Solves enthalpy, entropy, temperature, and reaction spontaneity ($\\Delta G < 0$). Fast, private, client-side execution."
+    "metaDescription": "Free online Gibbs Free Energy $\\Delta G = \\Delta H - T\\Delta S$. Solves enthalpy, entropy, temperature, and reaction spontaneity ($\\Delta G < 0$). Fast, private, client-side execution.",
+    "subcategory": "science:thermodynamics-equilibrium",
+    "subcategoryLabel": "Thermodynamics & Reactions"
   },
   {
     "id": "solution-concentration-converter",
     "verticals": [
-      "business"
+      "science",
+      "students"
     ],
     "name": "Molarity, Molality & Mass Percent Converter",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "science",
+    "categoryLabel": "Science & Engineering",
     "description": "Converts solution concentrations between Molarity ($M$), Molality ($m$), Mass %, and Mole Fraction.",
     "iconName": "Droplet",
     "badge": "New",
@@ -5133,16 +5651,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Molarity, Molality & Mass Percent Converter \u2014 QuickForma",
-    "metaDescription": "Free online Molarity, Molality & Mass Percent Converter. Converts solution concentrations between Molarity ($M$), Molality ($m$), Mass %, and Mole Fraction. Fast, private, client-side execution."
+    "metaDescription": "Free online Molarity, Molality & Mass Percent Converter. Converts solution concentrations between Molarity ($M$), Molality ($m$), Mass %, and Mole Fraction. Fast, private, client-side execution.",
+    "subcategory": "science:chemistry-solutions",
+    "subcategoryLabel": "Chemistry & Solutions"
   },
   {
     "id": "gravitational-force-calculator",
     "verticals": [
-      "business"
+      "science",
+      "students"
     ],
     "name": "Newton's Law of Universal Gravitation Solver",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "science",
+    "categoryLabel": "Science & Engineering",
     "description": "Solves gravitational force $F = G \\frac{m_1 m_2}{r^2}$ between celestial bodies or masses.",
     "iconName": "Orbit",
     "badge": "New",
@@ -5154,16 +5675,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Newton's Law of Universal Gravitation Solver \u2014 QuickForma",
-    "metaDescription": "Free online Newton's Law of Universal Gravitation Solver. Solves gravitational force $F = G \\frac{m_1 m_2}{r^2}$ between celestial bodies or masses. Fast, private, client-side execution."
+    "metaDescription": "Free online Newton's Law of Universal Gravitation Solver. Solves gravitational force $F = G \\frac{m_1 m_2}{r^2}$ between celestial bodies or masses. Fast, private, client-side execution.",
+    "subcategory": "science:classical-mechanics",
+    "subcategoryLabel": "Classical Mechanics & Motion"
   },
   {
     "id": "centripetal-force-calculator",
     "verticals": [
-      "business"
+      "science",
+      "students"
     ],
     "name": "Circular Motion & Centripetal Acceleration Solver",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "science",
+    "categoryLabel": "Science & Engineering",
     "description": "Solves centripetal acceleration $a_c = \\frac{v^2}{r}$ and centripetal force $F_c = \\frac{m v^2}{r}$.",
     "iconName": "RotateCw",
     "badge": "New",
@@ -5175,16 +5699,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Circular Motion & Centripetal Acceleration Solver \u2014 QuickForma",
-    "metaDescription": "Free online Circular Motion & Centripetal Acceleration Solver. Solves centripetal acceleration $a_c = \\frac{v^2}{r}$ and centripetal force $F_c = \\frac{m v^2}{r}$. Fast, private, client-side execution."
+    "metaDescription": "Free online Circular Motion & Centripetal Acceleration Solver. Solves centripetal acceleration $a_c = \\frac{v^2}{r}$ and centripetal force $F_c = \\frac{m v^2}{r}$. Fast, private, client-side execution.",
+    "subcategory": "science:classical-mechanics",
+    "subcategoryLabel": "Classical Mechanics & Motion"
   },
   {
     "id": "heat-transfer-calorimetry-calculator",
     "verticals": [
-      "business"
+      "science",
+      "students"
     ],
     "name": "Specific Heat Capacity $Q = mc\\Delta T$ Solver",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "science",
+    "categoryLabel": "Science & Engineering",
     "description": "Solves heat transfer $Q = m c \\Delta T$, latent heat of fusion/vaporization ($Q = m L$), and final mixture temperature.",
     "iconName": "Flame",
     "badge": "New",
@@ -5196,16 +5723,18 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Specific Heat Capacity $Q = mc\\Delta T$ Solver \u2014 QuickForma",
-    "metaDescription": "Free online Specific Heat Capacity $Q = mc\\Delta T$ Solver. Solves heat transfer $Q = m c \\Delta T$, latent heat of fusion/vaporization ($Q = m L$), and final mixture temperature. Fast, private, client-side execution."
+    "metaDescription": "Free online Specific Heat Capacity $Q = mc\\Delta T$ Solver. Solves heat transfer $Q = m c \\Delta T$, latent heat of fusion/vaporization ($Q = m L$), and final mixture temperature. Fast, private, client-side execution.",
+    "subcategory": "science:thermodynamics-equilibrium",
+    "subcategoryLabel": "Thermodynamics & Reactions"
   },
   {
     "id": "spaced-repetition-scheduler",
     "verticals": [
-      "business"
+      "students"
     ],
     "name": "SuperMemo SM-2 Flashcard Revision Scheduler",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "academic",
+    "categoryLabel": "Education & Academic Tools",
     "description": "Calculates optimal flashcard review intervals based on SuperMemo SM-2 spaced repetition algorithm.",
     "iconName": "Brain",
     "badge": "New",
@@ -5217,16 +5746,18 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "SuperMemo SM-2 Flashcard Revision Scheduler \u2014 QuickForma",
-    "metaDescription": "Free online SuperMemo SM-2 Flashcard Revision Scheduler. Calculates optimal flashcard review intervals based on SuperMemo SM-2 spaced repetition algorithm. Fast, private, client-side execution."
+    "metaDescription": "Free online SuperMemo SM-2 Flashcard Revision Scheduler. Calculates optimal flashcard review intervals based on SuperMemo SM-2 spaced repetition algorithm. Fast, private, client-side execution.",
+    "subcategory": "academic:study-research",
+    "subcategoryLabel": "Study & Research Utilities"
   },
   {
     "id": "plagiarism-similarity-score-tool",
     "verticals": [
-      "business"
+      "students"
     ],
     "name": "Text Matching & Similarity Ratio Calculator",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "academic",
+    "categoryLabel": "Education & Academic Tools",
     "description": "Compares two text documents client-side using Levenshtein distance and Jaccard index similarity %.",
     "iconName": "FileSearch",
     "badge": "New",
@@ -5238,7 +5769,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Text Matching & Similarity Ratio Calculator \u2014 QuickForma",
-    "metaDescription": "Free online Text Matching & Similarity Ratio Calculator. Compares two text documents client-side using Levenshtein distance and Jaccard index similarity %. Fast, private, client-side execution."
+    "metaDescription": "Free online Text Matching & Similarity Ratio Calculator. Compares two text documents client-side using Levenshtein distance and Jaccard index similarity %. Fast, private, client-side execution.",
+    "subcategory": "academic:study-research",
+    "subcategoryLabel": "Study & Research Utilities"
   },
   {
     "id": "homework-time-estimator",
@@ -5259,7 +5792,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Daily Assignment & Reading Workload Estimator \u2014 QuickForma",
-    "metaDescription": "Free online Daily Assignment & Reading Workload Estimator. Estimates total nightly homework completion time based on page counts, problem set difficulty, and reading speed. Fast, private, client-side execution."
+    "metaDescription": "Free online Daily Assignment & Reading Workload Estimator. Estimates total nightly homework completion time based on page counts, problem set difficulty, and reading speed. Fast, private, client-side execution.",
+    "subcategory": "academic:study-research",
+    "subcategoryLabel": "Study & Research Utilities"
   },
   {
     "id": "typing-speed-wpm-calculator",
@@ -5280,16 +5815,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Words Per Minute & Accuracy Test Tool \u2014 QuickForma",
-    "metaDescription": "Free online Words Per Minute & Accuracy Test Tool. Tests typing speed in net Words Per Minute (WPM) and accuracy percentage over 1-minute to 5-minute tests. Fast, private, client-side execution."
+    "metaDescription": "Free online Words Per Minute & Accuracy Test Tool. Tests typing speed in net Words Per Minute (WPM) and accuracy percentage over 1-minute to 5-minute tests. Fast, private, client-side execution.",
+    "subcategory": "productivity:task-performance",
+    "subcategoryLabel": "Typing & Performance Tests"
   },
   {
     "id": "walmart-marketplace-fee-calculator",
     "verticals": [
-      "business"
+      "business",
+      "ecommerce"
     ],
     "name": "Walmart Seller Referral Fee & Profit Solver",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "ecommerce",
+    "categoryLabel": "Ecommerce & Retail",
     "description": "Calculates Walmart Marketplace referral fees by product category and net seller payout.",
     "iconName": "ShoppingBag",
     "badge": "New",
@@ -5301,12 +5839,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Walmart Seller Referral Fee & Profit Solver \u2014 QuickForma",
-    "metaDescription": "Free online Walmart Seller Referral Fee & Profit Solver. Calculates Walmart Marketplace referral fees by product category and net seller payout. Fast, private, client-side execution."
+    "metaDescription": "Free online Walmart Seller Referral Fee & Profit Solver. Calculates Walmart Marketplace referral fees by product category and net seller payout. Fast, private, client-side execution.",
+    "subcategory": "ecommerce:marketplace-fees",
+    "subcategoryLabel": "Marketplace & Platform Fees"
   },
   {
     "id": "google-shopping-roas-calculator",
     "verticals": [
-      "business"
+      "business",
+      "marketing"
     ],
     "name": "Google Performance Max ROAS & Margin Solver",
     "category": "marketing",
@@ -5322,12 +5863,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Google Performance Max ROAS & Margin Solver \u2014 QuickForma",
-    "metaDescription": "Free online Google Performance Max ROAS & Margin Solver. Calculates Google Shopping ad spend, cost per click, product margin, and break-even ROAS. Fast, private, client-side execution."
+    "metaDescription": "Free online Google Performance Max ROAS & Margin Solver. Calculates Google Shopping ad spend, cost per click, product margin, and break-even ROAS. Fast, private, client-side execution.",
+    "subcategory": "marketing:advertising-media",
+    "subcategoryLabel": "Paid Ads & Media Spend"
   },
   {
     "id": "product-bundle-pricing-calculator",
     "verticals": [
-      "business"
+      "business",
+      "ecommerce"
     ],
     "name": "Kit Bundling & Tiered Volume Discount Pricing",
     "category": "ecommerce",
@@ -5343,12 +5887,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Kit Bundling & Tiered Volume Discount Pricing \u2014 QuickForma",
-    "metaDescription": "Free online Kit Bundling & Tiered Volume Discount Pricing. Calculates optimal bundle discount pricing, product kitting margins, and contribution profit. Fast, private, client-side execution."
+    "metaDescription": "Free online Kit Bundling & Tiered Volume Discount Pricing. Calculates optimal bundle discount pricing, product kitting margins, and contribution profit. Fast, private, client-side execution.",
+    "subcategory": "ecommerce:pricing-profitability",
+    "subcategoryLabel": "Retail Pricing & Margins"
   },
   {
     "id": "inventory-turnover-ratio-calculator",
     "verticals": [
-      "business"
+      "business",
+      "ecommerce"
     ],
     "name": "Inventory Velocity, DSI & GMROI Solver",
     "category": "ecommerce",
@@ -5364,16 +5911,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Inventory Velocity, DSI & GMROI Solver \u2014 QuickForma",
-    "metaDescription": "Free online Inventory Velocity, DSI & GMROI Solver. Measures Inventory Turnover Ratio, Days Sales of Inventory (DSI), and Gross Margin Return on Inventory (GMROI). Fast, private, client-side execution."
+    "metaDescription": "Free online Inventory Velocity, DSI & GMROI Solver. Measures Inventory Turnover Ratio, Days Sales of Inventory (DSI), and Gross Margin Return on Inventory (GMROI). Fast, private, client-side execution.",
+    "subcategory": "ecommerce:inventory-fulfillment",
+    "subcategoryLabel": "Inventory & Fulfillment"
   },
   {
     "id": "free-shipping-threshold-calculator",
     "verticals": [
-      "business"
+      "business",
+      "ecommerce"
     ],
     "name": "Free Shipping Order Value Threshold Solver",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "ecommerce",
+    "categoryLabel": "Ecommerce & Retail",
     "description": "Solves optimal minimum order value threshold ($AOV$) to offer free shipping profitably.",
     "iconName": "Truck",
     "badge": "New",
@@ -5385,12 +5935,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Free Shipping Order Value Threshold Solver \u2014 QuickForma",
-    "metaDescription": "Free online Free Shipping Order Value Threshold Solver. Solves optimal minimum order value threshold ($AOV$) to offer free shipping profitably. Fast, private, client-side execution."
+    "metaDescription": "Free online Free Shipping Order Value Threshold Solver. Solves optimal minimum order value threshold ($AOV$) to offer free shipping profitably. Fast, private, client-side execution.",
+    "subcategory": "ecommerce:inventory-fulfillment",
+    "subcategoryLabel": "Inventory & Fulfillment"
   },
   {
     "id": "dropshipping-profit-margin-calculator",
     "verticals": [
-      "business"
+      "business",
+      "ecommerce"
     ],
     "name": "AliExpress/CJDropshipping Net Margin Solver",
     "category": "ecommerce",
@@ -5406,16 +5959,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "AliExpress/CJDropshipping Net Margin Solver \u2014 QuickForma",
-    "metaDescription": "Free online AliExpress/CJDropshipping Net Margin Solver. Calculates dropshipping net profit after supplier cost, ePacket shipping, ad spend, and gateway fees. Fast, private, client-side execution."
+    "metaDescription": "Free online AliExpress/CJDropshipping Net Margin Solver. Calculates dropshipping net profit after supplier cost, ePacket shipping, ad spend, and gateway fees. Fast, private, client-side execution.",
+    "subcategory": "ecommerce:pricing-profitability",
+    "subcategoryLabel": "Retail Pricing & Margins"
   },
   {
     "id": "abandoned-cart-recovery-roi-calculator",
     "verticals": [
-      "business"
+      "business",
+      "ecommerce"
     ],
     "name": "Cart Abandonment Email Recovery Revenue",
-    "category": "finance",
-    "categoryLabel": "Business Finance & Accounting",
+    "category": "ecommerce",
+    "categoryLabel": "Ecommerce & Retail",
     "description": "Calculates recovered revenue from automated abandoned cart email and SMS recovery sequences.",
     "iconName": "ShoppingCart",
     "badge": "New",
@@ -5427,16 +5983,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Cart Abandonment Email Recovery Revenue \u2014 QuickForma",
-    "metaDescription": "Free online Cart Abandonment Email Recovery Revenue. Calculates recovered revenue from automated abandoned cart email and SMS recovery sequences. Fast, private, client-side execution."
+    "metaDescription": "Free online Cart Abandonment Email Recovery Revenue. Calculates recovered revenue from automated abandoned cart email and SMS recovery sequences. Fast, private, client-side execution.",
+    "subcategory": "ecommerce:discounts-returns",
+    "subcategoryLabel": "Discounts & Returns"
   },
   {
     "id": "sku-profitability-analyzer",
     "verticals": [
-      "business"
+      "business",
+      "ecommerce"
     ],
     "name": "SKU ABC Analysis & Contribution Margin Solver",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "ecommerce",
+    "categoryLabel": "Ecommerce & Retail",
     "description": "Classifies product catalog into A (top 80% revenue), B (15%), and C (5%) performance tiers.",
     "iconName": "BarChart3",
     "badge": "New",
@@ -5448,16 +6007,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "SKU ABC Analysis & Contribution Margin Solver \u2014 QuickForma",
-    "metaDescription": "Free online SKU ABC Analysis & Contribution Margin Solver. Classifies product catalog into A (top 80% revenue), B (15%), and C (5%) performance tiers. Fast, private, client-side execution."
+    "metaDescription": "Free online SKU ABC Analysis & Contribution Margin Solver. Classifies product catalog into A (top 80% revenue), B (15%), and C (5%) performance tiers. Fast, private, client-side execution.",
+    "subcategory": "ecommerce:pricing-profitability",
+    "subcategoryLabel": "Retail Pricing & Margins"
   },
   {
     "id": "fulfillment-cost-per-order-calculator",
     "verticals": [
-      "business"
+      "business",
+      "ecommerce"
     ],
     "name": "3PL Pick, Pack, Storage & Shipping Solver",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "ecommerce",
+    "categoryLabel": "Ecommerce & Retail",
     "description": "Calculates total 3PL order fulfillment cost including pick/pack fees, box costs, and carrier postage.",
     "iconName": "Truck",
     "badge": "New",
@@ -5469,7 +6031,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "3PL Pick, Pack, Storage & Shipping Solver \u2014 QuickForma",
-    "metaDescription": "Free online 3PL Pick, Pack, Storage & Shipping Solver. Calculates total 3PL order fulfillment cost including pick/pack fees, box costs, and carrier postage. Fast, private, client-side execution."
+    "metaDescription": "Free online 3PL Pick, Pack, Storage & Shipping Solver. Calculates total 3PL order fulfillment cost including pick/pack fees, box costs, and carrier postage. Fast, private, client-side execution.",
+    "subcategory": "ecommerce:inventory-fulfillment",
+    "subcategoryLabel": "Inventory & Fulfillment"
   },
   {
     "id": "cap-table-calculator",
@@ -5490,7 +6054,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Capitalization Table & Equity Dilution Solver \u2014 QuickForma",
-    "metaDescription": "Free online Capitalization Table & Equity Dilution Solver. Simulates SAFE notes, convertible debt, option pools, and investor round dilution. Fast, private, client-side execution."
+    "metaDescription": "Free online Capitalization Table & Equity Dilution Solver. Simulates SAFE notes, convertible debt, option pools, and investor round dilution. Fast, private, client-side execution.",
+    "subcategory": "finance:valuation-investment",
+    "subcategoryLabel": "Investment & Valuation"
   },
   {
     "id": "business-valuation-calculator",
@@ -5511,7 +6077,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Business Valuation Multiple Calculator \u2014 QuickForma",
-    "metaDescription": "Free online Business Valuation Multiple Calculator. Estimates enterprise value based on SDE, EBITDA, and industry revenue multiples. Fast, private, client-side execution."
+    "metaDescription": "Free online Business Valuation Multiple Calculator. Estimates enterprise value based on SDE, EBITDA, and industry revenue multiples. Fast, private, client-side execution.",
+    "subcategory": "finance:valuation-investment",
+    "subcategoryLabel": "Investment & Valuation"
   },
   {
     "id": "lease-vs-buy-calculator",
@@ -5532,7 +6100,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Commercial Lease vs Buy NPV Calculator \u2014 QuickForma",
-    "metaDescription": "Free online Commercial Lease vs Buy NPV Calculator. NPV decision model for leasing vs purchasing commercial office/warehouse space. Fast, private, client-side execution."
+    "metaDescription": "Free online Commercial Lease vs Buy NPV Calculator. NPV decision model for leasing vs purchasing commercial office/warehouse space. Fast, private, client-side execution.",
+    "subcategory": "finance:taxes-accounting",
+    "subcategoryLabel": "Taxes & Accounting"
   },
   {
     "id": "invoice-factoring-calculator",
@@ -5540,8 +6110,8 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "business"
     ],
     "name": "Invoice Factoring & Discount Rate Calculator",
-    "category": "documents",
-    "categoryLabel": "Business & Legal Documents",
+    "category": "finance",
+    "categoryLabel": "Business Finance & Accounting",
     "description": "Calculates effective APR and net proceeds from factoring receivables.",
     "iconName": "FileText",
     "badge": "New",
@@ -5553,7 +6123,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Invoice Factoring & Discount Rate Calculator \u2014 QuickForma",
-    "metaDescription": "Free online Invoice Factoring & Discount Rate Calculator. Calculates effective APR and net proceeds from factoring receivables. Fast, private, client-side execution."
+    "metaDescription": "Free online Invoice Factoring & Discount Rate Calculator. Calculates effective APR and net proceeds from factoring receivables. Fast, private, client-side execution.",
+    "subcategory": "finance:taxes-accounting",
+    "subcategoryLabel": "Taxes & Accounting"
   },
   {
     "id": "operating-leverage-calculator",
@@ -5574,16 +6146,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Degree of Operating Leverage (DOL) Calculator \u2014 QuickForma",
-    "metaDescription": "Free online Degree of Operating Leverage (DOL) Calculator. Measures business earnings sensitivity to percentage changes in sales revenue. Fast, private, client-side execution."
+    "metaDescription": "Free online Degree of Operating Leverage (DOL) Calculator. Measures business earnings sensitivity to percentage changes in sales revenue. Fast, private, client-side execution.",
+    "subcategory": "finance:financial-ratios",
+    "subcategoryLabel": "Financial Ratios & Analysis"
   },
   {
     "id": "net-promoter-score-roi-calculator",
     "verticals": [
-      "business"
+      "business",
+      "marketing"
     ],
     "name": "NPS Impact & Retention Revenue Calculator",
-    "category": "hr",
-    "categoryLabel": "HR, Payroll & Compensation",
+    "category": "marketing",
+    "categoryLabel": "Sales & Growth Marketing",
     "description": "Models financial impact of Net Promoter Score improvements on churn reduction.",
     "iconName": "Target",
     "badge": "New",
@@ -5595,7 +6170,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "NPS Impact & Retention Revenue Calculator \u2014 QuickForma",
-    "metaDescription": "Free online NPS Impact & Retention Revenue Calculator. Models financial impact of Net Promoter Score improvements on churn reduction. Fast, private, client-side execution."
+    "metaDescription": "Free online NPS Impact & Retention Revenue Calculator. Models financial impact of Net Promoter Score improvements on churn reduction. Fast, private, client-side execution.",
+    "subcategory": "marketing:seo-analytics",
+    "subcategoryLabel": "SEO & Marketing Analytics"
   },
   {
     "id": "equipment-lease-calculator",
@@ -5616,7 +6193,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Equipment Lease Payment & Buyout Calculator \u2014 QuickForma",
-    "metaDescription": "Free online Equipment Lease Payment & Buyout Calculator. Compares Fair Market Value (FMV) vs $1 Buyout equipment lease financing options. Fast, private, client-side execution."
+    "metaDescription": "Free online Equipment Lease Payment & Buyout Calculator. Compares Fair Market Value (FMV) vs $1 Buyout equipment lease financing options. Fast, private, client-side execution.",
+    "subcategory": "finance:taxes-accounting",
+    "subcategoryLabel": "Taxes & Accounting"
   },
   {
     "id": "franchise-fee-roi-calculator",
@@ -5637,7 +6216,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Franchise Total Investment & Royalty ROI \u2014 QuickForma",
-    "metaDescription": "Free online Franchise Total Investment & Royalty ROI. Solves total franchise startup costs, ongoing royalty fees, and payback horizon. Fast, private, client-side execution."
+    "metaDescription": "Free online Franchise Total Investment & Royalty ROI. Solves total franchise startup costs, ongoing royalty fees, and payback horizon. Fast, private, client-side execution.",
+    "subcategory": "finance:valuation-investment",
+    "subcategoryLabel": "Investment & Valuation"
   },
   {
     "id": "deferred-revenue-calculator",
@@ -5658,7 +6239,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "SaaS Deferred Revenue & ASC 606 Schedule \u2014 QuickForma",
-    "metaDescription": "Free online SaaS Deferred Revenue & ASC 606 Schedule. Generates monthly ratable revenue recognition schedules for annual prepaid plans. Fast, private, client-side execution."
+    "metaDescription": "Free online SaaS Deferred Revenue & ASC 606 Schedule. Generates monthly ratable revenue recognition schedules for annual prepaid plans. Fast, private, client-side execution.",
+    "subcategory": "finance:taxes-accounting",
+    "subcategoryLabel": "Taxes & Accounting"
   },
   {
     "id": "bad-debt-allowance-calculator",
@@ -5679,7 +6262,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Allowance for Doubtful Accounts Estimator \u2014 QuickForma",
-    "metaDescription": "Free online Allowance for Doubtful Accounts Estimator. Estimates bad debt reserve using aging schedule percentages. Fast, private, client-side execution."
+    "metaDescription": "Free online Allowance for Doubtful Accounts Estimator. Estimates bad debt reserve using aging schedule percentages. Fast, private, client-side execution.",
+    "subcategory": "finance:financial-ratios",
+    "subcategoryLabel": "Financial Ratios & Analysis"
   },
   {
     "id": "revenue-per-employee-calculator",
@@ -5700,7 +6285,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Labor Productivity & Revenue Per FTE Solver \u2014 QuickForma",
-    "metaDescription": "Free online Labor Productivity & Revenue Per FTE Solver. Evaluates employee productivity and revenue output per Full-Time Equivalent. Fast, private, client-side execution."
+    "metaDescription": "Free online Labor Productivity & Revenue Per FTE Solver. Evaluates employee productivity and revenue output per Full-Time Equivalent. Fast, private, client-side execution.",
+    "subcategory": "hr:compensation-retention",
+    "subcategoryLabel": "Compensation & Retention"
   },
   {
     "id": "asset-turnover-ratio-calculator",
@@ -5721,7 +6308,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Total Asset Turnover Ratio Calculator \u2014 QuickForma",
-    "metaDescription": "Free online Total Asset Turnover Ratio Calculator. Evaluates revenue efficiency generated per dollar of total balance sheet assets. Fast, private, client-side execution."
+    "metaDescription": "Free online Total Asset Turnover Ratio Calculator. Evaluates revenue efficiency generated per dollar of total balance sheet assets. Fast, private, client-side execution.",
+    "subcategory": "finance:financial-ratios",
+    "subcategoryLabel": "Financial Ratios & Analysis"
   },
   {
     "id": "solvency-ratio-calculator",
@@ -5742,7 +6331,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Debt-to-Equity & Interest Coverage Ratio \u2014 QuickForma",
-    "metaDescription": "Free online Debt-to-Equity & Interest Coverage Ratio. Solves long-term financial leverage and EBIT interest coverage capability. Fast, private, client-side execution."
+    "metaDescription": "Free online Debt-to-Equity & Interest Coverage Ratio. Solves long-term financial leverage and EBIT interest coverage capability. Fast, private, client-side execution.",
+    "subcategory": "finance:financial-ratios",
+    "subcategoryLabel": "Financial Ratios & Analysis"
   },
   {
     "id": "dupont-analysis-calculator",
@@ -5763,7 +6354,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "DuPont 3-Step & 5-Step ROE Breakdown \u2014 QuickForma",
-    "metaDescription": "Free online DuPont 3-Step & 5-Step ROE Breakdown. Decomposes Return on Equity into profit margin, asset turnover, and financial leverage. Fast, private, client-side execution."
+    "metaDescription": "Free online DuPont 3-Step & 5-Step ROE Breakdown. Decomposes Return on Equity into profit margin, asset turnover, and financial leverage. Fast, private, client-side execution.",
+    "subcategory": "finance:financial-ratios",
+    "subcategoryLabel": "Financial Ratios & Analysis"
   },
   {
     "id": "dividend-yield-payout-calculator",
@@ -5771,8 +6364,8 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "business"
     ],
     "name": "Dividend Yield & Payout Ratio Calculator",
-    "category": "operations",
-    "categoryLabel": "Operations, Logistics & Manufacturing",
+    "category": "finance",
+    "categoryLabel": "Business Finance & Accounting",
     "description": "Solves annual dividend yield % and net income payout coverage.",
     "iconName": "DollarSign",
     "badge": "New",
@@ -5784,7 +6377,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Dividend Yield & Payout Ratio Calculator \u2014 QuickForma",
-    "metaDescription": "Free online Dividend Yield & Payout Ratio Calculator. Solves annual dividend yield % and net income payout coverage. Fast, private, client-side execution."
+    "metaDescription": "Free online Dividend Yield & Payout Ratio Calculator. Solves annual dividend yield % and net income payout coverage. Fast, private, client-side execution.",
+    "subcategory": "finance:financial-ratios",
+    "subcategoryLabel": "Financial Ratios & Analysis"
   },
   {
     "id": "economic-value-added-calculator",
@@ -5805,7 +6400,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Economic Value Added (EVA) Calculator \u2014 QuickForma",
-    "metaDescription": "Free online Economic Value Added (EVA) Calculator. Measures true economic profit: NOPAT minus capital cost multiplied by capital employed. Fast, private, client-side execution."
+    "metaDescription": "Free online Economic Value Added (EVA) Calculator. Measures true economic profit: NOPAT minus capital cost multiplied by capital employed. Fast, private, client-side execution.",
+    "subcategory": "finance:valuation-investment",
+    "subcategoryLabel": "Investment & Valuation"
   },
   {
     "id": "capital-budgeting-payback-calculator",
@@ -5826,7 +6423,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Capital Expenditure (CapEx) ROI Solver \u2014 QuickForma",
-    "metaDescription": "Free online Capital Expenditure (CapEx) ROI Solver. Evaluates factory equipment and asset replacement capital expenditure decisions. Fast, private, client-side execution."
+    "metaDescription": "Free online Capital Expenditure (CapEx) ROI Solver. Evaluates factory equipment and asset replacement capital expenditure decisions. Fast, private, client-side execution.",
+    "subcategory": "finance:valuation-investment",
+    "subcategoryLabel": "Investment & Valuation"
   },
   {
     "id": "marginal-cost-revenue-calculator",
@@ -5847,7 +6446,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Marginal Cost vs Marginal Revenue Solver \u2014 QuickForma",
-    "metaDescription": "Free online Marginal Cost vs Marginal Revenue Solver. Solves profit-maximizing production output where Marginal Cost equals Marginal Revenue. Fast, private, client-side execution."
+    "metaDescription": "Free online Marginal Cost vs Marginal Revenue Solver. Solves profit-maximizing production output where Marginal Cost equals Marginal Revenue. Fast, private, client-side execution.",
+    "subcategory": "finance:profitability-margins",
+    "subcategoryLabel": "Profitability & Margins"
   },
   {
     "id": "operating-cash-flow-to-sales-calculator",
@@ -5868,7 +6469,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "OCF Margin & Operating Cash Flow Ratio \u2014 QuickForma",
-    "metaDescription": "Free online OCF Margin & Operating Cash Flow Ratio. Measures cash flow coverage of sales revenue and current liabilities. Fast, private, client-side execution."
+    "metaDescription": "Free online OCF Margin & Operating Cash Flow Ratio. Measures cash flow coverage of sales revenue and current liabilities. Fast, private, client-side execution.",
+    "subcategory": "finance:cash-flow-budgeting",
+    "subcategoryLabel": "Cash Flow & Working Capital"
   },
   {
     "id": "rule-of-thumb-valuation-calculator",
@@ -5889,7 +6492,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Small Business SDE Valuation Multiplier Solver \u2014 QuickForma",
-    "metaDescription": "Free online Small Business SDE Valuation Multiplier Solver. Estimates small business sale price based on Seller's Discretionary Earnings (SDE). Fast, private, client-side execution."
+    "metaDescription": "Free online Small Business SDE Valuation Multiplier Solver. Estimates small business sale price based on Seller's Discretionary Earnings (SDE). Fast, private, client-side execution.",
+    "subcategory": "finance:valuation-investment",
+    "subcategoryLabel": "Investment & Valuation"
   },
   {
     "id": "operating-expense-ratio-calculator",
@@ -5910,7 +6515,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Operating Expense Ratio (OER) Solver \u2014 QuickForma",
-    "metaDescription": "Free online Operating Expense Ratio (OER) Solver. Measures operating expenses as a percentage of total net sales revenue. Fast, private, client-side execution."
+    "metaDescription": "Free online Operating Expense Ratio (OER) Solver. Measures operating expenses as a percentage of total net sales revenue. Fast, private, client-side execution.",
+    "subcategory": "finance:financial-ratios",
+    "subcategoryLabel": "Financial Ratios & Analysis"
   },
   {
     "id": "roce-calculator",
@@ -5931,7 +6538,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Return on Capital Employed (ROCE) Solver \u2014 QuickForma",
-    "metaDescription": "Free online Return on Capital Employed (ROCE) Solver. Measures company profitability and efficiency of capital allocation. Fast, private, client-side execution."
+    "metaDescription": "Free online Return on Capital Employed (ROCE) Solver. Measures company profitability and efficiency of capital allocation. Fast, private, client-side execution.",
+    "subcategory": "finance:financial-ratios",
+    "subcategoryLabel": "Financial Ratios & Analysis"
   },
   {
     "id": "statement-of-work-generator",
@@ -5939,8 +6548,8 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "business"
     ],
     "name": "Statement of Work (SOW) Scope Generator",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "documents",
+    "categoryLabel": "Business & Legal Documents",
     "description": "Formats agency and consulting SOWs with project deliverables, milestones, and sign-offs.",
     "iconName": "FileText",
     "badge": "New",
@@ -5952,7 +6561,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Statement of Work (SOW) Scope Generator \u2014 QuickForma",
-    "metaDescription": "Free online Statement of Work (SOW) Scope Generator. Formats agency and consulting SOWs with project deliverables, milestones, and sign-offs. Fast, private, client-side execution."
+    "metaDescription": "Free online Statement of Work (SOW) Scope Generator. Formats agency and consulting SOWs with project deliverables, milestones, and sign-offs. Fast, private, client-side execution.",
+    "subcategory": "documents:corporate-policies",
+    "subcategoryLabel": "Scopes, Policies & Minutes"
   },
   {
     "id": "debit-note-generator",
@@ -5973,7 +6584,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Vendor Debit Note Generator \u2014 QuickForma",
-    "metaDescription": "Free online Vendor Debit Note Generator. Generates vendor debit notes for defective goods, short shipments, or price adjustments. Fast, private, client-side execution."
+    "metaDescription": "Free online Vendor Debit Note Generator. Generates vendor debit notes for defective goods, short shipments, or price adjustments. Fast, private, client-side execution.",
+    "subcategory": "documents:invoices-billing",
+    "subcategoryLabel": "Invoices, Receipts & POs"
   },
   {
     "id": "service-level-agreement-generator",
@@ -5994,7 +6607,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "SLA Terms & Uptime SLA Builder \u2014 QuickForma",
-    "metaDescription": "Free online SLA Terms & Uptime SLA Builder. B2B SaaS agreement builder for uptime targets, support response times, and service credits. Fast, private, client-side execution."
+    "metaDescription": "Free online SLA Terms & Uptime SLA Builder. B2B SaaS agreement builder for uptime targets, support response times, and service credits. Fast, private, client-side execution.",
+    "subcategory": "documents:contracts-agreements",
+    "subcategoryLabel": "Contracts & Legal Agreements"
   },
   {
     "id": "termination-letter-generator",
@@ -6002,8 +6617,8 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "business"
     ],
     "name": "Employee Separation & Termination Notice",
-    "category": "hr",
-    "categoryLabel": "HR, Payroll & Compensation",
+    "category": "documents",
+    "categoryLabel": "Business & Legal Documents",
     "description": "HR letter generator for employment termination, final paycheck details, and benefit continuation.",
     "iconName": "FileX",
     "badge": "New",
@@ -6015,7 +6630,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Employee Separation & Termination Notice \u2014 QuickForma",
-    "metaDescription": "Free online Employee Separation & Termination Notice. HR letter generator for employment termination, final paycheck details, and benefit continuation. Fast, private, client-side execution."
+    "metaDescription": "Free online Employee Separation & Termination Notice. HR letter generator for employment termination, final paycheck details, and benefit continuation. Fast, private, client-side execution.",
+    "subcategory": "documents:contracts-agreements",
+    "subcategoryLabel": "Contracts & Legal Agreements"
   },
   {
     "id": "subcontractor-agreement-generator",
@@ -6036,7 +6653,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Subcontractor Service Agreement Generator \u2014 QuickForma",
-    "metaDescription": "Free online Subcontractor Service Agreement Generator. Construction and IT subcontractor agreement with scope, insurance requirements, and indemnification. Fast, private, client-side execution."
+    "metaDescription": "Free online Subcontractor Service Agreement Generator. Construction and IT subcontractor agreement with scope, insurance requirements, and indemnification. Fast, private, client-side execution.",
+    "subcategory": "documents:contracts-agreements",
+    "subcategoryLabel": "Contracts & Legal Agreements"
   },
   {
     "id": "commercial-lease-summary-generator",
@@ -6044,8 +6663,8 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "business"
     ],
     "name": "Commercial Lease Abstract Summary Sheet",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "documents",
+    "categoryLabel": "Business & Legal Documents",
     "description": "Summarizes commercial lease terms, escalation clauses, rent schedules, and renewal options.",
     "iconName": "Building",
     "badge": "New",
@@ -6057,7 +6676,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Commercial Lease Abstract Summary Sheet \u2014 QuickForma",
-    "metaDescription": "Free online Commercial Lease Abstract Summary Sheet. Summarizes commercial lease terms, escalation clauses, rent schedules, and renewal options. Fast, private, client-side execution."
+    "metaDescription": "Free online Commercial Lease Abstract Summary Sheet. Summarizes commercial lease terms, escalation clauses, rent schedules, and renewal options. Fast, private, client-side execution.",
+    "subcategory": "documents:corporate-policies",
+    "subcategoryLabel": "Scopes, Policies & Minutes"
   },
   {
     "id": "certificate-of-completion-generator",
@@ -6065,8 +6686,8 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "business"
     ],
     "name": "Project Acceptance & Sign-off Certificate",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "documents",
+    "categoryLabel": "Business & Legal Documents",
     "description": "Client project sign-off document confirming acceptance of deliverables and final billing release.",
     "iconName": "Award",
     "badge": "New",
@@ -6078,7 +6699,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Project Acceptance & Sign-off Certificate \u2014 QuickForma",
-    "metaDescription": "Free online Project Acceptance & Sign-off Certificate. Client project sign-off document confirming acceptance of deliverables and final billing release. Fast, private, client-side execution."
+    "metaDescription": "Free online Project Acceptance & Sign-off Certificate. Client project sign-off document confirming acceptance of deliverables and final billing release. Fast, private, client-side execution.",
+    "subcategory": "documents:corporate-policies",
+    "subcategoryLabel": "Scopes, Policies & Minutes"
   },
   {
     "id": "privacy-policy-template-generator",
@@ -6086,8 +6709,8 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "business"
     ],
     "name": "Basic Business Privacy Notice Generator",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "documents",
+    "categoryLabel": "Business & Legal Documents",
     "description": "Client-side privacy policy template generator for small business websites and online stores.",
     "iconName": "Lock",
     "badge": "New",
@@ -6099,7 +6722,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Basic Business Privacy Notice Generator \u2014 QuickForma",
-    "metaDescription": "Free online Basic Business Privacy Notice Generator. Client-side privacy policy template generator for small business websites and online stores. Fast, private, client-side execution."
+    "metaDescription": "Free online Basic Business Privacy Notice Generator. Client-side privacy policy template generator for small business websites and online stores. Fast, private, client-side execution.",
+    "subcategory": "documents:corporate-policies",
+    "subcategoryLabel": "Scopes, Policies & Minutes"
   },
   {
     "id": "terms-of-service-generator",
@@ -6107,8 +6732,8 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "business"
     ],
     "name": "Website & SaaS Terms of Service Builder",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "documents",
+    "categoryLabel": "Business & Legal Documents",
     "description": "Standard terms of service agreement builder outlining user rules, liability limits, and governing law.",
     "iconName": "Scale",
     "badge": "New",
@@ -6120,7 +6745,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Website & SaaS Terms of Service Builder \u2014 QuickForma",
-    "metaDescription": "Free online Website & SaaS Terms of Service Builder. Standard terms of service agreement builder outlining user rules, liability limits, and governing law. Fast, private, client-side execution."
+    "metaDescription": "Free online Website & SaaS Terms of Service Builder. Standard terms of service agreement builder outlining user rules, liability limits, and governing law. Fast, private, client-side execution.",
+    "subcategory": "documents:corporate-policies",
+    "subcategoryLabel": "Scopes, Policies & Minutes"
   },
   {
     "id": "incident-report-generator",
@@ -6128,8 +6755,8 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "business"
     ],
     "name": "Workplace Incident & Safety Report PDF",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "documents",
+    "categoryLabel": "Business & Legal Documents",
     "description": "HR and OSHA workplace injury/incident documentation builder.",
     "iconName": "AlertTriangle",
     "badge": "New",
@@ -6141,7 +6768,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Workplace Incident & Safety Report PDF \u2014 QuickForma",
-    "metaDescription": "Free online Workplace Incident & Safety Report PDF. HR and OSHA workplace injury/incident documentation builder. Fast, private, client-side execution."
+    "metaDescription": "Free online Workplace Incident & Safety Report PDF. HR and OSHA workplace injury/incident documentation builder. Fast, private, client-side execution.",
+    "subcategory": "documents:corporate-policies",
+    "subcategoryLabel": "Scopes, Policies & Minutes"
   },
   {
     "id": "memorandum-of-understanding-generator",
@@ -6149,8 +6778,8 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "business"
     ],
     "name": "MOU Partnership Agreement Generator",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "documents",
+    "categoryLabel": "Business & Legal Documents",
     "description": "Non-binding Memorandum of Understanding generator for strategic business partnerships.",
     "iconName": "Handshake",
     "badge": "New",
@@ -6162,12 +6791,13 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "MOU Partnership Agreement Generator \u2014 QuickForma",
-    "metaDescription": "Free online MOU Partnership Agreement Generator. Non-binding Memorandum of Understanding generator for strategic business partnerships. Fast, private, client-side execution."
+    "metaDescription": "Free online MOU Partnership Agreement Generator. Non-binding Memorandum of Understanding generator for strategic business partnerships. Fast, private, client-side execution.",
+    "subcategory": "documents:corporate-policies",
+    "subcategoryLabel": "Scopes, Policies & Minutes"
   },
   {
     "id": "html-entity-encoder",
     "verticals": [
-      "business",
       "developers"
     ],
     "name": "HTML Entity Encoder & Escaper",
@@ -6184,12 +6814,13 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "HTML Entity Encoder & Escaper \u2014 QuickForma",
-    "metaDescription": "Free online HTML Entity Encoder & Escaper. Encodes special HTML characters into entities and decodes escaped HTML strings. Fast, private, client-side execution."
+    "metaDescription": "Free online HTML Entity Encoder & Escaper. Encodes special HTML characters into entities and decodes escaped HTML strings. Fast, private, client-side execution.",
+    "subcategory": "developer:encoders-decoders",
+    "subcategoryLabel": "Encoders & Decoders"
   },
   {
     "id": "hmac-generator",
     "verticals": [
-      "business",
       "developers"
     ],
     "name": "HMAC-SHA256 Signature Generator",
@@ -6206,12 +6837,13 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "HMAC-SHA256 Signature Generator \u2014 QuickForma",
-    "metaDescription": "Free online HMAC-SHA256 Signature Generator. Generates HMAC webhooks signatures for testing Stripe, Shopify, GitHub, and API webhooks. Fast, private, client-side execution."
+    "metaDescription": "Free online HMAC-SHA256 Signature Generator. Generates HMAC webhooks signatures for testing Stripe, Shopify, GitHub, and API webhooks. Fast, private, client-side execution.",
+    "subcategory": "developer:cryptography-security",
+    "subcategoryLabel": "Cryptography & Hashing"
   },
   {
     "id": "css-minifier-unminifier",
     "verticals": [
-      "business",
       "developers"
     ],
     "name": "CSS Minifier & Code Formatter",
@@ -6228,12 +6860,13 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "CSS Minifier & Code Formatter \u2014 QuickForma",
-    "metaDescription": "Free online CSS Minifier & Code Formatter. Minifies CSS stylesheets and formats minified CSS into clean, readable code. Fast, private, client-side execution."
+    "metaDescription": "Free online CSS Minifier & Code Formatter. Minifies CSS stylesheets and formats minified CSS into clean, readable code. Fast, private, client-side execution.",
+    "subcategory": "developer:code-formatting",
+    "subcategoryLabel": "CSS, Formatting & Minifiers"
   },
   {
     "id": "js-beautifier-minifier",
     "verticals": [
-      "business",
       "developers"
     ],
     "name": "JavaScript Code Beautifier & Formatter",
@@ -6250,12 +6883,13 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "JavaScript Code Beautifier & Formatter \u2014 QuickForma",
-    "metaDescription": "Free online JavaScript Code Beautifier & Formatter. Formats obfuscated or single-line JS code into structured, indented JavaScript. Fast, private, client-side execution."
+    "metaDescription": "Free online JavaScript Code Beautifier & Formatter. Formats obfuscated or single-line JS code into structured, indented JavaScript. Fast, private, client-side execution.",
+    "subcategory": "developer:code-formatting",
+    "subcategoryLabel": "CSS, Formatting & Minifiers"
   },
   {
     "id": "dns-lookup-tool",
     "verticals": [
-      "business",
       "developers"
     ],
     "name": "DNS Record Syntax Generator",
@@ -6272,12 +6906,13 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "DNS Record Syntax Generator \u2014 QuickForma",
-    "metaDescription": "Free online DNS Record Syntax Generator. Generates and validates DNS record syntax for A, CNAME, MX, TXT, SPF, and DKIM records. Fast, private, client-side execution."
+    "metaDescription": "Free online DNS Record Syntax Generator. Generates and validates DNS record syntax for A, CNAME, MX, TXT, SPF, and DKIM records. Fast, private, client-side execution.",
+    "subcategory": "developer:networking-devops",
+    "subcategoryLabel": "Networking, CIDR & DevOps"
   },
   {
     "id": "ip-range-calculator",
     "verticals": [
-      "business",
       "developers"
     ],
     "name": "IP Address Range & Network Gateway Solver",
@@ -6294,12 +6929,13 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "IP Address Range & Network Gateway Solver \u2014 QuickForma",
-    "metaDescription": "Free online IP Address Range & Network Gateway Solver. Calculates IP address ranges, network IDs, and wildcards for network configuration. Fast, private, client-side execution."
+    "metaDescription": "Free online IP Address Range & Network Gateway Solver. Calculates IP address ranges, network IDs, and wildcards for network configuration. Fast, private, client-side execution.",
+    "subcategory": "developer:networking-devops",
+    "subcategoryLabel": "Networking, CIDR & DevOps"
   },
   {
     "id": "svg-path-formatter",
     "verticals": [
-      "business",
       "developers"
     ],
     "name": "SVG Path Data Optimizer & Cleaner",
@@ -6316,12 +6952,13 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "SVG Path Data Optimizer & Cleaner \u2014 QuickForma",
-    "metaDescription": "Free online SVG Path Data Optimizer & Cleaner. Minifies SVG XML code and optimizes SVG path coordinates client-side in browser. Fast, private, client-side execution."
+    "metaDescription": "Free online SVG Path Data Optimizer & Cleaner. Minifies SVG XML code and optimizes SVG path coordinates client-side in browser. Fast, private, client-side execution.",
+    "subcategory": "developer:code-formatting",
+    "subcategoryLabel": "CSS, Formatting & Minifiers"
   },
   {
     "id": "http-header-generator",
     "verticals": [
-      "business",
       "developers"
     ],
     "name": "HTTP Security Headers & CORS Policy Builder",
@@ -6338,12 +6975,13 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "HTTP Security Headers & CORS Policy Builder \u2014 QuickForma",
-    "metaDescription": "Free online HTTP Security Headers & CORS Policy Builder. Generates recommended HTTP response headers (CSP, HSTS, X-Frame-Options) for web servers. Fast, private, client-side execution."
+    "metaDescription": "Free online HTTP Security Headers & CORS Policy Builder. Generates recommended HTTP response headers (CSP, HSTS, X-Frame-Options) for web servers. Fast, private, client-side execution.",
+    "subcategory": "developer:networking-devops",
+    "subcategoryLabel": "Networking, CIDR & DevOps"
   },
   {
     "id": "sitemap-xml-builder",
     "verticals": [
-      "business",
       "developers"
     ],
     "name": "Visual XML Sitemap Path Builder",
@@ -6360,13 +6998,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Visual XML Sitemap Path Builder \u2014 QuickForma",
-    "metaDescription": "Free online Visual XML Sitemap Path Builder. Constructs clean XML sitemaps with `<loc>`, `<lastmod>`, `<changefreq>`, and `<priority>` tags. Fast, private, client-side execution."
+    "metaDescription": "Free online Visual XML Sitemap Path Builder. Constructs clean XML sitemaps with `<loc>`, `<lastmod>`, `<changefreq>`, and `<priority>` tags. Fast, private, client-side execution.",
+    "subcategory": "developer:data-formats",
+    "subcategoryLabel": "Data Formats (JSON, XML, SQL)"
   },
   {
     "id": "text-to-speech-estimator",
     "verticals": [
-      "business",
-      "students"
+      "business"
     ],
     "name": "Script Word Count to Audio Duration Converter",
     "category": "writing",
@@ -6382,13 +7021,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Script Word Count to Audio Duration Converter \u2014 QuickForma",
-    "metaDescription": "Free online Script Word Count to Audio Duration Converter. Estimates speech duration in minutes/seconds based on words per minute (e. Fast, private, client-side execution."
+    "metaDescription": "Free online Script Word Count to Audio Duration Converter. Estimates speech duration in minutes/seconds based on words per minute (e. Fast, private, client-side execution.",
+    "subcategory": "writing:editorial-utilities",
+    "subcategoryLabel": "Diffs & Editorial Tools"
   },
   {
     "id": "anchor-text-ratio-planner",
     "verticals": [
       "business",
-      "students"
+      "marketing"
     ],
     "name": "SEO Internal Anchor Text Distribution Planner",
     "category": "writing",
@@ -6404,12 +7045,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "SEO Internal Anchor Text Distribution Planner \u2014 QuickForma",
-    "metaDescription": "Free online SEO Internal Anchor Text Distribution Planner. Audits internal link anchor text ratios (exact match vs branded vs partial match). Fast, private, client-side execution."
+    "metaDescription": "Free online SEO Internal Anchor Text Distribution Planner. Audits internal link anchor text ratios (exact match vs branded vs partial match). Fast, private, client-side execution.",
+    "subcategory": "writing:content-optimization",
+    "subcategoryLabel": "SEO Snippets & Meta Tags"
   },
   {
     "id": "canonical-tag-generator",
     "verticals": [
-      "business"
+      "business",
+      "marketing"
     ],
     "name": "Canonical URL Tag & Cross-Domain Link Builder",
     "category": "marketing",
@@ -6425,7 +7069,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Canonical URL Tag & Cross-Domain Link Builder \u2014 QuickForma",
-    "metaDescription": "Free online Canonical URL Tag & Cross-Domain Link Builder. Generates self-referential and cross-domain `<link rel=\"canonical\">` HTML tags. Fast, private, client-side execution."
+    "metaDescription": "Free online Canonical URL Tag & Cross-Domain Link Builder. Generates self-referential and cross-domain `<link rel=\"canonical\">` HTML tags. Fast, private, client-side execution.",
+    "subcategory": "marketing:seo-analytics",
+    "subcategoryLabel": "SEO & Marketing Analytics"
   },
   {
     "id": "paragraph-counter-analyzer",
@@ -6447,13 +7093,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Paragraph Length & Sentence Complexity Analyzer \u2014 QuickForma",
-    "metaDescription": "Free online Paragraph Length & Sentence Complexity Analyzer. Counts paragraphs, average sentence length, and flags overly complex sentences. Fast, private, client-side execution."
+    "metaDescription": "Free online Paragraph Length & Sentence Complexity Analyzer. Counts paragraphs, average sentence length, and flags overly complex sentences. Fast, private, client-side execution.",
+    "subcategory": "writing:text-analysis",
+    "subcategoryLabel": "Readability & Text Analysis"
   },
   {
     "id": "slug-to-title-converter",
     "verticals": [
-      "business",
-      "students"
+      "developers"
     ],
     "name": "URL Slug to Clean Headline Title Converter",
     "category": "writing",
@@ -6469,7 +7116,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "URL Slug to Clean Headline Title Converter \u2014 QuickForma",
-    "metaDescription": "Free online URL Slug to Clean Headline Title Converter. Converts URL handles (e. Fast, private, client-side execution."
+    "metaDescription": "Free online URL Slug to Clean Headline Title Converter. Converts URL handles (e. Fast, private, client-side execution.",
+    "subcategory": "writing:text-transformation",
+    "subcategoryLabel": "Case & Text Cleaners"
   },
   {
     "id": "word-frequency-counter",
@@ -6491,13 +7140,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "N-Gram Word Pair & Triplet Frequency Analyzer \u2014 QuickForma",
-    "metaDescription": "Free online N-Gram Word Pair & Triplet Frequency Analyzer. Counts most frequent bi-grams and tri-grams in lengthy content. Fast, private, client-side execution."
+    "metaDescription": "Free online N-Gram Word Pair & Triplet Frequency Analyzer. Counts most frequent bi-grams and tri-grams in lengthy content. Fast, private, client-side execution.",
+    "subcategory": "writing:text-analysis",
+    "subcategoryLabel": "Readability & Text Analysis"
   },
   {
     "id": "lorem-markdown-generator",
     "verticals": [
       "business",
-      "students"
+      "developers"
     ],
     "name": "Rich Markdown Placeholder Text & Heading Generator",
     "category": "writing",
@@ -6513,13 +7164,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Rich Markdown Placeholder Text & Heading Generator \u2014 QuickForma",
-    "metaDescription": "Free online Rich Markdown Placeholder Text & Heading Generator. Generates dummy Markdown text complete with headings (`#`, `##`), lists, and blockquotes. Fast, private, client-side execution."
+    "metaDescription": "Free online Rich Markdown Placeholder Text & Heading Generator. Generates dummy Markdown text complete with headings (`#`, `##`), lists, and blockquotes. Fast, private, client-side execution.",
+    "subcategory": "writing:editorial-utilities",
+    "subcategoryLabel": "Diffs & Editorial Tools"
   },
   {
     "id": "alt-text-accessibility-checker",
     "verticals": [
-      "business",
-      "students"
+      "business"
     ],
     "name": "Image Alt Text Character & Descriptive Audit",
     "category": "writing",
@@ -6535,7 +7187,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Image Alt Text Character & Descriptive Audit \u2014 QuickForma",
-    "metaDescription": "Free online Image Alt Text Character & Descriptive Audit. Audits image alt text for accessibility standards, length, and keyword stuffing. Fast, private, client-side execution."
+    "metaDescription": "Free online Image Alt Text Character & Descriptive Audit. Audits image alt text for accessibility standards, length, and keyword stuffing. Fast, private, client-side execution.",
+    "subcategory": "writing:content-optimization",
+    "subcategoryLabel": "SEO Snippets & Meta Tags"
   },
   {
     "id": "law-school-gpa-calculator",
@@ -6556,16 +7210,18 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "LSAC Law School Admission GPA Converter \u2014 QuickForma",
-    "metaDescription": "Free online LSAC Law School Admission GPA Converter. Online client-side LSAC Law School Admission GPA Converter tool. Fast, private, client-side execution."
+    "metaDescription": "Free online LSAC Law School Admission GPA Converter. Online client-side LSAC Law School Admission GPA Converter tool. Fast, private, client-side execution.",
+    "subcategory": "academic:gpa-grading",
+    "subcategoryLabel": "GPA & Grade Calculators"
   },
   {
     "id": "medical-school-gpa-calculator",
     "verticals": [
-      "business"
+      "students"
     ],
     "name": "AMCAS Science / Non-Science BCPM GPA Solver",
-    "category": "marketing",
-    "categoryLabel": "Sales & Growth Marketing",
+    "category": "academic",
+    "categoryLabel": "Education & Academic Tools",
     "description": "Online client-side AMCAS Science / Non-Science BCPM GPA Solver tool.",
     "iconName": "Stethoscope",
     "badge": "New",
@@ -6577,7 +7233,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "AMCAS Science / Non-Science BCPM GPA Solver \u2014 QuickForma",
-    "metaDescription": "Free online AMCAS Science / Non-Science BCPM GPA Solver. Online client-side AMCAS Science / Non-Science BCPM GPA Solver tool. Fast, private, client-side execution."
+    "metaDescription": "Free online AMCAS Science / Non-Science BCPM GPA Solver. Online client-side AMCAS Science / Non-Science BCPM GPA Solver tool. Fast, private, client-side execution.",
+    "subcategory": "academic:gpa-grading",
+    "subcategoryLabel": "GPA & Grade Calculators"
   },
   {
     "id": "ncaa-core-gpa-calculator",
@@ -6598,16 +7256,18 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "NCAA Student-Athlete Core Course GPA Solver \u2014 QuickForma",
-    "metaDescription": "Free online NCAA Student-Athlete Core Course GPA Solver. Online client-side NCAA Student-Athlete Core Course GPA Solver tool. Fast, private, client-side execution."
+    "metaDescription": "Free online NCAA Student-Athlete Core Course GPA Solver. Online client-side NCAA Student-Athlete Core Course GPA Solver tool. Fast, private, client-side execution.",
+    "subcategory": "academic:gpa-grading",
+    "subcategoryLabel": "GPA & Grade Calculators"
   },
   {
     "id": "class-rank-percentile-calculator",
     "verticals": [
-      "business"
+      "students"
     ],
     "name": "High School & Class Rank Percentile Solver",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "academic",
+    "categoryLabel": "Education & Academic Tools",
     "description": "Online client-side High School & Class Rank Percentile Solver tool.",
     "iconName": "Users",
     "badge": "New",
@@ -6619,7 +7279,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "High School & Class Rank Percentile Solver \u2014 QuickForma",
-    "metaDescription": "Free online High School & Class Rank Percentile Solver. Online client-side High School & Class Rank Percentile Solver tool. Fast, private, client-side execution."
+    "metaDescription": "Free online High School & Class Rank Percentile Solver. Online client-side High School & Class Rank Percentile Solver tool. Fast, private, client-side execution.",
+    "subcategory": "academic:planning-records",
+    "subcategoryLabel": "Academic Planning & Credits"
   },
   {
     "id": "pass-fail-gpa-impact-calculator",
@@ -6640,7 +7302,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Pass/Fail Course Selection GPA Impact Solver \u2014 QuickForma",
-    "metaDescription": "Free online Pass/Fail Course Selection GPA Impact Solver. Online client-side Pass/Fail Course Selection GPA Impact Solver tool. Fast, private, client-side execution."
+    "metaDescription": "Free online Pass/Fail Course Selection GPA Impact Solver. Online client-side Pass/Fail Course Selection GPA Impact Solver tool. Fast, private, client-side execution.",
+    "subcategory": "academic:gpa-grading",
+    "subcategoryLabel": "GPA & Grade Calculators"
   },
   {
     "id": "graduate-school-gpa-calculator",
@@ -6661,16 +7325,18 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Graduate Master's Program GPA Calculator \u2014 QuickForma",
-    "metaDescription": "Free online Graduate Master's Program GPA Calculator. Online client-side Graduate Master's Program GPA Calculator tool. Fast, private, client-side execution."
+    "metaDescription": "Free online Graduate Master's Program GPA Calculator. Online client-side Graduate Master's Program GPA Calculator tool. Fast, private, client-side execution.",
+    "subcategory": "academic:gpa-grading",
+    "subcategoryLabel": "GPA & Grade Calculators"
   },
   {
     "id": "academic-standing-calculator",
     "verticals": [
-      "business"
+      "students"
     ],
     "name": "Dean's List vs Academic Probation GPA Threshold",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "academic",
+    "categoryLabel": "Education & Academic Tools",
     "description": "Online client-side Dean's List vs Academic Probation GPA Threshold tool.",
     "iconName": "ShieldAlert",
     "badge": "New",
@@ -6682,16 +7348,18 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Dean's List vs Academic Probation GPA Threshold \u2014 QuickForma",
-    "metaDescription": "Free online Dean's List vs Academic Probation GPA Threshold. Online client-side Dean's List vs Academic Probation GPA Threshold tool. Fast, private, client-side execution."
+    "metaDescription": "Free online Dean's List vs Academic Probation GPA Threshold. Online client-side Dean's List vs Academic Probation GPA Threshold tool. Fast, private, client-side execution.",
+    "subcategory": "academic:planning-records",
+    "subcategoryLabel": "Academic Planning & Credits"
   },
   {
     "id": "high-school-credit-calculator",
     "verticals": [
-      "business"
+      "students"
     ],
     "name": "High School Diploma Credit Completion Tracker",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "academic",
+    "categoryLabel": "Education & Academic Tools",
     "description": "Online client-side High School Diploma Credit Completion Tracker tool.",
     "iconName": "BookOpen",
     "badge": "New",
@@ -6703,7 +7371,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "High School Diploma Credit Completion Tracker \u2014 QuickForma",
-    "metaDescription": "Free online High School Diploma Credit Completion Tracker. Online client-side High School Diploma Credit Completion Tracker tool. Fast, private, client-side execution."
+    "metaDescription": "Free online High School Diploma Credit Completion Tracker. Online client-side High School Diploma Credit Completion Tracker tool. Fast, private, client-side execution.",
+    "subcategory": "academic:planning-records",
+    "subcategoryLabel": "Academic Planning & Credits"
   },
   {
     "id": "degree-completion-calculator",
@@ -6724,16 +7394,18 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Degree Credit Progress & Remaining Semester Estimator \u2014 QuickForma",
-    "metaDescription": "Free online Degree Credit Progress & Remaining Semester Estimator. Online client-side Degree Credit Progress & Remaining Semester Estimator tool. Fast, private, client-side execution."
+    "metaDescription": "Free online Degree Credit Progress & Remaining Semester Estimator. Online client-side Degree Credit Progress & Remaining Semester Estimator tool. Fast, private, client-side execution.",
+    "subcategory": "academic:planning-records",
+    "subcategoryLabel": "Academic Planning & Credits"
   },
   {
     "id": "prerequisite-course-planner",
     "verticals": [
-      "business"
+      "students"
     ],
     "name": "College Course Sequence & Prerequisite Planner",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "academic",
+    "categoryLabel": "Education & Academic Tools",
     "description": "Online client-side College Course Sequence & Prerequisite Planner tool.",
     "iconName": "GitBranch",
     "badge": "New",
@@ -6745,16 +7417,18 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "College Course Sequence & Prerequisite Planner \u2014 QuickForma",
-    "metaDescription": "Free online College Course Sequence & Prerequisite Planner. Online client-side College Course Sequence & Prerequisite Planner tool. Fast, private, client-side execution."
+    "metaDescription": "Free online College Course Sequence & Prerequisite Planner. Online client-side College Course Sequence & Prerequisite Planner tool. Fast, private, client-side execution.",
+    "subcategory": "academic:planning-records",
+    "subcategoryLabel": "Academic Planning & Credits"
   },
   {
     "id": "ged-score-calculator",
     "verticals": [
-      "business"
+      "students"
     ],
     "name": "GED Subject Score Percentile & Passing Status Checker",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "academic",
+    "categoryLabel": "Education & Academic Tools",
     "description": "Online client-side GED Subject Score Percentile & Passing Status Checker tool.",
     "iconName": "Award",
     "badge": "New",
@@ -6766,7 +7440,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "GED Subject Score Percentile & Passing Status Checker \u2014 QuickForma",
-    "metaDescription": "Free online GED Subject Score Percentile & Passing Status Checker. Online client-side GED Subject Score Percentile & Passing Status Checker tool. Fast, private, client-side execution."
+    "metaDescription": "Free online GED Subject Score Percentile & Passing Status Checker. Online client-side GED Subject Score Percentile & Passing Status Checker tool. Fast, private, client-side execution.",
+    "subcategory": "academic:exam-test-prep",
+    "subcategoryLabel": "Exams & Standardized Tests"
   },
   {
     "id": "gre-score-percentile-calculator",
@@ -6787,16 +7463,18 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "GRE Verbal & Quant Percentile Rank Solver \u2014 QuickForma",
-    "metaDescription": "Free online GRE Verbal & Quant Percentile Rank Solver. Online client-side GRE Verbal & Quant Percentile Rank Solver tool. Fast, private, client-side execution."
+    "metaDescription": "Free online GRE Verbal & Quant Percentile Rank Solver. Online client-side GRE Verbal & Quant Percentile Rank Solver tool. Fast, private, client-side execution.",
+    "subcategory": "academic:exam-test-prep",
+    "subcategoryLabel": "Exams & Standardized Tests"
   },
   {
     "id": "gmat-score-calculator",
     "verticals": [
-      "business"
+      "students"
     ],
     "name": "GMAT Focus Edition Section & Percentile Estimator",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "academic",
+    "categoryLabel": "Education & Academic Tools",
     "description": "Online client-side GMAT Focus Edition Section & Percentile Estimator tool.",
     "iconName": "BarChart3",
     "badge": "New",
@@ -6808,7 +7486,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "GMAT Focus Edition Section & Percentile Estimator \u2014 QuickForma",
-    "metaDescription": "Free online GMAT Focus Edition Section & Percentile Estimator. Online client-side GMAT Focus Edition Section & Percentile Estimator tool. Fast, private, client-side execution."
+    "metaDescription": "Free online GMAT Focus Edition Section & Percentile Estimator. Online client-side GMAT Focus Edition Section & Percentile Estimator tool. Fast, private, client-side execution.",
+    "subcategory": "academic:exam-test-prep",
+    "subcategoryLabel": "Exams & Standardized Tests"
   },
   {
     "id": "toefl-ielts-score-converter",
@@ -6829,16 +7509,18 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "TOEFL iBT to IELTS Band Score Converter \u2014 QuickForma",
-    "metaDescription": "Free online TOEFL iBT to IELTS Band Score Converter. Online client-side TOEFL iBT to IELTS Band Score Converter tool. Fast, private, client-side execution."
+    "metaDescription": "Free online TOEFL iBT to IELTS Band Score Converter. Online client-side TOEFL iBT to IELTS Band Score Converter tool. Fast, private, client-side execution.",
+    "subcategory": "academic:exam-test-prep",
+    "subcategoryLabel": "Exams & Standardized Tests"
   },
   {
     "id": "clep-credit-calculator",
     "verticals": [
-      "business"
+      "students"
     ],
     "name": "CLEP Exam Credit Hour & Tuition Savings Solver",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "academic",
+    "categoryLabel": "Education & Academic Tools",
     "description": "Online client-side CLEP Exam Credit Hour & Tuition Savings Solver tool.",
     "iconName": "GraduationCap",
     "badge": "New",
@@ -6850,7 +7532,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "CLEP Exam Credit Hour & Tuition Savings Solver \u2014 QuickForma",
-    "metaDescription": "Free online CLEP Exam Credit Hour & Tuition Savings Solver. Online client-side CLEP Exam Credit Hour & Tuition Savings Solver tool. Fast, private, client-side execution."
+    "metaDescription": "Free online CLEP Exam Credit Hour & Tuition Savings Solver. Online client-side CLEP Exam Credit Hour & Tuition Savings Solver tool. Fast, private, client-side execution.",
+    "subcategory": "academic:exam-test-prep",
+    "subcategoryLabel": "Exams & Standardized Tests"
   },
   {
     "id": "academic-forgiveness-gpa-calculator",
@@ -6871,7 +7555,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Course Repeat & Grade Replacement GPA Solver \u2014 QuickForma",
-    "metaDescription": "Free online Course Repeat & Grade Replacement GPA Solver. Online client-side Course Repeat & Grade Replacement GPA Solver tool. Fast, private, client-side execution."
+    "metaDescription": "Free online Course Repeat & Grade Replacement GPA Solver. Online client-side Course Repeat & Grade Replacement GPA Solver tool. Fast, private, client-side execution.",
+    "subcategory": "academic:gpa-grading",
+    "subcategoryLabel": "GPA & Grade Calculators"
   },
   {
     "id": "stem-major-gpa-calculator",
@@ -6892,7 +7578,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Engineering & Science Major Core GPA Solver \u2014 QuickForma",
-    "metaDescription": "Free online Engineering & Science Major Core GPA Solver. Online client-side Engineering & Science Major Core GPA Solver tool. Fast, private, client-side execution."
+    "metaDescription": "Free online Engineering & Science Major Core GPA Solver. Online client-side Engineering & Science Major Core GPA Solver tool. Fast, private, client-side execution.",
+    "subcategory": "academic:gpa-grading",
+    "subcategoryLabel": "GPA & Grade Calculators"
   },
   {
     "id": "business-major-gpa-calculator",
@@ -6913,7 +7601,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Finance & Accounting Major Core GPA Solver \u2014 QuickForma",
-    "metaDescription": "Free online Finance & Accounting Major Core GPA Solver. Online client-side Finance & Accounting Major Core GPA Solver tool. Fast, private, client-side execution."
+    "metaDescription": "Free online Finance & Accounting Major Core GPA Solver. Online client-side Finance & Accounting Major Core GPA Solver tool. Fast, private, client-side execution.",
+    "subcategory": "academic:gpa-grading",
+    "subcategoryLabel": "GPA & Grade Calculators"
   },
   {
     "id": "nursing-school-gpa-calculator",
@@ -6934,17 +7624,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Nursing Prerequisite & Science GPA Solver \u2014 QuickForma",
-    "metaDescription": "Free online Nursing Prerequisite & Science GPA Solver. Online client-side Nursing Prerequisite & Science GPA Solver tool. Fast, private, client-side execution."
+    "metaDescription": "Free online Nursing Prerequisite & Science GPA Solver. Online client-side Nursing Prerequisite & Science GPA Solver tool. Fast, private, client-side execution.",
+    "subcategory": "academic:gpa-grading",
+    "subcategoryLabel": "GPA & Grade Calculators"
   },
   {
     "id": "complex-numbers-calculator",
     "verticals": [
-      "business",
+      "science",
       "students"
     ],
     "name": "Polar vs Rectangular Complex Number Calculator",
-    "category": "converters",
-    "categoryLabel": "Converters & Measurement",
+    "category": "math-stats",
+    "categoryLabel": "Mathematics & Statistics",
     "description": "Online client-side Polar vs Rectangular Complex Number Calculator tool.",
     "iconName": "Compass",
     "badge": "New",
@@ -6956,17 +7648,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Polar vs Rectangular Complex Number Calculator \u2014 QuickForma",
-    "metaDescription": "Free online Polar vs Rectangular Complex Number Calculator. Online client-side Polar vs Rectangular Complex Number Calculator tool. Fast, private, client-side execution."
+    "metaDescription": "Free online Polar vs Rectangular Complex Number Calculator. Online client-side Polar vs Rectangular Complex Number Calculator tool. Fast, private, client-side execution.",
+    "subcategory": "math-stats:geometry-conics",
+    "subcategoryLabel": "Geometry & Conics"
   },
   {
     "id": "factorial-calculator",
     "verticals": [
-      "business",
+      "science",
       "students"
     ],
     "name": "Factorial $n!$ & Permutation Formula Solver",
-    "category": "converters",
-    "categoryLabel": "Converters & Measurement",
+    "category": "math-stats",
+    "categoryLabel": "Mathematics & Statistics",
     "description": "Online client-side Factorial $n!$ & Permutation Formula Solver tool.",
     "iconName": "FunctionSquare",
     "badge": "New",
@@ -6978,12 +7672,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Factorial $n!$ & Permutation Formula Solver \u2014 QuickForma",
-    "metaDescription": "Free online Factorial $n!$ & Permutation Formula Solver. Online client-side Factorial $n!$ & Permutation Formula Solver tool. Fast, private, client-side execution."
+    "metaDescription": "Free online Factorial $n!$ & Permutation Formula Solver. Online client-side Factorial $n!$ & Permutation Formula Solver tool. Fast, private, client-side execution.",
+    "subcategory": "math-stats:geometry-conics",
+    "subcategoryLabel": "Geometry & Conics"
   },
   {
     "id": "logarithm-change-of-base-tool",
     "verticals": [
-      "business",
+      "science",
       "students"
     ],
     "name": "Logarithm Base-$b$ Conversion Solver",
@@ -7000,17 +7696,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Logarithm Base-$b$ Conversion Solver \u2014 QuickForma",
-    "metaDescription": "Free online Logarithm Base-$b$ Conversion Solver. Online client-side Logarithm Base-$b$ Conversion Solver tool. Fast, private, client-side execution."
+    "metaDescription": "Free online Logarithm Base-$b$ Conversion Solver. Online client-side Logarithm Base-$b$ Conversion Solver tool. Fast, private, client-side execution.",
+    "subcategory": "math-stats:algebra-calculus",
+    "subcategoryLabel": "Algebra & Calculus"
   },
   {
     "id": "ellipse-hyperbola-calculator",
     "verticals": [
-      "business",
+      "science",
       "students"
     ],
     "name": "Conic Sections: Ellipse & Hyperbola Solver",
-    "category": "converters",
-    "categoryLabel": "Converters & Measurement",
+    "category": "math-stats",
+    "categoryLabel": "Mathematics & Statistics",
     "description": "Online client-side Conic Sections: Ellipse & Hyperbola Solver tool.",
     "iconName": "Orbit",
     "badge": "New",
@@ -7022,12 +7720,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Conic Sections: Ellipse & Hyperbola Solver \u2014 QuickForma",
-    "metaDescription": "Free online Conic Sections: Ellipse & Hyperbola Solver. Online client-side Conic Sections: Ellipse & Hyperbola Solver tool. Fast, private, client-side execution."
+    "metaDescription": "Free online Conic Sections: Ellipse & Hyperbola Solver. Online client-side Conic Sections: Ellipse & Hyperbola Solver tool. Fast, private, client-side execution.",
+    "subcategory": "math-stats:geometry-conics",
+    "subcategoryLabel": "Geometry & Conics"
   },
   {
     "id": "partial-fraction-calculator",
     "verticals": [
-      "business",
+      "science",
       "students"
     ],
     "name": "Partial Fraction Decomposition Solver",
@@ -7044,16 +7744,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Partial Fraction Decomposition Solver \u2014 QuickForma",
-    "metaDescription": "Free online Partial Fraction Decomposition Solver. Online client-side Partial Fraction Decomposition Solver tool. Fast, private, client-side execution."
+    "metaDescription": "Free online Partial Fraction Decomposition Solver. Online client-side Partial Fraction Decomposition Solver tool. Fast, private, client-side execution.",
+    "subcategory": "math-stats:basic-arithmetic",
+    "subcategoryLabel": "Arithmetic & Percentages"
   },
   {
     "id": "poisson-distribution-calculator",
     "verticals": [
-      "business"
+      "science",
+      "students"
     ],
     "name": "Poisson Event Probability & Rate Solver",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "math-stats",
+    "categoryLabel": "Mathematics & Statistics",
     "description": "Online client-side Poisson Event Probability & Rate Solver tool.",
     "iconName": "BarChart",
     "badge": "New",
@@ -7065,16 +7768,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Poisson Event Probability & Rate Solver \u2014 QuickForma",
-    "metaDescription": "Free online Poisson Event Probability & Rate Solver. Online client-side Poisson Event Probability & Rate Solver tool. Fast, private, client-side execution."
+    "metaDescription": "Free online Poisson Event Probability & Rate Solver. Online client-side Poisson Event Probability & Rate Solver tool. Fast, private, client-side execution.",
+    "subcategory": "math-stats:probability-distributions",
+    "subcategoryLabel": "Probability & Distributions"
   },
   {
     "id": "exponential-distribution-calculator",
     "verticals": [
-      "business"
+      "science",
+      "students"
     ],
     "name": "Continuous Exponential Decay & Reliability",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "math-stats",
+    "categoryLabel": "Mathematics & Statistics",
     "description": "Online client-side Continuous Exponential Decay & Reliability tool.",
     "iconName": "TrendingDown",
     "badge": "New",
@@ -7086,16 +7792,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Continuous Exponential Decay & Reliability \u2014 QuickForma",
-    "metaDescription": "Free online Continuous Exponential Decay & Reliability. Online client-side Continuous Exponential Decay & Reliability tool. Fast, private, client-side execution."
+    "metaDescription": "Free online Continuous Exponential Decay & Reliability. Online client-side Continuous Exponential Decay & Reliability tool. Fast, private, client-side execution.",
+    "subcategory": "math-stats:probability-distributions",
+    "subcategoryLabel": "Probability & Distributions"
   },
   {
     "id": "bayes-theorem-calculator",
     "verticals": [
-      "business"
+      "science",
+      "students"
     ],
     "name": "Bayesian Conditional Probability & Prior Solver",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "math-stats",
+    "categoryLabel": "Mathematics & Statistics",
     "description": "Online client-side Bayesian Conditional Probability & Prior Solver tool.",
     "iconName": "GitCommit",
     "badge": "New",
@@ -7107,16 +7816,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Bayesian Conditional Probability & Prior Solver \u2014 QuickForma",
-    "metaDescription": "Free online Bayesian Conditional Probability & Prior Solver. Online client-side Bayesian Conditional Probability & Prior Solver tool. Fast, private, client-side execution."
+    "metaDescription": "Free online Bayesian Conditional Probability & Prior Solver. Online client-side Bayesian Conditional Probability & Prior Solver tool. Fast, private, client-side execution.",
+    "subcategory": "math-stats:probability-distributions",
+    "subcategoryLabel": "Probability & Distributions"
   },
   {
     "id": "buffer-solution-calculator",
     "verticals": [
-      "business"
+      "science",
+      "students"
     ],
     "name": "Henderson-Hasselbalch Buffer pH Solver",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "science",
+    "categoryLabel": "Science & Engineering",
     "description": "Online client-side Henderson-Hasselbalch Buffer pH Solver tool.",
     "iconName": "FlaskConical",
     "badge": "New",
@@ -7128,16 +7840,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Henderson-Hasselbalch Buffer pH Solver \u2014 QuickForma",
-    "metaDescription": "Free online Henderson-Hasselbalch Buffer pH Solver. Online client-side Henderson-Hasselbalch Buffer pH Solver tool. Fast, private, client-side execution."
+    "metaDescription": "Free online Henderson-Hasselbalch Buffer pH Solver. Online client-side Henderson-Hasselbalch Buffer pH Solver tool. Fast, private, client-side execution.",
+    "subcategory": "science:chemistry-solutions",
+    "subcategoryLabel": "Chemistry & Solutions"
   },
   {
     "id": "boiling-point-elevation-calculator",
     "verticals": [
-      "business"
+      "science",
+      "students"
     ],
     "name": "Colligative Properties & Freezing Point Depression",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "science",
+    "categoryLabel": "Science & Engineering",
     "description": "Online client-side Colligative Properties & Freezing Point Depression tool.",
     "iconName": "Flame",
     "badge": "New",
@@ -7149,16 +7864,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Colligative Properties & Freezing Point Depression \u2014 QuickForma",
-    "metaDescription": "Free online Colligative Properties & Freezing Point Depression. Online client-side Colligative Properties & Freezing Point Depression tool. Fast, private, client-side execution."
+    "metaDescription": "Free online Colligative Properties & Freezing Point Depression. Online client-side Colligative Properties & Freezing Point Depression tool. Fast, private, client-side execution.",
+    "subcategory": "science:thermodynamics-equilibrium",
+    "subcategoryLabel": "Thermodynamics & Reactions"
   },
   {
     "id": "activation-energy-calculator",
     "verticals": [
-      "business"
+      "science",
+      "students"
     ],
     "name": "Arrhenius Equation & Activation Energy Solver",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "science",
+    "categoryLabel": "Science & Engineering",
     "description": "Online client-side Arrhenius Equation & Activation Energy Solver tool.",
     "iconName": "Zap",
     "badge": "New",
@@ -7170,16 +7888,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Arrhenius Equation & Activation Energy Solver \u2014 QuickForma",
-    "metaDescription": "Free online Arrhenius Equation & Activation Energy Solver. Online client-side Arrhenius Equation & Activation Energy Solver tool. Fast, private, client-side execution."
+    "metaDescription": "Free online Arrhenius Equation & Activation Energy Solver. Online client-side Arrhenius Equation & Activation Energy Solver tool. Fast, private, client-side execution.",
+    "subcategory": "science:thermodynamics-equilibrium",
+    "subcategoryLabel": "Thermodynamics & Reactions"
   },
   {
     "id": "combustion-analysis-calculator",
     "verticals": [
-      "business"
+      "science",
+      "students"
     ],
     "name": "Hydrocarbon Combustion Formula Solver",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "science",
+    "categoryLabel": "Science & Engineering",
     "description": "Online client-side Hydrocarbon Combustion Formula Solver tool.",
     "iconName": "Flame",
     "badge": "New",
@@ -7191,16 +7912,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Hydrocarbon Combustion Formula Solver \u2014 QuickForma",
-    "metaDescription": "Free online Hydrocarbon Combustion Formula Solver. Online client-side Hydrocarbon Combustion Formula Solver tool. Fast, private, client-side execution."
+    "metaDescription": "Free online Hydrocarbon Combustion Formula Solver. Online client-side Hydrocarbon Combustion Formula Solver tool. Fast, private, client-side execution.",
+    "subcategory": "science:thermodynamics-equilibrium",
+    "subcategoryLabel": "Thermodynamics & Reactions"
   },
   {
     "id": "oxidation-number-calculator",
     "verticals": [
-      "business"
+      "science",
+      "students"
     ],
     "name": "Redox Reaction Oxidation State Solver",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "science",
+    "categoryLabel": "Science & Engineering",
     "description": "Online client-side Redox Reaction Oxidation State Solver tool.",
     "iconName": "Atom",
     "badge": "New",
@@ -7212,16 +7936,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Redox Reaction Oxidation State Solver \u2014 QuickForma",
-    "metaDescription": "Free online Redox Reaction Oxidation State Solver. Online client-side Redox Reaction Oxidation State Solver tool. Fast, private, client-side execution."
+    "metaDescription": "Free online Redox Reaction Oxidation State Solver. Online client-side Redox Reaction Oxidation State Solver tool. Fast, private, client-side execution.",
+    "subcategory": "science:thermodynamics-equilibrium",
+    "subcategoryLabel": "Thermodynamics & Reactions"
   },
   {
     "id": "equilibrium-constant-calculator",
     "verticals": [
-      "business"
+      "science",
+      "students"
     ],
     "name": "Chemical Equilibrium $K_c$ and $K_p$ Solver",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "science",
+    "categoryLabel": "Science & Engineering",
     "description": "Online client-side Chemical Equilibrium $K_c$ and $K_p$ Solver tool.",
     "iconName": "ArrowLeftRight",
     "badge": "New",
@@ -7233,16 +7960,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Chemical Equilibrium $K_c$ and $K_p$ Solver \u2014 QuickForma",
-    "metaDescription": "Free online Chemical Equilibrium $K_c$ and $K_p$ Solver. Online client-side Chemical Equilibrium $K_c$ and $K_p$ Solver tool. Fast, private, client-side execution."
+    "metaDescription": "Free online Chemical Equilibrium $K_c$ and $K_p$ Solver. Online client-side Chemical Equilibrium $K_c$ and $K_p$ Solver tool. Fast, private, client-side execution.",
+    "subcategory": "science:thermodynamics-equilibrium",
+    "subcategoryLabel": "Thermodynamics & Reactions"
   },
   {
     "id": "electrolysis-faraday-calculator",
     "verticals": [
-      "business"
+      "science",
+      "students"
     ],
     "name": "Faraday's Law of Electrolysis Mass Solver",
-    "category": "marketing",
-    "categoryLabel": "Sales & Growth Marketing",
+    "category": "science",
+    "categoryLabel": "Science & Engineering",
     "description": "Online client-side Faraday's Law of Electrolysis Mass Solver tool.",
     "iconName": "Zap",
     "badge": "New",
@@ -7254,11 +7984,14 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Faraday's Law of Electrolysis Mass Solver \u2014 QuickForma",
-    "metaDescription": "Free online Faraday's Law of Electrolysis Mass Solver. Online client-side Faraday's Law of Electrolysis Mass Solver tool. Fast, private, client-side execution."
+    "metaDescription": "Free online Faraday's Law of Electrolysis Mass Solver. Online client-side Faraday's Law of Electrolysis Mass Solver tool. Fast, private, client-side execution.",
+    "subcategory": "science:thermodynamics-equilibrium",
+    "subcategoryLabel": "Thermodynamics & Reactions"
   },
   {
     "id": "torque-rotational-motion-calculator",
     "verticals": [
+      "science",
       "students"
     ],
     "name": "Torque, Moment of Inertia & Rotational Kinematics",
@@ -7275,16 +8008,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Torque, Moment of Inertia & Rotational Kinematics \u2014 QuickForma",
-    "metaDescription": "Free online Torque, Moment of Inertia & Rotational Kinematics. Online client-side Torque, Moment of Inertia & Rotational Kinematics tool. Fast, private, client-side execution."
+    "metaDescription": "Free online Torque, Moment of Inertia & Rotational Kinematics. Online client-side Torque, Moment of Inertia & Rotational Kinematics tool. Fast, private, client-side execution.",
+    "subcategory": "science:classical-mechanics",
+    "subcategoryLabel": "Classical Mechanics & Motion"
   },
   {
     "id": "pendulum-harmonic-motion-calculator",
     "verticals": [
-      "business"
+      "science",
+      "students"
     ],
     "name": "Simple Harmonic Motion & Oscillation Period",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "science",
+    "categoryLabel": "Science & Engineering",
     "description": "Online client-side Simple Harmonic Motion & Oscillation Period tool.",
     "iconName": "Clock",
     "badge": "New",
@@ -7296,16 +8032,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Simple Harmonic Motion & Oscillation Period \u2014 QuickForma",
-    "metaDescription": "Free online Simple Harmonic Motion & Oscillation Period. Online client-side Simple Harmonic Motion & Oscillation Period tool. Fast, private, client-side execution."
+    "metaDescription": "Free online Simple Harmonic Motion & Oscillation Period. Online client-side Simple Harmonic Motion & Oscillation Period tool. Fast, private, client-side execution.",
+    "subcategory": "science:classical-mechanics",
+    "subcategoryLabel": "Classical Mechanics & Motion"
   },
   {
     "id": "doppler-effect-calculator",
     "verticals": [
-      "business"
+      "science",
+      "students"
     ],
     "name": "Sound & Light Wave Frequency Doppler Shift",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "science",
+    "categoryLabel": "Science & Engineering",
     "description": "Online client-side Sound & Light Wave Frequency Doppler Shift tool.",
     "iconName": "Volume2",
     "badge": "New",
@@ -7317,17 +8056,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Sound & Light Wave Frequency Doppler Shift \u2014 QuickForma",
-    "metaDescription": "Free online Sound & Light Wave Frequency Doppler Shift. Online client-side Sound & Light Wave Frequency Doppler Shift tool. Fast, private, client-side execution."
+    "metaDescription": "Free online Sound & Light Wave Frequency Doppler Shift. Online client-side Sound & Light Wave Frequency Doppler Shift tool. Fast, private, client-side execution.",
+    "subcategory": "science:physics-waves-fields",
+    "subcategoryLabel": "Circuits, Waves & Fields"
   },
   {
     "id": "refraction-snells-law-calculator",
     "verticals": [
-      "business",
+      "science",
       "students"
     ],
     "name": "Snell's Law of Refraction & Critical Angle",
-    "category": "math-stats",
-    "categoryLabel": "Mathematics & Statistics",
+    "category": "science",
+    "categoryLabel": "Science & Engineering",
     "description": "Online client-side Snell's Law of Refraction & Critical Angle tool.",
     "iconName": "Compass",
     "badge": "New",
@@ -7339,16 +8080,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Snell's Law of Refraction & Critical Angle \u2014 QuickForma",
-    "metaDescription": "Free online Snell's Law of Refraction & Critical Angle. Online client-side Snell's Law of Refraction & Critical Angle tool. Fast, private, client-side execution."
+    "metaDescription": "Free online Snell's Law of Refraction & Critical Angle. Online client-side Snell's Law of Refraction & Critical Angle tool. Fast, private, client-side execution.",
+    "subcategory": "science:physics-waves-fields",
+    "subcategoryLabel": "Circuits, Waves & Fields"
   },
   {
     "id": "capacitance-rc-circuit-calculator",
     "verticals": [
-      "business"
+      "science",
+      "students"
     ],
     "name": "Capacitor Charge & RC Time Constant Solver",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "science",
+    "categoryLabel": "Science & Engineering",
     "description": "Online client-side Capacitor Charge & RC Time Constant Solver tool.",
     "iconName": "Zap",
     "badge": "New",
@@ -7360,16 +8104,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Capacitor Charge & RC Time Constant Solver \u2014 QuickForma",
-    "metaDescription": "Free online Capacitor Charge & RC Time Constant Solver. Online client-side Capacitor Charge & RC Time Constant Solver tool. Fast, private, client-side execution."
+    "metaDescription": "Free online Capacitor Charge & RC Time Constant Solver. Online client-side Capacitor Charge & RC Time Constant Solver tool. Fast, private, client-side execution.",
+    "subcategory": "science:physics-waves-fields",
+    "subcategoryLabel": "Circuits, Waves & Fields"
   },
   {
     "id": "transformer-voltage-calculator",
     "verticals": [
-      "business"
+      "science",
+      "students"
     ],
     "name": "Electrical Transformer Turns Ratio & Voltage Solver",
-    "category": "marketing",
-    "categoryLabel": "Sales & Growth Marketing",
+    "category": "science",
+    "categoryLabel": "Science & Engineering",
     "description": "Online client-side Electrical Transformer Turns Ratio & Voltage Solver tool.",
     "iconName": "Zap",
     "badge": "New",
@@ -7381,16 +8128,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Electrical Transformer Turns Ratio & Voltage Solver \u2014 QuickForma",
-    "metaDescription": "Free online Electrical Transformer Turns Ratio & Voltage Solver. Online client-side Electrical Transformer Turns Ratio & Voltage Solver tool. Fast, private, client-side execution."
+    "metaDescription": "Free online Electrical Transformer Turns Ratio & Voltage Solver. Online client-side Electrical Transformer Turns Ratio & Voltage Solver tool. Fast, private, client-side execution.",
+    "subcategory": "science:physics-waves-fields",
+    "subcategoryLabel": "Circuits, Waves & Fields"
   },
   {
     "id": "fluid-buoyancy-archimedes-calculator",
     "verticals": [
-      "business"
+      "science",
+      "students"
     ],
     "name": "Archimedes' Principle & Buoyant Force Solver",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "science",
+    "categoryLabel": "Science & Engineering",
     "description": "Online client-side Archimedes' Principle & Buoyant Force Solver tool.",
     "iconName": "Waves",
     "badge": "New",
@@ -7402,16 +8152,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Archimedes' Principle & Buoyant Force Solver \u2014 QuickForma",
-    "metaDescription": "Free online Archimedes' Principle & Buoyant Force Solver. Online client-side Archimedes' Principle & Buoyant Force Solver tool. Fast, private, client-side execution."
+    "metaDescription": "Free online Archimedes' Principle & Buoyant Force Solver. Online client-side Archimedes' Principle & Buoyant Force Solver tool. Fast, private, client-side execution.",
+    "subcategory": "science:classical-mechanics",
+    "subcategoryLabel": "Classical Mechanics & Motion"
   },
   {
     "id": "bernoullis-equation-calculator",
     "verticals": [
-      "business"
+      "science",
+      "students"
     ],
     "name": "Fluid Dynamics Pressure & Flow Velocity Solver",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "science",
+    "categoryLabel": "Science & Engineering",
     "description": "Online client-side Fluid Dynamics Pressure & Flow Velocity Solver tool.",
     "iconName": "Wind",
     "badge": "New",
@@ -7423,16 +8176,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Fluid Dynamics Pressure & Flow Velocity Solver \u2014 QuickForma",
-    "metaDescription": "Free online Fluid Dynamics Pressure & Flow Velocity Solver. Online client-side Fluid Dynamics Pressure & Flow Velocity Solver tool. Fast, private, client-side execution."
+    "metaDescription": "Free online Fluid Dynamics Pressure & Flow Velocity Solver. Online client-side Fluid Dynamics Pressure & Flow Velocity Solver tool. Fast, private, client-side execution.",
+    "subcategory": "science:classical-mechanics",
+    "subcategoryLabel": "Classical Mechanics & Motion"
   },
   {
     "id": "special-relativity-time-dilation-calculator",
     "verticals": [
-      "business"
+      "science",
+      "students"
     ],
     "name": "Lorentz Factor & Time Dilation Solver",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "science",
+    "categoryLabel": "Science & Engineering",
     "description": "Online client-side Lorentz Factor & Time Dilation Solver tool.",
     "iconName": "Rocket",
     "badge": "New",
@@ -7444,16 +8200,18 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Lorentz Factor & Time Dilation Solver \u2014 QuickForma",
-    "metaDescription": "Free online Lorentz Factor & Time Dilation Solver. Online client-side Lorentz Factor & Time Dilation Solver tool. Fast, private, client-side execution."
+    "metaDescription": "Free online Lorentz Factor & Time Dilation Solver. Online client-side Lorentz Factor & Time Dilation Solver tool. Fast, private, client-side execution.",
+    "subcategory": "science:physics-waves-fields",
+    "subcategoryLabel": "Circuits, Waves & Fields"
   },
   {
     "id": "cornell-notes-template-generator",
     "verticals": [
-      "business"
+      "students"
     ],
     "name": "Printable & Interactive Cornell Notes Sheet",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "academic",
+    "categoryLabel": "Education & Academic Tools",
     "description": "Online client-side Printable & Interactive Cornell Notes Sheet tool.",
     "iconName": "BookOpen",
     "badge": "New",
@@ -7465,16 +8223,18 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Printable & Interactive Cornell Notes Sheet \u2014 QuickForma",
-    "metaDescription": "Free online Printable & Interactive Cornell Notes Sheet. Online client-side Printable & Interactive Cornell Notes Sheet tool. Fast, private, client-side execution."
+    "metaDescription": "Free online Printable & Interactive Cornell Notes Sheet. Online client-side Printable & Interactive Cornell Notes Sheet tool. Fast, private, client-side execution.",
+    "subcategory": "academic:study-research",
+    "subcategoryLabel": "Study & Research Utilities"
   },
   {
     "id": "thesis-statement-generator",
     "verticals": [
-      "business"
+      "students"
     ],
     "name": "Academic Essay Thesis Statement Builder",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "academic",
+    "categoryLabel": "Education & Academic Tools",
     "description": "Online client-side Academic Essay Thesis Statement Builder tool.",
     "iconName": "Feather",
     "badge": "New",
@@ -7486,7 +8246,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Academic Essay Thesis Statement Builder \u2014 QuickForma",
-    "metaDescription": "Free online Academic Essay Thesis Statement Builder. Online client-side Academic Essay Thesis Statement Builder tool. Fast, private, client-side execution."
+    "metaDescription": "Free online Academic Essay Thesis Statement Builder. Online client-side Academic Essay Thesis Statement Builder tool. Fast, private, client-side execution.",
+    "subcategory": "academic:study-research",
+    "subcategoryLabel": "Study & Research Utilities"
   },
   {
     "id": "study-group-expense-splitter",
@@ -7507,16 +8269,18 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Student Project & Shared Supplies Cost Splitter \u2014 QuickForma",
-    "metaDescription": "Free online Student Project & Shared Supplies Cost Splitter. Online client-side Student Project & Shared Supplies Cost Splitter tool. Fast, private, client-side execution."
+    "metaDescription": "Free online Student Project & Shared Supplies Cost Splitter. Online client-side Student Project & Shared Supplies Cost Splitter tool. Fast, private, client-side execution.",
+    "subcategory": "academic:planning-records",
+    "subcategoryLabel": "Academic Planning & Credits"
   },
   {
     "id": "exam-prep-score-predictor",
     "verticals": [
-      "business"
+      "students"
     ],
     "name": "Mock Test Score to Final Exam Grade Predictor",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "academic",
+    "categoryLabel": "Education & Academic Tools",
     "description": "Online client-side Mock Test Score to Final Exam Grade Predictor tool.",
     "iconName": "Target",
     "badge": "New",
@@ -7528,12 +8292,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Mock Test Score to Final Exam Grade Predictor \u2014 QuickForma",
-    "metaDescription": "Free online Mock Test Score to Final Exam Grade Predictor. Online client-side Mock Test Score to Final Exam Grade Predictor tool. Fast, private, client-side execution."
+    "metaDescription": "Free online Mock Test Score to Final Exam Grade Predictor. Online client-side Mock Test Score to Final Exam Grade Predictor tool. Fast, private, client-side execution.",
+    "subcategory": "academic:exam-test-prep",
+    "subcategoryLabel": "Exams & Standardized Tests"
   },
   {
     "id": "mercari-seller-fee-calculator",
     "verticals": [
-      "business"
+      "business",
+      "ecommerce"
     ],
     "name": "Mercari Selling & Direct Deposit Fee Solver",
     "category": "ecommerce",
@@ -7549,12 +8316,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Mercari Selling & Direct Deposit Fee Solver \u2014 QuickForma",
-    "metaDescription": "Free online Mercari Selling & Direct Deposit Fee Solver. Online client-side Mercari Selling & Direct Deposit Fee Solver tool. Fast, private, client-side execution."
+    "metaDescription": "Free online Mercari Selling & Direct Deposit Fee Solver. Online client-side Mercari Selling & Direct Deposit Fee Solver tool. Fast, private, client-side execution.",
+    "subcategory": "ecommerce:marketplace-fees",
+    "subcategoryLabel": "Marketplace & Platform Fees"
   },
   {
     "id": "poshmark-fee-calculator",
     "verticals": [
-      "business"
+      "business",
+      "ecommerce"
     ],
     "name": "Poshmark Flat vs 20% Seller Commission Calculator",
     "category": "ecommerce",
@@ -7570,16 +8340,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Poshmark Flat vs 20% Seller Commission Calculator \u2014 QuickForma",
-    "metaDescription": "Free online Poshmark Flat vs 20% Seller Commission Calculator. Online client-side Poshmark Flat vs 20% Seller Commission Calculator tool. Fast, private, client-side execution."
+    "metaDescription": "Free online Poshmark Flat vs 20% Seller Commission Calculator. Online client-side Poshmark Flat vs 20% Seller Commission Calculator tool. Fast, private, client-side execution.",
+    "subcategory": "ecommerce:marketplace-fees",
+    "subcategoryLabel": "Marketplace & Platform Fees"
   },
   {
     "id": "return-rate-profit-impact-calculator",
     "verticals": [
-      "business"
+      "business",
+      "ecommerce"
     ],
     "name": "Customer Return Rate & Restock Cost Loss",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "ecommerce",
+    "categoryLabel": "Ecommerce & Retail",
     "description": "Online client-side Customer Return Rate & Restock Cost Loss tool.",
     "iconName": "RotateCcw",
     "badge": "New",
@@ -7591,12 +8364,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "online calculator"
     ],
     "metaTitle": "Customer Return Rate & Restock Cost Loss \u2014 QuickForma",
-    "metaDescription": "Free online Customer Return Rate & Restock Cost Loss. Online client-side Customer Return Rate & Restock Cost Loss tool. Fast, private, client-side execution."
+    "metaDescription": "Free online Customer Return Rate & Restock Cost Loss. Online client-side Customer Return Rate & Restock Cost Loss tool. Fast, private, client-side execution.",
+    "subcategory": "ecommerce:pricing-profitability",
+    "subcategoryLabel": "Retail Pricing & Margins"
   },
   {
     "id": "roas-calculator",
     "verticals": [
-      "business"
+      "business",
+      "marketing"
     ],
     "name": "ROAS & Blended Marketing Return Calculator",
     "category": "marketing",
@@ -7610,7 +8386,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "roas calculator"
     ],
     "metaTitle": "ROAS & Blended Marketing Return Calculator \u2014 QuickForma",
-    "metaDescription": "Free client-side roas & blended marketing return calculator with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side roas & blended marketing return calculator with zero cloud tracking and instant results.",
+    "subcategory": "marketing:advertising-media",
+    "subcategoryLabel": "Paid Ads & Media Spend"
   },
   {
     "id": "inventory-turns-days-sales-calculator",
@@ -7629,7 +8407,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "inventory calculator"
     ],
     "metaTitle": "Days Inventory Outstanding (DIO) Standalone Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side days inventory outstanding (dio) standalone solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side days inventory outstanding (dio) standalone solver with zero cloud tracking and instant results.",
+    "subcategory": "finance:taxes-accounting",
+    "subcategoryLabel": "Taxes & Accounting"
   },
   {
     "id": "break-even-revenue-calculator",
@@ -7648,7 +8428,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "break calculator"
     ],
     "metaTitle": "Break-Even Sales Volume Revenue Dollar Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side break-even sales volume revenue dollar solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side break-even sales volume revenue dollar solver with zero cloud tracking and instant results.",
+    "subcategory": "finance:profitability-margins",
+    "subcategoryLabel": "Profitability & Margins"
   },
   {
     "id": "middle-school-grade-calculator",
@@ -7667,12 +8449,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "middle calculator"
     ],
     "metaTitle": "Letter Grade to Percentage Scale Converter \u2014 QuickForma",
-    "metaDescription": "Free client-side letter grade to percentage scale converter with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side letter grade to percentage scale converter with zero cloud tracking and instant results.",
+    "subcategory": "academic:gpa-grading",
+    "subcategoryLabel": "GPA & Grade Calculators"
   },
   {
     "id": "shipping-container-load-calculator",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "20ft/40ft Container CBM Freight Load Estimator",
     "category": "operations",
@@ -7686,16 +8471,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "shipping calculator"
     ],
     "metaTitle": "20ft/40ft Container CBM Freight Load Estimator \u2014 QuickForma",
-    "metaDescription": "Free client-side 20ft/40ft container cbm freight load estimator with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side 20ft/40ft container cbm freight load estimator with zero cloud tracking and instant results.",
+    "subcategory": "operations:logistics-freight",
+    "subcategoryLabel": "Freight & Shipping Logistics"
   },
   {
     "id": "minimum-advertised-price-map-calculator",
     "verticals": [
-      "business"
+      "business",
+      "ecommerce"
     ],
     "name": "MAP Pricing & Authorized Reseller Margin",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "ecommerce",
+    "categoryLabel": "Ecommerce & Retail",
     "description": "Calculate and analyze map pricing & authorized reseller margin with instant client-side business precision.",
     "iconName": "ShoppingCart",
     "keywords": [
@@ -7705,12 +8493,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "minimum calculator"
     ],
     "metaTitle": "MAP Pricing & Authorized Reseller Margin \u2014 QuickForma",
-    "metaDescription": "Free client-side map pricing & authorized reseller margin with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side map pricing & authorized reseller margin with zero cloud tracking and instant results.",
+    "subcategory": "ecommerce:pricing-profitability",
+    "subcategoryLabel": "Retail Pricing & Margins"
   },
   {
     "id": "chargeback-fee-loss-calculator",
     "verticals": [
-      "business"
+      "business",
+      "ecommerce"
     ],
     "name": "Merchant Chargeback Ratio & Fine Risk Solver",
     "category": "ecommerce",
@@ -7724,16 +8515,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "chargeback calculator"
     ],
     "metaTitle": "Merchant Chargeback Ratio & Fine Risk Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side merchant chargeback ratio & fine risk solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side merchant chargeback ratio & fine risk solver with zero cloud tracking and instant results.",
+    "subcategory": "ecommerce:marketplace-fees",
+    "subcategoryLabel": "Marketplace & Platform Fees"
   },
   {
     "id": "klarna-afterpay-fee-calculator",
     "verticals": [
-      "business"
+      "business",
+      "ecommerce"
     ],
     "name": "Buy Now Pay Later (BNPL) Merchant Fee Solver",
-    "category": "hr",
-    "categoryLabel": "HR, Payroll & Compensation",
+    "category": "ecommerce",
+    "categoryLabel": "Ecommerce & Retail",
     "description": "Calculate and analyze buy now pay later (bnpl) merchant fee solver with instant client-side business precision.",
     "iconName": "ShoppingCart",
     "keywords": [
@@ -7743,12 +8537,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "klarna calculator"
     ],
     "metaTitle": "Buy Now Pay Later (BNPL) Merchant Fee Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side buy now pay later (bnpl) merchant fee solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side buy now pay later (bnpl) merchant fee solver with zero cloud tracking and instant results.",
+    "subcategory": "ecommerce:marketplace-fees",
+    "subcategoryLabel": "Marketplace & Platform Fees"
   },
   {
     "id": "square-pos-processing-fee-calculator",
     "verticals": [
-      "business"
+      "business",
+      "ecommerce"
     ],
     "name": "Square Point of Sale In-Person vs Online Fee",
     "category": "ecommerce",
@@ -7762,16 +8559,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "square calculator"
     ],
     "metaTitle": "Square Point of Sale In-Person vs Online Fee \u2014 QuickForma",
-    "metaDescription": "Free client-side square point of sale in-person vs online fee with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side square point of sale in-person vs online fee with zero cloud tracking and instant results.",
+    "subcategory": "ecommerce:marketplace-fees",
+    "subcategoryLabel": "Marketplace & Platform Fees"
   },
   {
     "id": "kickstarter-indiegogo-fee-calculator",
     "verticals": [
-      "business"
+      "business",
+      "ecommerce"
     ],
     "name": "Crowdfunding Platform Commission & Profit",
-    "category": "marketing",
-    "categoryLabel": "Sales & Growth Marketing",
+    "category": "ecommerce",
+    "categoryLabel": "Ecommerce & Retail",
     "description": "Calculate and analyze crowdfunding platform commission & profit with instant client-side business precision.",
     "iconName": "ShoppingCart",
     "keywords": [
@@ -7781,12 +8581,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "kickstarter calculator"
     ],
     "metaTitle": "Crowdfunding Platform Commission & Profit \u2014 QuickForma",
-    "metaDescription": "Free client-side crowdfunding platform commission & profit with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side crowdfunding platform commission & profit with zero cloud tracking and instant results.",
+    "subcategory": "ecommerce:marketplace-fees",
+    "subcategoryLabel": "Marketplace & Platform Fees"
   },
   {
     "id": "amazon-storage-fee-calculator",
     "verticals": [
-      "business"
+      "business",
+      "ecommerce"
     ],
     "name": "Amazon Q4 Peak vs Standard Storage Fee Solver",
     "category": "ecommerce",
@@ -7800,12 +8603,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "amazon calculator"
     ],
     "metaTitle": "Amazon Q4 Peak vs Standard Storage Fee Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side amazon q4 peak vs standard storage fee solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side amazon q4 peak vs standard storage fee solver with zero cloud tracking and instant results.",
+    "subcategory": "ecommerce:marketplace-fees",
+    "subcategoryLabel": "Marketplace & Platform Fees"
   },
   {
     "id": "cross-border-currency-conversion-fee",
     "verticals": [
-      "business"
+      "business",
+      "ecommerce"
     ],
     "name": "International Merchant FX Fee & Markup",
     "category": "ecommerce",
@@ -7819,12 +8625,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "cross calculator"
     ],
     "metaTitle": "International Merchant FX Fee & Markup \u2014 QuickForma",
-    "metaDescription": "Free client-side international merchant fx fee & markup with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side international merchant fx fee & markup with zero cloud tracking and instant results.",
+    "subcategory": "ecommerce:marketplace-fees",
+    "subcategoryLabel": "Marketplace & Platform Fees"
   },
   {
     "id": "product-packaging-dimensional-calculator",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Box Size & DIM Freight Cost Solver",
     "category": "operations",
@@ -7838,16 +8647,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "product calculator"
     ],
     "metaTitle": "Box Size & DIM Freight Cost Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side box size & dim freight cost solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side box size & dim freight cost solver with zero cloud tracking and instant results.",
+    "subcategory": "operations:logistics-freight",
+    "subcategoryLabel": "Freight & Shipping Logistics"
   },
   {
     "id": "print-on-demand-pod-margin-calculator",
     "verticals": [
-      "business"
+      "business",
+      "ecommerce"
     ],
     "name": "Printify / Printful Merch Profit Margin Solver",
-    "category": "finance",
-    "categoryLabel": "Business Finance & Accounting",
+    "category": "ecommerce",
+    "categoryLabel": "Ecommerce & Retail",
     "description": "Calculate and analyze printify / printful merch profit margin solver with instant client-side business precision.",
     "iconName": "ShoppingCart",
     "keywords": [
@@ -7857,16 +8669,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "print calculator"
     ],
     "metaTitle": "Printify / Printful Merch Profit Margin Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side printify / printful merch profit margin solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side printify / printful merch profit margin solver with zero cloud tracking and instant results.",
+    "subcategory": "ecommerce:pricing-profitability",
+    "subcategoryLabel": "Retail Pricing & Margins"
   },
   {
     "id": "inventory-shrinkage-loss-calculator",
     "verticals": [
-      "business"
+      "business",
+      "ecommerce"
     ],
     "name": "Retail Inventory Theft & Spoilage Impact",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "ecommerce",
+    "categoryLabel": "Ecommerce & Retail",
     "description": "Calculate and analyze retail inventory theft & spoilage impact with instant client-side business precision.",
     "iconName": "ShoppingCart",
     "keywords": [
@@ -7876,12 +8691,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "inventory calculator"
     ],
     "metaTitle": "Retail Inventory Theft & Spoilage Impact \u2014 QuickForma",
-    "metaDescription": "Free client-side retail inventory theft & spoilage impact with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side retail inventory theft & spoilage impact with zero cloud tracking and instant results.",
+    "subcategory": "ecommerce:inventory-fulfillment",
+    "subcategoryLabel": "Inventory & Fulfillment"
   },
   {
     "id": "affiliate-commission-payout-calculator",
     "verticals": [
-      "business"
+      "business",
+      "marketing"
     ],
     "name": "Affiliate Marketing Program Margin Solver",
     "category": "marketing",
@@ -7895,17 +8713,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "affiliate calculator"
     ],
     "metaTitle": "Affiliate Marketing Program Margin Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side affiliate marketing program margin solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side affiliate marketing program margin solver with zero cloud tracking and instant results.",
+    "subcategory": "marketing:funnel-conversion",
+    "subcategoryLabel": "Funnel & Conversion Analytics"
   },
   {
     "id": "retail-markdown-clearance-calculator",
     "verticals": [
       "business",
-      "students"
+      "ecommerce"
     ],
     "name": "Clearance Discount & Liquidation Recovery",
-    "category": "writing",
-    "categoryLabel": "Writing, Text & Content",
+    "category": "ecommerce",
+    "categoryLabel": "Ecommerce & Retail",
     "description": "Calculate and analyze clearance discount & liquidation recovery with instant client-side business precision.",
     "iconName": "ShoppingCart",
     "keywords": [
@@ -7915,12 +8735,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "retail calculator"
     ],
     "metaTitle": "Clearance Discount & Liquidation Recovery \u2014 QuickForma",
-    "metaDescription": "Free client-side clearance discount & liquidation recovery with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side clearance discount & liquidation recovery with zero cloud tracking and instant results.",
+    "subcategory": "ecommerce:discounts-returns",
+    "subcategoryLabel": "Discounts & Returns"
   },
   {
     "id": "warehouse-storage-cbm-calculator",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Pallet Racking & Warehouse CBM Storage Cost",
     "category": "operations",
@@ -7934,7 +8757,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "warehouse calculator"
     ],
     "metaTitle": "Pallet Racking & Warehouse CBM Storage Cost \u2014 QuickForma",
-    "metaDescription": "Free client-side pallet racking & warehouse cbm storage cost with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side pallet racking & warehouse cbm storage cost with zero cloud tracking and instant results.",
+    "subcategory": "operations:logistics-freight",
+    "subcategoryLabel": "Freight & Shipping Logistics"
   },
   {
     "id": "supplier-volume-discount-break-even",
@@ -7953,16 +8778,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "supplier calculator"
     ],
     "metaTitle": "MoQ Supplier Tiered Discount ROI Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side moq supplier tiered discount roi solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side moq supplier tiered discount roi solver with zero cloud tracking and instant results.",
+    "subcategory": "finance:profitability-margins",
+    "subcategoryLabel": "Profitability & Margins"
   },
   {
     "id": "re-stocking-fee-calculator",
     "verticals": [
-      "business"
+      "business",
+      "ecommerce"
     ],
     "name": "Customer Refund Restocking Fee & Net Loss",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "ecommerce",
+    "categoryLabel": "Ecommerce & Retail",
     "description": "Calculate and analyze customer refund restocking fee & net loss with instant client-side business precision.",
     "iconName": "ShoppingCart",
     "keywords": [
@@ -7972,16 +8800,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "stocking calculator"
     ],
     "metaTitle": "Customer Refund Restocking Fee & Net Loss \u2014 QuickForma",
-    "metaDescription": "Free client-side customer refund restocking fee & net loss with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side customer refund restocking fee & net loss with zero cloud tracking and instant results.",
+    "subcategory": "ecommerce:discounts-returns",
+    "subcategoryLabel": "Discounts & Returns"
   },
   {
     "id": "ecommerce-customer-retention-revenue",
     "verticals": [
-      "business"
+      "business",
+      "marketing"
     ],
     "name": "Repeat Purchase Rate & LTV Boost Solver",
-    "category": "hr",
-    "categoryLabel": "HR, Payroll & Compensation",
+    "category": "marketing",
+    "categoryLabel": "Sales & Growth Marketing",
     "description": "Calculate and analyze repeat purchase rate & ltv boost solver with instant client-side business precision.",
     "iconName": "ShoppingCart",
     "keywords": [
@@ -7991,12 +8822,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "ecommerce calculator"
     ],
     "metaTitle": "Repeat Purchase Rate & LTV Boost Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side repeat purchase rate & ltv boost solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side repeat purchase rate & ltv boost solver with zero cloud tracking and instant results.",
+    "subcategory": "marketing:customer-retention",
+    "subcategoryLabel": "Customer Lifetime & Retention"
   },
   {
     "id": "omnichannel-channel-margin-compare",
     "verticals": [
-      "business"
+      "business",
+      "ecommerce"
     ],
     "name": "Amazon vs Shopify vs Wholesale Margin Comparison",
     "category": "ecommerce",
@@ -8010,12 +8844,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "omnichannel calculator"
     ],
     "metaTitle": "Amazon vs Shopify vs Wholesale Margin Comparison \u2014 QuickForma",
-    "metaDescription": "Free client-side amazon vs shopify vs wholesale margin comparison with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side amazon vs shopify vs wholesale margin comparison with zero cloud tracking and instant results.",
+    "subcategory": "ecommerce:pricing-profitability",
+    "subcategoryLabel": "Retail Pricing & Margins"
   },
   {
     "id": "amazon-repricing-margin-calculator",
     "verticals": [
-      "business"
+      "business",
+      "ecommerce"
     ],
     "name": "Automated Amazon Repricer Minimum Floor Price Solver",
     "category": "ecommerce",
@@ -8029,12 +8866,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "amazon calculator"
     ],
     "metaTitle": "Automated Amazon Repricer Minimum Floor Price Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side automated amazon repricer minimum floor price solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side automated amazon repricer minimum floor price solver with zero cloud tracking and instant results.",
+    "subcategory": "ecommerce:marketplace-fees",
+    "subcategoryLabel": "Marketplace & Platform Fees"
   },
   {
     "id": "ecommerce-refund-loss-recovery-calculator",
     "verticals": [
-      "business"
+      "business",
+      "ecommerce"
     ],
     "name": "Return Logistics & Restocking Net Recovery",
     "category": "ecommerce",
@@ -8048,16 +8888,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "ecommerce calculator"
     ],
     "metaTitle": "Return Logistics & Restocking Net Recovery \u2014 QuickForma",
-    "metaDescription": "Free client-side return logistics & restocking net recovery with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side return logistics & restocking net recovery with zero cloud tracking and instant results.",
+    "subcategory": "ecommerce:discounts-returns",
+    "subcategoryLabel": "Discounts & Returns"
   },
   {
     "id": "order-cancellation-rate-calculator",
     "verticals": [
-      "business"
+      "business",
+      "ecommerce"
     ],
     "name": "Order Defect Rate & Cancellation Risk Solver",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "ecommerce",
+    "categoryLabel": "Ecommerce & Retail",
     "description": "Calculate and analyze order defect rate & cancellation risk solver with instant client-side business precision.",
     "iconName": "ShoppingCart",
     "keywords": [
@@ -8067,12 +8910,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "order calculator"
     ],
     "metaTitle": "Order Defect Rate & Cancellation Risk Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side order defect rate & cancellation risk solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side order defect rate & cancellation risk solver with zero cloud tracking and instant results.",
+    "subcategory": "ecommerce:inventory-fulfillment",
+    "subcategoryLabel": "Inventory & Fulfillment"
   },
   {
     "id": "multi-channel-inventory-allocation",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Multi-Warehouse Reorder Allocation Solver",
     "category": "operations",
@@ -8086,12 +8932,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "multi calculator"
     ],
     "metaTitle": "Multi-Warehouse Reorder Allocation Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side multi-warehouse reorder allocation solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side multi-warehouse reorder allocation solver with zero cloud tracking and instant results.",
+    "subcategory": "operations:logistics-freight",
+    "subcategoryLabel": "Freight & Shipping Logistics"
   },
   {
     "id": "shopify-pos-fee-calculator",
     "verticals": [
-      "business"
+      "business",
+      "ecommerce"
     ],
     "name": "Shopify POS In-Person Card Rate Solver",
     "category": "ecommerce",
@@ -8105,12 +8954,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "shopify calculator"
     ],
     "metaTitle": "Shopify POS In-Person Card Rate Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side shopify pos in-person card rate solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side shopify pos in-person card rate solver with zero cloud tracking and instant results.",
+    "subcategory": "ecommerce:marketplace-fees",
+    "subcategoryLabel": "Marketplace & Platform Fees"
   },
   {
     "id": "etsy-listing-renewal-calculator",
     "verticals": [
-      "business"
+      "business",
+      "ecommerce"
     ],
     "name": "Etsy Listing Fee & Auto-Renewal Expense",
     "category": "ecommerce",
@@ -8124,16 +8976,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "etsy calculator"
     ],
     "metaTitle": "Etsy Listing Fee & Auto-Renewal Expense \u2014 QuickForma",
-    "metaDescription": "Free client-side etsy listing fee & auto-renewal expense with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side etsy listing fee & auto-renewal expense with zero cloud tracking and instant results.",
+    "subcategory": "ecommerce:marketplace-fees",
+    "subcategoryLabel": "Marketplace & Platform Fees"
   },
   {
     "id": "woocommerce-profit-calculator",
     "verticals": [
-      "business"
+      "business",
+      "ecommerce"
     ],
     "name": "WooCommerce Gateway & Hosting Cost Solver",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "ecommerce",
+    "categoryLabel": "Ecommerce & Retail",
     "description": "Calculate and analyze woocommerce gateway & hosting cost solver with instant client-side business precision.",
     "iconName": "ShoppingCart",
     "keywords": [
@@ -8143,12 +8998,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "woocommerce calculator"
     ],
     "metaTitle": "WooCommerce Gateway & Hosting Cost Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side woocommerce gateway & hosting cost solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side woocommerce gateway & hosting cost solver with zero cloud tracking and instant results.",
+    "subcategory": "ecommerce:marketplace-fees",
+    "subcategoryLabel": "Marketplace & Platform Fees"
   },
   {
     "id": "first-pass-yield-calculator",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "First Pass Yield (FPY) & Scrap Loss Solver",
     "category": "operations",
@@ -8162,12 +9020,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "first calculator"
     ],
     "metaTitle": "First Pass Yield (FPY) & Scrap Loss Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side first pass yield (fpy) & scrap loss solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side first pass yield (fpy) & scrap loss solver with zero cloud tracking and instant results.",
+    "subcategory": "operations:quality-continuous-improvement",
+    "subcategoryLabel": "Quality & Six Sigma"
   },
   {
     "id": "cycle-time-calculator",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Manufacturing Lead Time & Little's Law WIP Solver",
     "category": "operations",
@@ -8181,16 +9042,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "cycle calculator"
     ],
     "metaTitle": "Manufacturing Lead Time & Little's Law WIP Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side manufacturing lead time & little's law wip solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side manufacturing lead time & little's law wip solver with zero cloud tracking and instant results.",
+    "subcategory": "operations:production-capacity",
+    "subcategoryLabel": "Production & Capacity"
   },
   {
     "id": "overall-labor-effectiveness-ole",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Overall Labor Effectiveness (OLE) Solver",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "operations",
+    "categoryLabel": "Operations, Logistics & Manufacturing",
     "description": "Calculate and analyze overall labor effectiveness (ole) solver with instant client-side business precision.",
     "iconName": "Cpu",
     "keywords": [
@@ -8200,12 +9064,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "overall calculator"
     ],
     "metaTitle": "Overall Labor Effectiveness (OLE) Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side overall labor effectiveness (ole) solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side overall labor effectiveness (ole) solver with zero cloud tracking and instant results.",
+    "subcategory": "operations:production-capacity",
+    "subcategoryLabel": "Production & Capacity"
   },
   {
     "id": "kanban-card-quantity-calculator",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Kanban Container & Safety Card Quantity Solver",
     "category": "operations",
@@ -8219,12 +9086,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "kanban calculator"
     ],
     "metaTitle": "Kanban Container & Safety Card Quantity Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side kanban container & safety card quantity solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side kanban container & safety card quantity solver with zero cloud tracking and instant results.",
+    "subcategory": "operations:inventory-supply-chain",
+    "subcategoryLabel": "Supply Chain & Inventory"
   },
   {
     "id": "bill-of-materials-cost-calculator",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "BOM Component Cost & Raw Material Rollup",
     "category": "operations",
@@ -8238,16 +9108,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "bill calculator"
     ],
     "metaTitle": "BOM Component Cost & Raw Material Rollup \u2014 QuickForma",
-    "metaDescription": "Free client-side bom component cost & raw material rollup with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side bom component cost & raw material rollup with zero cloud tracking and instant results.",
+    "subcategory": "operations:production-capacity",
+    "subcategoryLabel": "Production & Capacity"
   },
   {
     "id": "mean-time-between-failures-mtbf",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "MTBF & MTTR Equipment Reliability Solver",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "operations",
+    "categoryLabel": "Operations, Logistics & Manufacturing",
     "description": "Calculate and analyze mtbf & mttr equipment reliability solver with instant client-side business precision.",
     "iconName": "Cpu",
     "keywords": [
@@ -8257,12 +9130,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "mean calculator"
     ],
     "metaTitle": "MTBF & MTTR Equipment Reliability Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side mtbf & mttr equipment reliability solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side mtbf & mttr equipment reliability solver with zero cloud tracking and instant results.",
+    "subcategory": "operations:maintenance-facilities",
+    "subcategoryLabel": "Maintenance & Facilities"
   },
   {
     "id": "changeover-time-smed-calculator",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "SMED Tooling Changeover Setup Loss Solver",
     "category": "operations",
@@ -8276,16 +9152,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "changeover calculator"
     ],
     "metaTitle": "SMED Tooling Changeover Setup Loss Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side smed tooling changeover setup loss solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side smed tooling changeover setup loss solver with zero cloud tracking and instant results.",
+    "subcategory": "operations:maintenance-facilities",
+    "subcategoryLabel": "Maintenance & Facilities"
   },
   {
     "id": "work-in-process-wip-calculator",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "WIP Inventory Valuation & Production Flow",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "operations",
+    "categoryLabel": "Operations, Logistics & Manufacturing",
     "description": "Calculate and analyze wip inventory valuation & production flow with instant client-side business precision.",
     "iconName": "Cpu",
     "keywords": [
@@ -8295,17 +9174,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "work calculator"
     ],
     "metaTitle": "WIP Inventory Valuation & Production Flow \u2014 QuickForma",
-    "metaDescription": "Free client-side wip inventory valuation & production flow with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side wip inventory valuation & production flow with zero cloud tracking and instant results.",
+    "subcategory": "operations:inventory-supply-chain",
+    "subcategoryLabel": "Supply Chain & Inventory"
   },
   {
     "id": "scrap-rate-percentage-calculator",
     "verticals": [
       "business",
-      "students"
+      "operations"
     ],
     "name": "Material Defect Scrap Rate & Cost Solver",
-    "category": "math-stats",
-    "categoryLabel": "Mathematics & Statistics",
+    "category": "operations",
+    "categoryLabel": "Operations, Logistics & Manufacturing",
     "description": "Calculate and analyze material defect scrap rate & cost solver with instant client-side business precision.",
     "iconName": "Cpu",
     "keywords": [
@@ -8315,16 +9196,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "scrap calculator"
     ],
     "metaTitle": "Material Defect Scrap Rate & Cost Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side material defect scrap rate & cost solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side material defect scrap rate & cost solver with zero cloud tracking and instant results.",
+    "subcategory": "operations:quality-continuous-improvement",
+    "subcategoryLabel": "Quality & Six Sigma"
   },
   {
     "id": "manufacturing-overhead-allocation",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Direct Labor Hours vs Machine Hours Overhead",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "operations",
+    "categoryLabel": "Operations, Logistics & Manufacturing",
     "description": "Calculate and analyze direct labor hours vs machine hours overhead with instant client-side business precision.",
     "iconName": "Cpu",
     "keywords": [
@@ -8334,16 +9218,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "manufacturing calculator"
     ],
     "metaTitle": "Direct Labor Hours vs Machine Hours Overhead \u2014 QuickForma",
-    "metaDescription": "Free client-side direct labor hours vs machine hours overhead with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side direct labor hours vs machine hours overhead with zero cloud tracking and instant results.",
+    "subcategory": "operations:production-capacity",
+    "subcategoryLabel": "Production & Capacity"
   },
   {
     "id": "standard-cost-variance-calculator",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Direct Material & Labor Variance Solver",
-    "category": "documents",
-    "categoryLabel": "Business & Legal Documents",
+    "category": "operations",
+    "categoryLabel": "Operations, Logistics & Manufacturing",
     "description": "Calculate and analyze direct material & labor variance solver with instant client-side business precision.",
     "iconName": "Cpu",
     "keywords": [
@@ -8353,16 +9240,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "standard calculator"
     ],
     "metaTitle": "Direct Material & Labor Variance Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side direct material & labor variance solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side direct material & labor variance solver with zero cloud tracking and instant results.",
+    "subcategory": "operations:logistics-freight",
+    "subcategoryLabel": "Freight & Shipping Logistics"
   },
   {
     "id": "tpm-planned-maintenance-scheduler",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Total Productive Maintenance Frequency",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "operations",
+    "categoryLabel": "Operations, Logistics & Manufacturing",
     "description": "Calculate and analyze total productive maintenance frequency with instant client-side business precision.",
     "iconName": "Cpu",
     "keywords": [
@@ -8372,16 +9262,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "tpm calculator"
     ],
     "metaTitle": "Total Productive Maintenance Frequency \u2014 QuickForma",
-    "metaDescription": "Free client-side total productive maintenance frequency with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side total productive maintenance frequency with zero cloud tracking and instant results.",
+    "subcategory": "operations:maintenance-facilities",
+    "subcategoryLabel": "Maintenance & Facilities"
   },
   {
     "id": "process-capability-cp-cpk-calculator",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Six Sigma Cp & Cpk Process Capability",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "operations",
+    "categoryLabel": "Operations, Logistics & Manufacturing",
     "description": "Calculate and analyze six sigma cp & cpk process capability with instant client-side business precision.",
     "iconName": "Cpu",
     "keywords": [
@@ -8391,12 +9284,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "process calculator"
     ],
     "metaTitle": "Six Sigma Cp & Cpk Process Capability \u2014 QuickForma",
-    "metaDescription": "Free client-side six sigma cp & cpk process capability with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side six sigma cp & cpk process capability with zero cloud tracking and instant results.",
+    "subcategory": "operations:quality-continuous-improvement",
+    "subcategoryLabel": "Quality & Six Sigma"
   },
   {
     "id": "defect-density-ppm-calculator",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Parts Per Million (PPM) Quality Defect Solver",
     "category": "operations",
@@ -8410,16 +9306,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "defect calculator"
     ],
     "metaTitle": "Parts Per Million (PPM) Quality Defect Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side parts per million (ppm) quality defect solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side parts per million (ppm) quality defect solver with zero cloud tracking and instant results.",
+    "subcategory": "operations:quality-continuous-improvement",
+    "subcategoryLabel": "Quality & Six Sigma"
   },
   {
     "id": "line-balancing-efficiency-calculator",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Assembly Line Balancing & Idle Time Solver",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "operations",
+    "categoryLabel": "Operations, Logistics & Manufacturing",
     "description": "Calculate and analyze assembly line balancing & idle time solver with instant client-side business precision.",
     "iconName": "Cpu",
     "keywords": [
@@ -8429,16 +9328,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "line calculator"
     ],
     "metaTitle": "Assembly Line Balancing & Idle Time Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side assembly line balancing & idle time solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side assembly line balancing & idle time solver with zero cloud tracking and instant results.",
+    "subcategory": "operations:production-capacity",
+    "subcategoryLabel": "Production & Capacity"
   },
   {
     "id": "batch-size-economic-production",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Economic Production Quantity (EPQ) Solver",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "operations",
+    "categoryLabel": "Operations, Logistics & Manufacturing",
     "description": "Calculate and analyze economic production quantity (epq) solver with instant client-side business precision.",
     "iconName": "Cpu",
     "keywords": [
@@ -8448,12 +9350,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "batch calculator"
     ],
     "metaTitle": "Economic Production Quantity (EPQ) Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side economic production quantity (epq) solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side economic production quantity (epq) solver with zero cloud tracking and instant results.",
+    "subcategory": "operations:inventory-supply-chain",
+    "subcategoryLabel": "Supply Chain & Inventory"
   },
   {
     "id": "warehouse-bin-utilization-calculator",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Cube Utilization & Bin Storage Efficiency",
     "category": "operations",
@@ -8467,12 +9372,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "warehouse calculator"
     ],
     "metaTitle": "Cube Utilization & Bin Storage Efficiency \u2014 QuickForma",
-    "metaDescription": "Free client-side cube utilization & bin storage efficiency with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side cube utilization & bin storage efficiency with zero cloud tracking and instant results.",
+    "subcategory": "operations:production-capacity",
+    "subcategoryLabel": "Production & Capacity"
   },
   {
     "id": "order-picking-route-time-calculator",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Warehouse Order Picker Travel Time Solver",
     "category": "operations",
@@ -8486,16 +9394,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "order calculator"
     ],
     "metaTitle": "Warehouse Order Picker Travel Time Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side warehouse order picker travel time solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side warehouse order picker travel time solver with zero cloud tracking and instant results.",
+    "subcategory": "operations:logistics-freight",
+    "subcategoryLabel": "Freight & Shipping Logistics"
   },
   {
     "id": "supplier-on-time-in-full-otif",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "OTIF Supplier Delivery Performance Rating",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "operations",
+    "categoryLabel": "Operations, Logistics & Manufacturing",
     "description": "Calculate and analyze otif supplier delivery performance rating with instant client-side business precision.",
     "iconName": "Cpu",
     "keywords": [
@@ -8505,17 +9416,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "supplier calculator"
     ],
     "metaTitle": "OTIF Supplier Delivery Performance Rating \u2014 QuickForma",
-    "metaDescription": "Free client-side otif supplier delivery performance rating with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side otif supplier delivery performance rating with zero cloud tracking and instant results.",
+    "subcategory": "operations:inventory-supply-chain",
+    "subcategoryLabel": "Supply Chain & Inventory"
   },
   {
     "id": "yield-loss-percentage-calculator",
     "verticals": [
       "business",
-      "students"
+      "operations"
     ],
     "name": "Chemical / Food Production Yield Loss Solver",
-    "category": "math-stats",
-    "categoryLabel": "Mathematics & Statistics",
+    "category": "operations",
+    "categoryLabel": "Operations, Logistics & Manufacturing",
     "description": "Calculate and analyze chemical / food production yield loss solver with instant client-side business precision.",
     "iconName": "Cpu",
     "keywords": [
@@ -8525,16 +9438,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "yield calculator"
     ],
     "metaTitle": "Chemical / Food Production Yield Loss Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side chemical / food production yield loss solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side chemical / food production yield loss solver with zero cloud tracking and instant results.",
+    "subcategory": "operations:quality-continuous-improvement",
+    "subcategoryLabel": "Quality & Six Sigma"
   },
   {
     "id": "equipment-replacement-capital-expenditure",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Asset Equipment Replacement Timing NPV",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "operations",
+    "categoryLabel": "Operations, Logistics & Manufacturing",
     "description": "Calculate and analyze asset equipment replacement timing npv with instant client-side business precision.",
     "iconName": "Cpu",
     "keywords": [
@@ -8544,16 +9460,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "equipment calculator"
     ],
     "metaTitle": "Asset Equipment Replacement Timing NPV \u2014 QuickForma",
-    "metaDescription": "Free client-side asset equipment replacement timing npv with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side asset equipment replacement timing npv with zero cloud tracking and instant results.",
+    "subcategory": "operations:maintenance-facilities",
+    "subcategoryLabel": "Maintenance & Facilities"
   },
   {
     "id": "labor-efficiency-variance-calculator",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Standard vs Actual Labor Hours Variance",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "operations",
+    "categoryLabel": "Operations, Logistics & Manufacturing",
     "description": "Calculate and analyze standard vs actual labor hours variance with instant client-side business precision.",
     "iconName": "Cpu",
     "keywords": [
@@ -8563,12 +9482,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "labor calculator"
     ],
     "metaTitle": "Standard vs Actual Labor Hours Variance \u2014 QuickForma",
-    "metaDescription": "Free client-side standard vs actual labor hours variance with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side standard vs actual labor hours variance with zero cloud tracking and instant results.",
+    "subcategory": "operations:logistics-freight",
+    "subcategoryLabel": "Freight & Shipping Logistics"
   },
   {
     "id": "material-requirements-planning-mrp",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Net Material Requirements & Lead Time Solver",
     "category": "operations",
@@ -8582,12 +9504,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "material calculator"
     ],
     "metaTitle": "Net Material Requirements & Lead Time Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side net material requirements & lead time solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side net material requirements & lead time solver with zero cloud tracking and instant results.",
+    "subcategory": "operations:inventory-supply-chain",
+    "subcategoryLabel": "Supply Chain & Inventory"
   },
   {
     "id": "lean-5s-audit-score-calculator",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Lean Workplace 5S Inspection Score Sheet",
     "category": "operations",
@@ -8601,12 +9526,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "lean calculator"
     ],
     "metaTitle": "Lean Workplace 5S Inspection Score Sheet \u2014 QuickForma",
-    "metaDescription": "Free client-side lean workplace 5s inspection score sheet with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side lean workplace 5s inspection score sheet with zero cloud tracking and instant results.",
+    "subcategory": "operations:quality-continuous-improvement",
+    "subcategoryLabel": "Quality & Six Sigma"
   },
   {
     "id": "value-stream-mapping-lead-time",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Process Value-Add Ratio vs Waste Lead Time",
     "category": "operations",
@@ -8620,16 +9548,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "value calculator"
     ],
     "metaTitle": "Process Value-Add Ratio vs Waste Lead Time \u2014 QuickForma",
-    "metaDescription": "Free client-side process value-add ratio vs waste lead time with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side process value-add ratio vs waste lead time with zero cloud tracking and instant results.",
+    "subcategory": "operations:inventory-supply-chain",
+    "subcategoryLabel": "Supply Chain & Inventory"
   },
   {
     "id": "production-throughput-rate-calculator",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Units Per Hour Throughput Rate Solver",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "operations",
+    "categoryLabel": "Operations, Logistics & Manufacturing",
     "description": "Calculate and analyze units per hour throughput rate solver with instant client-side business precision.",
     "iconName": "Cpu",
     "keywords": [
@@ -8639,16 +9570,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "production calculator"
     ],
     "metaTitle": "Units Per Hour Throughput Rate Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side units per hour throughput rate solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side units per hour throughput rate solver with zero cloud tracking and instant results.",
+    "subcategory": "operations:production-capacity",
+    "subcategoryLabel": "Production & Capacity"
   },
   {
     "id": "maintenance-labor-cost-calculator",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Preventive vs Corrective Maintenance Cost",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "operations",
+    "categoryLabel": "Operations, Logistics & Manufacturing",
     "description": "Calculate and analyze preventive vs corrective maintenance cost with instant client-side business precision.",
     "iconName": "Cpu",
     "keywords": [
@@ -8658,12 +9592,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "maintenance calculator"
     ],
     "metaTitle": "Preventive vs Corrective Maintenance Cost \u2014 QuickForma",
-    "metaDescription": "Free client-side preventive vs corrective maintenance cost with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side preventive vs corrective maintenance cost with zero cloud tracking and instant results.",
+    "subcategory": "operations:maintenance-facilities",
+    "subcategoryLabel": "Maintenance & Facilities"
   },
   {
     "id": "spare-parts-inventory-safety-stock",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Critical MRO Spare Parts Safety Stock Solver",
     "category": "operations",
@@ -8677,12 +9614,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "spare calculator"
     ],
     "metaTitle": "Critical MRO Spare Parts Safety Stock Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side critical mro spare parts safety stock solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side critical mro spare parts safety stock solver with zero cloud tracking and instant results.",
+    "subcategory": "operations:inventory-supply-chain",
+    "subcategoryLabel": "Supply Chain & Inventory"
   },
   {
     "id": "warehouse-forklift-fleet-calculator",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Warehouse Fleet Size & Operating Cost",
     "category": "operations",
@@ -8696,16 +9636,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "warehouse calculator"
     ],
     "metaTitle": "Warehouse Fleet Size & Operating Cost \u2014 QuickForma",
-    "metaDescription": "Free client-side warehouse fleet size & operating cost with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side warehouse fleet size & operating cost with zero cloud tracking and instant results.",
+    "subcategory": "operations:maintenance-facilities",
+    "subcategoryLabel": "Maintenance & Facilities"
   },
   {
     "id": "cross-docking-cost-savings-calculator",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Direct Transshipment vs Storage Cost",
-    "category": "marketing",
-    "categoryLabel": "Sales & Growth Marketing",
+    "category": "operations",
+    "categoryLabel": "Operations, Logistics & Manufacturing",
     "description": "Calculate and analyze direct transshipment vs storage cost with instant client-side business precision.",
     "iconName": "Cpu",
     "keywords": [
@@ -8715,12 +9658,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "cross calculator"
     ],
     "metaTitle": "Direct Transshipment vs Storage Cost \u2014 QuickForma",
-    "metaDescription": "Free client-side direct transshipment vs storage cost with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side direct transshipment vs storage cost with zero cloud tracking and instant results.",
+    "subcategory": "operations:logistics-freight",
+    "subcategoryLabel": "Freight & Shipping Logistics"
   },
   {
     "id": "packaging-tare-weight-calculator",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Gross vs Net Freight Shipping Tare Weight",
     "category": "operations",
@@ -8734,16 +9680,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "packaging calculator"
     ],
     "metaTitle": "Gross vs Net Freight Shipping Tare Weight \u2014 QuickForma",
-    "metaDescription": "Free client-side gross vs net freight shipping tare weight with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side gross vs net freight shipping tare weight with zero cloud tracking and instant results.",
+    "subcategory": "operations:logistics-freight",
+    "subcategoryLabel": "Freight & Shipping Logistics"
   },
   {
     "id": "factory-floor-space-productivity",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Revenue & Output Per Square Foot Factory Floor",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "operations",
+    "categoryLabel": "Operations, Logistics & Manufacturing",
     "description": "Calculate and analyze revenue & output per square foot factory floor with instant client-side business precision.",
     "iconName": "Cpu",
     "keywords": [
@@ -8753,12 +9702,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "factory calculator"
     ],
     "metaTitle": "Revenue & Output Per Square Foot Factory Floor \u2014 QuickForma",
-    "metaDescription": "Free client-side revenue & output per square foot factory floor with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side revenue & output per square foot factory floor with zero cloud tracking and instant results.",
+    "subcategory": "operations:production-capacity",
+    "subcategoryLabel": "Production & Capacity"
   },
   {
     "id": "energy-consumption-cost-calculator",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Industrial Machine Kilowatt-Hour Cost",
     "category": "operations",
@@ -8772,16 +9724,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "energy calculator"
     ],
     "metaTitle": "Industrial Machine Kilowatt-Hour Cost \u2014 QuickForma",
-    "metaDescription": "Free client-side industrial machine kilowatt-hour cost with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side industrial machine kilowatt-hour cost with zero cloud tracking and instant results.",
+    "subcategory": "operations:maintenance-facilities",
+    "subcategoryLabel": "Maintenance & Facilities"
   },
   {
     "id": "manufacturing-labor-rate-burden",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Fringe Benefit & Overhead Labor Rate Burden",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "operations",
+    "categoryLabel": "Operations, Logistics & Manufacturing",
     "description": "Calculate and analyze fringe benefit & overhead labor rate burden with instant client-side business precision.",
     "iconName": "Cpu",
     "keywords": [
@@ -8791,12 +9746,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "manufacturing calculator"
     ],
     "metaTitle": "Fringe Benefit & Overhead Labor Rate Burden \u2014 QuickForma",
-    "metaDescription": "Free client-side fringe benefit & overhead labor rate burden with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side fringe benefit & overhead labor rate burden with zero cloud tracking and instant results.",
+    "subcategory": "operations:logistics-freight",
+    "subcategoryLabel": "Freight & Shipping Logistics"
   },
   {
     "id": "manufacturing-takt-vs-cycle-time",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Takt Time vs Cycle Time Line Efficiency Solver",
     "category": "operations",
@@ -8810,16 +9768,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "manufacturing calculator"
     ],
     "metaTitle": "Takt Time vs Cycle Time Line Efficiency Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side takt time vs cycle time line efficiency solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side takt time vs cycle time line efficiency solver with zero cloud tracking and instant results.",
+    "subcategory": "operations:production-capacity",
+    "subcategoryLabel": "Production & Capacity"
   },
   {
     "id": "industrial-electricity-peak-demand-cost",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Industrial Utility Peak Demand Charge kW Loss Solver",
-    "category": "marketing",
-    "categoryLabel": "Sales & Growth Marketing",
+    "category": "operations",
+    "categoryLabel": "Operations, Logistics & Manufacturing",
     "description": "Calculate and analyze industrial utility peak demand charge kw loss solver with instant client-side business precision.",
     "iconName": "Cpu",
     "keywords": [
@@ -8829,12 +9790,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "industrial calculator"
     ],
     "metaTitle": "Industrial Utility Peak Demand Charge kW Loss Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side industrial utility peak demand charge kw loss solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side industrial utility peak demand charge kw loss solver with zero cloud tracking and instant results.",
+    "subcategory": "operations:logistics-freight",
+    "subcategoryLabel": "Freight & Shipping Logistics"
   },
   {
     "id": "work-center-capacity-planner",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Work Center Available Hours & Load Factor Solver",
     "category": "operations",
@@ -8848,12 +9812,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "work calculator"
     ],
     "metaTitle": "Work Center Available Hours & Load Factor Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side work center available hours & load factor solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side work center available hours & load factor solver with zero cloud tracking and instant results.",
+    "subcategory": "operations:production-capacity",
+    "subcategoryLabel": "Production & Capacity"
   },
   {
     "id": "changeover-downtime-cost-calculator",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Setup Time Changeover Productivity Financial Loss",
     "category": "operations",
@@ -8867,12 +9834,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "changeover calculator"
     ],
     "metaTitle": "Setup Time Changeover Productivity Financial Loss \u2014 QuickForma",
-    "metaDescription": "Free client-side setup time changeover productivity financial loss with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side setup time changeover productivity financial loss with zero cloud tracking and instant results.",
+    "subcategory": "operations:maintenance-facilities",
+    "subcategoryLabel": "Maintenance & Facilities"
   },
   {
     "id": "manufacturing-yield-variance-calculator",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Standard Yield vs Actual Output Material Variance",
     "category": "operations",
@@ -8886,12 +9856,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "manufacturing calculator"
     ],
     "metaTitle": "Standard Yield vs Actual Output Material Variance \u2014 QuickForma",
-    "metaDescription": "Free client-side standard yield vs actual output material variance with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side standard yield vs actual output material variance with zero cloud tracking and instant results.",
+    "subcategory": "operations:quality-continuous-improvement",
+    "subcategoryLabel": "Quality & Six Sigma"
   },
   {
     "id": "sqc-x-bar-r-control-chart",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Statistical Quality Control X-Bar & R Chart Solver",
     "category": "operations",
@@ -8905,12 +9878,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "sqc calculator"
     ],
     "metaTitle": "Statistical Quality Control X-Bar & R Chart Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side statistical quality control x-bar & r chart solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side statistical quality control x-bar & r chart solver with zero cloud tracking and instant results.",
+    "subcategory": "operations:quality-continuous-improvement",
+    "subcategoryLabel": "Quality & Six Sigma"
   },
   {
     "id": "niosh-lifting-equation-calculator",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Factory Worker Ergonomic Lifting Limit Solver",
     "category": "operations",
@@ -8924,12 +9900,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "niosh calculator"
     ],
     "metaTitle": "Factory Worker Ergonomic Lifting Limit Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side factory worker ergonomic lifting limit solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side factory worker ergonomic lifting limit solver with zero cloud tracking and instant results.",
+    "subcategory": "operations:logistics-freight",
+    "subcategoryLabel": "Freight & Shipping Logistics"
   },
   {
     "id": "overdue-maintenance-risk-calculator",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Preventive Maintenance Overdue Risk Index Solver",
     "category": "operations",
@@ -8943,12 +9922,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "overdue calculator"
     ],
     "metaTitle": "Preventive Maintenance Overdue Risk Index Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side preventive maintenance overdue risk index solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side preventive maintenance overdue risk index solver with zero cloud tracking and instant results.",
+    "subcategory": "operations:maintenance-facilities",
+    "subcategoryLabel": "Maintenance & Facilities"
   },
   {
     "id": "scrap-recycling-salvage-calculator",
     "verticals": [
-      "business"
+      "business",
+      "operations"
     ],
     "name": "Plant Floor Scrap Recovery & Recycling Value",
     "category": "operations",
@@ -8962,7 +9944,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "scrap calculator"
     ],
     "metaTitle": "Plant Floor Scrap Recovery & Recycling Value \u2014 QuickForma",
-    "metaDescription": "Free client-side plant floor scrap recovery & recycling value with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side plant floor scrap recovery & recycling value with zero cloud tracking and instant results.",
+    "subcategory": "operations:quality-continuous-improvement",
+    "subcategoryLabel": "Quality & Six Sigma"
   },
   {
     "id": "gross-rent-multiplier-grm",
@@ -8970,8 +9954,8 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "business"
     ],
     "name": "Gross Rent Multiplier & Property Valuation Solver",
-    "category": "finance",
-    "categoryLabel": "Business Finance & Accounting",
+    "category": "real-estate",
+    "categoryLabel": "Real Estate & Property Finance",
     "description": "Calculate and analyze gross rent multiplier & property valuation solver with instant client-side business precision.",
     "iconName": "Building",
     "keywords": [
@@ -8981,7 +9965,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "gross calculator"
     ],
     "metaTitle": "Gross Rent Multiplier & Property Valuation Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side gross rent multiplier & property valuation solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side gross rent multiplier & property valuation solver with zero cloud tracking and instant results.",
+    "subcategory": "real-estate:commercial-underwriting",
+    "subcategoryLabel": "Commercial Underwriting"
   },
   {
     "id": "debt-service-coverage-ratio-real-estate",
@@ -9000,7 +9986,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "debt calculator"
     ],
     "metaTitle": "DSCR Commercial Mortgage Qualification \u2014 QuickForma",
-    "metaDescription": "Free client-side dscr commercial mortgage qualification with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side dscr commercial mortgage qualification with zero cloud tracking and instant results.",
+    "subcategory": "real-estate:property-management",
+    "subcategoryLabel": "Property Operations & ADR"
   },
   {
     "id": "real-estate-appreciation-calculator",
@@ -9019,7 +10007,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "real calculator"
     ],
     "metaTitle": "Compound Property Value Growth & Equity \u2014 QuickForma",
-    "metaDescription": "Free client-side compound property value growth & equity with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side compound property value growth & equity with zero cloud tracking and instant results.",
+    "subcategory": "real-estate:property-management",
+    "subcategoryLabel": "Property Operations & ADR"
   },
   {
     "id": "mortgage-refinance-break-even-calculator",
@@ -9038,7 +10028,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "mortgage calculator"
     ],
     "metaTitle": "Refinance Closing Cost Break-Even Months \u2014 QuickForma",
-    "metaDescription": "Free client-side refinance closing cost break-even months with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side refinance closing cost break-even months with zero cloud tracking and instant results.",
+    "subcategory": "real-estate:mortgage-financing",
+    "subcategoryLabel": "Mortgages & Financing"
   },
   {
     "id": "house-flipping-profit-calculator",
@@ -9057,7 +10049,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "house calculator"
     ],
     "metaTitle": "70% Rule Flip Purchase & ARV Profit Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side 70% rule flip purchase & arv profit solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side 70% rule flip purchase & arv profit solver with zero cloud tracking and instant results.",
+    "subcategory": "real-estate:investment-returns",
+    "subcategoryLabel": "Investment ROI & Cash Flow"
   },
   {
     "id": "brrrr-strategy-calculator",
@@ -9076,7 +10070,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "brrrr calculator"
     ],
     "metaTitle": "Buy, Rehab, Rent, Refinance, Repeat Profit Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side buy, rehab, rent, refinance, repeat profit solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side buy, rehab, rent, refinance, repeat profit solver with zero cloud tracking and instant results.",
+    "subcategory": "real-estate:investment-returns",
+    "subcategoryLabel": "Investment ROI & Cash Flow"
   },
   {
     "id": "property-management-fee-calculator",
@@ -9095,7 +10091,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "property calculator"
     ],
     "metaTitle": "Monthly Property Manager Fee & Net Payout \u2014 QuickForma",
-    "metaDescription": "Free client-side monthly property manager fee & net payout with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side monthly property manager fee & net payout with zero cloud tracking and instant results.",
+    "subcategory": "real-estate:property-management",
+    "subcategoryLabel": "Property Operations & ADR"
   },
   {
     "id": "tenant-turnover-cost-calculator",
@@ -9114,7 +10112,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "tenant calculator"
     ],
     "metaTitle": "Vacancy Loss, Cleaning & Lease Up Cost Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side vacancy loss, cleaning & lease up cost solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side vacancy loss, cleaning & lease up cost solver with zero cloud tracking and instant results.",
+    "subcategory": "real-estate:property-management",
+    "subcategoryLabel": "Property Operations & ADR"
   },
   {
     "id": "commercial-real-estate-lease-calculator",
@@ -9133,7 +10133,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "commercial calculator"
     ],
     "metaTitle": "Triple Net NNN vs Modified Gross Lease \u2014 QuickForma",
-    "metaDescription": "Free client-side triple net nnn vs modified gross lease with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side triple net nnn vs modified gross lease with zero cloud tracking and instant results.",
+    "subcategory": "real-estate:commercial-underwriting",
+    "subcategoryLabel": "Commercial Underwriting"
   },
   {
     "id": "home-equity-line-of-credit-heloc",
@@ -9152,7 +10154,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "home calculator"
     ],
     "metaTitle": "HELOC Monthly Interest-Only & Repayment \u2014 QuickForma",
-    "metaDescription": "Free client-side heloc monthly interest-only & repayment with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side heloc monthly interest-only & repayment with zero cloud tracking and instant results.",
+    "subcategory": "real-estate:mortgage-financing",
+    "subcategoryLabel": "Mortgages & Financing"
   },
   {
     "id": "price-to-rent-ratio-calculator",
@@ -9171,7 +10175,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "price calculator"
     ],
     "metaTitle": "Buy vs Rent Price-to-Rent Ratio Metric Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side buy vs rent price-to-rent ratio metric solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side buy vs rent price-to-rent ratio metric solver with zero cloud tracking and instant results.",
+    "subcategory": "real-estate:property-management",
+    "subcategoryLabel": "Property Operations & ADR"
   },
   {
     "id": "real-estate-commission-split-calculator",
@@ -9190,7 +10196,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "real calculator"
     ],
     "metaTitle": "Agent vs Brokerage Commission Split Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side agent vs brokerage commission split solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side agent vs brokerage commission split solver with zero cloud tracking and instant results.",
+    "subcategory": "real-estate:property-management",
+    "subcategoryLabel": "Property Operations & ADR"
   },
   {
     "id": "title-insurance-closing-cost-calculator",
@@ -9209,7 +10217,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "title calculator"
     ],
     "metaTitle": "Buyer & Seller Closing Cost Breakdown \u2014 QuickForma",
-    "metaDescription": "Free client-side buyer & seller closing cost breakdown with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side buyer & seller closing cost breakdown with zero cloud tracking and instant results.",
+    "subcategory": "real-estate:mortgage-financing",
+    "subcategoryLabel": "Mortgages & Financing"
   },
   {
     "id": "vacancy-rate-loss-calculator",
@@ -9217,8 +10227,8 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "business"
     ],
     "name": "Annual Vacancy Allowance & Income Loss Solver",
-    "category": "finance",
-    "categoryLabel": "Business Finance & Accounting",
+    "category": "real-estate",
+    "categoryLabel": "Real Estate & Property Finance",
     "description": "Calculate and analyze annual vacancy allowance & income loss solver with instant client-side business precision.",
     "iconName": "Building",
     "keywords": [
@@ -9228,7 +10238,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "vacancy calculator"
     ],
     "metaTitle": "Annual Vacancy Allowance & Income Loss Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side annual vacancy allowance & income loss solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side annual vacancy allowance & income loss solver with zero cloud tracking and instant results.",
+    "subcategory": "real-estate:property-management",
+    "subcategoryLabel": "Property Operations & ADR"
   },
   {
     "id": "seller-net-sheet-calculator",
@@ -9236,8 +10248,8 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "business"
     ],
     "name": "Real Estate Home Seller Net Proceeds Solver",
-    "category": "finance",
-    "categoryLabel": "Business Finance & Accounting",
+    "category": "real-estate",
+    "categoryLabel": "Real Estate & Property Finance",
     "description": "Calculate and analyze real estate home seller net proceeds solver with instant client-side business precision.",
     "iconName": "Building",
     "keywords": [
@@ -9247,7 +10259,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "seller calculator"
     ],
     "metaTitle": "Real Estate Home Seller Net Proceeds Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side real estate home seller net proceeds solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side real estate home seller net proceeds solver with zero cloud tracking and instant results.",
+    "subcategory": "real-estate:property-management",
+    "subcategoryLabel": "Property Operations & ADR"
   },
   {
     "id": "real-estate-equity-multiple-calculator",
@@ -9266,7 +10280,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "real calculator"
     ],
     "metaTitle": "Total Equity Multiple & LP Return Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side total equity multiple & lp return solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side total equity multiple & lp return solver with zero cloud tracking and instant results.",
+    "subcategory": "real-estate:investment-returns",
+    "subcategoryLabel": "Investment ROI & Cash Flow"
   },
   {
     "id": "property-cap-rate-sensitivity-calculator",
@@ -9285,7 +10301,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "property calculator"
     ],
     "metaTitle": "Cap Rate Sensitivity & Exit Price Valuation Matrix \u2014 QuickForma",
-    "metaDescription": "Free client-side cap rate sensitivity & exit price valuation matrix with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side cap rate sensitivity & exit price valuation matrix with zero cloud tracking and instant results.",
+    "subcategory": "real-estate:investment-returns",
+    "subcategoryLabel": "Investment ROI & Cash Flow"
   },
   {
     "id": "vacation-rental-short-term-occupancy",
@@ -9304,7 +10322,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "vacation calculator"
     ],
     "metaTitle": "STR Seasonal Occupancy & Revenue Per Available Night \u2014 QuickForma",
-    "metaDescription": "Free client-side str seasonal occupancy & revenue per available night with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side str seasonal occupancy & revenue per available night with zero cloud tracking and instant results.",
+    "subcategory": "real-estate:investment-returns",
+    "subcategoryLabel": "Investment ROI & Cash Flow"
   },
   {
     "id": "real-estate-debt-yield-calculator",
@@ -9323,7 +10343,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "real calculator"
     ],
     "metaTitle": "Lender Commercial Debt Yield Ratio Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side lender commercial debt yield ratio solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side lender commercial debt yield ratio solver with zero cloud tracking and instant results.",
+    "subcategory": "real-estate:commercial-underwriting",
+    "subcategoryLabel": "Commercial Underwriting"
   },
   {
     "id": "real-estate-irr-calculator",
@@ -9342,12 +10364,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "real calculator"
     ],
     "metaTitle": "Real Estate Internal Rate of Return (IRR) Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side real estate internal rate of return (irr) solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side real estate internal rate of return (irr) solver with zero cloud tracking and instant results.",
+    "subcategory": "real-estate:investment-returns",
+    "subcategoryLabel": "Investment ROI & Cash Flow"
   },
   {
     "id": "cost-per-click-cpc-calculator",
     "verticals": [
-      "business"
+      "business",
+      "marketing"
     ],
     "name": "Ad Budget & Clicks CPC Target Solver",
     "category": "marketing",
@@ -9361,12 +10386,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "cost calculator"
     ],
     "metaTitle": "Ad Budget & Clicks CPC Target Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side ad budget & clicks cpc target solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side ad budget & clicks cpc target solver with zero cloud tracking and instant results.",
+    "subcategory": "marketing:advertising-media",
+    "subcategoryLabel": "Paid Ads & Media Spend"
   },
   {
     "id": "cost-per-lead-cpl-calculator",
     "verticals": [
-      "business"
+      "business",
+      "marketing"
     ],
     "name": "Lead Generation Campaign Cost Per Lead Solver",
     "category": "marketing",
@@ -9380,12 +10408,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "cost calculator"
     ],
     "metaTitle": "Lead Generation Campaign Cost Per Lead Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side lead generation campaign cost per lead solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side lead generation campaign cost per lead solver with zero cloud tracking and instant results.",
+    "subcategory": "marketing:advertising-media",
+    "subcategoryLabel": "Paid Ads & Media Spend"
   },
   {
     "id": "email-marketing-roi-calculator",
     "verticals": [
-      "business"
+      "business",
+      "marketing"
     ],
     "name": "Email Campaign Revenue & Subscriber LTV Solver",
     "category": "marketing",
@@ -9399,12 +10430,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "email calculator"
     ],
     "metaTitle": "Email Campaign Revenue & Subscriber LTV Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side email campaign revenue & subscriber ltv solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side email campaign revenue & subscriber ltv solver with zero cloud tracking and instant results.",
+    "subcategory": "marketing:seo-analytics",
+    "subcategoryLabel": "SEO & Marketing Analytics"
   },
   {
     "id": "viral-k-factor-calculator",
     "verticals": [
-      "business"
+      "business",
+      "marketing"
     ],
     "name": "Viral Coefficient K-Factor & Referral Loop Solver",
     "category": "marketing",
@@ -9418,12 +10452,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "viral calculator"
     ],
     "metaTitle": "Viral Coefficient K-Factor & Referral Loop Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side viral coefficient k-factor & referral loop solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side viral coefficient k-factor & referral loop solver with zero cloud tracking and instant results.",
+    "subcategory": "marketing:funnel-conversion",
+    "subcategoryLabel": "Funnel & Conversion Analytics"
   },
   {
     "id": "conversion-rate-optimization-cro",
     "verticals": [
-      "business"
+      "business",
+      "marketing"
     ],
     "name": "CRO Revenue Impact & Lift Solver",
     "category": "marketing",
@@ -9437,12 +10474,16 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "conversion calculator"
     ],
     "metaTitle": "CRO Revenue Impact & Lift Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side cro revenue impact & lift solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side cro revenue impact & lift solver with zero cloud tracking and instant results.",
+    "subcategory": "marketing:funnel-conversion",
+    "subcategoryLabel": "Funnel & Conversion Analytics"
   },
   {
     "id": "influencer-marketing-roi-calculator",
     "verticals": [
-      "business"
+      "business",
+      "ecommerce",
+      "marketing"
     ],
     "name": "Sponsored Post Engagement Rate & ROI Solver",
     "category": "ecommerce",
@@ -9456,12 +10497,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "influencer calculator"
     ],
     "metaTitle": "Sponsored Post Engagement Rate & ROI Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side sponsored post engagement rate & roi solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side sponsored post engagement rate & roi solver with zero cloud tracking and instant results.",
+    "subcategory": "ecommerce:discounts-returns",
+    "subcategoryLabel": "Discounts & Returns"
   },
   {
     "id": "customer-churn-rate-calculator",
     "verticals": [
-      "business"
+      "business",
+      "marketing"
     ],
     "name": "Monthly & Annual Customer Churn Rate Solver",
     "category": "marketing",
@@ -9475,12 +10519,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "customer calculator"
     ],
     "metaTitle": "Monthly & Annual Customer Churn Rate Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side monthly & annual customer churn rate solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side monthly & annual customer churn rate solver with zero cloud tracking and instant results.",
+    "subcategory": "marketing:customer-retention",
+    "subcategoryLabel": "Customer Lifetime & Retention"
   },
   {
     "id": "net-promoter-score-nps-calculator",
     "verticals": [
-      "business"
+      "business",
+      "marketing"
     ],
     "name": "Promoters vs Detractors NPS Score Solver",
     "category": "marketing",
@@ -9494,12 +10541,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "net calculator"
     ],
     "metaTitle": "Promoters vs Detractors NPS Score Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side promoters vs detractors nps score solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side promoters vs detractors nps score solver with zero cloud tracking and instant results.",
+    "subcategory": "marketing:customer-retention",
+    "subcategoryLabel": "Customer Lifetime & Retention"
   },
   {
     "id": "marketing-qualified-lead-mql-conversion",
     "verticals": [
-      "business"
+      "business",
+      "marketing"
     ],
     "name": "MQL to SQL to Customer Pipeline Rate",
     "category": "marketing",
@@ -9513,12 +10563,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "marketing calculator"
     ],
     "metaTitle": "MQL to SQL to Customer Pipeline Rate \u2014 QuickForma",
-    "metaDescription": "Free client-side mql to sql to customer pipeline rate with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side mql to sql to customer pipeline rate with zero cloud tracking and instant results.",
+    "subcategory": "marketing:advertising-media",
+    "subcategoryLabel": "Paid Ads & Media Spend"
   },
   {
     "id": "content-marketing-roi-calculator",
     "verticals": [
-      "business"
+      "business",
+      "marketing"
     ],
     "name": "Blog & SEO Content Creation ROI Solver",
     "category": "marketing",
@@ -9532,16 +10585,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "content calculator"
     ],
     "metaTitle": "Blog & SEO Content Creation ROI Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side blog & seo content creation roi solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side blog & seo content creation roi solver with zero cloud tracking and instant results.",
+    "subcategory": "marketing:seo-analytics",
+    "subcategoryLabel": "SEO & Marketing Analytics"
   },
   {
     "id": "event-sponsorship-roi-calculator",
     "verticals": [
-      "business"
+      "business",
+      "marketing"
     ],
     "name": "Trade Show & Conference Lead ROI Solver",
-    "category": "finance",
-    "categoryLabel": "Business Finance & Accounting",
+    "category": "marketing",
+    "categoryLabel": "Sales & Growth Marketing",
     "description": "Calculate and analyze trade show & conference lead roi solver with instant client-side business precision.",
     "iconName": "Target",
     "keywords": [
@@ -9551,16 +10607,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "event calculator"
     ],
     "metaTitle": "Trade Show & Conference Lead ROI Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side trade show & conference lead roi solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side trade show & conference lead roi solver with zero cloud tracking and instant results.",
+    "subcategory": "marketing:seo-analytics",
+    "subcategoryLabel": "SEO & Marketing Analytics"
   },
   {
     "id": "social-media-engagement-rate-calculator",
     "verticals": [
-      "business"
+      "business",
+      "marketing"
     ],
     "name": "Social Media Engagement Rate Solver",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "marketing",
+    "categoryLabel": "Sales & Growth Marketing",
     "description": "Calculate and analyze social media engagement rate solver with instant client-side business precision.",
     "iconName": "Activity",
     "keywords": [
@@ -9570,16 +10629,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "social calculator"
     ],
     "metaTitle": "Social Media Engagement Rate Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side social media engagement rate solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side social media engagement rate solver with zero cloud tracking and instant results.",
+    "subcategory": "marketing:seo-analytics",
+    "subcategoryLabel": "SEO & Marketing Analytics"
   },
   {
     "id": "pay-per-click-ppc-budget-calculator",
     "verticals": [
-      "business"
+      "business",
+      "marketing"
     ],
     "name": "Target Clicks & Monthly PPC Budget Solver",
-    "category": "finance",
-    "categoryLabel": "Business Finance & Accounting",
+    "category": "marketing",
+    "categoryLabel": "Sales & Growth Marketing",
     "description": "Calculate and analyze target clicks & monthly ppc budget solver with instant client-side business precision.",
     "iconName": "DollarSign",
     "keywords": [
@@ -9589,16 +10651,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "pay calculator"
     ],
     "metaTitle": "Target Clicks & Monthly PPC Budget Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side target clicks & monthly ppc budget solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side target clicks & monthly ppc budget solver with zero cloud tracking and instant results.",
+    "subcategory": "marketing:advertising-media",
+    "subcategoryLabel": "Paid Ads & Media Spend"
   },
   {
     "id": "customer-retention-rate-calculator",
     "verticals": [
-      "business"
+      "business",
+      "marketing"
     ],
     "name": "Cohort Customer Retention Rate Solver",
-    "category": "hr",
-    "categoryLabel": "HR, Payroll & Compensation",
+    "category": "marketing",
+    "categoryLabel": "Sales & Growth Marketing",
     "description": "Calculate and analyze cohort customer retention rate solver with instant client-side business precision.",
     "iconName": "Users",
     "keywords": [
@@ -9608,12 +10673,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "customer calculator"
     ],
     "metaTitle": "Cohort Customer Retention Rate Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side cohort customer retention rate solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side cohort customer retention rate solver with zero cloud tracking and instant results.",
+    "subcategory": "marketing:customer-retention",
+    "subcategoryLabel": "Customer Lifetime & Retention"
   },
   {
     "id": "affiliate-marketing-commission-calculator",
     "verticals": [
-      "business"
+      "business",
+      "marketing"
     ],
     "name": "Affiliate Partner Payout & Net Profit",
     "category": "marketing",
@@ -9627,12 +10695,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "affiliate calculator"
     ],
     "metaTitle": "Affiliate Partner Payout & Net Profit \u2014 QuickForma",
-    "metaDescription": "Free client-side affiliate partner payout & net profit with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side affiliate partner payout & net profit with zero cloud tracking and instant results.",
+    "subcategory": "marketing:funnel-conversion",
+    "subcategoryLabel": "Funnel & Conversion Analytics"
   },
   {
     "id": "app-store-conversion-rate-calculator",
     "verticals": [
-      "business"
+      "business",
+      "marketing"
     ],
     "name": "ASO App Store Impression to Install Rate",
     "category": "marketing",
@@ -9646,12 +10717,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "app calculator"
     ],
     "metaTitle": "ASO App Store Impression to Install Rate \u2014 QuickForma",
-    "metaDescription": "Free client-side aso app store impression to install rate with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side aso app store impression to install rate with zero cloud tracking and instant results.",
+    "subcategory": "marketing:funnel-conversion",
+    "subcategoryLabel": "Funnel & Conversion Analytics"
   },
   {
     "id": "cost-per-acquisition-target-calculator",
     "verticals": [
-      "business"
+      "business",
+      "marketing"
     ],
     "name": "Maximum Allowable CPA based on LTV",
     "category": "marketing",
@@ -9665,12 +10739,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "cost calculator"
     ],
     "metaTitle": "Maximum Allowable CPA based on LTV \u2014 QuickForma",
-    "metaDescription": "Free client-side maximum allowable cpa based on ltv with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side maximum allowable cpa based on ltv with zero cloud tracking and instant results.",
+    "subcategory": "marketing:seo-analytics",
+    "subcategoryLabel": "SEO & Marketing Analytics"
   },
   {
     "id": "podcast-ad-cpm-calculator",
     "verticals": [
-      "business"
+      "business",
+      "marketing"
     ],
     "name": "Podcast Episode Downloads & Spot CPM Rate",
     "category": "marketing",
@@ -9684,12 +10761,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "podcast calculator"
     ],
     "metaTitle": "Podcast Episode Downloads & Spot CPM Rate \u2014 QuickForma",
-    "metaDescription": "Free client-side podcast episode downloads & spot cpm rate with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side podcast episode downloads & spot cpm rate with zero cloud tracking and instant results.",
+    "subcategory": "marketing:advertising-media",
+    "subcategoryLabel": "Paid Ads & Media Spend"
   },
   {
     "id": "lead-scoring-threshold-calculator",
     "verticals": [
-      "business"
+      "business",
+      "marketing"
     ],
     "name": "Sales Readiness Behavioral Lead Score",
     "category": "marketing",
@@ -9703,16 +10783,19 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "lead calculator"
     ],
     "metaTitle": "Sales Readiness Behavioral Lead Score \u2014 QuickForma",
-    "metaDescription": "Free client-side sales readiness behavioral lead score with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side sales readiness behavioral lead score with zero cloud tracking and instant results.",
+    "subcategory": "marketing:advertising-media",
+    "subcategoryLabel": "Paid Ads & Media Spend"
   },
   {
     "id": "expansion-mrr-rate-calculator",
     "verticals": [
-      "business"
+      "business",
+      "marketing"
     ],
     "name": "Customer Expansion MRR & Upsell Solver",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "marketing",
+    "categoryLabel": "Sales & Growth Marketing",
     "description": "Calculate and analyze customer expansion mrr & upsell solver with instant client-side business precision.",
     "iconName": "TrendingUp",
     "keywords": [
@@ -9722,7 +10805,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "expansion calculator"
     ],
     "metaTitle": "Customer Expansion MRR & Upsell Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side customer expansion mrr & upsell solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side customer expansion mrr & upsell solver with zero cloud tracking and instant results.",
+    "subcategory": "marketing:funnel-conversion",
+    "subcategoryLabel": "Funnel & Conversion Analytics"
   },
   {
     "id": "hourly-to-salary-calculator",
@@ -9741,7 +10826,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "hourly calculator"
     ],
     "metaTitle": "Hourly Wage to Equivalent Annual Salary Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side hourly wage to equivalent annual salary solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side hourly wage to equivalent annual salary solver with zero cloud tracking and instant results.",
+    "subcategory": "hr:wages-salary",
+    "subcategoryLabel": "Wages & Salary Conversion"
   },
   {
     "id": "fmla-leave-hours-calculator",
@@ -9760,7 +10847,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "fmla calculator"
     ],
     "metaTitle": "12-Week FMLA Entitlement Hours & Balance Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side 12-week fmla entitlement hours & balance solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side 12-week fmla entitlement hours & balance solver with zero cloud tracking and instant results.",
+    "subcategory": "hr:benefits-leave",
+    "subcategoryLabel": "Benefits, Leave & Retirement"
   },
   {
     "id": "severance-pay-calculator",
@@ -9779,7 +10868,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "severance calculator"
     ],
     "metaTitle": "Years of Service Severance Pay & Tax Withholding \u2014 QuickForma",
-    "metaDescription": "Free client-side years of service severance pay & tax withholding with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side years of service severance pay & tax withholding with zero cloud tracking and instant results.",
+    "subcategory": "hr:benefits-leave",
+    "subcategoryLabel": "Benefits, Leave & Retirement"
   },
   {
     "id": "overtime-pay-calculator",
@@ -9798,7 +10889,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "overtime calculator"
     ],
     "metaTitle": "Fair Labor Standards Act FLSA 1.5x Overtime Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side fair labor standards act flsa 1.5x overtime solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side fair labor standards act flsa 1.5x overtime solver with zero cloud tracking and instant results.",
+    "subcategory": "hr:overtime-shifts",
+    "subcategoryLabel": "Overtime, Shifts & Hours"
   },
   {
     "id": "commission-payout-calculator",
@@ -9806,8 +10899,8 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "business"
     ],
     "name": "Sales Rep Commission Split & Bonus Tier Solver",
-    "category": "productivity",
-    "categoryLabel": "Productivity & Planning",
+    "category": "hr",
+    "categoryLabel": "HR, Payroll & Compensation",
     "description": "Calculate and analyze sales rep commission split & bonus tier solver with instant client-side business precision.",
     "iconName": "Award",
     "keywords": [
@@ -9817,7 +10910,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "commission calculator"
     ],
     "metaTitle": "Sales Rep Commission Split & Bonus Tier Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side sales rep commission split & bonus tier solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side sales rep commission split & bonus tier solver with zero cloud tracking and instant results.",
+    "subcategory": "hr:compensation-retention",
+    "subcategoryLabel": "Compensation & Retention"
   },
   {
     "id": "full-time-equivalent-fte-calculator",
@@ -9836,7 +10931,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "full calculator"
     ],
     "metaTitle": "Part-Time Hours to Full-Time Equivalent FTE \u2014 QuickForma",
-    "metaDescription": "Free client-side part-time hours to full-time equivalent fte with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side part-time hours to full-time equivalent fte with zero cloud tracking and instant results.",
+    "subcategory": "hr:compensation-retention",
+    "subcategoryLabel": "Compensation & Retention"
   },
   {
     "id": "relocation-cost-calculator",
@@ -9855,7 +10952,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "relocation calculator"
     ],
     "metaTitle": "Employee Job Relocation Expense Allowance Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side employee job relocation expense allowance solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side employee job relocation expense allowance solver with zero cloud tracking and instant results.",
+    "subcategory": "hr:benefits-leave",
+    "subcategoryLabel": "Benefits, Leave & Retirement"
   },
   {
     "id": "401k-employer-match-calculator",
@@ -9874,7 +10973,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "401k calculator"
     ],
     "metaTitle": "Employer 401k Match Contribution & Max Limit \u2014 QuickForma",
-    "metaDescription": "Free client-side employer 401k match contribution & max limit with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side employer 401k match contribution & max limit with zero cloud tracking and instant results.",
+    "subcategory": "hr:benefits-leave",
+    "subcategoryLabel": "Benefits, Leave & Retirement"
   },
   {
     "id": "pto-payout-upon-termination",
@@ -9893,7 +10994,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "pto calculator"
     ],
     "metaTitle": "Accrued Unused Vacation PTO Payout Estimator \u2014 QuickForma",
-    "metaDescription": "Free client-side accrued unused vacation pto payout estimator with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side accrued unused vacation pto payout estimator with zero cloud tracking and instant results.",
+    "subcategory": "hr:benefits-leave",
+    "subcategoryLabel": "Benefits, Leave & Retirement"
   },
   {
     "id": "employee-absence-rate-calculator",
@@ -9912,7 +11015,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "employee calculator"
     ],
     "metaTitle": "Bradford Factor & Absenteeism Rate Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side bradford factor & absenteeism rate solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side bradford factor & absenteeism rate solver with zero cloud tracking and instant results.",
+    "subcategory": "hr:compensation-retention",
+    "subcategoryLabel": "Compensation & Retention"
   },
   {
     "id": "stock-option-exercise-calculator",
@@ -9931,7 +11036,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "stock calculator"
     ],
     "metaTitle": "ISO / NSO Stock Option Strike Price & Tax \u2014 QuickForma",
-    "metaDescription": "Free client-side iso / nso stock option strike price & tax with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side iso / nso stock option strike price & tax with zero cloud tracking and instant results.",
+    "subcategory": "hr:benefits-leave",
+    "subcategoryLabel": "Benefits, Leave & Retirement"
   },
   {
     "id": "annual-bonus-tax-withholding-calculator",
@@ -9950,7 +11057,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "annual calculator"
     ],
     "metaTitle": "Supplemental Wage Flat 22% Tax Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side supplemental wage flat 22% tax solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side supplemental wage flat 22% tax solver with zero cloud tracking and instant results.",
+    "subcategory": "hr:payroll-taxes",
+    "subcategoryLabel": "Payroll & Paycheck Taxes"
   },
   {
     "id": "shift-differential-pay-calculator",
@@ -9969,7 +11078,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "shift calculator"
     ],
     "metaTitle": "Night & Weekend Shift Premium Pay Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side night & weekend shift premium pay solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side night & weekend shift premium pay solver with zero cloud tracking and instant results.",
+    "subcategory": "hr:overtime-shifts",
+    "subcategoryLabel": "Overtime, Shifts & Hours"
   },
   {
     "id": "remote-work-stipend-calculator",
@@ -9988,7 +11099,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "remote calculator"
     ],
     "metaTitle": "Remote Work Home Office Expense Allowance \u2014 QuickForma",
-    "metaDescription": "Free client-side remote work home office expense allowance with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side remote work home office expense allowance with zero cloud tracking and instant results.",
+    "subcategory": "hr:benefits-leave",
+    "subcategoryLabel": "Benefits, Leave & Retirement"
   },
   {
     "id": "training-roi-calculator",
@@ -10007,7 +11120,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "training calculator"
     ],
     "metaTitle": "Employee Upskilling & Training Return on Investment \u2014 QuickForma",
-    "metaDescription": "Free client-side employee upskilling & training return on investment with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side employee upskilling & training return on investment with zero cloud tracking and instant results.",
+    "subcategory": "hr:compensation-retention",
+    "subcategoryLabel": "Compensation & Retention"
   },
   {
     "id": "glassdoor-salary-benchmark-calculator",
@@ -10026,7 +11141,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "glassdoor calculator"
     ],
     "metaTitle": "Industry Percentile Salary Benchmark Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side industry percentile salary benchmark solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side industry percentile salary benchmark solver with zero cloud tracking and instant results.",
+    "subcategory": "hr:wages-salary",
+    "subcategoryLabel": "Wages & Salary Conversion"
   },
   {
     "id": "internal-pay-equity-calculator",
@@ -10045,7 +11162,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "internal calculator"
     ],
     "metaTitle": "Internal Job Transfer Pay Equity Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side internal job transfer pay equity solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side internal job transfer pay equity solver with zero cloud tracking and instant results.",
+    "subcategory": "hr:compensation-retention",
+    "subcategoryLabel": "Compensation & Retention"
   },
   {
     "id": "employee-retention-rate-calculator",
@@ -10064,7 +11183,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "employee calculator"
     ],
     "metaTitle": "Employee Retention Rate & Average Tenure Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side employee retention rate & average tenure solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side employee retention rate & average tenure solver with zero cloud tracking and instant results.",
+    "subcategory": "hr:compensation-retention",
+    "subcategoryLabel": "Compensation & Retention"
   },
   {
     "id": "roth-ira-growth-calculator",
@@ -10083,7 +11204,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "roth calculator"
     ],
     "metaTitle": "Tax-Free Roth IRA Compound Interest Growth \u2014 QuickForma",
-    "metaDescription": "Free client-side tax-free roth ira compound interest growth with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side tax-free roth ira compound interest growth with zero cloud tracking and instant results.",
+    "subcategory": "finance:taxes-accounting",
+    "subcategoryLabel": "Taxes & Accounting"
   },
   {
     "id": "simple-savings-goal-calculator",
@@ -10091,8 +11214,8 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "business"
     ],
     "name": "Target Savings Goal & Monthly Deposit Required",
-    "category": "ecommerce",
-    "categoryLabel": "Ecommerce & Retail",
+    "category": "finance",
+    "categoryLabel": "Business Finance & Accounting",
     "description": "Calculate and analyze target savings goal & monthly deposit required with instant client-side business precision.",
     "iconName": "PiggyBank",
     "keywords": [
@@ -10102,7 +11225,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "simple calculator"
     ],
     "metaTitle": "Target Savings Goal & Monthly Deposit Required \u2014 QuickForma",
-    "metaDescription": "Free client-side target savings goal & monthly deposit required with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side target savings goal & monthly deposit required with zero cloud tracking and instant results.",
+    "subcategory": "finance:cash-flow-budgeting",
+    "subcategoryLabel": "Cash Flow & Working Capital"
   },
   {
     "id": "credit-card-minimum-payment-calculator",
@@ -10121,7 +11246,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "credit calculator"
     ],
     "metaTitle": "Credit Card Payoff & Interest Cost Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side credit card payoff & interest cost solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side credit card payoff & interest cost solver with zero cloud tracking and instant results.",
+    "subcategory": "finance:loans-debt",
+    "subcategoryLabel": "Loans, Debt & Payoff"
   },
   {
     "id": "inflation-purchasing-power-calculator",
@@ -10140,7 +11267,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "inflation calculator"
     ],
     "metaTitle": "Inflation Purchasing Power Loss Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side inflation purchasing power loss solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side inflation purchasing power loss solver with zero cloud tracking and instant results.",
+    "subcategory": "finance:taxes-accounting",
+    "subcategoryLabel": "Taxes & Accounting"
   },
   {
     "id": "fire-financial-independence-calculator",
@@ -10159,7 +11288,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "fire calculator"
     ],
     "metaTitle": "FIRE Number & Safe Withdrawal Rate Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side fire number & safe withdrawal rate solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side fire number & safe withdrawal rate solver with zero cloud tracking and instant results.",
+    "subcategory": "finance:taxes-accounting",
+    "subcategoryLabel": "Taxes & Accounting"
   },
   {
     "id": "college-savings-529-calculator",
@@ -10178,7 +11309,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "college calculator"
     ],
     "metaTitle": "529 College Savings Plan Future Growth Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side 529 college savings plan future growth solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side 529 college savings plan future growth solver with zero cloud tracking and instant results.",
+    "subcategory": "academic:planning-records",
+    "subcategoryLabel": "Academic Planning & Credits"
   },
   {
     "id": "life-insurance-needs-calculator",
@@ -10197,7 +11330,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "life calculator"
     ],
     "metaTitle": "DIME Method Life Insurance Coverage Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side dime method life insurance coverage solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side dime method life insurance coverage solver with zero cloud tracking and instant results.",
+    "subcategory": "finance:taxes-accounting",
+    "subcategoryLabel": "Taxes & Accounting"
   },
   {
     "id": "subscription-cost-analyzer",
@@ -10216,7 +11351,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "subscription calculator"
     ],
     "metaTitle": "Monthly & Annual Recurring Subscription Tracker \u2014 QuickForma",
-    "metaDescription": "Free client-side monthly & annual recurring subscription tracker with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side monthly & annual recurring subscription tracker with zero cloud tracking and instant results.",
+    "subcategory": "finance:taxes-accounting",
+    "subcategoryLabel": "Taxes & Accounting"
   },
   {
     "id": "hsa-triple-tax-advantage-calculator",
@@ -10235,7 +11372,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "hsa calculator"
     ],
     "metaTitle": "HSA Investment Growth & Tax Savings Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side hsa investment growth & tax savings solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side hsa investment growth & tax savings solver with zero cloud tracking and instant results.",
+    "subcategory": "finance:taxes-accounting",
+    "subcategoryLabel": "Taxes & Accounting"
   },
   {
     "id": "side-hustle-tax-calculator",
@@ -10254,7 +11393,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "side calculator"
     ],
     "metaTitle": "Self-Employment Schedule C Tax Estimator \u2014 QuickForma",
-    "metaDescription": "Free client-side self-employment schedule c tax estimator with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side self-employment schedule c tax estimator with zero cloud tracking and instant results.",
+    "subcategory": "finance:taxes-accounting",
+    "subcategoryLabel": "Taxes & Accounting"
   },
   {
     "id": "saas-quick-ratio-calculator",
@@ -10262,8 +11403,8 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "business"
     ],
     "name": "SaaS Quick Ratio Growth vs Churn Solver",
-    "category": "marketing",
-    "categoryLabel": "Sales & Growth Marketing",
+    "category": "finance",
+    "categoryLabel": "Business Finance & Accounting",
     "description": "Calculate and analyze saas quick ratio growth vs churn solver with instant client-side business precision.",
     "iconName": "Zap",
     "keywords": [
@@ -10273,7 +11414,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "saas calculator"
     ],
     "metaTitle": "SaaS Quick Ratio Growth vs Churn Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side saas quick ratio growth vs churn solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side saas quick ratio growth vs churn solver with zero cloud tracking and instant results.",
+    "subcategory": "finance:cash-flow-budgeting",
+    "subcategoryLabel": "Cash Flow & Working Capital"
   },
   {
     "id": "burn-multiple-calculator",
@@ -10292,12 +11435,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "burn calculator"
     ],
     "metaTitle": "Startup Capital Efficiency Burn Multiple Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side startup capital efficiency burn multiple solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side startup capital efficiency burn multiple solver with zero cloud tracking and instant results.",
+    "subcategory": "finance:valuation-investment",
+    "subcategoryLabel": "Investment & Valuation"
   },
   {
     "id": "gross-margin-return-on-investment-gmroi",
     "verticals": [
-      "business"
+      "business",
+      "ecommerce"
     ],
     "name": "Retail Inventory GMROI Profitability Solver",
     "category": "ecommerce",
@@ -10311,7 +11457,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "gross calculator"
     ],
     "metaTitle": "Retail Inventory GMROI Profitability Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side retail inventory gmroi profitability solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side retail inventory gmroi profitability solver with zero cloud tracking and instant results.",
+    "subcategory": "ecommerce:pricing-profitability",
+    "subcategoryLabel": "Retail Pricing & Margins"
   },
   {
     "id": "accounts-payable-turnover-ratio",
@@ -10330,7 +11478,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "accounts calculator"
     ],
     "metaTitle": "Accounts Payable Turnover & DPO Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side accounts payable turnover & dpo solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side accounts payable turnover & dpo solver with zero cloud tracking and instant results.",
+    "subcategory": "finance:financial-ratios",
+    "subcategoryLabel": "Financial Ratios & Analysis"
   },
   {
     "id": "accounts-receivable-aging-calculator",
@@ -10349,12 +11499,15 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "accounts calculator"
     ],
     "metaTitle": "Accounts Receivable Aging & Bad Debt Reserve \u2014 QuickForma",
-    "metaDescription": "Free client-side accounts receivable aging & bad debt reserve with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side accounts receivable aging & bad debt reserve with zero cloud tracking and instant results.",
+    "subcategory": "finance:financial-ratios",
+    "subcategoryLabel": "Financial Ratios & Analysis"
   },
   {
     "id": "customer-acquisition-payback-months",
     "verticals": [
-      "business"
+      "business",
+      "marketing"
     ],
     "name": "CAC Payback Period in Months Solver",
     "category": "marketing",
@@ -10368,7 +11521,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "customer calculator"
     ],
     "metaTitle": "CAC Payback Period in Months Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side cac payback period in months solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side cac payback period in months solver with zero cloud tracking and instant results.",
+    "subcategory": "marketing:customer-retention",
+    "subcategoryLabel": "Customer Lifetime & Retention"
   },
   {
     "id": "compound-annual-growth-rate-cagr",
@@ -10387,7 +11542,9 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "compound calculator"
     ],
     "metaTitle": "Compound Annual Growth Rate CAGR Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side compound annual growth rate cagr solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side compound annual growth rate cagr solver with zero cloud tracking and instant results.",
+    "subcategory": "finance:financial-ratios",
+    "subcategoryLabel": "Financial Ratios & Analysis"
   },
   {
     "id": "working-capital-cycle-calculator",
@@ -10406,6 +11563,8 @@ export const TOOLS_CATALOG: ToolMetadata[] = [
       "working calculator"
     ],
     "metaTitle": "Operating Working Capital Cycle Days Solver \u2014 QuickForma",
-    "metaDescription": "Free client-side operating working capital cycle days solver with zero cloud tracking and instant results."
+    "metaDescription": "Free client-side operating working capital cycle days solver with zero cloud tracking and instant results.",
+    "subcategory": "finance:cash-flow-budgeting",
+    "subcategoryLabel": "Cash Flow & Working Capital"
   }
 ];

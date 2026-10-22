@@ -51,10 +51,10 @@ export const Navbar: React.FC<NavbarProps> = ({
             </kbd>
           </button>
 
-          <div className="hidden lg:flex items-center gap-1 border-l border-slate-200 pl-3 text-xs">
+          <div className="hidden xl:flex items-center gap-1 border-l border-slate-200 pl-3 text-xs">
             <button
               onClick={() => handleNav('home')}
-              className={`px-3 py-1.5 rounded-lg transition-colors font-semibold ${
+              className={`px-2.5 py-1.5 rounded-lg transition-colors font-semibold ${
                 activeView === 'home' ? 'bg-indigo-600 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
               }`}
             >
@@ -62,23 +62,55 @@ export const Navbar: React.FC<NavbarProps> = ({
             </button>
             <button
               onClick={() => handleNav('business')}
-              className={`px-3 py-1.5 rounded-lg transition-colors font-semibold ${
+              className={`px-2.5 py-1.5 rounded-lg transition-colors font-semibold ${
                 activeView === 'business' ? 'bg-indigo-600 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
               }`}
             >
               Business
             </button>
             <button
+              onClick={() => handleNav('ecommerce')}
+              className={`px-2.5 py-1.5 rounded-lg transition-colors font-semibold ${
+                activeView === 'ecommerce' ? 'bg-indigo-600 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+              }`}
+            >
+              Ecommerce
+            </button>
+            <button
+              onClick={() => handleNav('operations')}
+              className={`px-2.5 py-1.5 rounded-lg transition-colors font-semibold ${
+                activeView === 'operations' ? 'bg-indigo-600 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+              }`}
+            >
+              Operations
+            </button>
+            <button
+              onClick={() => handleNav('marketing')}
+              className={`px-2.5 py-1.5 rounded-lg transition-colors font-semibold ${
+                activeView === 'marketing' ? 'bg-indigo-600 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+              }`}
+            >
+              Marketing
+            </button>
+            <button
               onClick={() => handleNav('students')}
-              className={`px-3 py-1.5 rounded-lg transition-colors font-semibold ${
+              className={`px-2.5 py-1.5 rounded-lg transition-colors font-semibold ${
                 activeView === 'students' ? 'bg-indigo-600 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
               }`}
             >
               Students
             </button>
             <button
+              onClick={() => handleNav('science')}
+              className={`px-2.5 py-1.5 rounded-lg transition-colors font-semibold ${
+                activeView === 'science' ? 'bg-indigo-600 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+              }`}
+            >
+              Science & STEM
+            </button>
+            <button
               onClick={() => handleNav('developers')}
-              className={`px-3 py-1.5 rounded-lg transition-colors font-semibold ${
+              className={`px-2.5 py-1.5 rounded-lg transition-colors font-semibold ${
                 activeView === 'developers' || activeView === 'developer' ? 'bg-indigo-600 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
               }`}
             >
@@ -86,35 +118,11 @@ export const Navbar: React.FC<NavbarProps> = ({
             </button>
             <button
               onClick={() => handleNav('encyclopedia:index')}
-              className={`px-3 py-1.5 rounded-lg transition-colors font-semibold ${
+              className={`px-2.5 py-1.5 rounded-lg transition-colors font-semibold ${
                 activeView === 'encyclopedia:index' || activeView.startsWith('encyclopedia:') ? 'bg-indigo-600 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
               }`}
             >
               Encyclopedia
-            </button>
-            <button
-              onClick={() => handleNav('mind')}
-              className={`px-3 py-1.5 rounded-lg transition-colors font-semibold ${
-                activeView === 'mind' ? 'bg-indigo-600 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
-              }`}
-            >
-              Mind
-            </button>
-            <button
-              onClick={() => handleNav('privacy')}
-              className={`px-3 py-1.5 rounded-lg transition-colors font-semibold ${
-                activeView === 'privacy' ? 'bg-indigo-600 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
-              }`}
-            >
-              Privacy
-            </button>
-            <button
-              onClick={() => handleNav('about')}
-              className={`px-3 py-1.5 rounded-lg transition-colors font-semibold ${
-                activeView === 'about' ? 'bg-indigo-600 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
-              }`}
-            >
-              About
             </button>
           </div>
 
@@ -126,7 +134,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 text-slate-600 hover:text-slate-900"
+            className="xl:hidden p-2 text-slate-600 hover:text-slate-900"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -135,7 +143,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white border-b border-slate-200 px-4 py-4 space-y-2 text-sm font-semibold shadow-lg">
+        <div className="xl:hidden bg-white border-b border-slate-200 px-4 py-4 space-y-2 text-sm font-semibold shadow-lg">
           <button
             onClick={() => handleNav('home')}
             className="w-full text-left px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100"
@@ -149,10 +157,34 @@ export const Navbar: React.FC<NavbarProps> = ({
             Business Hub
           </button>
           <button
+            onClick={() => handleNav('ecommerce')}
+            className="w-full text-left px-3 py-2 rounded-lg text-emerald-700 font-bold bg-emerald-50/60 hover:bg-emerald-50"
+          >
+            Ecommerce & Retail Hub
+          </button>
+          <button
+            onClick={() => handleNav('operations')}
+            className="w-full text-left px-3 py-2 rounded-lg text-amber-700 font-bold bg-amber-50/60 hover:bg-amber-50"
+          >
+            Operations & Manufacturing Hub
+          </button>
+          <button
+            onClick={() => handleNav('marketing')}
+            className="w-full text-left px-3 py-2 rounded-lg text-rose-700 font-bold bg-rose-50/60 hover:bg-rose-50"
+          >
+            Marketing & Growth Hub
+          </button>
+          <button
             onClick={() => handleNav('students')}
             className="w-full text-left px-3 py-2 rounded-lg text-indigo-600 font-bold bg-indigo-50/60 hover:bg-indigo-50"
           >
             Students Hub
+          </button>
+          <button
+            onClick={() => handleNav('science')}
+            className="w-full text-left px-3 py-2 rounded-lg text-cyan-700 font-bold bg-cyan-50/60 hover:bg-cyan-50"
+          >
+            Science & STEM Hub
           </button>
           <button
             onClick={() => handleNav('developers')}
@@ -162,13 +194,13 @@ export const Navbar: React.FC<NavbarProps> = ({
           </button>
           <button
             onClick={() => handleNav('encyclopedia:index')}
-            className="w-full text-left px-3 py-2 rounded-lg text-indigo-600 font-bold bg-indigo-50/60 hover:bg-indigo-50"
+            className="w-full text-left px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100"
           >
             Encyclopedia Knowledge Base
           </button>
           <button
             onClick={() => handleNav('mind')}
-            className="w-full text-left px-3 py-2 rounded-lg text-indigo-600 font-bold bg-indigo-50/60 hover:bg-indigo-50"
+            className="w-full text-left px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100"
           >
             QuickForma Mind
           </button>

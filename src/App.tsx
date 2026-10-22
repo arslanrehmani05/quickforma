@@ -6,6 +6,10 @@ import { Footer } from './components/layout/Footer';
 import { HomePage } from './pages/HomePage';
 import { StudentsPage } from './pages/StudentsPage';
 import { DeveloperPage } from './pages/DeveloperPage';
+import { EcommercePage } from './pages/EcommercePage';
+import { MarketingPage } from './pages/MarketingPage';
+import { OperationsPage } from './pages/OperationsPage';
+import { SciencePage } from './pages/SciencePage';
 
 // Legal Pages
 import { PrivacyPolicy } from './components/legal/PrivacyPolicy';
@@ -589,6 +593,18 @@ const getRouteFromPathname = (pathname: string): string => {
   if (cleanPath === '/business') {
     return 'business';
   }
+  if (cleanPath === '/ecommerce') {
+    return 'ecommerce';
+  }
+  if (cleanPath === '/marketing') {
+    return 'marketing';
+  }
+  if (cleanPath === '/operations') {
+    return 'operations';
+  }
+  if (cleanPath === '/science') {
+    return 'science';
+  }
   if (cleanPath.startsWith('/tools/')) {
     return cleanPath.replace('/tools/', '');
   }
@@ -608,6 +624,10 @@ const getPathnameFromView = (view: string): string => {
   if (view === 'students') return '/students';
   if (view === 'developers' || view === 'developer') return '/developers';
   if (view === 'business') return '/business';
+  if (view === 'ecommerce') return '/ecommerce';
+  if (view === 'marketing') return '/marketing';
+  if (view === 'operations') return '/operations';
+  if (view === 'science') return '/science';
   if (LEGAL_PAGES.includes(view)) return `/${view}`;
   if (view === 'encyclopedia:index' || view === 'encyclopedia') return '/encyclopedia';
   if (view.startsWith('encyclopedia:category:')) return `/encyclopedia/category/${view.replace('encyclopedia:category:', '')}`;
@@ -662,6 +682,30 @@ export function App() {
       if (metaDesc) {
         metaDesc.setAttribute('content', 'Free client-side developer utilities for formatting JSON, testing regex, encoding hashes, decoding JWTs, calculating subnets, and converting data with 100% browser privacy.');
       }
+    } else if (activeView === 'ecommerce') {
+      document.title = 'Free Ecommerce & Retail Calculators | QuickForma';
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) {
+        metaDesc.setAttribute('content', 'Free client-side ecommerce tools for marketplace fees, profit margins, bundle pricing, inventory turnover, and stock management.');
+      }
+    } else if (activeView === 'marketing') {
+      document.title = 'Free Marketing & Growth Calculators | QuickForma';
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) {
+        metaDesc.setAttribute('content', 'Free client-side marketing calculators for CAC, LTV, ROAS, email open rates, conversion rates, and campaign budget planning.');
+      }
+    } else if (activeView === 'operations') {
+      document.title = 'Free Operations & Manufacturing Calculators | QuickForma';
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) {
+        metaDesc.setAttribute('content', 'Free client-side operations utilities for EOQ, safety stock, reorder points, machine OEE, cycle time, takt time, and logistics.');
+      }
+    } else if (activeView === 'science') {
+      document.title = 'Free Science, Engineering & STEM Calculators | QuickForma';
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) {
+        metaDesc.setAttribute('content', 'Free client-side STEM calculators for physics, chemistry, thermodynamics, structural engineering, electrical formulas, and unit conversions.');
+      }
     } else if (activeView === 'mind') {
       document.title = 'QuickForma Mind — Mental Math Challenge';
       const metaDesc = document.querySelector('meta[name="description"]');
@@ -698,7 +742,11 @@ export function App() {
     switch (activeView) {
       // Hub & Legal Pages
       case 'business': return <BusinessPage tools={TOOLS_CATALOG} onSelectTool={handleSelectView} />;
+      case 'ecommerce': return <EcommercePage tools={TOOLS_CATALOG} onSelectTool={handleSelectView} />;
+      case 'marketing': return <MarketingPage tools={TOOLS_CATALOG} onSelectTool={handleSelectView} />;
+      case 'operations': return <OperationsPage tools={TOOLS_CATALOG} onSelectTool={handleSelectView} />;
       case 'students': return <StudentsPage tools={TOOLS_CATALOG} onSelectTool={handleSelectView} />;
+      case 'science': return <SciencePage tools={TOOLS_CATALOG} onSelectTool={handleSelectView} />;
       case 'developers':
       case 'developer': return <DeveloperPage tools={TOOLS_CATALOG} onSelectTool={handleSelectView} />;
       case 'privacy': return <PrivacyPolicy />;

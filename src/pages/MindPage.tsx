@@ -84,6 +84,8 @@ import { NumberComparisonGame } from '../components/mind/NumberComparisonGame';
 import { ProbabilityLabGame } from '../components/mind/ProbabilityLabGame';
 import { EvidenceUpdateGame } from '../components/mind/EvidenceUpdateGame';
 import { ArithmeticStrategiesGame } from '../components/mind/ArithmeticStrategiesGame';
+import { getPilotGameContent } from '../data/content/lookup';
+import { GamePilotContentRenderer } from '../components/content/GamePilotContentRenderer';
 
 interface MindPageProps {
   onSelectView: (view: string) => void;
@@ -194,56 +196,72 @@ export const MindPage: React.FC<MindPageProps> = () => {
   if (activeGame) {
     const handleBack = () => handleSelectGame(null);
 
-    switch (activeGame) {
-      // 6 Existing
-      case 'math-sprint': return <MentalMathSprint onBack={handleBack} />;
-      case 'number-sense': return <NumberSenseGame onBack={handleBack} />;
-      case 'pattern-challenge': return <PatternChallengeGame onBack={handleBack} />;
-      case 'logic-challenge': return <LogicChallengeGame onBack={handleBack} />;
-      case 'probability-challenge': return <ProbabilityChallengeGame onBack={handleBack} />;
-      case 'focus-challenge': return <FocusChallengeGame onBack={handleBack} />;
+    const renderActiveGame = () => {
+      switch (activeGame) {
+        // 6 Existing
+        case 'math-sprint': return <MentalMathSprint onBack={handleBack} />;
+        case 'number-sense': return <NumberSenseGame onBack={handleBack} />;
+        case 'pattern-challenge': return <PatternChallengeGame onBack={handleBack} />;
+        case 'logic-challenge': return <LogicChallengeGame onBack={handleBack} />;
+        case 'probability-challenge': return <ProbabilityChallengeGame onBack={handleBack} />;
+        case 'focus-challenge': return <FocusChallengeGame onBack={handleBack} />;
 
-      // Group A: Memory (4)
-      case 'dual-n-back': return <DualNBackGame onBack={handleBack} />;
-      case 'spatial-sequence': return <SpatialSequenceGame onBack={handleBack} />;
-      case 'sequence-recall': return <SequenceRecallGame onBack={handleBack} />;
-      case 'change-detection': return <ChangeDetectionGame onBack={handleBack} />;
+        // Group A: Memory (4)
+        case 'dual-n-back': return <DualNBackGame onBack={handleBack} />;
+        case 'spatial-sequence': return <SpatialSequenceGame onBack={handleBack} />;
+        case 'sequence-recall': return <SequenceRecallGame onBack={handleBack} />;
+        case 'change-detection': return <ChangeDetectionGame onBack={handleBack} />;
 
-      // Group B: Attention (5)
-      case 'stroop-challenge': return <StroopGame onBack={handleBack} />;
-      case 'go-no-go': return <GoNoGoGame onBack={handleBack} />;
-      case 'sustained-attention': return <SustainedAttentionGame onBack={handleBack} />;
-      case 'visual-search': return <VisualSearchGame onBack={handleBack} />;
-      case 'task-switch': return <TaskSwitchGame onBack={handleBack} />;
+        // Group B: Attention (5)
+        case 'stroop-challenge': return <StroopGame onBack={handleBack} />;
+        case 'go-no-go': return <GoNoGoGame onBack={handleBack} />;
+        case 'sustained-attention': return <SustainedAttentionGame onBack={handleBack} />;
+        case 'visual-search': return <VisualSearchGame onBack={handleBack} />;
+        case 'task-switch': return <TaskSwitchGame onBack={handleBack} />;
 
-      // Group C: Spatial (3)
-      case 'mental-rotation': return <MentalRotationGame onBack={handleBack} />;
-      case 'paper-folding': return <PaperFoldingGame onBack={handleBack} />;
-      case 'pathfinding': return <PathfindingGame onBack={handleBack} />;
+        // Group C: Spatial (3)
+        case 'mental-rotation': return <MentalRotationGame onBack={handleBack} />;
+        case 'paper-folding': return <PaperFoldingGame onBack={handleBack} />;
+        case 'pathfinding': return <PathfindingGame onBack={handleBack} />;
 
-      // Group D: Reasoning (5)
-      case 'matrix-reasoning': return <MatrixReasoningGame onBack={handleBack} />;
-      case 'rule-discovery': return <RuleDiscoveryGame onBack={handleBack} />;
-      case 'logic-grid': return <LogicGridGame onBack={handleBack} />;
-      case 'codebreaker': return <CodebreakerGame onBack={handleBack} />;
-      case 'sequence-ordering': return <SequenceOrderingGame onBack={handleBack} />;
+        // Group D: Reasoning (5)
+        case 'matrix-reasoning': return <MatrixReasoningGame onBack={handleBack} />;
+        case 'rule-discovery': return <RuleDiscoveryGame onBack={handleBack} />;
+        case 'logic-grid': return <LogicGridGame onBack={handleBack} />;
+        case 'codebreaker': return <CodebreakerGame onBack={handleBack} />;
+        case 'sequence-ordering': return <SequenceOrderingGame onBack={handleBack} />;
 
-      // Group E: Planning & Strategy (5)
-      case 'tower-of-hanoi': return <TowerOfHanoiGame onBack={handleBack} />;
-      case 'peg-solitaire': return <PegSolitaireGame onBack={handleBack} />;
-      case 'tactical-planner': return <TacticalPlannerGame onBack={handleBack} />;
-      case 'nonogram-logic': return <NonogramGame onBack={handleBack} />;
-      case 'planning-constraints': return <PlanningConstraintsGame onBack={handleBack} />;
+        // Group E: Planning & Strategy (5)
+        case 'tower-of-hanoi': return <TowerOfHanoiGame onBack={handleBack} />;
+        case 'peg-solitaire': return <PegSolitaireGame onBack={handleBack} />;
+        case 'tactical-planner': return <TacticalPlannerGame onBack={handleBack} />;
+        case 'nonogram-logic': return <NonogramGame onBack={handleBack} />;
+        case 'planning-constraints': return <PlanningConstraintsGame onBack={handleBack} />;
 
-      // Group F: Numerical & Probabilistic (4)
-      case 'number-comparison': return <NumberComparisonGame onBack={handleBack} />;
-      case 'probability-lab': return <ProbabilityLabGame onBack={handleBack} />;
-      case 'evidence-update': return <EvidenceUpdateGame onBack={handleBack} />;
-      case 'mental-arithmetic-strategies': return <ArithmeticStrategiesGame onBack={handleBack} />;
+        // Group F: Numerical & Probabilistic (4)
+        case 'number-comparison': return <NumberComparisonGame onBack={handleBack} />;
+        case 'probability-lab': return <ProbabilityLabGame onBack={handleBack} />;
+        case 'evidence-update': return <EvidenceUpdateGame onBack={handleBack} />;
+        case 'mental-arithmetic-strategies': return <ArithmeticStrategiesGame onBack={handleBack} />;
 
-      default:
-        return <MentalMathSprint onBack={handleBack} />;
-    }
+        default:
+          return <MentalMathSprint onBack={handleBack} />;
+      }
+    };
+
+    const pilotGame = getPilotGameContent(activeGame);
+
+    return (
+      <div className="space-y-12">
+        {renderActiveGame()}
+        {pilotGame && (
+          <GamePilotContentRenderer
+            content={pilotGame}
+            onSelectGame={handleSelectGame}
+          />
+        )}
+      </div>
+    );
   }
 
   // --- RENDER 32-GAME LIBRARY HUB ---

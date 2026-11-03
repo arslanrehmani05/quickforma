@@ -17,6 +17,8 @@ import { RelatedGuides } from './RelatedGuides';
 import { WorkflowProgression } from './WorkflowProgression';
 import { getRelatedGuides } from '../../lib/sanity';
 import { ShareSection } from '../social/ShareSection';
+import { getPilotToolContent } from '../../data/content/lookup';
+import { ToolPilotContentRenderer } from '../content/ToolPilotContentRenderer';
 
 interface ToolSeoWrapperProps {
   seoData?: ToolSeoData;
@@ -36,6 +38,9 @@ export const ToolSeoWrapper: React.FC<ToolSeoWrapperProps> = ({
   const currentUrl = `https://www.quickforma.com/tools/${toolId || ''}`;
   const name = toolName || "QuickForma Business Utility";
   const cat = category || "business";
+
+  // Fast canonical lookup for Phase 2/3 pilot tool content
+  const pilotContent = getPilotToolContent(toolId);
 
   const [sanityGuides, setSanityGuides] = useState<RelatedGuideItem[]>([]);
 
@@ -221,8 +226,18 @@ export const ToolSeoWrapper: React.FC<ToolSeoWrapperProps> = ({
     ],
   };
 
-  // 3. HowTo Schema (if HowToUse steps exist)
-  const howToSchema = activeSeoData.howToUse?.steps ? {
+  // 3. HowTo Schema (derived from pilot content if active, else legacy)
+  const howToSchema = pilotContent ? {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: `How to Use ${toolName || 'QuickForma Tool'}`,
+    step: pilotContent.howToUse.steps.map((s) => ({
+      '@type': 'HowToStep',
+      position: s.stepNumber,
+      name: s.title,
+      text: s.instruction,
+    })),
+  } : activeSeoData.howToUse?.steps ? {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
     name: `How to Use ${toolName || 'QuickForma Tool'}`,
@@ -234,6 +249,20 @@ export const ToolSeoWrapper: React.FC<ToolSeoWrapperProps> = ({
     })),
   } : null;
 
+  // 4. FAQ Schema (derived from pilot content if active)
+  const faqSchema = pilotContent?.faqs && pilotContent.faqs.length > 0 ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: pilotContent.faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: f.answer,
+      },
+    })),
+  } : null;
+
   return (
     <article className="mt-16 pt-12 border-t border-slate-200 space-y-16 max-w-5xl mx-auto">
       {/* Dynamic Schema Injections */}
@@ -241,6 +270,9 @@ export const ToolSeoWrapper: React.FC<ToolSeoWrapperProps> = ({
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       {howToSchema && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
+      )}
+      {faqSchema && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       )}
 
       {/* Social Sharing Component (Top below calculator output) */}
@@ -251,32 +283,43 @@ export const ToolSeoWrapper: React.FC<ToolSeoWrapperProps> = ({
         className="my-4"
       />
 
-      {/* 2. At a Glance Summary */}
-      {activeSeoData.atAGlance && <AtAGlance data={activeSeoData.atAGlance} />}
+      {/* Pilot Content (8 Authorized Tools) vs Legacy Fallback (503 Other Tools) */}
+      {pilotContent ? (
+        <ToolPilotContentRenderer
+          content={pilotContent}
+          category={cat}
+          onSelectView={onSelectView}
+        />
+      ) : (
+        <>
+          {/* 2. At a Glance Summary */}
+          {activeSeoData.atAGlance && <AtAGlance data={activeSeoData.atAGlance} />}
 
-      {/* 3. Quick Overview */}
-      {activeSeoData.overview && <ToolOverview data={activeSeoData.overview} />}
+          {/* 3. Quick Overview */}
+          {activeSeoData.overview && <ToolOverview data={activeSeoData.overview} />}
 
-      {/* 4. Key Features */}
-      {activeSeoData.keyFeatures && <KeyFeatures data={activeSeoData.keyFeatures} />}
+          {/* 4. Key Features */}
+          {activeSeoData.keyFeatures && <KeyFeatures data={activeSeoData.keyFeatures} />}
 
-      {/* 5. How to Use (Step-by-Step) */}
-      {activeSeoData.howToUse && <HowToUse data={activeSeoData.howToUse} />}
+          {/* 5. How to Use (Step-by-Step) */}
+          {activeSeoData.howToUse && <HowToUse data={activeSeoData.howToUse} />}
 
-      {/* 6. Worked Example (Mandatory: Inputs -> Process -> Result -> Interpretation) */}
-      {activeSeoData.workedExample && <WorkedExample data={activeSeoData.workedExample} />}
+          {/* 6. Worked Example (Mandatory: Inputs -> Process -> Result -> Interpretation) */}
+          {activeSeoData.workedExample && <WorkedExample data={activeSeoData.workedExample} />}
 
-      {/* 7. How It Works / Formula (Conditional: Formula, Logic, Assumptions) */}
-      {activeSeoData.howItWorks && <HowItWorks data={activeSeoData.howItWorks} />}
+          {/* 7. How It Works / Formula (Conditional: Formula, Logic, Assumptions) */}
+          {activeSeoData.howItWorks && <HowItWorks data={activeSeoData.howItWorks} />}
 
-      {/* 8. Interpret Your Results (Evaluating Outputs & Actionable Benchmarks) */}
-      {activeSeoData.interpretResults && <InterpretResults data={activeSeoData.interpretResults} />}
+          {/* 8. Interpret Your Results (Evaluating Outputs & Actionable Benchmarks) */}
+          {activeSeoData.interpretResults && <InterpretResults data={activeSeoData.interpretResults} />}
 
-      {/* 9. Frequently Asked Questions (FAQ Accordion + Schema.org JSON-LD) */}
-      {activeSeoData.faqs && <FAQSection data={activeSeoData.faqs} toolName={toolName} />}
+          {/* 9. Frequently Asked Questions (FAQ Accordion + Schema.org JSON-LD) */}
+          {activeSeoData.faqs && <FAQSection data={activeSeoData.faqs} toolName={toolName} />}
 
-      {/* 10. Related Tools (Internal Linking Grid across Pillar) */}
-      <RelatedTools toolIds={activeSeoData.relatedToolIds} currentCategory={category} currentToolId={toolId} />
+          {/* 10. Related Tools (Internal Linking Grid across Pillar) */}
+          <RelatedTools toolIds={activeSeoData.relatedToolIds} currentCategory={category} currentToolId={toolId} />
+        </>
+      )}
 
       {/* Social Sharing Component (Bottom after tool content) */}
       <ShareSection
@@ -287,7 +330,7 @@ export const ToolSeoWrapper: React.FC<ToolSeoWrapperProps> = ({
         className="pt-8 border-t border-slate-200"
       />
 
-      {/* 11. Related Guides (Sanity CMS - Dynamic Sanity GROQ Integration) */}
+      {/* 11. Related Guides (Sanity CMS - Dynamic Sanity GROQ Integration) - STRICTLY PRESERVED */}
       {sanityGuides && sanityGuides.length > 0 ? (
         <RelatedGuides guides={sanityGuides} onSelectView={onSelectView} />
       ) : activeSeoData.relatedGuides && activeSeoData.relatedGuides.guides && activeSeoData.relatedGuides.guides.length > 0 ? (

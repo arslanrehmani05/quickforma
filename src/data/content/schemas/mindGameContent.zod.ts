@@ -50,6 +50,7 @@ export const AcademicCitationZodSchema = z.object({
   paperTitle: z.string().min(1).max(250),
   source: z.string().min(1).max(200),
   urlOrDoi: z.string().url().or(z.string().regex(/^10\.\d{4,9}\/[-._;()/:A-Z0-9]+$/i)).optional(),
+  findingSummary: z.string().min(10).max(350).optional(),
 });
 
 export const MindGameTaskLineageZodEnum = z.enum([
@@ -74,7 +75,11 @@ export const GameScienceBackgroundZodSchema = z.object({
   implementationFidelity: z.object({
     differencesFromLaboratoryProtocol: z.array(z.string().min(1)).min(1),
     knownConfounders: z.array(z.string().min(1)).min(1),
-  }),
+  }).optional(),
+  recreationalPuzzleContext: z.object({
+    designPrinciple: z.string().min(10).max(300),
+    solvingHeuristics: z.array(z.string().min(1)).min(1),
+  }).optional(),
   evidenceStatus: z.object({
     replicatedFindings: z.array(z.string().min(1)),
     mixedOrDebatedClaims: z.array(z.string().min(1)),
@@ -92,6 +97,17 @@ export const GameScienceBackgroundZodSchema = z.object({
   }, {
     message: "citations array must contain at least 1 verified academic reference when taskLineage is 'formal_experimental_paradigm' or 'clinical_neuropsychological_task'.",
     path: ["citations"],
+  })
+  // Semantic Refinement: Implementation fidelity required for formal paradigms and clinical tasks
+  .refine(data => {
+    const formalTasks = ["formal_experimental_paradigm", "clinical_neuropsychological_task"];
+    if (formalTasks.includes(data.taskLineage) && !data.implementationFidelity) {
+      return false;
+    }
+    return true;
+  }, {
+    message: "implementationFidelity is required when taskLineage is 'formal_experimental_paradigm' or 'clinical_neuropsychological_task'.",
+    path: ["implementationFidelity"],
   });
 
 export const GameStrategyTipZodSchema = z.object({

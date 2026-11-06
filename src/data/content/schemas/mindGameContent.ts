@@ -71,6 +71,8 @@ export interface AcademicCitation {
   paperTitle: string;
   source: string;
   urlOrDoi?: string;
+  /** Concrete summary of the specific empirical finding or construct supported by this citation */
+  findingSummary?: string;
 }
 
 export interface GameScienceBackground {
@@ -95,10 +97,16 @@ export interface GameScienceBackground {
     unsupportedClaims: string[];
   };
 
-  /** Implementation fidelity: how this browser version differs from lab standards */
-  implementationFidelity: {
+  /** Implementation fidelity: how this browser version differs from lab standards (conditional: for formal & clinical tasks) */
+  implementationFidelity?: {
     differencesFromLaboratoryProtocol: string[];
     knownConfounders: string[];
+  };
+
+  /** Recreational puzzle context: design and heuristics (conditional: for recreational & puzzle tasks) */
+  recreationalPuzzleContext?: {
+    designPrinciple: string;
+    solvingHeuristics: string[];
   };
 
   /**

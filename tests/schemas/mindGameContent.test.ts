@@ -190,4 +190,47 @@ describe("MindGameContent Zod Schema & Cognitive Science Invariants", () => {
       /lastAudited must be null or a valid calendar date/
     );
   });
+
+  it("successfully parses citations with findingSummary and recreational puzzle context", () => {
+    const base = createBaseGame();
+    const data = createBaseGame({
+      gameId: "logic-grid",
+      science: {
+        ...base.science,
+        taskLineage: "recreational_logic_deduction",
+        implementationFidelity: undefined, // Optional for recreational puzzles
+        recreationalPuzzleContext: {
+          designPrinciple: "Constraint satisfaction grid enforcing pairwise mutual exclusion rules.",
+          solvingHeuristics: ["Row-column elimination", "Transitive deduction"],
+        },
+        citations: [
+          {
+            authors: "Smith, A.",
+            year: 2020,
+            paperTitle: "Constraint Satisfaction Problems in Recreational Logic",
+            source: "Journal of Problem Solving, 12(1), 45-60",
+            urlOrDoi: "https://doi.org/10.1234/jps.2020.001",
+            findingSummary: "Demonstrates that elimination matrices reduce cognitive working memory load during complex deduction.",
+          },
+        ],
+      },
+    });
+
+    expect(() => MindGameContentZodSchema.parse(data)).not.toThrow();
+  });
+
+  it("enforces implementationFidelity when taskLineage is formal_experimental_paradigm", () => {
+    const base = createBaseGame();
+    const data = createBaseGame({
+      science: {
+        ...base.science,
+        taskLineage: "formal_experimental_paradigm",
+        implementationFidelity: undefined, // Missing on formal paradigm!
+      },
+    });
+
+    expect(() => MindGameContentZodSchema.parse(data)).toThrow(
+      /implementationFidelity is required when taskLineage is/
+    );
+  });
 });

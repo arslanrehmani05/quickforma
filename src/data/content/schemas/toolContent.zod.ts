@@ -83,6 +83,7 @@ export const ToolAtAGlanceZodSchema = z.object({
   bestFor: z.string().min(5).max(100),
   timeRequired: z.string().min(3).max(50),
   primaryInputsSummary: z.string().min(5).max(150),
+  primaryOutputType: z.string().min(2).max(100).optional(),
 });
 
 export const ToolQuickOverviewZodSchema = z.object({
@@ -136,6 +137,27 @@ export const NumericCalculationExampleZodSchema = z.object({
     typicalBenchmark: z.string().max(250).optional(),
     goodVsSuboptimal: z.string().max(250).optional(),
   }).optional(),
+  interpretation: z.string().min(20).max(400),
+});
+
+export const ConversionExampleZodSchema = z.object({
+  type: z.literal("conversion"),
+  scenarioName: z.string().min(3).max(100),
+  contextDescription: z.string().min(20).max(400),
+  source: z.object({
+    quantity: z.union([z.number(), z.string().min(1).max(80)]),
+    unitName: z.string().min(1).max(80),
+    unitSymbol: z.string().max(20).optional(),
+  }),
+  target: z.object({
+    quantity: z.union([z.number(), z.string().min(1).max(80)]),
+    unitName: z.string().min(1).max(80),
+    unitSymbol: z.string().max(20).optional(),
+  }),
+  conversionFactor: z.string().min(1).max(150),
+  conversionFormula: z.string().max(200).optional(),
+  precision: z.number().int().min(0).max(12).optional(),
+  bidirectional: z.boolean().optional(),
   interpretation: z.string().min(20).max(400),
 });
 
@@ -255,6 +277,7 @@ export const DiagnosticAuditExampleZodSchema = DiagnosticAuditBaseZodSchema
 // Base discriminated union over pure ZodObject shapes
 export const ToolWorkedExampleBaseZodSchema = z.discriminatedUnion("type", [
   NumericCalculationExampleZodSchema,
+  ConversionExampleZodSchema,
   TransformationExampleZodSchema,
   DocumentExampleZodSchema,
   AnalysisMatrixExampleZodSchema,
@@ -319,12 +342,27 @@ export const MappingRuleZodSchema = z.object({
   technicalNote: z.string().max(200).optional(),
 });
 
+export const ToolEdgeCaseZodSchema = z.object({
+  condition: z.string().min(1).max(150),
+  handlingBehavior: z.string().min(1).max(250),
+});
+
+export const ToolTimeSensitivityZodSchema = z.object({
+  jurisdiction: z.string().max(80).optional(),
+  statutoryOrPricingSchedule: z.string().max(120).optional(),
+  lastVerifiedDate: z.string().refine(isValidCalendarDate, {
+    message: "lastVerifiedDate must be a valid calendar date in YYYY-MM-DD format.",
+  }),
+});
+
 export const ToolHowItWorksZodSchema = z.object({
   methodologyOverview: z.string().min(20), // Direct, meaningful; no arbitrary upper ceiling
   formulaDisplay: FormulaDisplayZodSchema.optional(),
   algorithmicSteps: z.array(AlgorithmicStepZodSchema).optional(),
   standardsReference: StandardsReferenceZodSchema.optional(),
   mappingRules: z.array(MappingRuleZodSchema).optional(),
+  edgeCases: z.array(ToolEdgeCaseZodSchema).optional(),
+  timeSensitivity: ToolTimeSensitivityZodSchema.optional(),
   assumptions: z.array(z.string().min(1)).optional(),
   limitations: z.array(z.string().min(1)).optional(),
 });

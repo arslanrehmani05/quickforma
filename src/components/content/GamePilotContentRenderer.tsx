@@ -288,25 +288,44 @@ export const GamePilotContentRenderer: React.FC<GamePilotContentRendererProps> =
               </ul>
             </div>
 
-            <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200 text-xs space-y-2">
-              <span className="font-bold text-slate-800 uppercase tracking-wider block">
-                Browser vs Laboratory Implementation
-              </span>
-              <ul className="space-y-1 text-slate-600">
-                {content.science.implementationFidelity.differencesFromLaboratoryProtocol.map((diff, idx) => (
-                  <li key={idx} className="flex items-start gap-1.5">
-                    <span className="text-indigo-600 font-bold">•</span>
-                    <span>{diff}</span>
-                  </li>
-                ))}
-              </ul>
-              {content.science.implementationFidelity.knownConfounders && (
-                <div className="pt-1 text-[11px] text-slate-500">
-                  <strong>Known Confounders:</strong>{' '}
-                  {content.science.implementationFidelity.knownConfounders.join('; ')}
-                </div>
-              )}
-            </div>
+            {content.science.implementationFidelity && (
+              <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200 text-xs space-y-2">
+                <span className="font-bold text-slate-800 uppercase tracking-wider block">
+                  Browser vs Laboratory Implementation
+                </span>
+                <ul className="space-y-1 text-slate-600">
+                  {content.science.implementationFidelity.differencesFromLaboratoryProtocol.map((diff, idx) => (
+                    <li key={idx} className="flex items-start gap-1.5">
+                      <span className="text-indigo-600 font-bold">•</span>
+                      <span>{diff}</span>
+                    </li>
+                  ))}
+                </ul>
+                {content.science.implementationFidelity.knownConfounders && (
+                  <div className="pt-1 text-[11px] text-slate-500">
+                    <strong>Known Confounders:</strong>{' '}
+                    {content.science.implementationFidelity.knownConfounders.join('; ')}
+                  </div>
+                )}
+              </div>
+            )}
+
+            {content.science.recreationalPuzzleContext && (
+              <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200 text-xs space-y-2">
+                <span className="font-bold text-slate-800 uppercase tracking-wider block">
+                  Recreational Puzzle Design & Heuristics
+                </span>
+                <p className="text-slate-600 leading-relaxed">
+                  {content.science.recreationalPuzzleContext.designPrinciple}
+                </p>
+                {content.science.recreationalPuzzleContext.solvingHeuristics && (
+                  <div className="pt-1 text-[11px] text-slate-500">
+                    <strong>Heuristic Techniques:</strong>{' '}
+                    {content.science.recreationalPuzzleContext.solvingHeuristics.join('; ')}
+                  </div>
+                )}
+              </div>
+            )}
           </div>
 
           {/* Citations */}
@@ -319,23 +338,30 @@ export const GamePilotContentRenderer: React.FC<GamePilotContentRendererProps> =
                 {content.science.citations.map((cit, idx) => (
                   <div
                     key={idx}
-                    className="p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-2"
+                    className="p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs space-y-1.5"
                   >
-                    <div>
-                      <span className="font-bold text-slate-900">{cit.authors} ({cit.year}).</span>{' '}
-                      <span className="italic text-slate-700">"{cit.paperTitle}."</span>{' '}
-                      <span className="text-slate-500">{cit.source}.</span>
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                      <div>
+                        <span className="font-bold text-slate-900">{cit.authors} ({cit.year}).</span>{' '}
+                        <span className="italic text-slate-700">"{cit.paperTitle}."</span>{' '}
+                        <span className="text-slate-500">{cit.source}.</span>
+                      </div>
+                      {cit.urlOrDoi && (
+                        <a
+                          href={cit.urlOrDoi}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[11px] font-bold text-indigo-600 hover:text-indigo-800 flex items-center gap-1 shrink-0"
+                        >
+                          <span>View Source</span>
+                          <ExternalLink className="w-3 h-3" />
+                        </a>
+                      )}
                     </div>
-                    {cit.urlOrDoi && (
-                      <a
-                        href={cit.urlOrDoi}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-[11px] font-bold text-indigo-600 hover:text-indigo-800 flex items-center gap-1 shrink-0"
-                      >
-                        <span>View Source</span>
-                        <ExternalLink className="w-3 h-3" />
-                      </a>
+                    {cit.findingSummary && (
+                      <div className="text-[11px] text-slate-600 bg-white/80 p-2 rounded-lg border border-slate-100">
+                        <span className="font-semibold text-slate-800">Supported Finding:</span> {cit.findingSummary}
+                      </div>
                     )}
                   </div>
                 ))}

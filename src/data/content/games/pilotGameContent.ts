@@ -104,6 +104,7 @@ export const PILOT_GAME_CONTENT: MindGameContent[] = [
           paperTitle: "Studies of interference in serial verbal reactions",
           source: "Journal of Experimental Psychology, 18(6), 643–662",
           urlOrDoi: "https://doi.org/10.1037/h0054651",
+          findingSummary: "Demonstrated that naming ink colors on conflicting color words produces substantial reaction time delays compared to naming solid color patches, establishing the robust interference effect between automatic reading and controlled color processing.",
         },
         {
           authors: "MacLeod, C. M.",
@@ -111,6 +112,7 @@ export const PILOT_GAME_CONTENT: MindGameContent[] = [
           paperTitle: "Half a century of research on the Stroop effect: An integrative review",
           source: "Psychological Bulletin, 109(2), 163–203",
           urlOrDoi: "https://doi.org/10.1037/0033-2909.109.2.163",
+          findingSummary: "Synthesized 50 years of experimental literature confirming that semantic interference is asymmetrical: word reading slows color naming, but color naming has negligible effect on word reading.",
         },
       ],
     },
@@ -230,6 +232,7 @@ export const PILOT_GAME_CONTENT: MindGameContent[] = [
           paperTitle: "Costs of a predictable switch between simple cognitive tasks",
           source: "Journal of Experimental Psychology: General, 124(2), 207–231",
           urlOrDoi: "https://doi.org/10.1037/0096-3445.124.2.207",
+          findingSummary: "Demonstrated that switching between two simple cognitive tasks produces an unavoidable reaction time delay (switch cost) that persists even when task transitions are completely predictable.",
         },
         {
           authors: "Meiran, N.",
@@ -237,6 +240,7 @@ export const PILOT_GAME_CONTENT: MindGameContent[] = [
           paperTitle: "Reconfiguration of processing mode prior to task performance",
           source: "Journal of Experimental Psychology: Learning, Memory, and Cognition, 22(6), 1423–1442",
           urlOrDoi: "https://doi.org/10.1037/0278-7393.22.6.1423",
+          findingSummary: "Showed that switch costs can be partially reduced with advance preparation time, separating task-set reconfiguration into proactive preparation and stimulus-driven execution components.",
         },
       ],
     },
@@ -353,6 +357,7 @@ export const PILOT_GAME_CONTENT: MindGameContent[] = [
           paperTitle: "Mental rotation of three-dimensional objects",
           source: "Science, 171(3972), 701–703",
           urlOrDoi: "https://doi.org/10.1126/science.171.3972.701",
+          findingSummary: "Demonstrated a linear relationship between decision latency and angular disparity up to 180°, proving that mental rotation operates through analog spatial simulation rather than discrete proposition verification.",
         },
       ],
     },
@@ -449,6 +454,14 @@ export const PILOT_GAME_CONTENT: MindGameContent[] = [
           "World knowledge variances regarding geographic or topical clue statements",
         ],
       },
+      recreationalPuzzleContext: {
+        designPrinciple: "Solves a multi-attribute constraint satisfaction problem using a 2D elimination matrix that enforces pairwise mutual exclusion across unique entities.",
+        solvingHeuristics: [
+          "Direct Negative Clue Elimination ('Alice does not live in Paris')",
+          "Row-Column Uniqueness Propagation (one confirmation per entity class)",
+          "Transitive Deduction Linking Multi-Step Relationships",
+        ],
+      },
       evidenceStatus: {
         replicatedFindings: [
           "External visual matrices substantially reduce working memory load compared to solving identical logic problems purely in memory.",
@@ -461,7 +474,16 @@ export const PILOT_GAME_CONTENT: MindGameContent[] = [
           "Claims that completing daily logic grids prevents age-related analytical decline.",
         ],
       },
-      citations: [],
+      citations: [
+        {
+          authors: "De Soto, C. B., London, M., & Handel, S.",
+          year: 1965,
+          paperTitle: "Reasoning and spatial representations",
+          source: "Journal of Verbal Learning and Verbal Behavior, 4(6), 513–520",
+          urlOrDoi: "https://doi.org/10.1016/S0022-5371(65)80053-9",
+          findingSummary: "Demonstrated that individuals solve transitive relational syllogisms by constructing spatial mental models, explaining why visual grid matrices reduce working memory load.",
+        },
+      ],
     },
     strategies: [
       {
@@ -556,6 +578,15 @@ export const PILOT_GAME_CONTENT: MindGameContent[] = [
           "Math anxiety impacting working memory capacity under time pressure",
         ],
       },
+      recreationalPuzzleContext: {
+        designPrinciple: "Engages rapid procedural arithmetic generation across four difficulty tiers with gamified streak multiplier bonuses and latency decay scoring.",
+        solvingHeuristics: [
+          "Decomposition into Clean Multiples of 10",
+          "Complementary Subtraction (bridging to tens)",
+          "Inverse Multiplication for Integer Division",
+          "Unbroken Streak Preservation over Reckless Speed",
+        ],
+      },
       evidenceStatus: {
         replicatedFindings: [
           "Arithmetic speed reflects a transition from slow procedural counting to rapid direct memory retrieval.",
@@ -575,6 +606,7 @@ export const PILOT_GAME_CONTENT: MindGameContent[] = [
           paperTitle: "Cognitive arithmetic: A review of data and theory",
           source: "Cognition, 44(1-2), 75–106",
           urlOrDoi: "https://doi.org/10.1016/0010-0277(92)90051-C",
+          findingSummary: "Identified that adult arithmetic calculation transitions from slow algorithmic counting to direct associative retrieval from long-term memory for single-digit facts, and that high time pressure restricts working memory resources.",
         },
       ],
     },
@@ -687,6 +719,7 @@ export const PILOT_GAME_CONTENT: MindGameContent[] = [
           paperTitle: "A feature-integration theory of attention",
           source: "Cognitive Psychology, 12(1), 97–136",
           urlOrDoi: "https://doi.org/10.1016/0010-0285(80)90005-5",
+          findingSummary: "Formulated Feature Integration Theory, proving that individual visual features (color or shape) are processed pre-attentively in parallel, whereas conjunction targets sharing multiple features require serial focal attention.",
         },
         {
           authors: "Wolfe, J. M.",
@@ -694,6 +727,7 @@ export const PILOT_GAME_CONTENT: MindGameContent[] = [
           paperTitle: "Guided Search 2.0: A revised model of visual search",
           source: "Psychonomic Bulletin & Review, 1(2), 202–238",
           urlOrDoi: "https://doi.org/10.3758/BF03200774",
+          findingSummary: "Proposed the Guided Search model, demonstrating that parallel pre-attentive feature processing can guide subsequent serial eye movements and focal attention toward likely target locations.",
         },
       ],
     },

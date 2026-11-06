@@ -13,6 +13,8 @@ export interface ToolAtAGlance {
   timeRequired: string;
   /** Summary of primary inputs required from the user */
   primaryInputsSummary: string;
+  /** Primary output format produced (optional: e.g. "Hourly Billing Rate ($/hr)", "Downloadable PDF", "Decoded JSON Claims") */
+  primaryOutputType?: string;
 }
 
 // ===========================================================================
@@ -57,7 +59,7 @@ export interface ToolWorkflowStep {
 }
 
 // ===========================================================================
-// SECTION 6: WORKED EXAMPLE (Discriminated Union across 6 Tool Families)
+// SECTION 6: WORKED EXAMPLE (Discriminated Union across 7 Tool Families)
 // ===========================================================================
 
 /** 1. Quantitative & Mathematical Calculators */
@@ -87,7 +89,29 @@ export interface NumericCalculationExample {
   interpretation: string;
 }
 
-/** 2. Code, Syntax & Transformation Tools */
+/** 2. Unit, Currency & Metric Converters */
+export interface ConversionExample {
+  type: "conversion";
+  scenarioName: string;
+  contextDescription: string;
+  source: {
+    quantity: number | string;
+    unitName: string;
+    unitSymbol?: string;
+  };
+  target: {
+    quantity: number | string;
+    unitName: string;
+    unitSymbol?: string;
+  };
+  conversionFactor: string;
+  conversionFormula?: string;
+  precision?: number;
+  bidirectional?: boolean;
+  interpretation: string;
+}
+
+/** 3. Code, Syntax & Transformation Tools */
 export interface TransformationExample {
   type: "transformation";
   scenarioName: string;
@@ -105,7 +129,7 @@ export interface TransformationExample {
   interpretation: string;
 }
 
-/** 3. Document, Invoice & Agreement Generators */
+/** 4. Document, Invoice & Agreement Generators */
 export interface DocumentExample {
   type: "document";
   scenarioName: string;
@@ -119,7 +143,7 @@ export interface DocumentExample {
   interpretation: string;
 }
 
-/** 4. Qualitative, Matrix & Decision Analyzers */
+/** 5. Qualitative, Matrix & Decision Analyzers */
 export interface AnalysisMatrixExample {
   type: "analysis_matrix";
   scenarioName: string;
@@ -136,7 +160,7 @@ export interface AnalysisMatrixExample {
   interpretation: string;
 }
 
-/** 5. Reference, Lookup & State Converters */
+/** 6. Reference, Lookup & State Converters */
 export interface ReferenceLookupExample {
   type: "reference_lookup";
   scenarioName: string;
@@ -152,7 +176,7 @@ export interface ReferenceLookupExample {
   interpretation: string;
 }
 
-/** 6. Diagnostic, Syntax Validation & Compliance Auditors */
+/** 7. Diagnostic, Syntax Validation & Compliance Auditors */
 export type DiagnosticSeverity = "pass" | "fail" | "warning" | "info";
 export type DiagnosticAggregateStatus = "pass" | "fail" | "warning" | "mixed" | "informational";
 
@@ -179,6 +203,7 @@ export interface DiagnosticAuditExample {
 
 export type ToolWorkedExample =
   | NumericCalculationExample
+  | ConversionExample
   | TransformationExample
   | DocumentExample
   | AnalysisMatrixExample
@@ -188,6 +213,18 @@ export type ToolWorkedExample =
 // ===========================================================================
 // SECTION 7: HOW IT WORKS / METHODOLOGY, FORMULAS & STANDARDS
 // ===========================================================================
+
+export interface ToolEdgeCase {
+  condition: string;
+  handlingBehavior: string;
+}
+
+export interface ToolTimeSensitivity {
+  jurisdiction?: string;
+  statutoryOrPricingSchedule?: string;
+  lastVerifiedDate: string;
+}
+
 export interface ToolHowItWorks {
   /** Methodological foundation: concise and factual (minimum 20 chars, no arbitrary ceiling) */
   methodologyOverview: string;
@@ -210,6 +247,12 @@ export interface ToolHowItWorks {
 
   /** Deterministic mapping rules — Conditional: for state and dictionary lookups */
   mappingRules?: Array<{ triggerInput: string; mappedOutput: string; technicalNote?: string }>;
+
+  /** Edge cases & failure modes — Conditional: boundaries, zero-states, overflows */
+  edgeCases?: ToolEdgeCase[];
+
+  /** Time-sensitivity & pricing schedules — Conditional: tax year, marketplace fee schedule */
+  timeSensitivity?: ToolTimeSensitivity;
 
   /** Real-world assumptions (optional; empty if none apply) */
   assumptions?: string[];

@@ -18,6 +18,7 @@ export const PILOT_TOOL_CONTENT: ToolContent[] = [
       bestFor: "Solo consultants, agency contractors, and freelancers setting baseline billable pricing",
       timeRequired: "2–3 minutes",
       primaryInputsSummary: "Target take-home salary, annual overhead expenses, tax buffer, hours, and vacation",
+      primaryOutputType: "Minimum Billable Hourly Rate ($/hr)",
     },
     overview: {
       whatItDoes: "Calculates the exact gross hourly and daily billing rates required to meet an annual take-home salary target after deducting business expenses and estimated self-employment income taxes.",
@@ -143,8 +144,24 @@ export const PILOT_TOOL_CONTENT: ToolContent[] = [
         { stepNumber: 3, title: "Billable Capacity Computation", logicDescription: "Subtracts vacation weeks from 52, multiplies by weekly hours, and applies the billable efficiency factor." },
         { stepNumber: 4, title: "Unit Rate Normalization", logicDescription: "Divides gross revenue by net billable hours and rounds to two decimal places." },
       ],
+      edgeCases: [
+        {
+          condition: "Unbillable administrative time set to 100%",
+          handlingBehavior: "Produces zero available billable hours; rates evaluate to infinity or trigger an input ceiling warning.",
+        },
+        {
+          condition: "Effective tax buffer set to or exceeding 100%",
+          handlingBehavior: "Tax rates of 100% or higher trigger validation failure; calculation stops and an input error is displayed.",
+        },
+      ],
+      timeSensitivity: {
+        jurisdiction: "United States (Federal & State Self-Employment)",
+        statutoryOrPricingSchedule: "IRS Schedule SE (Form 1040) FICA 15.3% Baseline (practical 25–30% estimation heuristic, not individualized tax advice)",
+        lastVerifiedDate: "2026-03-15",
+      },
       assumptions: [
         "Business expenses qualify as ordinary and necessary tax deductions under IRS guidelines.",
+        "The 25% to 30% tax reserve is a practical estimation heuristic, not individualized tax advice; actual liabilities depend on individual brackets, deductions, and location.",
         "Billable utilization remains consistent across all 48 working weeks.",
         "All invoices are collected in full with zero bad debt write-offs.",
       ],
@@ -160,7 +177,7 @@ export const PILOT_TOOL_CONTENT: ToolContent[] = [
       },
       {
         question: "How should I estimate my effective tax buffer percentage?",
-        answer: "In the United States, solo freelancers typically pay a 15.3% self-employment tax (Social Security and Medicare) plus federal and state income taxes. A 25% to 30% combined buffer is common for moderate incomes.",
+        answer: "In the United States, solo freelancers typically pay a 15.3% self-employment tax (Social Security and Medicare) plus federal and state income taxes. While a 25% to 30% combined buffer is a widely used practical estimation heuristic, it is not a statutory rate or individualized tax advice; exact liability depends on total net income, deductions, and state tax brackets.",
       },
       {
         question: "What counts as unbillable administrative time?",
@@ -185,6 +202,7 @@ export const PILOT_TOOL_CONTENT: ToolContent[] = [
       bestFor: "Plant managers, manufacturing supervisors, and industrial process engineers",
       timeRequired: "1–2 minutes",
       primaryInputsSummary: "Planned operating hours, unplanned downtime, ideal cycle time, total and scrap units",
+      primaryOutputType: "Overall Equipment Effectiveness Percentage (0–100%)",
     },
     overview: {
       whatItDoes: "Calculates Overall Equipment Effectiveness (OEE) by analyzing manufacturing Availability, Performance, and Quality against standard industrial benchmarks.",
@@ -309,6 +327,16 @@ export const PILOT_TOOL_CONTENT: ToolContent[] = [
         { stepNumber: 3, title: "Quality Calculation", logicDescription: "Subtracts defects from total output and divides by total output." },
         { stepNumber: 4, title: "Compound Index Synthesis", logicDescription: "Multiplies all three percentage factors and normalizes to a 0–100 percentage scale." },
       ],
+      edgeCases: [
+        {
+          condition: "Operating speed exceeds nameplate capacity (Performance > 100%)",
+          handlingBehavior: "Performance percentage is capped at 100.0% to prevent artificial inflation of availability deficits.",
+        },
+        {
+          condition: "Planned operating time set to zero or less than downtime",
+          handlingBehavior: "Availability evaluates to 0.0% and calculation halts to prevent division by zero.",
+        },
+      ],
       assumptions: [
         "Unplanned downtime encompasses all unscheduled stops, equipment failures, and material shortages.",
         "Ideal cycle time represents maximum theoretical production rate under flawless operating conditions.",
@@ -350,6 +378,7 @@ export const PILOT_TOOL_CONTENT: ToolContent[] = [
       bestFor: "College students, academic tutors, and high school course planners",
       timeRequired: "1–2 minutes",
       primaryInputsSummary: "Multi-subject reading pages, problem set counts, writing word targets, and pacing rates",
+      primaryOutputType: "Estimated Study Clock Duration (Hours & Pomodoro Blocks)",
     },
     overview: {
       whatItDoes: "Estimates total required study time across multiple academic assignments and builds an actionable Pomodoro schedule with scheduled rest intervals.",
@@ -474,6 +503,16 @@ export const PILOT_TOOL_CONTENT: ToolContent[] = [
         { stepNumber: 3, title: "Pomodoro Partitioning", logicDescription: "Applies ceil(TotalMinutes / 25) to determine the number of required study intervals." },
         { stepNumber: 4, title: "Break Duration Synthesis", logicDescription: "Multiplies (Blocks - 1) by 5 minutes to schedule rest between focus intervals." },
       ],
+      edgeCases: [
+        {
+          condition: "Total workload equals zero across all courses",
+          handlingBehavior: "Returns 0.0 minutes of study and zero required Pomodoro intervals.",
+        },
+        {
+          condition: "Active study duration requires fewer than 25 minutes",
+          handlingBehavior: "Ceil function allocates a minimum of 1 full 25-minute Pomodoro focus block.",
+        },
+      ],
       assumptions: [
         "Focus remains uninterrupted during 25-minute active Pomodoro working intervals.",
         "Pacing rates reflect average difficulty across the entire reading or problem assignment.",
@@ -515,6 +554,7 @@ export const PILOT_TOOL_CONTENT: ToolContent[] = [
       bestFor: "Web developers, backend engineers, and security analysts inspecting OAuth2 tokens",
       timeRequired: "Instant (0–5 seconds)",
       primaryInputsSummary: "Compact encoded JSON Web Token string with three dot-delimited segments",
+      primaryOutputType: "Decoded JSON Object (Header & Payload Claims)",
     },
     overview: {
       whatItDoes: "Decodes and pretty-prints the Header and Payload claims of standard Base64Url-encoded JSON Web Tokens directly in the browser.",
@@ -602,6 +642,16 @@ export const PILOT_TOOL_CONTENT: ToolContent[] = [
         identifier: "JSON Web Token (JWT)",
         summary: "Defines a compact and self-contained method for securely transmitting information between parties as a JSON object.",
       },
+      edgeCases: [
+        {
+          condition: "Malformed token lacking standard three dot-delimited segments",
+          handlingBehavior: "Surfaces a non-blocking diagnostic error alerting that standard JWTs require header, payload, and signature sections.",
+        },
+        {
+          condition: "Token payload missing Base64Url padding",
+          handlingBehavior: "Appends '=' padding dynamically to normalize string length to a multiple of 4 before decoding.",
+        },
+      ],
       assumptions: [
         "The token conforms to standard Base64Url character encodings without encrypted (JWE) payloads.",
         "The client browser environment supports standard atob() Base64 decoding primitives.",
@@ -643,6 +693,7 @@ export const PILOT_TOOL_CONTENT: ToolContent[] = [
       bestFor: "Small business owners, freelancers, and creative service agencies",
       timeRequired: "2–4 minutes",
       primaryInputsSummary: "Business details, client contact, itemized services, tax rate, and payment terms",
+      primaryOutputType: "Printable & Downloadable Commercial Invoice (PDF)",
     },
     overview: {
       whatItDoes: "Generates professional, itemized commercial invoices with automatic subtotal, discount, and tax calculations, formatted for instant browser printing and PDF export.",
@@ -730,7 +781,7 @@ export const PILOT_TOOL_CONTENT: ToolContent[] = [
         ],
         exportFormats: ["Browser Print Preview", "PDF Document via Print Driver"],
       },
-      interpretation: "The invoice cleanly breaks down $5,900 of gross billings, accounts for the 5% contractual discount, adds 8.5% sales tax, and establishes a definitive legal balance due of $6,081.43 with explicit 14-day payment terms.",
+      interpretation: "The invoice cleanly breaks down $5,900 of gross billings, accounts for the 5% contractual discount, adds 8.5% sales tax, and establishes a definitive invoice balance due of $6,081.43 under agreed 14-day payment terms.",
     },
     howItWorks: {
       methodologyOverview: "The generator binds form input state directly to a responsive invoice document view. Financial values are aggregated through reactive reducers that calculate subtotals, subtract trade discounts, apply municipal tax percentages, and format grand totals.",
@@ -740,8 +791,24 @@ export const PILOT_TOOL_CONTENT: ToolContent[] = [
         { stepNumber: 3, title: "Sales Tax Computation", logicDescription: "Multiplies taxable amount by (TaxPercent / 100) to find total tax liability." },
         { stepNumber: 4, title: "Grand Total Synthesis", logicDescription: "Sums taxable amount and tax amount, formatted with two decimal places." },
       ],
+      edgeCases: [
+        {
+          condition: "Promotional or trade discount exceeds 100%",
+          handlingBehavior: "Under the current implementation, discounts exceeding 100% produce a negative taxable amount rather than clamping to zero.",
+        },
+        {
+          condition: "Attempting to remove the last remaining line item",
+          handlingBehavior: "The user interface enforces a minimum of one line item, preventing deletion or removal of the final remaining item row.",
+        },
+      ],
+      timeSensitivity: {
+        jurisdiction: "U.S. Common Law Commercial Contracts & State Destination-Based Sales Tax Rules",
+        statutoryOrPricingSchedule: "Contractual Net-D Payment Terms (Net-14/Net-30) & State Destination-Based Sales Tax Rules",
+        lastVerifiedDate: "2026-03-15",
+      },
       assumptions: [
-        "Payment terms follow standard commercial Net-D conventions stated in the document.",
+        "Payment terms (such as Net-14 or Net-30) are contractual provisions agreed upon by commercial parties under common-law contract principles, distinct from statutory state sales-tax obligations.",
+        "Sales tax collection and remittance are governed by applicable state destination-based sales-tax rules, which operate independently of private contractual credit terms.",
         "Tax percentages apply uniformly to all itemized deliverables listed.",
       ],
       limitations: [
@@ -781,6 +848,7 @@ export const PILOT_TOOL_CONTENT: ToolContent[] = [
       bestFor: "Commercial real estate investors, asset managers, and mortgage underwriters",
       timeRequired: "1–2 minutes",
       primaryInputsSummary: "Annual Net Operating Income (NOI) and baseline capitalization rate percentage",
+      primaryOutputType: "Five-Scenario Valuation & Equity Variance Matrix ($)",
     },
     overview: {
       whatItDoes: "Generates a multi-scenario capitalization rate sensitivity matrix showing asset valuation swings across yield compression and expansion scenarios.",
@@ -882,6 +950,16 @@ export const PILOT_TOOL_CONTENT: ToolContent[] = [
         { stepNumber: 3, title: "Scenario Asset Revaluation", logicDescription: "Evaluates NOI / (CapRate / 100) for each scenario bracket." },
         { stepNumber: 4, title: "Differential Synthesis", logicDescription: "Computes dollar delta and percentage change relative to baseline valuation." },
       ],
+      edgeCases: [
+        {
+          condition: "Market cap rate compressed down to or below 0.0%",
+          handlingBehavior: "Denominator approaches zero; calculator bounds minimum test yield at 1.0% to prevent infinite valuations.",
+        },
+        {
+          condition: "Zero or negative Net Operating Income (operating deficit)",
+          handlingBehavior: "The user interface clamps the NOI input to a minimum of $1.00, preventing negative or zero NOI entry through the interface.",
+        },
+      ],
       assumptions: [
         "Net Operating Income remains constant across the sensitivity matrix intervals.",
         "Market capitalization rates reflect true arm's-length commercial transactions.",
@@ -923,6 +1001,7 @@ export const PILOT_TOOL_CONTENT: ToolContent[] = [
       bestFor: "Linux system administrators, DevOps engineers, and web hosting technicians",
       timeRequired: "10–30 seconds",
       primaryInputsSummary: "Read, write, and execute permissions for Owner, Group, and Others",
+      primaryOutputType: "POSIX Inode Permission Mode (Octal & Symbolic Flags)",
     },
     overview: {
       whatItDoes: "Translates Linux and POSIX file system permissions between interactive checkboxes, octal notation (e.g. 755, 644), and symbolic flags (-rwxr-xr-x).",
@@ -1014,6 +1093,16 @@ export const PILOT_TOOL_CONTENT: ToolContent[] = [
         identifier: "POSIX.1-2017 (chmod utility)",
         summary: "Specifies file mode evaluation, permission bit weighting, and symbolic notation conventions across UNIX-compliant operating systems.",
       },
+      edgeCases: [
+        {
+          condition: "All permission checkboxes unchecked (000 / ---------)",
+          handlingBehavior: "Yields mode 000, locking all read, write, and execute permissions for all user classes.",
+        },
+        {
+          condition: "Full public write permissions toggled (777 / -rwxrwxrwx)",
+          handlingBehavior: "Computes valid octal 777 while surfacing security advisory regarding world-writable production risk.",
+        },
+      ],
       assumptions: [
         "Evaluation follows standard 3-digit POSIX permission bits without sticky bits (SUID/SGID/Sticky).",
         "Target operating systems conform to UNIX, Linux, BSD, or macOS file system standards.",
@@ -1055,6 +1144,7 @@ export const PILOT_TOOL_CONTENT: ToolContent[] = [
       bestFor: "Software developers, data engineers, and web scrapers testing pattern expressions",
       timeRequired: "Instant (10–60 seconds)",
       primaryInputsSummary: "Regular expression pattern string, flag controls (g, i, m, s, u), and test text payload",
+      primaryOutputType: "Diagnostic Compilation Status & Match Collection Array",
     },
     overview: {
       whatItDoes: "Compiles regular expressions and matches patterns against text payloads in real time, validating regex syntax and extracting capture groups.",
@@ -1159,6 +1249,16 @@ export const PILOT_TOOL_CONTENT: ToolContent[] = [
         identifier: "ECMA-262 (RegExp Objects)",
         summary: "Standardizes regular expression pattern syntax, matching algorithms, and flag mechanics across JavaScript engines.",
       },
+      edgeCases: [
+        {
+          condition: "Syntax error in regular expression (e.g., unclosed parenthesis or trailing backslash)",
+          handlingBehavior: "Catches SyntaxError in try/catch block and emits formatted red compilation error diagnostic.",
+        },
+        {
+          condition: "Pattern matching exceeds 200 occurrences in global mode",
+          handlingBehavior: "Halts iteration at 200 matches to prevent client-side JavaScript execution timeouts.",
+        },
+      ],
       assumptions: [
         "Pattern evaluation executes within the host browser's JavaScript V8, SpiderMonkey, or JavaScriptCore engine.",
         "Test text payload is treated as raw UTF-16 character strings.",

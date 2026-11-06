@@ -23,6 +23,9 @@ import {
   Receipt,
   ShieldCheck,
   RotateCcw,
+  ArrowLeftRight,
+  Calendar,
+  Zap,
 } from 'lucide-react';
 import { ToolContent, ToolWorkedExample } from '../../data/content/schemas/toolContent';
 import { TOOLS_CATALOG } from '../../data/toolsCatalog';
@@ -32,6 +35,40 @@ interface ToolPilotContentRendererProps {
   category?: string;
   onSelectView?: (view: string) => void;
 }
+
+const FEATURE_ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
+  calculator: Calculator,
+  shield: ShieldCheck,
+  terminal: Terminal,
+  file: FileText,
+  layers: Layers,
+  gauge: Gauge,
+  receipt: Receipt,
+  clock: Clock,
+  sparkles: Sparkles,
+  check: CheckCircle2,
+  alert: AlertCircle,
+  code: Code2,
+  building: Building,
+  book: BookOpen,
+  rotate: RotateCcw,
+  copy: Copy,
+  arrow: ArrowRight,
+  conversion: ArrowLeftRight,
+  calendar: Calendar,
+  zap: Zap,
+};
+
+const renderFeatureIcon = (iconName?: string) => {
+  if (!iconName) return <Sparkles className="w-5 h-5 text-indigo-600 shrink-0" />;
+  const normalized = iconName.toLowerCase().trim();
+  const IconComponent = FEATURE_ICON_MAP[normalized];
+  return IconComponent ? (
+    <IconComponent className="w-5 h-5 text-indigo-600 shrink-0" />
+  ) : (
+    <Sparkles className="w-5 h-5 text-indigo-600 shrink-0" />
+  );
+};
 
 export const ToolPilotContentRenderer: React.FC<ToolPilotContentRendererProps> = ({
   content,
@@ -55,6 +92,85 @@ export const ToolPilotContentRenderer: React.FC<ToolPilotContentRendererProps> =
 
   const renderWorkedExample = (example: ToolWorkedExample) => {
     switch (example.type) {
+      case 'conversion':
+        return (
+          <div className="space-y-6">
+            <div>
+              <span className="text-xs font-bold text-indigo-600 uppercase tracking-wider block mb-1">
+                Unit & Metric Conversion Scenario
+              </span>
+              <h3 className="text-lg font-bold text-slate-900">{example.scenarioName}</h3>
+              <p className="text-sm text-slate-600 mt-1 leading-relaxed">
+                {example.contextDescription}
+              </p>
+            </div>
+
+            {/* Source -> Target Comparison */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block mb-1">
+                  Source Value ({example.source.unitName})
+                </span>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-2xl font-extrabold text-slate-900 font-mono">
+                    {example.source.quantity}
+                  </span>
+                  <span className="text-sm font-semibold text-slate-500">
+                    {example.source.unitSymbol || example.source.unitName}
+                  </span>
+                </div>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-indigo-50 border border-indigo-200">
+                <span className="text-[11px] font-bold text-indigo-600 uppercase tracking-wider block mb-1">
+                  Converted Target ({example.target.unitName})
+                </span>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-2xl font-extrabold text-indigo-700 font-mono">
+                    {example.target.quantity}
+                  </span>
+                  <span className="text-sm font-semibold text-indigo-600">
+                    {example.target.unitSymbol || example.target.unitName}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Conversion Mathematics & Multiplier */}
+            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs space-y-2">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <span className="font-bold text-slate-800 uppercase tracking-wider block">
+                  Conversion Factor & Multiplier
+                </span>
+                {example.bidirectional && (
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 rounded-full">
+                    Bidirectional
+                  </span>
+                )}
+              </div>
+              <p className="font-mono text-xs text-indigo-700 bg-white p-2.5 rounded-xl border border-slate-200">
+                {example.conversionFactor}
+              </p>
+              {example.conversionFormula && (
+                <p className="text-slate-600">
+                  <strong>Formula:</strong> <span className="font-mono">{example.conversionFormula}</span>
+                </p>
+              )}
+              {typeof example.precision === 'number' && (
+                <p className="text-slate-500 text-[11px]">
+                  Standard Precision: {example.precision} decimal place{example.precision === 1 ? '' : 's'}
+                </p>
+              )}
+            </div>
+
+            {/* Interpretation */}
+            <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs sm:text-sm flex items-start gap-2.5">
+              <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+              <p className="leading-relaxed">{example.interpretation}</p>
+            </div>
+          </div>
+        );
+
       case 'calculation':
         return (
           <div className="space-y-6">
@@ -546,6 +662,16 @@ export const ToolPilotContentRenderer: React.FC<ToolPilotContentRendererProps> =
             <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider block">Cost</span>
             <span className="text-xs font-bold text-indigo-600 mt-1 block">Free Forever ($0)</span>
           </div>
+          {content.atAGlance.primaryOutputType && (
+            <div className="p-3.5 rounded-2xl bg-indigo-50/70 border border-indigo-200/80 text-center col-span-2 sm:col-span-3 lg:col-span-6">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-2">
+                <span className="text-[11px] font-bold text-indigo-700 uppercase tracking-wider">Primary Output Format:</span>
+                <span className="text-xs font-bold text-slate-900 font-mono">
+                  {content.atAGlance.primaryOutputType}
+                </span>
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
@@ -591,6 +717,9 @@ export const ToolPilotContentRenderer: React.FC<ToolPilotContentRendererProps> =
           {content.features.map((feat, idx) => (
             <div key={idx} className="p-5 rounded-3xl bg-white border border-slate-200 shadow-xs space-y-2 flex flex-col justify-between">
               <div>
+                <div className="w-9 h-9 rounded-2xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 mb-3">
+                  {renderFeatureIcon(feat.iconName)}
+                </div>
                 <h3 className="font-bold text-slate-900 text-sm mb-1">{feat.title}</h3>
                 <p className="text-xs text-slate-600 leading-relaxed">{feat.description}</p>
               </div>
@@ -686,6 +815,46 @@ export const ToolPilotContentRenderer: React.FC<ToolPilotContentRendererProps> =
                 Standards Compliance: {content.howItWorks.standardsReference.standardBody} · {content.howItWorks.standardsReference.identifier}
               </span>
               <p className="text-slate-700">{content.howItWorks.standardsReference.summary}</p>
+            </div>
+          )}
+
+          {content.howItWorks.timeSensitivity && (
+            <div className="p-4 rounded-2xl bg-amber-50/70 border border-amber-200 text-xs space-y-1.5">
+              <div className="flex items-center gap-2 text-amber-900 font-bold uppercase tracking-wider">
+                <Calendar className="w-4 h-4 text-amber-600 shrink-0" />
+                <span>Statutory & Pricing Schedule Sensitivity</span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1 text-slate-700">
+                {content.howItWorks.timeSensitivity.jurisdiction && (
+                  <div>
+                    <strong className="text-slate-900">Jurisdiction:</strong> {content.howItWorks.timeSensitivity.jurisdiction}
+                  </div>
+                )}
+                {content.howItWorks.timeSensitivity.statutoryOrPricingSchedule && (
+                  <div>
+                    <strong className="text-slate-900">Schedule:</strong> {content.howItWorks.timeSensitivity.statutoryOrPricingSchedule}
+                  </div>
+                )}
+                <div>
+                  <strong className="text-slate-900">Last Verified:</strong> <span className="font-mono">{content.howItWorks.timeSensitivity.lastVerifiedDate}</span>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {content.howItWorks.edgeCases && content.howItWorks.edgeCases.length > 0 && (
+            <div className="space-y-2">
+              <span className="text-xs font-bold text-slate-800 uppercase tracking-wider block">
+                Boundary Conditions & Edge Case Handling
+              </span>
+              <div className="space-y-2">
+                {content.howItWorks.edgeCases.map((ec, idx) => (
+                  <div key={idx} className="p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs flex flex-col sm:flex-row sm:items-start gap-2">
+                    <span className="font-bold text-slate-900 sm:w-1/3 shrink-0">{ec.condition}</span>
+                    <span className="text-slate-600 sm:w-2/3">{ec.handlingBehavior}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           )}
 

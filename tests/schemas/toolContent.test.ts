@@ -233,6 +233,56 @@ describe("ToolContent Zod Schema & Semantic Invariants", () => {
     expect(() => ToolContentZodSchema.parse(data)).not.toThrow();
   });
 
+  it("successfully parses valid ToolContent with conversion example, primaryOutputType, edgeCases, and timeSensitivity", () => {
+    const conversionExample = {
+      type: "conversion" as const,
+      scenarioName: "Metric to Imperial Volumetric Capacity Conversion",
+      contextDescription: "Translating international logistics container dimensions from cubic meters to cubic feet.",
+      source: {
+        quantity: 25.5,
+        unitName: "Cubic Meters",
+        unitSymbol: "m³",
+      },
+      target: {
+        quantity: 900.524,
+        unitName: "Cubic Feet",
+        unitSymbol: "ft³",
+      },
+      conversionFactor: "1 m³ = 35.3146667 ft³",
+      conversionFormula: "ft³ = m³ × 35.3146667",
+      precision: 3,
+      bidirectional: true,
+      interpretation: "25.5 cubic meters occupies approximately 900.5 cubic feet of freight storage space.",
+    };
+
+    const data = createBaseTool(conversionExample);
+    data.atAGlance.primaryOutputType = "Calculated Volumetric Equivalent (ft³)";
+    data.howItWorks.edgeCases = [
+      {
+        condition: "Zero or negative volumetric input",
+        handlingBehavior: "Clamps to zero and issues a non-blocking input validation warning.",
+      },
+    ];
+    data.howItWorks.timeSensitivity = {
+      jurisdiction: "International Freight / ISO",
+      statutoryOrPricingSchedule: "2026 Dimensional Weight Freight Rulebook",
+      lastVerifiedDate: "2026-03-01",
+    };
+
+    expect(() => ToolContentZodSchema.parse(data)).not.toThrow();
+  });
+
+  it("rejects invalid calendar dates inside timeSensitivity.lastVerifiedDate", () => {
+    const data = createBaseTool(calculationExample);
+    data.howItWorks.timeSensitivity = {
+      lastVerifiedDate: "2026-02-30", // Invalid date
+    };
+
+    expect(() => ToolContentZodSchema.parse(data)).toThrow(
+      /lastVerifiedDate must be a valid calendar date/
+    );
+  });
+
   it("enforces flexible array bounds (rejects < 2 features, rejects > 6 features)", () => {
     const data = createBaseTool(calculationExample);
 
